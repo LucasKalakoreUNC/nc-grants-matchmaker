@@ -427,9 +427,33 @@ def sync_opportunity_details(conn, raw_hits, max_workers=6):
 USASPENDING_URL = "https://api.usaspending.gov/api/v2/search/spending_by_award/"
 
 
+def usaspending_search(payload, label=""):
+    """POST a spending_by_award search. Returns the results list, or None on failure."""
+    req = urllib.request.Request(USASPENDING_URL, data=json.dumps(payload).encode("utf-8"),
+                                 headers={"Content-Type": "application/json", "User-Agent": "NC-Grants-Matchmaker/2.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode("utf-8")).get("results", [])
+    except Exception as e:
+        if "CERTIFICATE_VERIFY_FAILED" not in str(e):
+            print(f"[WARN] USAspending fetch failed for {label}: {e}", file=sys.stderr)
+            return None
+    # Some Python certificate bundles no longer trust USAspending's Entrust
+    # certificate; the operating system's store (used by curl) still does.
+    import subprocess
+    try:
+        out = subprocess.run(["curl", "-sS", "--max-time", "30", "-X", "POST", USASPENDING_URL,
+                              "-H", "Content-Type: application/json", "-d", json.dumps(payload)],
+                             capture_output=True, text=True, check=True).stdout
+        return json.loads(out).get("results", [])
+    except Exception as e:
+        print(f"[WARN] USAspending fetch failed for {label}: {e}", file=sys.stderr)
+        return None
+
+
 def fetch_nc_awards(cfda):
     """Largest recent awards to North Carolina recipients under one Assistance Listing."""
-    payload = {
+    return usaspending_search({
         "filters": {
             "award_type_codes": ["02", "03", "04", "05"],
             "program_numbers": [cfda],
@@ -438,26 +462,57 @@ def fetch_nc_awards(cfda):
         },
         "fields": ["Award ID", "Recipient Name", "Award Amount", "Start Date", "Description"],
         "limit": 8, "sort": "Award Amount", "order": "desc",
-    }
-    req = urllib.request.Request(USASPENDING_URL, data=json.dumps(payload).encode("utf-8"),
-                                 headers={"Content-Type": "application/json", "User-Agent": "NC-Grants-Matchmaker/2.0"})
+    }, cfda)
+
+
+def fetch_recent_awards(cfda):
+    """Up to 100 of the most recent awards nationwide under one Assistance Listing (last 3 years)."""
+    start = CURRENT_DATE.replace(year=CURRENT_DATE.year - 3).strftime("%Y-%m-%d")
+    return usaspending_search({
+        "filters": {
+            "award_type_codes": ["02", "03", "04", "05"],
+            "program_numbers": [cfda],
+            "time_period": [{"start_date": start, "end_date": CURRENT_DATE.strftime("%Y-%m-%d")}],
+        },
+        "fields": ["Award ID", "Award Amount", "Start Date"],
+        "limit": 100, "sort": "Start Date", "order": "desc",
+    }, cfda)
+
+
+def sync_program_award_stats(conn, cfdas, max_age_hours=24 * 7, max_workers=4):
+    """Typical recent award size per program (median, average, count), refreshed weekly."""
+    from concurrent.futures import ThreadPoolExecutor
+    import statistics
+    conn.execute("""CREATE TABLE IF NOT EXISTS program_award_stats (
+        cfda TEXT PRIMARY KEY, sample_size INTEGER, median REAL, average REAL,
+        low REAL, high REAL, since TEXT, fetched_at TEXT)""")
+    todo = [c for c in sorted(set(cfdas)) if c and not db.is_fresh(conn, "usaspending-stats", c, max_age_hours)]
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        results = list(ex.map(fetch_recent_awards, todo))
+    ok = 0
+    since = CURRENT_DATE.replace(year=CURRENT_DATE.year - 3).strftime("%Y-%m-%d")
+    for cfda, rows in zip(todo, results):
+        if rows is None:
+            db.log_fetch(conn, "usaspending-stats", cfda, 0, ok=False, error="request failed")
+            continue
+        amounts = sorted(a for a in (r.get("Award Amount") for r in rows) if a and a > 0)
+        if amounts:
+            conn.execute("INSERT OR REPLACE INTO program_award_stats VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                         (cfda, len(amounts), statistics.median(amounts), sum(amounts) / len(amounts),
+                          amounts[0], amounts[-1], since, db.now()))
+        else:
+            conn.execute("DELETE FROM program_award_stats WHERE cfda=?", (cfda,))
+        db.log_fetch(conn, "usaspending-stats", cfda, len(amounts), ok=True)
+        ok += 1
+    conn.commit()
+    return ok
+
+
+def program_stats(conn, cfda):
     try:
-        with urllib.request.urlopen(req, timeout=20) as r:
-            return json.loads(r.read().decode("utf-8")).get("results", [])
-    except Exception as e:
-        if "CERTIFICATE_VERIFY_FAILED" not in str(e):
-            print(f"[WARN] USAspending fetch failed for {cfda}: {e}", file=sys.stderr)
-            return None
-    # Some Python certificate bundles no longer trust USAspending's Entrust
-    # certificate; the operating system's store (used by curl) still does.
-    import subprocess
-    try:
-        out = subprocess.run(["curl", "-sS", "--max-time", "20", "-X", "POST", USASPENDING_URL,
-                              "-H", "Content-Type: application/json", "-d", json.dumps(payload)],
-                             capture_output=True, text=True, check=True).stdout
-        return json.loads(out).get("results", [])
-    except Exception as e:
-        print(f"[WARN] USAspending fetch failed for {cfda}: {e}", file=sys.stderr)
+        r = conn.execute("SELECT * FROM program_award_stats WHERE cfda=?", (cfda,)).fetchone()
+        return dict(r) if r else None
+    except Exception:
         return None
 
 
@@ -511,6 +566,12 @@ def enrich_opportunity(item, conn=None):
         "source": "USAspending.gov",
     } for a in awards]
     item["past_award_stats"] = {"count": len(awards), "total": sum(a["amount"] or 0 for a in awards)}
+
+    stats = program_stats(conn, item.get("cfda")) if conn is not None and item.get("cfda") else None
+    if stats:
+        item["typical_award"] = {k: stats[k] for k in ("sample_size", "median", "average", "low", "high", "since")}
+        ceiling = item.get("award_ceiling")
+        item["typical_award"]["well_below_ceiling"] = bool(ceiling and stats["median"] < ceiling * 0.25)
 
     req_docs = generate_required_documents(item)
     item["required_documents"] = req_docs
@@ -650,13 +711,16 @@ GENERIC_WORDS = {"and", "with", "from", "state", "federal", "program", "programs
                  "community", "services", "development", "research", "data", "safety", "local", "support",
                  "access", "system", "systems", "education", "energy", "city", "county", "rural", "business"}
 
-# How the overall score is built. Each part is scored 0-100; weights add to 1.
+# How the overall score is built. Fit with the strategic plan is the gate:
+#   Score = Fit x (0.6 + 0.4 x Practical / 100)
+# where Practical is a weighted average of the parts below (weights add to 1).
+# A grant with no real connection to the organization's goals cannot score
+# well no matter how large or convenient it is.
 SCORE_WEIGHTS = {
-    "relevancy": 0.40,     # fit with the office's strategic-plan goals
-    "eligibility": 0.15,   # can this type of office apply
-    "money_amount": 0.15,  # size of the award
-    "timing": 0.15,        # enough time before the deadline for the work needed
-    "effort": 0.10,        # staff hours to apply (less is better)
+    "eligibility": 0.30,   # can this type of office apply
+    "money_amount": 0.25,  # size of the award
+    "timing": 0.25,        # enough time before the deadline for the work needed
+    "effort": 0.15,        # staff hours to apply (less is better)
     "affinity": 0.05,      # funder this office usually works with
 }
 SCORE_LABELS = {
@@ -845,7 +909,6 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     effort_component = 100.0 if hours <= 30 else 80.0 if hours <= 50 else 55.0 if hours <= 80 else 30.0
 
     parts = {
-        "relevancy": relevancy_component,
         "eligibility": eligibility_component,
         "money_amount": money_component,
         "timing": timing_component,
@@ -856,17 +919,29 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     if scoring_model == "custom" and weights:
         w.update({k: v for k, v in weights.items() if k in w})
     w_sum = sum(w.values()) or 1
-    total_score = sum(parts[k] * w[k] for k in w) / w_sum
-    equation_name = "Weighted score"
-    equation_latex = " + ".join(f"{w[k] / w_sum:.2f} x {k}" for k in w)
+    practical = sum(parts[k] * w[k] for k in w) / w_sum
+    total_score = relevancy_component * (0.6 + 0.4 * practical / 100)
+    equation_name = "Fit x practical factors"
+    equation_latex = "Score = Fit x (0.6 + 0.4 x Practical / 100)"
 
     total_score = round(min(100.0, max(0.0, total_score)), 1)
-    confidence = "High" if total_score >= 70 else "Medium" if total_score >= 60 else "Low"
+    confidence = "High" if total_score >= 70 else "Medium" if total_score >= 55 else "Low"
 
     goal_title = best_goal.get("title", "") if best_goal else "Strategic priorities"
     goal_cite = best_goal.get("citation", "") if best_goal else ""
     matched_kws = ", ".join(kw_hits[:4]) if kw_hits else (", ".join(matched_goal_kws[:3]) if matched_goal_kws else "")
-    positive_drivers = [f"{SCORE_LABELS[k]}: {parts[k]:.0f} of 100 (counts {w[k] / w_sum:.0%})" for k in w]
+    positive_drivers = []
+
+    # Evidence: the sentences in the grant that contain the matched phrases
+    raw_text = (opp.get("title", "") + ". " + opp.get("description", ""))
+    sentences = re.split(r"(?<=[.!?])\s+", raw_text)
+    fit_evidence = []
+    for term in sorted(set(matched_goal_kws) | set(kw_hits), key=len, reverse=True):
+        for sent in sentences:
+            if re.search(r"\b" + re.escape(term) + r"\b", sent, re.I) and len(fit_evidence) < 3 \
+                    and sent not in [e["text"] for e in fit_evidence]:
+                fit_evidence.append({"term": term, "text": sent.strip()[:300]})
+                break
 
     risk_factors = []
     if opp.get("feasibility_warning"):
@@ -880,12 +955,15 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     if hours >= 80:
         risk_factors.append(f"Large application: about {hours} staff hours")
 
-    reason = (
-        f"Supports the {profile.get('short_name')} goal \"{goal_title}\""
-        + (f", including the objective to {best_objective[0].lower() + best_objective[1:]}" if best_objective else "")
-        + "." + (f" Matching terms found in the notice: {matched_kws}." if matched_kws else "")
-        + f" {eligibility_note}"
-    )
+    if relevancy_component >= 40 and fit_evidence:
+        reason = (f"The grant's own wording matches the {profile.get('short_name')} goal \"{goal_title}\" "
+                  f"(matching phrases: {matched_kws}). {eligibility_note}")
+    elif fit_evidence:
+        reason = (f"Only a weak link to the goal \"{goal_title}\": the grant mentions {matched_kws}, "
+                  f"but not as its main purpose. {eligibility_note}")
+    else:
+        reason = (f"No direct connection found between this grant and {profile.get('short_name')}'s goals. "
+                  f"It appears only because of general factors such as eligibility or award size.")
 
     award_fmt = f"${opp.get('award_ceiling', 0):,}" if opp.get('award_ceiling') else "Not stated"
     deadline_text = f"closes in {days} days ({opp.get('close_date')})" if days is not None else f"status is {opp.get('status')}"
@@ -906,6 +984,8 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
         "equation_name": equation_name,
         "equation_latex": equation_latex,
         "eligibility_note": eligibility_note,
+        "fit_evidence": fit_evidence,
+        "practical_score": round(practical, 1),
         "score_weights": {k: round(w[k] / w_sum, 4) for k in w},
         "matched_goal_id": best_goal.get("id") if best_goal else "G1",
         "matched_goal_title": goal_title,
@@ -971,6 +1051,8 @@ def run_pipeline():
 
     # 1c. North Carolina award history from USAspending, refreshed weekly per program
     cfdas = [c for h in open_hits for c in (h.get("cfdaList") or [])[:1]]
+    m = sync_program_award_stats(conn, cfdas)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] USAspending typical award sizes: {m} programs refreshed")
     n = sync_nc_awards(conn, cfdas)
     print(f"[{datetime.now().strftime('%H:%M:%S')}] USAspending: {n} programs refreshed; others reused from database or unavailable")
 

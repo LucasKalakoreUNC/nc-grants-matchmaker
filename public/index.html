@@ -208,23 +208,26 @@
     </ol>
     <h3>What the match labels mean</h3>
     <p><span class="tag strong">Strong match</span> Score of 70 or higher. Clearly supports one of your goals, and your organization is likely eligible. Review these first.<br>
-    <span class="tag good">Good match</span> Score of 60 to 69. Related to your goals. Worth a quick look.<br>
-    <span class="tag fair">Possible match</span> Below 60. Loosely related. Usually safe to skip.</p>
+    <span class="tag good">Good match</span> Score of 55 to 69. Related to your goals. Worth a quick look.<br>
+    <span class="tag fair">Possible match</span> Below 55. Loosely related. Usually safe to skip.</p>
 
     <h3 id="ranking" style="margin-top:28px">How grants are ranked</h3>
-    <p>Every grant gets a score from 0 to 100 for your organization. The score adds up six parts. Each part is scored from 0 to 100, then multiplied by its weight:</p>
-    <p style="background:var(--bg-alt);padding:12px 16px;font-weight:600">Score = 40% Fit + 15% Eligibility + 15% Award size + 15% Time before deadline + 10% Effort + 5% Familiar funder</p>
+    <p>Every grant gets a score from 0 to 100 for your organization. The most important question is whether the grant actually fits your goals, so fit works as a gate: a grant with no real connection cannot score well, no matter how large or convenient it is.</p>
+    <p style="background:var(--bg-alt);padding:12px 16px;font-weight:600">Score = Fit x (0.6 + 0.4 x Practical / 100)</p>
+    <p><strong>Fit with your strategic plan (0 to 100).</strong> Looks for each of your goals' key phrases in the grant's title and description. A phrase in the title counts most. Common words like "water" or "health" on their own count very little. The grant page quotes the sentences that matched.</p>
+    <p><strong>Practical factors (0 to 100)</strong> can lower a well-fitting grant's score by up to 40%:</p>
     <table>
-      <thead><tr><th>Part</th><th>Weight</th><th>How it is scored</th></tr></thead>
+      <thead><tr><th>Factor</th><th>Weight</th><th>How it is scored</th></tr></thead>
       <tbody>
-        <tr><td><strong>Fit with your strategic plan</strong></td><td data-l="Weight">40%</td><td>Looks for each of your goals' key phrases in the grant's title and description. A phrase in the title counts most. Common words like "water" or "health" on their own count very little.</td></tr>
-        <tr><td><strong>Your organization can apply</strong></td><td data-l="Weight">15%</td><td>100 if your type of organization is on the notice's eligible list. 85 if the eligibility text appears to include you. 50 if eligibility is only described in text. 10 if you are not eligible.</td></tr>
-        <tr><td><strong>Award size</strong></td><td data-l="Weight">15%</td><td>Based on the largest single award: $10 million or more scores 100; under $500,000 scores 25. Unlisted amounts score 50.</td></tr>
-        <tr><td><strong>Time before deadline</strong></td><td data-l="Weight">15%</td><td>Days left compared with the weeks of work the application needs. Twice the time needed or more scores 100; less than half the time needed scores 10. Forecasted grants score 90.</td></tr>
-        <tr><td><strong>Effort to apply</strong></td><td data-l="Weight">10%</td><td>30 staff hours or less scores 100; over 80 hours scores 30.</td></tr>
+        <tr><td><strong>Your organization can apply</strong></td><td data-l="Weight">30%</td><td>100 if your type of organization is on the notice's eligible list. 85 if the eligibility text appears to include you. 50 if eligibility is only described in text. 10 if you are not eligible.</td></tr>
+        <tr><td><strong>Award size</strong></td><td data-l="Weight">25%</td><td>Based on the largest single award: $10 million or more scores 100; under $500,000 scores 25. Unlisted amounts score 50.</td></tr>
+        <tr><td><strong>Time before deadline</strong></td><td data-l="Weight">25%</td><td>Days left compared with the weeks of work the application needs. Twice the time needed or more scores 100; less than half scores 10. Forecasted grants score 90.</td></tr>
+        <tr><td><strong>Effort to apply</strong></td><td data-l="Weight">15%</td><td>30 staff hours or less scores 100; over 80 hours scores 30.</td></tr>
         <tr><td><strong>Familiar funder</strong></td><td data-l="Weight">5%</td><td>100 if the funding agency is one your organization usually works with, otherwise 20.</td></tr>
       </tbody>
     </table>
+    <p><strong>Example:</strong> a grant with fit 80 and practical factors of 90 scores 80 x 0.96 = 77 (Strong). A $10 million grant your organization is eligible for, but with fit 15, scores at most 15.</p>
+    <p><strong>Typical award:</strong> next to "Award up to", the page shows the median of recent awards nationwide under the same federal program (from USAspending.gov). If most awards are far below the maximum, it is marked in red.</p>
     <p>Open any grant and choose "How this grant was scored" to see its numbers.</p>
 
     <h3 style="margin-top:28px">How staff time is estimated</h3>
@@ -273,12 +276,18 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const clean = s => String(s ?? '').replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '').replace(/\s{2,}/g,' ').trim();
 const money = n => n ? '$' + (n >= 1e6 ? (+(n/1e6).toFixed(1)) + ' million' : Number(n).toLocaleString()) : 'Not listed';
 const fmtDate = d => d ? new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not listed';
-const STRONG = 70, GOOD = 60;
+const STRONG = 70, GOOD = 55;
 // Award amount with a short qualifier saying what kind of number it is
 const awardCell = i => i.award_ceiling ? money(i.award_ceiling)
   : i.award_estimate ? `About ${money(i.award_estimate)}<span class="sub">each (estimated)</span>`
   : i.estimated_total_funding ? `${money(i.estimated_total_funding)}<span class="sub">total for all awards</span>`
   : 'Not listed';
+// Typical recent award under the same federal program, to compare with the ceiling
+const typicalLine = (i, long) => {
+  const t = i.typical_award; if (!t) return '';
+  if (!long) return `<span class="sub${t.well_below_ceiling ? ' soon' : ''}">Typical: ${money(Math.round(t.median))}</span>`;
+  return `<span class="sub" style="font-weight:400">Typical recent award: <strong>${money(Math.round(t.median))}</strong> (median of ${t.sample_size} awards nationwide under this federal program since ${new Date(t.since + 'T12:00:00').getFullYear()}; average ${money(Math.round(t.average))}). Source: USAspending.gov.${t.well_below_ceiling ? ' <strong class="soon">Most awards are far below the maximum.</strong>' : ''}</span>`;
+};
 const deadlineHtml = (i, br) => i.status === 'forecasted' ? 'Not yet open'
   : i.days_to_close == null ? 'No deadline listed'
   : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
@@ -365,7 +374,7 @@ function render(){
     return `<tr>
       <td><button class="t" onclick="openDetail('${esc(i.id)}')">${esc(clean(i.title))}</button><span class="sub">${esc(i.agency)}</span>${i.best_office_name ? `<span class="sub">Best fit: ${esc(i.best_office_name)}</span>` : ''}</td>
       <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
-      <td data-l="Award up to">${awardCell(i)}</td>
+      <td data-l="Award up to">${awardCell(i)}${typicalLine(i)}</td>
       <td data-l="Staff time">About ${i.est_completion_hours} hrs<span class="sub">${i.complexity_tier || ''}</span></td>
       <td data-l="Deadline">${deadline}</td>
       <td data-l="Status">${statusTag(i.id)}</td></tr>`;
@@ -404,6 +413,7 @@ async function loadSources(i){
       ${r.out_of_date ? '<div class="alert warn"><strong>The notice has changed since it was read.</strong> Check the newest version before relying on this list.</div>' : ''}
       ${Object.entries(groups).map(([cat, items]) => `<h4 style="margin:16px 0 4px">${esc(cat)}</h4><ul class="checklist">${items.map(([d, n]) => `<li><input type="checkbox" id="rq${n}" ${saved.includes(n) ? 'checked' : ''} onchange="saveReq(${n}, this.checked)"><label for="rq${n}" style="font-weight:400;margin:0"><strong>${esc(d.name)}</strong>${d.required ? '' : ' <span class="tag fair">If applicable</span>'}<small>${esc(d.details)}</small><small>Source: ${esc(d.source)}</small></label></li>`).join('')}</ul>`).join('')}
     </section>`;
+    if ((r.funded_activities || []).length) html += `<section><h3>What the money can pay for</h3><ul style="padding-left:20px;margin:0">${r.funded_activities.map(f => `<li>${esc(f.activity)} <span class="sub" style="display:inline">(${esc(f.source)})</span></li>`).join('')}</ul></section>`;
     if ((r.important_notes || []).length) html += `<section><div class="alert warn" style="margin:0"><h3>Easy to miss</h3><ul style="margin:4px 0 0;padding-left:20px">${r.important_notes.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></section>`;
     if ((r.deadlines || []).length) html += `<section><h3>Key dates</h3><table><tbody>${r.deadlines.map(d => `<tr><td>${esc(d.what)}<span class="sub">${esc(d.source)}</span></td><td data-l="When"><strong>${esc(d.when)}</strong></td></tr>`).join('')}</tbody></table></section>`;
     html += `<section><h3>Who can apply</h3><p>${esc(r.eligibility?.summary || 'Not stated')}</p><p class="sub">Source: ${esc(r.eligibility?.source || '')}</p>
@@ -444,7 +454,7 @@ function openDetail(id){
   $('dBody').innerHTML = `
     <dl class="facts">
       <div><dt>Match</dt><dd><span class="tag ${cls}">${lbl}</span></dd></div>
-      <div><dt>Award up to</dt><dd>${awardCell(i)}${i.award_amount_source ? `<span class="sub" style="font-weight:400">${esc(i.award_amount_source)}</span>` : ''}</dd></div>
+      <div style="grid-column:1/-1"><dt>Award up to</dt><dd>${awardCell(i)}${i.award_amount_source ? `<span class="sub" style="font-weight:400">${esc(i.award_amount_source)}</span>` : ''}${typicalLine(i, true)}</dd></div>
       <div><dt>Deadline</dt><dd>${deadlineHtml(i, true)}</dd></div>
       <div><dt>Estimated staff time</dt><dd>About ${i.est_completion_hours || '?'} hours<span class="sub">${i.est_completion_weeks ? `roughly ${i.est_completion_weeks} week${i.est_completion_weeks > 1 ? 's' : ''}` : ''}</span></dd></div>
       <div><dt>Matching funds</dt><dd>${i.cost_share_required === true ? 'Required' : i.cost_share_required === false ? 'Not required' : 'See notice'}</dd></div>
@@ -470,6 +480,7 @@ function openDetail(id){
     <section style="margin-top:28px">
       <h3>${i.best_office_name ? `Why this fits ${esc(i.best_office_name)}` : 'Why this fits your organization'}</h3>
       <p>${esc(clean(i.reason))}</p>
+      ${(i.fit_evidence || []).length ? `<p style="margin-bottom:4px"><strong>Where the grant matches your goal:</strong></p><ul style="margin:0 0 12px;padding-left:20px">${i.fit_evidence.map(e => `<li>"${esc(e.text).replace(new RegExp('(' + e.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>')}"</li>`).join('')}</ul>` : ''}
       ${i.matched_goal_title ? `<p><strong>Strategic goal:</strong> ${esc(i.matched_goal_title)}${i.matched_goal_citation ? `<span class="sub">${esc(i.matched_goal_citation)}</span>` : ''}</p>` : ''}
       ${isDraft(i.best_office_id || S.office) ? '<p class="sub">This organization\'s goals are a draft summary and have not yet been checked against its official strategic plan.</p>' : ''}
     </section>
@@ -509,11 +520,13 @@ function openDetail(id){
 function isDraft(id){ const p = S.profiles.find(p => p.agency_id === id); return !!(p && p.draft); }
 function scoreTable(i){
   const b = i.score_breakdown || {}, w = i.score_weights || {};
-  const rows = PARTS.filter(([k]) => w[k] != null).map(([k, label, help]) => {
-    const pts = (b[k] || 0) * w[k];
-    return `<tr><td>${label}<span class="sub">${help}</span></td><td data-l="Score">${Math.round(b[k] || 0)}</td><td data-l="Weight">${Math.round(w[k] * 100)}%</td><td data-l="Points">${pts.toFixed(1)}</td></tr>`;
-  }).join('');
-  return `<table style="margin-top:8px"><thead><tr><th>Part</th><th>Score</th><th>Weight</th><th>Points</th></tr></thead><tbody>${rows}<tr><td><strong>Total</strong></td><td></td><td></td><td><strong>${i.total_score}</strong></td></tr></tbody></table>`;
+  const fitV = Math.round(b.relevancy || 0), prac = i.practical_score ?? 0;
+  const rows = PARTS.filter(([k]) => k !== 'relevancy' && w[k] != null).map(([k, label, help]) =>
+    `<tr><td>${label}<span class="sub">${help}</span></td><td data-l="Score">${Math.round(b[k] || 0)}</td><td data-l="Weight">${Math.round(w[k] * 100)}%</td></tr>`).join('');
+  return `<p style="margin-top:8px"><strong>Fit with your strategic plan: ${fitV} of 100.</strong> ${PARTS[0][2]}</p>
+    <p style="margin-bottom:4px"><strong>Practical factors: ${Math.round(prac)} of 100</strong></p>
+    <table><thead><tr><th>Factor</th><th>Score</th><th>Weight</th></tr></thead><tbody>${rows}</tbody></table>
+    <p style="background:var(--bg-alt);padding:8px 12px;margin-top:8px">Score = Fit x (0.6 + 0.4 x Practical / 100) = ${fitV} x ${(0.6 + 0.4 * prac / 100).toFixed(2)} = <strong>${i.total_score}</strong></p>`;
 }
 function closeDetail(){ $('detail').classList.remove('open'); }
 function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); }

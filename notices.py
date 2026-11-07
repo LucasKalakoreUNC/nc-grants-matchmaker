@@ -233,6 +233,14 @@ REQUIREMENTS_SCHEMA = {
                 "properties": {"criterion": {"type": "string"}, "weight": {"type": "string"}, "source": {"type": "string"}},
             },
         },
+        "funded_activities": {
+            "type": "array",
+            "description": "What the money can pay for, in the notice's own terms, so staff can see how their organization could use it.",
+            "items": {
+                "type": "object", "additionalProperties": False, "required": ["activity", "source"],
+                "properties": {"activity": {"type": "string"}, "source": {"type": "string"}},
+            },
+        },
         "submission_limits": {"type": "string"},
         "important_notes": {"type": "array", "items": {"type": "string"}},
     },
@@ -245,6 +253,7 @@ Rules:
 - For every item, cite where it came from as "<file name> p. <page>", using the [page N] markers in the text. If a file has no page markers, cite the file name and section heading.
 - If the notice text does not cover something (for example no cost share is mentioned), say "not stated" rather than guessing.
 - Write in plain language a non-specialist can follow. Keep each detail to one or two sentences.
+- In funded_activities, list what the money can pay for (eligible activities and allowable costs) and anything it explicitly cannot pay for, so staff can judge how their organization would use it.
 - Notices often point to a separate agency application guide for standard forms; when they do, list the forms the notice names and note the guide in important_notes."""
 
 

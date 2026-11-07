@@ -48,7 +48,10 @@ small batches (for example every 10 grants).
    not grant specialists.
 5. Note anything that would get an application rejected (missing
    attachments, page limits, eligibility restrictions) in `important_notes`.
-6. North Carolina matters: if eligibility depends on population, location or
+6. List what the money can pay for in `funded_activities` (eligible
+   activities, allowable costs, and anything explicitly not allowed). This is
+   how staff judge whether their organization could actually use the grant.
+7. North Carolina matters: if eligibility depends on population, location or
    a named list, say which North Carolina organizations qualify.
 
 ## Format
@@ -68,6 +71,8 @@ Input to `import` is an object keyed by grant id. A complete example is
     "eligibility": {"summary": "...", "source": "<file> p. 24"},
     "cost_share": {"required": "yes | no | not stated", "details": "...", "source": "<file> p. 4"},
     "review_criteria": [{"criterion": "Approach", "weight": "33 points", "source": "<file> p. 36"}],
+    "funded_activities": [{"activity": "Elevating or buying out flood-prone homes", "source": "<file> p. 9"},
+                          {"activity": "Not allowed: research", "source": "<file> p. 33"}],
     "submission_limits": "not stated",
     "important_notes": ["..."]
   }

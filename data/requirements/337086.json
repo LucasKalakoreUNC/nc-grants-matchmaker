@@ -128,5 +128,31 @@
     "Missing the response organizational chart or work plan means automatic rejection.",
     "Funds cannot be used for research, and generally not for furniture or equipment.",
     "Not subject to NC State Clearinghouse review (Executive Order 12372)."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Component A: standing up emergency operations, surge staffing, activating the emergency operations center, and a needs assessment",
+      "source": "Foa_Content_of_CDC-RFA-TP22-2201_122024.pdf p. 3"
+    },
+    {
+      "activity": "Component B: emergency response activities tailored to the specific public health crisis",
+      "source": "Foa_Content_of_CDC-RFA-TP22-2201_122024.pdf p. 3"
+    },
+    {
+      "activity": "Personnel, travel, supplies and services for program purposes",
+      "source": "Foa_Content_of_CDC-RFA-TP22-2201_122024.pdf p. 33"
+    },
+    {
+      "activity": "Work toward public health accreditation standards, if tied to the purpose of the notice",
+      "source": "Foa_Content_of_CDC-RFA-TP22-2201_122024.pdf p. 31"
+    },
+    {
+      "activity": "Not allowed: research; clinical care (except as allowed by law); lobbying",
+      "source": "Foa_Content_of_CDC-RFA-TP22-2201_122024.pdf p. 33-34"
+    },
+    {
+      "activity": "Generally not allowed: furniture or equipment, unless clearly identified in the budget",
+      "source": "Foa_Content_of_CDC-RFA-TP22-2201_122024.pdf p. 33"
+    }
   ]
 }
