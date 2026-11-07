@@ -23,6 +23,11 @@ class RecommendationRegressionTests(unittest.TestCase):
     def tearDown(self):
         self.conn.close()
 
+    def test_school_district_picker_is_retired_but_dpi_remains(self):
+        self.assertFalse(any(profile.get("category") == "k12" for profile in self.profiles.values()))
+        self.assertNotIn("any_school_district", self.profiles)
+        self.assertEqual(self.profiles["dpi"]["category"], "state")
+
     def test_state_applicant_wording(self):
         descriptions = [
             "State governments may apply.",

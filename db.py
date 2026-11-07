@@ -146,6 +146,50 @@ CREATE TABLE IF NOT EXISTS decisions (
     decided_at      TEXT NOT NULL,
     PRIMARY KEY (office_id, opportunity_id)
 );
+
+CREATE TABLE IF NOT EXISTS notification_accounts (
+    email TEXT PRIMARY KEY,
+    verified INTEGER NOT NULL DEFAULT 0,
+    active INTEGER NOT NULL DEFAULT 1,
+    manage_token TEXT NOT NULL,
+    confirm_hash TEXT,
+    confirm_expires TEXT,
+    last_confirmation TEXT,
+    pending_changes TEXT NOT NULL DEFAULT '[]'
+);
+CREATE TABLE IF NOT EXISTS notification_preferences (
+    email TEXT NOT NULL,
+    office_id TEXT NOT NULL,
+    category TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    last_weekly_at TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
+    PRIMARY KEY(email, office_id, category)
+);
+CREATE TABLE IF NOT EXISTS notification_pursuits (
+    email TEXT NOT NULL,
+    office_id TEXT NOT NULL,
+    opportunity_id TEXT NOT NULL,
+    active INTEGER NOT NULL DEFAULT 1,
+    PRIMARY KEY(email, office_id, opportunity_id)
+);
+CREATE TABLE IF NOT EXISTS notification_seen (
+    opportunity_id TEXT PRIMARY KEY,
+    discovered_at TEXT
+);
+CREATE TABLE IF NOT EXISTS notification_state (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS notification_outbox (
+    id TEXT PRIMARY KEY,
+    email TEXT NOT NULL,
+    kind TEXT NOT NULL,
+    payload TEXT NOT NULL,
+    state TEXT NOT NULL DEFAULT 'pending',
+    attempts INTEGER NOT NULL DEFAULT 0,
+    next_attempt TEXT NOT NULL,
+    claimed_at TEXT,
+    sent_at TEXT
+);
+CREATE INDEX IF NOT EXISTS notification_outbox_ready ON notification_outbox(state, next_attempt);
 """
 
 KNOWN_SOURCES = [
@@ -325,7 +369,7 @@ def delete_opportunities(conn, ids):
     if not ids:
         return 0
     tables = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
-    for table in ("matches", "opportunity_sources", "notice_files", "notice_requirements"):
+    for table in ("matches", "opportunity_sources", "notice_files", "notice_requirements", "notification_seen"):
         if table in tables:
             conn.executemany(f"DELETE FROM {table} WHERE opportunity_id=?", ids)
     conn.executemany("DELETE FROM raw_records WHERE source IN ('grants.gov', 'grants.gov-detail') AND source_record_id=?", ids)

@@ -407,7 +407,8 @@ def score(conn, profiles, per_office=15):
 
 
 def for_office(conn, office_id):
-    conn.executescript(SCHEMA)
+    # This schema contains one CREATE statement; preserve the caller's transaction.
+    conn.execute(SCHEMA)
     return [json.loads(r["data"]) for r in conn.execute(
         "SELECT data FROM state_program_matches WHERE office_id=? ORDER BY fit DESC", (office_id,))]
 

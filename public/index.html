@@ -136,7 +136,6 @@
         <option value="county">Counties</option>
         <option value="municipal">Cities and towns</option>
         <option value="education">Universities and colleges</option>
-        <option value="k12">School districts</option>
         <option value="nonprofit">Nonprofits</option>
         <option value="tribal">Tribes</option>
         <option value="business">Businesses</option>
@@ -408,7 +407,7 @@ async function loadCatalogCounts(id, category, request){
   }
 }
 
-const GROUPS = { state: 'State agencies', county: 'Counties', municipal: 'Cities and towns', k12: 'School districts', education: 'Universities and colleges', nonprofit: 'Nonprofits', tribal: 'Tribes', business: 'Businesses' };
+const GROUPS = { state: 'State agencies', county: 'Counties', municipal: 'Cities and towns', education: 'Universities and colleges', nonprofit: 'Nonprofits', tribal: 'Tribes', business: 'Businesses' };
 function fillOffices(type, silent){
   store.set('otype', type);
   const keys = type === 'all' ? Object.keys(GROUPS) : [type];
@@ -676,6 +675,7 @@ async function openDetail(id){
       <textarea id="dNotes" rows="2" placeholder="Example: Water Resources will lead. Need match funds approved by March.">${esc(clean(d?.notes))}</textarea>
       <label for="dBy" style="margin-top:8px">Your name</label>
       <input id="dBy" type="text" autocomplete="name" value="${esc(store.get('name') || '')}" placeholder="First and last name">
+      ${reminderFields()}
       <p style="margin:12px 0 0"><button class="btn" onclick="saveDecision()">Save decision</button></p>
       ${d ? `<p class="sub" style="margin:8px 0 0">Last saved by ${esc(clean(d.decided_by))} on ${new Date(d.decided_at).toLocaleDateString()}</p>` : ''}
     </section>
@@ -771,6 +771,7 @@ function openProgram(key){
       <textarea id="dNotes" rows="2">${esc(clean(dec?.notes))}</textarea>
       <label for="dBy" style="margin-top:8px">Your name</label>
       <input id="dBy" type="text" autocomplete="name" value="${esc(store.get('name') || '')}">
+      ${reminderFields()}
       ${S.office === 'all' ? `<input type="hidden" id="dOrg" value="${esc(i.best_office_id)}">` : ''}
       <p style="margin:12px 0 0"><button class="btn" onclick="saveDecision()">Save decision</button></p>
     </section>
@@ -779,7 +780,17 @@ function openProgram(key){
   document.querySelector('.panel').scrollTop = 0;
 }
 function closeDetail(){ $('detail').classList.remove('open'); }
-function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); }
+function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); if ($('reminderOptions')) $('reminderOptions').hidden = st !== 'Pursue'; }
+
+function reminderFields(){
+  const email = store.get('user_email') || '';
+  return `<div id="reminderOptions" ${choice === 'Pursue' ? '' : 'hidden'} style="margin-top:12px">
+    <label style="font-weight:400"><input id="dGrantAlerts" type="checkbox" ${email && store.get('grant_alerts') !== 'off' ? 'checked' : ''}> Email me deadline reminders for this grant</label>
+    <label for="dAlertEmail">Your email for reminders</label>
+    <input id="dAlertEmail" type="email" autocomplete="email" value="${esc(email)}" placeholder="you@example.org">
+    <p class="sub">Confirm your address once. Reminders arrive at 30, 14, 7, 3 and 1 day before the deadline. Changing this grant to Watch or Pass stops its reminders.</p>
+  </div>`;
+}
 
 async function saveDecision(){
   if (!choice) { toast('Choose Pursue, Watch, or Pass first.'); return; }
@@ -787,14 +798,26 @@ async function saveDecision(){
   const name = $('dBy').value.trim(); if (name) store.set('name', name);
   const body = { opportunity_id: i.id, number: i.number, title: i.title, status: choice, notes: $('dNotes').value.trim(), decided_by: name || 'Grants staff' };
   const org = S.office === 'all' ? $('dOrg').value : S.office;
+  const alertEmail = $('dAlertEmail')?.value.trim() || '';
+  const wantsAlerts = choice === 'Pursue' && !!$('dGrantAlerts')?.checked;
+  if (wantsAlerts && (!alertEmail || !$('dAlertEmail').checkValidity())) { toast('Enter a valid email for reminders, or untick the reminder option.'); return; }
+  body.alert_email = wantsAlerts ? alertEmail : (store.get('user_email') || ''); body.alerts_enabled = wantsAlerts;
+  body.notification_token = store.get('notification_token') || '';
+  let result;
   try {
     body.office_id = org;
     const r = await fetch(`/api/decisions/${org}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
-    if (!r.ok) throw new Error();
+    result = await r.json();
+    if (!r.ok) throw new Error(result.error || 'Could not save the decision.');
   } catch(e) { toast('Could not save. Please try again.'); return; }
   S.decisions[S.office === 'all' ? `${org}|${i.id}` : String(i.id)] = { ...body, decided_at: new Date().toISOString() };
   render(); renderTracked();
-  if (!$('tab-digest').hidden) renderDigest(); closeDetail(); toast(`Saved: ${choice}`);
+  if (wantsAlerts) { store.set('user_email', alertEmail); store.set('grant_alerts','on'); }
+  else if (choice === 'Pursue') store.set('grant_alerts','off');
+  if (!$('tab-digest').hidden) renderDigest(); closeDetail();
+  toast(result.notification?.confirmation_required
+    ? (result.notification.delivery_ready ? 'Decision saved. Check your email to confirm reminders.' : 'Decision saved. Reminder request saved; email setup is still needed.')
+    : `Saved: ${choice}${result.notification?.active ? '. Deadline reminders enabled.' : ''}`);
 }
 
 let currentDigest = null, digestRequest = 0;
@@ -828,12 +851,12 @@ async function renderDigest(){
       </div>
 
       <div class="alert" style="margin-bottom:24px;">
-        <h3 style="margin:0 0 6px;">Email briefing preferences</h3>
-        <p style="margin:0 0 10px;font-size:0.95em;">Save your team's email address for briefings. Saving an address does not start automatic delivery. You can preview or copy the briefing below.</p>
+        <h3 style="margin:0 0 6px;">Weekly field updates</h3>
+        <p style="margin:0 0 10px;font-size:0.95em;">Get a Monday morning email for <strong>${esc(res.office_name)}</strong> with newly added grants matching its goals and matching grants due within 30 days. Confirm your address to start. You can unsubscribe from any email.</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
           <label for="digestEmail">Team email</label>
           <input type="email" id="digestEmail" autocomplete="email" placeholder="your.name@nc.gov or team@county.gov" style="max-width:320px;padding:8px 10px;" value="${esc(store.get('user_email') || '')}">
-          <button class="btn small" onclick="subscribeEmail()">Save email preferences</button>
+          <button class="btn small" onclick="subscribeEmail()">Email me weekly updates</button>
           <span id="subMsg" class="sub" style="font-weight:600;margin-left:8px;"></span>
         </div>
       </div>
@@ -985,13 +1008,14 @@ async function subscribeEmail(){
     const r = await fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: em, office_id: S.office || 'all', role: 'Staff Member' })
+      body: JSON.stringify({ email: em, office_id: S.office || 'all', category: $('otype').value, notification_token: store.get('notification_token') || '' })
     });
     const data = await r.json();
     if (data.success) {
-      toast('Email preferences saved.');
+      const message = data.active ? 'Weekly field updates enabled.' : data.delivery_ready ? 'Check your email to confirm weekly updates.' : 'Request saved. Email delivery needs sender setup before confirmation can be sent.';
+      toast(message);
       const msg = $('subMsg');
-      if (msg) msg.textContent = 'Email preferences saved';
+      if (msg) msg.textContent = message;
     } else {
       toast(data.error || 'Could not subscribe');
     }

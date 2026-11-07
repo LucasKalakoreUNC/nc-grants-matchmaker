@@ -92,6 +92,8 @@ def load_agency_profiles():
         if fname.endswith(".json"):
             with open(os.path.join(PROFILES_DIR, fname), "r", encoding="utf-8") as f:
                 data = json.load(f)
+                if data.get("category") == "k12":
+                    continue  # retired picker category; keep its source profile on disk
                 profiles[data.get("agency_id", fname.replace(".json", ""))] = data
     return profiles
 

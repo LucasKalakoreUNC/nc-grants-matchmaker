@@ -20,9 +20,11 @@ Built for the UNC Solveathon Final Challenge.
 - **Decisions**: Pursue, Watch or Pass, with notes, shared across the office.
 - **Weekly briefing**: pursued applications, due dates and new matches for
   the selected organization. Staff can preview or copy the briefing. Email
-  delivery requires a configured mail service and an authenticated admin
-  request (`X-Admin-Token`). Saving an address does not start automatic
-  weekly delivery. Subscriber addresses are visible only to admins.
+  updates arrive Monday mornings after staff opt in and confirm their email.
+  The update follows the selected organization or field and includes new
+  matching grants and matching deadlines within 30 days. Pursued grants can
+  also send reminders at 30, 14, 7, 3 and 1 day before their deadline.
+  [Configure the Gmail sender](EMAIL_SETUP.md) to enable delivery.
 - **How this works**: plain-language guide to the ranking and the data.
 
 ## Run it locally
@@ -84,6 +86,7 @@ app's "How this works" page and in `pipeline.py` (`calculate_score`).
 | `public/index.html` | The staff-facing page |
 | `pipeline.py` | Pull, normalize, enrich, and score grants |
 | `db.py` | SQLite database and download cache |
+| `notifications.py` | Confirmed email subscriptions, reminders, weekly updates and retries |
 | `notices.py` | Download funding notices; record and check requirements |
 | `programs.py` | Federal programs from SAM.gov Assistance Listings |
 | `state_programs.py` | NC state grant programs from the NC.gov directory |
@@ -99,7 +102,7 @@ plans (state agencies from the
 [OSBM site](https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans),
 plus Wake County, Raleigh, Asheville, NC State and NC A&T), cited by page and
 linked from the app. The rest are labeled drafts. General profiles ("Any NC nonprofit", "Any NC
-county government", "Any NC city or town", "Any NC public school district",
+county government", "Any NC city or town",
 "Any NC tribal government") let any organization without its own profile see
 what its type of organization can apply for. To add a town or county from
 its published plan:
@@ -150,7 +153,7 @@ Settings that matter:
 |---|---|---|
 | Target port | 8000 | The app listens on `$PORT` (default 8000) |
 | Replicas | exactly 1 | The database is one SQLite file; two copies would disagree |
-| Memory | 2 GiB | The refresh reads PDFs and scores ~500 grants x 34 organizations |
+| Memory | 2 GiB | The refresh reads PDFs and scores ~500 grants x 33 organizations |
 | `REFRESH_HOURS` | 24 | How often to pull new data (0 turns it off) |
 | `ANTHROPIC_API_KEY` | optional secret | Only for `ai.py` and `notices.py extract` |
 

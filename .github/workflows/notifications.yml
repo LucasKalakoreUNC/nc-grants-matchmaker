@@ -1,0 +1,31 @@
+name: Scheduled grant emails
+
+on:
+  schedule:
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: scheduled-grant-emails
+  cancel-in-progress: false
+
+jobs:
+  email-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DA6400884BDA426C8C859B724170ECB6 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_ED9A32652DA44A8FB1AF73FF98C406CB }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_00AC6FFAA08847C99990B722FB3C5379 }}
+      - name: Wake app and process due emails
+        run: python scripts/run_notification_tick.py
