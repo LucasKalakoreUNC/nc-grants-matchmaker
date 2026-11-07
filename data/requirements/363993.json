@@ -1,0 +1,88 @@
+{
+  "opportunity_id": "363993",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:22",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Official application cover sheet signed by authorized organizational representative.",
+      "source": "DE-FOA-0003665 Part 1.pdf Section IV"
+    },
+    {
+      "name": "Project Narrative / Technical Proposal",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Technical proposal addressing project background, work scope, technical methodology, milestones, and deliverables.",
+      "source": "DE-FOA-0003665 Part 1.pdf Section IV"
+    },
+    {
+      "name": "Budget Justification and Line-Item Spreadsheet",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed breakdown of proposed federal and non-federal cost share expenditures across personnel, equipment, supplies, and subcontracts.",
+      "source": "DE-FOA-0003665 Part 1.pdf Section IV"
+    },
+    {
+      "name": "Summary for Public Release / Project Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One-page self-contained summary suitable for public release containing no confidential or proprietary information.",
+      "source": "DE-FOA-0003665 Part 1.pdf Section IV"
+    },
+    {
+      "name": "Resumes of Key Personnel & Current/Pending Support",
+      "category": "Attachments",
+      "required": true,
+      "details": "Curriculum vitae or resumes of project director and key team members, along with federal current and pending support disclosures.",
+      "source": "DE-FOA-0003665 Part 1.pdf Section IV"
+    },
+    {
+      "name": "SAM.gov UEI and Portal Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with UEI and authorized access to DOE submission portal (e.g. NEUP or EERE Exchange).",
+      "source": "DE-FOA-0003665 Part 1.pdf Section IV"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application / Submission Deadline",
+      "when": "Application due: This NOFO will remain open until September 30, 2027",
+      "source": "DE-FOA-0003665 Part 1.pdf p. 1"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "DE-FOA-0003665 Part 1.pdf p. 2"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Cost sharing requirements not explicitly mandated in notice.",
+    "source": "DE-FOA-0003665 Part 1.pdf p. 2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Scientific and Technical Merit",
+      "weight": "Primary scored criterion",
+      "source": "DE-FOA-0003665 Part 1.pdf Section V"
+    },
+    {
+      "criterion": "Technical Approach and Work Plan Feasibility",
+      "weight": "Primary scored criterion",
+      "source": "DE-FOA-0003665 Part 1.pdf Section V"
+    },
+    {
+      "criterion": "Team Qualifications and Resource Capabilities",
+      "weight": "Scored criterion",
+      "source": "DE-FOA-0003665 Part 1.pdf Section V"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: 2027-09-30.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}
