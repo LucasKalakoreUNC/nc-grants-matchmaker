@@ -105,7 +105,7 @@
 <header class="site">
   <div class="wrap">
     <a class="site-title" href="#" onclick="showTab('list');return false;">NC Grants Matchmaker</a>
-    <div class="site-sub">Federal funding opportunities matched to your office's strategic plan</div>
+    <div class="site-sub">Grants and funding for North Carolina organizations, matched to your goals</div>
   </div>
 </header>
 <nav class="tabs" aria-label="Main">
@@ -144,9 +144,9 @@
   <div id="welcome" class="alert" hidden>
     <h3>Welcome. Here is how to use this tool.</h3>
     <ol>
-      <li>Pick <strong>your office</strong> above. The list is ranked by how well each grant fits your office's strategic plan.</li>
+      <li>Pick <strong>your type of organization and your organization</strong> above. If yours isn't listed, choose a general profile such as "Any North Carolina nonprofit". The list is ranked by how well each opportunity fits your goals.</li>
       <li>Start with <strong>strong matches that need a decision</strong>. Click a grant title to see why it fits, what it requires, and the deadline.</li>
-      <li>Mark each one <strong>Pursue</strong>, <strong>Watch</strong>, or <strong>Pass</strong>. Your choices are saved for your whole office.</li>
+      <li>Mark each one <strong>Pursue</strong>, <strong>Watch</strong>, or <strong>Pass</strong>. Your choices are saved for your whole organization.</li>
     </ol>
     <button class="btn small" onclick="dismissWelcome()">Got it</button>
     <button class="linkbtn" style="margin-left:12px" onclick="showTab('help')">Read the full guide</button>
@@ -156,7 +156,7 @@
     <div class="summary">
       <button onclick="quick('todo')"><span class="num" id="nTodo">-</span><span class="lbl">Strong matches that need a decision</span></button>
       <button onclick="quick('soon')" style="border-top-color:var(--red)"><span class="num" id="nSoon">-</span><span class="lbl">Undecided good matches closing within 30 days</span></button>
-      <button onclick="showTab('tracked')" style="border-top-color:var(--green)"><span class="num" id="nPursue">-</span><span class="lbl">Grants your office is pursuing</span></button>
+      <button onclick="showTab('tracked')" style="border-top-color:var(--green)"><span class="num" id="nPursue">-</span><span class="lbl">Grants your organization is pursuing</span></button>
     </div>
 
     <div class="filters">
@@ -203,18 +203,18 @@
   </section>
 
   <section id="tab-tracked" hidden>
-    <h2>My office's decisions</h2>
-    <p class="count">Every grant your office has marked. Click a title to change the decision or update notes.</p>
+    <h2>My organization's decisions</h2>
+    <p class="count">Every grant your organization has marked. Click a title to change the decision or update notes.</p>
     <div id="trackedBody"></div>
   </section>
 
   <section id="tab-help" hidden style="max-width:760px">
     <h2>How this works</h2>
-    <p>This tool checks federal and state grant listings every day and compares each one against your office's published strategic plan. It ranks them so you can spend your time on the grants most likely to be worth applying for.</p>
+    <p>This tool checks federal and state grant listings every day and compares each one with your organization's goals, taken from its published strategic plan where there is one. It covers federal grants, North Carolina state grant programs, NC foundations, and federal programs that fund your type of organization. It ranks them so you can spend your time on the grants most likely to be worth applying for.</p>
     <h3 style="margin-top:24px">Your weekly routine</h3>
     <ol class="help-steps">
       <li><strong>Choose your organization.</strong> First pick the type of organization, then your organization. The tool remembers your choice on this computer.</li>
-      <li><strong>Review what needs a decision.</strong> The first box at the top counts strong matches nobody in your office has decided on yet. Click it to see the list.</li>
+      <li><strong>Review what needs a decision.</strong> The first box at the top counts strong matches nobody in your organization has decided on yet. Click it to see the list.</li>
       <li><strong>Open a grant.</strong> Click the title. You will see why it fits your plan, how much it pays, the deadline, an estimate of staff time, and the documents you will need.</li>
       <li><strong>Make a decision.</strong> Choose Pursue (we will apply), Watch (check back later), or Pass (not a fit). Add a short note so coworkers know why. Decisions are shared with your whole office.</li>
       <li><strong>Share the list.</strong> Use "Download list" to get a spreadsheet for leadership or your weekly meeting.</li>
@@ -576,7 +576,7 @@ async function openDetail(id){
     </dl>
 
     <section class="decide">
-      <h3>Your office's decision</h3>
+      <h3>Your organization's decision</h3>
       <div class="choices">
         <button aria-pressed="${choice === 'Pursue'}" data-v="Pursue" onclick="pick('Pursue')">Pursue<small>We will apply</small></button>
         <button aria-pressed="${choice === 'Watch'}" data-v="Watch" onclick="pick('Watch')">Watch<small>Check back later</small></button>

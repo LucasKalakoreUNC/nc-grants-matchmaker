@@ -289,7 +289,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             output = io.StringIO()
             writer = csv.writer(output)
             writer.writerow([
-                "Rank", "Score", "Match", "Fit with strategic plan", "Grant", "Opportunity number", "Funding agency",
+                "Rank", "Score", "Match", "Fit with strategic plan", "Type", "Grant", "Opportunity number", "Funding agency",
                 "Status", "Opens (expected, if forecasted)", "Deadline (expected, if forecasted)", "Days left", "Award up to", "Typical past award", "Estimated staff hours",
                 "Matching funds", "Matched goal", "Goal citation", "Why it fits", "Your decision", "Decision notes",
                 "Official listing",
@@ -300,7 +300,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 cs = it.get("cost_share_required")
                 writer.writerow([
                     i + 1, it.get("total_score", 0), label(it.get("total_score", 0)),
-                    round((it.get("score_breakdown") or {}).get("relevancy", 0)),
+                    round((it.get("score_breakdown") or {}).get("relevancy", 0)), "Federal grant",
                     it.get("title", ""), it.get("number", ""), it.get("agency", ""), it.get("status", ""),
                     "Open now" if it.get("status") != "forecasted" else (it.get("expected_open_date") or "Not announced"),
                     it.get("close_date") or (it.get("expected_due_date")
@@ -312,6 +312,22 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     it.get("matched_goal_title", ""), it.get("matched_goal_citation", ""), it.get("reason", ""),
                     dec.get("status", ""), dec.get("notes", ""), it.get("url", ""),
                 ])
+            # State programs, foundations and standing federal programs this organization can apply for
+            profile = pipeline.load_agency_profiles().get(agency_id, {})
+            if profile:
+                conn = db.connect()
+                try:
+                    others = sorted(other_items(conn, agency_id, profile), key=lambda x: -x["total_score"])
+                finally:
+                    conn.close()
+                for j, it in enumerate(others, len(items[:100]) + 1):
+                    r = it.get("award_range") or {}
+                    writer.writerow([
+                        j, it["total_score"], label(it["total_score"]), "", it["kind"], it["title"], "", it.get("parent") or it.get("agency", ""),
+                        "", "", it.get("close_date") or "", "",
+                        f"{dollars(r.get('low'))} to {dollars(r.get('high'))}" if r.get("low") else "", "", "", "",
+                        it.get("matched_goal_title", ""), "", (it.get("overview") or {}).get("description", "")[:500], "", "", it.get("url", ""),
+                    ])
             filename = f"NC_{agency_id.upper()}_Federal_Grants_Shortlist_{datetime.now().strftime('%Y%m%d')}.csv"
             self._send_csv(filename, output.getvalue())
             return
@@ -349,29 +365,41 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         # 2. Save Staff Decision (§5.6 & §5.0)
         if path.startswith("/api/decisions/"):
             agency_id = path.replace("/api/decisions/", "").strip()
-            opp_id = str(payload.get("opportunity_id", ""))
-            if not opp_id:
-                self._send_json({"error": "opportunity_id is required"}, 400)
+            opp_id = str(payload.get("opportunity_id", ""))[:40]
+            status = payload.get("status")
+            if agency_id not in pipeline.load_agency_profiles() or status not in ("Pursue", "Watch", "Pass"):
+                self._send_json({"error": "Unknown organization or status"}, 400)
                 return
             conn = db.connect()
             try:
+                row = conn.execute("SELECT number, title FROM opportunities WHERE id=?", (opp_id,)).fetchone()
+                if not row:
+                    self._send_json({"error": "Unknown grant"}, 400)
+                    return
                 db.save_decision(conn, agency_id, {
                     "opportunity_id": opp_id,
-                    "number": payload.get("number", ""),
-                    "title": payload.get("title", ""),
-                    "status": payload.get("status", "Pursue"),
-                    "notes": payload.get("notes", ""),
-                    "decided_by": payload.get("decided_by", "Grants staff"),
+                    "number": row["number"],
+                    "title": row["title"],
+                    "status": status,
+                    "notes": str(payload.get("notes", ""))[:1000],
+                    "decided_by": str(payload.get("decided_by", "") or "Grants staff")[:100],
                     "decided_at": datetime.now().isoformat(timespec="seconds"),
                 })
                 conn.commit()
             finally:
                 conn.close()
 
-            self._send_json({"success": True, "agency_id": agency_id, "saved_decision": payload})
+            self._send_json({"success": True, "agency_id": agency_id})
             return
 
         # 3. Trigger Ingestion / Refresh Pipeline on Demand (§5.7)
+        # Heavy maintenance endpoints are not used by the page; on a public site they need ADMIN_TOKEN
+        if path in ("/api/pipeline/run",) or path.startswith("/api/rescore/"):
+            token = os.environ.get("ADMIN_TOKEN")
+            if not token or self.headers.get("X-Admin-Token") != token:
+                self._send_json({"error": "Not allowed"}, 403)
+                return
+
         if path == "/api/pipeline/run":
             print(f"[API] Manual trigger of daily refresh pipeline initiated by user...")
             try:
