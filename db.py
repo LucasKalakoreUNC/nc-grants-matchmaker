@@ -387,7 +387,8 @@ def _load(path, default):
 
 
 def bootstrap_from_json(conn):
-    """Seed an empty database from the JSON files already committed in data/."""
+    """Seed an empty database with the raw Grants.gov search results committed in
+    data/raw/ so a fresh checkout works offline. Run pipeline.py to build the rest."""
     raw_dir = os.path.join(DATA_DIR, "raw")
     if os.path.isdir(raw_dir):
         for day in sorted(os.listdir(raw_dir)):
@@ -395,26 +396,6 @@ def bootstrap_from_json(conn):
                 if hit.get("id"):
                     upsert_raw(conn, "grants.gov", str(hit["id"]), hit)
 
-    opps = _load(os.path.join(DATA_DIR, "opportunities", "latest.json"), [])
-    for o in opps:
-        upsert_opportunity(conn, o, source=o.get("source", "grants.gov"), source_record_id=o["id"])
-    opp_keys = set(opps[0].keys()) if opps else set()
-
-    scored_dir = os.path.join(DATA_DIR, "scored")
-    if os.path.isdir(scored_dir):
-        for office in os.listdir(scored_dir):
-            items = _load(os.path.join(scored_dir, office, "latest.json"), [])
-            for it in items:
-                if not conn.execute("SELECT 1 FROM opportunities WHERE id=?", (it["id"],)).fetchone():
-                    upsert_opportunity(conn, {k: it[k] for k in it if k in opp_keys} or it)
-            save_matches(conn, office, [{k: v for k, v in it.items() if k not in opp_keys or k == "id"} for it in items])
-
-    dec_dir = os.path.join(DATA_DIR, "decisions")
-    if os.path.isdir(dec_dir):
-        for fname in os.listdir(dec_dir):
-            if fname.endswith(".json"):
-                for d in _load(os.path.join(dec_dir, fname), {}).get("decisions", []):
-                    save_decision(conn, fname[:-5], d)
     conn.commit()
     print(f"[DB] Seeded {DB_PATH} from JSON files: {stats(conn)['opportunities']} opportunities.")
 

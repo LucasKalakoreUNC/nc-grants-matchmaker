@@ -176,6 +176,74 @@ def sync_notice_files(conn, max_workers=6):
     return done, already, failed
 
 
+def html_to_text(raw):
+    import html as _html
+    raw = re.sub(r"(?is)<(script|style|nav|header|footer)[^>]*>.*?</\1>", " ", raw)
+    raw = re.sub(r"(?i)<(br|/p|/div|/li|/h[1-6]|/tr)[^>]*>", "\n", raw)
+    text = _html.unescape(re.sub(r"<[^>]+>", " ", raw))
+    text = re.sub(r"[ \t]+", " ", text)
+    return re.sub(r"\n\s*\n+", "\n\n", text).strip()
+
+
+NIH_GUIDE = {"PA": "pa-files", "PAR": "pa-files", "PAS": "pa-files", "RFA": "rfa-files", "NOT": "notice-files"}
+
+
+def announcement_url(detail, number):
+    """Where the full announcement lives when Grants.gov has no attachment."""
+    syn = detail.get("synopsis") or detail.get("forecast") or {}
+    url = (syn.get("fundingDescLinkUrl") or "").strip()
+    if url.startswith("http"):
+        return url.replace("http://", "https://", 1)
+    prefix = (number or "").split("-")[0]
+    if prefix in NIH_GUIDE and re.match(r"^[A-Z]+-[A-Z]{0,3}-?\d{2}-\d{3}$", number or ""):
+        return f"https://grants.nih.gov/grants/guide/{NIH_GUIDE[prefix]}/{number}.html"
+    return None
+
+
+def _fetch_page(job):
+    opp_id, url = job
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (NC-Grants-Matchmaker)"})
+        with urllib.request.urlopen(req, timeout=45) as r:
+            ctype = r.headers.get("Content-Type", "")
+            data = r.read()
+        if "pdf" in ctype or url.lower().endswith(".pdf"):
+            text, pages = extract_text(data, "pdf")
+        else:
+            text, pages = html_to_text(data.decode("utf-8", "ignore")), None
+        if not text or len(text) < 500:
+            return opp_id, url, None, None, "page had too little text"
+        return opp_id, url, text, pages, None
+    except Exception as e:
+        return opp_id, url, None, None, str(e)[:300]
+
+
+def sync_linked_notices(conn, max_workers=4):
+    """For grants with no Grants.gov attachments, fetch the full announcement
+    page the listing links to (NSF, NIH, HUD, HRSA and others). Once per grant."""
+    have = {r[0] for r in conn.execute("SELECT DISTINCT opportunity_id FROM notice_files")}
+    jobs = []
+    for oid, number, payload in conn.execute(
+            "SELECT o.id, o.number, r.payload FROM opportunities o JOIN raw_records r "
+            "ON r.source='grants.gov-detail' AND r.source_record_id=o.id WHERE o.status != 'closed'"):
+        if oid in have:
+            continue
+        url = announcement_url(json.loads(payload), number)
+        if url:
+            jobs.append((oid, url))
+    done = failed = 0
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        for oid, url, text, pages, err in ex.map(_fetch_page, jobs):
+            name = url.rstrip("/").split("/")[-1][:120] or "announcement"
+            conn.execute("INSERT OR REPLACE INTO notice_files VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                         (oid, "link", name, "Full announcement (agency website)", "pdf" if pages else "html",
+                          None, url, None, pages, text, db.now(), err))
+            done += err is None
+            failed += err is not None
+    conn.commit()
+    return done, failed
+
+
 def files_for(conn, opp_id):
     rows = conn.execute(
         "SELECT attachment_id, file_name, description, file_type, size_bytes, url, pages, "
@@ -391,6 +459,8 @@ def main():
     if args.command == "download":
         done, already, failed = sync_notice_files(conn)
         print(f"Notice files: {done} downloaded, {already} already stored, {failed} failed")
+        got, bad = sync_linked_notices(conn)
+        print(f"Announcements on agency websites: {got} fetched, {bad} could not be fetched")
 
     elif args.command == "load":
         print(f"Loaded {load_requirements_dir(conn)} requirement files from data/requirements/")

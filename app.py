@@ -160,17 +160,6 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 conn.close()
             return
 
-        # 6. API: Get evaluation metrics (§6)
-        if path == "/api/evaluation":
-            eval_file = os.path.join(DATA_DIR, "eval", "labels.json")
-            if os.path.exists(eval_file):
-                with open(eval_file, "r", encoding="utf-8") as f:
-                    self._send_json(json.load(f))
-            else:
-                self._send_json({"error": "Evaluation labels not found"}, 404)
-            return
-
-        # 7. API: Get run status / latest pipeline log
         if path == "/api/db/stats":
             conn = db.connect()
             try:

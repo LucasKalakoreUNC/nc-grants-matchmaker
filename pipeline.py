@@ -25,10 +25,6 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 PROFILES_DIR = os.path.join(DATA_DIR, "profiles")
 RAW_DIR = os.path.join(DATA_DIR, "raw")
-OPP_DIR = os.path.join(DATA_DIR, "opportunities")
-SCORED_DIR = os.path.join(DATA_DIR, "scored")
-DECISIONS_DIR = os.path.join(DATA_DIR, "decisions")
-EVAL_DIR = os.path.join(DATA_DIR, "eval")
 RUNS_DIR = os.path.join(DATA_DIR, "runs")
 
 SEARCH_API_URL = "https://api.grants.gov/v1/api/search2"
@@ -126,79 +122,6 @@ def estimate_completion_effort(opp):
     tier = "Light" if hours <= 35 else "Moderate" if hours <= 70 else "Heavy"
     return hours, weeks, tier, factors
 
-def generate_past_awardees(title, agency, cfda, ceiling):
-    """Generates authentic historical award recipients and funding stats."""
-    t_low = title.lower()
-    a_low = agency.lower()
-    ceil = int(ceiling or 1500000)
-
-    base_award = max(250000, int(ceil * 0.45))
-
-    if any(w in t_low for w in ["water", "drinking", "sewer", "wetland", "estuary", "pfas"]) or "environmental" in a_low:
-        recipients = [
-            {"recipient": "NC Department of Environmental Quality", "amount": int(base_award * 1.25), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "Statewide Drinking Water PFAS Testing & Filtration"},
-            {"recipient": "City of Charlotte / Charlotte Water", "amount": int(base_award * 0.95), "fiscal_year": 2023, "location": "Charlotte, NC", "project_title": "Sugar Creek Riparian Restoration & Stormwater Basin"},
-            {"recipient": "UNC Chapel Hill Institute for the Environment", "amount": int(base_award * 0.65), "fiscal_year": 2024, "location": "Chapel Hill, NC", "project_title": "Aquifer Solute Transport & Emerging Contaminant Modeling"},
-            {"recipient": "Town of Canton / Haywood County", "amount": int(base_award * 0.50), "fiscal_year": 2023, "location": "Canton, NC", "project_title": "Pigeon River Wastewater Treatment Flood Hardening"}
-        ]
-        win_rate = "34%"
-        comp_tier = "Moderate Competition (34% historical award rate)"
-    elif any(w in t_low for w in ["transportation", "highway", "transit", "bus", "electric vehicle", "bridge"]) or "transit" in a_low or "highway" in a_low:
-        recipients = [
-            {"recipient": "NC Department of Transportation (NCDOT)", "amount": int(base_award * 1.4), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "I-95 and I-40 Alternative Fuel Corridor EV Infrastructure"},
-            {"recipient": "Charlotte Area Transit System (CATS)", "amount": int(base_award * 1.1), "fiscal_year": 2023, "location": "Charlotte, NC", "project_title": "Zero-Emission Battery Electric Bus Fleet Transition"},
-            {"recipient": "GoTriangle Regional Transportation Authority", "amount": int(base_award * 0.75), "fiscal_year": 2024, "location": "Durham, NC", "project_title": "Regional Bus Rapid Transit Priority Signal Systems"},
-            {"recipient": "City of Asheville Transit Services", "amount": int(base_award * 0.40), "fiscal_year": 2023, "location": "Asheville, NC", "project_title": "Mountain Transit Facility Modernization"}
-        ]
-        win_rate = "28%"
-        comp_tier = "Competitive National Discretionary (28% win rate)"
-    elif any(w in t_low for w in ["health", "behavioral", "opioid", "maternal", "hospital", "clinic"]) or "health" in a_low or "cdc" in a_low:
-        recipients = [
-            {"recipient": "NC Department of Health and Human Services", "amount": int(base_award * 1.3), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "Statewide Overdose Prevention & Mobile Crisis Response"},
-            {"recipient": "Wake County Human Services", "amount": int(base_award * 0.85), "fiscal_year": 2023, "location": "Raleigh, NC", "project_title": "Integrated Community Behavioral Health & Crisis Diversion"},
-            {"recipient": "UNC Health / School of Medicine", "amount": int(base_award * 0.90), "fiscal_year": 2024, "location": "Chapel Hill, NC", "project_title": "Rural Maternal Health Telemonitoring Network"},
-            {"recipient": "Mountain Area Health Education Center (MAHEC)", "amount": int(base_award * 0.55), "fiscal_year": 2023, "location": "Asheville, NC", "project_title": "Western NC Rural Healthcare Residency Expansion"}
-        ]
-        win_rate = "31%"
-        comp_tier = "High Demand Formula & Discretionary (31% win rate)"
-    elif any(w in t_low for w in ["university", "stem", "research", "faculty", "fellowship", "science"]) or "science" in a_low:
-        recipients = [
-            {"recipient": "NC State University Office of Research", "amount": int(base_award * 1.2), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "Wide-Bandgap Semiconductor & Clean Power R&D Hub"},
-            {"recipient": "UNC Chapel Hill", "amount": int(base_award * 1.15), "fiscal_year": 2024, "location": "Chapel Hill, NC", "project_title": "Precision Biomedical Science & Genomic Discovery"},
-            {"recipient": "North Carolina A&T State University", "amount": int(base_award * 0.80), "fiscal_year": 2023, "location": "Greensboro, NC", "project_title": "Autonomous Transportation & Materials Engineering Center"},
-            {"recipient": "Wake Technical Community College", "amount": int(base_award * 0.45), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "Advanced Biomanufacturing Technician Pipeline"}
-        ]
-        win_rate = "22%"
-        comp_tier = "Highly Competitive Merit Review (22% acceptance)"
-    elif any(w in t_low for w in ["small business", "sbir", "sttr", "commercialization", "cleantech", "startup"]):
-        recipients = [
-            {"recipient": "NC Small Business & Technology Development Center", "amount": int(base_award * 0.70), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "FAST Technology Transfer & SBIR Accelerator Support"},
-            {"recipient": "North Carolina Biotechnology Center", "amount": int(base_award * 0.85), "fiscal_year": 2023, "location": "Durham, NC", "project_title": "Life Sciences Early-Stage Prototyping Commercialization"},
-            {"recipient": "BioDelivery Sciences International (NC Spinoff)", "amount": int(base_award * 0.90), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "Phase II Advanced Drug Formulation Technology"},
-            {"recipient": "GreenTech Innovation Partners LLC", "amount": int(base_award * 0.50), "fiscal_year": 2023, "location": "Wilmington, NC", "project_title": "Clean Marine Energy Prototyping Demonstration"}
-        ]
-        win_rate = "18%"
-        comp_tier = "Very Selective Phase I/II Peer Review (18% success)"
-    else:
-        recipients = [
-            {"recipient": "State of North Carolina (Lead Agency)", "amount": int(base_award * 1.1), "fiscal_year": 2024, "location": "Raleigh, NC", "project_title": "Statewide Program Implementation & Regional Capacity"},
-            {"recipient": "Wake County Government", "amount": int(base_award * 0.75), "fiscal_year": 2023, "location": "Raleigh, NC", "project_title": "County Community Infrastructure Modernization"},
-            {"recipient": "Buncombe County & Regional Partners", "amount": int(base_award * 0.60), "fiscal_year": 2024, "location": "Asheville, NC", "project_title": "Western NC Resilience & Rural Access Consortium"},
-            {"recipient": "City of Charlotte", "amount": int(base_award * 0.85), "fiscal_year": 2023, "location": "Charlotte, NC", "project_title": "Municipal Operations & Infrastructure Upgrade"}
-        ]
-        win_rate = "29%"
-        comp_tier = "Standard Federal Discretionary Competition"
-
-    total_past_funds = sum(r["amount"] for r in recipients) * 3
-    return {
-        "recipients": recipients,
-        "total_awarded_past_3_years": total_past_funds,
-        "number_of_past_awards": len(recipients) * 3 + 4,
-        "average_award_size": int(total_past_funds / (len(recipients) * 3 + 4)),
-        "nc_historical_win_rate": win_rate,
-        "competition_tier": comp_tier
-    }
-
 def generate_required_documents(opp):
     """Typical federal application documents, adjusted to what the notice says.
     This is a starting checklist; the official notice lists the exact requirements."""
@@ -227,69 +150,6 @@ def generate_required_documents(opp):
     if any(w in cats for w in ["infrastructure", "construction", "transportation", "highway", "water", "housing"]):
         docs["compliance_environmental"] = [{"name": "Environmental review (NEPA) information", "required": False, "notes": "Needed if the project involves construction or ground disturbance"}]
     return docs
-
-def generate_sample_draft(opp, profile=None):
-    """Generates complete pre-populated proposal text sections."""
-    agency_short = profile.get("short_name", "North Carolina Lead Agency") if profile else "North Carolina"
-    agency_name = profile.get("name", "State of North Carolina") if profile else "State of North Carolina"
-    title = opp.get("title", "Funding Program")
-    opp_agency = opp.get("agency", "Federal Agency")
-    ceiling = f"${opp.get('award_ceiling', 0):,}" if opp.get('award_ceiling') else "$1,500,000"
-
-    abstract = (
-        f"The {agency_name} respectfully submits this application to the {opp_agency} "
-        f"for funding under the '{title}'. Requesting {ceiling} in federal assistance, this initiative "
-        f"will strategically advance North Carolina's infrastructure, public service delivery, and community resilience. "
-        f"Targeting high-need communities and leveraging robust state and local partnerships, the project ensures "
-        f"rapid operational rollout, rigorous performance monitoring, and sustained long-term public benefit."
-    )
-
-    statement_of_need = (
-        f"North Carolina continues to experience rapid population growth, climate impacts, and economic transition "
-        f"that place unprecedented pressure on local infrastructure and regional service capacity. Communities across "
-        f"the state—ranging from Tier 1 distressed rural counties to expanding metropolitan corridors—require targeted "
-        f"investment to maintain environmental health, public safety, and modern infrastructure. Without federal support "
-        f"under the '{title}', these urgent needs will outpace state and municipal capital budgets. "
-        f"This proposal establishes a timely, data-driven intervention aligned directly with published state strategic priorities."
-    )
-
-    smart_objectives = [
-        "Objective 1 (Months 1-6): Complete comprehensive engineering scoping, stakeholder coordination, and environmental clearances.",
-        "Objective 2 (Months 7-18): Deploy initial project phases, achieving 50% capital installation and community outreach milestones.",
-        "Objective 3 (Months 19-30): Fully operationalize project infrastructure, serving over 150,000 North Carolina residents.",
-        "Objective 4 (Months 31-36): Conduct rigorous post-implementation audit, verify KPI targets, and transition to permanent state operation."
-    ]
-
-    methodology = (
-        "Phase I (Design & Alignment): Inter-agency kickoff, finalize procurement specifications, and execute sub-recipient MOUs.\n"
-        "Phase II (Implementation & Deployment): Vendor selection under state procurement standards, phased construction/rollout, and bi-weekly milestone reviews.\n"
-        "Phase III (Performance Audit & Closeout): Independent evaluation, compliance verification, and delivery of final data reports to federal grantor."
-    )
-
-    budget_narrative = (
-        f"Total Project Budget: {ceiling} (Federal Share: 80% / State-Local Match: 20%).\n"
-        "- Personnel & Fringe: 32% (Project Director, Senior Engineers, and Compliance Specialist)\n"
-        "- Contractual & Equipment: 52% (Infrastructure vendors, hardware procurement, and technical contractors)\n"
-        "- Travel & Direct Operational Costs: 4% (On-site inspections and stakeholder convenings)\n"
-        "- Indirect Costs (NICRA): 12% (Cognizant state agency negotiated rate for administration and oversight)"
-    )
-
-    kpis = [
-        "100% adherence to project milestone timeline within 36 months of award",
-        "Direct service delivery to at least 25 North Carolina municipalities or regional districts",
-        "Demonstrated 30% increase in operational capacity or risk reduction metrics",
-        "Clean single-audit compliance and zero unallowable cost findings"
-    ]
-
-    return {
-        "title": f"North Carolina Strategic Implementation Project: {title}",
-        "abstract": abstract,
-        "statement_of_need": statement_of_need,
-        "smart_objectives": smart_objectives,
-        "methodology": methodology,
-        "budget_narrative": budget_narrative,
-        "kpis": kpis
-    }
 
 def generate_action_steps(opp, profile=None):
     """Plain next steps built from facts about this grant, with real dates
@@ -327,37 +187,6 @@ def generate_action_steps(opp, profile=None):
     for n, st in enumerate(steps, 1):
         st["step"] = n
     return steps
-
-def generate_executive_email(opp, profile=None):
-    """Generates an executive alert email memo ready to send."""
-    short_name = profile.get("short_name", "North Carolina Agency") if profile else "NC Agency"
-    title = opp.get("title", "")
-    ceiling = f"${opp.get('award_ceiling', 0):,}" if opp.get('award_ceiling') else "Federal Ceiling"
-    days = opp.get("days_to_close", "Upcoming")
-    close_date = opp.get("close_date", "TBD")
-    funder = opp.get("agency", "Federal Grantor")
-
-    subject = f"[ACTION REQUIRED] Strategic Federal Funding Alert: {title} ({ceiling})"
-    body = (
-        f"MEMORANDUM FOR: Agency Leadership & Division Directors\n"
-        f"FROM: State Grants Strategic Alignment Coordinator\n"
-        f"SUBJECT: High-Priority Federal Grant Opportunity Match: {title}\n"
-        f"DATE: {CURRENT_DATE_STR}\n\n"
-        f"EXECUTIVE SUMMARY:\n"
-        f"The {funder} has issued a major funding announcement directly aligned with {short_name} strategic priorities. "
-        f"This opportunity provides up to {ceiling} in financial assistance, closing on {close_date} ({days} days remaining).\n\n"
-        f"STRATEGIC FIT & VALUE TO NORTH CAROLINA:\n"
-        f"- Directly advances key agency goals and infrastructure milestones.\n"
-        f"- Substantial federal funding leverage for North Carolina state, county, and local partners.\n"
-        f"- Strong probability of success based on previous state award track record.\n\n"
-        f"IMMEDIATE ACTION STEPS REQUIRED:\n"
-        f"1. Appoint a Division Project Manager and Lead Proposal Author immediately.\n"
-        f"2. Convene a budget session to review 20% non-federal match allocation.\n"
-        f"3. Authorize proposal team to access Grants.gov Workspace package.\n\n"
-        f"Official Notice Link: {opp.get('url', 'https://www.grants.gov')}\n"
-        f"Staff Matchmaker Score: {opp.get('total_score', '90.0')} / 100\n"
-    )
-    return {"subject": subject, "body": body}
 
 def _strip_html(text):
     import html as _html
@@ -696,6 +525,76 @@ def normalize_opportunities(raw_hits, details=None, conn=None):
 
     return normalized
 
+# ---------------------------------------------------------------- word similarity
+# Compares all the words in a goal (title, description, objectives, phrases)
+# with all the words in a grant. Rare, specific words count much more than
+# common ones (TF-IDF), and simple word endings are ignored (fund/funding).
+SIM_STOP = set("""a an and are as at be by for from has have in is it its of on or that the this to was were will
+with within their they which who may can not all any also been but into more other such than these those through
+under use used using via program programs project projects funding fund funds grant grants award awards applicant
+applicants application applications federal state states support north carolina carolinians nc provide including
+include new opportunity notice eligible organization organizations activities activity year years one two three""".split())
+_SIM = {"idf": None, "n": 0}
+
+
+def _stem(w):
+    for suf in ("ations", "ation", "ments", "ment", "ings", "ing", "ies", "es", "s", "ed", "al"):
+        if w.endswith(suf) and len(w) - len(suf) >= 4:
+            return w[: -len(suf)] + ("y" if suf == "ies" else "")
+    return w
+
+
+def _tokens(text):
+    return [_stem(w) for w in re.findall(r"[a-z][a-z0-9]+", (text or "").lower()) if w not in SIM_STOP and len(w) > 2]
+
+
+def build_similarity_index(opps):
+    """Word rarity across all current grants; call once per run before scoring."""
+    df = {}
+    for o in opps:
+        for w in set(_tokens(o.get("title", "") + " " + o.get("description", ""))):
+            df[w] = df.get(w, 0) + 1
+    n = max(1, len(opps))
+    _SIM["n"] = n
+    _SIM["idf"] = {w: math.log((n + 1) / (c + 0.5)) for w, c in df.items()}
+    _SIM["goal_cache"] = {}
+
+
+def _vector(tokens):
+    idf, n = _SIM["idf"] or {}, _SIM["n"] or 1
+    v = {}
+    for w in tokens:
+        v[w] = v.get(w, 0) + 1
+    v = {w: (1 + math.log(c)) * idf.get(w, math.log(n + 1)) for w, c in v.items()}
+    norm = math.sqrt(sum(x * x for x in v.values())) or 1
+    return {w: x / norm for w, x in v.items()}
+
+
+def goal_similarity(opp, goals):
+    """Best (score 0-100, goal, shared words) across goals, or (0, None, [])."""
+    if not _SIM["idf"] or not goals:
+        return 0.0, None, []
+    text = opp.get("title", "") + " " + opp.get("title", "") + " " + opp.get("description", "")
+    gv = _vector(_tokens(text))
+    shown = {}
+    for w in re.findall(r"[a-z][a-z0-9]+", text.lower()):
+        shown.setdefault(_stem(w), w)
+    best = (0.0, None, [])
+    for g in goals:
+        key = id(g)
+        q = _SIM["goal_cache"].get(key)
+        if q is None:
+            q = _vector(_tokens(" ".join([g.get("title", ""), g.get("description", ""), " ".join(g.get("objectives", [])),
+                                          " ".join(g.get("keywords", [])) * 2])))
+            _SIM["goal_cache"][key] = q
+        cos = sum(x * gv.get(w, 0) for w, x in q.items())
+        if cos > best[0]:
+            shared = sorted((w for w in q if w in gv), key=lambda w: -q[w] * gv[w])[:5]
+            best = (cos, g, shared)
+    # A cosine of about 0.25 is a very close match in practice; scale to 0-100.
+    return round(min(100.0, best[0] / 0.25 * 100), 1), best[1], [shown.get(w, w) for w in best[2]]
+
+
 GENERIC_WORDS = {"and", "with", "from", "state", "federal", "program", "programs", "public", "water", "health",
                  "community", "services", "development", "research", "data", "safety", "local", "support",
                  "access", "system", "systems", "education", "energy", "city", "county", "rural", "business"}
@@ -874,7 +773,14 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
             break
 
     # Relevancy component (combined strategic semantic + keyword fit)
-    relevancy_component = round(min(100.0, (semantic_component * 0.65) + (keyword_component * 0.35)), 1)
+    phrase_fit = min(100.0, (semantic_component * 0.65) + (keyword_component * 0.35))
+    similarity_component, sim_goal, shared_words = goal_similarity(opp, goals)
+    relevancy_component = round(0.65 * phrase_fit + 0.35 * similarity_component, 1)
+    if best_goal_score < 0.2 and sim_goal is not None and similarity_component >= 60:
+        # No phrase hit, but the grant's wording closely matches one goal: name that goal.
+        best_goal = sim_goal
+        objectives = sim_goal.get("objectives", [])
+        best_objective = objectives[0] if objectives else sim_goal.get("title", "")
 
     # Award size (largest single award). Unknown amounts get a neutral 50.
     ceiling_val = opp.get("award_ceiling") or opp.get("award_estimate")
@@ -950,6 +856,10 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     elif fit_evidence:
         reason = (f"Only a weak link to the goal \"{goal_title}\": the grant mentions {matched_kws}, "
                   f"but not as its main purpose. {eligibility_note}")
+    elif similarity_component >= 60 and shared_words:
+        reason = (f"The grant uses much of the same language as the {profile.get('short_name')} goal \"{goal_title}\" "
+                  f"(shared terms: {', '.join(shared_words[:4])}), though none of the goal's key phrases appear exactly. "
+                  f"{eligibility_note}")
     else:
         reason = (f"No direct connection found between this grant and {profile.get('short_name')}'s goals. "
                   f"It appears only because of general factors such as eligibility or award size.")
@@ -974,6 +884,7 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
         "equation_latex": equation_latex,
         "eligibility_note": eligibility_note,
         "fit_evidence": fit_evidence,
+        "shared_words": shared_words,
         "practical_score": round(practical, 1),
         "score_weights": {k: round(w[k] / w_sum, 4) for k in w},
         "matched_goal_id": best_goal.get("id") if best_goal else "G1",
@@ -990,6 +901,8 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
             "timing": timing_component,
             "eligibility": eligibility_component,
             "effort": effort_component,
+            "phrase_fit": round(phrase_fit, 1),
+            "similarity": similarity_component,
             "semantic": semantic_component,
             "keyword": keyword_component,
             "affinity": affinity_component
@@ -1056,7 +969,8 @@ def run_pipeline():
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {len(normalized)} open/forecasted grants in database "
           f"({opp_changes['new']} new, {opp_changes['changed']} updated, {closed} newly closed)")
 
-    # 3. Score & Rank across all 10 NC Agency & Jurisdiction Profiles
+    # 3. Score & Rank across all NC organization profiles
+    build_similarity_index(normalized)
     profiles = load_agency_profiles()
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Scoring opportunities against {len(profiles)} NC Profiles (State, County, Education, Business, Municipal)...")
 
@@ -1096,6 +1010,8 @@ def run_pipeline():
             import pypdf  # noqa: F401
             got, had, failed = notices.sync_notice_files(nconn)
             print(f"[{datetime.now().strftime('%H:%M:%S')}] Notice files: {got} new, {had} already stored, {failed} failed")
+            lg, lb = notices.sync_linked_notices(nconn)
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] Agency-website announcements: {lg} fetched, {lb} unavailable")
             waiting = len(notices.priority_ids(nconn))
             print(f"[{datetime.now().strftime('%H:%M:%S')}] Grants with notices not yet read: {waiting} (see NOTICE_READING_GUIDE.md)")
         except ImportError:
@@ -1104,8 +1020,6 @@ def run_pipeline():
     except Exception as e:
         print(f"[WARN] Could not load requirement files: {e}", file=sys.stderr)
 
-    # 4. Generate Evaluation & Ground Truth Benchmark (§6)
-    build_evaluation_labels(normalized, profiles)
 
     # 5. Run Log
     duration = round(time.time() - start_time, 2)
@@ -1136,101 +1050,6 @@ def run_pipeline():
 
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Pipeline completed successfully in {duration}s. Run log: {run_log_file}")
     return run_log
-
-def build_evaluation_labels(normalized_opps, profiles):
-    """Creates eval/labels.json containing benchmark labels."""
-    os.makedirs(EVAL_DIR, exist_ok=True)
-    labels_file = os.path.join(EVAL_DIR, "labels.json")
-
-    deq_ranked = db.scored_for_office(db.connect(), "deq") or normalized_opps
-
-    benchmark_pool = deq_ranked[:15] + deq_ranked[40:50]
-    labeled_items = []
-
-    for i, opp in enumerate(benchmark_pool):
-        title = opp.get("title", "")
-        agency = opp.get("agency", "")
-        title_lower = title.lower()
-        agency_lower = agency.lower()
-        rank = i + 1 if i < 15 else 40 + (i - 15)
-
-        if any(w in title_lower for w in ["water", "emissions", "diesel", "superfund", "watershed", "clean energy", "efficiency", "climate", "fisheries"]):
-            if "p42 clinical" in title_lower or "coring research" in title_lower:
-                is_relevant = False
-                note = "Academic clinical trial / specialized vessel: not actionable by state DEQ staff."
-            else:
-                is_relevant = True
-                note = "Direct alignment with state environmental revolving fund or regulatory priorities."
-        elif any(w in agency_lower for w in ["environmental", "noaa", "geological", "energy"]):
-            is_relevant = True
-            note = "Key federal partner for state natural resources."
-        else:
-            is_relevant = False
-            note = "Non-environmental domain or misaligned applicant requirements."
-
-        kw_baseline_matched = any(w in title_lower for w in ["water", "environment"])
-        labeler_1 = "Relevant" if is_relevant else "Not relevant"
-        labeler_2 = labeler_1 if i not in (4, 11) else ("Relevant" if labeler_1 == "Not relevant" else "Not relevant")
-
-        labeled_items.append({
-            "id": opp["id"],
-            "title": title,
-            "agency": agency,
-            "rank": rank,
-            "matchmaker_score": opp.get("total_score", 0),
-            "ground_truth_relevant": is_relevant,
-            "labeler_1": labeler_1,
-            "labeler_2": labeler_2,
-            "agreement": labeler_1 == labeler_2,
-            "matched_by_matchmaker_top25": rank <= 25,
-            "matched_by_keyword_baseline": kw_baseline_matched,
-            "reviewer_notes": note
-        })
-
-    top_10 = labeled_items[:10]
-    relevant_in_top_10 = sum(1 for item in top_10 if item["ground_truth_relevant"])
-    precision_at_10 = round((relevant_in_top_10 / 10.0) * 100, 1)
-
-    kw_baseline_items = [it for it in labeled_items if it["matched_by_keyword_baseline"]]
-    kw_relevant = sum(1 for it in kw_baseline_items[:10] if it["ground_truth_relevant"])
-    baseline_precision_at_10 = round((kw_relevant / max(1, len(kw_baseline_items[:10]))) * 100, 1)
-
-    coverage_bonus = sum(1 for it in labeled_items if it["ground_truth_relevant"] and not it["matched_by_keyword_baseline"])
-
-    eval_data = {
-        "evaluation_date": CURRENT_DATE_STR,
-        "sample_size": len(labeled_items),
-        "precision_at_10_matchmaker": precision_at_10,
-        "precision_at_10_keyword_baseline": baseline_precision_at_10,
-        "coverage_bonus_items_found": coverage_bonus,
-        "coverage_win_examples": [
-            "2026 Diesel Emissions Reduction Act (DERA) National Program (missed by 'water/environment' keyword query)",
-            "FY 2027 Broad Agency Announcement, National Marine Fisheries Service (missed by keyword query)"
-        ],
-        "labeler_agreement_percent": 92.0,
-        "honest_failures": [
-            {
-                "type": "False Positive",
-                "opportunity_title": "Superfund Hazardous Substance Research and Training Program (P42 Clinical Trial Optional)",
-                "root_cause": "Strong keyword match on 'Superfund' and 'Hazardous Substance', but was designated for university clinical biomedical centers rather than state environmental remediation engineers.",
-                "fix_implemented": "Added negative weighting for 'Clinical Trial' and enhanced applicant type verification to distinguish university medical researchers from state environmental agency staff."
-            },
-            {
-                "type": "False Negative",
-                "opportunity_title": "Aquifer Resilience and Emerging Solute Transport Modeling",
-                "root_cause": "Opportunity omitted the popular phrase 'drinking water' and instead used technical hydrogeological terminology ('solute transport'), lowering initial title match score.",
-                "fix_implemented": "Expanded profile goal synonym dictionary to link 'solute transport', 'per- and polyfluoroalkyl', and 'groundwater hydrology' directly into NC DEQ Goal 1 (Water Quality)."
-            }
-        ],
-        "ai_field_notes": {
-            "where_ai_was_wrong": "During initial drafting of summaries, the model hallucinated that NC DEQ had a mandatory 50% state cash match for all federal programs. In reality, state cost-share varies by statutory program (often 0-20%).",
-            "how_we_caught_it": "Spot-checked 5 AI summaries against official Notices of Funding Opportunity (NOFO). Instructed model prompt to strictly cite 'cost sharing: true/false' from Grants.gov synopsis instead of estimating match percentages."
-        },
-        "labeled_items": labeled_items
-    }
-
-    with open(labels_file, "w", encoding="utf-8") as f:
-        json.dump(eval_data, f, indent=2)
 
 if __name__ == "__main__":
     mode = os.environ.get("MODE", "job")

@@ -215,7 +215,11 @@
     <h3 id="ranking" style="margin-top:28px">How grants are ranked</h3>
     <p>Every grant gets a score from 0 to 100 for your organization. The most important question is whether the grant actually fits your goals, so fit works as a gate: a grant with no real connection cannot score well, no matter how large or convenient it is.</p>
     <p style="background:var(--bg-alt);padding:12px 16px;font-weight:600">Score = Fit x (0.6 + 0.4 x Practical / 100)</p>
-    <p><strong>Fit with your strategic plan (0 to 100).</strong> Looks for each of your goals' key phrases in the grant's title and description. A phrase in the title counts most. Common words like "water" or "health" on their own count very little. The grant page quotes the sentences that matched.</p>
+    <p><strong>Fit with your strategic plan (0 to 100)</strong> combines two measures:</p>
+    <ul>
+      <li><strong>Key phrases (65%)</strong>: looks for each goal's key phrases, such as "PFAS" or "highway safety", in the grant's title and description. A phrase in the title counts most. Common words like "water" or "health" on their own count very little. The grant page quotes the sentences that matched.</li>
+      <li><strong>Word similarity (35%)</strong>: compares all the words in the goal (its title, description and objectives) with all the words in the grant. Rare, specific words count more than common ones, and word endings are ignored. This catches grants that describe the same idea in different words. On its own it can only make a grant a "Possible match".</li>
+    </ul>
     <p><strong>Practical factors (0 to 100)</strong> can lower a well-fitting grant's score by up to 40%:</p>
     <table>
       <thead><tr><th>Factor</th><th>Weight</th><th>How it is scored</th></tr></thead>
@@ -482,6 +486,7 @@ function openDetail(id){
     <section style="margin-top:28px">
       <h3>${i.best_office_name ? `Why this fits ${esc(i.best_office_name)}` : 'Why this fits your organization'}</h3>
       <p>${esc(clean(i.reason))}</p>
+      ${(i.shared_words || []).length && (i.score_breakdown?.similarity || 0) >= 40 ? `<p class="sub" style="margin:0 0 8px">Words the grant shares with this goal: ${i.shared_words.map(esc).join(', ')}</p>` : ''}
       ${(i.fit_evidence || []).length ? `<p style="margin-bottom:4px"><strong>Where the grant matches your goal:</strong></p><ul style="margin:0 0 12px;padding-left:20px">${i.fit_evidence.map(e => `<li>"${esc(e.text).replace(new RegExp('(' + e.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>')}"</li>`).join('')}</ul>` : ''}
       ${i.matched_goal_title ? `<p><strong>Strategic goal:</strong> ${esc(i.matched_goal_title)}${i.matched_goal_citation ? `<span class="sub">${esc(i.matched_goal_citation)}${planUrl(i.best_office_id || S.office) ? ` &middot; <a href="${esc(planUrl(i.best_office_id || S.office))}" target="_blank" rel="noopener">Open the plan</a>` : ''}</span>` : ''}</p>` : ''}
       ${isDraft(i.best_office_id || S.office) ? '<p class="sub">This organization\'s goals are a draft summary and have not yet been checked against its official strategic plan.</p>' : ''}
@@ -528,7 +533,8 @@ function scoreTable(i){
   const fitV = Math.round(b.relevancy || 0), prac = i.practical_score ?? 0;
   const rows = PARTS.filter(([k]) => k !== 'relevancy' && w[k] != null).map(([k, label, help]) =>
     `<tr><td>${label}<span class="sub">${help}</span></td><td data-l="Score">${Math.round(b[k] || 0)}</td><td data-l="Weight">${Math.round(w[k] * 100)}%</td></tr>`).join('');
-  return `<p style="margin-top:8px"><strong>Fit with your strategic plan: ${fitV} of 100.</strong> ${PARTS[0][2]}</p>
+  const ph = b.phrase_fit != null ? Math.round(b.phrase_fit) : null, sim = b.similarity != null ? Math.round(b.similarity) : null;
+  return `<p style="margin-top:8px"><strong>Fit with your strategic plan: ${fitV} of 100.</strong>${ph != null ? ` Key phrases: ${ph} (counts 65%). Word similarity: ${sim} (counts 35%).` : ''}</p>
     <p style="margin-bottom:4px"><strong>Practical factors: ${Math.round(prac)} of 100</strong></p>
     <table><thead><tr><th>Factor</th><th>Score</th><th>Weight</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="background:var(--bg-alt);padding:8px 12px;margin-top:8px">Score = Fit x (0.6 + 0.4 x Practical / 100) = ${fitV} x ${(0.6 + 0.4 * prac / 100).toFixed(2)} = <strong>${i.total_score}</strong></p>`;
