@@ -21,6 +21,7 @@ import db
 import notices
 import ai
 import programs
+import state_programs
 
 
 # Fields only the grant panel needs; left out of list responses to keep them
@@ -145,6 +146,17 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     "review": ai.review_for(urllib.parse.parse_qs(parsed.query).get("office", [""])[0], opp_id),
                     "links": links,
                 })
+            finally:
+                conn.close()
+            return
+
+        if path.startswith("/api/state-programs/"):
+            office = path.rsplit("/", 1)[-1]
+            profile = pipeline.load_agency_profiles().get(office, {})
+            conn = db.connect()
+            try:
+                # State agencies run these programs rather than apply to them
+                self._send_json([] if profile.get("category", "state") == "state" else state_programs.for_office(conn, office))
             finally:
                 conn.close()
             return

@@ -1020,6 +1020,14 @@ def run_pipeline():
     except Exception as e:
         print(f"[WARN] SAM.gov program step failed: {e}", file=sys.stderr)
 
+    # 3a2. North Carolina state grant programs from the NC.gov directory (weekly)
+    try:
+        import state_programs
+        sn, sr, sf = state_programs.run(conn)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] NC state programs: {sn} listed, {sr} pages read, {sf} unreadable")
+    except Exception as e:
+        print(f"[WARN] NC state program step failed: {e}", file=sys.stderr)
+
     # 3b. Download notice files for new grants (needs pypdf, installed in .venv), then
     # load notice requirements recorded in data/requirements/ (shared through git)
     try:

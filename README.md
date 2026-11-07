@@ -39,6 +39,7 @@ seconds to a few minutes. Set `FORCE_REFRESH=1` to re-pull every search.
 | Funding notice files (PDF and others) | Grants.gov attachments | Once per file |
 | Past North Carolina awards; typical award size per program | USAspending.gov API | Weekly per program |
 | Federal programs (purpose, restrictions, award ranges, spending) | SAM.gov Assistance Listings | Weekly list, monthly details |
+| NC state grant programs | NC.gov Grant Opportunities directory (official) | Weekly |
 | Organization goals | Agency strategic plans posted by NC OSBM (`data/plans/`) | When plans are updated |
 | Application requirements per grant | Read from the funding notice (`data/requirements/`) | When a notice is read |
 
@@ -69,6 +70,7 @@ app's "How this works" page and in `pipeline.py` (`calculate_score`).
 | `db.py` | SQLite database and download cache |
 | `notices.py` | Download funding notices; record and check requirements |
 | `programs.py` | Federal programs from SAM.gov Assistance Listings |
+| `state_programs.py` | NC state grant programs from the NC.gov directory |
 | `ai.py` | Build a profile from a plan; write "how you could use it" reviews (needs an Anthropic API key) |
 | `data/profiles/` | One JSON file per organization (goals, keywords, eligibility) |
 | `data/requirements/` | One JSON file per grant: what the application requires |

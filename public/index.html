@@ -112,7 +112,6 @@
   <div class="wrap" role="tablist">
     <button role="tab" data-tab="list" aria-selected="true" onclick="showTab('list')">Opportunities</button>
     <button role="tab" data-tab="tracked" aria-selected="false" onclick="showTab('tracked')">My decisions</button>
-    <button role="tab" data-tab="programs" aria-selected="false" onclick="showTab('programs')">Federal programs</button>
     <button role="tab" data-tab="help" aria-selected="false" onclick="showTab('help')">How this works</button>
   </div>
 </nav>
@@ -196,18 +195,24 @@
     </table>
     <div id="empty" class="empty" hidden>No grants match these filters. Try "All matches" or "Any match".</div>
     <div class="pager"><button id="more" class="btn outline" onclick="limit+=25;render()" hidden>Show more</button></div>
+
+    <section id="statePrograms" hidden style="margin-top:40px">
+      <h2>North Carolina state grant programs</h2>
+      <p class="count">State-run grant programs, many of them funded with federal money, from the official <a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov grant directory</a>. A deadline is shown only when the program's page states one; always confirm on the program page.</p>
+      <div id="stateBody"></div>
+    </section>
+
+    <section id="otherFunding" hidden style="margin-top:40px">
+      <h2>Other federal funding for your goals</h2>
+      <p class="count">These federal programs match your goals but have <strong>no application open right now</strong>. Many send money every year by formula or through a state agency instead of an open competition, so the way in is usually your state partner agency or the program office. Grants that are open now are in the list above.</p>
+      <div id="programsBody"></div>
+    </section>
   </section>
 
   <section id="tab-tracked" hidden>
     <h2>My office's decisions</h2>
     <p class="count">Every grant your office has marked. Click a title to change the decision or update notes.</p>
     <div id="trackedBody"></div>
-  </section>
-
-  <section id="tab-programs" hidden>
-    <h2>Federal programs that fit your goals</h2>
-    <p class="count">Ongoing federal programs from SAM.gov whose purpose matches your organization's goals. Some have a grant open now; many send money by formula or through a state agency and never post on Grants.gov, so they are worth knowing about even without a deadline.</p>
-    <div id="programsBody"></div>
   </section>
 
   <section id="tab-help" hidden style="max-width:760px">
@@ -261,7 +266,8 @@
         <tr><td><strong>Grant listings</strong>: title, agency, deadline, status</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>The Grants.gov search service, checked once a day across about 35 topic searches, including forecasted grants.</td></tr>
         <tr><td><strong>Grant details</strong>: description, award amounts, who can apply, matching funds, contact</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>Downloaded once for each new grant, and again only if Grants.gov changes the listing.</td></tr>
         <tr><td><strong>Past North Carolina awards</strong></td><td data-l="Source"><a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a></td><td>The largest awards to North Carolina recipients under the same federal program (Assistance Listing number), refreshed weekly.</td></tr>
-        <tr><td><strong>Federal programs</strong>: purpose, restrictions, past award ranges, yearly spending</td><td data-l="Source"><a href="https://sam.gov/assistance-listings" target="_blank" rel="noopener">SAM.gov Assistance Listings</a></td><td>All active federal programs, refreshed weekly; full details for programs behind current grants and those that fit each organization, refreshed monthly. Shown on each grant page and on the Federal programs tab.</td></tr>
+        <tr><td><strong>Federal programs</strong>: purpose, restrictions, past award ranges, yearly spending</td><td data-l="Source"><a href="https://sam.gov/assistance-listings" target="_blank" rel="noopener">SAM.gov Assistance Listings</a></td><td>All active federal programs, refreshed weekly; full details for programs behind current grants and those that fit each organization, refreshed monthly. Shown on each grant page and, for programs with no open application, under "Other federal funding" on the Opportunities page.</td></tr>
+        <tr><td><strong>North Carolina state grant programs</strong></td><td data-l="Source"><a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov Grant Opportunities directory</a></td><td>Only programs the state's official directory links to. Each program page is read weekly; a deadline is shown only when the page states one, with the sentence it came from. Shown for counties, cities, universities and businesses (state agencies run these programs).</td></tr>
         <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>16 organizations use the goals and objectives in their own published strategic plans (state agencies from the OSBM site, plus Wake County, Raleigh, Asheville, NC State and NC A&amp;T), with page numbers where the plan has them. Choosing an organization shows a link to its plan. Each goal also has search phrases added by this tool to connect it to grant wording. The others use draft profiles, labeled as drafts, until their plans are added.</td></tr>
         <tr><td><strong>Documents checklist</strong></td><td data-l="Source">Standard federal application forms (SF-424 family)</td><td>A typical federal checklist, adjusted for what the notice says, such as adding a match letter when matching funds are required. The official notice has the final list.</td></tr>
         <tr><td><strong>Staff time and score</strong></td><td data-l="Source">Calculated by this tool</td><td>See "How grants are ranked" and "How staff time is estimated" above.</td></tr>
@@ -362,13 +368,28 @@ function fillOffices(type, silent){
   if (!silent) changeOffice($('office').value);
 }
 
+async function loadStatePrograms(){
+  const office = S.office;
+  if (office === 'all') { $('statePrograms').hidden = true; return; }
+  let list = []; try { list = await (await fetch(`/api/state-programs/${office}`)).json(); } catch(e) {}
+  if (S.office !== office) return;
+  $('statePrograms').hidden = !list.length;
+  $('stateBody').innerHTML = `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Deadline</th></tr></thead><tbody>${list.map(m => {
+    const d = (m.deadlines || [])[0];
+    return `<tr><td><a href="${esc(m.url)}" target="_blank" rel="noopener"><strong>${esc(m.name)}</strong></a><span class="sub">${esc(m.agency_section || '')}</span></td>
+      <td data-l="Fits goal">${esc(m.matched_goal_title || '')}<span class="sub">Fit ${Math.round(m.fit)} of 100</span></td>
+      <td data-l="Deadline">${d ? `${fmtDate(d.date)}<span class="sub">"${esc(d.quote)}"</span>` : '<span class="sub">See program page</span>'}</td></tr>`;
+  }).join('')}</tbody></table>`;
+}
+
 async function loadPrograms(){
-  const el = $('programsBody');
-  if (S.office === 'all') { el.innerHTML = '<div class="empty">Choose one organization at the top to see the federal programs that fit its goals.</div>'; return; }
-  el.innerHTML = '<p class="sub">Loading...</p>';
-  let list = []; try { list = await (await fetch(`/api/programs/${S.office}`)).json(); } catch(e) {}
-  if (!list.length) { el.innerHTML = '<div class="empty">No federal programs matched this organization\'s goals closely enough.</div>'; return; }
-  el.innerHTML = `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Past awards (agency)</th><th>Federal spending</th><th>Grant open now?</th></tr></thead><tbody>${list.map(m => {
+  const el = $('programsBody'), office = S.office;
+  if (office === 'all') { $('otherFunding').hidden = true; return; }
+  let list = []; try { list = await (await fetch(`/api/programs/${office}`)).json(); } catch(e) {}
+  if (S.office !== office) return;
+  list = list.filter(m => !(m.open_grants || []).length);
+  $('otherFunding').hidden = !list.length;
+  el.innerHTML = `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Past awards (agency)</th><th>Federal spending</th><th>How to get it</th></tr></thead><tbody>${list.map(m => {
     const p = m.program || {}, r = p.award_range || {};
     const range = r.low ? `${money(r.low)} to ${money(r.high)}` : '';
     const avg = r.average ? `Average ${money(r.average)}` : '';
@@ -379,7 +400,7 @@ async function loadPrograms(){
       <td data-l="Fits goal">${esc(m.matched_goal_title || '')}<span class="sub">Fit ${Math.round(m.fit)} of 100</span></td>
       <td data-l="Past awards">${range || avg || '<span class="sub">Not stated</span>'}${range && avg ? `<span class="sub">${avg}</span>` : ''}</td>
       <td data-l="Federal spending">${ob ? `${money(ob.amount)}<span class="sub">in ${ob.year}, nationwide</span>` : '<span class="sub">Not stated</span>'}</td>
-      <td data-l="Open now">${open || '<span class="sub">No open competition on Grants.gov right now</span>'}</td></tr>`;
+      <td data-l="How to get it">${p.website ? `<a href="${esc(p.website)}" target="_blank" rel="noopener">Program website</a>` : ''}<span class="sub">No open application; check the program page or your state partner agency</span></td></tr>`;
   }).join('')}</tbody></table>`;
 }
 
@@ -404,7 +425,8 @@ async function changeOffice(id){
   const all = id === 'all', cat = encodeURIComponent($('otype').value);
   $('exportBtn').hidden = all;
   showPlanInfo(id);
-  if (!$('tab-programs').hidden) loadPrograms();
+  loadStatePrograms();
+  loadPrograms();
   $('exportBtn').href = `/api/export/${id}`;
   const [items, dec] = await Promise.all([
     fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => r.json()),
@@ -673,8 +695,7 @@ async function saveDecision(){
 
 function showTab(t){
   document.querySelectorAll('nav.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
-  ['list','tracked','programs','help'].forEach(x => $('tab-' + x).hidden = x !== t);
-  if (t === 'programs') loadPrograms();
+  ['list','tracked','help'].forEach(x => $('tab-' + x).hidden = x !== t);
   window.scrollTo(0, 0);
 }
 function dismissWelcome(){ store.set('welcomed', '1'); $('welcome').hidden = true; }
