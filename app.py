@@ -21,6 +21,16 @@ import db
 import notices
 
 
+# Fields only the grant panel needs; left out of list responses to keep them
+# small and sent by /api/opportunity/<id>/sources instead.
+DETAIL_FIELDS = ("description", "past_awardees", "past_award_stats", "required_documents", "action_steps",
+                 "eligibility_text", "eligibility", "complexity_factors", "positive_drivers")
+
+
+def slim(items):
+    return [{k: v for k, v in it.items() if k not in DETAIL_FIELDS} for it in items]
+
+
 def load_scored(agency_id):
     """Scored grants for one office, best first, read from the database."""
     conn = db.connect()
@@ -48,6 +58,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         body = json.dumps(data).encode("utf-8")
         self.send_response(status_code)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        if len(body) > 2048 and "gzip" in (self.headers.get("Accept-Encoding") or ""):
+            import gzip
+            body = gzip.compress(body, compresslevel=5)
+            self.send_header("Content-Encoding", "gzip")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -111,7 +125,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             opp_id = path.split("/")[3]
             conn = notices.connect()
             try:
-                row = conn.execute("SELECT cfda, url FROM opportunities WHERE id=?", (opp_id,)).fetchone()
+                row = conn.execute("SELECT cfda, url, data FROM opportunities WHERE id=?", (opp_id,)).fetchone()
                 if not row:
                     self._send_json({"error": "Not found"}, 404)
                     return
@@ -119,7 +133,9 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 if row["cfda"]:
                     links.append({"name": f"Program details on SAM.gov (Assistance Listing {row['cfda']})",
                                   "url": f"https://sam.gov/search/?index=cfda&keywords={urllib.parse.quote(row['cfda'])}"})
+                full = json.loads(row["data"])
                 self._send_json({
+                    "detail": {k: full.get(k) for k in DETAIL_FIELDS},
                     "files": notices.files_for(conn, opp_id),
                     "requirements": notices.requirements_for(conn, opp_id),
                     "links": links,
@@ -138,7 +154,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     items = db.scored_best(conn, ids)
                     for it in items:
                         it["best_office_name"] = profiles.get(it["best_office_id"], {}).get("name", "")
-                    self._send_json(items)
+                    self._send_json(slim(items))
                 else:
                     self._send_json(db.get_decisions_for(conn, ids))
             finally:
@@ -147,7 +163,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
         if path.startswith("/api/scored/"):
             agency_id = path.replace("/api/scored/", "").strip()
-            self._send_json(load_scored(agency_id))
+            self._send_json(slim(load_scored(agency_id)))
             return
 
         # 5. API: Get decisions for agency

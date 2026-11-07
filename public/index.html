@@ -402,9 +402,11 @@ function renderTracked(){
   }).join('');
 }
 
-async function loadSources(i){
-  let src = { files: [], requirements: null, links: [{ name: 'Official listing on Grants.gov', url: i.url }] };
-  try { src = await (await fetch(`/api/opportunity/${i.id}/sources`)).json(); } catch(e) {}
+async function fetchSources(i){
+  try { return await (await fetch(`/api/opportunity/${i.id}/sources`)).json(); }
+  catch(e) { return { files: [], requirements: null, links: [{ name: 'Official listing on Grants.gov', url: i.url }] }; }
+}
+function loadSources(i, src){
   if (currentId !== i.id) return;
   const r = src.requirements;
   const fileLink = f => `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.file_name)}</a>`;
@@ -448,9 +450,14 @@ function docsList(rd){
 }
 function saveDoc(n, on){ const k = `docs:${S.office}:${currentId}`; let s = []; try { s = JSON.parse(store.get(k) || '[]'); } catch(e) {} s = on ? [...new Set([...s, n])] : s.filter(x => x !== n); store.set(k, JSON.stringify(s)); }
 
-function openDetail(id){
+async function openDetail(id){
   const i = S.items.find(x => x.id === id); if (!i) return;
-  currentId = id; const d = S.decisions[id]; choice = d?.status || null;
+  currentId = id;
+  // The list holds only summary fields; load the full record and sources for this grant.
+  const src = await fetchSources(i);
+  if (currentId !== id) return;
+  if (src.detail) Object.assign(i, src.detail);
+  const d = S.decisions[id]; choice = d?.status || null;
   const [cls, lbl] = fit(i.total_score);
   $('dTitle').textContent = clean(i.title);
   $('dSub').textContent = `${i.agency} | ${i.number}`;
@@ -521,7 +528,7 @@ function openDetail(id){
       <table><thead><tr><th>Recipient</th><th>Amount</th><th>Start year</th></tr></thead><tbody>${awardees.map(a => `<tr><td>${esc(a.recipient)}<span class="sub">${esc(a.project_title)}</span></td><td data-l="Amount">${money(a.amount)}</td><td data-l="Year">${esc(a.fiscal_year)}</td></tr>`).join('')}</tbody></table></details></section>` : ''}
     <div id="dSrc"></div>
   `;
-  loadSources(i);
+  loadSources(i, src);
   $('detail').classList.add('open');
   document.querySelector('.panel').scrollTop = 0;
   document.querySelector('.panel .close').focus();
