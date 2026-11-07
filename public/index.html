@@ -183,12 +183,13 @@
           <option value="30">Within 30 days</option>
           <option value="90">Within 90 days</option>
           <option value="forecast">Not yet open (forecasted)</option>
+          <option value="opening90">Opening in the next 90 days</option>
         </select>
       </div>
     </div>
     <p class="count" id="count" aria-live="polite"></p>
     <table>
-      <thead><tr><th>Grant</th><th>Match</th><th>Award up to</th><th>Staff time</th><th>Deadline</th><th>Status</th></tr></thead>
+      <thead><tr><th>Grant</th><th>Match</th><th>Award up to</th><th>Staff time</th><th>Opens</th><th>Deadline</th><th>Status</th></tr></thead>
       <tbody id="rows"></tbody>
     </table>
     <div id="empty" class="empty" hidden>No grants match these filters. Try "All matches" or "Any match".</div>
@@ -299,7 +300,14 @@ const typicalLine = (i, long) => {
   if (!long) return `<span class="sub${t.well_below_ceiling ? ' soon' : ''}">Typical: ${money(Math.round(t.median))}</span>`;
   return `<span class="sub" style="font-weight:400">Typical recent award: <strong>${money(Math.round(t.median))}</strong> (median of ${t.sample_size} awards nationwide under this federal program since ${new Date(t.since + 'T12:00:00').getFullYear()}; average ${money(Math.round(t.average))}). Source: USAspending.gov.${t.well_below_ceiling ? ' <strong class="soon">Most awards are far below the maximum.</strong>' : ''}</span>`;
 };
-const deadlineHtml = (i, br) => i.status === 'forecasted' ? 'Not yet open'
+const todayStr = new Date().toISOString().slice(0, 10);
+// When applications open: now for posted grants, the expected date for forecasts
+const opensHtml = i => i.status !== 'forecasted' ? '<strong>Open now</strong>'
+  : !i.expected_open_date ? 'Not yet open<span class="sub">no date announced</span>'
+  : i.expected_open_date < todayStr ? `Not yet open<span class="sub">was expected ${fmtDate(i.expected_open_date)}</span>`
+  : `Expected<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_open_date)}</span>`;
+const deadlineHtml = (i, br) => i.status === 'forecasted'
+  ? (i.expected_due_date ? `Expected${br ? '<br>' : ' '}<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_due_date)}</span>` : 'Not announced')
   : i.days_to_close == null ? 'No deadline listed'
   : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
 const fit = s => s >= STRONG ? ['strong','Strong match'] : s >= GOOD ? ['good','Good match'] : ['fair','Possible match'];
@@ -384,6 +392,10 @@ function filtered(){
     if (f === 'strong' && i.total_score < STRONG) return false;
     if (f === 'good' && i.total_score < GOOD) return false;
     if (due === 'forecast' && i.status !== 'forecasted') return false;
+    if (due === 'opening90') {
+      const limit90 = new Date(Date.now() + 90 * 864e5).toISOString().slice(0, 10);
+      if (i.status !== 'forecasted' || !i.expected_open_date || i.expected_open_date < todayStr || i.expected_open_date > limit90) return false;
+    }
     if ((due === '30' || due === '90') && (i.status === 'forecasted' || i.days_to_close == null || i.days_to_close > +due)) return false;
     if (q && !`${i.title} ${i.agency} ${i.number} ${i.matched_goal_title}`.toLowerCase().includes(q)) return false;
     return true;
@@ -404,6 +416,7 @@ function render(){
       <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
       <td data-l="Award up to">${awardCell(i)}${typicalLine(i)}</td>
       <td data-l="Staff time">About ${i.est_completion_hours} hrs<span class="sub">${i.complexity_tier || ''}</span></td>
+      <td data-l="Opens">${opensHtml(i)}</td>
       <td data-l="Deadline">${deadline}</td>
       <td data-l="Status">${statusTag(i.id)}</td></tr>`;
   }).join('');
@@ -491,6 +504,7 @@ async function openDetail(id){
     <dl class="facts">
       <div><dt>Match</dt><dd><span class="tag ${cls}">${lbl}</span></dd></div>
       <div style="grid-column:1/-1"><dt>Award up to</dt><dd>${awardCell(i)}${i.award_amount_source ? `<span class="sub" style="font-weight:400">${esc(i.award_amount_source)}</span>` : ''}${typicalLine(i, true)}</dd></div>
+      <div><dt>Opens</dt><dd>${opensHtml(i)}</dd></div>
       <div><dt>Deadline</dt><dd>${deadlineHtml(i, true)}</dd></div>
       <div><dt>Estimated staff time</dt><dd>About ${i.est_completion_hours || '?'} hours<span class="sub">${i.est_completion_weeks ? `roughly ${i.est_completion_weeks} week${i.est_completion_weeks > 1 ? 's' : ''}` : ''}</span></dd></div>
       <div><dt>Matching funds</dt><dd>${i.cost_share_required === true ? 'Required' : i.cost_share_required === false ? 'Not required' : 'See notice'}</dd></div>

@@ -504,6 +504,10 @@ def normalize_opportunities(raw_hits, details=None, conn=None):
             "program_title": program_title,
             "status": status,
             "open_date": open_dt.strftime("%Y-%m-%d") if open_dt else None,
+            # Forecasts carry estimated dates instead of real ones
+            "expected_open_date": (fc.get("estSynopsisPostingDateStr") or "")[:10] or None,
+            "expected_due_date": (fc.get("estApplicationResponseDateStr") or "")[:10] or None,
+            "expected_award_date": (fc.get("estAwardDateStr") or syn.get("estAwardDateStr") or "")[:10] or None,
             "close_date": close_dt.strftime("%Y-%m-%d") if close_dt else None,
             "days_to_close": days_to_close,
             "eligibility": [t.get("description", "") for t in syn.get("applicantTypes", [])],

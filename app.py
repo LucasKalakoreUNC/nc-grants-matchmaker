@@ -215,7 +215,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             writer = csv.writer(output)
             writer.writerow([
                 "Rank", "Score", "Match", "Fit with strategic plan", "Grant", "Opportunity number", "Funding agency",
-                "Status", "Deadline", "Days left", "Award up to", "Typical past award", "Estimated staff hours",
+                "Status", "Opens (expected, if forecasted)", "Deadline (expected, if forecasted)", "Days left", "Award up to", "Typical past award", "Estimated staff hours",
                 "Matching funds", "Matched goal", "Goal citation", "Why it fits", "Your decision", "Decision notes",
                 "Official listing",
             ])
@@ -227,7 +227,9 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     i + 1, it.get("total_score", 0), label(it.get("total_score", 0)),
                     round((it.get("score_breakdown") or {}).get("relevancy", 0)),
                     it.get("title", ""), it.get("number", ""), it.get("agency", ""), it.get("status", ""),
-                    it.get("close_date") or "", "" if it.get("days_to_close") is None else it.get("days_to_close"),
+                    "Open now" if it.get("status") != "forecasted" else (it.get("expected_open_date") or "Not announced"),
+                    it.get("close_date") or it.get("expected_due_date") or "",
+                    "" if it.get("days_to_close") is None else it.get("days_to_close"),
                     dollars(it.get("award_ceiling") or it.get("award_estimate")), dollars(typical),
                     it.get("est_completion_hours", ""),
                     "Required" if cs is True else "Not required" if cs is False else "See notice",

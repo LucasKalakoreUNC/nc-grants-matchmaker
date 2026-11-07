@@ -1,5 +1,5 @@
 {
-  "timestamp": "20261107_132432",
+  "timestamp": "20261107_134206",
   "run_date": "2026-11-07",
   "status": "Succeeded",
   "counts": {
@@ -53,8 +53,8 @@
         "total": 484,
         "high": 0,
         "medium": 3,
-        "top_match": "Fiscal Year 2026 Flood Mitigation Assistance Swift Current",
-        "top_score": 67.6
+        "top_match": "Fiscal Year 2026 Flood Mitigation Assistance",
+        "top_score": 65.1
       },
       "city_charlotte": {
         "name": "City of Charlotte",
@@ -213,10 +213,10 @@
         "name": "NC A&T",
         "category": "education",
         "total": 484,
-        "high": 3,
-        "medium": 1,
+        "high": 2,
+        "medium": 12,
         "top_match": "Fiscal Year (FY) 2027 Department of the Navy (DoN) Historically Black Colleges and Universities/Minority Institutions (HBCU/MI) Program",
-        "top_score": 82.4
+        "top_score": 71.4
       },
       "nccc_system": {
         "name": "NC Community Colleges",
@@ -240,10 +240,10 @@
         "name": "NC State",
         "category": "education",
         "total": 484,
-        "high": 3,
-        "medium": 7,
+        "high": 1,
+        "medium": 10,
         "top_match": "Agriculture and Food Research Initiative Competitive Grants Program Foundational and Applied Science Program",
-        "top_score": 82.5
+        "top_score": 77.9
       },
       "robeson_county": {
         "name": "Robeson County",
@@ -274,6 +274,6 @@
       }
     }
   },
-  "duration_seconds": 15.98,
+  "duration_seconds": 16.82,
   "errors": []
 }
