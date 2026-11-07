@@ -557,7 +557,12 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         if path == "/api/ai/status":
-            self._send_json({"drafting": bool(ai.provider()), "provider": ai.provider()})
+            info = {"drafting": bool(ai.provider()), "provider": ai.provider()}
+            if ai.provider() == "azure-openai":
+                from urllib.parse import urlparse
+                base, deployment, version = ai.azure_settings()
+                info.update(endpoint_host=urlparse(base).netloc, deployment=deployment, api_version=version)
+            self._send_json(info)
             return
 
         if path.startswith("/api/state-programs/"):

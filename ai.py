@@ -21,6 +21,7 @@ Both write plain JSON files that can be committed, like data/requirements/.
 """
 
 import os
+import re
 import json
 import hashlib
 import argparse
@@ -57,12 +58,28 @@ def provider():
     return None
 
 
+def azure_settings():
+    """Endpoint, deployment and API version. Accepts either the base endpoint
+    (https://name.openai.azure.com/) or the full "Target URI" the portal shows
+    (.../openai/deployments/<name>/chat/completions?api-version=...)."""
+    from urllib.parse import urlparse, parse_qs
+    raw = os.environ["AZURE_OPENAI_ENDPOINT"].strip()
+    u = urlparse(raw)
+    base = f"{u.scheme}://{u.netloc}/"
+    m = re.search(r"/openai/deployments/([^/?]+)", u.path)
+    deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT", "").strip() or (m.group(1) if m else "")
+    if m and not os.environ.get("AZURE_OPENAI_DEPLOYMENT_OVERRIDE"):
+        deployment = m.group(1)  # the deployment in the pasted URI is the one that exists
+    version = os.environ.get("AZURE_OPENAI_API_VERSION") or (parse_qs(u.query).get("api-version") or ["2024-10-21"])[0]
+    return base, deployment, version
+
+
 def _ask_azure(system, user, schema, max_tokens):
     from openai import AzureOpenAI
-    c = AzureOpenAI(azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"], api_key=os.environ["AZURE_OPENAI_API_KEY"],
-                    api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-10-21"), timeout=120)
+    base, deployment, version = azure_settings()
+    c = AzureOpenAI(azure_endpoint=base, api_key=os.environ["AZURE_OPENAI_API_KEY"].strip(), api_version=version, timeout=120)
     r = c.chat.completions.create(
-        model=os.environ["AZURE_OPENAI_DEPLOYMENT"],
+        model=deployment,
         messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
         response_format={"type": "json_schema", "json_schema": {"name": "result", "schema": schema, "strict": True}},
         max_completion_tokens=max_tokens,
