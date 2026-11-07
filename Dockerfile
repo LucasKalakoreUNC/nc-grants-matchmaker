@@ -22,7 +22,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application files and data (the local database is rebuilt from public
 # sources if it is missing; see .dockerignore for what is left out)
-COPY pipeline.py app.py db.py notices.py /app/
+COPY pipeline.py app.py db.py notices.py ai.py /app/
 COPY data/ /app/data/
 COPY public/ /app/public/
 
