@@ -373,6 +373,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             conn = db.connect()
             try:
                 row = conn.execute("SELECT number, title FROM opportunities WHERE id=?", (opp_id,)).fetchone()
+                if not row and opp_id.startswith(("st-", "fp-")):
+                    # State program, foundation or federal program shown to this organization
+                    other = next((x for x in other_items(conn, agency_id, pipeline.load_agency_profiles()[agency_id]) if x["id"] == opp_id), None)
+                    row = {"number": "", "title": other["title"]} if other else None
                 if not row:
                     self._send_json({"error": "Unknown grant"}, 400)
                     return

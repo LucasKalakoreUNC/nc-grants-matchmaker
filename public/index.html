@@ -443,7 +443,7 @@ function render(){
       <td data-l="Staff time"><span class="sub">Not estimated</span></td>
       <td data-l="Opens">${fed ? 'No open competition<span class="sub">ask the program office or state partner</span>' : i.close_date ? '<strong>Open now</strong>' : 'See program page'}</td>
       <td data-l="Deadline">${i.close_date ? `${fmtDate(i.close_date)}<span class="sub">"${esc(i.deadline_quote || '')}"</span>` : '<span class="sub">See program page</span>'}</td>
-      <td data-l="Status"><span class="sub">Apply on the program's site</span></td></tr>`;
+      <td data-l="Status">${statusTag(i)}</td></tr>`;
     }
     return `<tr>
       <td><button class="t" onclick="openDetail('${esc(keyOf(i))}')">${esc(clean(i.title))}</button><span class="sub">${esc(i.agency)}</span></td>
@@ -553,6 +553,7 @@ function saveDoc(n, on){ const k = `docs:${S.office}:${currentId}`; let s = []; 
 
 async function openDetail(id){
   const i = S.items.find(x => keyOf(x) === id) || S.items.find(x => x.id === id); if (!i) return;
+  if (i.kind) return openProgram(keyOf(i));
   currentId = id = keyOf(i);
   // The list holds only summary fields; load the full record and sources for this grant.
   const src = await fetchSources(i);
@@ -652,6 +653,7 @@ function scoreTable(i){
 function openProgram(key){
   const i = S.items.find(x => keyOf(x) === key); if (!i) return;
   currentId = key;
+  const dec = S.decisions[keyOf(i)]; choice = dec?.status || null;
   const o = i.overview || {}, [cls, lbl] = fit(i.total_score), d = i.close_date;
   const fact = (label, val) => val ? `<section><h3>${label}</h3><p>${esc(val)}</p></section>` : '';
   $('dTitle').textContent = i.title;
@@ -671,6 +673,20 @@ function openProgram(key){
     ${o.contact ? fact('Contact', o.contact) : ''}
     ${!o.description ? '<div class="alert">This program\'s page could not be summarized automatically. Open it for details.</div>' : ''}
     <p class="sub">Text above is quoted from the program's official page; nothing is rewritten or estimated. Confirm details before applying.</p>
+    <section class="decide">
+      <h3>Your organization's decision</h3>
+      <div class="choices">
+        <button aria-pressed="${choice === 'Pursue'}" data-v="Pursue" onclick="pick('Pursue')">Pursue<small>We will apply</small></button>
+        <button aria-pressed="${choice === 'Watch'}" data-v="Watch" onclick="pick('Watch')">Watch<small>Check back later</small></button>
+        <button aria-pressed="${choice === 'Pass'}" data-v="Pass" onclick="pick('Pass')">Pass<small>Not a fit</small></button>
+      </div>
+      <label for="dNotes">Note for your team (optional)</label>
+      <textarea id="dNotes" rows="2">${esc(clean(dec?.notes))}</textarea>
+      <label for="dBy" style="margin-top:8px">Your name</label>
+      <input id="dBy" type="text" autocomplete="name" value="${esc(store.get('name') || '')}">
+      ${S.office === 'all' ? `<input type="hidden" id="dOrg" value="${esc(i.best_office_id)}">` : ''}
+      <p style="margin:12px 0 0"><button class="btn" onclick="saveDecision()">Save decision</button></p>
+    </section>
     <p><a class="btn" href="${esc(i.url)}" target="_blank" rel="noopener">Open the official program page</a></p>`;
   $('detail').classList.add('open');
   document.querySelector('.panel').scrollTop = 0;
@@ -680,7 +696,7 @@ function pick(st){ choice = st; document.querySelectorAll('.choices button').for
 
 async function saveDecision(){
   if (!choice) { toast('Choose Pursue, Watch, or Pass first.'); return; }
-  const i = S.items.find(x => x.id === currentId);
+  const i = S.items.find(x => keyOf(x) === currentId) || S.items.find(x => x.id === currentId);
   const name = $('dBy').value.trim(); if (name) store.set('name', name);
   const body = { opportunity_id: i.id, number: i.number, title: i.title, status: choice, notes: $('dNotes').value.trim(), decided_by: name || 'Grants staff' };
   try {
