@@ -40,6 +40,8 @@ seconds to a few minutes. Set `FORCE_REFRESH=1` to re-pull every search.
 | Past North Carolina awards; typical award size per program | USAspending.gov API | Weekly per program |
 | Federal programs (purpose, restrictions, award ranges, spending) | SAM.gov Assistance Listings | Weekly list, monthly details |
 | NC state grant programs | NC.gov Grant Opportunities directory (official) | Weekly |
+| NC foundations (Golden LEAF, Dogwood, Kate B. Reynolds, Z. Smith Reynolds, Duke Endowment) | Each funder's own site and description | Weekly |
+| State budget grants directed to an organization | OSBM Legislative Grants Database | Weekly |
 | Organization goals | Agency strategic plans posted by NC OSBM (`data/plans/`) | When plans are updated |
 | Application requirements per grant | Read from the funding notice (`data/requirements/`) | When a notice is read |
 

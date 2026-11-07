@@ -197,9 +197,10 @@
     <div class="pager"><button id="more" class="btn outline" onclick="limit+=25;render()" hidden>Show more</button></div>
 
     <section id="statePrograms" hidden style="margin-top:40px">
-      <h2>North Carolina state grant programs</h2>
-      <p class="count">State-run grant programs, many of them funded with federal money, from the official <a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov grant directory</a>. A deadline is shown only when the program's page states one; always confirm on the program page.</p>
+      <h2>North Carolina state and foundation grants</h2>
+      <p class="count">State-run grant programs from the official <a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov grant directory</a> (many are funded with federal money), and major North Carolina foundations. A deadline is shown only when the program's own page states one; always confirm on the program page.</p>
       <div id="stateBody"></div>
+      <div id="legBody"></div>
     </section>
 
     <section id="otherFunding" hidden style="margin-top:40px">
@@ -268,6 +269,8 @@
         <tr><td><strong>Past North Carolina awards</strong></td><td data-l="Source"><a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a></td><td>The largest awards to North Carolina recipients under the same federal program (Assistance Listing number), refreshed weekly.</td></tr>
         <tr><td><strong>Federal programs</strong>: purpose, restrictions, past award ranges, yearly spending</td><td data-l="Source"><a href="https://sam.gov/assistance-listings" target="_blank" rel="noopener">SAM.gov Assistance Listings</a></td><td>All active federal programs, refreshed weekly; full details for programs behind current grants and those that fit each organization, refreshed monthly. Shown on each grant page and, for programs with no open application, under "Other federal funding" on the Opportunities page.</td></tr>
         <tr><td><strong>North Carolina state grant programs</strong></td><td data-l="Source"><a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov Grant Opportunities directory</a></td><td>Only programs the state's official directory links to. Each program page is read weekly; a deadline is shown only when the page states one, with the sentence it came from. Shown for counties, cities, universities and businesses (state agencies run these programs).</td></tr>
+        <tr><td><strong>NC foundations</strong>: Golden LEAF, Dogwood Health Trust, Kate B. Reynolds, Z. Smith Reynolds, The Duke Endowment</td><td data-l="Source">Each foundation's own website</td><td>Listed with the funder's own description of what it funds. Most of these sites block automated reading, so no deadlines or amounts are shown; check the funder's site. Dogwood Health Trust is shown only for western North Carolina organizations.</td></tr>
+        <tr><td><strong>State budget grants</strong> already directed to an organization or county</td><td data-l="Source"><a href="https://www.osbm.nc.gov/legislative-grants-database" target="_blank" rel="noopener">OSBM Legislative Grants Database</a></td><td>Grants written into the current state budget, with amount, administering agency and session law. Information only; there is no application. Refreshed weekly.</td></tr>
         <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>16 organizations use the goals and objectives in their own published strategic plans (state agencies from the OSBM site, plus Wake County, Raleigh, Asheville, NC State and NC A&amp;T), with page numbers where the plan has them. Choosing an organization shows a link to its plan. Each goal also has search phrases added by this tool to connect it to grant wording. The others use draft profiles, labeled as drafts, until their plans are added.</td></tr>
         <tr><td><strong>Documents checklist</strong></td><td data-l="Source">Standard federal application forms (SF-424 family)</td><td>A typical federal checklist, adjusted for what the notice says, such as adding a match letter when matching funds are required. The official notice has the final list.</td></tr>
         <tr><td><strong>Staff time and score</strong></td><td data-l="Source">Calculated by this tool</td><td>See "How grants are ranked" and "How staff time is estimated" above.</td></tr>
@@ -371,15 +374,23 @@ function fillOffices(type, silent){
 async function loadStatePrograms(){
   const office = S.office;
   if (office === 'all') { $('statePrograms').hidden = true; return; }
-  let list = []; try { list = await (await fetch(`/api/state-programs/${office}`)).json(); } catch(e) {}
+  let data = { programs: [], legislative: [] }; try { data = await (await fetch(`/api/state-programs/${office}`)).json(); } catch(e) {}
   if (S.office !== office) return;
-  $('statePrograms').hidden = !list.length;
-  $('stateBody').innerHTML = `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Deadline</th></tr></thead><tbody>${list.map(m => {
+  const list = data.programs || [], leg = data.legislative || [];
+  $('statePrograms').hidden = !list.length && !leg.length;
+  $('stateBody').innerHTML = !list.length ? '' : `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Deadline</th></tr></thead><tbody>${list.map(m => {
     const d = (m.deadlines || [])[0];
-    return `<tr><td><a href="${esc(m.url)}" target="_blank" rel="noopener"><strong>${esc(m.name)}</strong></a><span class="sub">${esc(m.agency_section || '')}</span></td>
+    const isF = (m.kind || '').startsWith('Private');
+    return `<tr><td><a href="${esc(m.url)}" target="_blank" rel="noopener"><strong>${esc(m.name)}</strong></a> <span class="tag ${isF ? 'good' : 'fair'}">${isF ? 'Private foundation' : 'NC state program'}</span>${isF && !m.page_read ? '<span class="sub">Description from the funder; its website could not be read automatically. Check it for current programs.</span>' : ''}</td>
       <td data-l="Fits goal">${esc(m.matched_goal_title || '')}<span class="sub">Fit ${Math.round(m.fit)} of 100</span></td>
       <td data-l="Deadline">${d ? `${fmtDate(d.date)}<span class="sub">"${esc(d.quote)}"</span>` : '<span class="sub">See program page</span>'}</td></tr>`;
   }).join('')}</tbody></table>`;
+  $('legBody').innerHTML = !leg.length ? '' : `<details style="margin-top:16px"><summary>State budget grants already directed here (${leg.length})</summary>
+    <p class="sub" style="margin-top:8px">Grants the General Assembly wrote into the state budget for named organizations${(S.profiles.find(p => p.agency_id === office) || {}).category === 'county' ? ' in this county' : ''}. There is no application; contact the administering agency. Source: <a href="https://www.osbm.nc.gov/legislative-grants-database" target="_blank" rel="noopener">OSBM Legislative Grants Database</a>.</p>
+    <table><thead><tr><th>Recipient</th><th>Amount</th><th>Administering agency</th><th>Session law</th></tr></thead><tbody>${leg.slice(0, 50).map(r => {
+      const fy = Object.keys(r).find(k => k.startsWith('FY'));
+      return `<tr><td>${esc(r['Organization Receiving Funding'])}<span class="sub">${esc(r['Source of Funds'] || '')}</span></td><td data-l="Amount">${esc(r[fy] || '')}<span class="sub">${esc(fy || '')}</span></td><td data-l="Agency">${esc(r['Administering Agency'] || '')}</td><td data-l="Session law">${esc(r['Session Law'] || '')}</td></tr>`;
+    }).join('')}</tbody></table></details>`;
 }
 
 async function loadPrograms(){

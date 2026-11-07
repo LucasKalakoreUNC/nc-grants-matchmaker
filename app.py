@@ -156,7 +156,11 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             conn = db.connect()
             try:
                 # State agencies run these programs rather than apply to them
-                self._send_json([] if profile.get("category", "state") == "state" else state_programs.for_office(conn, office))
+                is_state = profile.get("category", "state") == "state"
+                self._send_json({
+                    "programs": [] if is_state else state_programs.for_office(conn, office),
+                    "legislative": [] if is_state else state_programs.legislative_for(conn, profile),
+                })
             finally:
                 conn.close()
             return
