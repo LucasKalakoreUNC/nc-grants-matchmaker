@@ -58,3 +58,6 @@ data/plans/*.pdf
 .playwright-cli/
 output/playwright/
 data/subscribers.json
+
+# Local QA output
+output/
