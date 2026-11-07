@@ -15,6 +15,7 @@ from datetime import datetime
 import csv
 import io
 import re
+import hmac
 from html import escape as html_escape
 
 import pipeline
@@ -23,6 +24,7 @@ import notices
 import ai
 import programs
 import state_programs
+import notifications
 
 
 # Fields only the grant panel needs; left out of list responses to keep them
@@ -113,7 +115,7 @@ def build_weekly_digest(conn, office_id, category="all"):
                     if category == "all" or p.get("category", "state") == category]
     if office_id == "all" and category != "all":
         org_name = {"state": "State agencies", "county": "Counties", "municipal": "Cities and towns",
-                    "education": "Universities and colleges", "k12": "School districts", "nonprofit": "Nonprofits",
+                    "education": "Universities and colleges", "nonprofit": "Nonprofits",
                     "tribal": "Tribes", "business": "Businesses"}.get(category, category)
 
     # 1. Grants the department is pursuing
@@ -400,6 +402,20 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
 class MatchmakerHandler(BaseHTTPRequestHandler):
+    def log_request(self, code="-", size="-"):
+        path = urllib.parse.urlparse(self.path).path
+        self.log_message('%s %s %s', self.command, path, str(code))
+
+    def _send_html(self, content, status=200):
+        body = content.encode('utf-8')
+        self.send_response(status)
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        self.send_header('Content-Length', str(len(body)))
+        self.send_header('Cache-Control', 'no-store')
+        self.send_header('Referrer-Policy', 'no-referrer')
+        self.end_headers()
+        self.wfile.write(body)
+
     def end_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
@@ -446,6 +462,37 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
+
+        if path == '/api/notifications/status':
+            self._send_json({'configured': notifications.mail_ready(), 'reminder_days': list(notifications.REMINDER_DAYS),
+                             'weekly_schedule': 'Monday mornings, America/New_York', 'minimum_field_fit': notifications.MIN_FIELD_FIT})
+            return
+
+        if path == '/notifications/confirm':
+            token = urllib.parse.parse_qs(parsed.query).get('token', [''])[0]
+            conn = db.connect()
+            try:
+                account = notifications.confirm(conn, token)
+                conn.commit()
+            finally:
+                conn.close()
+            if not account:
+                self._send_html('<h1>Confirmation link expired</h1><p>Request a new confirmation from the grant finder.</p>', 400)
+                return
+            self._send_html('<!doctype html><html lang="en"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Email confirmed</title>'
+                '<h1>Your grant emails are confirmed</h1><p>Deadline reminders and weekly updates you requested are now active.</p>'
+                '<p><a href="/">Return to NC Grants Matchmaker</a></p><script>'
+                'localStorage.setItem("user_email",' + json.dumps(account['email']) + ');'
+                'localStorage.setItem("notification_token",' + json.dumps(account['token']) + ');</script></html>')
+            return
+
+        if path == '/notifications/unsubscribe':
+            token = urllib.parse.parse_qs(parsed.query).get('token', [''])[0]
+            self._send_html('<!doctype html><html lang="en"><title>Stop grant emails</title><h1>Stop grant emails</h1>'
+                '<p>This stops your deadline reminders and weekly grant updates. Staff decisions stay saved.</p>'
+                '<form method="post" action="/notifications/unsubscribe"><input type="hidden" name="token" value="' + html_escape(token, quote=True) + '">'
+                '<button type="submit">Stop my grant emails</button></form></html>')
+            return
 
         # 1. API: List all profiles with categories (State, County, Education, Business, Municipal)
         if path == "/api/profiles":
@@ -722,7 +769,34 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         try:
             payload = json.loads(body) if body else {}
         except json.JSONDecodeError:
-            payload = {}
+            payload = dict(urllib.parse.parse_qsl(body)) if path == '/notifications/unsubscribe' else {}
+
+        if path in ('/notifications/unsubscribe', '/api/notifications/unsubscribe'):
+            token = payload.get('token') or urllib.parse.parse_qs(parsed.query).get('token', [''])[0]
+            conn = db.connect()
+            try:
+                stopped = notifications.unsubscribe(conn, token)
+                conn.commit()
+            finally:
+                conn.close()
+            if path == '/notifications/unsubscribe':
+                self._send_html('<h1>Grant emails stopped</h1><p>You will no longer receive reminders or weekly updates for this address.</p>' if stopped else '<h1>Invalid unsubscribe link</h1>', 200 if stopped else 400)
+            else:
+                self._send_json({'success': stopped}, 200 if stopped else 400)
+            return
+
+        if path == '/api/notifications/run':
+            token = os.environ.get('ADMIN_TOKEN')
+            if not token or self.headers.get('X-Admin-Token') != token:
+                self._send_json({'error':'Not allowed'}, 403)
+                return
+            conn = db.connect()
+            try:
+                result = notifications.run_once(conn)
+            finally:
+                conn.close()
+            self._send_json(result)
+            return
 
         # 2. Save Staff Decision (§5.6 & §5.0)
         if path.startswith("/api/decisions/"):
@@ -732,7 +806,13 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             if agency_id not in pipeline.load_agency_profiles() or status not in ("Pursue", "Watch", "Pass"):
                 self._send_json({"error": "Unknown organization or status"}, 400)
                 return
+            try:
+                alert_email = notifications.valid_email(payload['alert_email']) if payload.get('alert_email') else None
+            except ValueError as error:
+                self._send_json({'error': str(error)}, 400)
+                return
             conn = db.connect()
+            notification_result = None
             try:
                 row = conn.execute("SELECT number, title FROM opportunities WHERE id=?", (opp_id,)).fetchone()
                 if not row and opp_id.startswith(("st-", "fp-")):
@@ -751,49 +831,41 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     "decided_by": str(payload.get("decided_by", "") or "Grants staff")[:100],
                     "decided_at": datetime.now().isoformat(timespec="seconds"),
                 })
+                if status != 'Pursue':
+                    conn.execute('UPDATE notification_pursuits SET active=0 WHERE office_id=? AND opportunity_id=?', (agency_id, opp_id))
+                elif alert_email and payload.get('alerts_enabled'):
+                    notification_result = notifications.request_subscription(conn, alert_email, agency_id,
+                        pipeline.load_agency_profiles()[agency_id].get('category', 'state'), grant=opp_id,
+                        token=str(payload.get('notification_token') or ''))
+                elif alert_email and payload.get('notification_token'):
+                    account = conn.execute('SELECT manage_token FROM notification_accounts WHERE email=?', (alert_email,)).fetchone()
+                    if account and hmac.compare_digest(account['manage_token'], str(payload['notification_token'])):
+                        conn.execute('UPDATE notification_pursuits SET active=0 WHERE email=? AND office_id=? AND opportunity_id=?', (alert_email, agency_id, opp_id))
                 conn.commit()
             finally:
                 conn.close()
+            if notification_result and notification_result.get("delivery_ready"):
+                flush_notifications_async()
 
-            self._send_json({"success": True, "agency_id": agency_id})
+            self._send_json({"success": True, "agency_id": agency_id, 'notification': notification_result})
             return
 
         # 2b. Weekly Digest Subscription
         if path == "/api/subscribe":
-            email = str(payload.get("email", "")).strip()
-            office_id = str(payload.get("office_id", "deq")).strip()
-            role = str(payload.get("role", "Staff Member")).strip()
-            if not email or "@" not in email:
-                self._send_json({"error": "Valid email address required"}, 400)
-                return
             conn = db.connect()
             try:
-                conn.execute("CREATE TABLE IF NOT EXISTS subscribers (email TEXT, office_id TEXT, role TEXT, subscribed_at TEXT, PRIMARY KEY(email, office_id))")
-                conn.execute("INSERT OR REPLACE INTO subscribers VALUES (?, ?, ?, ?)",
-                             (email, office_id, role, datetime.now().isoformat()))
+                result = notifications.request_subscription(conn, payload.get('email'), str(payload.get('office_id') or 'all'),
+                    str(payload.get('category') or 'all'))
                 conn.commit()
+            except ValueError as error:
+                conn.rollback()
+                self._send_json({'error':str(error)}, 400)
+                return
             finally:
                 conn.close()
-
-            sub_file = os.path.join(DATA_DIR, "subscribers.json")
-            try:
-                subs = []
-                if os.path.exists(sub_file):
-                    with open(sub_file, "r", encoding="utf-8") as f:
-                        subs = json.load(f)
-                subs = [s for s in subs if not (s.get("email") == email and s.get("office_id") == office_id)]
-                subs.append({"email": email, "office_id": office_id, "role": role, "subscribed_at": datetime.now().isoformat()})
-                with open(sub_file, "w", encoding="utf-8") as f:
-                    json.dump(subs, f, indent=2)
-            except Exception:
-                pass
-
-            self._send_json({
-                "success": True,
-                "message": "Email preferences saved. Automatic delivery is not started by saving an address.",
-                "email": email,
-                "office_id": office_id
-            })
+            if result.get("delivery_ready"):
+                flush_notifications_async()
+            self._send_json({'success':True, **result})
             return
 
         # 2c. Send / Dispatch Weekly Digest
@@ -908,6 +980,46 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
         self.send_error(404, "Not Found")
 
+def flush_notifications_async():
+    """Send newly queued confirmation emails immediately without waiting for the 60s timer."""
+    if not notifications.mail_ready():
+        return
+    import threading
+
+    def send_now():
+        conn = None
+        try:
+            conn = db.connect()
+            notifications.run_once(conn)
+        except Exception:
+            print('[WARN] Immediate grant email check failed; it will be retried.')
+        finally:
+            if conn is not None:
+                conn.close()
+
+    threading.Thread(target=send_now, daemon=True).start()
+
+
+def start_notification_timer():
+    """Hourly external wake-ups provide a fallback when App Service is idle."""
+    import threading, time
+
+    def loop():
+        while True:
+            conn = None
+            try:
+                conn = db.connect()
+                notifications.run_once(conn)
+            except Exception:
+                print('[WARN] Grant email check failed; it will be retried.')
+            finally:
+                if conn is not None:
+                    conn.close()
+            time.sleep(60)
+
+    threading.Thread(target=loop, daemon=True).start()
+
+
 def start_refresh_timer():
     """If REFRESH_HOURS is set, run the pipeline in the background on that interval.
 
@@ -932,6 +1044,7 @@ def start_refresh_timer():
 
 def run_server():
     start_refresh_timer()
+    start_notification_timer()
     try:
         print(f"Requirement files loaded: {notices.load_requirements_dir(notices.connect())}")
     except Exception as e:
