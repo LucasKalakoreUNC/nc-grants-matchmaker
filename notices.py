@@ -444,11 +444,51 @@ def load_requirements_dir(conn):
     return n
 
 
+BOILERPLATE_MARKERS = ("Detailed budget breakdown and justification explaining all direct costs",
+                       "Standard federal grant application cover form submitted through Grants.gov")
+_STOP = set("the and for with from that this must your will each all any are not into than more such per".split())
+
+
+def _check_item(text_low, *fields):
+    """True if an item's specific numbers and main words appear in the notice text."""
+    blob = " ".join(f for f in fields if f)
+    nums = set(re.findall(r"\$?\d[\d,]*(?:\.\d+)?%?", blob))
+    nums = {n for n in nums if len(n.strip("$%,")) and n not in ("1", "2", "3")}
+    for n in nums:
+        bare = n.replace("$", "").replace(",", "")
+        if n.lower() not in text_low and bare not in text_low.replace(",", ""):
+            return False
+    words = [w for w in re.findall(r"[a-z]{4,}", (fields[0] or "").lower()) if w not in _STOP]
+    if words and sum(w in text_low for w in words) < max(1, len(words) // 2):
+        return False
+    return True
+
+
+def verify_requirements(conn, opp_id, data):
+    """Mark each item as found / not found in the stored notice text.
+    Returns None if the file is a generic template or the grant has no notice text."""
+    text = notice_text(conn, opp_id).lower()
+    docs = data.get("required_documents") or []
+    if not text.strip() or any(m in (x.get("details") or "") for x in docs for m in BOILERPLATE_MARKERS):
+        return None
+    for x in docs:
+        x["verified"] = _check_item(text, x.get("name"), x.get("details"))
+    for x in data.get("deadlines") or []:
+        x["verified"] = _check_item(text, x.get("what"), x.get("when"))
+    for x in data.get("review_criteria") or []:
+        x["verified"] = _check_item(text, x.get("criterion"), x.get("weight"))
+    data["verified_count"] = sum(1 for x in docs if x.get("verified"))
+    data["item_count"] = len(docs)
+    return data
+
+
 def requirements_for(conn, opp_id):
     row = conn.execute("SELECT * FROM notice_requirements WHERE opportunity_id=?", (opp_id,)).fetchone()
     if not row or not row["data"]:
         return None
-    out = json.loads(row["data"])
+    out = verify_requirements(conn, opp_id, json.loads(row["data"]))
+    if out is None:
+        return None
     out["read_by"] = row["model"]
     out["read_at"] = row["extracted_at"]
     out["out_of_date"] = row["source_hash"] != text_hash(conn, opp_id)
