@@ -10,7 +10,7 @@ from urllib.request import Request, urlopen
 def az(*arguments):
     result = subprocess.run(['az', *arguments, '--output', 'json', '--only-show-errors'],
                             check=True, capture_output=True, text=True)
-    return json.loads(result.stdout)
+    return json.loads(result.stdout) if result.stdout.strip() else None
 
 
 def main():
