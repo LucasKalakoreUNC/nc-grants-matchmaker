@@ -1,0 +1,112 @@
+{
+  "opportunity_id": "363929",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:25",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Application Form Package",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal application cover component with applicant organization UEI, contact information, and authorized representative signature.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract & Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Project abstract (max 30 lines) summarizing proposed aims and methodology, plus two to three sentences describing public health relevance.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Senior/Key Person Profiles and Biosketches",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for PD/PI and all senior/key personnel (max 5 pages each). eRA Commons username must be entered in the Credential field.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "R&R Budget and Itemized Budget Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed line-item budget covering direct costs, allowable indirect costs, personnel effort, and budget narrative justification.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Specific Aims & Research Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One page of Specific Aims and structured Research Strategy covering Significance, Innovation, and Approach adhering strictly to published page limits.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Facilities & Other Resources and Equipment",
+      "category": "Attachments",
+      "required": true,
+      "details": "Documentation of laboratory facilities, core equipment, administrative space, and collaborative resources supporting the project.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Letters of Support and Institutional Commitment",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from key scientific collaborators, advisory committee members, core facilities, or leadership guaranteeing institutional support.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "SAM.gov UEI and eRA Commons Registrations",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and valid eRA Commons credentials for the organization and lead investigators.",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2026-12-01",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf p. 13"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Cost sharing requirements not explicitly mandated in notice.",
+    "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf p. 14"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section V.1"
+    },
+    {
+      "criterion": "Investigator(s)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section V.1"
+    },
+    {
+      "criterion": "Innovation",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section V.1"
+    },
+    {
+      "criterion": "Approach",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section V.1"
+    },
+    {
+      "criterion": "Environment",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "Foa_Content_of_NOAA-NMFS-PRPO-2026-31863.pdf Section V.1"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: 2026-12-01.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}
