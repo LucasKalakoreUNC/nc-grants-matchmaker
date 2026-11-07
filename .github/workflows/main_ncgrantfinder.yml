@@ -73,4 +73,7 @@ jobs:
         with:
           app-name: 'ncgrantfinder'
           slot-name: 'Production'
+          # The app is a plain Python server (not Flask/Django), so tell App Service how to start it.
+          # start.sh unpacks the database snapshot into /home/data on first run and starts app.py on $PORT.
+          startup-command: 'sh start.sh'
           

@@ -104,7 +104,21 @@ snapshot (`data/seed/matchmaker.db.gz`, ~21 MB) that is unpacked on first
 start so the site has data immediately. The container then refreshes the data
 every `REFRESH_HOURS` hours (default 24).
 
-**Azure Container Apps (recommended)**
+**Azure App Service (how this repository deploys today)**
+
+Every push to `main` runs `.github/workflows/main_ncgrantfinder.yml`, which
+deploys the code to the `ncgrantfinder` Web App (Python 3.11) with the start
+command `sh start.sh`. On first start, `start.sh` unpacks the database
+snapshot into `/home/data/matchmaker.db` (App Service keeps `/home` across
+restarts and deploys, so staff decisions survive), then starts `app.py`,
+which refreshes the data every 24 hours.
+
+If the app does not start, check in the Azure portal that **Configuration >
+General settings > Startup Command** is `sh start.sh`, and that the stack is
+Python 3.11 or newer. Optional app settings: `REFRESH_HOURS` (default 24) and
+`ANTHROPIC_API_KEY` (only for `ai.py`).
+
+**Azure Container Apps (alternative, uses the Dockerfile)**
 
 ```bash
 # from the repository root
