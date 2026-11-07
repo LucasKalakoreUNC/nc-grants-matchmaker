@@ -48,8 +48,37 @@ def client():
     return anthropic.Anthropic()
 
 
+def provider():
+    """Which AI service is configured: Azure OpenAI first, then Anthropic, else None."""
+    if os.environ.get("AZURE_OPENAI_ENDPOINT") and os.environ.get("AZURE_OPENAI_API_KEY") and os.environ.get("AZURE_OPENAI_DEPLOYMENT"):
+        return "azure-openai"
+    if os.environ.get("ANTHROPIC_API_KEY"):
+        return "anthropic"
+    return None
+
+
+def _ask_azure(system, user, schema, max_tokens):
+    from openai import AzureOpenAI
+    c = AzureOpenAI(azure_endpoint=os.environ["AZURE_OPENAI_ENDPOINT"], api_key=os.environ["AZURE_OPENAI_API_KEY"],
+                    api_version=os.environ.get("AZURE_OPENAI_API_VERSION", "2024-10-21"), timeout=120)
+    r = c.chat.completions.create(
+        model=os.environ["AZURE_OPENAI_DEPLOYMENT"],
+        messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+        response_format={"type": "json_schema", "json_schema": {"name": "result", "schema": schema, "strict": True}},
+        max_completion_tokens=max_tokens,
+    )
+    choice = r.choices[0]
+    if choice.finish_reason == "length":
+        raise RuntimeError("The answer was cut off")
+    if getattr(choice.message, "refusal", None):
+        raise RuntimeError("The model declined this request")
+    return json.loads(choice.message.content)
+
+
 def ask(system, user, schema, max_tokens=16000):
     """One structured request. Returns the parsed JSON, or raises with the reason."""
+    if provider() == "azure-openai":
+        return _ask_azure(system, user, schema, min(max_tokens, 16000))
     with client().messages.stream(
         model=MODEL,
         max_tokens=max_tokens,
@@ -224,6 +253,96 @@ def review_for(org_id, grant_id):
         return None
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+
+
+# ---------------------------------------------------------------- application drafts
+
+DRAFT_SCHEMA = {
+    "type": "object", "additionalProperties": False,
+    "required": ["sections", "fill_in"],
+    "properties": {
+        "sections": {"type": "array", "items": {
+            "type": "object", "additionalProperties": False, "required": ["heading", "guidance", "draft"],
+            "properties": {
+                "heading": {"type": "string", "description": "Section name as the notice calls it, or a standard name."},
+                "guidance": {"type": "string", "description": "Page limit, what reviewers score, and the notice page, if known; else ''."},
+                "draft": {"type": "string", "description": "First-draft text. Unknown facts as [bracketed blanks]."},
+            }}},
+        "fill_in": {"type": "array", "items": {"type": "string"}, "description": "Every [blank] the team must fill in."},
+    },
+}
+
+DRAFT_SYSTEM = """You write first drafts of grant application sections for a North Carolina public organization.
+Rules:
+- Draft only the written sections (abstract or summary, statement of need, goals and objectives, project description or approach, evaluation plan, sustainability, budget justification outline). Never draft standard forms, registrations, audits, resumes, letters, or documents the organization must already have.
+- When the notice's required sections and page limits are given, use its headings in its order, and put the page limit and scoring weight in "guidance".
+- Use only facts provided. Never invent numbers, names, dates, partners, past results or local statistics: write a [bracketed blank] such as [number of residents served] instead, and list every blank in fill_in.
+- Tie the need and objectives to the organization's strategic-plan goal, citing it by name.
+- Plain, confident language. Short paragraphs. No marketing tone."""
+
+DRAFTS_SQL = """CREATE TABLE IF NOT EXISTS app_drafts (
+    office_id TEXT NOT NULL, item_id TEXT NOT NULL, input_hash TEXT NOT NULL,
+    data TEXT NOT NULL, model TEXT, created_at TEXT NOT NULL,
+    PRIMARY KEY (office_id, item_id))"""
+
+
+def draft_inputs(conn, office_id, item_id):
+    """Everything the draft is based on (all from stored, sourced data)."""
+    import pipeline
+    profile = pipeline.load_agency_profiles().get(office_id)
+    if not profile:
+        raise ValueError("Unknown organization")
+    grant = next((g for g in db.scored_for_office(conn, office_id) if g["id"] == item_id), None)
+    if not grant:
+        raise ValueError("Unknown grant")
+    req = notices.requirements_for(conn, item_id) or {}
+    goal = next((g for g in profile["goals"] if g.get("title") == grant.get("matched_goal_title")), profile["goals"][0])
+    return {
+        "organization": profile["name"], "category": profile.get("category"),
+        "goal": {"title": goal["title"], "citation": goal.get("citation"), "objectives": goal.get("objectives", [])[:4]},
+        "grant": {"title": grant["title"], "number": grant.get("number"), "agency": grant.get("agency"),
+                  "description": (grant.get("description") or "")[:3000], "award_ceiling": grant.get("award_ceiling"),
+                  "deadline": grant.get("close_date"), "fit_evidence": [e["text"] for e in grant.get("fit_evidence", [])][:3]},
+        "notice": {
+            "sections": [{"name": d["name"], "details": d.get("details"), "source": d.get("source")}
+                         for d in req.get("required_documents", []) if d.get("verified") is not False
+                         and d.get("category") in ("Project narrative", "Budget", "Other")],
+            "review_criteria": [{"criterion": c["criterion"], "weight": c.get("weight"), "source": c.get("source")}
+                                for c in req.get("review_criteria", []) if c.get("verified") is not False],
+            "funded_activities": [a.get("activity") for a in req.get("funded_activities", [])],
+        },
+    }
+
+
+_RECENT = []  # timestamps of new drafts written by this server process
+
+
+def get_or_create_draft(conn, office_id, item_id):
+    """Cached draft for this organization and grant; written once, redone only if its inputs change."""
+    conn.execute(DRAFTS_SQL)
+    inputs = draft_inputs(conn, office_id, item_id)
+    h = hashlib.sha256(json.dumps(inputs, sort_keys=True, default=str).encode()).hexdigest()[:16]
+    row = conn.execute("SELECT * FROM app_drafts WHERE office_id=? AND item_id=?", (office_id, item_id)).fetchone()
+    if row and row["input_hash"] == h:
+        out = json.loads(row["data"]); out.update(cached=True, created_at=row["created_at"], model=row["model"])
+        return out
+    if not provider():
+        raise RuntimeError("AI drafting is not configured")
+    # Cost guard for a public site: limit how many NEW drafts are written per hour (saved ones are free).
+    import time
+    now = time.time()
+    _RECENT[:] = [t for t in _RECENT if now - t < 3600]
+    if len(_RECENT) >= int(os.environ.get("AI_DRAFTS_PER_HOUR", "30")):
+        raise ValueError("The hourly limit for new drafts has been reached. Please try again later.")
+    _RECENT.append(now)
+    result = ask(DRAFT_SYSTEM, "Write the draft from these facts (JSON):\n" + json.dumps(inputs, default=str, indent=1),
+                 DRAFT_SCHEMA, max_tokens=8000)
+    model = os.environ.get("AZURE_OPENAI_DEPLOYMENT") if provider() == "azure-openai" else MODEL
+    conn.execute("INSERT OR REPLACE INTO app_drafts VALUES (?, ?, ?, ?, ?, ?)",
+                 (office_id, item_id, h, json.dumps(result), model, db.now()))
+    conn.commit()
+    result.update(cached=False, created_at=db.now(), model=model)
+    return result
 
 
 def main():

@@ -556,6 +556,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 conn.close()
             return
 
+        if path == "/api/ai/status":
+            self._send_json({"drafting": bool(ai.provider()), "provider": ai.provider()})
+            return
+
         if path.startswith("/api/state-programs/"):
             office = path.rsplit("/", 1)[-1]
             profile = pipeline.load_agency_profiles().get(office, {})
@@ -929,6 +933,23 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         # 3. Trigger Ingestion / Refresh Pipeline on Demand (§5.7)
+        if path.startswith("/api/draft/"):
+            parts = path.split("/")
+            if len(parts) != 5:
+                self._send_json({"error": "Use /api/draft/<organization>/<grant>"}, 400)
+                return
+            conn = db.connect()
+            try:
+                self._send_json(ai.get_or_create_draft(conn, parts[3], parts[4][:40]))
+            except ValueError as e:
+                self._send_json({"error": str(e)}, 400)
+            except Exception as e:
+                print(f"[WARN] Draft failed: {type(e).__name__}")
+                self._send_json({"error": "The draft could not be written right now. Try again in a minute."}, 503)
+            finally:
+                conn.close()
+            return
+
         # Heavy maintenance endpoints are not used by the page; on a public site they need ADMIN_TOKEN
         if path in ("/api/pipeline/run",) or path.startswith("/api/rescore/"):
             token = os.environ.get("ADMIN_TOKEN")

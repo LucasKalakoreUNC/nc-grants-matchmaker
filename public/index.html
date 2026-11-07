@@ -146,6 +146,7 @@
       <select id="office" onchange="changeOffice(this.value)"></select>
     </div>
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
+    <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
     <button id="digestQuickBtn" class="btn outline" onclick="showTab('digest')">✉️ Weekly briefing</button>
   </div>
 
@@ -380,6 +381,7 @@ function toast(m){ const t = $('toast'); t.textContent = m; t.style.display = 'b
 
 async function init(){
   S.profiles = await (await fetch('/api/profiles')).json();
+  fetch('/api/ai/status').then(r => r.json()).then(r => S.ai = r.drafting).catch(() => {});
   // Default to "All types" / "All organizations"; remember the last choice on this computer.
   $('otype').value = GROUPS[store.get('otype')] ? store.get('otype') : 'all';
   fillOffices($('otype').value, true);
@@ -420,12 +422,13 @@ function fillOffices(type, silent){
 
 async function showPlanInfo(id){
   const box = $('planInfo');
-  if (id === 'all') { box.hidden = true; return; }
-  let p; try { p = await (await fetch(`/api/profiles/${id}`)).json(); } catch(e) { box.hidden = true; return; }
+  box.hidden = true; $('planBtn').hidden = true; $('planBtn').setAttribute('aria-expanded', 'false');
+  if (id === 'all') return;
+  let p; try { p = await (await fetch(`/api/profiles/${id}`)).json(); } catch(e) { return; }
   if (S.office !== id) return;
   if (p.profile_status === 'general') {
     box.innerHTML = `<p><strong>General profile.</strong> ${esc(p.source_citation)} Use it if your organization doesn't have its own profile yet.</p><details><summary>${(p.goals || []).length} goals used for matching</summary><ol>${(p.goals || []).map(g => `<li>${esc(g.title)}</li>`).join('')}</ol></details>`;
-    box.hidden = false; return;
+    $('planBtn').hidden = false; return;
   }
   const official = p.profile_status !== 'draft';
   const link = p.source_url ? `<a href="${esc(p.source_url)}" target="_blank" rel="noopener">${official ? 'Open the strategic plan' : esc(p.plan_title || 'Their published plan')}</a>` : '';
@@ -435,7 +438,7 @@ async function showPlanInfo(id){
        <p>${link ? `Published plan to use next: ${link}` : 'No published strategic plan found yet.'}</p>`;
   box.innerHTML += `
 <details><summary>${(p.goals || []).length} goals used for matching</summary><ol>${(p.goals || []).map(g => `<li>${esc(g.title)}</li>`).join('')}</ol></details>`;
-  box.hidden = false;
+  $('planBtn').hidden = false;
 }
 
 async function changeOffice(id){
@@ -682,6 +685,8 @@ async function openDetail(id){
 
     <section style="margin-top:28px">
       <h3>${i.best_office_name ? `Why this fits ${esc(i.best_office_name)}` : 'Why this fits your organization'}</h3>
+      ${S.ai ? `<div id="draftBox" style="margin:0 0 16px"><button class="btn outline small" onclick="loadDraft('${esc(i.best_office_id || S.office)}', '${esc(i.id)}')">Draft application sections</button>
+        <span class="sub" style="display:inline;margin-left:8px">First drafts of the written parts (abstract, need, objectives, approach). Takes about 30 seconds the first time.</span></div>` : ''}
       ${src.review ? `<div class="alert${src.review.real_fit ? '' : ' warn'}" style="margin-bottom:12px"><strong>${src.review.real_fit ? 'How you could use it' : 'Probably not a real fit'}:</strong> ${esc(src.review.how_to_use)}${src.review.concerns ? `<br><span class="sub">Check: ${esc(src.review.concerns)}</span>` : ''}<span class="sub">Reviewed by AI on ${new Date(src.review.reviewed_at).toLocaleDateString()} (${esc(src.review.confidence)} confidence). Read the notice to confirm.</span></div>` : ''}
       <p>${esc(clean(i.reason))}</p>
       ${(i.shared_words || []).length && (i.score_breakdown?.similarity || 0) >= 40 ? `<p class="sub" style="margin:0 0 8px">Words the grant shares with this goal: ${i.shared_words.map(esc).join(', ')}</p>` : ''}
@@ -778,6 +783,28 @@ function openProgram(key){
     <p><a class="btn" href="${esc(i.url)}" target="_blank" rel="noopener">Open the official program page</a></p>`;
   $('detail').classList.add('open');
   document.querySelector('.panel').scrollTop = 0;
+}
+async function loadDraft(org, id){
+  const box = $('draftBox'); if (!box) return;
+  box.innerHTML = '<p class="sub">Writing drafts from your strategic plan and the funding notice. This can take about 30 seconds...</p>';
+  let d;
+  try { const r = await fetch(`/api/draft/${encodeURIComponent(org)}/${encodeURIComponent(id)}`, { method: 'POST' }); d = await r.json(); if (!r.ok) throw new Error(d.error); }
+  catch(e) { box.innerHTML = `<div class="alert warn" style="margin:0">${esc(e.message || 'The draft could not be written right now.')}</div>`; return; }
+  S.draft = d;
+  box.innerHTML = `<div class="alert" style="margin:0 0 12px"><strong>AI first draft. Review and edit before submitting.</strong> Anything in [brackets] is a fact only your team can supply. ${d.cached ? 'Saved draft from ' + new Date(d.created_at).toLocaleDateString() + '.' : ''}</div>
+    ${(d.sections || []).map((x, n) => `<section style="margin-bottom:20px"><h3>${esc(x.heading)}</h3>${x.guidance ? `<p class="sub">${esc(x.guidance)}</p>` : ''}
+      <p style="white-space:pre-wrap">${esc(x.draft)}</p><button class="linkbtn" onclick="copyDraft(${n})">Copy this section</button></section>`).join('')}
+    ${(d.fill_in || []).length ? `<details><summary>Things your team needs to fill in (${d.fill_in.length})</summary><ul>${d.fill_in.map(f => `<li>${esc(f)}</li>`).join('')}</ul></details>` : ''}
+    <p style="margin-top:12px"><button class="btn small" onclick="downloadDraft()">Download as Word document</button></p>`;
+}
+function copyDraft(n){ const x = S.draft.sections[n]; navigator.clipboard.writeText(x.heading + '\n\n' + x.draft).then(() => toast('Copied')); }
+function downloadDraft(){
+  const d = S.draft, title = $('dTitle').textContent;
+  const body = `<h1>${esc(title)}</h1><p><i>AI first draft. Review and edit before submitting. Fill in every [bracketed] item.</i></p>` +
+    d.sections.map(x => `<h2>${esc(x.heading)}</h2>${x.guidance ? `<p><i>${esc(x.guidance)}</i></p>` : ''}<p>${esc(x.draft).replace(/\n/g, '<br>')}</p>`).join('') +
+    ((d.fill_in || []).length ? `<h2>To fill in</h2><ul>${d.fill_in.map(f => `<li>${esc(f)}</li>`).join('')}</ul>` : '');
+  const blob = new Blob(['<html><head><meta charset="utf-8"></head><body style="font-family:Calibri,Arial">' + body + '</body></html>'], { type: 'application/msword' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Draft - ' + title.slice(0, 60).replace(/[^\w\s-]/g, '') + '.doc'; a.click();
 }
 function closeDetail(){ $('detail').classList.remove('open'); }
 function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); if ($('reminderOptions')) $('reminderOptions').hidden = st !== 'Pursue'; }
