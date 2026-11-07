@@ -1,0 +1,41 @@
+{
+  "opportunity_id": "358828",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:21",
+  "required_documents": [
+    {
+      "name": "Application Package and Standard Forms",
+      "category": "Standard forms",
+      "required": true,
+      "details": "The downloaded notice package for PAR-25-333 contains only placeholder content. Refer to Grants.gov synopsis or contact agency for full instructions.",
+      "source": "PAR-25-333-Full-Announcement.html"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2028-05-07",
+      "source": "PAR-25-333-Full-Announcement.html"
+    }
+  ],
+  "eligibility": {
+    "summary": "Refer to Grants.gov opportunity PAR-25-333 and agency announcement for detailed applicant eligibility guidelines.",
+    "source": "PAR-25-333-Full-Announcement.html"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Not stated in downloaded notice text.",
+    "source": "PAR-25-333-Full-Announcement.html"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "not stated",
+      "source": "PAR-25-333-Full-Announcement.html"
+    }
+  ],
+  "submission_limits": "not stated",
+  "important_notes": [
+    "The downloaded notice file contained only placeholder text (117 chars). Confirm all requirements directly on Grants.gov before preparing submission."
+  ]
+}
