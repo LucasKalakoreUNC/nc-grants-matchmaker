@@ -222,7 +222,7 @@ def table_programs(raw, base_url):
     return out
 
 
-NEWS_RE = re.compile(r"^\d|^(view|learn|see|click|apply|read|find|browse|visit)\b|\b(receive[sd]?|awarded|announce[sd]?|awards? (\$|grants to)|press release|news)\b|\bresources$", re.I)
+NEWS_RE = re.compile(r"^\d|^(view|learn|see|click|apply|read|find|browse|visit|download|submit|register|sign up)\b|\b(receive[sd]?|awarded|announce[sd]?|awards? (\$|grants to)|press release|news)\b|\bresources$", re.I)
 
 
 def norm_name(name):
@@ -230,7 +230,7 @@ def norm_name(name):
     n = re.sub(r"\([^)]*\)", "", name.lower().replace("&", " and "))
     n = n.split(":")[-1]
     n = re.sub(r"\b(the|and|nc|north carolina|grants?|programs?|funds?|opportunit(y|ies))\b", " ", n)
-    return re.sub(r"[^a-z0-9]+", " ", n).strip()
+    return " ".join(sorted(set(re.sub(r"[^a-z0-9]+", " ", n).split())))  # word order doesn't matter
 
 
 def find_deadlines(text):
