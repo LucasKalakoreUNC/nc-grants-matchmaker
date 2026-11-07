@@ -153,7 +153,9 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             conn = db.connect()
             try:
                 if path == "/api/scored/all":
-                    items = db.scored_best(conn, ids)
+                    # Each organization's own top matches, grouped by organization in the page
+                    per = int(urllib.parse.parse_qs(parsed.query).get("per", ["25"])[0])
+                    items = db.top_per_office(conn, ids, per=per)
                     for it in items:
                         it["best_office_name"] = profiles.get(it["best_office_id"], {}).get("name", "")
                     self._send_json(slim(items))

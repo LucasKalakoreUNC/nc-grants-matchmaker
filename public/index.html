@@ -62,6 +62,7 @@
   .tag.strong { background: var(--green-bg); color: #19591e; } .tag.good { background: var(--blue-light); color: var(--blue-dark); } .tag.fair { background: var(--bg-alt); color: var(--muted); }
   .tag.Pursue { background: var(--green); color: #fff; } .tag.Watch { background: var(--gold); color: var(--ink); } .tag.Pass { background: #71767a; color: #fff; } .tag.new { background: #fff; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
   .soon { color: var(--red); font-weight: 700; }
+  tr.group td { background: var(--blue-light); padding: 10px; border-bottom: 2px solid var(--blue); }
   .empty { padding: 32px; text-align: center; color: var(--muted); border: 1px dashed var(--line); }
   .pager { display: flex; justify-content: center; margin-top: 16px; }
   .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: none; z-index: 20; }
@@ -288,7 +289,9 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 const clean = s => String(s ?? '').replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '').replace(/\s{2,}/g,' ').trim();
 const money = n => n ? '$' + (n >= 1e6 ? (+(n/1e6).toFixed(1)) + ' million' : Number(n).toLocaleString()) : 'Not listed';
 const fmtDate = d => d ? new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not listed';
-const STRONG = 70, GOOD = 55;
+const STRONG = 70, GOOD = 55, PER_ORG = 3;
+const uniq = items => [...new Map(items.map(i => [i.id, i])).values()];
+function pickOffice(id){ const p = S.profiles.find(x => x.agency_id === id); if (!p) return; $('otype').value = p.category || 'state'; fillOffices($('otype').value, true); $('office').value = id; changeOffice(id); window.scrollTo(0, 0); }
 // Award amount with a short qualifier saying what kind of number it is
 const awardCell = i => i.award_ceiling ? money(i.award_ceiling)
   : i.award_estimate ? `About ${money(i.award_estimate)}<span class="sub">each (estimated)</span>`
@@ -310,7 +313,7 @@ const opensHtml = i => i.status !== 'forecasted' ? '<strong>Open now</strong>'
 const realDue = i => i.expected_due_date && !(i.expected_open_date && i.expected_due_date <= i.expected_open_date);
 const deadlineHtml = (i, br) => i.status === 'forecasted'
   ? (realDue(i) ? `Expected${br ? '<br>' : ' '}<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_due_date)}</span>`
-     : i.expected_due_date ? 'Not announced yet<span class="sub">Grants.gov lists the same date as the opening</span>' : 'Not announced yet')
+     : 'Not posted yet')
   : i.days_to_close == null ? 'No deadline listed'
   : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
 const fit = s => s >= STRONG ? ['strong','Strong match'] : s >= GOOD ? ['good','Good match'] : ['fair','Possible match'];
@@ -322,7 +325,10 @@ const PARTS = [
   ['effort', 'Effort to apply', 'Fewer estimated staff hours score higher.'],
   ['affinity', 'Familiar funder', 'Whether the funder is one your organization usually works with.'],
 ];
-const statusTag = id => { const d = S.decisions[id]; return d ? `<span class="tag ${d.status}">${d.status}</span>` : '<span class="tag new">Not decided</span>'; };
+// In the all-organizations view a grant can appear under several organizations,
+// each with its own decision, so items and decisions are keyed by organization + grant.
+const keyOf = i => S.office === 'all' ? `${i.best_office_id}|${i.id}` : String(i.id);
+const statusTag = i => { const d = S.decisions[keyOf(i)]; return d ? `<span class="tag ${d.status}">${d.status}</span>` : '<span class="tag new">Not decided</span>'; };
 function toast(m){ const t = $('toast'); t.textContent = m; t.style.display = 'block'; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = 'none', 2500); }
 
 async function init(){
@@ -374,7 +380,7 @@ async function changeOffice(id){
     fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => r.json()),
     fetch(all ? `/api/decisions/all?category=${cat}` : `/api/decisions/${id}`).then(r => r.json())]);
   S.items = items.filter(i => i.status === 'forecasted' || (i.days_to_close ?? 0) >= 0).sort((a,b) => b.total_score - a.total_score);
-  S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[String(d.opportunity_id)] = d; });
+  S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[all ? `${d.office_id}|${d.opportunity_id}` : String(d.opportunity_id)] = d; });
   render(); renderTracked();
 }
 
@@ -389,7 +395,7 @@ function quick(kind){
 function filtered(){
   const q = $('q').value.toLowerCase().trim(), show = $('fShow').value, f = $('fFit').value, due = $('fDue').value;
   return S.items.filter(i => {
-    const decided = !!S.decisions[i.id];
+    const decided = !!S.decisions[keyOf(i)];
     if (show === 'todo' && decided) return false;
     if (show === 'decided' && !decided) return false;
     if (f === 'strong' && i.total_score < STRONG) return false;
@@ -407,22 +413,37 @@ function filtered(){
 
 function render(){
   const list = filtered();
-  $('nTodo').textContent = S.items.filter(i => i.total_score >= STRONG && !S.decisions[i.id]).length;
-  $('nSoon').textContent = S.items.filter(i => i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[i.id]).length;
+  $('nTodo').textContent = uniq(S.items.filter(i => i.total_score >= STRONG && !S.decisions[keyOf(i)])).length;
+  $('nSoon').textContent = uniq(S.items.filter(i => i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[keyOf(i)])).length;
   $('nPursue').textContent = Object.values(S.decisions).filter(d => d.status === 'Pursue').length;
   $('count').textContent = `${list.length} grant${list.length === 1 ? '' : 's'} found, best matches first.`;
-  $('rows').innerHTML = list.slice(0, limit).map(i => {
+  const row = i => {
     const [cls, lbl] = fit(i.total_score);
-    const deadline = deadlineHtml(i);
     return `<tr>
-      <td><button class="t" onclick="openDetail('${esc(i.id)}')">${esc(clean(i.title))}</button><span class="sub">${esc(i.agency)}</span>${i.best_office_name ? `<span class="sub">Best fit: ${esc(i.best_office_name)}</span>` : ''}</td>
+      <td><button class="t" onclick="openDetail('${esc(keyOf(i))}')">${esc(clean(i.title))}</button><span class="sub">${esc(i.agency)}</span></td>
       <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
       <td data-l="Award up to">${awardCell(i)}${typicalLine(i)}</td>
       <td data-l="Staff time">About ${i.est_completion_hours} hrs<span class="sub">${i.complexity_tier || ''}</span></td>
       <td data-l="Opens">${opensHtml(i)}</td>
-      <td data-l="Deadline">${deadline}</td>
-      <td data-l="Status">${statusTag(i.id)}</td></tr>`;
-  }).join('');
+      <td data-l="Deadline">${deadlineHtml(i)}</td>
+      <td data-l="Status">${statusTag(i)}</td></tr>`;
+  };
+  if (S.office === 'all') {
+    // Top matches for each organization, grouped under its name
+    const groups = {};
+    list.forEach(i => (groups[i.best_office_id] = groups[i.best_office_id] || []).push(i));
+    const orgs = S.profiles.filter(p => groups[p.agency_id]).sort((a, b) => a.name.localeCompare(b.name));
+    $('rows').innerHTML = orgs.map(p => {
+      const g = groups[p.agency_id];
+      return `<tr class="group"><td colspan="7"><strong>${esc(p.name)}</strong> &middot; <button class="linkbtn" onclick="pickOffice('${p.agency_id}')">See all for this organization</button></td></tr>`
+        + g.slice(0, PER_ORG).map(row).join('');
+    }).join('');
+    $('count').textContent = `Top ${PER_ORG} matches for each of ${orgs.length} organizations. Choose an organization to see all of its grants.`;
+    $('empty').hidden = list.length > 0;
+    $('more').hidden = true;
+    return;
+  }
+  $('rows').innerHTML = list.slice(0, limit).map(row).join('');
   $('empty').hidden = list.length > 0;
   $('more').hidden = list.length <= limit;
 }
@@ -490,13 +511,13 @@ function docsList(rd){
 function saveDoc(n, on){ const k = `docs:${S.office}:${currentId}`; let s = []; try { s = JSON.parse(store.get(k) || '[]'); } catch(e) {} s = on ? [...new Set([...s, n])] : s.filter(x => x !== n); store.set(k, JSON.stringify(s)); }
 
 async function openDetail(id){
-  const i = S.items.find(x => x.id === id); if (!i) return;
-  currentId = id;
+  const i = S.items.find(x => keyOf(x) === id) || S.items.find(x => x.id === id); if (!i) return;
+  currentId = id = keyOf(i);
   // The list holds only summary fields; load the full record and sources for this grant.
   const src = await fetchSources(i);
   if (currentId !== id) return;
   if (src.detail) Object.assign(i, src.detail);
-  const d = S.decisions[id]; choice = d?.status || null;
+  const d = S.decisions[keyOf(i)]; choice = d?.status || null;
   const [cls, lbl] = fit(i.total_score);
   $('dTitle').textContent = clean(i.title);
   $('dSub').textContent = `${i.agency} | ${i.number}`;
@@ -601,7 +622,7 @@ async function saveDecision(){
     const r = await fetch(`/api/decisions/${org}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     if (!r.ok) throw new Error();
   } catch(e) { toast('Could not save. Please try again.'); return; }
-  S.decisions[i.id] = { ...body, decided_at: new Date().toISOString() };
+  S.decisions[S.office === 'all' ? `${org}|${i.id}` : String(i.id)] = { ...body, decided_at: new Date().toISOString() };
   render(); renderTracked(); closeDetail(); toast(`Saved: ${choice}`);
 }
 

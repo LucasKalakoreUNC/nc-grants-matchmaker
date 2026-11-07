@@ -326,6 +326,29 @@ def get_decisions(conn, office_id):
         for r in rows]}
 
 
+def top_per_office(conn, office_ids, per=5, min_score=0):
+    """Each organization's own top-scoring open grants (a grant can appear under several)."""
+    if not office_ids:
+        return []
+    marks = ",".join("?" * len(office_ids))
+    sql = f"""
+        SELECT o.data AS opp, o.status AS status, m.data AS match, m.office_id AS office_id FROM (
+            SELECT mm.opportunity_id, mm.office_id, mm.data, mm.total_score,
+                   ROW_NUMBER() OVER (PARTITION BY mm.office_id ORDER BY mm.total_score DESC) AS rn
+            FROM matches mm JOIN opportunities oo ON oo.id = mm.opportunity_id
+            WHERE mm.office_id IN ({marks}) AND oo.status != 'closed' AND mm.total_score >= ?
+        ) m JOIN opportunities o ON o.id = m.opportunity_id
+        WHERE m.rn <= ? ORDER BY m.office_id, m.total_score DESC"""
+    out = []
+    for r in conn.execute(sql, list(office_ids) + [min_score, per]):
+        item = json.loads(r["opp"])
+        item.update(json.loads(r["match"]))
+        item["status"] = r["status"]
+        item["best_office_id"] = r["office_id"]
+        out.append(item)
+    return out
+
+
 def get_decisions_for(conn, office_ids):
     """Decisions from several offices (most recent first), each tagged with its office."""
     marks = ",".join("?" * len(office_ids)) or "''"
