@@ -944,8 +944,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             except ValueError as e:
                 self._send_json({"error": str(e)}, 400)
             except Exception as e:
-                print(f"[WARN] Draft failed: {type(e).__name__}")
-                self._send_json({"error": "The draft could not be written right now. Try again in a minute."}, 503)
+                # The provider's error code (e.g. DeploymentNotFound) helps fix setup; it never contains the key.
+                detail = re.sub(r"[A-Za-z0-9]{32,}", "[hidden]", f"{type(e).__name__}: {e}")[:300]
+                print(f"[WARN] Draft failed: {detail}")
+                self._send_json({"error": "The draft could not be written right now. Try again in a minute.", "detail": detail}, 503)
             finally:
                 conn.close()
             return
