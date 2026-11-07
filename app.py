@@ -34,6 +34,41 @@ def slim(items):
     return [{k: v for k, v in it.items() if k not in DETAIL_FIELDS} for it in items]
 
 
+def other_items(conn, office_id, profile):
+    """State programs, foundations and federal programs this organization can apply for,
+    shaped like grant rows so the page can show one combined list."""
+    cat = profile.get("category", "state")
+    words = pipeline.CATEGORY_ELIGIBILITY_WORDS.get(cat, [])
+    out = []
+    if cat != "state":  # state agencies run state programs rather than apply to them
+        for m in state_programs.for_office(conn, office_id):
+            foundation = (m.get("kind") or "").startswith("Private")
+            if foundation and cat in ("county", "municipal"):
+                rec = conn.execute("SELECT payload FROM raw_records WHERE source='nc-state-program' AND source_record_id=?", (m["id"],)).fetchone()
+                text = (json.loads(rec["payload"]).get("text") or "").lower() if rec else ""
+                if "nonprofit" in text[:400] and "government" not in text[:600]:
+                    continue  # funds nonprofits only
+            d = (m.get("deadlines") or [None])[0]
+            out.append({"id": f"st-{m['id']}", "kind": "Private foundation" if foundation else "NC state program",
+                        "title": m["name"], "agency": "Private foundation" if foundation else "State of North Carolina",
+                        "url": m["url"], "total_score": round(m["fit"] * 0.8, 1), "status": "posted" if d else "program",
+                        "close_date": d["date"] if d else None, "deadline_quote": d["quote"] if d else None,
+                        "days_to_close": (datetime.fromisoformat(d["date"]) - datetime.now()).days if d else None,
+                        "matched_goal_title": m.get("matched_goal_title"), "page_read": m.get("page_read", True),
+                        "best_office_id": office_id})
+    for m in programs.programs_for_office(conn, office_id):
+        p = m.get("program") or {}
+        who = (p.get("who_can_apply") or "").lower()
+        if m.get("open_grants") or not who or not any(w in who for w in words):
+            continue  # open grants are already in the list; skip programs this type can't apply to
+        r = p.get("award_range") or {}
+        out.append({"id": f"fp-{m['cfda']}", "kind": "Federal program (no open competition)", "title": m["title"],
+                    "agency": f"Assistance Listing {m['cfda']}", "url": p.get("sam_url"), "total_score": round(m["fit"] * 0.7, 1),
+                    "status": "program", "award_range": r, "matched_goal_title": m.get("matched_goal_title"),
+                    "best_office_id": office_id})
+    return out
+
+
 def load_scored(agency_id):
     """Scored grants for one office, best first, read from the database."""
     conn = db.connect()
@@ -183,6 +218,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     # Each organization's own top matches, grouped by organization in the page
                     per = int(urllib.parse.parse_qs(parsed.query).get("per", ["25"])[0])
                     items = db.top_per_office(conn, ids, per=per)
+                    for oid in ids:
+                        items += other_items(conn, oid, profiles[oid])
                     for it in items:
                         it["best_office_name"] = profiles.get(it["best_office_id"], {}).get("name", "")
                     self._send_json(slim(items))
@@ -194,7 +231,13 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
         if path.startswith("/api/scored/"):
             agency_id = path.replace("/api/scored/", "").strip()
-            self._send_json(slim(load_scored(agency_id)))
+            conn = db.connect()
+            try:
+                profile = pipeline.load_agency_profiles().get(agency_id, {})
+                extra = other_items(conn, agency_id, profile) if profile else []
+            finally:
+                conn.close()
+            self._send_json(slim(load_scored(agency_id)) + extra)
             return
 
         # 5. API: Get decisions for agency

@@ -196,18 +196,7 @@
     <div id="empty" class="empty" hidden>No grants match these filters. Try "All matches" or "Any match".</div>
     <div class="pager"><button id="more" class="btn outline" onclick="limit+=25;render()" hidden>Show more</button></div>
 
-    <section id="statePrograms" hidden style="margin-top:40px">
-      <h2>North Carolina state and foundation grants</h2>
-      <p class="count">State-run grant programs from the official <a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov grant directory</a> (many are funded with federal money), and major North Carolina foundations. A deadline is shown only when the program's own page states one; always confirm on the program page.</p>
-      <div id="stateBody"></div>
-      <div id="legBody"></div>
-    </section>
 
-    <section id="otherFunding" hidden style="margin-top:40px">
-      <h2>Other federal funding for your goals</h2>
-      <p class="count">These federal programs match your goals but have <strong>no application open right now</strong>. Many send money every year by formula or through a state agency instead of an open competition, so the way in is usually your state partner agency or the program office. Grants that are open now are in the list above.</p>
-      <div id="programsBody"></div>
-    </section>
   </section>
 
   <section id="tab-tracked" hidden>
@@ -233,7 +222,8 @@
     <span class="tag fair">Possible match</span> Below 55. Loosely related. Usually safe to skip.</p>
 
     <h3 id="ranking" style="margin-top:28px">How grants are ranked</h3>
-    <p>Every grant gets a score from 0 to 100 for your organization. The most important question is whether the grant actually fits your goals, so fit works as a gate: a grant with no real connection cannot score well, no matter how large or convenient it is.</p>
+    <p><strong>What the list includes:</strong> federal grants you can apply for (Grants.gov), North Carolina state grant programs and NC foundations (for counties, cities, universities and businesses), and federal programs that fund your type of organization but have no open competition right now (SAM.gov). Each row is labeled with its type. Programs your type of organization cannot apply to are left out. State programs, foundations and standing federal programs are ranked slightly below open grants with the same fit, since open grants have a deadline.</p>
+        <p>Every grant gets a score from 0 to 100 for your organization. The most important question is whether the grant actually fits your goals, so fit works as a gate: a grant with no real connection cannot score well, no matter how large or convenient it is.</p>
     <p style="background:var(--bg-alt);padding:12px 16px;font-weight:600">Score = Fit x (0.6 + 0.4 x Practical / 100)</p>
     <p><strong>Fit with your strategic plan (0 to 100)</strong> combines two measures:</p>
     <ul>
@@ -371,50 +361,6 @@ function fillOffices(type, silent){
   if (!silent) changeOffice($('office').value);
 }
 
-async function loadStatePrograms(){
-  const office = S.office;
-  if (office === 'all') { $('statePrograms').hidden = true; return; }
-  let data = { programs: [], legislative: [] }; try { data = await (await fetch(`/api/state-programs/${office}`)).json(); } catch(e) {}
-  if (S.office !== office) return;
-  const list = data.programs || [], leg = data.legislative || [];
-  $('statePrograms').hidden = !list.length && !leg.length;
-  $('stateBody').innerHTML = !list.length ? '' : `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Deadline</th></tr></thead><tbody>${list.map(m => {
-    const d = (m.deadlines || [])[0];
-    const isF = (m.kind || '').startsWith('Private');
-    return `<tr><td><a href="${esc(m.url)}" target="_blank" rel="noopener"><strong>${esc(m.name)}</strong></a> <span class="tag ${isF ? 'good' : 'fair'}">${isF ? 'Private foundation' : 'NC state program'}</span>${isF && !m.page_read ? '<span class="sub">Description from the funder; its website could not be read automatically. Check it for current programs.</span>' : ''}</td>
-      <td data-l="Fits goal">${esc(m.matched_goal_title || '')}<span class="sub">Fit ${Math.round(m.fit)} of 100</span></td>
-      <td data-l="Deadline">${d ? `${fmtDate(d.date)}<span class="sub">"${esc(d.quote)}"</span>` : '<span class="sub">See program page</span>'}</td></tr>`;
-  }).join('')}</tbody></table>`;
-  $('legBody').innerHTML = !leg.length ? '' : `<details style="margin-top:16px"><summary>State budget grants already directed here (${leg.length})</summary>
-    <p class="sub" style="margin-top:8px">Grants the General Assembly wrote into the state budget for named organizations${(S.profiles.find(p => p.agency_id === office) || {}).category === 'county' ? ' in this county' : ''}. There is no application; contact the administering agency. Source: <a href="https://www.osbm.nc.gov/legislative-grants-database" target="_blank" rel="noopener">OSBM Legislative Grants Database</a>.</p>
-    <table><thead><tr><th>Recipient</th><th>Amount</th><th>Administering agency</th><th>Session law</th></tr></thead><tbody>${leg.slice(0, 50).map(r => {
-      const fy = Object.keys(r).find(k => k.startsWith('FY'));
-      return `<tr><td>${esc(r['Organization Receiving Funding'])}<span class="sub">${esc(r['Source of Funds'] || '')}</span></td><td data-l="Amount">${esc(r[fy] || '')}<span class="sub">${esc(fy || '')}</span></td><td data-l="Agency">${esc(r['Administering Agency'] || '')}</td><td data-l="Session law">${esc(r['Session Law'] || '')}</td></tr>`;
-    }).join('')}</tbody></table></details>`;
-}
-
-async function loadPrograms(){
-  const el = $('programsBody'), office = S.office;
-  if (office === 'all') { $('otherFunding').hidden = true; return; }
-  let list = []; try { list = await (await fetch(`/api/programs/${office}`)).json(); } catch(e) {}
-  if (S.office !== office) return;
-  list = list.filter(m => !(m.open_grants || []).length);
-  $('otherFunding').hidden = !list.length;
-  el.innerHTML = `<table><thead><tr><th>Program</th><th>Fits goal</th><th>Past awards (agency)</th><th>Federal spending</th><th>How to get it</th></tr></thead><tbody>${list.map(m => {
-    const p = m.program || {}, r = p.award_range || {};
-    const range = r.low ? `${money(r.low)} to ${money(r.high)}` : '';
-    const avg = r.average ? `Average ${money(r.average)}` : '';
-    const ob = (p.yearly_obligations || []).filter(y => y.kind === 'actual').slice(-1)[0];
-    const open = (m.open_grants || []).map(g => S.items.some(x => x.id === g.id)
-        ? `<button class="linkbtn" onclick="showTab('list');openDetail('${esc(g.id)}')">${esc(g.title.slice(0, 70))}</button>` : esc(g.title.slice(0, 70))).join('<br>');
-    return `<tr><td><strong>${esc(m.title)}</strong><span class="sub">Assistance Listing ${esc(m.cfda)}${p.sam_url ? ` &middot; <a href="${esc(p.sam_url)}" target="_blank" rel="noopener">SAM.gov</a>` : ''}</span></td>
-      <td data-l="Fits goal">${esc(m.matched_goal_title || '')}<span class="sub">Fit ${Math.round(m.fit)} of 100</span></td>
-      <td data-l="Past awards">${range || avg || '<span class="sub">Not stated</span>'}${range && avg ? `<span class="sub">${avg}</span>` : ''}</td>
-      <td data-l="Federal spending">${ob ? `${money(ob.amount)}<span class="sub">in ${ob.year}, nationwide</span>` : '<span class="sub">Not stated</span>'}</td>
-      <td data-l="How to get it">${p.website ? `<a href="${esc(p.website)}" target="_blank" rel="noopener">Program website</a>` : ''}<span class="sub">No open application; check the program page or your state partner agency</span></td></tr>`;
-  }).join('')}</tbody></table>`;
-}
-
 async function showPlanInfo(id){
   const box = $('planInfo');
   if (id === 'all') { box.hidden = true; return; }
@@ -436,8 +382,6 @@ async function changeOffice(id){
   const all = id === 'all', cat = encodeURIComponent($('otype').value);
   $('exportBtn').hidden = all;
   showPlanInfo(id);
-  loadStatePrograms();
-  loadPrograms();
   $('exportBtn').href = `/api/export/${id}`;
   const [items, dec] = await Promise.all([
     fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => r.json()),
@@ -476,12 +420,24 @@ function filtered(){
 
 function render(){
   const list = filtered();
-  $('nTodo').textContent = uniq(S.items.filter(i => i.total_score >= STRONG && !S.decisions[keyOf(i)])).length;
-  $('nSoon').textContent = uniq(S.items.filter(i => i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[keyOf(i)])).length;
+  $('nTodo').textContent = uniq(S.items.filter(i => !i.kind && i.total_score >= STRONG && !S.decisions[keyOf(i)])).length;
+  $('nSoon').textContent = uniq(S.items.filter(i => !i.kind && i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[keyOf(i)])).length;
   $('nPursue').textContent = Object.values(S.decisions).filter(d => d.status === 'Pursue').length;
-  $('count').textContent = `${list.length} grant${list.length === 1 ? '' : 's'} found, best matches first.`;
+  $('count').textContent = `${list.length} ${list.length === 1 ? 'opportunity' : 'opportunities'} found, best matches first.`;
   const row = i => {
     const [cls, lbl] = fit(i.total_score);
+    if (i.kind) {
+      const r = i.award_range || {};
+      const fed = i.kind.startsWith('Federal');
+      return `<tr>
+      <td><a class="t" href="${esc(i.url || '#')}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="sub"><span class="tag ${i.kind === 'Private foundation' ? 'good' : 'fair'}">${esc(i.kind)}</span> ${esc(i.agency || '')}</span>${i.matched_goal_title ? `<span class="sub">Fits: ${esc(i.matched_goal_title)}</span>` : ''}</td>
+      <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
+      <td data-l="Award up to">${r.low ? `${money(r.low)} to ${money(r.high)}<span class="sub">past awards (agency)</span>` : r.average ? `Average ${money(r.average)}` : '<span class="sub">See program page</span>'}</td>
+      <td data-l="Staff time"><span class="sub">Not estimated</span></td>
+      <td data-l="Opens">${fed ? 'No open competition<span class="sub">ask the program office or state partner</span>' : i.close_date ? '<strong>Open now</strong>' : 'See program page'}</td>
+      <td data-l="Deadline">${i.close_date ? `${fmtDate(i.close_date)}<span class="sub">"${esc(i.deadline_quote || '')}"</span>` : '<span class="sub">See program page</span>'}</td>
+      <td data-l="Status"><span class="sub">Apply on the program's site</span></td></tr>`;
+    }
     return `<tr>
       <td><button class="t" onclick="openDetail('${esc(keyOf(i))}')">${esc(clean(i.title))}</button><span class="sub">${esc(i.agency)}</span></td>
       <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
