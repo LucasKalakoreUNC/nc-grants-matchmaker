@@ -55,6 +55,7 @@ def other_items(conn, office_id, profile):
                         "close_date": d["date"] if d else None, "deadline_quote": d["quote"] if d else None,
                         "days_to_close": (datetime.fromisoformat(d["date"]) - datetime.now()).days if d else None,
                         "matched_goal_title": m.get("matched_goal_title"), "page_read": m.get("page_read", True),
+                        "overview": m.get("overview") or {}, "parent": m.get("parent"), "shared_words": m.get("shared_words"),
                         "best_office_id": office_id})
     for m in programs.programs_for_office(conn, office_id):
         p = m.get("program") or {}
@@ -65,6 +66,8 @@ def other_items(conn, office_id, profile):
         out.append({"id": f"fp-{m['cfda']}", "kind": "Federal program (no open competition)", "title": m["title"],
                     "agency": f"Assistance Listing {m['cfda']}", "url": p.get("sam_url"), "total_score": round(m["fit"] * 0.7, 1),
                     "status": "program", "award_range": r, "matched_goal_title": m.get("matched_goal_title"),
+                    "overview": {"description": p.get("objective", "")[:700], "who_can_apply": p.get("who_can_apply", "")[:500],
+                                 "funding": p.get("financial_note", "")[:400], "restrictions": p.get("uses_restrictions", "")[:400]},
                     "best_office_id": office_id})
     return out
 

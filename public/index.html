@@ -430,7 +430,7 @@ function render(){
       const r = i.award_range || {};
       const fed = i.kind.startsWith('Federal');
       return `<tr>
-      <td><a class="t" href="${esc(i.url || '#')}" target="_blank" rel="noopener">${esc(i.title)}</a><span class="sub"><span class="tag ${i.kind === 'Private foundation' ? 'good' : 'fair'}">${esc(i.kind)}</span> ${esc(i.agency || '')}</span>${i.matched_goal_title ? `<span class="sub">Fits: ${esc(i.matched_goal_title)}</span>` : ''}</td>
+      <td><button class="t" onclick="openProgram('${esc(keyOf(i))}')">${esc(i.title)}</button><span class="sub"><span class="tag ${i.kind === 'Private foundation' ? 'good' : 'fair'}">${esc(i.kind)}</span> ${esc(i.parent || i.agency || '')}</span>${i.matched_goal_title ? `<span class="sub">Fits: ${esc(i.matched_goal_title)}</span>` : ''}</td>
       <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
       <td data-l="Award up to">${r.low ? `${money(r.low)} to ${money(r.high)}<span class="sub">past awards (agency)</span>` : r.average ? `Average ${money(r.average)}` : '<span class="sub">See program page</span>'}</td>
       <td data-l="Staff time"><span class="sub">Not estimated</span></td>
@@ -641,6 +641,32 @@ function scoreTable(i){
     <p style="margin-bottom:4px"><strong>Practical factors: ${Math.round(prac)} of 100</strong></p>
     <table><thead><tr><th>Factor</th><th>Score</th><th>Weight</th></tr></thead><tbody>${rows}</tbody></table>
     <p style="background:var(--bg-alt);padding:8px 12px;margin-top:8px">Score = Fit x (0.6 + 0.4 x Practical / 100) = ${fitV} x ${(0.6 + 0.4 * prac / 100).toFixed(2)}${(b.eligibility || 0) <= 10 ? ' x 0.6 (not eligible)' : ''} = <strong>${i.total_score}</strong></p>`;
+}
+function openProgram(key){
+  const i = S.items.find(x => keyOf(x) === key); if (!i) return;
+  currentId = key;
+  const o = i.overview || {}, [cls, lbl] = fit(i.total_score), d = i.close_date;
+  const fact = (label, val) => val ? `<section><h3>${label}</h3><p>${esc(val)}</p></section>` : '';
+  $('dTitle').textContent = i.title;
+  $('dSub').textContent = `${i.kind}${i.parent ? ' | ' + i.parent : i.agency ? ' | ' + i.agency : ''}`;
+  $('dBody').innerHTML = `
+    <dl class="facts">
+      <div><dt>Match</dt><dd><span class="tag ${cls}">${lbl}</span></dd></div>
+      <div><dt>Deadline</dt><dd>${d ? fmtDate(d) : 'See program page'}</dd></div>
+      ${o.division ? `<div><dt>Division</dt><dd>${esc(o.division)}</dd></div>` : ''}
+    </dl>
+    ${i.matched_goal_title ? `<section><h3>Why it fits</h3><p>Matches your goal "${esc(i.matched_goal_title)}"${(i.shared_words || []).length ? ` (shared terms: ${esc(i.shared_words.slice(0, 4).join(', '))})` : ''}.</p></section>` : ''}
+    ${fact('About this program', o.description)}
+    ${fact('Who can apply', o.who_can_apply)}
+    ${fact('Funding', o.funding)}
+    ${fact('Restrictions', o.restrictions)}
+    ${d && i.deadline_quote ? `<section><h3>Deadline</h3><p>"${esc(i.deadline_quote)}"</p></section>` : ''}
+    ${o.contact ? fact('Contact', o.contact) : ''}
+    ${!o.description ? '<div class="alert">This program\'s page could not be summarized automatically. Open it for details.</div>' : ''}
+    <p class="sub">Text above is quoted from the program's official page; nothing is rewritten or estimated. Confirm details before applying.</p>
+    <p><a class="btn" href="${esc(i.url)}" target="_blank" rel="noopener">Open the official program page</a></p>`;
+  $('detail').classList.add('open');
+  document.querySelector('.panel').scrollTop = 0;
 }
 function closeDetail(){ $('detail').classList.remove('open'); }
 function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); }
