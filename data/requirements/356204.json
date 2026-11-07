@@ -1,0 +1,89 @@
+{
+  "opportunity_id": "356204",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:10",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "name": "Project Narrative / Scope of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "name": "SF-424A Budget Information and Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "name": "Letters of Support and Collaboration",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Estimated Application Response Deadline",
+      "when": "Feb 06, 2026 12:00:00 AM EST",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible applicants as specified under Grants.gov opportunity NOT-NS-24-061. Qualifying North Carolina jurisdictions and organizations may apply.",
+    "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Forecast Notice (NOT-NS-24-061)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity NOT-NS-24-061.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

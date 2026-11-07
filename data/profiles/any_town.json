@@ -1,0 +1,125 @@
+{
+  "agency_id": "any_town",
+  "category": "municipal",
+  "name": "Any North Carolina city or town",
+  "short_name": "NC city or town",
+  "profile_status": "general",
+  "source_citation": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "mission": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "eligible_applicant_types": [
+    "City or township governments",
+    "Special district governments"
+  ],
+  "funder_affinities": [
+    "Department of Transportation",
+    "Department of Housing and Urban Development",
+    "Environmental Protection Agency",
+    "Federal Emergency Management Agency",
+    "Department of Justice"
+  ],
+  "goals": [
+    {
+      "id": "ANY_TOWN-G1",
+      "number": 1,
+      "title": "Streets, transit and safety",
+      "citation": "NC city or town, general goal 1",
+      "description": "Make streets safer and improve transit, sidewalks and trails.",
+      "objectives": [
+        "Make streets safer and improve transit, sidewalks and trails."
+      ],
+      "keywords": [
+        "safe streets",
+        "pedestrian",
+        "bicycle",
+        "sidewalks",
+        "transit",
+        "trails"
+      ]
+    },
+    {
+      "id": "ANY_TOWN-G2",
+      "number": 2,
+      "title": "Water, sewer and stormwater",
+      "citation": "NC city or town, general goal 2",
+      "description": "Maintain and upgrade water, wastewater and stormwater systems.",
+      "objectives": [
+        "Maintain and upgrade water, wastewater and stormwater systems."
+      ],
+      "keywords": [
+        "drinking water",
+        "wastewater",
+        "stormwater",
+        "water infrastructure",
+        "lead service line"
+      ]
+    },
+    {
+      "id": "ANY_TOWN-G3",
+      "number": 3,
+      "title": "Housing and neighborhoods",
+      "citation": "NC city or town, general goal 3",
+      "description": "Improve housing and revitalize neighborhoods and downtowns.",
+      "objectives": [
+        "Improve housing and revitalize neighborhoods and downtowns."
+      ],
+      "keywords": [
+        "affordable housing",
+        "community development block grant",
+        "downtown",
+        "main street",
+        "brownfields"
+      ]
+    },
+    {
+      "id": "ANY_TOWN-G4",
+      "number": 4,
+      "title": "Parks and quality of life",
+      "citation": "NC city or town, general goal 4",
+      "description": "Build and improve parks, recreation and cultural assets.",
+      "objectives": [
+        "Build and improve parks, recreation and cultural assets."
+      ],
+      "keywords": [
+        "parks",
+        "recreation",
+        "greenways",
+        "arts",
+        "libraries"
+      ]
+    },
+    {
+      "id": "ANY_TOWN-G5",
+      "number": 5,
+      "title": "Public safety",
+      "citation": "NC city or town, general goal 5",
+      "description": "Support police, fire and emergency services.",
+      "objectives": [
+        "Support police, fire and emergency services."
+      ],
+      "keywords": [
+        "law enforcement",
+        "firefighters",
+        "emergency management",
+        "hazard mitigation",
+        "community violence"
+      ]
+    }
+  ],
+  "keywords": [
+    "affordable housing",
+    "bicycle",
+    "community development block grant",
+    "downtown",
+    "drinking water",
+    "emergency management",
+    "firefighters",
+    "greenways",
+    "law enforcement",
+    "parks",
+    "pedestrian",
+    "recreation",
+    "safe streets",
+    "stormwater",
+    "wastewater"
+  ]
+}

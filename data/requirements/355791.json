@@ -1,0 +1,88 @@
+{
+  "opportunity_id": "355791",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:24",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Official standard application for federal assistance submitted via Grants.gov.",
+      "source": "Application format.doc Application Contents"
+    },
+    {
+      "name": "Project Narrative / Work Plan",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Comprehensive description of proposed activities, statement of need, measurable goals, and implementation timeline.",
+      "source": "Application format.doc Application Contents"
+    },
+    {
+      "name": "Budget Narrative and SF-424A/C Budget Form",
+      "category": "Budget",
+      "required": true,
+      "details": "Standard federal budget form and line-item justification explaining all requested costs.",
+      "source": "Application format.doc Application Contents"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Brief public summary describing project objectives, activities, deliverables, and intended community beneficiaries.",
+      "source": "Application format.doc Application Contents"
+    },
+    {
+      "name": "Letters of Support and Partner Commitments",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from community partners, cooperating state/local agencies, or stakeholder organizations.",
+      "source": "Application format.doc Application Contents"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier and active Grants.gov user credentials.",
+      "source": "Application format.doc Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "Refer to notice",
+      "source": "Application format.doc"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "Application format.doc"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Application format.doc Cost Sharing"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Approach and Project Feasibility",
+      "weight": "Scored merit criterion",
+      "source": "Application format.doc Section V"
+    },
+    {
+      "criterion": "Organizational Capacity and Project Management",
+      "weight": "Scored merit criterion",
+      "source": "Application format.doc Section V"
+    },
+    {
+      "criterion": "Cost Effectiveness and Budget Justification",
+      "weight": "Evaluated criterion",
+      "source": "Application format.doc Section V"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: see notice.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}

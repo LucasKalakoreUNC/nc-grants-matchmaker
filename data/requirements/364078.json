@@ -1,0 +1,88 @@
+{
+  "opportunity_id": "364078",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:23",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Official standard application for federal assistance submitted via Grants.gov.",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Application Contents"
+    },
+    {
+      "name": "Project Narrative / Work Plan",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Comprehensive description of proposed activities, statement of need, measurable goals, and implementation timeline.",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Application Contents"
+    },
+    {
+      "name": "Budget Narrative and SF-424A/C Budget Form",
+      "category": "Budget",
+      "required": true,
+      "details": "Standard federal budget form and line-item justification explaining all requested costs.",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Application Contents"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Brief public summary describing project objectives, activities, deliverables, and intended community beneficiaries.",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Application Contents"
+    },
+    {
+      "name": "Letters of Support and Partner Commitments",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from community partners, cooperating state/local agencies, or stakeholder organizations.",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Application Contents"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier and active Grants.gov user credentials.",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2026-11-14",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf p. 4"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Cost sharing requirements not explicitly mandated in notice.",
+    "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf p. 2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Approach and Project Feasibility",
+      "weight": "Scored merit criterion",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Section V"
+    },
+    {
+      "criterion": "Organizational Capacity and Project Management",
+      "weight": "Scored merit criterion",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Section V"
+    },
+    {
+      "criterion": "Cost Effectiveness and Budget Justification",
+      "weight": "Evaluated criterion",
+      "source": "ATTACHMENT A -Biographical-sketch-common-form-doi-omb-3145-0279 3.pdf Section V"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: 2026-11-14.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "opportunity_id": "362977",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:10",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "name": "Project Narrative / Scope of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "name": "SF-424A Budget Information and Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "name": "Letters of Support and Collaboration",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Estimated Application Response Deadline",
+      "when": "Dec 07, 2026 12:00:00 AM EST",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    }
+  ],
+  "eligibility": {
+    "summary": "As SPARK-EHS is intended to launch new environmental health training programs it will focus on predoctoral trainees at institutions that have not had a funded NIEHS T32 during the preceding five years. Institutions that held a NIEHS-funded T32 more than five years ago are also eligible to apply, provided they do not have any current trainees who we In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Forecast Notice (RFA-ES-28-001)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity RFA-ES-28-001.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

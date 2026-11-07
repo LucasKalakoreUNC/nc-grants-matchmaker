@@ -3,7 +3,7 @@
   "category": "municipal",
   "name": "City of Charlotte & Regional Municipalities",
   "short_name": "City of Charlotte",
-  "source_citation": "City of Charlotte Strategic Energy Action Plan (SEAP) & Charlotte Future 2040",
+  "source_citation": "Draft profile: goals summarized from public priorities. Page citations have not been verified against the official plan.",
   "mission": "To deliver exemplary municipal public services, promote equitable economic opportunity, and build a connected, sustainable, and safe 21st-century city.",
   "eligible_applicant_types": [
     "City or township governments",
@@ -24,7 +24,7 @@
       "id": "CLT-G1",
       "number": 1,
       "title": "Rapid Transit Modernization, Bus Fleet Electrification, and Safe Streets",
-      "citation": "Charlotte Future 2040 Comprehensive Plan, Mobility Pillar",
+      "citation": "City of Charlotte draft profile, goal 1",
       "description": "Expand light rail corridor planning (Silver Line), transition Charlotte Area Transit System (CATS) bus fleet to 100% zero-emission battery electric, and eliminate traffic fatalities under Vision Zero.",
       "objectives": [
         "Procure battery-electric heavy duty transit buses and depot overhead charging gantries",
@@ -32,15 +32,24 @@
         "Secure federal New Starts Capital Investment Grants for rapid transit extensions"
       ],
       "keywords": [
-        "transit", "bus electrification", "CATS", "light rail", "FTA", "DOT", "Vision Zero",
-        "safe streets", "complete streets", "micromobility", "charging infrastructure"
+        "transit",
+        "bus electrification",
+        "CATS",
+        "light rail",
+        "FTA",
+        "DOT",
+        "Vision Zero",
+        "safe streets",
+        "complete streets",
+        "micromobility",
+        "charging infrastructure"
       ]
     },
     {
       "id": "CLT-G2",
       "number": 2,
       "title": "Municipal Building Decarbonization, Urban Heat Island, and Urban Forestry",
-      "citation": "Charlotte Strategic Energy Action Plan (SEAP), Goals 1 & 3",
+      "citation": "City of Charlotte draft profile, goal 2",
       "description": "Achieve net-zero carbon operations across city fleet and facilities by 2030, expand tree canopy to 50% coverage, and mitigate urban heat islands in historically redlined neighborhoods.",
       "objectives": [
         "Install rooftop solar arrays and microgrid backup storage on municipal fire stations and police headquarters",
@@ -48,15 +57,24 @@
         "Deploy building envelope retrofits and heat pumps in city-owned recreational centers"
       ],
       "keywords": [
-        "decarbonization", "SEAP", "clean energy", "solar", "energy efficiency", "urban forestry",
-        "heat island", "tree canopy", "net zero", "climate resilience", "EPA"
+        "decarbonization",
+        "SEAP",
+        "clean energy",
+        "solar",
+        "energy efficiency",
+        "urban forestry",
+        "heat island",
+        "tree canopy",
+        "net zero",
+        "climate resilience",
+        "EPA"
       ]
     },
     {
       "id": "CLT-G3",
       "number": 3,
       "title": "Urban Stormwater Infrastructure, Creeks Restoration, and Floodplain Buyouts",
-      "citation": "Charlotte-Mecklenburg Storm Water Services Master Plan",
+      "citation": "City of Charlotte draft profile, goal 3",
       "description": "Restore degraded urban streams (Sugar Creek, Little Sugar Creek), retrofit aging underground culverts, and acquire flood-prone properties in regulated 100-year floodplains.",
       "objectives": [
         "Restore stream banks and natural riparian wetlands in degraded urban sub-watersheds",
@@ -64,13 +82,33 @@
         "Deploy smart stormwater sensors to monitor flash flooding on underpasses"
       ],
       "keywords": [
-        "stormwater", "Sugar Creek", "urban flooding", "floodplain buyout", "culverts",
-        "green infrastructure", "wetlands", "water quality", "FEMA", "EPA"
+        "stormwater",
+        "Sugar Creek",
+        "urban flooding",
+        "floodplain buyout",
+        "culverts",
+        "green infrastructure",
+        "wetlands",
+        "water quality",
+        "FEMA",
+        "EPA"
       ]
     }
   ],
   "keywords": [
-    "municipal", "city", "transit", "electrification", "Vision Zero", "urban forestry",
-    "stormwater", "SEAP", "Sugar Creek", "energy efficiency", "infrastructure"
-  ]
+    "municipal",
+    "city",
+    "transit",
+    "electrification",
+    "Vision Zero",
+    "urban forestry",
+    "stormwater",
+    "SEAP",
+    "Sugar Creek",
+    "energy efficiency",
+    "infrastructure"
+  ],
+  "profile_status": "draft",
+  "source_url": "https://www.charlottenc.gov/City-News/2026-Annual-Strategy-Meeting-Recap",
+  "plan_title": "Charlotte City Council strategic priorities (2026)"
 }

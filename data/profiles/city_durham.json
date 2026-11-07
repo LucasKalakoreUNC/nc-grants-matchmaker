@@ -1,0 +1,76 @@
+{
+  "agency_id": "city_durham",
+  "category": "municipal",
+  "name": "City of Durham",
+  "short_name": "City of Durham",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides city services for Durham, focused on shared prosperity, safety and sustainability.",
+  "eligible_applicant_types": [
+    "City or township governments",
+    "Special district governments",
+    "Public housing authorities/Indian housing authorities"
+  ],
+  "funder_affinities": [
+    "Department of Transportation",
+    "Department of Housing and Urban Development",
+    "Department of Justice"
+  ],
+  "goals": [
+    {
+      "id": "CITY_DURHAM-G1",
+      "number": 1,
+      "title": "Community safety",
+      "citation": "City of Durham draft profile, goal 1",
+      "description": "Reduce violence with community-based approaches.",
+      "objectives": [
+        "Expand community safety responders"
+      ],
+      "keywords": [
+        "community violence",
+        "public safety",
+        "crisis response"
+      ]
+    },
+    {
+      "id": "CITY_DURHAM-G2",
+      "number": 2,
+      "title": "Affordable housing",
+      "citation": "City of Durham draft profile, goal 2",
+      "description": "Expand and preserve affordable housing.",
+      "objectives": [
+        "Preserve existing affordable homes"
+      ],
+      "keywords": [
+        "affordable housing",
+        "housing",
+        "cdbg"
+      ]
+    },
+    {
+      "id": "CITY_DURHAM-G3",
+      "number": 3,
+      "title": "Safe and connected streets",
+      "citation": "City of Durham draft profile, goal 3",
+      "description": "Make walking, biking and transit safer.",
+      "objectives": [
+        "Build safe sidewalks and bike lanes"
+      ],
+      "keywords": [
+        "safe streets",
+        "pedestrian",
+        "bicycle",
+        "transit"
+      ]
+    }
+  ],
+  "keywords": [
+    "city",
+    "municipal",
+    "safety",
+    "housing",
+    "transit"
+  ],
+  "source_url": "https://www.durhamnc.gov/1441/Strategic-Plan",
+  "plan_title": "City of Durham Strategic Plan FY2027-2029"
+}

@@ -1,0 +1,84 @@
+{
+  "agency_id": "mecklenburg_county",
+  "category": "county",
+  "name": "Mecklenburg County Government",
+  "short_name": "Mecklenburg County",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Serves residents of North Carolina's most populous county through health, social services, parks and environmental programs.",
+  "eligible_applicant_types": [
+    "County governments",
+    "Special district governments"
+  ],
+  "funder_affinities": [
+    "Department of Health and Human Services",
+    "Department of Housing and Urban Development",
+    "Environmental Protection Agency",
+    "Department of Justice"
+  ],
+  "goals": [
+    {
+      "id": "MECKLENBURG_COUNTY-G1",
+      "number": 1,
+      "title": "Public and behavioral health",
+      "citation": "Mecklenburg County draft profile, goal 1",
+      "description": "Improve health outcomes and access to care.",
+      "objectives": [
+        "Expand behavioral health and substance use services",
+        "Reduce chronic disease"
+      ],
+      "keywords": [
+        "public health",
+        "behavioral health",
+        "substance use",
+        "opioid",
+        "mental health"
+      ]
+    },
+    {
+      "id": "MECKLENBURG_COUNTY-G2",
+      "number": 2,
+      "title": "Affordable housing and family stability",
+      "citation": "Mecklenburg County draft profile, goal 2",
+      "description": "Help families find and keep stable housing.",
+      "objectives": [
+        "Prevent homelessness",
+        "Expand affordable units"
+      ],
+      "keywords": [
+        "affordable housing",
+        "homelessness",
+        "rental assistance",
+        "eviction"
+      ]
+    },
+    {
+      "id": "MECKLENBURG_COUNTY-G3",
+      "number": 3,
+      "title": "Parks, greenways and environment",
+      "citation": "Mecklenburg County draft profile, goal 3",
+      "description": "Protect air and water quality and expand parks.",
+      "objectives": [
+        "Expand greenways",
+        "Improve air quality"
+      ],
+      "keywords": [
+        "greenways",
+        "parks",
+        "air quality",
+        "stormwater",
+        "tree canopy"
+      ]
+    }
+  ],
+  "keywords": [
+    "county",
+    "public health",
+    "housing",
+    "parks",
+    "environment",
+    "justice"
+  ],
+  "source_url": "https://strategy.mecknc.gov/",
+  "plan_title": "Mecklenburg County strategy site (2023-2025 plan, archived)"
+}

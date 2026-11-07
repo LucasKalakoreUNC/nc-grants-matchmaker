@@ -1,0 +1,147 @@
+{
+  "agency_id": "any_nonprofit",
+  "category": "nonprofit",
+  "name": "Any North Carolina nonprofit",
+  "short_name": "NC nonprofit",
+  "profile_status": "general",
+  "source_citation": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "mission": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "eligible_applicant_types": [
+    "Nonprofits having a 501(c)(3) status with the IRS, other than institutions of higher education",
+    "Nonprofits that do not have a 501(c)(3) status with the IRS, other than institutions of higher education"
+  ],
+  "funder_affinities": [
+    "Department of Health and Human Services",
+    "Department of Housing and Urban Development",
+    "Department of Justice",
+    "Department of Agriculture",
+    "AmeriCorps",
+    "National Endowment for the Arts"
+  ],
+  "goals": [
+    {
+      "id": "ANY_NONPROFIT-G1",
+      "number": 1,
+      "title": "Health and human services",
+      "citation": "NC nonprofit, general goal 1",
+      "description": "Deliver health, mental health, substance use, food and family services.",
+      "objectives": [
+        "Deliver health, mental health, substance use, food and family services."
+      ],
+      "keywords": [
+        "community health",
+        "behavioral health",
+        "substance use",
+        "food insecurity",
+        "family services",
+        "home visiting",
+        "older adults"
+      ]
+    },
+    {
+      "id": "ANY_NONPROFIT-G2",
+      "number": 2,
+      "title": "Housing and homelessness",
+      "citation": "NC nonprofit, general goal 2",
+      "description": "Provide affordable housing and services for people experiencing homelessness.",
+      "objectives": [
+        "Provide affordable housing and services for people experiencing homelessness."
+      ],
+      "keywords": [
+        "affordable housing",
+        "homelessness",
+        "supportive housing",
+        "housing counseling"
+      ]
+    },
+    {
+      "id": "ANY_NONPROFIT-G3",
+      "number": 3,
+      "title": "Education, youth and workforce",
+      "citation": "NC nonprofit, general goal 3",
+      "description": "Run education, youth development and job training programs.",
+      "objectives": [
+        "Run education, youth development and job training programs."
+      ],
+      "keywords": [
+        "youth development",
+        "after-school",
+        "mentoring",
+        "job training",
+        "workforce development",
+        "literacy"
+      ]
+    },
+    {
+      "id": "ANY_NONPROFIT-G4",
+      "number": 4,
+      "title": "Community and economic development",
+      "citation": "NC nonprofit, general goal 4",
+      "description": "Strengthen communities and local economies, especially rural and low-income areas.",
+      "objectives": [
+        "Strengthen communities and local economies, especially rural and low-income areas."
+      ],
+      "keywords": [
+        "community development",
+        "rural development",
+        "small business",
+        "capacity building",
+        "economic opportunity"
+      ]
+    },
+    {
+      "id": "ANY_NONPROFIT-G5",
+      "number": 5,
+      "title": "Arts, culture and environment",
+      "citation": "NC nonprofit, general goal 5",
+      "description": "Support arts, culture, conservation and the environment.",
+      "objectives": [
+        "Support arts, culture, conservation and the environment."
+      ],
+      "keywords": [
+        "arts",
+        "cultural",
+        "humanities",
+        "conservation",
+        "environmental education"
+      ]
+    },
+    {
+      "id": "ANY_NONPROFIT-G6",
+      "number": 6,
+      "title": "Safety and victim services",
+      "citation": "NC nonprofit, general goal 6",
+      "description": "Prevent violence and serve victims of crime.",
+      "objectives": [
+        "Prevent violence and serve victims of crime."
+      ],
+      "keywords": [
+        "victim services",
+        "domestic violence",
+        "violence prevention",
+        "reentry",
+        "legal services"
+      ]
+    }
+  ],
+  "keywords": [
+    "affordable housing",
+    "after-school",
+    "arts",
+    "behavioral health",
+    "community development",
+    "community health",
+    "cultural",
+    "domestic violence",
+    "homelessness",
+    "humanities",
+    "mentoring",
+    "rural development",
+    "small business",
+    "substance use",
+    "supportive housing",
+    "victim services",
+    "violence prevention",
+    "youth development"
+  ]
+}

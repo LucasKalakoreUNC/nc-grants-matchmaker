@@ -1,0 +1,75 @@
+{
+  "agency_id": "biz_manufacturing",
+  "category": "business",
+  "name": "Small manufacturers in North Carolina",
+  "short_name": "NC small manufacturers",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Small and mid-sized manufacturing companies looking for federal research, export and modernization funding.",
+  "eligible_applicant_types": [
+    "Small businesses",
+    "For profit organizations other than small businesses"
+  ],
+  "funder_affinities": [
+    "National Institute of Standards and Technology",
+    "Department of Defense",
+    "Department of Energy",
+    "Economic Development Administration"
+  ],
+  "goals": [
+    {
+      "id": "BIZ_MANUFACTURING-G1",
+      "number": 1,
+      "title": "Modernization and productivity",
+      "citation": "NC small manufacturers draft profile, goal 1",
+      "description": "Adopt new technology to stay competitive.",
+      "objectives": [
+        "Adopt automation and advanced manufacturing"
+      ],
+      "keywords": [
+        "advanced manufacturing",
+        "automation",
+        "productivity",
+        "supply chain"
+      ]
+    },
+    {
+      "id": "BIZ_MANUFACTURING-G2",
+      "number": 2,
+      "title": "Research and product development",
+      "citation": "NC small manufacturers draft profile, goal 2",
+      "description": "Develop new products.",
+      "objectives": [
+        "Apply for SBIR and STTR research funding"
+      ],
+      "keywords": [
+        "sbir",
+        "sttr",
+        "research and development",
+        "prototype"
+      ]
+    },
+    {
+      "id": "BIZ_MANUFACTURING-G3",
+      "number": 3,
+      "title": "Energy efficiency",
+      "citation": "NC small manufacturers draft profile, goal 3",
+      "description": "Cut energy costs.",
+      "objectives": [
+        "Upgrade industrial equipment"
+      ],
+      "keywords": [
+        "industrial efficiency",
+        "energy efficiency",
+        "decarbonization"
+      ]
+    }
+  ],
+  "keywords": [
+    "small business",
+    "manufacturing",
+    "sbir",
+    "sttr",
+    "industrial"
+  ]
+}

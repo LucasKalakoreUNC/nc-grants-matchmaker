@@ -1,0 +1,90 @@
+{
+  "opportunity_id": "350230",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:10",
+  "required_documents": [
+    {
+      "name": "Research.gov Proposal Package",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard NSF grant application submitted via Research.gov or Grants.gov.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "name": "Project Summary (Overview, Intellectual Merit, Broader Impacts)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One-page project summary addressing Overview, Intellectual Merit, and Broader Impacts in separate labeled sections.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "name": "Project Description",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 15-page project description detailing scientific rationale, research plan, work timeline, and broader impacts.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "name": "Biographical Sketches (SciENcv format)",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Senior personnel biosketches generated via SciENcv conforming to NSF PAPPG format requirements.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "name": "Budget and Budget Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Itemized annual budget and detailed justification covering personnel salaries, participant support, and indirect costs.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "name": "Data Management and Sharing Plan",
+      "category": "Attachments",
+      "required": true,
+      "details": "Up to 2 pages describing how the proposal will conform to NSF policy on the dissemination and sharing of research results.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "name": "SAM.gov UEI and Research.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier and active institutional Research.gov accounts.",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "Refer to Grants.gov notice",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible applicants as specified under Grants.gov opportunity PD-24-1340. Qualifying North Carolina jurisdictions and organizations may apply.",
+    "source": "Grants.gov Synopsis (PD-24-1340)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Synopsis (PD-24-1340)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Intellectual Merit (potential to advance knowledge)",
+      "weight": "Primary NSF statutory criterion",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    },
+    {
+      "criterion": "Broader Impacts (potential to benefit society and contribute to specific societal outcomes)",
+      "weight": "Primary NSF statutory criterion",
+      "source": "Grants.gov Synopsis (PD-24-1340)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity PD-24-1340.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

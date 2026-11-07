@@ -1,0 +1,89 @@
+{
+  "opportunity_id": "351231",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:12",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "name": "Project Narrative / Scope of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "name": "SF-424A Budget Information and Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "name": "Letters of Support and Collaboration",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Estimated Application Response Deadline",
+      "when": "Jan 25, 2024 12:00:00 AM EST",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Registered U.S. and Italian not-for-profit organizations, including think tanks and civil society/non-governmental organizations with programming experience in Italy; U.S. or Italian individuals; U.S. and Italian non-profit or governmental educational institutions; U.S. and Italian Governmental institutions. In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+  },
+  "cost_share": {
+    "required": "yes",
+    "details": "Non-federal cost sharing or matching is required under this program.",
+    "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Forecast Notice (PDSITALYFY24)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity PDSITALYFY24.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

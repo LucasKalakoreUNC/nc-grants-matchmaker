@@ -2,7 +2,7 @@
   "agency_id": "deq",
   "name": "North Carolina Department of Environmental Quality",
   "short_name": "NC DEQ",
-  "source_citation": "NC DEQ Strategic Plan FY 2025-2029 (NC OSBM Public Repository)",
+  "source_citation": "NC Department of Environmental Quality Strategic Plan 2025-2029",
   "mission": "To protect and enhance North Carolina's environment and natural resources, and preserve them for the health, well-being and economic benefit of present and future generations.",
   "eligible_applicant_types": [
     "State governments",
@@ -22,174 +22,147 @@
     {
       "id": "DEQ-G1",
       "number": 1,
-      "title": "Protect and Improve Water Quality and Drinking Water Infrastructure",
-      "citation": "NC DEQ Strategic Plan, Section 2.1, pp. 12-16",
-      "description": "Ensure clean, reliable drinking water for all North Carolinians, remediate emerging contaminants including PFAS/PFOA, upgrade aging wastewater and stormwater infrastructure, and protect river basins and watersheds.",
+      "title": "Environmental and public health protection",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 4",
+      "description": "Protect public health by setting and implementing science-based standards and by providing technical, compliance, permitting and financial assistance to residents, communities, businesses, and local governments.",
       "objectives": [
-        "Upgrade aging municipal and rural wastewater systems to prevent discharges",
-        "Remediate PFAS/PFOA and perfluorinated chemicals in drinking water supplies",
-        "Implement nonpoint source watershed restoration in Cape Fear, Neuse, and Tar-Pamlico basins",
-        "Strengthen stormwater resilience against severe storm and hurricane flooding"
+        "Protect public health by setting and implementing science-based standards and by providing technical, compliance, permitting and financial assistance to residents, communities, businesses, and local governments."
       ],
       "keywords": [
+        "air quality",
         "water quality",
+        "diesel emissions",
         "drinking water",
-        "wastewater",
-        "stormwater",
-        "PFAS",
-        "PFOA",
-        "emerging contaminants",
-        "clean water state revolving fund",
-        "watershed",
-        "estuary",
-        "groundwater",
-        "aquifer",
-        "lead pipe",
-        "sewer",
-        "nonpoint source",
-        "hydrology"
+        "hazardous waste",
+        "solid waste",
+        "brownfields",
+        "superfund",
+        "environmental monitoring",
+        "permitting",
+        "recycling"
       ]
     },
     {
       "id": "DEQ-G2",
       "number": 2,
-      "title": "Advance Clean Air, Climate Resilience, and Clean Energy Transition",
-      "citation": "NC DEQ Strategic Plan, Section 2.2, pp. 17-22",
-      "description": "Reduce greenhouse gas emissions, improve ambient air quality, deploy zero-emission technologies, and expand coastal storm and heat resilience across vulnerable communities.",
+      "title": "Community restoration and resilience",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 6",
+      "description": "Support and accelerate the long-term recovery of communities devastated by Hurricane Helene and other natural disasters, and lead efforts to make communities more resilient.",
       "objectives": [
-        "Reduce stationary and mobile source criteria air pollutants and toxics",
-        "Deploy distributed renewable energy and battery storage across state facilities",
-        "Implement the NC Clean Energy Plan to achieve power sector carbon neutrality",
-        "Enhance community climate risk assessments and extreme weather adaptation"
+        "Support and accelerate the long-term recovery of communities devastated by Hurricane Helene and other natural disasters, and lead efforts to make communities more resilient."
       ],
       "keywords": [
-        "clean air",
-        "air quality",
-        "emissions",
-        "greenhouse gas",
-        "climate resilience",
-        "renewable energy",
-        "solar",
-        "wind",
-        "battery storage",
-        "carbon reduction",
-        "energy efficiency",
-        "air toxics",
-        "ozone",
-        "particulate matter",
-        "clean tech"
+        "hurricane helene",
+        "disaster recovery",
+        "resilience",
+        "flood",
+        "stream restoration",
+        "debris",
+        "watershed restoration",
+        "coastal resilience",
+        "nature-based"
       ]
     },
     {
       "id": "DEQ-G3",
       "number": 3,
-      "title": "Sustainable Land Stewardship, Brownfields Redevelopment, and Waste Reduction",
-      "citation": "NC DEQ Strategic Plan, Section 2.3, pp. 23-28",
-      "description": "Remediate contaminated brownfield and Superfund sites, improve solid and hazardous waste reduction, and support sustainable soil and forest conservation.",
+      "title": "Forever chemicals (PFAS)",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 8",
+      "description": "Protect North Carolina's people and natural resources from exposure to PFAS and other forever chemicals, using a transparent, collaborative, and science-based decision-making process.",
       "objectives": [
-        "Accelerate assessment and cleanup of abandoned industrial and brownfield properties",
-        "Prevent chemical spills through rigorous hazardous waste permitting and inspections",
-        "Expand municipal waste diversion, composting, and advanced recycling infrastructure",
-        "Protect critical soil resources and agricultural buffer zones"
+        "Protect North Carolina's people and natural resources from exposure to PFAS and other forever chemicals, using a transparent, collaborative, and science-based decision-making process."
       ],
       "keywords": [
-        "brownfields",
-        "superfund",
-        "hazardous waste",
-        "land reuse",
-        "soil contamination",
-        "recycling",
-        "solid waste",
-        "circular economy",
-        "landfill",
-        "toxic substances",
-        "site remediation",
-        "environmental cleanup"
+        "pfas",
+        "pfoa",
+        "forever chemicals",
+        "emerging contaminants",
+        "perfluoroalkyl"
       ]
     },
     {
       "id": "DEQ-G4",
       "number": 4,
-      "title": "Coastal Protection, Estuarine Habitats, and Marine Fisheries Management",
-      "citation": "NC DEQ Strategic Plan, Section 2.4, pp. 29-34",
-      "description": "Safeguard North Carolina's 300+ miles of coastline, restore oyster reefs and submerged aquatic vegetation, strengthen living shorelines, and sustain commercial/recreational fisheries.",
+      "title": "Environmental infrastructure",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 10",
+      "description": "Strengthen North Carolina's infrastructure through thoughtful and strategic investments.",
       "objectives": [
-        "Restore coastal marshlands, oyster sanctuaries, and seagrass nurseries",
-        "Permit nature-based living shorelines to combat coastal erosion and storm surges",
-        "Modernize fisheries stock assessments using acoustic and environmental DNA monitoring",
-        "Support coastal county waterfront access and resilience infrastructure"
+        "Strengthen North Carolina's infrastructure through thoughtful and strategic investments."
       ],
       "keywords": [
-        "coastal resilience",
-        "marine fisheries",
-        "oyster restoration",
-        "living shorelines",
-        "estuary",
-        "salt marsh",
-        "barrier islands",
-        "submerged aquatic vegetation",
-        "sea level rise",
-        "shoreline erosion",
-        "coastal zone management",
-        "NOAA",
-        "marine ecosystem"
+        "wastewater",
+        "stormwater",
+        "drinking water infrastructure",
+        "state revolving fund",
+        "water infrastructure",
+        "lead service line",
+        "sewer"
       ]
     },
     {
       "id": "DEQ-G5",
       "number": 5,
-      "title": "Environmental Justice, Rural Community Support, and Tribal Partnerships",
-      "citation": "NC DEQ Strategic Plan, Section 2.5, pp. 35-40",
-      "description": "Ensure fair treatment and meaningful involvement of all communities, address historic environmental burdens in underserved rural and minority areas, and collaborate with NC tribal nations.",
+      "title": "Community engagement and public participation",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 11",
+      "description": "Ensure the meaningful involvement and fair treatment of all people with respect to the development, implementation, and enforcement of environmental laws, health safeguards, and policies.",
       "objectives": [
-        "Target state and federal infrastructure grants to historically distressed communities",
-        "Expand multilingual environmental monitoring and public notification systems",
-        "Strengthen co-stewardship initiatives with state-recognized North Carolina tribes",
-        "Eliminate disparities in safe drinking water access in rural mobile home parks"
+        "Ensure the meaningful involvement and fair treatment of all people with respect to the development, implementation, and enforcement of environmental laws, health safeguards, and policies."
       ],
       "keywords": [
+        "community engagement",
         "environmental justice",
-        "underserved communities",
-        "disadvantaged communities",
-        "tribal",
-        "equity",
-        "rural water",
-        "public health",
-        "community monitoring",
-        "Justice40",
-        "inclusive outreach",
-        "Title VI"
+        "public participation",
+        "underserved communities"
+      ]
+    },
+    {
+      "id": "DEQ-G6",
+      "number": 6,
+      "title": "Modernize DEQ",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 12",
+      "description": "Modernize processes and foster innovation to enhance efficiency in services, increase transparency, and strengthen partnerships.",
+      "objectives": [
+        "Modernize processes and foster innovation to enhance efficiency in services, increase transparency, and strengthen partnerships."
+      ],
+      "keywords": [
+        "permitting modernization",
+        "environmental data system"
+      ]
+    },
+    {
+      "id": "DEQ-G7",
+      "number": 7,
+      "title": "Work environment",
+      "citation": "NC Department of Environmental Quality Strategic Plan 2025-2029, p. 13",
+      "description": "Create a work environment where employees feel valued and are empowered to be active participants in developing science-based solutions.",
+      "objectives": [
+        "Create a work environment where employees feel valued and are empowered to be active participants in developing science-based solutions."
+      ],
+      "keywords": [
+        "environmental workforce"
       ]
     }
   ],
   "keywords": [
-    "water quality",
-    "drinking water",
-    "wastewater",
-    "stormwater",
-    "PFAS",
-    "PFOA",
-    "clean air",
-    "emissions",
-    "climate resilience",
-    "clean energy",
-    "solar",
-    "wind",
-    "brownfields",
-    "superfund",
-    "hazardous waste",
-    "recycling",
-    "coastal resilience",
-    "marine fisheries",
-    "oyster restoration",
-    "living shorelines",
+    "air quality",
+    "community engagement",
+    "diesel emissions",
+    "disaster recovery",
+    "drinking water infrastructure",
+    "environmental data system",
     "environmental justice",
-    "Justice40",
-    "watershed",
-    "estuary",
-    "flood mitigation",
-    "nonpoint source",
-    "toxic substances"
+    "environmental workforce",
+    "forever chemicals",
+    "hurricane helene",
+    "permitting modernization",
+    "pfas",
+    "pfoa",
+    "public participation",
+    "resilience",
+    "stormwater",
+    "wastewater",
+    "water quality"
   ],
-  "category": "state"
+  "category": "state",
+  "source_url": "https://www.osbm.nc.gov/strategic-plan-deq/download?attachment"
 }

@@ -1,0 +1,143 @@
+{
+  "opportunity_id": "359703",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Cover Form",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard application cover sheet for higher education institutions and nonprofit applicants.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Summary of educational goals, target student/faculty audience, and curriculum methodology (max 30 lines).",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Two or three sentences on how this educational program benefits public health and biomedical workforce skills.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Facilities & Other Resources",
+      "category": "Attachments",
+      "required": true,
+      "details": "Description of classrooms, laboratories, computer infrastructure, and teaching facilities available to participants.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Senior/Key Person Profiles",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for Program Director(s) and core instructional faculty (max 5 pages each, Commons ID required).",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "R&R Detailed Budget and Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget justification covering personnel, curriculum materials, participant support costs, and up to 8% F&A rate.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Specific Aims",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One page outlining the overarching educational objectives and curriculum development milestones.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Research Education Program Plan",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 25 pages uploaded under Research Strategy, detailing Program Design, Faculty, Participants, Evaluation Plan, and Dissemination Plan.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Institutional Environment and Commitment Letter",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Letter from department chair or dean detailing institutional commitment, space, faculty release time, and resources.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Plan for Instruction in Responsible Conduct of Research",
+      "category": "Attachments",
+      "required": true,
+      "details": "Maximum 3 pages detailing format, subject matter, faculty participation, and duration of research ethics training.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Registrations (SAM.gov, Grants.gov, eRA Commons)",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active institutional registrations in SAM.gov and Grants.gov, and eRA Commons ID for all Program Directors.",
+      "source": "PA-27-034-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "September Standard Due Date",
+      "when": "September 25, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-034-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "January Standard Due Date",
+      "when": "January 25, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-034-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "May Standard Due Date",
+      "when": "May 25, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-034-Full-Announcement.html Section IV.3"
+    }
+  ],
+  "eligibility": {
+    "summary": "Public and private institutions of higher education, non-profits, for-profit organizations, state and local government agencies. In North Carolina, UNC system universities, Duke, Wake Forest, and NC Community Colleges are eligible.",
+    "source": "PA-27-034-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "This NOFO does not require cost sharing as defined in the NIH Grants Policy Statement.",
+    "source": "PA-27-034-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-034-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Investigator(s)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-034-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Innovation",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-034-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Approach (Research Education Program Plan)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-034-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Environment and Institutional Commitment",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-034-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically distinct.",
+  "important_notes": [
+    "Clinical trials are not allowed under this FOA.",
+    "Research Education Program Plan has a 25-page limit; exceeding this will cause rejection without review.",
+    "Educational activities must be distinct from ongoing departmental T32 training grants."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "agency_id": "biz_tech_startups",
+  "category": "business",
+  "name": "Technology and clean-energy startups in North Carolina",
+  "short_name": "NC tech startups",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Early-stage technology, life science and clean-energy companies seeking federal research funding.",
+  "eligible_applicant_types": [
+    "Small businesses"
+  ],
+  "funder_affinities": [
+    "National Science Foundation",
+    "Department of Energy",
+    "National Institutes of Health",
+    "Department of Defense"
+  ],
+  "goals": [
+    {
+      "id": "BIZ_TECH_STARTUPS-G1",
+      "number": 1,
+      "title": "Early-stage research funding",
+      "citation": "NC tech startups draft profile, goal 1",
+      "description": "Fund research to prove new technology.",
+      "objectives": [
+        "Win Phase I and II SBIR and STTR awards"
+      ],
+      "keywords": [
+        "sbir",
+        "sttr",
+        "small business innovation research",
+        "phase i",
+        "phase ii"
+      ]
+    },
+    {
+      "id": "BIZ_TECH_STARTUPS-G2",
+      "number": 2,
+      "title": "Clean energy technology",
+      "citation": "NC tech startups draft profile, goal 2",
+      "description": "Commercialize clean energy technology.",
+      "objectives": [
+        "Demonstrate clean energy products"
+      ],
+      "keywords": [
+        "clean energy",
+        "battery",
+        "grid",
+        "hydrogen",
+        "solar"
+      ]
+    },
+    {
+      "id": "BIZ_TECH_STARTUPS-G3",
+      "number": 3,
+      "title": "Life sciences",
+      "citation": "NC tech startups draft profile, goal 3",
+      "description": "Advance medical and biotech products.",
+      "objectives": [
+        "Develop diagnostics and therapies"
+      ],
+      "keywords": [
+        "biotechnology",
+        "medical device",
+        "diagnostics",
+        "therapeutics"
+      ]
+    }
+  ],
+  "keywords": [
+    "small business",
+    "sbir",
+    "sttr",
+    "startup",
+    "technology",
+    "innovation"
+  ]
+}

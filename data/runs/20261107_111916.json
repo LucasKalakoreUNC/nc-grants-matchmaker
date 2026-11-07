@@ -1,0 +1,108 @@
+{
+  "timestamp": "20261107_111916",
+  "run_date": "2026-11-06",
+  "status": "Succeeded",
+  "counts": {
+    "raw_pulled": 485,
+    "normalized_unique": 485,
+    "queries_pulled": 1,
+    "queries_skipped_cached": 33,
+    "records_new": 0,
+    "records_changed": 0,
+    "agencies_scored": 10,
+    "breakdown": {
+      "buncombe_county": {
+        "name": "Buncombe & WNC Counties",
+        "category": "county",
+        "total": 485,
+        "high": 86,
+        "medium": 394,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 86.0
+      },
+      "city_charlotte": {
+        "name": "City of Charlotte",
+        "category": "municipal",
+        "total": 485,
+        "high": 47,
+        "medium": 438,
+        "top_match": "Title XVI Water Reclamation and Reuse Projects",
+        "top_score": 92.6
+      },
+      "commerce": {
+        "name": "NC Commerce",
+        "category": "state",
+        "total": 485,
+        "high": 83,
+        "medium": 399,
+        "top_match": "Training-based Workforce Development for Advanced Cyberinfrastructure",
+        "top_score": 94.4
+      },
+      "deq": {
+        "name": "NC DEQ",
+        "category": "state",
+        "total": 485,
+        "high": 106,
+        "medium": 375,
+        "top_match": "Title XVI Water Reclamation and Reuse Projects",
+        "top_score": 88.1
+      },
+      "dhhs": {
+        "name": "NCDHHS",
+        "category": "state",
+        "total": 485,
+        "high": 211,
+        "medium": 271,
+        "top_match": "Training-based Workforce Development for Advanced Cyberinfrastructure",
+        "top_score": 88.1
+      },
+      "dot": {
+        "name": "NCDOT",
+        "category": "state",
+        "total": 485,
+        "high": 64,
+        "medium": 418,
+        "top_match": "Notice of Intent to Issue NOFO DE-FOA-0003649: Leveraging Domestic Infrastructure and Resources to Unleash Alternative Chemicals, Fuels and Feedstocks",
+        "top_score": 88.1
+      },
+      "dps": {
+        "name": "NC DPS",
+        "category": "state",
+        "total": 485,
+        "high": 92,
+        "medium": 390,
+        "top_match": "Cybersecurity Innovation for Cyberinfrastructure (CICI)",
+        "top_score": 89.8
+      },
+      "nc_smallbiz": {
+        "name": "NC Small Business & SBTDC",
+        "category": "business",
+        "total": 485,
+        "high": 75,
+        "medium": 407,
+        "top_match": "SBIR/STTR Commercialization Readiness Pilot (CRP) Program (Parent SB1 Clinical Trial Optional)",
+        "top_score": 92.5
+      },
+      "unc_system": {
+        "name": "UNC & NC Higher Ed",
+        "category": "education",
+        "total": 485,
+        "high": 295,
+        "medium": 189,
+        "top_match": "Training-based Workforce Development for Advanced Cyberinfrastructure",
+        "top_score": 97.2
+      },
+      "wake_county": {
+        "name": "Wake County",
+        "category": "county",
+        "total": 485,
+        "high": 216,
+        "medium": 269,
+        "top_match": "WaterSMART Cooperative Watershed Management Program",
+        "top_score": 90.7
+      }
+    }
+  },
+  "duration_seconds": 2.91,
+  "errors": []
+}

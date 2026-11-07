@@ -1,0 +1,136 @@
+{
+  "opportunity_id": "359758",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Application Package",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard application form package for federal assistance with applicant business credentials.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Overview of Phase IIB breakthrough research and clinical commercialization milestones (max 30 lines).",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Statement describing the relevance of the breakthrough technology to public health outcomes.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "R&R Senior/Key Person Profiles",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for PD/PI and key scientific/regulatory staff (max 5 pages each).",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "R&R Detailed Budget and Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget outlining federal request and required 1:1 matching non-federal expenditure categories.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Cost Match Documentation & Investor Commitments",
+      "category": "Budget",
+      "required": true,
+      "details": "Letters of binding commitment from third-party investors, foundations, or state matching programs documenting the 100% cost match.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section III.2 and Section IV.2"
+    },
+    {
+      "name": "Specific Aims",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One page defining Phase IIB strategic breakthrough aims.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Research Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing Significance, Innovation, and Approach for advancing technology toward FDA clearance or commercial deployment.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 Page Limitations"
+    },
+    {
+      "name": "Commercialization Plan",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Comprehensive 12-page commercialization roadmap detailing market opportunity, IP protection, manufacturing, and capital requirements.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Registrations (SAM.gov, Grants.gov, eRA Commons, SBIR.gov)",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active institutional registrations in SAM.gov, Grants.gov, eRA Commons, and SBA Company Registry.",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "September Standard Due Date",
+      "when": "September 5, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "January Standard Due Date",
+      "when": "January 5, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "April Standard Due Date",
+      "when": "April 5, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section IV.3"
+    }
+  ],
+  "eligibility": {
+    "summary": "Small business concerns that have previously received an SBIR or STTR Phase II award and submit within six due dates after Phase II budget expiration. NC small biotech/medtech companies with completed Phase II awards are eligible.",
+    "source": "PA-27-101-Revised-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "yes",
+    "details": "Requires 100% cost sharing (1:1 dollar-for-dollar non-federal match) as defined in the NIH Grants Policy Statement under the Small Business Innovation and Economic Security Act.",
+    "source": "PA-27-101-Revised-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Investigator(s)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Innovation",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Approach",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Environment",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-101-Revised-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Only one Phase IIB award is allowed per project.",
+  "important_notes": [
+    "Mandatory 1:1 non-federal matching funds required; applications without verifiable matching commitments are ineligible.",
+    "Must be submitted within the first six standard due dates following expiration of the prior Phase II project period.",
+    "Only one Phase IIB award can be made for a given project."
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "agency_id": "any_county",
+  "category": "county",
+  "name": "Any North Carolina county government",
+  "short_name": "NC county",
+  "profile_status": "general",
+  "source_citation": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "mission": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "eligible_applicant_types": [
+    "County governments",
+    "Special district governments"
+  ],
+  "funder_affinities": [
+    "Department of Health and Human Services",
+    "Federal Emergency Management Agency",
+    "Department of Housing and Urban Development",
+    "Department of Justice",
+    "Department of Agriculture",
+    "Environmental Protection Agency"
+  ],
+  "goals": [
+    {
+      "id": "ANY_COUNTY-G1",
+      "number": 1,
+      "title": "Public health and human services",
+      "citation": "NC county, general goal 1",
+      "description": "Run public health, social services and behavioral health programs.",
+      "objectives": [
+        "Run public health, social services and behavioral health programs."
+      ],
+      "keywords": [
+        "public health",
+        "behavioral health",
+        "opioid",
+        "substance use",
+        "child welfare",
+        "aging"
+      ]
+    },
+    {
+      "id": "ANY_COUNTY-G2",
+      "number": 2,
+      "title": "Emergency management and resilience",
+      "citation": "NC county, general goal 2",
+      "description": "Prepare for, respond to and recover from disasters.",
+      "objectives": [
+        "Prepare for, respond to and recover from disasters."
+      ],
+      "keywords": [
+        "emergency management",
+        "hazard mitigation",
+        "flood",
+        "disaster recovery",
+        "resilience",
+        "911"
+      ]
+    },
+    {
+      "id": "ANY_COUNTY-G3",
+      "number": 3,
+      "title": "Infrastructure",
+      "citation": "NC county, general goal 3",
+      "description": "Maintain water, sewer, broadband and public buildings.",
+      "objectives": [
+        "Maintain water, sewer, broadband and public buildings."
+      ],
+      "keywords": [
+        "water and sewer",
+        "drinking water",
+        "wastewater",
+        "broadband",
+        "infrastructure"
+      ]
+    },
+    {
+      "id": "ANY_COUNTY-G4",
+      "number": 4,
+      "title": "Housing and economic development",
+      "citation": "NC county, general goal 4",
+      "description": "Expand affordable housing and local jobs.",
+      "objectives": [
+        "Expand affordable housing and local jobs."
+      ],
+      "keywords": [
+        "affordable housing",
+        "community development block grant",
+        "economic development",
+        "workforce development"
+      ]
+    },
+    {
+      "id": "ANY_COUNTY-G5",
+      "number": 5,
+      "title": "Public safety and justice",
+      "citation": "NC county, general goal 5",
+      "description": "Support law enforcement, courts, jails and reentry.",
+      "objectives": [
+        "Support law enforcement, courts, jails and reentry."
+      ],
+      "keywords": [
+        "law enforcement",
+        "justice assistance",
+        "reentry",
+        "violence prevention",
+        "detention"
+      ]
+    }
+  ],
+  "keywords": [
+    "affordable housing",
+    "behavioral health",
+    "community development block grant",
+    "drinking water",
+    "economic development",
+    "emergency management",
+    "flood",
+    "hazard mitigation",
+    "justice assistance",
+    "law enforcement",
+    "opioid",
+    "public health",
+    "reentry",
+    "wastewater",
+    "water and sewer"
+  ]
+}

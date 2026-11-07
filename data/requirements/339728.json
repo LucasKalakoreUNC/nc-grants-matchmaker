@@ -1,0 +1,81 @@
+{
+  "opportunity_id": "339728",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:25",
+  "required_documents": [
+    {
+      "name": "SF-424 (R&R) Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard research cover form with applicant organizational details, cage code, and UEI.",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section IV"
+    },
+    {
+      "name": "Technical Proposal & Statement of Work (SOW)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed technical narrative outlining scientific approach, military relevance, project milestones, and clear Statement of Work.",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section IV"
+    },
+    {
+      "name": "Cost Proposal & Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Complete itemized cost breakdown including direct labor rates, equipment, materials, subcontracts, and negotiated indirect cost rate agreement.",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section IV"
+    },
+    {
+      "name": "Senior Personnel Biosketches and Current/Pending Support",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for principal investigators and key contributors, along with complete federal funding disclosures.",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section IV"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with active UEI and submission via Grants.gov.",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section IV"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "Refer to notice",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf"
+    }
+  ],
+  "eligibility": {
+    "summary": "Accredited institutions of higher education, non-profit research organizations, and affiliated healthcare institutions. In North Carolina, universities, community colleges, and academic medical centers qualify.",
+    "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf p. 13"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf p. 12"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Scientific and Technical Merit",
+      "weight": "Primary criterion",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section V"
+    },
+    {
+      "criterion": "Relevance to Department of Defense and National Security Mission",
+      "weight": "Important criterion",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section V"
+    },
+    {
+      "criterion": "Qualifications of Principal Investigator and Research Team",
+      "weight": "Significant criterion",
+      "source": "TBAM FOA Cycle 2 Amendment Question and Answer Document .pdf Section V"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: see notice.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}

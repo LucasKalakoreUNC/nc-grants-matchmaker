@@ -1,0 +1,81 @@
+{
+  "opportunity_id": "361206",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:12",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard HUD application cover sheet.",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed description of community need, proposed housing/infrastructure development, and capacity of applicant.",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    },
+    {
+      "name": "HUD-424-CB Detailed Budget Form and Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Comprehensive cost breakdown by activity line item and funding source.",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    },
+    {
+      "name": "Community Consultation and Partner Agreements",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Documentation of community engagement and partner commitment letters.",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    },
+    {
+      "name": "SAM.gov UEI Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier.",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2027-01-25",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible Applicants Include: a. Public housing authority (PHA) or Indian housing authority b. Nonprofit, including a PHA affiliate or instrumentality, with or without a 501(c)(3) status from the Internal Revenue Service (IRS), other than an institution of higher education c. Resident associations (RA) with either locally incorporated nonprofit stat In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+  },
+  "cost_share": {
+    "required": "yes",
+    "details": "Non-federal cost sharing or matching is required under this program.",
+    "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Synopsis (PIH-ROSS-26-001)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity PIH-ROSS-26-001.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

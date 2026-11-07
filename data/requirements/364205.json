@@ -1,0 +1,88 @@
+{
+  "opportunity_id": "364205",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:11",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "name": "Project Narrative / Scope of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "name": "SF-424A Budget Information and Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "name": "Letters of Support and Collaboration",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2027-02-01",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    }
+  ],
+  "eligibility": {
+    "summary": "U.S.-based nonprofit Informal Education Institutions (IEIs), including science museums/centers, planetariums, libraries, and other nonprofit youth-serving informal education organizations. A state, local, or federally recognized tribal government agency or higher education institution may lead only if it is also an eligible IEI or submits on behalf In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Synopsis (NNH27ZHA002C)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity NNH27ZHA002C.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

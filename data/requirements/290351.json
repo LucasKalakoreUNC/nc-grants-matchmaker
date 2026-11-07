@@ -1,0 +1,88 @@
+{
+  "opportunity_id": "290351",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:13",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "name": "Project Narrative / Scope of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "name": "SF-424A Budget Information and Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "name": "Letters of Support and Collaboration",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "Refer to Grants.gov notice",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Applications are encouraged from a variety of individuals and organizations, including but not limited to: non-governmental/civil society organizations, think tanks, educational institutions or subsets thereof, and non-profit organizations. Prior programmatic experience is desired, along with experience managing budgets. In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
+    }
+  ],
+  "submission_limits": "Institutional limits apply as detailed in the opportunity announcement; verify internal screening procedures.",
+  "important_notes": [
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity PAS-AUS-FY2017-1.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

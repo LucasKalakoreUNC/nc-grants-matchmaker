@@ -1,0 +1,90 @@
+{
+  "opportunity_id": "357498",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:10",
+  "required_documents": [
+    {
+      "name": "Research.gov Proposal Package",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard NSF grant application submitted via Research.gov or Grants.gov.",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "name": "Project Summary (Overview, Intellectual Merit, Broader Impacts)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One-page project summary addressing Overview, Intellectual Merit, and Broader Impacts in separate labeled sections.",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "name": "Project Description",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 15-page project description detailing scientific rationale, research plan, work timeline, and broader impacts.",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "name": "Biographical Sketches (SciENcv format)",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Senior personnel biosketches generated via SciENcv conforming to NSF PAPPG format requirements.",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "name": "Budget and Budget Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Itemized annual budget and detailed justification covering personnel salaries, participant support, and indirect costs.",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "name": "Data Management and Sharing Plan",
+      "category": "Attachments",
+      "required": true,
+      "details": "Up to 2 pages describing how the proposal will conform to NSF policy on the dissemination and sharing of research results.",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "name": "SAM.gov UEI and Research.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier and active institutional Research.gov accounts.",
+      "source": "Grants.gov Synopsis (25-514)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2027-03-02",
+      "source": "Grants.gov Synopsis (25-514)"
+    }
+  ],
+  "eligibility": {
+    "summary": "*Who May Submit Proposals: Proposals may only be submitted by the following: -Institutions of Higher Education (IHEs): Two- and four-year IHEs (including community colleges) accredited in, and having a campus located in the US, acting on behalf of their faculty members. Special Instructions for International Branch Campuses of US IHEs: If the propo In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Synopsis (25-514)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Synopsis (25-514)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Intellectual Merit (potential to advance knowledge)",
+      "weight": "Primary NSF statutory criterion",
+      "source": "Grants.gov Synopsis (25-514)"
+    },
+    {
+      "criterion": "Broader Impacts (potential to benefit society and contribute to specific societal outcomes)",
+      "weight": "Primary NSF statutory criterion",
+      "source": "Grants.gov Synopsis (25-514)"
+    }
+  ],
+  "submission_limits": "Institutional limits apply as detailed in the opportunity announcement; verify internal screening procedures.",
+  "important_notes": [
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity 25-514.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

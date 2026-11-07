@@ -1,0 +1,143 @@
+{
+  "opportunity_id": "359671",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Cover Form",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal application cover page including applicant organization UEI, contact information, and proposed project dates.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Succinct summary of the proposed project, self-contained, no confidential information. Maximum 30 lines of text.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Project Narrative (Relevance Statement)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Two or three sentences describing the relevance of this research to public health.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Facilities & Other Resources and Equipment",
+      "category": "Attachments",
+      "required": true,
+      "details": "Description of scientific facilities, laboratory space, clinical resources, and major equipment available to the small business.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "R&R Senior/Key Person Profile (Expanded)",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for PD/PI and senior key personnel (max 5 pages each). The eRA Commons username must be entered in the Credential field.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "R&R Budget and Budget Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed line-item budget for direct and indirect costs with an itemized budget justification narrative.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Specific Aims",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One page outlining goals and hypotheses of proposed R&D project.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Research Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed description of Significance, Innovation, and Approach. Page limit: 6 pages for Phase I; 12 pages for Phase II, Fast-Track, and Direct-to-Phase II.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 Page Limitations"
+    },
+    {
+      "name": "Commercialization Plan",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Required for Phase II, Direct to Phase II, and Fast-Track applications. Maximum 12 pages covering market need, customer validation, intellectual property, and financing.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Letters of Support",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from consultants, clinical collaborators, potential commercial partners, or investors demonstrating support.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "SAM.gov, Grants.gov, eRA Commons, and SBIR.gov Registrations",
+      "category": "Registrations",
+      "required": true,
+      "details": "Small business must maintain active registrations with SAM.gov (UEI), Grants.gov, eRA Commons, and register on SBIR.gov to obtain an SBC Control ID.",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "September Standard Application Due Date",
+      "when": "September 5, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "January Standard Application Due Date",
+      "when": "January 5, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "April Standard Application Due Date",
+      "when": "April 5, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section IV.3"
+    }
+  ],
+  "eligibility": {
+    "summary": "For-profit United States small business concerns (SBCs) with 500 or fewer employees. Primary employment of the PD/PI must be with the small business at the time of award and during the conduct of the project. North Carolina biotechnology, healthcare, and software small businesses are eligible.",
+    "source": "PA-27-100-Revised-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "This NOFO does not require cost sharing as defined in the NIH Grants Policy Statement.",
+    "source": "PA-27-100-Revised-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Investigator(s)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Innovation",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Approach",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Environment",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-100-Revised-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically distinct.",
+  "important_notes": [
+    "Failure to register in eRA Commons and include a valid PD/PI Commons ID in the credential field will prevent submission.",
+    "For Phase I, Research Strategy must not exceed 6 pages; for Phase II/Direct Phase II, max 12 pages. Over-length pages are not reviewed.",
+    "The primary employment of the PD/PI must be with the small business at the time of award and for the project duration (over 50% time)."
+  ]
+}

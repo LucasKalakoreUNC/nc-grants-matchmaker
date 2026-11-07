@@ -1,0 +1,118 @@
+{
+  "agency_id": "nccc_system",
+  "category": "education",
+  "name": "North Carolina Community College System",
+  "short_name": "NC Community Colleges",
+  "source_citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026",
+  "mission": "Fifty-eight community colleges providing job training, college transfer and adult education.",
+  "eligible_applicant_types": [
+    "Public and State controlled institutions of higher education"
+  ],
+  "funder_affinities": [
+    "Department of Labor",
+    "Department of Education",
+    "National Science Foundation",
+    "Economic Development Administration"
+  ],
+  "goals": [
+    {
+      "id": "NCCC_SYSTEM-G1",
+      "number": 1,
+      "title": "Recruit and retain top talent",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 12",
+      "description": "Recruit and retain top talent to enable the North Carolina Community College System to educate and prepare the State's workforce.",
+      "objectives": [
+        "Recruit and retain top talent to enable the North Carolina Community College System to educate and prepare the State's workforce."
+      ],
+      "keywords": [
+        "faculty development",
+        "instructor recruitment"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G2",
+      "number": 2,
+      "title": "Access and enrollment",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 15",
+      "description": "Increase access and enrollment at North Carolina community colleges to meet the state's educational attainment goal and expand postsecondary opportunities.",
+      "objectives": [
+        "Increase access and enrollment at North Carolina community colleges to meet the state's educational attainment goal and expand postsecondary opportunities."
+      ],
+      "keywords": [
+        "adult learners",
+        "dual enrollment",
+        "college access",
+        "adult education",
+        "basic skills"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G3",
+      "number": 3,
+      "title": "Student success",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 20",
+      "description": "Provide resources inside and outside the classroom for all students to successfully enroll, persist, and complete a career program of study.",
+      "objectives": [
+        "Provide resources inside and outside the classroom for all students to successfully enroll, persist, and complete a career program of study."
+      ],
+      "keywords": [
+        "student success",
+        "student support services",
+        "student mental health",
+        "completion",
+        "basic needs"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G4",
+      "number": 4,
+      "title": "Economic and workforce development",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 24",
+      "description": "Provide education, training, and credentials to develop the most competitive workforce in the nation.",
+      "objectives": [
+        "Provide education, training, and credentials to develop the most competitive workforce in the nation."
+      ],
+      "keywords": [
+        "workforce development",
+        "job training",
+        "apprenticeship",
+        "credentials",
+        "advanced technological education",
+        "technician",
+        "short-term training",
+        "career pathways",
+        "community college"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G5",
+      "number": 5,
+      "title": "Funding and system effectiveness",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 29",
+      "description": "Increase state funding, streamline the allocation formula, and implement practices to improve system effectiveness, including IT infrastructure and linked education data systems.",
+      "objectives": [
+        "Increase state funding, streamline the allocation formula, and implement practices to improve system effectiveness, including IT infrastructure and linked education data systems."
+      ],
+      "keywords": [
+        "education data systems",
+        "statewide longitudinal data"
+      ]
+    }
+  ],
+  "keywords": [
+    "adult learners",
+    "apprenticeship",
+    "college access",
+    "dual enrollment",
+    "education data systems",
+    "faculty development",
+    "instructor recruitment",
+    "job training",
+    "statewide longitudinal data",
+    "student mental health",
+    "student success",
+    "student support services",
+    "workforce development"
+  ],
+  "source_url": "https://www.osbm.nc.gov/documents/files/strategic-plan-ncccs/download?attachment"
+}

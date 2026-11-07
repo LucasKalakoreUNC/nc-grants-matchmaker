@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>(()=>{class RocketLazyLoadScripts{constructor(){this.v="2.0.5",this.userEvents=["keydown","keyup","mousedown","mouseup","mousemove","mouseover","mouseout","touchmove","touchstart","touchend","touchcancel","wheel","click","dblclick","input"],this.attributeEvents=["onblur","onclick","oncontextmenu","ondblclick","onfocus","onmousedown","onmouseenter","onmouseleave","onmousemove","onmouseout","onmouseover","onmouseup","onmousewheel","onscroll","onsubmit"]}async t(){this.i(),this.o(),/iP(ad|hone)/.test(navigator.userAgent)&&this.h(),this.u(),this.l(this),this.m(),this.k(this),this.p(this),this._(),await Promise.all([this.R(),this.L()]),this.lastBreath=Date.now(),this.S(this),this.P(),this.D(),this.O(),this.M(),await this.C(this.delayedScripts.normal),await this.C(this.delayedScripts.defer),await this.C(this.delayedScripts.async),await this.T(),await this.F(),await this.j(),await this.A(),window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this.everythingLoaded=!0,this.lastTouchEnd&&await new Promise(t=>setTimeout(t,500-Date.now()+this.lastTouchEnd)),this.I(),this.H(),this.U(),this.W()}i(){this.CSPIssue=sessionStorage.getItem("rocketCSPIssue"),document.addEventListener("securitypolicyviolation",t=>{this.CSPIssue||"script-src-elem"!==t.violatedDirective||"data"!==t.blockedURI||(this.CSPIssue=!0,sessionStorage.setItem("rocketCSPIssue",!0))},{isRocket:!0})}o(){window.addEventListener("pageshow",t=>{this.persisted=t.persisted,this.realWindowLoadedFired=!0},{isRocket:!0}),window.addEventListener("pagehide",()=>{this.onFirstUserAction=null},{isRocket:!0})}h(){let t;function e(e){t=e}window.addEventListener("touchstart",e,{isRocket:!0}),window.addEventListener("touchend",function i(o){o.changedTouches[0]&&t.changedTouches[0]&&Math.abs(o.changedTouches[0].pageX-t.changedTouches[0].pageX)<10&&Math.abs(o.changedTouches[0].pageY-t.changedTouches[0].pageY)<10&&o.timeStamp-t.timeStamp<200&&(window.removeEventListener("touchstart",e,{isRocket:!0}),window.removeEventListener("touchend",i,{isRocket:!0}),"INPUT"===o.target.tagName&&"text"===o.target.type||(o.target.dispatchEvent(new TouchEvent("touchend",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new MouseEvent("mouseover",{target:o.target,bubbles:!0})),o.target.dispatchEvent(new PointerEvent("click",{target:o.target,bubbles:!0,cancelable:!0,detail:1,clientX:o.changedTouches[0].clientX,clientY:o.changedTouches[0].clientY})),event.preventDefault()))},{isRocket:!0})}q(t){this.userActionTriggered||("mousemove"!==t.type||this.firstMousemoveIgnored?"keyup"===t.type||"mouseover"===t.type||"mouseout"===t.type||(this.userActionTriggered=!0,this.onFirstUserAction&&this.onFirstUserAction()):this.firstMousemoveIgnored=!0),"click"===t.type&&t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),"touchstart"===this.lastEvent&&"touchend"===t.type&&(this.lastTouchEnd=Date.now()),"click"===t.type&&(this.lastTouchEnd=0),this.lastEvent=t.type,t.composedPath&&t.composedPath()[0].getRootNode()instanceof ShadowRoot&&(t.rocketTarget=t.composedPath()[0]),this.savedUserEvents.push(t)}u(){this.savedUserEvents=[],this.userEventHandler=this.q.bind(this),this.userEvents.forEach(t=>window.addEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.addEventListener("visibilitychange",this.userEventHandler,{isRocket:!0})}U(){this.userEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!1,isRocket:!0})),document.removeEventListener("visibilitychange",this.userEventHandler,{isRocket:!0}),this.savedUserEvents.forEach(t=>{(t.rocketTarget||t.target).dispatchEvent(new window[t.constructor.name](t.type,t))})}m(){const t="return false",e=Array.from(this.attributeEvents,t=>"data-rocket-"+t),i="["+this.attributeEvents.join("],[")+"]",o="[data-rocket-"+this.attributeEvents.join("],[data-rocket-")+"]",s=(e,i,o)=>{o&&o!==t&&(e.setAttribute("data-rocket-"+i,o),e["rocket"+i]=new Function("event",o),e.setAttribute(i,t))};new MutationObserver(t=>{for(const n of t)"attributes"===n.type&&(n.attributeName.startsWith("data-rocket-")||this.everythingLoaded?n.attributeName.startsWith("data-rocket-")&&this.everythingLoaded&&this.N(n.target,n.attributeName.substring(12)):s(n.target,n.attributeName,n.target.getAttribute(n.attributeName))),"childList"===n.type&&n.addedNodes.forEach(t=>{if(t.nodeType===Node.ELEMENT_NODE)if(this.everythingLoaded)for(const i of[t,...t.querySelectorAll(o)])for(const t of i.getAttributeNames())e.includes(t)&&this.N(i,t.substring(12));else for(const e of[t,...t.querySelectorAll(i)])for(const t of e.getAttributeNames())this.attributeEvents.includes(t)&&s(e,t,e.getAttribute(t))})}).observe(document,{subtree:!0,childList:!0,attributeFilter:[...this.attributeEvents,...e]})}I(){this.attributeEvents.forEach(t=>{document.querySelectorAll("[data-rocket-"+t+"]").forEach(e=>{this.N(e,t)})})}N(t,e){const i=t.getAttribute("data-rocket-"+e);i&&(t.setAttribute(e,i),t.removeAttribute("data-rocket-"+e))}k(t){Object.defineProperty(HTMLElement.prototype,"onclick",{get(){return this.rocketonclick||null},set(e){this.rocketonclick=e,this.setAttribute(t.everythingLoaded?"onclick":"data-rocket-onclick","this.rocketonclick(event)")}})}S(t){function e(e,i){let o=e[i];e[i]=null,Object.defineProperty(e,i,{get:()=>o,set(s){t.everythingLoaded?o=s:e["rocket"+i]=o=s}})}e(document,"onreadystatechange"),e(window,"onload"),e(window,"onpageshow");try{Object.defineProperty(document,"readyState",{get:()=>t.rocketReadyState,set(e){t.rocketReadyState=e},configurable:!0}),document.readyState="loading"}catch(t){console.log("WPRocket DJE readyState conflict, bypassing")}}l(t){this.originalAddEventListener=EventTarget.prototype.addEventListener,this.originalRemoveEventListener=EventTarget.prototype.removeEventListener,this.savedEventListeners=[],EventTarget.prototype.addEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalAddEventListener.call(this,e,i,o):(t.savedEventListeners.push({target:this,remove:!1,type:e,func:i,options:o}),"mouseenter"!==e&&"mouseleave"!==e||t.originalAddEventListener.call(this,e,t.savedUserEvents.push,o))},EventTarget.prototype.removeEventListener=function(e,i,o){o&&o.isRocket||!t.B(e,this)&&!t.userEvents.includes(e)||t.B(e,this)&&!t.userActionTriggered||e.startsWith("rocket-")||t.everythingLoaded?t.originalRemoveEventListener.call(this,e,i,o):t.savedEventListeners.push({target:this,remove:!0,type:e,func:i,options:o})}}J(t,e){this.savedEventListeners=this.savedEventListeners.filter(i=>{let o=i.type,s=i.target||window;return e!==o||t!==s||(this.B(o,s)&&(i.type="rocket-"+o),this.$(i),!1)})}H(){EventTarget.prototype.addEventListener=this.originalAddEventListener,EventTarget.prototype.removeEventListener=this.originalRemoveEventListener,this.savedEventListeners.forEach(t=>this.$(t))}$(t){t.remove?this.originalRemoveEventListener.call(t.target,t.type,t.func,t.options):this.originalAddEventListener.call(t.target,t.type,t.func,t.options)}p(t){let e;function i(e){return t.everythingLoaded?e:e.split(" ").map(t=>"load"===t||t.startsWith("load.")?"rocket-jquery-load":t).join(" ")}function o(o){function s(e){const s=o.fn[e];o.fn[e]=o.fn.init.prototype[e]=function(){return this[0]===window&&t.userActionTriggered&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=i(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{const e=arguments[0][t];delete arguments[0][t],arguments[0][i(t)]=e})),s.apply(this,arguments),this}}if(o&&o.fn&&!t.allJQueries.includes(o)){const e={DOMContentLoaded:[],"rocket-DOMContentLoaded":[]};for(const t in e)document.addEventListener(t,()=>{e[t].forEach(t=>t())},{isRocket:!0});o.fn.ready=o.fn.init.prototype.ready=function(i){function s(){parseInt(o.fn.jquery)>2?setTimeout(()=>i.bind(document)(o)):i.bind(document)(o)}return"function"==typeof i&&(t.realDomReadyFired?!t.userActionTriggered||t.fauxDomReadyFired?s():e["rocket-DOMContentLoaded"].push(s):e.DOMContentLoaded.push(s)),this},s("on"),s("one"),s("off"),t.allJQueries.push(o)}e=o}t.allJQueries=[],o(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){o(t)}})}P(){const t=new Map;document.write=document.writeln=function(e){const i=document.currentScript,o=document.createRange(),s=i.parentElement;let n=t.get(i);void 0===n&&(n=i.nextSibling,t.set(i,n));const c=document.createDocumentFragment();o.setStart(c,0),c.appendChild(o.createContextualFragment(e)),s.insertBefore(c,n)}}async R(){return new Promise(t=>{this.userActionTriggered?t():this.onFirstUserAction=t})}async L(){return new Promise(t=>{document.addEventListener("DOMContentLoaded",()=>{this.realDomReadyFired=!0,t()},{isRocket:!0})})}async j(){return this.realWindowLoadedFired?Promise.resolve():new Promise(t=>{window.addEventListener("load",t,{isRocket:!0})})}M(){this.pendingScripts=[];this.scriptsMutationObserver=new MutationObserver(t=>{for(const e of t)e.addedNodes.forEach(t=>{"SCRIPT"!==t.tagName||!t.src||t.noModule||t.isWPRocket||this.pendingScripts.push({script:t,promise:new Promise(e=>{const i=()=>{const i=this.pendingScripts.findIndex(e=>e.script===t);i>=0&&this.pendingScripts.splice(i,1),e()};t.addEventListener("load",i,{isRocket:!0}),t.addEventListener("error",i,{isRocket:!0}),setTimeout(i,1e3)})})})}),this.scriptsMutationObserver.observe(document,{childList:!0,subtree:!0})}async F(){await this.X(),this.pendingScripts.length?(await this.pendingScripts[0].promise,await this.F()):this.scriptsMutationObserver.disconnect()}D(){this.delayedScripts={normal:[],async:[],defer:[]},document.querySelectorAll("script[type$=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _(){await this.L();let t=[];document.querySelectorAll("script[type$=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let i=e.getAttribute("data-rocket-src");if(i&&!i.startsWith("data:")){i.startsWith("//")&&(i=location.protocol+i);try{const o=new URL(i).origin;o!==location.origin&&t.push({src:o,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(t){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this.Y(t,"preconnect")}async G(t){if(await this.K(),!0!==t.noModule||!("noModule"in HTMLScriptElement.prototype))return new Promise(e=>{let i;function o(){(i||t).setAttribute("data-rocket-status","executed"),e()}try{if(navigator.userAgent.includes("Firefox/")||""===navigator.vendor||this.CSPIssue)i=document.createElement("script"),[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),i.setAttribute(e,t.nodeValue))}),t.text&&(i.text=t.text),t.nonce&&(i.nonce=t.nonce),i.hasAttribute("src")?(i.addEventListener("load",o,{isRocket:!0}),i.addEventListener("error",()=>{i.setAttribute("data-rocket-status","failed-network"),e()},{isRocket:!0}),setTimeout(()=>{i.isConnected||e()},1)):(i.text=t.text,o()),i.isWPRocket=!0,t.parentNode.replaceChild(i,t);else{const i=t.getAttribute("data-rocket-type"),s=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",o,{isRocket:!0}),t.addEventListener("error",i=>{this.CSPIssue&&i.target.src.startsWith("data:")?(console.log("WPRocket: CSP fallback activated"),t.removeAttribute("src"),this.G(t).then(e)):(t.setAttribute("data-rocket-status","failed-network"),e())},{isRocket:!0}),s?(t.fetchPriority="high",t.removeAttribute("data-rocket-src"),t.src=s):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}}catch(i){t.setAttribute("data-rocket-status","failed-transform"),e()}});t.setAttribute("data-rocket-status","skipped")}async C(t){const e=t.shift();return e?(e.isConnected&&await this.G(e),this.C(t)):Promise.resolve()}O(){this.Y([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}Y(t,e){this.trash=this.trash||[];let i=!0;var o=document.createDocumentFragment();t.forEach(t=>{const s=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(s&&!s.startsWith("data:")){const n=document.createElement("link");n.href=s,n.rel=e,"preconnect"!==e&&(n.as="script",n.fetchPriority=i?"high":"low"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),t.nonce&&(n.nonce=t.nonce),o.appendChild(n),this.trash.push(n),i=!1}}),document.head.appendChild(o)}W(){this.trash.forEach(t=>t.remove())}async T(){try{document.readyState="interactive"}catch(t){}this.fauxDomReadyFired=!0;try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(document,"DOMContentLoaded"),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this.K(),this.J(window,"DOMContentLoaded"),window.dispatchEvent(new Event("rocket-DOMContentLoaded"))}catch(t){console.error(t)}}async A(){try{document.readyState="complete"}catch(t){}try{await this.K(),this.J(document,"readystatechange"),document.dispatchEvent(new Event("rocket-readystatechange")),await this.K(),document.rocketonreadystatechange&&document.rocketonreadystatechange(),await this.K(),this.J(window,"load"),window.dispatchEvent(new Event("rocket-load")),await this.K(),window.rocketonload&&window.rocketonload(),await this.K(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this.K(),this.J(window,"pageshow");const t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this.K(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}catch(t){console.error(t)}}async K(){Date.now()-this.lastBreath>45&&(await this.X(),this.lastBreath=Date.now())}async X(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}B(t,e=window){return e===document&&"readystatechange"===t||(e===document&&"DOMContentLoaded"===t||(e===window&&"DOMContentLoaded"===t||(e===window&&"load"===t||e===window&&"pageshow"===t)))}static run(){(new RocketLazyLoadScripts).t()}}RocketLazyLoadScripts.run()})();
+</script>
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name='robots' content='max-image-preview:large' />
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+	(function(){dataLayer.push(arguments);})('set', 'developer_id.dNGJiYT', true);
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><link rel='dns-prefetch' href='//www.googletagmanager.com' />
+
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to manual -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var dataLayer_content = {"pagePostType":"page","pagePostType2":"single-page","pagePostAuthor":"eshunter","postID":352};
+	dataLayer.push( dataLayer_content );
+</script>
+<script type="text/rocketlazyloadscript" data-cfasync="false" data-pagespeed-no-defer>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-P29356W');
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com --><link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://strategicplan.ncsu.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fstrategicplan.ncsu.edu%2Fcurrent-plan%2Fwolfpack-2030-powering-the-extraordinary%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://strategicplan.ncsu.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fstrategicplan.ncsu.edu%2Fcurrent-plan%2Fwolfpack-2030-powering-the-extraordinary%2F&#038;format=xml" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the block styles printed at wp_footer." }
+/*# sourceURL=wp-block-styles-placeholder-inline-css */
+</style>
+<style id="wp-global-styles-placeholder-inline-css">
+:root { --wp-internal-comment: "Placeholder for wp_hoist_late_printed_styles() to replace with the global-styles printed at wp_footer." }
+/*# sourceURL=wp-global-styles-placeholder-inline-css */
+</style>
+<link rel='stylesheet' id='gravityFormsStyling-css' href='https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/app/ThirdPartySupport/dist/styles/gravityForms.css' media='all' />
+<link rel='stylesheet' id='ncst/main.css-css' href='https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/styles/mainStyle.css?ver=4.18.2' media='all' />
+<style id="ncst/main.css-inline-css">
+:root {
+  /* Brand Colors */
+  --brand-primary:        #CC0000;
+  --brand-primary-dark:   #990000;
+  --brand-primary-extra-dark:   #5e0000;
+  --brand-secondary:      #990000;
+  --brand-tertiary1:      #d14905;
+  --brand-tertiary2:      #6F7D1C;
+  --brand-tertiary3:      #008473;
+  --brand-tertiary4:      #427e93;
+  --brand-tertiary5:      #4156a1;
+
+  /* Active/Hover colors */
+  --brand-primary-active:        #990000;
+  --brand-secondary-active:      #3e0000;
+  --brand-tertiary1-active:      #910e01;
+  --brand-tertiary2-active:      #2f3a03;
+  --brand-tertiary3-active:      #00444c;
+  --brand-tertiary4-active:      #12394d;
+  --brand-tertiary5-active:      #192668;
+
+  /* Color Wheel Colors */
+  --white:                #FFFFFF;
+  --black:                #000000;
+  --blue:                 #427e93;
+  --green:                #6F7D1C;
+  --red:                  #CC0000;
+  --very-light-gray:      #f2f2f2; /* gray-000 */
+  --light-gray:           #CCCCCC; /* gray-200 */
+  --mid-gray:             #666666; /* gray-600 */
+  --dark-gray:            #333333; /* gray-800 */
+
+  /* Text Colors */
+  --dark-heading-text-color:  var( --brand-primary );
+  --text-has-bg-color:        var( --white );
+  --list-bullet:              var( --brand-primary );
+  --list-bullet-footer:       var( --white );
+
+  /* Block Specific */
+  --content-card-header:      var( --dark-heading-text-color );
+  --content-card-teaser:      var( --dark-gray );
+  --content-card-cta:         var( --brand-primary );
+  --video-img-play-indicator: var( --brand-primary );
+  --video-img-play-hover:     var( --brand-primary-dark );
+
+  /* Background Colors */
+  --split-header-bg:      var(--brand-primary);
+  --custom-background1:   var( --brand-primary );
+  --custom-background2:   var( --brand-secondary );
+  --custom-background3:   var( --brand-tertiary1 );
+  --custom-background4:   var( --brand-tertiary2 );
+  --custom-background5:   var( --brand-tertiary3 );
+  --custom-background6:   var( --brand-tertiary4 );
+  --custom-background7:   var( --brand-tertiary5 );
+  --custom-background9:   var( --mid-gray );
+  --custom-background10:   var( --dark-gray );
+
+  /* Background Active Colors */
+  --custom-background1-active:   var( --brand-primary-active );
+  --custom-background2-active:   var( --brand-secondary-active );
+  --custom-background3-active:   var( --brand-tertiary1-active );
+  --custom-background4-active:   var( --brand-tertiary2-active );
+  --custom-background5-active:   var( --brand-tertiary3-active );
+  --custom-background6-active:   var( --brand-tertiary4-active );
+  --custom-background7-active:   var( --brand-tertiary5-active );
+  --custom-background9-active:   var( --dark-gray );
+  --custom-background10-active:   var( --mid-gray );
+
+  /* Alert Colors */
+  --alert-yellow:         #FAC800;
+  --alert-red:            #CC0000;
+
+  /* Custom Colors */
+  --pswp-bg:              var(--white);
+  --pswp-placeholder:     var(--dark-gray);
+  --gray-100:             #e5e5e5;
+  --gray-300:             #b2b2b2;
+  --gray-400:             #999999;
+  --gray-500:             #808080;
+  --gray-900:             #1a1a1a;
+  --reynolds-100:         #ea1500;
+  --reynolds-200:         var(--brand-primary);
+  --reynolds-500:         #7e0000;
+  --reynolds-600:         #5e0000;
+  --reynolds-700:         #3e0000;
+  --reynolds-dark:        var(--reynolds-500);
+  --reynolds-very-dark:   var(--reynolds-600);
+  --green-100:            #bfcc46; /* article-listing */
+  --green-200:            #a2b729; /* article-listing */
+}
+.editor-styles-wrapper ul.wp-block-list li::before, ul.wp-block-list li::before, ol ul.wp-block-list li::before {
+  background-image: url( "data:image/svg+xml;charset=utf8,%3Csvg  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M327.38,207.75,183.63,64l-47.26,48.25L279.14,256,136.37,399.75,183.63,448l192-192Z' fill='%23CC0000'/%3E%3C/svg%3E" );
+}
+.editor-styles-wrapper ul.wp-block-list ul li::before, ul.wp-block-list ul li::before {
+  background-image: url( "data:image/svg+xml;charset=utf8,%3Csvg  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M327.38,207.75,183.63,64l-47.26,48.25L279.14,256,136.37,399.75,183.63,448l192-192Z' fill='%23CCCCCC'/%3E%3C/svg%3E" );
+}
+ul.wp-block-list.is-style-subdued-list li::before, ul.wp-block-list.is-style-subdued-list ul li::before {
+  background-image: url( "data:image/svg+xml;charset=utf8,%3Csvg  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M327.38,207.75,183.63,64l-47.26,48.25L279.14,256,136.37,399.75,183.63,448l192-192Z' fill='%23CCCCCC'/%3E%3C/svg%3E" );
+}
+.site-footer__links ul li::before {
+  background-image: url( "data:image/svg+xml;charset=utf8,%3Csvg  xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M327.38,207.75,183.63,64l-47.26,48.25L279.14,256,136.37,399.75,183.63,448l192-192Z' fill='%23FFFFFF'/%3E%3C/svg%3E" );
+}
+:root {
+  /* Brand Typography variables */
+
+  /* Heading Sizes */
+    --heading-size-xl:          clamp(3rem, 0.893vw + 2.571rem, 3.375rem);
+    --heading-size-large:       clamp(2.5rem, 0.744vw + 2.143rem, 2.813rem);
+    --heading-size-medium:      clamp(1.75rem, 0.446vw + 1.536rem, 1.938rem);
+    --heading-size-small:       clamp(1.188rem, 0.446vw + 0.973rem, 1.375rem);
+
+  /* Heading Line Heights */
+    --heading-line-height:      1.25;
+
+  /* Body Sizes */
+    --body-size:                clamp(1rem, 0.298vw + 0.857rem, 1.125rem);
+    --body-size-large:          var(--heading-size-small);
+
+  /* Quote Sizes */
+    --quote-size:               var(--heading-size-large);
+    --block-quote-size:         var(--heading-size-small);
+    --text-link-size:           var(--heading-size-small);
+    --pull-quote-size:          var(--heading-size-medium);
+
+  /* Misc Typography Sizes */
+    --subtitle-size:            clamp(1.438rem, 0.446vw + 1.223rem, 1.625rem);
+    --label-header-size:        var(--body-size);
+    --date-line-size:           0.875rem;
+    --caption-size:             0.875rem;
+    --meta-size:                0.875rem;
+    --call-to-action-size:      0.875rem;
+
+  /* Misc Typography Line Heights */
+    --subtitle-line-height:     1.5;
+
+  /* Font Weights */
+    --bold-weight: 700;
+    --regular-weight: 400;
+    --light-weight: 300;
+    --header-weight: var(--bold-weight);
+    --body-weight: var(--light-weight);
+    --block-quote-weight: var(--bold-weight);
+}
+/*# sourceURL=ncst%2Fmain.css-inline-css */
+</style>
+<link rel='stylesheet' id='ncst/blocks.css-css' href='https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/styles/blocks.css?ver=4.18.2' media='all' />
+<link rel='stylesheet' id='ncst/stories/main.css-css' href='https://strategicplan.ncsu.edu/wp-content/plugins/ncstate-pro-add-on/dist/styles/mainStyle.css?ver=2.12.9' media='all' />
+<link rel='stylesheet' id='ncst/stories/blocks.css-css' href='https://strategicplan.ncsu.edu/wp-content/plugins/ncstate-pro-add-on/dist/styles/blocks.css?ver=2.12.9' media='all' />
+<link rel='stylesheet' id='ncst/components.css-css' href='https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/styles/components.css?ver=4.18.2' media='all' />
+<link rel='stylesheet' id='ncst/print.css-css' href='https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/styles/print.css?ver=4.18.2' media='print' />
+<script type="text/rocketlazyloadscript" id="jquery-core-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script type="text/rocketlazyloadscript" id="jquery-migrate-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script type="text/rocketlazyloadscript" id="google_gtagjs-js" data-rocket-src="https://www.googletagmanager.com/gtag/js?id=GT-5NRBFF7Z" async></script>
+<script type="text/rocketlazyloadscript" id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["strategicplan.ncsu.edu"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-5NRBFF7Z");
+ window._googlesitekit = window._googlesitekit || {}; window._googlesitekit.throttledEvents = []; window._googlesitekit.gtagEvent = (name, data) => { var key = JSON.stringify( { name, data } ); if ( !! window._googlesitekit.throttledEvents[ key ] ) { return; } window._googlesitekit.throttledEvents[ key ] = true; setTimeout( () => { delete window._googlesitekit.throttledEvents[ key ]; }, 5 ); gtag( "event", name, { ...data, event_source: "site-kit", ...( data && data.user_data ? {"developer_id.dZjRkOT":true} : {} ) } ); }; 
+//# sourceURL=google_gtagjs-js-after
+</script>
+<link rel="https://api.w.org/" href="https://strategicplan.ncsu.edu/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://strategicplan.ncsu.edu/wp-json/wp/v2/pages/352" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://strategicplan.ncsu.edu/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.1.4" />
+<link rel="canonical" href="https://strategicplan.ncsu.edu/current-plan/wolfpack-2030-powering-the-extraordinary/" />
+<link rel='shortlink' href='https://strategicplan.ncsu.edu/?p=352' />
+<meta name="generator" content="Site Kit by Google 1.191.0" /><!-- Stream WordPress user activity plugin v4.4.0 -->
+<link rel="dns-prefetch" href="https://cdn.ncsu.edu" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Prefetch all Univers font weights -->
+<link rel="preload" href="https://fonts.gstatic.com/s/robotoslab/v16/BngMUXZYTXPIvIBgJJSb6ufN5qWr4xCC.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="https://fonts.gstatic.com/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="https://fonts.gstatic.com/s/robotocondensed/v19/ieVg2ZhZI2eCN5jzbjEETS9weq8-19eDpCEobdNZUSdy4Q.woff2" as="font" type="font/woff2" crossorigin />
+                <link rel="icon" type="image/x-icon" href="https://cdn.ncsu.edu/brand-assets/favicons/favicon.ico" sizes="any">
+                <link rel="icon" href="https://cdn.ncsu.edu/brand-assets/favicons/favicon.svg" type="image/svg+xml">
+                <link rel="apple-touch-icon" href="https://cdn.ncsu.edu/brand-assets/favicons/apple-touch-icon.png">
+                <link rel="manifest" href="https://cdn.ncsu.edu/brand-assets/favicons/manifest.webmanifest">
+            <!-- Search Engine -->
+<title>Wolfpack 2030: Powering the Extraordinary | Strategic Planning</title>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url"           : "https://strategicplan.ncsu.edu/current-plan/wolfpack-2030-powering-the-extraordinary/",
+        "headline"      : "Wolfpack 2030: Powering the Extraordinary | Strategic Planning",
+        "author_name"   : "eshunter",
+        "datePublished" : "2021-04-07T10:11:51-04:00",
+        "dateModified"  : "2021-04-07T10:11:51-04:00",
+        "lastReviewed"  : "",
+        "thumbnailUrl"  : "",
+        "image"         : ""
+    }
+</script>
+<meta name="name" content="Wolfpack 2030: Powering the Extraordinary | Strategic Planning">
+<meta name="description" content="">
+
+<!-- Open Graph general (Facebook, Pinterest & Google+) -->
+<meta property="og:title" content="Wolfpack 2030: Powering the Extraordinary">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://strategicplan.ncsu.edu/current-plan/wolfpack-2030-powering-the-extraordinary/">
+
+
+
+
+<meta property="og:description" content="">
+<meta property="og:site_name" content="Strategic Planning">
+
+<!-- if post type is 'article', append additional meta fields -->
+<!-- Twitter -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wolfpack 2030: Powering the Extraordinary">
+<meta name="twitter:description" content="">
+<meta name="twitter:site" content="">
+<meta name="generator" content="WP Rocket 3.24" data-wpr-features="wpr_delay_js wpr_cdn wpr_preload_links wpr_desktop" /></head>
+    <body class="wp-singular page-template-default page page-id-352 page-child parent-pageid-10 wp-embed-responsive wp-theme-ncstate-theme-v4 wolfpack-2030-powering-the-extraordinary app-data index-data singular-data page-data page-352-data page-wolfpack-2030-powering-the-extraordinary-data">
+                
+<!-- GTM Container placement set to manual -->
+<!-- Google Tag Manager (noscript) -->
+				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P29356W" height="0" width="0" style="display:none;visibility:hidden" aria-hidden="true"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- GTM Container placement set to manual -->
+<!-- Google Tag Manager (noscript) -->		<a class="sr-only" href="#main-content">Skip to main content</a>
+            <div class="ncst-utility-bar">
+                <div class="ncst-utility-bar-wrapper">
+                                            <a href="https://www.ncsu.edu/" class="back-to-ncsu-link">
+                            <svg class="wolficon" aria-hidden="true" focusable="false">
+                                <use xlink:href="#wolficon-chevron-left-bold"></use>
+                            </svg>
+                            NC State Home
+                        </a>
+                                                                                            <div class="ncst-logo">
+                                <a href="https://www.ncsu.edu/">
+                                    <svg aria-label="NC State University" role="img" viewBox="0 0 54 25.9"><path fill="#c00" d="M0 0h54v25.9H0z"/><path fill="#fff" d="M7.5 6.7l2.2 5.7h2.1V4.7h-1.5V10l-2-5.3H6v7.7h1.6V6.7m8.2 4.7c-1 0-1-.9-1-2.9s.1-2.8 1-2.8c.5 0 .6.4.6 1.4H18c0-1.6-.6-2.5-2.3-2.5-2.6 0-2.6 2-2.6 4s0 4 2.7 4c1.5 0 2.3-.7 2.3-2.8h-1.6c0 .6 0 1.6-.7 1.6zm10.5-1.1c0-2.4-3.2-2.3-3.2-3.8a.8.8 0 0 1 .8-.8c.7 0 .8.6.8 1.2h1.5c.2-1.7-.6-2.4-2.2-2.4-2 0-2.6 1-2.6 2.2 0 2.3 3.3 2.4 3.3 3.8a.8.8 0 0 1-.8.9c-.9 0-.9-.6-.9-1.4h-1.7c0 1.3.3 2.5 2.3 2.5 1.3 0 2.7-.2 2.7-2.2zm2.4 2.1h1.6V5.9h1.8V4.8h-5.2V6h1.8v6.4m5-7.7l-2 7.7h1.5l.5-1.7h2.2l.4 1.7H38l-2.1-7.7zm.3 4.8l.7-3.4.8 3.4zm7 2.9V5.9h1.7V4.8h-5.2V6h1.8v6.4h1.6m6.9-1.2H45V9h2.4V7.8H45v-2h2.6V4.8h-4.2v7.7h4.3v-1.2M9.2 19c0 .8 0 2-1.3 2s-1.3-1.2-1.3-2v-4H6v4.4c0 1.6.9 2 1.9 2s1.8-.4 1.8-2v-4.4h-.5zm5.6 1.5L12.3 15h-1v6.3h.7v-5.6l2.6 5.6h.8V15h-.6v5.5m2.4-5.5h.5v6.3h-.5zm3.8 5.7l-1.5-5.7h-.6l1.8 6.3h.7L23 15h-.5L21 20.6m3.8-2.4H27v-.5h-2.2v-2.4h2.3V15h-2.9v6.3h3v-.5h-2.4v-2.5m6-.3c.8-.2 1-.7 1-1.5 0-1.1-.3-1.5-1.6-1.5h-1.7v6.3h.5v-3h1c1.3 0 1 1.2 1 1.4l.1 1.6h.6v-.7c0-2.3 0-2.4-1-2.6zm-.8-.2h-1v-2.3h1.1c.7 0 1 .1 1 1 0 1-.3 1.3-1.1 1.3zm5 0c-.7-.5-1.2-.5-1.2-1.5 0-.7.4-1 1.1-1 .9 0 1 .5 1 1.3h.7c0-1-.3-1.8-1.6-1.8-1 0-1.8.5-1.8 1.6 0 .6.1 1 1.3 1.7 1 .6 1.5.9 1.5 1.7a1 1 0 0 1-1 1.1c-1.2 0-1.3-.7-1.3-1.4h-.6c0 1.3.5 2 1.8 2a1.5 1.5 0 0 0 1.7-1.8c0-1.2-.8-1.3-1.6-1.9zm3.1-2.8h.6v6.3h-.6zm1.8.4h1.6v6h.5v-6h1.6V15h-3.7v.5m7.9-.5L46.3 18 44.8 15h-.6l1.8 3.7v2.6h.5v-2.6l1.8-3.7h-.5"/></svg>
+                                </a>
+                            </div>
+                                                    <div id="smart-search-button">
+                            <button aria-label="Open search" role="button">
+                                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.95738 17.9106C7.01655 18.4708 8.27021 18.6504 9.51498 18.3241C12.232 17.6121 13.8778 14.7601 13.191 11.954C12.5042 9.14785 9.74483 7.45024 7.02782 8.16227C4.31082 8.87429 2.66503 11.7263 3.35184 14.5324C3.63854 15.7038 4.2864 16.6821 5.14157 17.3725L2 23.2021L2.84439 23.6872L5.95738 17.9106ZM4.2889 14.2869C4.84489 16.5585 7.07863 17.9327 9.27811 17.3563C11.4776 16.7799 12.8099 14.4712 12.2539 12.1995C11.6979 9.92792 9.46418 8.55367 7.2647 9.13006C5.06522 9.70646 3.73291 12.0152 4.2889 14.2869Z" fill="white" stroke="white"/>
+                                    <line x1="15.2414" y1="9.5484" x2="30" y2="9.5484" stroke="white" stroke-width="1.5"/>
+                                    <line x1="15.2414" y1="16.3992" x2="30" y2="16.3992" stroke="white" stroke-width="1.5"/>
+                                    <line x1="8.06897" y1="23.25" x2="30" y2="23.25" stroke="white" stroke-width="1.5"/>
+                                </svg>
+                            </button>
+                        </div>
+                                    </div>
+            </div>
+        
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script type="text/rocketlazyloadscript" async data-rocket-src="https://www.googletagmanager.com/gtag/js?id=G-3BCCQK39HR"></script>
+			<script type="text/rocketlazyloadscript">
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag("js", new Date());
+
+			  gtag("config", "G-3BCCQK39HR", {
+				  "cookie_domain": ".ncsu.edu"
+				});
+			</script>
+			            <div data-rocket-location-hash="f9ef04a35c641c32759ce93e0c36b89c" class="wolficon-sprites" style="display:none">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 512 512" id="wolficon-360" xmlns="http://www.w3.org/2000/svg"><path d="M101.34 150.11A169.23 169.23 0 01232 87.89a166.12 166.12 0 01129.78 62.22H392a193.89 193.89 0 00-160.88-86.22c-64 0-124.44 32.89-160 86.22zm260.44 211.78a169.23 169.23 0 01-130.67 62.22 166.12 166.12 0 01-129.78-62.22H71.12A193.89 193.89 0 00232 448.11c64 0 124.44-32.89 160-86.22zM64.89 292.56c0 5.33.89 22.22 21.33 22.22 13.33 0 21.33-9.78 21.33-23.11 0-24-24-24-40.89-24v-27.56c16-.89 40.89-1.78 40.89-24.89 0-13.33-9.78-19.56-20.44-19.56A24.14 24.14 0 0072 201a24.14 24.14 0 00-5.33 15.11H30.23c.89-8 1.47-17.46 9.78-28.44 10.67-13.33 28.44-17.78 46.22-17.78 41.78 0 55.11 26.67 55.11 44.44 0 27.56-24 35.56-31.11 37.33 7.11 2.67 13.33 5.33 19.56 10.67 8.89 7.11 13.33 17.78 13.33 29.33 0 27.56-25.78 48.89-59.56 48.89-11.56 0-29.33-2.67-40-11.56-16-11.56-15.11-31.11-15.11-37.33h36.44zm177.78-79.11c-.89-11.56-8.89-16-17.78-16-23.11 0-24 28.44-24 46.22a39.33 39.33 0 0132-13.33c23.11 0 47.11 16 47.11 51.56 0 18.67-4.44 32-16.89 43.56-11.56 9.78-24 15.11-42.67 15.11-56.89 0-56.89-55.11-56.89-74.67 0-32.89 4.44-67.56 27.56-84.44 14.22-10.67 31.11-11.56 37.33-11.56 24.89 0 48.89 13.33 49.78 43.56zm2.67 71.11c0-17.78-9.78-28.44-21.33-28.44-5.33 0-24 3.56-24 29.33 0 20.44 11.56 28.44 23.11 28.44 9.77 0 22.22-6.22 22.22-29.33zm107.55-114.67c23.11 0 36.44 12.44 42.67 22.22 8.89 12.44 15.11 28.44 15.11 59.56 0 38.22-8.89 88.89-58.67 88.89-41.78 0-56.89-40.89-56.89-85.33.01-22.23 4.45-85.34 57.78-85.34zM370.67 217c-.89-4.44-4.44-19.56-17.78-19.56-9.78 0-15.11 9.78-16 14.22-5.33 16.89-5.33 41.78-5.33 46.22 0 28.44 3.56 54.22 22.22 54.22s21.33-32 21.33-54.22c.01-10.66-.88-30.21-4.44-40.88zm80.89-36.44c21.33 0 32 12.44 32 29.33 0 16-10.67 30.22-32 30.22-23.11 0-31.11-16-31.11-30.22 0-17.78 11.55-29.33 31.11-29.33zm0 48c9.78 0 13.33-5.33 13.33-18.67 0-11.56-3.56-18.67-13.33-18.67-11.56 0-13.33 11.56-13.33 19.56 0 11.55 5.33 17.78 13.33 17.78z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-down" xmlns="http://www.w3.org/2000/svg"><path d="M448 256l-35.1-34.8-132.29 132.02V63.98h-49.98v288.24L99.1 221.2 64 256l192 192 192-192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-down-bold" xmlns="http://www.w3.org/2000/svg"><path d="M216.66 64v242.36l-97.58-103.87L64 256l192 192 192-192-53.51-53.51-99.15 103.87V64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-down-light" xmlns="http://www.w3.org/2000/svg"><path d="M64 256l23.44-23.19L239.86 387V64h32.28v323l154.21-154.19L448 256 256 448z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-left" xmlns="http://www.w3.org/2000/svg"><path d="M256 448l34.79-35.1-132.02-132.29h289.24v-49.98H159.77L290.79 99.1 256 64 64 256l192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-left-bold" xmlns="http://www.w3.org/2000/svg"><path d="M448 216.66H205.64l103.87-97.57L256 64 64 256l192 192 53.51-53.51-103.87-99.15H448z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-left-light" xmlns="http://www.w3.org/2000/svg"><path d="M256 64l23.19 23.44L125 239.86h323v32.28H125l154.19 154.21L256 448 64 256z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-right" xmlns="http://www.w3.org/2000/svg"><path d="M256 64l-34.82 35.1L353.2 231.39H63.96v49.98H352.2L221.18 412.9 256 448l192-192L256 64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-right-bold" xmlns="http://www.w3.org/2000/svg"><path d="M64 295.34h242.36l-103.87 97.58L256 448l192-192L256 64l-53.51 53.51 103.87 99.15H64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-right-light" xmlns="http://www.w3.org/2000/svg"><path d="M256 448l-23.19-23.44L387 272.14H64v-32.28h323L232.81 85.65 256 64l192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-to-bottom" xmlns="http://www.w3.org/2000/svg"><path d="M89.74 407.24V448h332.52v-40.76zm278.89-169.47l-29-29-63.28 63.28V64h-40.73v208.09l-63.28-63.29-29 29L256 350.39z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-to-top" xmlns="http://www.w3.org/2000/svg"><path d="M422.26 104.76V64H89.74v40.76zM143.37 274.23l29 29 63.28-63.28V448h40.76V239.91l63.28 63.28 29-29L256 161.61z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-up" xmlns="http://www.w3.org/2000/svg"><path d="M64 256l35.1 34.78 132.29-132.01V448h49.98V159.77L412.9 290.78 448 256 256 63.99 64 256z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-up-bold" xmlns="http://www.w3.org/2000/svg"><path d="M295.34 448V205.64l97.57 103.87L448 256 256 64 64 256l53.51 53.51 99.15-103.87V448z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-arrow-up-light" xmlns="http://www.w3.org/2000/svg"><path d="M448 256l-23.44 23.19L272.14 125v323h-32.28V125L85.65 279.19 64 256 256 64z"/></symbol><symbol viewBox="0 0 600 530" id="wolficon-bluesky" xmlns="http://www.w3.org/2000/svg"><path d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 9.997 86.535 9.997 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-calendar" xmlns="http://www.w3.org/2000/svg"><path d="M436.88 448H75.12V106.44H179.2V64h35.37v42.44h81.85V64h36.38v42.44h103.07V448zm-325.39-36.38h289v-268.8h-289zm225.35-51.54h-33.35V248.93a95.73 95.73 0 01-37.39 20.21l-2 1v-31.32h1c8.08-2 16.17-7.07 25.26-14.15s15.16-15.16 18.19-24.25l1-1h27.28zm-110.15 0h-33.34V248.93c-11.12 9.07-23.24 16.16-37.35 20.21l-2 1v-31.32h1c8.08-2 16.17-7.07 25.26-14.15s15.16-15.16 18.19-24.25v-1h27.28v160.66z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-check" xmlns="http://www.w3.org/2000/svg"><path d="M451.62 64L183.55 332.08 60.38 208.91l-58 56.93L183.55 448l326-326z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-checkbox" xmlns="http://www.w3.org/2000/svg"><path d="M360.53 407.47H57.6v-304h289.07L388.27 64H17.07v384h384V266.67l-40.53 39.47zM153.6 177.07l-38.4 37.33 134.4 133.33L494.93 102.4 457.6 65.07l-208 208z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-double-left-bold" xmlns="http://www.w3.org/2000/svg"><path d="M431.15 448l46-46L330 256l147.11-146-46-46-192 192zm-204.26 0l46-46-147.1-146 147.06-146-46-46-192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-double-right-bold" xmlns="http://www.w3.org/2000/svg"><path d="M80.85 64l-46 46L182 256 34.89 402l46 46 192-192zm204.26 0l-46 46 147.1 146-147.06 146 46 46 192-192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-down-bold" xmlns="http://www.w3.org/2000/svg"><path d="M304.25 327.38L448 183.63l-48.25-47.26L256 279.14 112.25 136.37 64 183.63l192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-down-light" xmlns="http://www.w3.org/2000/svg"><path d="M64 171.66l23.33-23.33L256 318.65l170.47-170.31L448 171.66l-192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-left-bold" xmlns="http://www.w3.org/2000/svg"><path d="M184.62 304.25L328.37 448l47.26-48.25L232.86 256l142.77-143.75L328.37 64l-192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-left-light" xmlns="http://www.w3.org/2000/svg"><path d="M340.34 64l23.33 23.33L193.35 256l170.31 170.47L340.34 448l-192-192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-right-bold" xmlns="http://www.w3.org/2000/svg"><path d="M327.38 207.75L183.63 64l-47.26 48.25L279.14 256 136.37 399.75 183.63 448l192-192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-right-light" xmlns="http://www.w3.org/2000/svg"><path d="M171.66 448l-23.33-23.33L318.65 256 148.34 85.53 171.66 64l192 192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-up-bold" xmlns="http://www.w3.org/2000/svg"><path d="M207.75 184.62L64 328.37l48.25 47.26L256 232.86l143.75 142.77L448 328.37l-192-192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-chevron-up-light" xmlns="http://www.w3.org/2000/svg"><path d="M448 340.34l-23.33 23.33L256 193.35 85.53 363.66 64 340.34l192-192z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-envelope" xmlns="http://www.w3.org/2000/svg"><path d="M500.36 64H11.64L256 282.85zM148.59 257.34l-137-122.18V384.9zm214.83 0l137 124.87v-247zM256 352.67l-68.48-60.42L22.38 448h471.27L323.13 293.59z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-expand" xmlns="http://www.w3.org/2000/svg"><path d="M304 64v48h96v96h48V64zM64 64v144h48v-96h96V64zm48 240H64v144h144v-48h-96zm288 96h-96v48h144V304h-48z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-facebook" xmlns="http://www.w3.org/2000/svg"><path d="M426.8 64H85.2A21.2 21.2 0 0064 85.2v341.6A21.19 21.19 0 0085.19 448h183.94V299.5h-49.88v-58.12h49.88v-42.75c0-49.6 30.29-76.6 74.54-76.6a422.32 422.32 0 0144.71 2.25v51.82h-30.51c-24.08 0-28.74 11.44-28.74 28.23v37h57.55l-7.5 58.13h-50.05V448h97.67a21.2 21.2 0 0021.2-21.19V85.2A21.2 21.2 0 00426.8 64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-flickr" xmlns="http://www.w3.org/2000/svg"><path d="M234.55 256c0 47-38.81 84.77-85.79 84.77a84.77 84.77 0 110-169.53c46.98-.01 85.79 37.76 85.79 84.76zM448 256a84.56 84.56 0 01-84.77 84.77c-47 0-85.79-37.79-85.79-84.77s38.81-84.77 85.79-84.77A84.56 84.56 0 01448 256z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-folder" xmlns="http://www.w3.org/2000/svg"><path d="M479.53 156.36V64H281.44v41.07l28.82 51.29zm-241.41-19.94H32.47V448h447.06V209.49H279.18z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-googleplus" xmlns="http://www.w3.org/2000/svg"><path d="M461.47 220.07h-65.12v-65.12a8.86 8.86 0 00-9-9h-18a8.86 8.86 0 00-9 9v65.12H295.3a8.86 8.86 0 00-9 9v18a8.86 8.86 0 009 9h65.12v65.12a8.86 8.86 0 009 9h18a8.86 8.86 0 009-9V256h65.12a8.86 8.86 0 009-9v-18a8.86 8.86 0 00-9.07-8.93zm-217.82 56.14c-13.47-9-25.82-23.58-25.82-28.07 0-7.86 1.12-11.23 19.09-24.7 22.46-18 34.81-41.54 34.81-66.25 0-23.58-6.74-42.67-18-57.26h9c1.12 0 3.37 0 4.49-1.12l25.82-19.09q5.05-3.37 3.37-10.11c-1.12-3.37-4.49-5.61-9-5.61H174a107.79 107.79 0 00-37 6.74c-41.54 13.47-70.74 49.4-70.74 85.33 0 51.65 40.42 89.82 93.19 90.95-1.12 4.49-2.25 7.86-2.25 12.35a40.49 40.49 0 006.74 22.46h-1.12c-50.53 0-96.56 24.7-114.53 61.75-4.49 10.11-6.74 19.09-6.74 29.19a49.66 49.66 0 007.86 26.95c10.11 19.09 33.68 34.81 65.12 42.67A271.3 271.3 0 00167.3 448a206.66 206.66 0 0046-5.61c44.91-13.47 74.11-47.16 74.11-85.33.03-35.94-11.2-58.39-43.76-80.85zm-142.6 84.21c0-26.95 33.68-50.53 71.86-50.53H174c9 0 16.84 2.25 24.7 4.49 2.25 1.12 5.61 3.37 7.86 4.49 18 12.35 29.19 20.21 32.56 33.68 1.12 3.37 1.12 6.74 1.12 10.11 0 32.56-24.7 49.4-73 49.4-36.99.01-66.19-22.45-66.19-51.64zm34.81-252.63c5.61-6.74 13.47-10.11 22.46-10.11h1.12c25.82 1.12 49.4 29.19 53.89 62.88 2.25 18-2.25 35.93-11.23 47.16q-8.42 10.11-23.58 10.11c-24.7-1.12-49.4-29.19-53.89-62.88-2.24-19.09 2.25-35.95 11.23-47.16z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-images" xmlns="http://www.w3.org/2000/svg"><path d="M54 64v318h458V64zm25 293V89h408v268z"/><path d="M405.95 188.75c18 0 32.56-15.72 32.56-33.68s-14.6-33.68-32.56-33.68a33.68 33.68 0 100 67.37zM343.07 192.12l-47.16 49.41-68.49-98.81-106.67 181.89h324.5L343.07 192.12z"/><path d="M423 423H25V153h16v-25H0v320h448v-36.5h-25V423z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-instagram" xmlns="http://www.w3.org/2000/svg"><path d="M256 98.54c50.79 0 57.9 1 77.21 1 19.3 1 29.46 4.06 35.56 7.11 9.14 3 15.24 7.11 22.35 14.22s11.17 13.21 14.22 22.35c3 7.11 6.1 16.25 7.11 35.56 1 20.32 1 26.41 1 77.21s-1 57.9-1 77.21c-1 19.3-4.06 29.46-7.11 35.56-3 9.14-7.11 15.24-14.22 22.35s-13.21 11.17-22.35 14.22c-6.1 3-16.25 6.1-35.56 7.11-20.32 1-26.41 1-77.21 1s-57.9-1-77.21-1c-19.3-1-29.46-4.06-35.56-7.11-9.14-3-15.24-7.11-22.35-14.22s-11.17-13.21-14.22-22.35c-3-6.1-6.1-16.25-7.11-35.56-1-20.32-1-26.41-1-77.21s1-56.89 1-77.21c1-19.3 4.06-28.44 7.11-35.56 3-9.14 7.11-15.24 14.22-22.35s13.21-11.17 22.35-14.22c6.1-3 16.25-6.1 35.56-7.11s26.41-1 77.21-1M256 64c-51.81 0-58.92 1-79.24 1A164.68 164.68 0 00130 74.16a102 102 0 00-33.49 22.35A96.87 96.87 0 0074.16 130 164.68 164.68 0 0065 176.76c-1 20.32-1 27.43-1 79.24s1 58.92 1 79.24A164.68 164.68 0 0074.16 382a102 102 0 0022.35 33.52A96.87 96.87 0 00130 437.84c12.19 5.08 26.41 8.13 46.73 9.14s27.43 1 79.24 1 58.92 0 79.24-1 34.54-4.06 46.73-9.14 23.37-11.17 33.52-22.35c11.17-10.16 17.27-21.33 22.35-33.52a164.68 164.68 0 009.19-46.73c1-20.32 1-27.43 1-79.24s-1-58.92-1-79.24a164.68 164.68 0 00-9.16-46.76 102 102 0 00-22.35-33.52A96.87 96.87 0 00382 74.16 164.68 164.68 0 00335.24 65c-20.32 0-27.43-1-79.24-1zm0 93.46A98.54 98.54 0 10354.54 256 98 98 0 00256 157.46zM256 320a64 64 0 1164-64 63.73 63.73 0 01-64 64zm125-166.6c0 13.21-10.16 23.37-22.35 23.37a23 23 0 01-23.37-23.37c0-12.19 10.16-22.35 23.37-22.35A22.55 22.55 0 01381 153.4z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-leaving-site" xmlns="http://www.w3.org/2000/svg"><path d="M380.24 420.23H91.77V131.76h167.21v-27.78H64V448h344.02V253.02h-27.78z"/><path d="M294.82 64v27.77h105.75L222.79 269.56l19.65 19.65 177.79-177.78v109.39H448V64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-link" xmlns="http://www.w3.org/2000/svg"><path d="M350.15 339.39l-91.74 91.74c-11.33 11.33-24.92 17-39.64 17q-23.79 0-40.78-17l-58.9-58.9c-21.52-21.52-21.52-57.76 0-79.29l12.46-12.46 30.58 29.45-12.46 12.47c-5.66 5.66-5.66 14.72 0 19.25l58.9 58.9c2.27 3.4 5.66 4.53 10.19 4.53a10.3 10.3 0 009.06-4.53l91.74-90.61c5.66-5.66 5.66-14.72 0-19.25L270.87 242l30.58-30.58 48.7 48.7c21.52 21.51 21.52 57.75 0 79.27zm43-120.06l-12.46 12.46-30.58-30.58 12.46-12.46a14.36 14.36 0 004.53-10.19c0-3.4-2.27-6.8-4.53-9.06l-58.9-58.9c-5.66-5.66-13.59-5.66-19.25 0l-91.74 90.61a17 17 0 000 20.39l48.7 47.57-30.58 30.58L162.13 251c-10.19-10.19-15.86-24.92-15.86-39.64s5.66-29.45 15.86-39.64L253.88 80a58.15 58.15 0 0180.42 0l58.9 58.9c10.19 10.21 15.8 24.93 15.8 39.66 0 15.85-5.61 29.44-15.81 40.77z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-linkedin" xmlns="http://www.w3.org/2000/svg"><path d="M270.22 237.71zM418.54 64H93.46C78.22 64 65 76.19 65 91.43v329.14C65 435.81 78.22 448 93.46 448h325.08c15.24 0 28.44-12.19 28.44-27.43V91.43C447 76.19 433.78 64 418.54 64zM180.83 385h-57.9V212.32h57.9zm-28.45-196h-1c-19.3 0-31.49-14.22-31.49-30.48 0-17.27 13.21-29.46 32.51-29.46 20.32 0 32.51 12.19 32.51 29.46-.02 16.21-12.21 30.48-32.53 30.48zm235.68 196h-56.89v-92.43c0-23.37-8.13-38.6-29.46-38.6-16.25 0-25.4 10.16-29.46 20.32a60 60 0 00-2 14.22V385h-57.9s1-156.44 0-172.7h57.9v24.4c8.13-12.19 21.33-28.44 51.81-28.44 37.59 0 66 24.38 66 78.22z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-map-marker" xmlns="http://www.w3.org/2000/svg"><path d="M342.74 99.72a122.67 122.67 0 00-209.41 86.74c0 108.34 118.75 256.82 118.75 256.82l4 4.94 3.8-4.94S378.67 281.8 378.67 186.46a121.83 121.83 0 00-35.93-86.74zM304 234.46a67.89 67.89 0 1119.89-48 67.39 67.39 0 01-19.89 48z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-menu" xmlns="http://www.w3.org/2000/svg"><path d="M64 64v75.56h384V64zm0 384h384v-75.56H64zm0-153.6h384v-76.8H64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-menu-light" xmlns="http://www.w3.org/2000/svg"><path d="M64 401.85h384V448H64zM64 64h384v46.15H64zm0 168h384v46.15H64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-minus" xmlns="http://www.w3.org/2000/svg"><path d="M64 208h384v96H64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-pause" xmlns="http://www.w3.org/2000/svg"><path d="M64 64h144v384H64zm240 0h144v384H304z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-pinterest" xmlns="http://www.w3.org/2000/svg"><path d="M265.16 64c-104.89 0-157.84 75.36-157.84 137.47 0 38.7 14.26 72.3 44.81 84.52 5.09 2 10.18 0 11.2-5.09 1-4.07 4.07-14.26 5.09-18.33 1-5.09 1-7.13-3.05-12.22-9.16-10.18-15.27-23.42-15.27-42.77 0-56 41.75-105.91 109-105.91 59.06 0 91.65 36.66 91.65 84.52 0 64.15-28.51 117.11-70.26 117.11-22.4 0-39.71-19.35-34.62-41.75 7.13-28.51 19.35-58 19.35-78.41 0-18.33-9.16-33.6-29.53-33.6-23.42 0-42.77 24.44-42.77 57 0 21.38 7.13 35.64 7.13 35.64S176.57 344 171.48 361.35c-8.15 35.64-1 79.43 0 84.52 0 2 3.05 3.05 5.09 1 2-3.05 30.55-37.68 39.71-72.3 3.05-10.18 15.27-60.08 15.27-60.08 8.15 14.26 30.55 27.49 54 27.49 71.28 0 119.14-65.17 119.14-151.73C404.68 125.1 348.67 64 265.16 64z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-play" xmlns="http://www.w3.org/2000/svg"><path d="M99 64l314 192.51L99 448z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-plus" xmlns="http://www.w3.org/2000/svg"><path d="M448 213.22H298.78V64h-85.56v149.22H64v85.57h149.22V448h85.57V298.78H448z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-question-box" xmlns="http://www.w3.org/2000/svg"><path d="M456 448h-93v-40.65h52.41v-302.7H96.62v302.7H149V448H56V64h400zM225 205.19c8.56-7.49 19.25-10.7 33.16-10.7s24.6 3.21 32.09 10.7 11.77 16 11.77 25.67a29.86 29.86 0 01-6.42 19.25c-3.21 4.28-11.77 11.77-26.74 24.6-15 11.77-25.67 23.53-29.95 33.16-5.35 9.63-7.49 22.46-7.49 37.44v11.77h47.06q-1.6-20.86 3.21-28.88c2.14-6.42 9.63-12.84 20.32-22.46 21.39-17.11 35.3-32.09 41.72-41.72a56.6 56.6 0 009.63-32.09c0-20.32-9.63-38.51-26.74-54.55-17.11-15-40.65-23.53-70.6-23.53-27.81 0-51.34 8.56-68.46 23.53S160.8 211.61 159.73 233l47.06 6.42c3.21-14.97 9.63-25.67 18.21-34.23zm6.42 203.23h51.34V448H231.4z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-rss" xmlns="http://www.w3.org/2000/svg"><path d="M114.79 345.4C87.37 345.4 64 368.76 64 396.19A50.94 50.94 0 00114.79 447c28.44 0 51.81-22.35 51.81-50.79 0-27.43-23.37-50.79-51.81-50.79M64 195v73.14c47.75 0 93.46 18.29 127 52.83 33.52 33.52 52.83 78.22 52.83 127H317A252.33 252.33 0 0064 195m0-131v74.16c170.67 0 309.84 139.17 309.84 309.84H448C448 236.7 275.3 64 64 64"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-search" xmlns="http://www.w3.org/2000/svg"><path d="M448.51 404.55l-115.2-116.21A145.95 145.95 0 00210 64a144.36 144.36 0 00-103.07 42.44 142.93 142.93 0 00-43.44 103.08c0 39.41 15.16 75.79 43.45 104.08a145.92 145.92 0 00181.89 19.2L404 448zm-307.2-126.32a96.36 96.36 0 010-136.42c18.19-19.2 42.44-28.29 68.72-28.29s50.53 9.09 68.72 28.29a96.82 96.82 0 01-137.44 136.42z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-snapchat" xmlns="http://www.w3.org/2000/svg"><path d="M453.64 352.57c-55.83-8.68-80.72-66-81.85-68.28a.38.38 0 00-.38-.38c-3-6-3.77-10.94-1.89-15.09 3.39-7.54 15.09-11.32 23-14a53.79 53.79 0 016-1.89c14-5.66 20.75-12.07 20.75-20 0-6-4.9-11.69-12.45-14.33a22.14 22.14 0 00-8.68-1.51 23.91 23.91 0 00-7.92 1.51 43.49 43.49 0 01-17.73 4.9 12.15 12.15 0 01-6.79-1.89c0-2.64.38-5.66.38-8.68v-1.13c1.89-27.91 3.77-62.62-5.28-83C334.07 68.53 276.73 64 259.76 64h-8.3c-17 0-73.93 4.53-101.09 65.26-9.05 20.37-6.79 55.07-5.28 82.61.38 3.39.38 6.79.75 9.81a15.92 15.92 0 01-7.92 1.89 45.27 45.27 0 01-18.86-4.9 17.77 17.77 0 00-6.41-1.51c-8.3 0-18.48 5.66-20 13.58-1.13 6 1.51 14.33 20.37 21.88a28.25 28.25 0 006 1.89c7.92 2.64 19.61 6.41 23 14a18.86 18.86 0 01-1.89 15.09.38.38 0 01-.38.38c-.75 2.64-25.65 60-81.48 69a8.86 8.86 0 00-7.17 8.68 13.39 13.39 0 00.75 3.77c4.15 9.81 21.88 17 53.94 21.88a38 38 0 013 9.81c.75 3 1.51 6.41 2.26 9.43a9.35 9.35 0 009.81 7.17c2.64 0 5.66-.75 9.43-1.13a101.47 101.47 0 0121.88-2.64 110.67 110.67 0 0115.55 1.05c10.18 1.89 19.24 7.92 29.42 15.09 14.71 10.18 30.93 21.88 56.2 21.88h4.9c25.27 0 41.49-11.69 56.2-21.88 10.18-7.17 18.86-13.58 29.42-15.09a110.67 110.67 0 0115.47-1.13 118.33 118.33 0 0121.88 2.26 48.62 48.62 0 009.43 1.13h.75a9.05 9.05 0 009.43-7.17c1.13-3.39 1.51-6.41 2.26-9.43a43.38 43.38 0 013-9.81c32.06-4.9 49.79-12.07 53.94-21.88a13.39 13.39 0 00.75-3.77 8 8 0 00-7.13-8.63z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-sort" xmlns="http://www.w3.org/2000/svg"><path d="M256 64L128 224h256L256 64zM256 448l128-160H128l128 160z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-speaker" xmlns="http://www.w3.org/2000/svg"><path d="M0 192h64v128H0zM255.25 447.5L64 319.5v-128l191.25-128zM349.42 113.53l-41.2 41.2c26.89 26.89 42.34 62.94 41.77 101.27 0 37.76-14.3 73.81-41.77 101.27l41.2 41.2c78.96-78.96 78.96-205.98 0-284.94m73.81-73.81l-41.77 41.77c96.12 96.12 96.12 252.9 0 349.02l41.77 41.77c119.01-119.01 119.01-313.55 0-432.56"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-times" xmlns="http://www.w3.org/2000/svg"><path d="M448.5 118.5l-55-55-137 136-137-136-56 55 137 137-137 137 56 56 137-137 137 137 55-56-136-137z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-tumblr" xmlns="http://www.w3.org/2000/svg"><path d="M318.28 379c-31.91 0-38.09-22.65-38.09-38.09V227.68h73.09V161.8h-73.09V64h-57.65a3.81 3.81 0 00-2.06 3.09C217.4 96.94 202 149.44 143.27 170v56.62h45.3V345c0 43.24 26.77 104 112.21 102.95 28.82-1 60.74-12.35 67.94-22.65l-19.56-55.59C343 374.9 328.58 378 318.28 379z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-twitter" xmlns="http://www.w3.org/2000/svg"><path d="M358.9 94h54.9L293.9 231.1 435 417.6H324.5L238 304.5l-99 113.1H84.1L212.4 271 77 94h113.3l78.2 103.4L358.9 94zm-19.2 290.7h30.4L173.8 125.1h-32.6l198.5 259.6z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-user" xmlns="http://www.w3.org/2000/svg"><path d="M256 300c54.52 0 98.74-52.82 98.74-118S310.53 64 256 64s-98.73 52.82-98.73 118 44.2 118 98.73 118zm64.71 21.63a123.64 123.64 0 01-130.78-.8L33 364.91V448h446v-83.1z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-video" xmlns="http://www.w3.org/2000/svg"><path d="M512 81.95L356.8 237.14V77.6H0v356.8h356.8V274.86L512 430.05z"/></symbol><symbol viewBox="0 0 512 512" id="wolficon-youtube" xmlns="http://www.w3.org/2000/svg"><path d="M501.3 132A64.33 64.33 0 00456 86.4c-39.89-10.76-200-10.76-200-10.76s-160.11 0-200 10.76A64.33 64.33 0 0010.7 132C0 172.15 0 256 0 256s0 83.85 10.7 124A64.33 64.33 0 0056 425.6c39.93 10.77 200 10.77 200 10.77s160.11 0 200-10.77a64.33 64.33 0 0045.3-45.6C512 339.85 512 256 512 256s0-83.85-10.7-124zM203.64 332.13V179.87L337.45 256z"/></symbol></svg>            </div>
+                                                                <header class="site-header ">
+  <div class="site-header__container">
+              
+    <div class="site-header__content-area-header">
+      <div class="site-name">
+      <a href="https://strategicplan.ncsu.edu">Strategic Planning</a>
+  </div>
+
+      <button class="site-header_content-toggle" aria-controls="mobile-nav" aria-expanded="false">
+        <svg class="wolficon wolficon-menu" role="img" aria-labelledby=wolficon-label-6aef230850840 >
+			<title id="wolficon-label-6aef230850840">Menu</title>
+			<use xlink:href="#wolficon-menu">
+		</svg>
+        <svg class="wolficon wolficon-times" role="img" aria-labelledby=wolficon-label-6aef230850846 >
+			<title id="wolficon-label-6aef230850846">Close</title>
+			<use xlink:href="#wolficon-times">
+		</svg>
+      </button>
+    </div>
+
+          </div>
+  <nav id="website-nav" class="website-nav white gray-dropdowns" role="navigation" aria-label="Primary navigation menu">
+  <div class="website-nav__container container-fluid"><ul id="menu-main-1" class="menu"><li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="https://strategicplan.ncsu.edu/about/">About</a><span class="indicator-mask" aria-hidden="true"></span></li>
+<li id="menu-item-151" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-151"><a href="https://strategicplan.ncsu.edu/current-plan/">Current Plan</a><span class="indicator-mask" aria-hidden="true"></span></li>
+<li id="menu-item-154" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-154"><a href="https://strategicplan.ncsu.edu/past-planning/">Past Planning</a><span class="indicator-mask" aria-hidden="true"></span></li>
+<li id="menu-item-156" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-156"><a href="https://strategicplan.ncsu.edu/reporting-and-resources/">Reporting and Resources</a><span class="indicator-mask" aria-hidden="true"></span>
+<ul class="sub-menu">
+	<li id="menu-item-1117" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1117"><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/">Three-Year Strategic Plan Update 2021-2024</a><span class="indicator-mask" aria-hidden="true"></span></li>
+</ul>
+</li>
+<li id="menu-item-152" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-152"><a href="https://strategicplan.ncsu.edu/news-and-updates/">News and Updates</a><span class="indicator-mask" aria-hidden="true"></span></li>
+</ul></div>
+</nav>
+  <div id="site-header__content-area">
+          <div id="mobile-nav">
+    <div class="mobile-nav__container">
+      <ul class="mobile-nav__menu">
+        <li class='menu-item menu-item-type-post_type menu-item-object-page'><a href="https://strategicplan.ncsu.edu/about/" >About</a></li>
+<li class='menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor'><a href="https://strategicplan.ncsu.edu/current-plan/" >Current Plan</a></li>
+<li class='menu-item menu-item-type-post_type menu-item-object-page'><a href="https://strategicplan.ncsu.edu/past-planning/" >Past Planning</a></li>
+<li class='menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-parent'><span  class="menu-item-parent">Reporting and Resources</span>
+        <button aria-label="Reporting and Resources" aria-expanded="false">
+          <svg class="icon-caret" width="12" height="12" fill="none" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M320.33 351.18 512 159.51l-64.33-63L256 286.85 64.33 96.49 0 159.49l256 256 64.33-64.31Z"/>
+          </svg>
+        </button>
+<ul class="sub-menu">
+<li class="menu-item menu-item-parent-repeated  menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children"><a href="https://strategicplan.ncsu.edu/reporting-and-resources/">Reporting and Resources</a></li><li class='menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children'><span  >Three-Year Strategic Plan Update 2021-2024</span>
+        <button aria-label="Three-Year Strategic Plan Update 2021-2024" aria-expanded="false">
+          <svg class="icon-caret" width="12" height="12" fill="none" viewBox="0 0 512 512">
+            <path fill="currentColor" d="M320.33 351.18 512 159.51l-64.33-63L256 286.85 64.33 96.49 0 159.49l256 256 64.33-64.31Z"/>
+          </svg>
+        </button>
+	<ul class="sub-menu">
+<li class="menu-item menu-item-parent-repeated  menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children"><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/">Three-Year Strategic Plan Update 2021-2024</a></li><li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/goal-1-progress/" >Goal 1: Lifelong Student Success</a></li>
+<li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/goal-2-progress/" >Goal 2: Collaborative Research and Scholarship</a></li>
+<li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/goals-3-and-6-progress/" >Goals 3 and 6: Innovative Engagement and Courageous Partnering and Entrepreneurship</a></li>
+<li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/goal-4-progress/" >Goal 4: Inclusive and Healthy Culture</a></li>
+<li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/goal-5-progress/" >Goal 5: Transformed Operations</a></li>
+<li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wolfpack-2030-three-year-update/goal-7-progress/" >Goal 7: Renowned Reputation</a></li>
+<li class='menu-item menu-item-type-custom menu-item-object-custom'><a href="https://strategicplan.ncsu.edu/wp-content/uploads/2024/11/Wolfpack-2030-Three-Year-Update-Metrics-Snapshot.pdf" >Download Metrics Snapshot (PDF)</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li class='menu-item menu-item-type-post_type menu-item-object-page'><a href="https://strategicplan.ncsu.edu/news-and-updates/" >News and Updates</a></li>
+
+      </ul>
+    </div>
+  </div>
+      </div>
+</header>
+                                            <div class="document-wrap" role="document">
+                                                <main id="main-content" class="main">
+                                     <div class="basic-page">
+  <div class="ncst-default-header">
+  <h1>Wolfpack 2030: Powering the Extraordinary</h1>
+      <p class="ncst-default-header__intro">
+      NC&#160;State's 2021-2030 Strategic Plan
+    </p>
+  </div>
+
+  <div class="basic-page__content ncst-wrap__content">
+    
+
+
+
+<ul class="wp-block-ncst-link-list ncst-link-list layout-one-column"><div class="link-list__container"></div></ul>
+
+
+
+
+<p class="wp-block-paragraph">The 2021-2030 Strategic Plan was endorsed by the NC State Board of Trustees on April 16, 2021.</p>
+
+
+<ul class="wp-block-ncst-link-list ncst-link-list layout-one-column"><div class="link-list__container"><li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#introduction"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Introduction</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#mission"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">NC State&#8217;s Mission, Vision and Values</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goals"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">2021-2030 Strategic Plan Goals</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal1"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 1: Empower students for a lifetime of success and impact.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal2"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 2: Ensure preeminence in research, scholarship, innovation and collaboration.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal3"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 3: Expand and advance our engagement with and service to North Carolina and beyond, defining the standard for a 21st-century land-grant university.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal4"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 4: Champion a culture of equality, belonging and well-being in all we do.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal5"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 5: Improve university effectiveness through transformative technologies, cutting-edge processes and actionable data.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal6"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 6: Lead in developing innovative partnerships, entrepreneurial thinking and applied problem-solving.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#goal7"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Goal 7: Elevate the national and global reputation and visibility of NC State.</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#lookingforward"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Looking Forward</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  
+
+<li class="ncst-component__bold-link-container wp-block-ncst-bold-link">
+      <a 
+      href="#appendix1"
+      class="ncst-component__bold-link text-link"
+                >
+    <span class="text">Appendix 1</span><span class="arrow-indicator"><svg class="wolficon wolficon-arrow-right-bold" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-arrow-right-bold">
+		</svg></span>
+    </a>
+      </li>
+  </div></ul>
+
+
+
+
+<h2 class="wp-block-heading" id="introduction">Introduction</h2>
+
+
+
+<p class="wp-block-paragraph">Life has changed drastically since NC State’s inception in 1887, but our mission as a university has never wavered. We are committed to meeting the needs of the people of North Carolina for a “liberal and practical education in the several pursuits and professions in life” and to make contributions to the state’s economic development.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Today, this mission is more critical than ever.</p>
+
+
+
+<p class="wp-block-paragraph">The world’s biggest challenges are increasingly complex, and they require a level of innovation, insight and collaboration that NC State is uniquely positioned to provide. And we, as a university, are committed to addressing those challenges.</p>
+
+
+
+<p class="wp-block-paragraph">However, as we enter a new decade, we acknowledge that the university — and the world at large — is facing significant obstacles. This strategic plan was drafted amid the global COVID-19 pandemic, which has posed considerable challenges to human health, educational opportunity, economic strength and social cohesion around the world. </p>
+
+
+
+<p class="wp-block-paragraph">But in true NC State form, we choose to see these challenges as opportunities — opportunities for us to lead, to think strategically, to infuse well-being and community into all we do, to become a more agile organization and to better serve our students, faculty, staff, partners and the people of the great state of North Carolina.</p>
+
+
+
+<p class="wp-block-paragraph">We won’t be starting from scratch. We are building upon the many successes of Pathway to the Future, our previous 10-year strategic plan. Under the vision, direction and alignment of that plan, the university has achieved unprecedented levels of momentum and accomplishment in terms of student success, faculty research, expanded partnerships and brand recognition. In many ways, the last 10 years helped truly define our university’s bold commitment to Think and Do.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">But we’re not done yet. Our stakeholders, both internal and external, have enthusiastically embraced this calling. Perhaps more than ever, the world needs what only NC State can bring, and we still have work to<strong> </strong>do to achieve our full potential.</p>
+
+
+
+<p class="wp-block-paragraph">In Wolfpack 2030: Powering the Extraordinary, we build upon past successes and address areas of needed growth in order to more effectively fulfill our important mission. As a university, we must respond with agility to technological advancements and changes in the higher-education landscape. We recognize that we must focus more strongly on ensuring our campus is supportive of the mental health and well-being of our students, faculty and staff. We acknowledge that the global workforce has changed in significant ways, highlighting the importance of embracing all perspectives and the need for a bold generation of graduates who are excited to tackle new challenges, prepared to create new technologies and poised to launch new industries. We believe that innovative partnerships, cutting-edge technologies and critical research will allow us to meet the grand challenges facing our state, country and world.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">We celebrate the interconnectedness of our campus community. Our faculty cannot fully succeed without each other’s help or the support of our staff &#8230; our students cannot reach their potential without the help of our faculty and the support of our donors and friends … our researchers cannot ultimately solve the world’s biggest problems without the help of our government and industry partners &#8230; and on it goes. It takes us all — as one Pack — to be and to drive the change we want to see in the world.</p>
+
+
+
+<p class="wp-block-paragraph">We’ve said it before, and we boldly embrace the challenge once again: <strong>NC State, let’s roll up our sleeves and get to work.</strong>&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The world is waiting.</p>
+
+
+
+<h2 class="wp-block-heading" id="mission"><strong>NC State’s Mission, Vision and Values</strong></h2>
+
+
+
+<h3 class="wp-block-heading">Our mission </h3>
+
+
+
+<p class="wp-block-paragraph">As a research-extensive land-grant university, North Carolina State University is dedicated to excellent teaching, the creation and application of knowledge, and engagement with public and private partners. By uniting our strength in science and technology with a commitment to excellence in a comprehensive range of disciplines, NC State promotes an integrated approach to problem solving that transforms lives and provides leadership for social, economic, and technological development across North Carolina and around the world.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Approved by: NC State University Board of Trustees, 4/22/11; UNC Board of Governors, 6/10/11.</em></p>
+
+
+
+<h3 class="wp-block-heading">Our vision</h3>
+
+
+
+<p class="wp-block-paragraph">As a preeminent public research university, NC State University will be increasingly recognized nationally and internationally for its innovation in education, research, scholarship and engagement that solves the world’s most critical challenges. NC State will be known as a welcoming and supportive community that has a transformative impact on society and advances the greater good.</p>
+
+
+
+<h3 class="wp-block-heading">Our values</h3>
+
+
+
+<p class="wp-block-paragraph"><strong>Excellence</strong> — in innovation, education and discovery, reflected in our unwavering commitment to pursue research and scholarship that solve problems and advance the greater good.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Representation</strong> — &nbsp;of all the people of North Carolina by seeking, welcoming and supporting individuals and ideas from across the state&nbsp;— and beyond —&nbsp;in service to our shared needs.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Integrity </strong>— in all we do, reflected in our commitment to the highest standards of ethical behavior and our dedication to transparency and accountability in governance.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Sustainability</strong> — in our commitment to wise stewardship of resources, prudent financial planning and environmentally responsible operations.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Community</strong> — in how we respect and care for all at our university, value the contributions of every member of our Wolfpack, promote health and well-being, and help one another succeed.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Freedom</strong> — in thought, expression, inquiry and dialogue as a critical part of our mission to pursue and disseminate knowledge while promoting civil and respectful discourse.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Collaboration</strong> — across colleges, disciplines and perspectives, and in how we partner with a broad range of organizations to find solutions to challenges at home and around the world.</p>
+
+
+
+<h2 class="wp-block-heading" id="goals"><strong>Wolfpack 2030: Powering the Extraordinary Goals</strong></h2>
+
+
+
+<ul class="wp-block-list">
+<li><strong>Goal 1: </strong>Empower students for a lifetime of success and impact.</li>
+
+
+
+<li><strong>Goal 2: </strong>Ensure preeminence in research, scholarship, innovation and collaboration.</li>
+
+
+
+<li><strong>Goal 3: </strong>Expand and advance our engagement with and service to North Carolina and beyond, defining the standard for a 21st-century land-grant university.</li>
+
+
+
+<li><strong>Goal 4: </strong>Champion a culture of equality, belonging and well-being in all we do.&nbsp;</li>
+
+
+
+<li><strong>Goal 5: </strong>Improve university effectiveness through transformative technologies, cutting-edge processes and actionable data.</li>
+
+
+
+<li><strong>Goal 6: </strong>Lead in developing innovative partnerships, entrepreneurial thinking and applied problem-solving.</li>
+
+
+
+<li><strong>Goal 7: </strong>Elevate the national and global reputation and visibility of NC State.</li>
+</ul>
+
+
+
+<h2 class="wp-block-heading" id="goal1"><strong>Goal 1: Empower students for a lifetime of success and impact.</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State students will acquire specific knowledge, skills and experiences — as well as the necessary values and dispositions — to not only excel professionally, but also to be leaders in advancing a productive and civil society. As a forward-thinking institution dedicated to excellence in teaching, we will be a leader in teaching and the digital transformation of higher education, delivering value to our students and ensuring the resiliency of our institution. Our faculty and staff will empower students to be entrepreneurial and independent thinkers, strong in their disciplines and experienced in interdisciplinary collaboration, prepared to contribute impactfully in a global society. As they progress through their careers, NC State will provide relevant lifelong learning opportunities to assist in their personal and professional development to ensure they are not only NC State alumni, but also NC State students for a lifetime.&nbsp;</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State maintains a steadfast commitment to graduating students — from all backgrounds and walks of life — who are empowered for a lifetime of success and impact. As we articulate our vision for student success over the next decade, we are keenly aware that many across our university have been affected by the seismic shifts happening around the world. The future of education is suddenly more ambiguous and challenging. Still, this university has always met challenges with resilience, creativity, insight and care. Passing this capacity on to our undergraduate, graduate and postdoctoral scholars – is crucial to our shared futures and exemplifies the meaning of student success.</p>
+
+
+
+<p class="wp-block-paragraph">NC State’s founding mission is to create and apply knowledge that “transforms lives and provides leadership of social, economic and technological development across North Carolina and around the world.” The distinctiveness of our mission spares NC State the question of <strong><em>why</em></strong> faced by many institutions. Our questions are those of <strong><em>how</em></strong> we graduate students equipped to carry forth our bold mission of leadership and service. We will do this by proudly embracing our land-grant mission and ensuring its presence throughout the campus culture, the student experience and our curriculum.</p>
+
+
+
+<p class="wp-block-paragraph">As a university, we will work to identify and remove barriers to the success of not only our students but also our faculty, staff and other partners. We will explore and implement effective ways to ensure greater accessibility to our university for those who want to join us in our mission of creating the next generation of Think and Do learners and leaders.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">While technology continues to drastically change the world around us, NC State has remained at the forefront of welcoming and utilizing new forms of technology throughout our programs and curriculum. We will continue to evaluate and explore emerging and promising technologies that enrich the intellectual lives of our students, help them build essential technical skills and prepare them for a lifetime of professional, personal, civic and community prosperity.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">We will work to instill into our students the importance of our university’s core values of excellence, community, freedom, integrity, collaboration and sustainability, so they carry those values into society and their careers.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The success of our students is greatly dependent on high-quality and relevant teaching from our excellent faculty. We commit to empowering our faculty and advancing our pedagogy in ways that best serve our students, whether they are learning in person, online or both. We aim to be leaders in content delivery, powerfully uniting digital tools with high-impact in-person engagement.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">We recognize that graduates at all levels face rapidly changing economic, social and workforce demands. They need more than knowledge to get their first job; they must also possess the dispositions, skills and values to sustain them in adapting to circumstances, creating opportunities and assuming new careers throughout their lives. They must be able to not only work with those from all backgrounds, experiences and cultures; they also need to see the value that comes from opening their minds to differing perspectives.</p>
+
+
+
+<p class="wp-block-paragraph">Furthermore, we recognize our unique role in preparing graduates for careers that don’t currently exist in industries yet to be discovered. NC State graduates are highly sought after not only because of their technical and intellectual competencies, but also for their ability to creatively apply those competencies to real-world situations. As our mantra goes, our graduates think <strong><em>and do</em></strong><strong>. </strong>And employers have long recognized this important attribute that sets NC State graduates apart from their peers.</p>
+
+
+
+<p class="wp-block-paragraph">To that end, we commit to expanding the number of high-impact practices offered to our students. These experiences are shown to increase student engagement, reduce time to degree completion and increase graduation rates. From internships to learning communities to research projects, our students will leave the university equipped with more than just a diploma; they’ll also have a compelling and well-rounded resume.</p>
+
+
+
+<p class="wp-block-paragraph">As the world rapidly changes, so do the jobs our graduates are seeking. It is imperative for NC State to provide lifelong learning opportunities to its graduates seeking to acquire new skills and competencies as their professions pivot and evolve. As a premier institution of learning, we are uniquely positioned to provide upskilling, credentialing and supplemental educational experiences that will keep our graduates coming back year after year to ensure they remain at the top of their professional fields.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">As the landscape of higher education continues to change and broaden, NC State has more opportunities to serve a greater number of individuals in their pursuit of knowledge and skills. Over the last few decades, new forms of educational delivery, such as certificates, digital badges and micro-credentials, have allowed institutions of higher education to expand traditional methods of recognizing educational achievement. These new designations, driven by the need to provide timely and subject-focused instruction, allow NC State to provide educational value to individuals across a lifetime.</p>
+
+
+
+<p class="wp-block-paragraph">To achieve this, NC State must continue to develop seamless processes linking credentialing and degree programs, allowing the university to be a nimble and innovative leader offering high-quality learning opportunities to all who seek to learn. These programs allow people to enhance their knowledge, marketability, development of specific competencies and access to knowledge currently in demand. They allow degree students to engage with practitioners and other professionals, while also permitting those seeking credentialing to accumulate a collection of work —&nbsp;when appropriate and approved by departments — that counts as credit toward a degree program, further augmenting their connections to NC State.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">At NC State, we seek to ensure a broad path for learning that truly spans a lifetime.</p>
+
+
+
+<h2 class="wp-block-heading" id="goal2"><strong>Goal 2: Ensure preeminence in research, scholarship, innovation and collaboration.</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State’s community of researchers and scholars — infused with our unique combination of innovation and collaboration, and steeped in a tradition of deep thought and practical application — is a key strategic advantage. We are strongly committed to our disciplines and equally dedicated to working across traditional disciplinary boundaries. We will devote attention and resources to developing and leveraging our spheres of excellence to enable maximum impact as we expand and enhance our excellence to address societal need for the public good. We will focus on the critical institutional support required to advance operational excellence in our internal assessments, processes, infrastructure and procedures to most effectively support NC State researchers and scholars in advancing the university’s mission. With continued commitment to research, scholarship, innovation and collaboration, NC State will respond to — and provide solutions for — the world’s greatest problems, ensuring its continued place as a preeminent research institution.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State is a preeminent research university dedicated to working across traditional disciplinary boundaries and partnering with communities, government and industry to overcome the grand challenges facing society. You can witness the impact of our faculty’s work throughout the university, in areas ranging from education to textiles to veterinary medicine and everything in between. Regardless of the location, be it a lab in Jordan Hall or a field in Sampson County, our faculty and students engage with real problems to find real solutions.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">To advance this critical part of our university’s mission, it is imperative that we continue to recruit and retain world-class faculty and researchers, and that we focus our resources and capacity on building a rich and welcoming environment that fosters innovation and intellectual excitement. To accomplish this, NC State must continually build upon the successes we pursued in our previous strategic plan: offering competitive startup packages, salaries and compensation, as well as a teaching workload in line with peer institutions, committed and excellent staff support, and innovative support structures in which scholars can achieve their full potential.</p>
+
+
+
+<p class="wp-block-paragraph">As a forward-thinking higher educational institution, NC State must consider how to leverage digital transformation to augment our research and innovation practice. We believe building digital research infrastructure that supports the ever-evolving research and scholarly environment is an essential component of the digital transformation of the university as a whole.</p>
+
+
+
+<p class="wp-block-paragraph">NC State&#8217;s funded research activity continues to grow impressively, and we commit to providing the additional support necessary to keep pace with these teams. We must consider issues such as how to effectively share active data sets for real-time collaboration and which systems and expertise to employ to integrate and process heterogeneous data. Classic research infrastructure is available to researchers with a baseline level of technical skills, but work remains to define and develop the next generation of research infrastructure and support. This infrastructure should include agile information systems, as well as a network of expertise and consulting services that keep pace with evolving research practices.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Investing in digital infrastructure will not only benefit our researchers and university, it will also help us in our grander mission: to serve our state — and beyond. Research data may be used in different ways by research teams at multiple institutions. As data sets are themselves becoming an important research output, we must build upon our capacity to provide data management, computational and security consulting services that allow data to be securely accessed, described, organized, published and preserved in a way that allows their reuse and ensures their compliance with data access requirements set forth by funding agencies.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">A core component of our mission is to share the fruits of our research with our industry, community and government partners and the public at large. Using technology to thoughtfully advance research and scholarship efforts at the university can improve quality of life, drive our economy and positively impact the world around us.</p>
+
+
+
+<p class="wp-block-paragraph">Moreover, we believe a critical aspect of the university’s ongoing effectiveness is bringing in external funding support. Increasing the extent to which facilities and administrative funds are being used to support the scholarly and research efforts of our faculty and staff — and to expand our funding base — is an important way to achieve this goal. Considering ways to use facilities and administrative funds to support interdisciplinary and interunit collaboration is crucial. As funders seek to support investigations into complex scientific and societal problems, the university must leverage its resources to incentivize scholarly collaborations across disciplines and units.</p>
+
+
+
+<p class="wp-block-paragraph">The interruption in research activity due to COVID-19 has provided a lesson in the fragility of research infrastructure. We are likely to see worldwide disruptions continue for some time as travel restrictions and physical distancing guidelines restrict traditional field and lab research and interfere with scholarly communications channels. We need to take additional steps to be a resilient, highly distributed, low-density and network-based research university in order to become a more resilient research institution in the future.</p>
+
+
+
+<h2 class="wp-block-heading" id="goal3"><strong>Goal 3: Expand and advance our engagement with and service to North Carolina and beyond, defining the standard for a 21st-century land-grant university.</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Founded as a land-grant university with a mission of teaching, research and service, NC State has impacted countless individuals and communities since its inception in 1887. NC State’s service mission has expanded beyond our traditional roots in agriculture and industrial extension to touch a variety of disciplines, from education to business to global health. We are committed to advancing our engagement with and service to the people of North Carolina by delivering broader, tangible impacts that improve people’s lives every day. We will continue to collaborate with community partners to address the social, economic and environmental challenges facing our state, nation and world.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State was built with a purpose: to meet the needs of North Carolina and the country, and to create lasting prosperity for all. We&#8217;ve summarized the way we achieve that purpose with the words &#8220;think and do.&#8221; Today, this critical mission distinguishes us at a time of unprecedented challenges to higher education and accelerating change in the world. Fulfilling it requires a renewed commitment between our faculty, staff, students and the communities and partners we serve.</p>
+
+
+
+<p class="wp-block-paragraph">We recognize that thinking alone will not feed, clothe, heal, fuel, inspire or sustain a growing population. We must deliver broader, tangible and purposeful impacts. NC State needs to optimize our operations so we can be — and become renowned as — a solutions center for North Carolina and the world. Partners seek us out because they know we’ll collaborate with them to find answers and solve problems. Faculty and staff come here to live and work in a best-in-class environment of relentless curiosity, rooted in a welcoming and supportive community. Students from across the state and around the world join us to learn the skills, dispositions and abilities they need to be world-class, roll-up-your-sleeves problem-solvers, and they keep coming back to adapt and learn as the challenges mount.</p>
+
+
+
+<p class="wp-block-paragraph">Communities and companies ask us to partner with them to address the myriad technological, economic, social, geographic and other challenges they face and to identify near- and long-term solutions that work. Funders at all levels are looking for measurable impacts on the public good as a return on their investments. New models for university-community collaborations are developing across the country, leading to innovative university structures and transformative research supporting high-impact engagement practices.</p>
+
+
+
+<p class="wp-block-paragraph">Calls for our expertise, our experience and our help are only growing. We must be poised to respond.</p>
+
+
+
+<p class="wp-block-paragraph">To that end, we must further integrate our education, research and public engagement missions so they catalyze one another, becoming a cohesive, focused source of energy, innovation, inspiration and direction — a culture of Think and Do. We must intensify our commitment and capability to respond to the full range of community needs through in-person and virtual engagement. We must better align resources and infrastructure for extension services and new public engagement initiatives, and we must build connections between them.</p>
+
+
+
+<p class="wp-block-paragraph">Technology will continue to be a critical tool in accomplishing this mission. Outreach, engagement and extension, framed within 21st-century digital access and literacies, have the potential to advance digital access in transformational ways for the university and the state. By further infusing technology outreach and digital outreach into NC State’s extension enterprise, the university can partner with industries and governments to build critical digital infrastructure and develop fundamental literacies and capabilities to engage this infrastructure.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Industry Expansion Solutions, the Citizen Science Campus and our digital humanities programs are examples the university can expand upon. The increased importance of digital technologies in all facets of life, the persistent digital divide among the communities of North Carolina and NC State’s robust extension infrastructure throughout the state present opportunities to develop a digital engagement model, enabling us to serve more North Carolinians than ever before.</p>
+
+
+
+<p class="wp-block-paragraph">Today it is increasingly crucial for NC State to continue to fulfill our land-grant mission and share the impacts of our work: talent development, innovation, discovery, service and extension of knowledge and research-based information to improve the lives of North Carolinians.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">After all, the exceptional research, teaching and extension conducted at NC State is vital to the future of our state, nation and world.</p>
+
+
+
+<h2 class="wp-block-heading" id="goal4"><strong>Goal 4: <strong>Champion a culture of equality, belonging and well-being in all we do.</strong>&nbsp;</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State’s strength comes from all of its amazing people and their diversity of thought and experience. We believe that inequality, bigotry, discrimination and racism are unacceptable in our nation and state, and on campus. We commit to improving our campus culture and ensuring NC State is a welcoming and supportive environment for all. Therefore, as an institution, we must provide an accessible and empowering environment so all members of the Wolfpack community feel equally respected, valued and supported in every corner of campus. We will work to ensure a range of perspectives are embraced at all levels, in all processes and through all decisions. We will work to promote the health and well-being of our campus community. We seek to invest our minds and hearts at the individual level, and our capacity and resources at the institutional level, to bring about and sustain needed change in a way that champions equality, belonging and well-being at NC State.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">In the wake of a global pandemic, It is more critical than ever that we work to ensure everyone — faculty, staff and students — feels a sense of community within our university as we humbly face and vigorously address challenges in well-being, connection and belonging. A true sense of belonging requires more than a values statement and programmatic support. It requires a&nbsp;sustained, campuswide focus on wellness, well-being, social connection and equal treatment for all.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">We want to take the university’s charge to Think and Do and apply that same drive, fervor, collaboration and unity of purpose to achieving this critical goal. We want NC State to be known for its dedication to well-being and embrace of varied perspectives, and to stand apart from other institutions as a role model and a leader — now and for years to come. </p>
+
+
+
+<p class="wp-block-paragraph">As NC State moves forward to further advance equality, belonging and well-being, it will be critical for this strategic plan to zealously root out areas where access is limited and ensure that equality of opportunity is an institutional norm.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">To accomplish this goal, we will operate under these guiding principles:&nbsp;</p>
+
+
+
+<ul class="wp-block-list">
+<li>We believe in equality of opportunity.&nbsp;</li>
+
+
+
+<li>We seek to build a culture where everyone belongs.&nbsp;</li>
+
+
+
+<li>We strive to have a safe, healthy and resilient university community.&nbsp;</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">We recognize that NC State should press onward in advancing a culture that fosters the well-being of its faculty, staff and students. We must respond innovatively — developing effective, impactful ways to strengthen the health and well-being of our campus community — with the intention that this work extends far beyond our campus footprint. Trends across the nation include implementing a proactive approach to well-being and using education and outreach to inspire community members to make positive changes. We will strive to cultivate and center wellness at NC State to positively impact our students and employees in the ways they learn, live and work.</p>
+
+
+
+<h2 class="wp-block-heading" id="goal5"><strong>Goal 5: Improve university effectiveness through transformative technologies, cutting-edge processes and actionable data.</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State strives to exceed best practices through customer service, employee engagement and resource management using collaborative processes that leverage data and technology. We will pursue emerging technologies that connect and empower our campus community. We will be agile and flexible in adapting to change and the evolving needs of our students, faculty and staff. NC State commits to utilizing actionable intelligence to engage in more strategically focused planning and decision-making activities that benefit our students, staff, faculty, partners and the broader community. We will attain greater efficiency and effectiveness to ensure the resiliency of our institution.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Pursuing university effectiveness plays a critical role in enabling NC State to more effectively accomplish its mission, realize its vision and achieve its strategic goals, while also allowing the university to gain a competitive advantage over other institutions, improve its rankings and reputation as a premier public research institution, and increase the university’s effectiveness and productivity.</p>
+
+
+
+<p class="wp-block-paragraph">We recognize that NC State has a complex organizational structure that can sometimes&nbsp;impede collaboration, efficiency and innovation. Having different organizational units with different goals or metrics to define success can lead to inefficiency or inadvertent competition. Cultural or historical differences across units may exacerbate these differences. However, our previous strategic plan did much to align the university in a shared pursuit of key goals. Further, the COVID-19 pandemic has compelled a rapid and substantial increase in cross-unit communication and collaboration as the university manages the myriad of challenges associated with this crisis. Our response has highlighted the strengths of our organization, as well as the opportunities to improve our collaboration, agility, data-driven decision-making, efficiency and communication.</p>
+
+
+
+<p class="wp-block-paragraph">Ultimately, as stated in the last strategic plan, we believe that achieving organizational excellence is dependent upon stakeholders engaging and identifying deeply with goals that are shared across the university. A key task for unit leaders and managers must be working collaboratively within and beyond their units to articulate how their group’s work ties into those shared goals, and how the people within specialized units are able to contribute in measurable and meaningful ways to achieving them. Other efforts that will contribute to success include creating a common language for our shared goals and for the outcomes we will emphasize and measure in our work; developing mechanisms that allow us to visualize our progress; and rewarding units and unit leaders who reduce divisional barriers and promote collaboration. This university-first approach offsets a more siloed and individualistic approach that prioritizes the individual unit’s success in accomplishing its own defined goals. Rather, we believe each unit’s ultimate success is rooted in its ability to collaborate with other units in service of shared university goals.</p>
+
+
+
+<p class="wp-block-paragraph">We commit to an emphasis on shared goal-setting, cross-unit collaboration and the development of shared language and tools for collaborative work that will best serve the entire university community now and for years to come.</p>
+
+
+
+<h2 class="wp-block-heading" id="goal6"><strong>Goal 6: Lead in developing innovative partnerships, entrepreneurial thinking and applied problem-solving.</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">At NC State, we recognize that many of society’s toughest problems can only be solved through powerful multidisciplinary partnerships and an entrepreneurial approach. Our partnerships are numerous and varied, including partners in the academic, industry, government, community and nonprofit sectors. These partnerships are seen right here on campus, as well as across the state and around the world. We will remove barriers and achieve success through an ongoing commitment to innovative partnerships that bring together the brightest minds in industry, government, community and the academy to creatively tackle the great global challenges. Through innovative partnerships, academics, and co-curricular and extracurricular opportunities, we will continue to fuel and elevate NC State’s entrepreneurial ecosystem.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">As a university, we recognize that world-changing research and scholarship are built on innovative partnerships and that solving the grand challenges facing society requires collaboration with leading entities in the private, public and nonprofit sectors. Year after year, we have shown that partnerships create jobs and improve lives by driving cutting-edge discoveries to market. The dynamic and interconnected nature of our university is one of our most strategic competitive advantages.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">NC State’s commitment to partnerships — whether they are academic, industry, government, community or nonprofit — set us apart from other institutions, since they are central to the success of a 21st-century land-grant university. Not only do they allow NC State to maximize its positive impact on society, but they ultimately enable us to achieve our student success goals. By engaging in partnerships at multiple levels and across multiple disciplines, our students get real-world experience in tackling problems in a way that mimics the work we hope they will continue to pursue long after they leave our campus. Moreover, these partnerships allow our faculty to use their expertise to address real-world problems alongside industry and to bring those lessons into the classroom.</p>
+
+
+
+<p class="wp-block-paragraph">A successful partnership becomes a catalyst for each partner to grow its own impact, and in turn — as former UNC System president and NC State alumnus William Friday has stated — to grow economic and societal well-being. To date, NC State has more than 200 major partnerships in more than 50 countries across the globe. Our university is home to more than 70 world-class centers and institutes. More than 1,000 NC State faculty are members of these institutes and centers, which work on interdisciplinary projects leading to new programs and discoveries. When these factors are combined with the depth and breadth of our expertise, it becomes obvious that NC State is positioned to collaborate like never before to find unified solutions to the global challenges facing society and the environment.</p>
+
+
+
+<p class="wp-block-paragraph">A key differentiator for NC State is our Centennial Campus, home to 75 corporate, government and nonprofit partners. NC State ranks No. 2 in industry research funding and No. 7 in R&amp;D expenditures among public universities without a medical school. As we embark on this new strategic plan, we must prioritize educational, research and engagement programs that provide the NC State community with the best opportunities to translate their educational, research and professional development activities into graduate employability and success in competitive fields.</p>
+
+
+
+<p class="wp-block-paragraph">We believe research partnerships are fundamental to our success, yet our partnerships extend beyond research and scholarship. We celebrate the fact that thousands of important partnerships exist across the university, between students, staff and faculty members, local community members, alumni, startup companies, entrepreneurs, multinational corporations, other universities, government agencies and many more innovative collaborators.</p>
+
+
+
+<p class="wp-block-paragraph">Our university is in the top 10 nationally for almost all innovation metrics (startups launched, patents filed, licenses and options executed, etc.). Partnerships are a driver for our impact. NC State has an opportunity to build on this national reputation by becoming an international powerhouse of economic development and vitality that draws investment into North Carolina. Over the next 10 years, we hope to expand partnerships across the university so they enable even broader and deeper relationships. To accomplish this task, we recognize that additional personnel and space are required both centrally and within each college and other units to facilitate building and strengthening institutional partnerships.</p>
+
+
+
+<p class="wp-block-paragraph">To ensure the most effective partnerships — whether internal or external — we will work diligently to align strategies, develop shared outcomes and build trust in a manner that is more relational than transactional. We will strategically develop a local innovation ecosystem that results in transformative outcomes benefiting all stakeholders.</p>
+
+
+
+<p class="wp-block-paragraph">We will work to integrate efforts around campus into organized units, such as new consortia and institutes, that further enable access to community, government, industry and other partners. Moreover, we must invest in both physical and virtual spaces that enhance research; promote collaboration and engagement with industry and the community; enable flexible visits by research scholars and industry partners; and bring students, faculty and staff together. While NC State currently has unique and sophisticated spaces such as the Hunt Library, the eGarage and expanding developments on Centennial Campus — all arising from implementation of the previous strategic plan — we have an opportunity and a need for new multipurpose and flexible spaces that further augment our partnership services and support.</p>
+
+
+
+<p class="wp-block-paragraph">Additionally, to further facilitate these innovative partnerships, NC State must foster central coordination of a partnership strategy among a series of decentralized internal partners, thereby building a more effective and cohesive internal partnering ecosystem. We will continue to ensure ease of engagement for our university partners, reduce partner pain points and leverage areas of strength to build strategic identities that are differentiated from other universities. In the coming years, we will continue to organize and launch key initiatives that leverage our research strengths and identity to create momentum and applied success that makes a meaningful impact on society.</p>
+
+
+
+<h2 class="wp-block-heading" id="goal7"><strong>Goal 7: Elevate the national and global reputation and visibility of NC State.</strong></h2>
+
+
+
+<h3 class="wp-block-heading"><strong>Executive Summary</strong></h3>
+
+
+
+<p class="wp-block-paragraph">NC State has the opportunity to greatly amplify awareness of our strong brand and elevate our reputation to help achieve strategic goals and advance the university to unprecedented levels of success. To that end, we will establish and continuously promote a campuswide culture of teamwork, intentionality and awareness regarding strategies and tactics for enhancing our brand and reputation. We commit to leading and supporting universitywide systems and efforts that elevate regional, national and international awareness and impact of NC State’s differentiators, competitive advantages and broad excellence. We will empower the campus community and key partners to be impactful brand champions. We will position NC State as a national and international leader in key areas of strength and opportunity that will continually advance the brand and reputation of the university and help achieve the goals of the strategic plan.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Exposition</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Institutional brand and reputation are among the most valuable assets held by any reputable organization. The corporate world has known for some time — and institutions of higher education are quickly learning — that strong brands push strong reputations and carry a great deal of tangible value. Consumers regularly choose recognized brands, and they will pay even more for a premium brand than for a mass-market brand. The same concept holds true in higher education: students, faculty, staff, donors, alumni and partners want to be associated with excellent brands and will choose and invest in strong and well-known brands over weaker or unknown ones.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Simply put: Brand and reputation are integrally connected, which makes branding critical.</p>
+
+
+
+<p class="wp-block-paragraph">NC State’s brand is a strategic asset with tangible value. It has proven effective in helping to improve rankings, attract the brightest students and best faculty, inspire record amounts of donor giving, enhance employee and alumni pride, and encourage community support. NC State’s brand helps attract and secure mutually beneficial partnerships, sponsorships and agreements with private-sector businesses that want to be associated with the university. In addition, NC State’s brand serves to focus the internal community on who we are, what we stand and strive for and how we interact with the world around us.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">NC State made great strides in advancing our brand and reputation — especially across the region — throughout the last 10-year strategic plan. We are committed to building upon these successes to strategically and purposefully further our brand and reputation to a higher national and international level over the next 10 years.</p>
+
+
+
+<p class="wp-block-paragraph">There is a feeling among some NC State faculty, staff and students that NC State needs to increase its brand recognition to a level that matches our excellence — especially outside North Carolina. To address these challenges, storytelling and content focus must be among our key objectives.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Additionally, we are confident that an enhanced focus on and commitment to improving and promoting areas of excellence and research impact will elevate our national and international reputation. To accomplish this, we must invest in consistent, strategic, national and international brand and reputation campaigns and find every strategic and effective opportunity to tell the NC State brand story to our targeted publics.</p>
+
+
+
+<p class="wp-block-paragraph">Due to the tremendous work of our faculty, staff and students, the success of the Pathway to the Future strategic plan and brand-focused efforts over the last few years, NC State’s reputation is stronger than ever. The university community is recognizing the power of a strong brand, and the external community is taking notice of an excellent and rising university. A broad range of feedback from across the institution makes it clear that the Wolfpack wants to continue aggressively enhancing NC State’s brand and reputation to fuel the university’s efforts to reach its potential and make a bigger impact on the world.&nbsp;</p>
+
+
+
+<h2 class="wp-block-heading" id="lookingforward"><strong>Looking Forward</strong></h2>
+
+
+
+<p class="wp-block-paragraph">As a large, complex institution, we recognize that developing our strategic plan is one small step in the process of advancing meaningful change across the university. The goals laid out in this plan are ambitious, but they are supported by members of a mighty Pack who have never backed down from a challenge.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The next step after this strategic plan receives endorsement from the NC State Board of Trustees is to develop a three-year implementation plan with annual updates that will allow us to continually assess our progress, using accompanying metrics, as we strategically pursue these goals. Throughout the process, we are committed to transparency and accountability within our NC State community. To that end, we are developing a new 2021-2030 strategic plan website — complete with a real-time dashboard — that will be regularly updated to inform our constituents of our progress while pursuing these goals.</p>
+
+
+
+<p class="wp-block-paragraph">Individuals with questions or comments regarding the strategic plan and its implementation can contact the strategic plan team at <a href="/cdn-cgi/l/email-protection#1e6d6a6c7f6a7b79777d336e727f70707770795e707d6d6b307b7a6b"><span class="__cf_email__" data-cfemail="fe8d8a8c9f8a9b99979dd38e929f9090979099be909d8d8bd09b9a8b">[email&#160;protected]</span></a>.</p>
+
+
+
+<h2 class="wp-block-heading" id="appendix1"><strong>Appendix 1</strong>: Our Process</h2>
+
+
+
+<h3 class="wp-block-heading"><strong>The Timeline</strong></h3>
+
+
+
+<h3 class="wp-block-heading">2019</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://strategicplan.ncsu.edu/2019/08/20/creating-the-next-strategic-plan/">August 20</a> — Planning process for creation of NC State&#8217;s next strategic plan launched.</li>
+
+
+
+<li><a href="https://strategicplan.ncsu.edu/nc-states-next-strategic-plan/campus-representatives/">September 3</a> — Leadership retreat held, with participants representing all of NC State.</li>
+
+
+
+<li><a href="https://strategicplan.ncsu.edu/2019/12/12/announcing-the-strategic-plan-task-forces/">December 12</a> — Strategic plan task forces announced.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">2020</h3>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://strategicplan.ncsu.edu/2020/02/11/strategic-planning-update-task-force-rosters-and-websites-announced/">February 11</a> — Strategic plan task forces rosters and websites announced.</li>
+
+
+
+<li>February &#8211; August — <a href="https://strategicplan.ncsu.edu/nc-states-next-strategic-plan/task-forces/">Task forces launched</a> and charged. Task forces hold open meetings to gather input and prepare reports.</li>
+
+
+
+<li><a href="https://strategicplan.ncsu.edu/nc-states-next-strategic-plan/leadership/">March</a>&nbsp; — Strategic Planning Executive Steering Committee (SPESC) charged.</li>
+
+
+
+<li>March 6 — Strategic planning presentation and discussion at Board of Visitors meeting.</li>
+
+
+
+<li>August 17 — Task force reports due.*</li>
+
+
+
+<li><a href="https://strategicplan.ncsu.edu/2020/08/31/strategic-planning-update-task-force-reports-posted/">August 31</a> — Task force reports posted for community review and feedback to SPESC until September 21.</li>
+
+
+
+<li>Fall:
+<ul class="wp-block-list">
+<li>SPESC reviews task force reports and campus feedback to create proposed strategic plan goals.</li>
+
+
+
+<li>SPESC proposes revised vision and value statements.</li>
+</ul>
+</li>
+
+
+
+<li>December — Proposed goals, vision and values posted for community review and feedback.</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading">2021</h3>
+
+
+
+<ul class="wp-block-list">
+<li>January/February — Listening sessions gather feedback on proposed vision, values and goals.</li>
+
+
+
+<li>February/March — SPESC creates draft of strategic plan.</li>
+
+
+
+<li>April —– Strategic plan posted for community review and feedback.</li>
+
+
+
+<li>April 16:
+<ul class="wp-block-list">
+<li>Strategic plan presented to Board of Trustees for endorsement.</li>
+
+
+
+<li>New strategic plan website launched.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading"><strong>The Task Forces</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Nine task forces were identified as a result of a daylong leadership retreat held in September 2019, with participants representing all of NC State. The task forces were composed of representatives from across campus and from various colleges and units, including faculty, staff, students and university leadership.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The nine task forces were:</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://committees.provost.ncsu.edu/advancing-inclusion-and-well-being-to-enhance-excellence/">Advancing Inclusion and Well-Being to Enhance Excellence</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/continuing-to-advance-the-brand-and-reputation-of-nc-state/">Continuing to Advance the Brand and Reputation of NC State</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/envisaging-the-next-generation-land-grant-university/">Envisaging the Next-Generation Land-Grant University</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/graduating-the-successful-student/">Graduating the Successful Student</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/leading-the-digital-transformation-of-higher-education/">Leading the Digital Transformation of Higher Education</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/leveraging-partnerships-to-advance-engagement/">Leveraging Partnerships to Advance Engagement</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/pursuing-operational-excellence/">Pursuing Operational Excellence</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/re-envisioning-life-long-education-and-credentialing/">Re-envisioning Lifelong Education and Credentialing</a></li>
+
+
+
+<li><a href="https://committees.provost.ncsu.edu/strengthening-university-wide-interdisciplinarity/">Strengthening Universitywide Interdisciplinarity</a></li>
+</ul>
+
+
+
+<h3 class="wp-block-heading"><strong>Listening Sessions</strong></h3>
+
+
+
+<ul class="wp-block-list">
+<li>Open Listening Sessions
+<ul class="wp-block-list">
+<li>Two sessions held for faculty</li>
+
+
+
+<li>Three sessions held for staff</li>
+
+
+
+<li>One session held for faculty and staff&nbsp;</li>
+
+
+
+<li>Four sessions held for students</li>
+</ul>
+</li>
+
+
+
+<li>Meetings with Campus Groups
+<ul class="wp-block-list">
+<li>Faculty, Staff and Student Senates</li>
+
+
+
+<li>Graduate Student Association</li>
+
+
+
+<li>Deans, vice provosts and department heads</li>
+
+
+
+<li>University research and operations</li>
+
+
+
+<li>International programs and operations</li>
+
+
+
+<li>Engagement operations</li>
+
+
+
+<li>Diversity Advisory Committee</li>
+
+
+
+<li>Office of Finance and Administration leaders, business partners and human resources</li>
+
+
+
+<li>Office of Information Technology</li>
+
+
+
+<li>Lead communicators</li>
+</ul>
+</li>
+</ul>
+
+
+
+<h3 class="wp-block-heading"><strong>The Community</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Throughout the strategic planning process, the NC State community — including students, staff, faculty and university partners —– was invited to provide input through online feedback, task force meetings and dedicated listening sessions to ensure the creation of a comprehensive strategic plan that represents the contributions and aspirations of the entire university. We offer sincere gratitude to the hundreds of individuals who participated in our strategic planning listening sessions and shaped our path forward by providing their invaluable feedback.&nbsp;</p>
+
+      </div>
+</div>
+                        </main>
+                                                </div>
+                                    <footer class="site-footer has-reynolds-400-background-color ">
+  <div class="site-footer__container">
+    <div class="site-footer__header">
+      <a href="https://strategicplan.ncsu.edu" class="site-footer__lockup">
+                  <div class="site-footer__brick">
+            <svg aria-label="NC State" role="img" viewBox="0 0 54 17.1"><path d="M0,13.5v-10h2.8l2.6,6.9V3.5h2.1v10H4.8L2.1,6.1v7.4C2.1,13.6,0,13.6,0,13.5z M9.2,8.5c0-2.6,0-5.2,3.5-5.2
+	c2.1,0,3,1.3,2.8,3.4h-2.1c0-1.3-0.1-1.8-0.8-1.8c-1.3,0-1.3,1-1.3,3.6s0.1,3.8,1.3,3.8c0.9,0,0.9-1.3,0.9-2.1h2.1
+	c0,2.6-1,3.5-3,3.5C9.2,13.6,9.2,11,9.2,8.5z M22.8,13.6c-2.6,0-3.1-1.4-3-3.2H22c0,1,0,1.8,1.3,1.8c0.6-0.1,1-0.6,0.9-1.1l0,0
+	c0-1.8-4.1-1.9-4.1-4.9c0-1.6,0.6-2.8,3.2-2.8c2.1,0,3.1,0.9,3,3.1h-2.1c0-0.8-0.1-1.6-1-1.6c-0.6,0-1,0.5-1,1
+	c0,1.9,4.1,1.8,4.1,4.9C26.3,13.4,24.5,13.6,22.8,13.6z M33.8,3.5v1.7h-2.3v8.4h-2.1V5.2h-2.3V3.5H33.8z M33.2,13.5l2.8-10h2.7
+	l2.7,10h-2.2l-0.5-2.2h-2.8l-0.6,2.2H33.2z M37.2,5.5l-0.9,4.3h1.9L37.2,5.5z M47.5,3.5v1.7h-2.2v8.4h-2.1V5.2h-2.3V3.5H47.5z
+	 M48.6,13.5v-10H54v1.4h-3.5v2.6h3.1v1.6h-3.1v3H54v1.4H48.6z" style="fill:#FFF"/></svg>
+
+          </div>
+                          <span class="site-footer__unit-name">Strategic Planning</span>
+                <span class="sr-only">Home</span>
+      </a>
+    </div>
+
+    <div class="site-footer__contact">
+      <p>Raleigh, NC 27695</p>
+
+
+              <div>
+          <a href="tel:919.515.2011">919.515.2011</a>
+        </div>
+      
+          </div>
+
+          <div class="site-footer__user-engagement-area site-footer__map">
+        <h2 class="site-footer__subhead">CAMPUS MAP</h2>
+        <a href="https://maps.ncsu.edu/#/">
+      <img width="300" height="160" src="https://strategicplan.ncsu.edu/wp-content/uploads/2021/03/campus-map-300x160-1.jpeg" class="attachment-medium size-medium" alt="NC State campus map" decoding="async" />
+    </a>
+  </div>
+
+
+    
+    <div class="site-footer__links">
+    <ul id="menu-footer" class="menu"><li id="menu-item-373" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-373"><a href="https://strategicplan.ncsu.edu/about/">About</a></li>
+<li id="menu-item-379" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-379"><a href="/cdn-cgi/l/email-protection#9deee9effce9f8faf4feb0edf1fcf3f3f4f3faddf3feeee8b3f8f9e8"><span class="text">Contact Us</span><svg class="wolficon wolficon-leaving-site" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-leaving-site">
+		</svg></a></li>
+<li id="menu-item-374" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-374"><a href="https://strategicplan.ncsu.edu/current-plan/">Current Plan</a></li>
+<li id="menu-item-376" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-376"><a href="https://strategicplan.ncsu.edu/feedback/">Feedback</a></li>
+<li id="menu-item-375" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-375"><a href="https://strategicplan.ncsu.edu/past-planning/">Past Planning</a></li>
+<li id="menu-item-628" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-628"><a href="https://www.ncsu.edu/privacy/"><span class="text">Privacy Statement</span><svg class="wolficon wolficon-leaving-site" role="img"  aria-hidden="true">
+			
+			<use xlink:href="#wolficon-leaving-site">
+		</svg></a></li>
+<li id="menu-item-377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-377"><a href="https://strategicplan.ncsu.edu/reporting-and-resources/">Reporting and Resources</a></li>
+</ul>
+  </div>
+
+    
+    <div class="site-footer__copyright">
+      &#169; 2026 NC State University. All rights reserved.
+  </div>
+
+    <div class="site-footer__legal">
+      <div class="site-footer__university-links">
+        <a class="site-footer__university-link" id='university-link-accessibility' href="https://accessibility.ncsu.edu/">Accessibility</a>
+  <a class="site-footer__university-link" id='university-link-privacy' href="https://www.ncsu.edu/privacy/">Privacy</a>
+  <a class="site-footer__university-link" id='university-link-resources' href="https://www.ncsu.edu/resources/">Resources</a>
+      </div>
+    </div>
+  </div>
+</footer>
+                        
+			<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/rocketlazyloadscript">
+				(function () {
+				    document.cookie.split(';').forEach(cookie => {
+				        let [name, value] = cookie.trim().split('=');
+                        const excludedGaIds = ['_ga_3BCCQK39HR', '_ga_G35STHN9SW', '_ga_52ZBXKJW18'];
+                        if (name.startsWith('_ga_') && !excludedGaIds.includes(name)) {
+				            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=ncsu.edu;secure';
+				        }
+				    });
+				})();
+			</script>
+		<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/ncstate-theme-v4/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+        <div id="smart-search-overlay" aria-hidden="true" role="dialog">
+            <div class="smart-search-loading-indicator" style="display: none;"><div class="loader"></div></div>
+            <div class="smart-search-wrapper" role="document">
+                <div id="smart-search-close">
+                    <button role="button">
+                        <span class="sr-only">Close smart search</span>
+                        <svg aria-hidden="true" id="icon-close" viewBox="0 0 32 32"><path d="M17.414 16 26 7.414 24.586 6 16 14.586 7.414 6 6 7.414 14.586 16 6 24.586 7.414 26 16 17.414 24.586 26 26 24.586 17.414 16z"/></svg>
+                    </button>
+                </div>
+                <h1>Find NC State websites, locations and people</h1>
+
+                <div id="searchbox">
+                    <form>
+                        <label for="query" class="sr-only">Search this site</label><input id="query" type="text" name="q" placeholder="Search this site" autocomplete="off" aria-label="Search this site" /><input id="cse_id" name="cx" type="hidden" value="012937367082580974002:vbeo0yiqrii" />                        <button type="submit" aria-label="search">
+                            <svg 
+                                class="wolficon" 
+                                aria-hidden="true" 
+                                focusable="false"
+                            ><use xlink:href="#wolficon-search"></use></svg>
+                        </button>
+                    </form>
+                </div>
+
+                                <p class="eyebrow">TOP LINKS</p>
+                <div class="quick-links">
+                    <div class="quick-link">
+                        <h2>MyPack Portal</h2>
+                        <a href="https://mypack.ncsu.edu/">Access vital records, resources and information for students, families, faculty and staff. <span><svg class="wolficon" role="img" aria-hidden="true"><use xlink:href="#wolficon-arrow-right-bold"></use></svg></span></a>
+                    </div>
+                    <div class="quick-link">
+                        <h2>University Libraries</h2>
+                        <a href="https://www.lib.ncsu.edu/">Our campus libraries are your destinations for studying, research and expanding your mind. <span><svg class="wolficon" role="img" aria-hidden="true"><use xlink:href="#wolficon-arrow-right-bold"></use></svg></span></a>
+                    </div>
+                    <div class="quick-link">
+                        <h2>Academic Calendar</h2>
+                        <a href="https://catalog.ncsu.edu/about/academic-calendar/">Look up important dates and university holidays for the upcoming academic year and beyond. <span><svg class="wolficon" role="img" aria-hidden="true"><use xlink:href="#wolficon-arrow-right-bold"></use></svg></span></a>
+                    </div>
+                    <div class="quick-link">
+                        <h2>Majors and Careers</h2>
+                        <a href="https://www.ncsu.edu/majors-and-careers/">Explore our 300-plus degree programs and see where an NC State education can take you. <span><svg class="wolficon" role="img" aria-hidden="true"><use xlink:href="#wolficon-arrow-right-bold"></use></svg></span></a>
+                    </div>
+                </div>
+                            </div>
+        </div>
+<style id="wp-block-paragraph-inline-css">
+.is-small-text{font-size:.875em}.is-regular-text{font-size:1em}.is-large-text{font-size:2.25em}.is-larger-text{font-size:3em}.has-drop-cap:not(:focus):first-letter{float:left;font-size:8.4em;font-style:normal;font-weight:100;line-height:.68;margin:.05em .1em 0 0;text-transform:uppercase}body.rtl .has-drop-cap:not(:focus):first-letter{float:none;margin-left:.1em}p.has-drop-cap.has-background{overflow:hidden}:root :where(p.has-background){padding:1.25em 2.375em}:where(p.has-text-color:not(.has-link-color)) a{color:inherit}p.has-text-align-left[style*="writing-mode:vertical-lr"],p.has-text-align-right[style*="writing-mode:vertical-rl"]{rotate:180deg}
+/*# sourceURL=https://strategicplan.ncsu.edu/wp-includes/blocks/paragraph/style.min.css */
+</style>
+<style id="wp-block-heading-inline-css">
+h1:where(.wp-block-heading).has-background,h2:where(.wp-block-heading).has-background,h3:where(.wp-block-heading).has-background,h4:where(.wp-block-heading).has-background,h5:where(.wp-block-heading).has-background,h6:where(.wp-block-heading).has-background{padding:1.25em 2.375em}h1.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h1.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h2.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h2.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h3.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h3.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h4.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h4.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h5.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h5.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]),h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]),h6.has-text-align-right[style*=writing-mode]:where([style*=vertical-rl]){rotate:180deg}
+/*# sourceURL=https://strategicplan.ncsu.edu/wp-includes/blocks/heading/style.min.css */
+</style>
+<style id="wp-block-list-inline-css">
+ol,ul{box-sizing:border-box}:root :where(.wp-block-list.has-background){padding:1.25em 2.375em}
+/*# sourceURL=https://strategicplan.ncsu.edu/wp-includes/blocks/list/style.min.css */
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--custombg-one: var( --custom-background1);--wp--preset--color--custombg-two: var( --custom-background2);--wp--preset--color--custombg-three: var( --custom-background3);--wp--preset--color--custombg-four: var( --custom-background4);--wp--preset--color--custombg-five: var( --custom-background5);--wp--preset--color--custombg-six: var( --custom-background6);--wp--preset--color--custombg-seven: var( --custom-background7);--wp--preset--color--custombg-nine: var( --custom-background9);--wp--preset--color--custombg-ten: var( --custom-background10);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--normal: 16px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);--wp--custom--gap: 2rem;}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 100%;--wp--style--global--wide-size: 100%; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{--wp--style--root--padding-top: 0;--wp--style--root--padding-right: 1rem;--wp--style--root--padding-bottom: 0;--wp--style--root--padding-left: 1rem;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-custombg-one-color{color: var(--wp--preset--color--custombg-one) !important;}.has-custombg-two-color{color: var(--wp--preset--color--custombg-two) !important;}.has-custombg-three-color{color: var(--wp--preset--color--custombg-three) !important;}.has-custombg-four-color{color: var(--wp--preset--color--custombg-four) !important;}.has-custombg-five-color{color: var(--wp--preset--color--custombg-five) !important;}.has-custombg-six-color{color: var(--wp--preset--color--custombg-six) !important;}.has-custombg-seven-color{color: var(--wp--preset--color--custombg-seven) !important;}.has-custombg-nine-color{color: var(--wp--preset--color--custombg-nine) !important;}.has-custombg-ten-color{color: var(--wp--preset--color--custombg-ten) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-custombg-one-background-color{background-color: var(--wp--preset--color--custombg-one) !important;}.has-custombg-two-background-color{background-color: var(--wp--preset--color--custombg-two) !important;}.has-custombg-three-background-color{background-color: var(--wp--preset--color--custombg-three) !important;}.has-custombg-four-background-color{background-color: var(--wp--preset--color--custombg-four) !important;}.has-custombg-five-background-color{background-color: var(--wp--preset--color--custombg-five) !important;}.has-custombg-six-background-color{background-color: var(--wp--preset--color--custombg-six) !important;}.has-custombg-seven-background-color{background-color: var(--wp--preset--color--custombg-seven) !important;}.has-custombg-nine-background-color{background-color: var(--wp--preset--color--custombg-nine) !important;}.has-custombg-ten-background-color{background-color: var(--wp--preset--color--custombg-ten) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-custombg-one-border-color{border-color: var(--wp--preset--color--custombg-one) !important;}.has-custombg-two-border-color{border-color: var(--wp--preset--color--custombg-two) !important;}.has-custombg-three-border-color{border-color: var(--wp--preset--color--custombg-three) !important;}.has-custombg-four-border-color{border-color: var(--wp--preset--color--custombg-four) !important;}.has-custombg-five-border-color{border-color: var(--wp--preset--color--custombg-five) !important;}.has-custombg-six-border-color{border-color: var(--wp--preset--color--custombg-six) !important;}.has-custombg-seven-border-color{border-color: var(--wp--preset--color--custombg-seven) !important;}.has-custombg-nine-border-color{border-color: var(--wp--preset--color--custombg-nine) !important;}.has-custombg-ten-border-color{border-color: var(--wp--preset--color--custombg-ten) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-normal-font-size{font-size: var(--wp--preset--font-size--normal) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<script type="text/rocketlazyloadscript" id="rocket-browser-checker-js-after">
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+//# sourceURL=rocket-browser-checker-js-after
+</script>
+<script id="rocket-preload-links-js-extra">
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://strategicplan.ncsu.edu","onHoverDelay":"100","rateThrottle":"3"};
+//# sourceURL=rocket-preload-links-js-extra
+</script>
+<script type="text/rocketlazyloadscript" id="rocket-preload-links-js-after">
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+
+//# sourceURL=rocket-preload-links-js-after
+</script>
+<script type="text/rocketlazyloadscript" id="page-links-to-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/plugins/page-links-to/dist/new-tab.js?ver=3.4.1"></script>
+<script type="text/rocketlazyloadscript" id="lodash-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-includes/js/dist/vendor/lodash.min.js?ver=4.18.1"></script>
+<script type="text/rocketlazyloadscript" id="lodash-js-after">
+window.lodash = _.noConflict();
+//# sourceURL=lodash-js-after
+</script>
+<script type="text/rocketlazyloadscript" id="wp-dom-ready-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-includes/js/dist/dom-ready.min.js?ver=3fe927cab37bf38d6a23"></script>
+<script type="text/rocketlazyloadscript" id="wp-polyfill-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0"></script>
+<script type="text/rocketlazyloadscript" id="ncst/main.js-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/scripts/main.js?ver=4.18.2"></script>
+<script id="ncst/stories/main.js-js-extra">
+var ncst_stories_vars = {"hasStoriesHeader":""};
+//# sourceURL=ncst%2Fstories%2Fmain.js-js-extra
+</script>
+<script type="text/rocketlazyloadscript" id="ncst/stories/main.js-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/plugins/ncstate-pro-add-on/dist/scripts/main.js?ver=2.12.9"></script>
+<script id="ncst/wolf-alert-js-extra">
+var wolfAlertConfig = {"wolf_alert_active":"","include_low_priority":"","is_core_active":""};
+//# sourceURL=ncst%2Fwolf-alert-js-extra
+</script>
+<script type="text/rocketlazyloadscript" id="ncst/wolf-alert-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/scripts/wolf-alert.js?ver=4.18.2"></script>
+<script type="text/rocketlazyloadscript" id="ncst/image-lightbox-ui-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/scripts/image-lightbox-ui.js?ver=1793721796"></script>
+<script type="text/rocketlazyloadscript" id="ncst/search-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/themes/ncstate-theme-v4/dist/scripts/search-overlay.js?ver=4.18.2"></script>
+<script type="text/rocketlazyloadscript" id="googlesitekit-events-provider-content-events-js-before">
+window._googlesitekit = window._googlesitekit || {};
+window._googlesitekit.contentEvents = {"postID":352,"isReadableSinglePost":false,"hasVimeoEmbed":false,"wordCount":0,"estimatedReadTimeSeconds":0,"isLastPageOfMultiPagePost":false,"readTimeThresholdPercent":85,"minimumReadTimeSeconds":5};
+//# sourceURL=googlesitekit-events-provider-content-events-js-before
+</script>
+<script type="text/rocketlazyloadscript" id="googlesitekit-events-provider-content-events-js" data-rocket-src="https://strategicplan.ncsu.edu/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-events-provider-content-events-90bacb156ab34fa090db.js" defer></script>
+    <script>var rocket_beacon_data = {"ajax_url":"https:\/\/strategicplan.ncsu.edu\/wp-admin\/admin-ajax.php","nonce":"594cffdfad","url":"https:\/\/strategicplan.ncsu.edu\/current-plan\/wolfpack-2030-powering-the-extraordinary","is_mobile":false,"width_threshold":1600,"height_threshold":700,"delay":500,"debug":null,"status":{"atf":true,"lrc":true,"preconnect_external_domain":true},"elements":"img, video, picture, p, main, div, li, svg, section, header, span","lrc_threshold":1800,"preconnect_external_domain_elements":["link","script","iframe"],"preconnect_external_domain_exclusions":["static.cloudflareinsights.com","rel=\"profile\"","rel=\"preconnect\"","rel=\"dns-prefetch\"","rel=\"icon\""]}</script><script data-name="wpr-wpr-beacon" src='https://strategicplan.ncsu.edu/wp-content/plugins/wp-rocket/assets/js/wpr-beacon.min.js' async></script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a56e6bb1ba129335',t:'MTc5NDA3NjM0Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a56e6bb1ba129335',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1794056968 -->

@@ -1,0 +1,141 @@
+{
+  "agency_id": "dpi",
+  "category": "state",
+  "name": "North Carolina Department of Public Instruction",
+  "short_name": "NC DPI",
+  "source_citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers)",
+  "mission": "Supports K-12 public schools so every student graduates ready for work, further education and citizenship.",
+  "eligible_applicant_types": [
+    "State governments",
+    "Independent school districts"
+  ],
+  "funder_affinities": [
+    "Department of Education",
+    "Department of Agriculture",
+    "National Science Foundation"
+  ],
+  "goals": [
+    {
+      "id": "DPI-G1",
+      "number": 1,
+      "title": "Prepare each student for their next phase in life",
+      "citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers), p. 14",
+      "description": "Pillar 1: Prepare each student for their next phase in life.",
+      "objectives": [
+        "Pillar 1: Prepare each student for their next phase in life."
+      ],
+      "keywords": [
+        "literacy",
+        "reading",
+        "mathematics",
+        "career and technical education",
+        "college and career readiness",
+        "k-12",
+        "student achievement",
+        "english learners",
+        "students with disabilities"
+      ]
+    },
+    {
+      "id": "DPI-G2",
+      "number": 2,
+      "title": "Revere public school educators",
+      "citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers), p. 16",
+      "description": "Pillar 2: Revere public school educators.",
+      "objectives": [
+        "Pillar 2: Revere public school educators."
+      ],
+      "keywords": [
+        "teacher recruitment",
+        "teacher retention",
+        "educator preparation",
+        "teacher professional development",
+        "principal"
+      ]
+    },
+    {
+      "id": "DPI-G3",
+      "number": 3,
+      "title": "Parent, caregiver and community support",
+      "citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers), p. 18",
+      "description": "Pillar 3: Enhance parent, caregiver and community support.",
+      "objectives": [
+        "Pillar 3: Enhance parent, caregiver and community support."
+      ],
+      "keywords": [
+        "family engagement",
+        "community schools",
+        "after-school"
+      ]
+    },
+    {
+      "id": "DPI-G4",
+      "number": 4,
+      "title": "Healthy, safe and secure learning environments",
+      "citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers), p. 20",
+      "description": "Pillar 4: Ensure healthy, safe and secure learning environments.",
+      "objectives": [
+        "Pillar 4: Ensure healthy, safe and secure learning environments."
+      ],
+      "keywords": [
+        "school safety",
+        "school mental health",
+        "student wellness",
+        "school nutrition",
+        "school meals",
+        "bullying"
+      ]
+    },
+    {
+      "id": "DPI-G5",
+      "number": 5,
+      "title": "Operational excellence",
+      "citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers), p. 22",
+      "description": "Pillar 5: Optimize operational excellence.",
+      "objectives": [
+        "Pillar 5: Optimize operational excellence."
+      ],
+      "keywords": [
+        "school facilities",
+        "school transportation",
+        "education data systems"
+      ]
+    },
+    {
+      "id": "DPI-G6",
+      "number": 6,
+      "title": "Lead transformative change",
+      "citation": "Achieving Educational Excellence: 2025-2030 Strategic Plan for North Carolina Public Schools (printed page numbers), p. 24",
+      "description": "Pillar 6: Lead transformative change.",
+      "objectives": [
+        "Pillar 6: Lead transformative change."
+      ],
+      "keywords": [
+        "education innovation",
+        "personalized learning",
+        "education technology"
+      ]
+    }
+  ],
+  "keywords": [
+    "after-school",
+    "community schools",
+    "education data systems",
+    "education innovation",
+    "education technology",
+    "educator preparation",
+    "family engagement",
+    "literacy",
+    "mathematics",
+    "personalized learning",
+    "reading",
+    "school facilities",
+    "school mental health",
+    "school safety",
+    "school transportation",
+    "student wellness",
+    "teacher recruitment",
+    "teacher retention"
+  ],
+  "source_url": "https://www.osbm.nc.gov/strategic-plan-dpi/download?attachment"
+}

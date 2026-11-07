@@ -1,0 +1,89 @@
+{
+  "opportunity_id": "363232",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:12",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "name": "Project Narrative / Scope of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "name": "SF-424A Budget Information and Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "name": "Letters of Support and Collaboration",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Estimated Application Response Deadline",
+      "when": "Jan 26, 2027 12:00:00 AM EST",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Non-domestic (non-U.S.) Entities (Foreign Institutions) are not eligible to apply. Non-domestic (non-U.S.) components of U.S. Organizations are not eligible to apply. Foreign components, as defined in the HHS Grants Policy Statement, are not allowed. In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "criterion": "Work Plan Feasibility and Milestone Schedule",
+      "weight": "Scored evaluation criterion",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    },
+    {
+      "criterion": "Budget Reasonableness and Cost Effectiveness",
+      "weight": "Evaluated criterion",
+      "source": "Grants.gov Forecast Notice (RFA-OH-27-045)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity RFA-OH-27-045.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

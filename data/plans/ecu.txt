@@ -1,0 +1,19 @@
+Forbidden (403) 
+
+ 403: Forbidden
+
+ If you were trying to login to WordPress, you need to be on campus or connected to the VPN.
+
+ Once you are connected to the VPN, you may login to WordPress. Learn more about the VPN .
+
+ If you are connected to the VPN and still unable to login to WordPress, please call the Pirate Techs Service Desk at 252-328-9866 or submit a support request .
+
+ East Carolina University
+
+ East 5th Street | Greenville, NC 27858 
+ | 252-328-6131 
+
+ © 
+ | Terms of Use 
+ | Accessibility 
+ | Report a Barrier

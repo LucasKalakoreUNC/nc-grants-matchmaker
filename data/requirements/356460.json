@@ -1,0 +1,41 @@
+{
+  "opportunity_id": "356460",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:20",
+  "required_documents": [
+    {
+      "name": "Application Package and Standard Forms",
+      "category": "Standard forms",
+      "required": true,
+      "details": "The downloaded notice package for RFA-NS-25-023 contains only placeholder content. Refer to Grants.gov synopsis or contact agency for full instructions.",
+      "source": "RFA-NS-25-023-Full-Announcement.html"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2027-01-15",
+      "source": "RFA-NS-25-023-Full-Announcement.html"
+    }
+  ],
+  "eligibility": {
+    "summary": "Refer to Grants.gov opportunity RFA-NS-25-023 and agency announcement for detailed applicant eligibility guidelines.",
+    "source": "RFA-NS-25-023-Full-Announcement.html"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Not stated in downloaded notice text.",
+    "source": "RFA-NS-25-023-Full-Announcement.html"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Technical Merit and Program Alignment",
+      "weight": "not stated",
+      "source": "RFA-NS-25-023-Full-Announcement.html"
+    }
+  ],
+  "submission_limits": "not stated",
+  "important_notes": [
+    "The downloaded notice file contained only placeholder text (126 chars). Confirm all requirements directly on Grants.gov before preparing submission."
+  ]
+}

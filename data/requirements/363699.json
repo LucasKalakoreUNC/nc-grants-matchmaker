@@ -1,0 +1,81 @@
+{
+  "opportunity_id": "363699",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:24",
+  "required_documents": [
+    {
+      "name": "SF-424 (R&R) Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard research cover form with applicant organizational details, cage code, and UEI.",
+      "source": "Foa_Content_of_F26AS00105.pdf Section IV"
+    },
+    {
+      "name": "Technical Proposal & Statement of Work (SOW)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed technical narrative outlining scientific approach, military relevance, project milestones, and clear Statement of Work.",
+      "source": "Foa_Content_of_F26AS00105.pdf Section IV"
+    },
+    {
+      "name": "Cost Proposal & Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Complete itemized cost breakdown including direct labor rates, equipment, materials, subcontracts, and negotiated indirect cost rate agreement.",
+      "source": "Foa_Content_of_F26AS00105.pdf Section IV"
+    },
+    {
+      "name": "Senior Personnel Biosketches and Current/Pending Support",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for principal investigators and key contributors, along with complete federal funding disclosures.",
+      "source": "Foa_Content_of_F26AS00105.pdf Section IV"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with active UEI and submission via Grants.gov.",
+      "source": "Foa_Content_of_F26AS00105.pdf Section IV"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2027-04-30",
+      "source": "Foa_Content_of_F26AS00105.pdf"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "Foa_Content_of_F26AS00105.pdf p. 3"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Cost sharing requirements not explicitly mandated in notice.",
+    "source": "Foa_Content_of_F26AS00105.pdf p. 2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Scientific and Technical Merit",
+      "weight": "Primary criterion",
+      "source": "Foa_Content_of_F26AS00105.pdf Section V"
+    },
+    {
+      "criterion": "Relevance to Department of Defense and National Security Mission",
+      "weight": "Important criterion",
+      "source": "Foa_Content_of_F26AS00105.pdf Section V"
+    },
+    {
+      "criterion": "Qualifications of Principal Investigator and Research Team",
+      "weight": "Significant criterion",
+      "source": "Foa_Content_of_F26AS00105.pdf Section V"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: 2027-04-30.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}

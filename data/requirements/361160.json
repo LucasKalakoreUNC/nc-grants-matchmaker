@@ -1,0 +1,143 @@
+{
+  "opportunity_id": "361160",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Application Package",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal application form with applicant institutional profile and signatures.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Summary of the proposed mentoring network, target mentees, faculty mentors, and career advancement activities (max 30 lines).",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Two or three sentences on how structured mentoring enhances biomedical research workforce diversity and capacity.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Facilities & Other Resources",
+      "category": "Attachments",
+      "required": true,
+      "details": "Institutional mentoring infrastructure, meeting facilities, networking platforms, and administrative support.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Senior/Key Person Profiles",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for Program Directors and lead faculty mentors (max 5 pages each).",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "R&R Detailed Budget and Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget for mentoring meetings, mentor training workshops, travel, and networking conferences (indirect costs capped at 8%).",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Specific Aims",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One page outlining mentoring program goals and measurable cohort milestones.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Research Education Program Plan - Mentoring Activities",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 25 pages uploaded under Research Strategy detailing Mentoring Model, Faculty Mentor Training, Mentee Selection, and Career Tracking.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Institutional Commitment Letter",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Signed letter from Dean or Provost detailing release time for faculty mentors and long-term institutional endorsement.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Plan for Instruction in Responsible Conduct of Research",
+      "category": "Attachments",
+      "required": true,
+      "details": "Maximum 3 pages detailing research ethics, authorship standards, and mentor-mentee conflict resolution policies.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Registrations (SAM.gov, Grants.gov, eRA Commons)",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active institutional registrations in SAM.gov and Grants.gov; eRA Commons ID for all Program Directors.",
+      "source": "PA-27-035-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "September Standard Due Date",
+      "when": "September 25, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-035-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "January Standard Due Date",
+      "when": "January 25, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-035-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "May Standard Due Date",
+      "when": "May 25, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PA-27-035-Full-Announcement.html Section IV.3"
+    }
+  ],
+  "eligibility": {
+    "summary": "Higher education institutions, biomedical research non-profits, healthcare systems, and professional societies. In North Carolina, universities and regional scientific consortia are eligible.",
+    "source": "PA-27-035-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "This NOFO does not require cost sharing as defined in the NIH Grants Policy Statement.",
+    "source": "PA-27-035-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-035-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Investigator(s)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-035-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Innovation",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-035-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Approach (Mentoring Framework)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-035-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Environment and Institutional Commitment",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PA-27-035-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically distinct.",
+  "important_notes": [
+    "Clinical trials are not permitted under this funding announcement.",
+    "Research Strategy (Mentoring Plan) must not exceed 25 pages.",
+    "Must include formal training in mentoring skills for faculty participating in the network."
+  ]
+}

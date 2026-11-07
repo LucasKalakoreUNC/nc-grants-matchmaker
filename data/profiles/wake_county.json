@@ -3,7 +3,7 @@
   "category": "county",
   "name": "Wake County Government",
   "short_name": "Wake County",
-  "source_citation": "Wake County Strategic Plan & FY 2025-2029 Capital Improvement Program",
+  "source_citation": "Wake County Strategic Plan (adopted 2024, goals through 2029)",
   "mission": "Wake County will be a thriving community of opportunity where all residents enjoy healthy lives, economic prosperity, excellent public education, and safe, vibrant neighborhoods.",
   "eligible_applicant_types": [
     "County governments",
@@ -23,70 +23,170 @@
     {
       "id": "WAKE-G1",
       "number": 1,
-      "title": "Affordable Housing, Homelessness Prevention, and Community Development",
-      "citation": "Wake County Affordable Housing Plan, Priority 1, pp. 8-14",
-      "description": "Expand permanently affordable housing units, support rapid re-housing for vulnerable families, and upgrade neighborhood infrastructure across growing suburban and urban corridors.",
+      "title": "Community health and wellbeing",
+      "citation": "Wake County Strategic Plan (adopted 2024, goals through 2029), Community health and wellbeing page",
+      "source_url": "https://www.wake.gov/strategic-plan/community-health-and-wellbeing",
+      "description": "Community health and wellbeing: Create and preserve 2,500 affordable housing units by 2029; Make homelessness rare, brief, and non-recurring; reduce unsheltered homelessness by 10% from 2024 levels; Lower barriers to healthcare and behavioral health services.",
       "objectives": [
-        "Construct and preserve multi-family affordable rental units near transit corridors",
-        "Expand emergency shelter capacity and rapid re-housing vouchers",
-        "Implement neighborhood revitalization and community revitalization block grants"
+        "1. Create and preserve 2,500 affordable housing units by 2029",
+        "2. Make homelessness rare, brief, and non-recurring; reduce unsheltered homelessness by 10% from 2024 levels",
+        "3. Lower barriers to healthcare and behavioral health services",
+        "4. Lower barriers to benefits and assistance programs such as food, utilities, childcare and employment services",
+        "5. Increase by 4% the veterans and families accessing earned benefits"
       ],
       "keywords": [
-        "affordable housing", "housing vouchers", "homelessness", "community development block grant",
-        "CDBG", "HUD", "neighborhood revitalization", "rental assistance", "transit-oriented housing"
+        "affordable housing",
+        "permanent supportive housing",
+        "homelessness",
+        "rapid re-housing",
+        "behavioral health",
+        "mental health",
+        "substance use",
+        "access to care",
+        "food insecurity",
+        "veterans",
+        "community development block grant",
+        "home investment partnerships",
+        "fair housing"
       ]
     },
     {
       "id": "WAKE-G2",
       "number": 2,
-      "title": "Public Health, Behavioral Health, and Emergency Medical Services",
-      "citation": "Wake County Community Health Needs Assessment, Chapter 3",
-      "description": "Strengthen community-based mental health crisis response, reduce substance use overdose fatalities, and modernize county public health clinics and EMS response times.",
+      "title": "Growth, land use and environment",
+      "citation": "Wake County Strategic Plan (adopted 2024, goals through 2029), Growth, land use and environment page",
+      "source_url": "https://www.wake.gov/strategic-plan/growth-land-use-and-environment",
+      "description": "Growth, land use and environment: Direct 97% of growth to cities and towns with municipal services; Increase public transit ridership by 10%; Protect 1,000 acres of green space, parks, greenways, farmland and forests.",
       "objectives": [
-        "Deploy mobile crisis intervention units and diversion from hospital emergency rooms",
-        "Expand harm reduction, naloxone distribution, and opioid settlement programming",
-        "Modernize EMS fleet, pediatric paramedic equipment, and 911 dispatch interoperability"
+        "1. Direct 97% of growth to cities and towns with municipal services",
+        "2. Increase public transit ridership by 10%",
+        "3. Protect 1,000 acres of green space, parks, greenways, farmland and forests",
+        "4. 95% of residents with easy access to clean water",
+        "5. Progress toward 80% clean energy for county government by 2035"
       ],
       "keywords": [
-        "public health", "behavioral health", "mental health", "opioid", "EMS", "emergency medical",
-        "crisis response", "substance abuse", "harm reduction", "maternal health", "community health"
+        "public transit",
+        "transit",
+        "greenways",
+        "open space",
+        "land conservation",
+        "farmland preservation",
+        "drinking water",
+        "clean water",
+        "clean energy",
+        "energy efficiency",
+        "electric vehicle",
+        "stormwater"
       ]
     },
     {
       "id": "WAKE-G3",
       "number": 3,
-      "title": "County Water Quality, Parks, Greenways, and Open Space Preservation",
-      "citation": "Wake County Open Space Master Plan & Watershed Protection Guidelines",
-      "description": "Protect Falls Lake and Jordan Lake watershed quality, expand regional multi-use greenways, and preserve open agricultural and forest conservation land against rapid suburban sprawl.",
+      "title": "Inclusive prosperity",
+      "citation": "Wake County Strategic Plan (adopted 2024, goals through 2029), Inclusive prosperity page",
+      "source_url": "https://www.wake.gov/strategic-plan/inclusive-prosperity",
+      "description": "Inclusive prosperity: Lower barriers to employment such as broadband, childcare and transportation; Four in five residents with employment opportunities right for their needs; Nine in ten residents can find enriching experiences.",
       "objectives": [
-        "Acquire conservation easements along Neuse River and Swift Creek watersheds",
-        "Complete missing links in the East Coast Greenway and county park network",
-        "Mitigate stormwater runoff in rapidly developing unincorporated county jurisdictions"
+        "1. Lower barriers to employment such as broadband, childcare and transportation",
+        "2. Four in five residents with employment opportunities right for their needs",
+        "3. Nine in ten residents can find enriching experiences"
       ],
       "keywords": [
-        "open space", "greenways", "parks", "watershed", "stormwater", "conservation easements",
-        "water quality", "recreation", "land preservation", "Neuse River"
+        "workforce development",
+        "job training",
+        "employment",
+        "broadband",
+        "digital equity",
+        "child care",
+        "arts",
+        "libraries"
       ]
     },
     {
       "id": "WAKE-G4",
       "number": 4,
-      "title": "Public Safety, Criminal Justice Diversion, and Emergency Preparedness",
-      "citation": "Wake County Public Safety Master Plan & Hazard Mitigation Plan",
-      "description": "Strengthen county sheriff and detention services, advance pre-trial diversion, and harden emergency operations centers against severe weather and cyber incidents.",
+      "title": "Lifelong learning",
+      "citation": "Wake County Strategic Plan (adopted 2024, goals through 2029), Lifelong learning page",
+      "source_url": "https://www.wake.gov/strategic-plan/lifelong-learning",
+      "description": "Lifelong learning: Increase income-eligible preschool slots by 33%; Increase access to quality educational opportunities; Develop baseline metrics for education-based support services in Wake County Public Schools.",
       "objectives": [
-        "Expand juvenile justice diversion and adult re-entry supportive services",
-        "Harden county emergency management facilities against Category 3 hurricane impacts",
-        "Upgrade public safety radio networks (VIPER) and first responder communications"
+        "1. Increase income-eligible preschool slots by 33%",
+        "2. Increase access to quality educational opportunities",
+        "3. Develop baseline metrics for education-based support services in Wake County Public Schools",
+        "4. High-quality education facilities, including schools and libraries"
       ],
       "keywords": [
-        "public safety", "criminal justice", "emergency management", "hazard mitigation",
-        "FEMA", "BJA", "reentry", "juvenile justice", "interoperability", "first responder"
+        "early childhood",
+        "pre-k",
+        "preschool",
+        "early learning",
+        "school readiness",
+        "library",
+        "education"
+      ]
+    },
+    {
+      "id": "WAKE-G5",
+      "number": 5,
+      "title": "Safer community together",
+      "citation": "Wake County Strategic Plan (adopted 2024, goals through 2029), Safer community together page",
+      "source_url": "https://www.wake.gov/strategic-plan/safer-community-together",
+      "description": "Safer community together: 80% of county public safety calls receive an appropriate and timely emergency response; Develop baseline metrics for referrals to recovery support networks; Reduce the violent crime rate by 5%.",
+      "objectives": [
+        "1. 80% of county public safety calls receive an appropriate and timely emergency response",
+        "2. Develop baseline metrics for referrals to recovery support networks",
+        "3. Reduce the violent crime rate by 5%"
+      ],
+      "keywords": [
+        "emergency medical services",
+        "ems",
+        "911",
+        "emergency response",
+        "violence prevention",
+        "community violence",
+        "recovery support",
+        "reentry",
+        "crisis response",
+        "emergency management"
+      ]
+    },
+    {
+      "id": "WAKE-G6",
+      "number": 6,
+      "title": "Foundations of service",
+      "citation": "Wake County Strategic Plan (adopted 2024, goals through 2029), Foundations of service page",
+      "source_url": "https://www.wake.gov/strategic-plan/foundations-service",
+      "description": "Foundations of service: Maintain AAA bond ratings; Increase employee satisfaction to 90%; Residents agree services are high-quality, fair and equitable.",
+      "objectives": [
+        "1. Maintain AAA bond ratings",
+        "2. Increase employee satisfaction to 90%",
+        "3. Residents agree services are high-quality, fair and equitable",
+        "4. Better resident engagement and public input"
+      ],
+      "keywords": [
+        "civic engagement",
+        "public participation"
       ]
     }
   ],
   "keywords": [
-    "county", "local government", "affordable housing", "public health", "behavioral health",
-    "EMS", "parks", "greenways", "watershed", "emergency management", "stormwater", "community development"
-  ]
+    "911",
+    "affordable housing",
+    "civic engagement",
+    "early childhood",
+    "emergency medical services",
+    "employment",
+    "ems",
+    "greenways",
+    "homelessness",
+    "job training",
+    "permanent supportive housing",
+    "pre-k",
+    "preschool",
+    "public participation",
+    "public transit",
+    "transit",
+    "workforce development"
+  ],
+  "source_url": "https://www.wake.gov/strategic-plan"
 }

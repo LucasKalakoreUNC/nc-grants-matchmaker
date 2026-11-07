@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="og: https://ogp.me/ns#">
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="The Office of Strategy &amp; Innovation is a division of the Mecklenburg County Manager’s Office. The division is responsible for developing and managing the County’s corporate strategic business plan, coordinating with department directors on strategic planning, managing the annual Employee Climate Survey and assisting with other internal priorities throughout the organization." />
+<meta name="keywords" content="," />
+<link rel="canonical" href="https://strategy.mecknc.gov/" />
+<link rel="shortlink" href="https://strategy.mecknc.gov/" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="https://strategy.mecknc.gov/Home" />
+<meta property="og:title" content="Office of Strategy &amp; Innovation" />
+<meta property="og:description" content="The Office of Strategy &amp; Innovation is a division of the Mecklenburg County Manager’s Office. The division is responsible for developing and managing the County’s corporate strategic business plan, coordinating with department directors on strategic planning, managing the annual Employee Climate Survey and assisting with other internal priorities throughout the organization." />
+<meta property="og:image" content="https://strategy.mecknc.gov/sites/g/files/otddlp466/files/acquiadam/2022-09/mc-img-spe-hdr-tablemeeting.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="The Office of Strategy &amp; Innovation is a division of the Mecklenburg County Manager’s Office. The division is responsible for developing and managing the County’s corporate strategic business plan, coordinating with department directors on strategic planning, managing the annual Employee Climate Survey and assisting with other internal priorities throughout the organization." />
+<meta name="twitter:title" content="Office of Strategy &amp; Innovation" />
+<meta name="twitter:image" content="https://strategy.mecknc.gov/sites/g/files/otddlp466/files/acquiadam/2022-09/mc-img-spe-hdr-tablemeeting.png" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
+<script data-cfasync="false" type="text/javascript" id="vwoCode">
+      window._vwo_code ||
+      (function () {
+      var w=window,
+      d=document;
+      var account_id=949667,
+      version=2.2,
+      settings_tolerance=2000,
+      hide_element='body',
+      hide_element_style = 'opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important';
+      /* DO NOT EDIT BELOW THIS LINE */
+      var f=0, v;
+      if(f=!1,v=d.querySelector('#vwoCode'),cc={},-1<d.URL.indexOf('__vwo_disable__')||w._vwo_code)return;try{var e=JSON.parse(localStorage.getItem('_vwo_'+account_id+'_config'));cc=e&&'object'==typeof e?e:{}}catch(e){}function r(t){try{return decodeURIComponent(t)}catch(e){return t}}var s=function(){var e={combination:[],combinationChoose:[],split:[],exclude:[],uuid:null,consent:null,optOut:null},t=d.cookie||'';if(!t)return e;for(var n,i,o=/(?:^|;\s*)(?:(_vis_opt_exp_(\d+)_combi=([^;]*))|(_vis_opt_exp_(\d+)_combi_choose=([^;]*))|(_vis_opt_exp_(\d+)_split=([^:;]*))|(_vis_opt_exp_(\d+)_exclude=[^;]*)|(_vis_opt_out=([^;]*))|(_vwo_global_opt_out=[^;]*)|(_vwo_uuid=([^;]*))|(_vwo_consent=([^;]*)))/g;null!==(n=o.exec(t));)try{n[1]?e.combination.push({id:n[2],value:r(n[3])}):n[4]?e.combinationChoose.push({id:n[5],value:r(n[6])}):n[7]?e.split.push({id:n[8],value:r(n[9])}):n[10]?e.exclude.push({id:n[11]}):n[12]?e.optOut=r(n[13]):n[14]?e.optOut=!0:n[15]?e.uuid=r(n[16]):n[17]&&(i=r(n[18]),e.consent=i&&3<=i.length?i.substring(0,3):null)}catch(e){}return e}();function i(){var e=function(){if(w.VWO&&Array.isArray(w.VWO))for(var e=0;e<w.VWO.length;e++){var t=w.VWO[e];if(Array.isArray(t)&&('setVisitorId'===t[0]||'setSessionId'===t[0]))return!0}return!1}(),t='a='+account_id+'&u='+encodeURIComponent(w._vis_opt_url||d.URL)+'&vn='+version+'&ph=1'+('undefined'!=typeof platform?'&p='+platform:'')+'&st='+w.performance.now();e||((n=function(){var e,t=[],n={},i=w.VWO&&w.VWO.appliedCampaigns||{};for(e in i){var o=i[e]&&i[e].v;o&&(t.push(e+'-'+o+'-1'),n[e]=!0)}if(s&&s.combination)for(var r=0;r<s.combination.length;r++){var a=s.combination[r];n[a.id]||t.push(a.id+'-'+a.value)}return t.join('|')}())&&(t+='&c='+n),(n=function(){var e=[],t={};if(s&&s.combinationChoose)for(var n=0;n<s.combinationChoose.length;n++){var i=s.combinationChoose[n];e.push(i.id+'-'+i.value),t[i.id]=!0}if(s&&s.split)for(var o=0;o<s.split.length;o++)t[(i=s.split[o]).id]||e.push(i.id+'-'+i.value);return e.join('|')}())&&(t+='&cc='+n),(n=function(){var e={},t=[];if(w.VWO&&Array.isArray(w.VWO))for(var n=0;n<w.VWO.length;n++){var i=w.VWO[n];if(Array.isArray(i)&&'setVariation'===i[0]&&i[1]&&Array.isArray(i[1]))for(var o=0;o<i[1].length;o++){var r,a=i[1][o];a&&'object'==typeof a&&(r=a.e,a=a.v,r&&a&&(e[r]=a))}}for(r in e)t.push(r+'-'+e[r]);return t.join('|')}())&&(t+='&sv='+n)),s&&s.optOut&&(t+='&o='+s.optOut);var n=function(){var e=[],t={};if(s&&s.exclude)for(var n=0;n<s.exclude.length;n++){var i=s.exclude[n];t[i.id]||(e.push(i.id),t[i.id]=!0)}return e.join('|')}();return n&&(t+='&e='+n),s&&s.uuid&&(t+='&id='+s.uuid),s&&s.consent&&(t+='&consent='+s.consent),w.name&&-1<w.name.indexOf('_vis_preview')&&(t+='&pM=true'),w.VWO&&w.VWO.ed&&(t+='&ed='+w.VWO.ed),t}code={script:v,nonce:v&&v.nonce,library_tolerance:function(){return'undefined'!=typeof library_tolerance?library_tolerance:void 0},settings_tolerance:function(){return cc.sT||settings_tolerance},hide_element_style:function(){return'{'+(cc.hES||hide_element_style)+'}'},hide_element:function(){return performance.getEntriesByName('first-contentful-paint')[0]?'':'string'==typeof cc.hE?cc.hE:hide_element},getVersion:function(){return version},finish:function(e){var t;f||(f=!0,(t=d.getElementById('_vis_opt_path_hides'))&&t.parentNode.removeChild(t),e&&((new Image).src='https://dev.visualwebsiteoptimizer.com/ee.gif?a='+account_id+e))},finished:function(){return f},addScript:function(e){var t=d.createElement('script');t.type='text/javascript',e.src?t.src=e.src:t.text=e.text,v&&t.setAttribute('nonce',v.nonce),d.getElementsByTagName('head')[0].appendChild(t)},load:function(e,t){t=t||{};var n=new XMLHttpRequest;n.open('GET',e,!0),n.withCredentials=!t.dSC,n.responseType=t.responseType||'text',n.onload=function(){if(t.onloadCb)return t.onloadCb(n,e);200===n.status?_vwo_code.addScript({text:n.responseText}):_vwo_code.finish('&e=loading_failure:'+e)},n.onerror=function(){if(t.onerrorCb)return t.onerrorCb(e);_vwo_code.finish('&e=loading_failure:'+e)},n.send()},init:function(){var e,t=this.settings_tolerance();w._vwo_settings_timer=setTimeout(function(){_vwo_code.finish()},t),'body'!==this.hide_element()?(n=d.createElement('style'),e=(t=this.hide_element())?t+this.hide_element_style():'',t=d.getElementsByTagName('head')[0],n.setAttribute('id','_vis_opt_path_hides'),v&&n.setAttribute('nonce',v.nonce),n.setAttribute('type','text/css'),n.styleSheet?n.styleSheet.cssText=e:n.appendChild(d.createTextNode(e)),t.appendChild(n)):(n=d.getElementsByTagName('head')[0],(e=d.createElement('div')).style.cssText='z-index: 2147483647 !important;position: fixed !important;left: 0 !important;top: 0 !important;width: 100% !important;height: 100% !important;background: white !important;',e.setAttribute('id','_vis_opt_path_hides'),e.classList.add('_vis_hide_layer'),n.parentNode.insertBefore(e,n.nextSibling));var n='https://dev.visualwebsiteoptimizer.com/j.php?'+i();-1!==w.location.search.indexOf('_vwo_xhr')?this.addScript({src:n}):this.load(n+'&x=true',{l:1})}};w._vwo_code=code;code.init();})();
+      </script>
+<script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Article",
+            "name": "Office of Strategy \u0026 Innovation",
+            "description": "The Office of Strategy \u0026 Innovation is a division of the Mecklenburg County Manager’s Office. The division is responsible for developing and managing the County’s corporate strategic business plan, coordinating with department directors on strategic planning, managing the annual Employee Climate Survey and assisting with other internal priorities throughout the organization.  "
+        }
+    ]
+}</script>
+<link rel="icon" href="/themes/custom/meck/images/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="alternate" hreflang="en" href="https://strategy.mecknc.gov/" />
+
+    <title>Office of Strategy &amp; Innovation | Office of Strategy &amp; Innovation</title>
+    <link rel="stylesheet" media="all" href="/sites/g/files/otddlp466/files/css/css_s4aaVIvcaNbT6bevEe6X8Oyc6RP-TXQ_OX0hn5xJfoI.css?delta=0&amp;language=en&amp;theme=meck&amp;include=eJx1TFsSwiAMvBDCkZgAW8SGhiE41ttLnfrV8WeTfQaMge6xN1EkvxSeVF3Ghk5sojBT0xJY4uqidJgDXOrPRmzpQbvBPrhs6087qamYjcwS5kybMz__-G9HQo1KLMS-IhXyX8ldJTvuqDD61oHqAinMC2GRXt15LXgmtmETBhWeDcmZ_8cqVClf_QM-oEhp4A" />
+<link rel="stylesheet" media="all" href="/sites/g/files/otddlp466/files/css/css_ilPtpePZZVCpK5tde1D6p9WDG7PsZz9ZavlvE65Bms4.css?delta=1&amp;language=en&amp;theme=meck&amp;include=eJx1TFsSwiAMvBDCkZgAW8SGhiE41ttLnfrV8WeTfQaMge6xN1EkvxSeVF3Ghk5sojBT0xJY4uqidJgDXOrPRmzpQbvBPrhs6087qamYjcwS5kybMz__-G9HQo1KLMS-IhXyX8ldJTvuqDD61oHqAinMC2GRXt15LXgmtmETBhWeDcmZ_8cqVClf_QM-oEhp4A" />
+
+    <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/16","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"","consentMode":false,"otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"eJyFUAFuxCAM-xAtT0IBUsYVSEfS7u73S6-ttO02TUIQO1Zi7FEEu8P7QozRTbkoZAurkOPV1yzG_y5J2LBDMaFkbMI5otug5AiSqbnb-4r9YcM2HtV49tAEKgUWzr5QmG2gjgbvUnKbbezrAmU8oUlEqaATSDbp9ROPcIP7d7Kaqs5zsMczTETq1VTUTRB0V1RvB_TQ2tUK0ONw4xPMGLNQdx15ocZ526d73cHyUF_pkGkc0OLOD34VucZ-3ZgKeQ3oWb8hxIvPgdowwQE4dA1k8BDmQUjPcs1blL8i2ethD4UNU8hQXFWX4J6UfaVGecOKhh8sWPWvjOYD_US92vMdsaiiyRhRIBceGbb_RUJJ0_5TVpEZ0mt_vz4BeWTvjA","theme":"meck","theme_token":null},"ajaxTrustedUrl":{"form_action_p_pvdeGsVG5zNF_XLGPTvYSKCf43t8qZYSwcfZl2uzM":true,"\/search":true},"gtm":{"tagId":null,"settings":{"data_layer":"dataLayer","include_classes":true,"allowlist_classes":["google","nonGooglePixels","nonGoogleScripts","nonGoogleIframes"],"blocklist_classes":["customScripts","customPixels"],"include_environment":false,"environment_id":"","environment_token":""},"tagIds":["GTM-N2WXR4H"]},"clientside_validation_jquery":{"validate_all_ajax_forms":2,"force_validate_on_blur":false,"force_html5_validation":false,"messages":{"required":"This field is required.","remote":"Please fix this field.","email":"Please enter a valid email address.","url":"Please enter a valid URL.","date":"Please enter a valid date.","dateISO":"Please enter a valid date (ISO).","number":"Please enter a valid number.","digits":"Please enter only digits.","equalTo":"Please enter the same value again.","maxlength":"Please enter no more than {0} characters.","minlength":"Please enter at least {0} characters.","rangelength":"Please enter a value between {0} and {1} characters long.","range":"Please enter a value between {0} and {1}.","max":"Please enter a value less than or equal to {0}.","min":"Please enter a value greater than or equal to {0}.","step":"Please enter a multiple of {0}."}},"mautic":{"base_url":"https:\/\/go.mecknc.gov\/mtc.js"},"vwo":{"id":949667,"timeout_setting":2000,"testnull":null},"data":{"extlink":{"extTarget":true,"extTargetAppendNewWindowDisplay":true,"extTargetAppendNewWindowLabel":"(opens in a new window)","extTargetNoOverride":false,"extNofollow":false,"extTitleNoOverride":false,"extNoreferrer":true,"extFollowNoOverride":false,"extClass":"ext","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"((.*\\.)+mecknc\\.gov|mecknc\\.gov)|((.*\\.)+dev-mecklenburgacsf\\.acsitefactory\\.com)|((.*\\.)+test-mecklenburgacsf\\.acsitefactory\\.com)|((.*\\.)+mecklenburgacsf\\.acsitefactory\\.com)","extInclude":"","extCssExclude":".meckco-social-media-links-item, .usa-button ","extCssInclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","extHideIcons":false,"mailtoClass":"0","telClass":"","mailtoLabel":"(link sends email)","telLabel":"(link is a phone number)","extUseFontAwesome":true,"extIconPlacement":"append","extPreventOrphan":false,"extFaLinkClasses":"fa-solid fa-arrow-up-right-from-square","extFaMailtoClasses":"fa fa-envelope-o","extAdditionalLinkClasses":"","extAdditionalMailtoClasses":"","extAdditionalTelClasses":"","extFaTelClasses":"fa fa-phone","allowedDomains":["mecknc.gov","www.mecknc.gov","mecknc.widen.net","www.eventbrite.com","mecknc.widencollective.com","mecklenburgcountync-563955.workflowcloud.com","maps.mecklenburgcountync.gov","meck-ent-power-bi-reports-public-web.azurewebsites.net","maps.co.mecklenburg.nc.us","meckgov-performancereport-meckgov.hub.arcgis.com","mecklenburg-county-data-dashboard-meckgov.hub.arcgis.com","*.hub.arcgis.com","property.spatialest.com","bizlink.taxscribe.com","ipp.taxscribe.com"],"extExcludeNoreferrer":""}},"collapsiblock":{"active_pages":false,"slide_speed":200,"cookie_lifetime":null,"switcher_enabled":null,"switcher_class":null},"better_exposed_filters":{"autosubmit_exclude_textfield":true},"ajax":[],"user":{"uid":0,"permissionsHash":"cd875a7ee0cb728a42382e8f1ff6474b7340e9741f50b8555d5b5a0b7e71e5e4"}}</script>
+<script src="/sites/g/files/otddlp466/files/js/js_rKVe6UB5OesBtNJykVASQVD_zxX5zsBFDp5Vnezxi_w.js?scope=header&amp;delta=0&amp;language=en&amp;theme=meck&amp;include=eJyFUItuxCAM-yEKn4QCpIwrkI6k3d3fL6e20u2lSSjEiRVbDiiCw-N9Jcbk51IVsoNNyPMWWhETfqdk7DigmlgLduGS0O9QSwIp1P3tfcPxcHG3R2fPHZpItcLKJVSKi4s00OBdaumLS2NbodoTmkyUK3qB7LKW79jCDe5fh800dV6iO75pJlKvpqEqQVStpN4OGKD3axVhpOnGJ1gwFaHhB_JKncv-vB5Ug-WhvvJB0zigp-d8CpvIdfZV8Q0hXX2J1KcZDsBxaAhTgLhMQvrW68YHhplGc-dvsWLTdG1CgVLZMuz4L0koayR_0hoyQ_65f5ZPmSrMaA"></script>
+<script src="/modules/contrib/google_tag/js/gtag.js?tn8g6s"></script>
+<script src="/modules/contrib/google_tag/js/gtm.js?tn8g6s"></script>
+
+  </head>
+  <body>
+        <a href="#main-content" class="visually-hidden focusable">
+      Skip to main content
+    </a>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N2WXR4H"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+      <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+    
+<div class="layout-container">
+
+    
+
+
+
+    
+
+
+
+
+
+<section class="usa-banner" aria-label="Official government website">
+  <div class="grid-container usa-accordion">
+    <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+        <div class="grid-col-auto">
+          <img class="usa-banner__header-flag" src="/themes/custom/meck/images/mecklenburg-county-shadowed.png" alt="">
+        </div>
+        <div class="grid-col-auto">
+          <p class="usa-banner__header-text">
+                          An official website of Mecklenburg County.
+                      </p>
+        </div>
+        <button class="usa-accordion__button usa-banner__button"
+                aria-expanded="false" aria-controls="gov-banner">
+          <span class="usa-banner__button-text">
+                          Here’s how you know
+                      </span>
+        </button>
+      </div>
+    </header>
+    <div class="usa-banner__content usa-accordion__content" id="gov-banner" hidden>
+      <div class="grid-row grid-gap-lg">
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="/themes/custom/meck/images/uswds/icon-dot-gov.svg" role="img" alt="" aria-hidden="true">
+          <div class="usa-media-block__body">
+            <p>
+              <strong>
+                                  Official County websites use MeckNC.gov
+                              </strong>
+              <br/>
+                            <strong>MeckNC.gov</strong> websites belong to official departments or programs of the Mecklenburg County government.
+                          </p>
+          </div>
+        </div>
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="/themes/custom/meck/images/uswds/icon-https.svg" role="img" alt="" aria-hidden="true">
+          <div class="usa-media-block__body">
+            <p>
+                            <strong>
+                Secure MeckNC.gov websites use HTTPS
+              </strong>
+              <br/>
+              A <strong>lock</strong> (  <span class="icon-lock"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="64" viewBox="0 0 52 64" class="usa-banner__lock-image" role="img" aria-labelledby="banner-lock-title banner-lock-description" focusable="false"><title id="banner-lock-title">Lock</title><desc id="banner-lock-description">A locked padlock</desc><path fill="#000000" fill-rule="evenodd" d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"/></svg></span>
+) or <strong>https://</strong> means you’ve safely connected to a MeckNC.gov website. Share sensitive information only on official, secure websites.
+                          </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<header id="meckco-header" class="usa-header usa-header--basic usa-header--megamenu meckco-header">
+  <div class="grid-container usa-nav-container">
+    <div class="usa-navbar">
+      <button class="usa-menu-btn">
+        
+
+<i
+  class="meckco-fa-icon fa-solid fa-bars fa-2xl meckco-primary-color-purple"
+  aria-hidden="true"
+  ></i>
+      </button>
+      <button class="usa-nav__close">
+        
+
+<i
+  class="meckco-fa-icon fa-solid fa-xmark fa-2xl meckco-primary-color-poppy-red"
+  aria-hidden="true"
+  ></i>
+      </button>
+
+      <div class="usa-logo" id="basic-logo">
+                <div  id="block-logo"><a href="https://www.mecknc.gov/" class="meckco-logo" title="Homepage" aria-label="Mecklenburg County home"><img
+          src="https://www.mecknc.gov/themes/custom/meck/images/mecknc_logo_seal.svg"
+    
+    
+    
+    alt="Mecklenburg county logo"
+
+    
+    
+      /></a></div>
+
+
+
+            </div>
+      <button class="usa-search-btn-mobile">
+        
+
+<i
+  class="meckco-fa-icon fa-regular fa-magnifying-glass meckco-primary-color-poppy-red"
+  aria-hidden="true"
+  ></i>
+      </button>
+    </div>
+    <nav aria-label="Mecklenburg county main navigation" class="usa-nav">
+                <ul class="usa-nav__primary usa-accordion">
+            <li class="usa-nav__primary-item">
+                  <button
+            class="usa-accordion__button usa-nav__link "
+            aria-expanded="false"
+            aria-controls="basic-mega-nav-section-1"
+          >
+            <span>Residents</span>
+          </button>
+        
+                  <div
+            id="basic-mega-nav-section-1"
+            class="usa-nav__submenu usa-megamenu"
+            hidden
+          >
+                          <div class="grid-row grid-gap-lg">
+      <div class="usa-col grid-col-12">
+      <ul class="usa-nav__submenu-list">
+        <li class="usa-nav__submenu-item">
+                      <span class="usa-nav__submenu-item--title">Services for Me</span>
+                                <ul class="usa-nav__submenu-list">
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://health.mecknc.gov/services/office-vital-records" >
+    Birth and Death Certificates  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://deeds.mecknc.gov" >
+    Marriage and Divorce Records  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://www.mecknc.gov/Departments" >
+    Browse by Department Listing  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://hhs.mecknc.gov/" >
+    Health and Human Services  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://parkandrec.mecknc.gov/" >
+    Park and Recreation  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://ada.mecknc.gov/" >
+    Accessibility  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://gis.mecknc.gov/" >
+    GIS &amp; Mapping  </a>
+      
+                                    </li>
+                          </ul>
+                  </li>
+      </ul>
+    </div>
+      <div class="usa-col grid-col-12">
+      <ul class="usa-nav__submenu-list">
+        <li class="usa-nav__submenu-item">
+                      <span class="usa-nav__submenu-item--title">How do I?</span>
+                                <ul class="usa-nav__submenu-list">
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://tax.mecknc.gov/services/pay" >
+    Pay Taxes and Fees  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://mecksheriffweb.mecklenburgcountync.gov/" >
+    View Arrest Records  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://vote.mecknc.gov" >
+    Vote in Mecklenburg County  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://meckcounty.csod.com/ux/ats/careersite/1/home?c=meckcounty" >
+    Work for Mecklenburg County  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://wipeoutwaste.mecknc.gov/" >
+    Recycle in Mecklenburg County  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://www.mecknc.gov/Accessibility-Toolbar" >
+    Use the Accessibility Toolbar  </a>
+      
+                                    </li>
+                          </ul>
+                  </li>
+      </ul>
+    </div>
+        <div class="usa-col grid-col-12">
+              <div class="meckco-header-mega-menu-promo">
+      <div>
+    
+  </div>
+</div>
+          </div>
+  </div>
+                      </div>
+              </li>
+          <li class="usa-nav__primary-item">
+                  <button
+            class="usa-accordion__button usa-nav__link "
+            aria-expanded="false"
+            aria-controls="basic-mega-nav-section-2"
+          >
+            <span>Businesses</span>
+          </button>
+        
+                  <div
+            id="basic-mega-nav-section-2"
+            class="usa-nav__submenu usa-megamenu"
+            hidden
+          >
+                          <div class="grid-row grid-gap-lg">
+      <div class="usa-col grid-col-12">
+      <ul class="usa-nav__submenu-list">
+        <li class="usa-nav__submenu-item">
+                      <span class="usa-nav__submenu-item--title">Services for Businesses</span>
+                                <ul class="usa-nav__submenu-list">
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://tax.mecknc.gov/services/pay" >
+    Business Taxes and Fees  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://luesa.mecknc.gov/" >
+    Construction, Building and Land Development  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://oed.mecknc.gov" >
+    Economic Development  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://health.mecknc.gov/envhealth/food-and-facilities-sanitation" >
+    Food and Facilities Sanitation  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://health.mecknc.gov/envhealth/lodging-child-care-institutions" >
+    Lodging, Childcare and Institutions  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://wipeoutwaste.mecknc.gov" >
+    Waste and Recycling  </a>
+      
+                                    </li>
+                          </ul>
+                  </li>
+      </ul>
+    </div>
+      <div class="usa-col grid-col-12">
+      <ul class="usa-nav__submenu-list">
+        <li class="usa-nav__submenu-item">
+                      <span class="usa-nav__submenu-item--title">Doing Business with the County</span>
+                                <ul class="usa-nav__submenu-list">
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://www.meckprocure.com" >
+    Vendor Enrollment and Opportunities  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://fin.mecknc.gov/procurement" >
+    Vendor Resources and Support  </a>
+      
+                                    </li>
+                          </ul>
+                  </li>
+      </ul>
+    </div>
+        <div class="usa-col grid-col-12">
+              <div class="meckco-header-mega-menu-promo">
+      <div>
+    
+  </div>
+</div>
+          </div>
+  </div>
+                      </div>
+              </li>
+          <li class="usa-nav__primary-item">
+                  <button
+            class="usa-accordion__button usa-nav__link "
+            aria-expanded="false"
+            aria-controls="basic-mega-nav-section-3"
+          >
+            <span>Government</span>
+          </button>
+        
+                  <div
+            id="basic-mega-nav-section-3"
+            class="usa-nav__submenu usa-megamenu"
+            hidden
+          >
+                          <div class="grid-row grid-gap-lg">
+      <div class="usa-col grid-col-12">
+      <ul class="usa-nav__submenu-list">
+        <li class="usa-nav__submenu-item">
+                      <span class="usa-nav__submenu-item--title">County Government</span>
+                                <ul class="usa-nav__submenu-list">
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://www.mecknc.gov/about" >
+    About Mecklenburg County  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://mgr.mecknc.gov" >
+    County Manager&#039;s Office  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://bocc.mecknc.gov" >
+    Board of County Commissioners  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://budget.mecknc.gov" >
+    County Budget  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://www.mecknc.gov/Departments" >
+    County Departments  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://pi.mecknc.gov/community-engagement" >
+    Community Relations  </a>
+      
+                                    </li>
+                          </ul>
+                  </li>
+      </ul>
+    </div>
+      <div class="usa-col grid-col-12">
+      <ul class="usa-nav__submenu-list">
+        <li class="usa-nav__submenu-item">
+                      <span class="usa-nav__submenu-item--title">How do I?</span>
+                                <ul class="usa-nav__submenu-list">
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://fin.mecknc.gov/procurement" >
+    Do Business with the County  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://pi.mecknc.gov/Services/Public-Records-Requests" >
+    Request a Public Record  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://www.mecknc.gov/Need-a-Speaker" >
+    Request a Speaker  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://watch.mecknc.gov" >
+    Watch a BOCC Meeting  </a>
+      
+                                    </li>
+                              <li class="usa-nav__submenu-item">
+                                            
+    <a class="usa-link"
+     href="https://bocc.mecknc.gov/AdvisoryBoards" >
+    Join a County Advisory Board or Committee  </a>
+      
+                                    </li>
+                          </ul>
+                  </li>
+      </ul>
+    </div>
+        <div class="usa-col grid-col-12">
+              <div class="meckco-header-mega-menu-promo">
+      <div>
+    
+  </div>
+</div>
+          </div>
+  </div>
+                      </div>
+              </li>
+          <li class="usa-nav__primary-item">
+                  <a href="https://calendar.mecknc.gov" class="usa-nav__link">
+            <span>Public Notices</span>
+          </a>
+        
+              </li>
+      </ul>
+
+
+
+
+
+      
+              <div id="block-gtranslate">
+  
+    
+      
+<div class="gtranslate_wrapper"></div><script>window.gtranslateSettings = {"switcher_horizontal_position":"left","switcher_vertical_position":"bottom","horizontal_position":"inline","vertical_position":"inline","float_switcher_open_direction":"top","switcher_open_direction":"bottom","default_language":"en","native_language_names":1,"detect_browser_language":0,"add_new_line":1,"select_language_label":"Select Language","flag_size":16,"flag_style":"2d","globe_size":60,"alt_flags":[],"wrapper_selector":".gtranslate_wrapper","url_structure":"none","custom_domains":null,"languages":["en","ar","bg","zh-TW","hr","cs","da","nl","fi","fr","de","el","hi","it","ja","ko","no","pl","pt","ro","ru","es","sv","ca","tl","iw","id","lv","lt","sr","sk","sl","uk","vi","sq","et","hu","th","tr","fa","af","sw","cy","be","is","yi","hy","az","eu","ht","ur","bn","bs","ceb","eo","gu","hmn","km","lo","ne","pa","so","ta","te","yo","zu","my","am","co","haw","ku","xh"],"custom_css":""};</script><script>(function(){var js = document.createElement('script');js.setAttribute('src', 'https://cdn.gtranslate.net/widgets/latest/dropdown.js');js.setAttribute('data-gt-orig-url', '/');js.setAttribute('data-gt-orig-domain', 'strategy.mecknc.gov');document.body.appendChild(js);})();</script>
+  </div>
+<div class="views-exposed-form bef-exposed-form usa-search usa-search--small" data-bef-auto-submit="" data-bef-auto-submit-delay="500" data-bef-auto-submit-minimum-length="3" data-bef-auto-submit-full-form="" role="search" data-drupal-selector="views-exposed-form-search-page-1" id="block-exposedformsearchpage-1">
+  
+    
+      <form action="/search" method="get" id="views-exposed-form-search-page-1" accept-charset="UTF-8">
+  <div class="js-form-item form-item form-type-textfield js-form-type-textfield form-item-keyword js-form-item-keyword">
+      
+        <input placeholder="Search" data-drupal-selector="edit-keyword" data-msg-maxlength="This field has a maximum length of 128." type="text" id="edit-keyword" name="keyword" value="" size="30" maxlength="128" class="form-text" />
+
+        </div>
+<label for="edit-search-api-fulltext" class="visually-hidden">Search</label><div data-drupal-selector="edit-actions" class="form-actions js-form-wrapper form-wrapper" id="edit-actions"><input data-bef-auto-submit-click="" class="usa-button meckco-search-button button js-form-submit form-submit" data-drupal-selector="edit-submit-search" type="submit" id="edit-submit-search" value="Search" />
+</div>
+
+
+</form>
+
+  </div>
+
+
+          </nav>
+  </div>
+</header>
+
+
+    
+
+  <main role="main">
+    <a id="main-content" tabindex="-1"></a>          <div class="layout-content">
+          <div>
+    <div data-drupal-messages-fallback class="hidden"></div>
+<div id="block-mainpagecontent">
+  
+    
+      <article>
+
+  
+    
+
+  
+  <div class="content-attributes">
+          
+<div class="usa-section layout meckco-layout--full-width inner-children
+bg-meckco-none
+meckco-section--spacing-outer-remove
+meckco-section--spacing-inner-remove">
+      <div  class="column-one-region">
+      <div class="grid-container usa-section meckco-layout--column
+
+
+"><div class="grid-row grid-gap"><div class="grid-col inner-children"><section class="hero-with-textbox"><div><div><picture><source
+          srcset="https://mecknc.widen.net/content/ljn76nlxxe/web/mc-img-spe-hdr-tablemeeting.jpg?crop=yes&amp;w=1408&amp;h=500&amp;itok=txwTV6gI 1x"
+          media="all and (min-width: 1024px)"
+          type=""
+        /><source
+          srcset="https://mecknc.widen.net/content/ljn76nlxxe/web/mc-img-spe-hdr-tablemeeting.jpg?crop=yes&amp;w=1024&amp;h=500&amp;itok=4X2_uB0j 1x"
+          media="all and (min-width: 377px)"
+          type=""
+        /><source
+          srcset="https://mecknc.widen.net/content/ljn76nlxxe/web/mc-img-spe-hdr-tablemeeting.jpg?crop=yes&amp;w=376&amp;h=500&amp;itok=I-2cGrDG 1x"
+          media=""
+          type=""
+        /><img
+          src="https://mecknc.widen.net/content/ljn76nlxxe/web/mc-img-spe-hdr-tablemeeting.jpg?crop=yes&w=376&h=500&itok=I-2cGrDG"
+    
+    
+    
+    alt="Photo of people meeting at a table strategizing and planning."
+
+    
+    
+      /></picture></div></div><div class="hero-with-textbox__content bg-meckco-gradient-color-teal"><h1 class="hero-with-textbox__heading meckco-heading-2  "
+  >Office of Strategy &amp; Innovation</h1><div><p>Mecklenburg County’s Office of Strategy &amp; Innovation oversees organizational performance management and directs the Managing for Results framework, which includes the County’s Enterprise and Departmental scorecards.</p></div></div></section></div></div></div>
+    </div>
+  </div>
+
+      <div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-sm
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div  class="column-one-region">
+      <div><p>Mecklenburg County strives every day to provide services to the community in an effective and efficient manner. To understand to what degree it does so, the Office of Strategy &amp; Innovation in the <a href="https://mgr.mecknc.gov/">County Manager’s Office</a> works to provide decision-makers the information they need to fully grasp the impact of County programs and services across community, as well as helps set the strategic direction for the County.&nbsp;</p></div>
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+bg-meckco-color-overlay-gray
+meckco-section--spacing-outer-sm
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div
+        class="inner-children desktop:grid-col-6    ">
+            <div  class="column-one-region">
+      <div><div><div><img
+          src="https://mecknc.widen.net/content/3wv5xyjyzl/web/m4results%20logo.png?v=1b83003d-ab57-4781-895b-498a61d447da"
+    
+    
+    
+    alt="m4results-logo"
+
+    
+    
+          loading="lazy"
+      /></div></div></div>
+    </div>
+        </div>
+      <div
+        class="inner-children desktop:grid-col-6    ">
+            <div  class="column-two-region">
+      <h2 class=" meckco-heading-3  meckco-highlight primary-color-teal "
+  >FY2027 - Fy2030 Balanced Scorecard</h2><div><p>The Balanced Scorecard is a strategic management tool that organizes the County's work into key focus areas to deliver community results and strengthen internal capacity. Within these areas, objectives define the targets, while SMART goals track progress.</p></div><div><style type="text/css">.responsive-video {
+                                                                                                                                                                                                                                                                                              position: relative;
+                                                                                                                                                                                                                                                                                              padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                                                                                                                                                                                                                                                                              height: 0;
+                                                                                                                                                                                                                                                                                              overflow: hidden;
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                            .responsive-video iframe {
+                                                                                                                                                                                                                                                                                              position: absolute;
+                                                                                                                                                                                                                                                                                              top: 0;
+                                                                                                                                                                                                                                                                                              left: 0;
+                                                                                                                                                                                                                                                                                              width: 100%;
+                                                                                                                                                                                                                                                                                              height: 100%;
+                                                                                                                                                                                                                                                                                              border: 0;
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                        </style><div class="image-text--content_button"><a class="usa-button usa-button--secondary" href="https://strategy.mecknc.gov/balanced-scorecard" target="_self">Learn about the Balanced Scorecard</a></div></div>
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-remove
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div >
+      
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-sm
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div  class="column-one-region">
+      <div><hr></div>
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+bg-meckco-color-overlay-gray
+meckco-section--spacing-outer-sm
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div
+        class="inner-children desktop:grid-col-6    ">
+            <div  class="column-one-region">
+      <div><div><div><img
+          src="https://mecknc.widen.net/content/i4oj56rhzq/web/qol%20logo.png?v=1ab82bd4-fe75-4d17-9fed-ea7a042dce53"
+    
+    
+    
+    alt="qol-logo"
+
+    
+    
+          loading="lazy"
+      /></div></div></div>
+    </div>
+        </div>
+      <div
+        class="inner-children desktop:grid-col-6    ">
+            <div  class="column-two-region">
+      <h2 class=" meckco-heading-3  meckco-highlight primary-color-teal "
+  >Quality of Life Collaborative</h2><div><p>The Quality of Life Collaborative (QLC) is a cross-sector partnership dedicated to making Charlotte-Mecklenburg a premier place to live. It fosters vital coordination among the City of Charlotte, Mecklenburg County, Charlotte-Mecklenburg Schools (CMS), and local community partners.</p></div><div><style type="text/css">.responsive-video {
+                                                                                                                                                                                                                                                                                              position: relative;
+                                                                                                                                                                                                                                                                                              padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                                                                                                                                                                                                                                                                                              height: 0;
+                                                                                                                                                                                                                                                                                              overflow: hidden;
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                            .responsive-video iframe {
+                                                                                                                                                                                                                                                                                              position: absolute;
+                                                                                                                                                                                                                                                                                              top: 0;
+                                                                                                                                                                                                                                                                                              left: 0;
+                                                                                                                                                                                                                                                                                              width: 100%;
+                                                                                                                                                                                                                                                                                              height: 100%;
+                                                                                                                                                                                                                                                                                              border: 0;
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                        </style><div class="image-text--content_button"><a class="usa-button usa-button--secondary" href="https://mecknc.widen.net/s/vj6pffwwzk/qlc_update_to_bocc_september_2026" target="new">Download the QLC Presentation (PDF)</a></div></div>
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-remove
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div >
+      
+    </div>
+        </div>
+    </div>
+        </div>
+              
+<div class="usa-section layout meckco-layout--full-width inner-children
+bg-meckco-none
+meckco-section--spacing-outer-md
+meckco-section--spacing-inner-remove">
+    <div class="usa-section grid-container meckco-card-container meckco-layout--column
+    bg-meckco-primary-color-teal
+    bg-meckco-border-radius
+    meckco-section--spacing-outer-md
+    meckco-section--spacing-inner-remove
+  ">
+          <div class="grid-row grid-gap">
+      <div class="desktop:grid-col-12 inner-children">
+        <div
+          class="grid-row meckco-card-container--header meckco-card-container--header-center">
+          <div class="grid-col-12">
+              <div  class="row-one-region">
+    <h3 class=" meckco-heading-3  meckco-highlight none "
+  ></h3><h2 class=" meckco-heading-2  meckco-highlight secondary-color-green meckco-heading-text-align--center"
+  >You may also be interested in...</h2>
+  </div>
+          </div>
+        </div>
+
+                          
+                          
+        <div class="meckco-card-container--body
+          meckco-card-container--body-desktop-display-grid
+          meckco-card-container--body-mobile-display-grid
+          meckco-card__grid-columns-desktop-3 meckco-card__grid-spacing-desktop-11 meckco-card__grid-align-desktop-center
+          meckco-card__grid-columns-mobile-1 meckco-card__grid-spacing-mobile-3 meckco-card__grid-align-mobile-center"
+          >
+            
+  
+  <ul  class="row-two-region grid-row meckco-card-group">
+                              <li  class="meckco-card">
+                  <div class="meckco-card-outer-wrapper--program"><a href="https://bocc.mecknc.gov" target=_self><div class="usa-card__container meckco-program-card__container"><header class="usa-card__header meckco-program-card__header"><h3 class="usa-card__heading   "
+  >BOCC</h3></header><div class="usa-card__media"><div class="usa-card__img"><div><div><div><img
+          src="https://mecknc.widen.net/content/s6kgh5hiiu/web/mc-facility-cmgc-from-plaza3.jpg?crop=yes&amp;w=656&amp;h=368&amp;v=565ba48e-df92-4fec-911f-3ebf3b09ac14&amp;itok=2_xgug6t"
+    
+    
+    
+    alt="mc-facility-cmgc-from-plaza3"
+
+    
+    
+          loading="lazy"
+      /></div></div></div></div></div><div
+        class="usa-card__body meckco-program-card__body meckco-body-text-card-body meckco-highlight primary-color-poppy-red"><div><p>Mecklenburg County's governing body.</p></div></div></div></a></div>
+              </li>
+                              <li  class="meckco-card">
+                  <div class="meckco-card-outer-wrapper--program"><a href="https://mgr.mecknc.gov/leadership/Michael-Bryant" target=_self><div class="usa-card__container meckco-program-card__container"><header class="usa-card__header meckco-program-card__header"><h3 class="usa-card__heading   "
+  >Mike Bryant</h3></header><div class="usa-card__media"><div class="usa-card__img"><div><div><div><img
+          src="https://mecknc.widen.net/content/d5o1wokrvr/web/Bryant-Mike%20Hor.jpg?crop=yes&amp;w=656&amp;h=368&amp;v=db8115f9-25cf-4df2-b140-fce0aa78e4d6&amp;itok=vK-HEQsh"
+    
+    
+    
+    alt="bryant-mike-hor"
+
+    
+    
+          loading="lazy"
+      /></div></div></div></div></div><div
+        class="usa-card__body meckco-program-card__body meckco-body-text-card-body meckco-highlight primary-color-poppy-red"><div><p>County Manager since 2025.&nbsp;</p></div></div></div></a></div>
+              </li>
+                              <li  class="meckco-card">
+                  <div class="meckco-card-outer-wrapper--program"><a href="https://budget.mecknc.gov/" target=_self><div class="usa-card__container meckco-program-card__container"><header class="usa-card__header meckco-program-card__header"><h3 class="usa-card__heading   "
+  >County Budget</h3></header><div class="usa-card__media"><div class="usa-card__img"><div><div><div><img
+          src="https://mecknc.widen.net/content/8vdoaweejr/web/mc-img-omb-hdr-spreadsheet.jpg?crop=yes&amp;w=656&amp;h=368&amp;itok=ZqmubEBU"
+    
+    
+    
+    alt="Photo of person sitting in from of computer screen displaying bar charts."
+
+    
+    
+          loading="lazy"
+      /></div></div></div></div></div><div
+        class="usa-card__body meckco-program-card__body meckco-body-text-card-body meckco-highlight primary-color-poppy-red"><div><p>Works to develop the County's operating budget.</p></div></div></div></a></div>
+              </li>
+      </ul>
+  
+
+                  </div>
+
+        
+        <div class="grid-row meckco-card-container--footer">
+          <div class="grid-col-12">
+              <div >
+    
+  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+            </div>
+</div>
+
+  <div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-remove
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div  class="column-one-region">
+      <div><p>&nbsp;</p><style type="text/css">.meckco-program-card__body {padding:4px;}
+</style></div>
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-remove
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div >
+      
+    </div>
+        </div>
+    </div>
+        </div>
+<div class="grid-container usa-section meckco-layout--column
+
+meckco-section--spacing-outer-remove
+meckco-section--spacing-inner-remove">
+                <div class="grid-row grid-gap">
+      <div class="grid-col inner-children">
+          <div  class="column-one-region">
+      <div><p>&nbsp;</p><style type="text/css">.meckco-program-card__body {padding:4px;}
+</style></div>
+    </div>
+        </div>
+    </div>
+        </div>
+
+  </div>
+
+</article>
+
+  </div>
+
+  </div>
+
+      </div>
+      </main>
+
+  
+
+  
+
+<footer role="contentinfo" class="usa-footer meckco-footer usa-footer--big  bg-meckco-gradient-color-purple-footer">
+        
+<div class="grid-container meckco-footer__return-to-top">
+  <button class="scrollToTopBtn">
+    
+
+<i
+  class="meckco-fa-icon fa-solid fa-angle-up"
+  aria-hidden="true"
+  ></i>
+Back To Top
+  </button>
+</div>
+
+      <div class="usa-footer__primary-section">
+  <div class="grid-container">
+    <div class="grid-row grid-gap">
+      <div class="desktop:grid-col-9">
+                  <nav class="usa-footer__nav" aria-label="Footer navigation">
+  <div class="grid-row mobile-lg:grid-gap-lg">
+                                                                                                                                                                              
+  <div class="grid-col-12 mobile-lg:grid-col-6 desktop:grid-col">
+    <section
+      class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+    >
+      <h2 class="usa-footer__primary-link   "
+  >Website Information</h2>
+              <ul class="usa-list usa-list--unstyled" id="footer-primary-links-1">
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/brand-guidelines"   
+  
+>
+    Brand Guidelines  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/Policies/Privacy-and-Legal-Notices"   
+  
+>
+    Privacy and Legal Notices  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://pi.mecknc.gov/Social-Media"   
+  
+>
+    Social Media Accounts  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/Policies/Web-Accessibility-Statement"   
+  
+>
+    Web Accessibility Statement  </a>
+      
+              </li>
+                  </ul>
+          </section>
+  </div>
+  <div class="grid-col-12 mobile-lg:grid-col-6 desktop:grid-col">
+    <section
+      class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+    >
+      <h2 class="usa-footer__primary-link   "
+  >Getting Started</h2>
+              <ul class="usa-list usa-list--unstyled" id="footer-primary-links-2">
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/Departments"   
+  
+>
+    Department Directory  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://hr.mecknc.gov/"   
+  
+>
+    Employment  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://hhs.mecknc.gov"   
+  
+>
+    HHS Services  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://tax.mecknc.gov/services/pay"   
+  
+>
+    Pay Taxes  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://watch.mecknc.gov"   
+  
+>
+    Watch BOCC Broadcasts  </a>
+      
+              </li>
+                  </ul>
+          </section>
+  </div>
+  <div class="grid-col-12 mobile-lg:grid-col-6 desktop:grid-col">
+    <section
+      class="usa-footer__primary-content usa-footer__primary-content--collapsible"
+    >
+      <h2 class="usa-footer__primary-link   "
+  >Assistance</h2>
+              <ul class="usa-list usa-list--unstyled" id="footer-primary-links-3">
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/Accessibility-Toolbar"   
+  
+>
+    Accessibility Toolbar  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://ada.mecknc.gov/"   
+  
+>
+    Accessibility  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/CharMeck311"   
+  
+>
+    CharMeck 311  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="http://pi.mecknc.gov/Services/Public-Records-Requests"   
+  
+>
+    Public Record Requests  </a>
+      
+              </li>
+                      <li class="usa-footer__secondary-link">
+                    
+    <a class="  usa-link
+  
+  
+  
+  
+  
+  
+"
+     href="https://www.mecknc.gov/Need-a-Speaker"   
+  
+>
+    Request a Speaker  </a>
+      
+              </li>
+                  </ul>
+          </section>
+  </div>
+
+
+
+
+
+                <div class="mobile-lg:grid-col-6 desktop:grid-col meckco-about-us-column">
+                    <div  id="block-officelocation"><section class="usa-footer__primary-content usa-footer__primary-content--collapsible"><h2 class="usa-footer__primary-link">Office Address</h2><div class="meckco-office-location-content"><div class="meckco-office-location-address"><label>Business Office</label><p><a href=https://goo.gl/maps/KEeEbZJoQ1Bhwihf6>Charlotte-Mecklenburg Government Center<br/>
+                      600 E. Fourth St., 11th floor<br/>
+                    Charlotte, NC 28202</a></p><label>Business Hours</label><p>Mon-Fri 8 a.m. - 5 p.m.</p></div><label>Contact Info</label><p><span class="meckco-office-location-email"><svg class="usa-icon  " aria-hidden="true" focusable="false" role="img"><use xlink:href='/themes/custom/meck/images/uswds/sprite.svg#mail_outline'></use></svg><a href="/cdn-cgi/l/email-protection#6b262c392b260e08002528450c041d" aria-label="Email us. Note: this will open your email client."><span class="__cf_email__" data-cfemail="b3fef4e1f3fed6d0d8fdf09dd4dcc5">[email&#160;protected]</span></a></span></p></div></section></div>
+
+                </div>
+  </div>
+</nav>
+              </div>
+      <div class="desktop:grid-col-3">
+                  <div id="block-webform">
+  
+      <h2>Stay connected</h2>
+    
+      <form class="webform-submission-form webform-submission-add-form webform-submission-footer-sign-up-form webform-submission-footer-sign-up-add-form webform-submission-footer-sign-up-node-16-form webform-submission-footer-sign-up-node-16-add-form js-webform-details-toggle webform-details-toggle usa-form" data-drupal-selector="webform-submission-footer-sign-up-node-16-add-form" action="/" method="post" id="webform-submission-footer-sign-up-node-16-add-form" accept-charset="UTF-8">
+  
+  <div id="edit-desc" class="js-webform-type-webform-markup webform-type-webform-markup js-form-item form-item form-type-webform-markup js-form-type-webform-markup form-item-desc js-form-item-desc form-no-label">
+        <span class="usa-footer">Sign-up for email to stay connected to County news.</span>
+        </div>
+<div id="edit-button-html" class="js-webform-type-processed-text webform-type-processed-text js-form-item form-item form-type-processed-text js-form-type-processed-text form-item- js-form-item- form-no-label">
+        <p><a class="usa-button usa-button--secondary" style="text-decoration:none !important;" href="/Subscribe">Sign up</a></p>
+
+        </div>
+<div class="js-webform-type-email webform-type-email js-form-item form-item form-type-email js-form-type-email form-item-email js-form-item-email form-no-label">
+      <label for="edit-email" class="visually-hidden">Your email address</label>
+        <input style="display: none;" data-drupal-selector="edit-email" data-msg-email="Your email address does not contain a valid email." data-msg-maxlength="Your email address field has a maximum length of 254." type="email" id="edit-email" name="email" value="" size="60" maxlength="254" placeholder="Your email address" class="form-email" />
+
+        </div>
+<input autocomplete="off" data-drupal-selector="form-azhzlrfcwmyqu6caeohy0shwp72eg0hnkjzeht4-eqc" type="hidden" name="form_build_id" value="form-AZhzLRfcwMYqU6CaEOHy0sHwp72eG0HNKJzEht4_eqc" />
+<input data-drupal-selector="edit-webform-submission-footer-sign-up-node-16-add-form" type="hidden" name="form_id" value="webform_submission_footer_sign_up_node_16_add_form" />
+
+
+  
+</form>
+
+  </div>
+
+
+              </div>
+    </div>
+  </div>
+</div>
+
+      <div  id="block-socialicon"><ul class="meckco-social-media-links"><li class="meckco-social-media-links-item"><a class="meckco-social-media-links-item-link" href="https://www.facebook.com/MecklenburgCounty" target="_blank"><i
+  class="meckco-fa-icon fa-brands fa-facebook-f fa-lg meckco-circle-icon"
+  aria-hidden="true"
+  title="Facebook"></i></a></li><li class="meckco-social-media-links-item"><a class="meckco-social-media-links-item-link" href="https://www.twitter.com/MeckCounty" target="_blank"><i
+  class="meckco-fa-icon fa-brands fa-x-twitter fa-lg meckco-circle-icon"
+  aria-hidden="true"
+  title="Twitter - X"></i></a></li><li class="meckco-social-media-links-item"><a class="meckco-social-media-links-item-link" href="https://www.youtube.com/user/meckgov" target="_blank"><i
+  class="meckco-fa-icon fa-brands fa-youtube fa-lg meckco-circle-icon"
+  aria-hidden="true"
+  title="YouTube"></i></a></li><li class="meckco-social-media-links-item"><a class="meckco-social-media-links-item-link" href="https://www.linkedin.com/company/mecklenburg-county/" target="_blank"><i
+  class="meckco-fa-icon fa-brands fa-linkedin-in fa-lg meckco-circle-icon"
+  aria-hidden="true"
+  title="LinkedIn"></i></a></li><li class="meckco-social-media-links-item"><a class="meckco-social-media-links-item-link" href="https://www.instagram.com/mecklenburgcounty/" target="_blank"><i
+  class="meckco-fa-icon fa-brands fa-instagram fa-lg meckco-circle-icon"
+  aria-hidden="true"
+  title="Instagram"></i></a></li></ul></div><div class="usa-footer__secondary-links">
+  <div class="grid-row grid-gap">
+      <div class="grid-col-auto">
+      <a href="https://www.mecknc.gov/employee-access">Employee Access</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+    </footer>
+
+</div>
+
+  </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/sites/g/files/otddlp466/files/js/js_bkbixLRREhSW02kw4ldiCcbru2wAQDODsQ0adZi2nTM.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=meck&amp;include=eJyFUItuxCAM-yEKn4QCpIwrkI6k3d3fL6e20u2lSSjEiRVbDiiCw-N9Jcbk51IVsoNNyPMWWhETfqdk7DigmlgLduGS0O9QSwIp1P3tfcPxcHG3R2fPHZpItcLKJVSKi4s00OBdaumLS2NbodoTmkyUK3qB7LKW79jCDe5fh800dV6iO75pJlKvpqEqQVStpN4OGKD3axVhpOnGJ1gwFaHhB_JKncv-vB5Ug-WhvvJB0zigp-d8CpvIdfZV8Q0hXX2J1KcZDsBxaAhTgLhMQvrW68YHhplGc-dvsWLTdG1CgVLZMuz4L0koayR_0hoyQ_65f5ZPmSrMaA"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+<script src="/sites/g/files/otddlp466/files/js/js_k23zFGGvoAwRsnjRjybZnIHjr_gmupV12J72GNWZ7fc.js?scope=footer&amp;delta=2&amp;language=en&amp;theme=meck&amp;include=eJyFUItuxCAM-yEKn4QCpIwrkI6k3d3fL6e20u2lSSjEiRVbDiiCw-N9Jcbk51IVsoNNyPMWWhETfqdk7DigmlgLduGS0O9QSwIp1P3tfcPxcHG3R2fPHZpItcLKJVSKi4s00OBdaumLS2NbodoTmkyUK3qB7LKW79jCDe5fh800dV6iO75pJlKvpqEqQVStpN4OGKD3axVhpOnGJ1gwFaHhB_JKncv-vB5Ug-WhvvJB0zigp-d8CpvIdfZV8Q0hXX2J1KcZDsBxaAhTgLhMQvrW68YHhplGc-dvsWLTdG1CgVLZMuz4L0koayR_0hoyQ_65f5ZPmSrMaA"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="/modules/contrib/collapsiblock/theme/dist/collapsiblock.js?tn8g6s" type="module"></script>
+<script src="/sites/g/files/otddlp466/files/js/js_QYZOHvgilCgNqIAW2jbHd00hedIBS_u8B_JzxudzboU.js?scope=footer&amp;delta=5&amp;language=en&amp;theme=meck&amp;include=eJyFUItuxCAM-yEKn4QCpIwrkI6k3d3fL6e20u2lSSjEiRVbDiiCw-N9Jcbk51IVsoNNyPMWWhETfqdk7DigmlgLduGS0O9QSwIp1P3tfcPxcHG3R2fPHZpItcLKJVSKi4s00OBdaumLS2NbodoTmkyUK3qB7LKW79jCDe5fh800dV6iO75pJlKvpqEqQVStpN4OGKD3axVhpOnGJ1gwFaHhB_JKncv-vB5Ug-WhvvJB0zigp-d8CpvIdfZV8Q0hXX2J1KcZDsBxaAhTgLhMQvrW68YHhplGc-dvsWLTdG1CgVLZMuz4L0koayR_0hoyQ_65f5ZPmSrMaA"></script>
+
+  <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a56e6b3c9d37290c',t:'MTc5NDA3NjMyOA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a56e6b3c9d37290c',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

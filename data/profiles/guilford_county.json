@@ -1,0 +1,76 @@
+{
+  "agency_id": "guilford_county",
+  "category": "county",
+  "name": "Guilford County Government",
+  "short_name": "Guilford County",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides county services for the Greensboro and High Point region.",
+  "eligible_applicant_types": [
+    "County governments",
+    "Special district governments"
+  ],
+  "funder_affinities": [
+    "Department of Health and Human Services",
+    "Department of Housing and Urban Development",
+    "Department of Justice",
+    "Environmental Protection Agency"
+  ],
+  "goals": [
+    {
+      "id": "GUILFORD_COUNTY-G1",
+      "number": 1,
+      "title": "Health and human services",
+      "citation": "Guilford County draft profile, goal 1",
+      "description": "Improve health and family wellbeing.",
+      "objectives": [
+        "Expand behavioral health crisis services"
+      ],
+      "keywords": [
+        "behavioral health",
+        "public health",
+        "child welfare",
+        "crisis"
+      ]
+    },
+    {
+      "id": "GUILFORD_COUNTY-G2",
+      "number": 2,
+      "title": "Housing and lead hazard reduction",
+      "citation": "Guilford County draft profile, goal 2",
+      "description": "Make homes safe and affordable.",
+      "objectives": [
+        "Remove lead hazards from older homes"
+      ],
+      "keywords": [
+        "lead hazard",
+        "healthy homes",
+        "affordable housing"
+      ]
+    },
+    {
+      "id": "GUILFORD_COUNTY-G3",
+      "number": 3,
+      "title": "Emergency services",
+      "citation": "Guilford County draft profile, goal 3",
+      "description": "Strengthen emergency response.",
+      "objectives": [
+        "Upgrade emergency communications"
+      ],
+      "keywords": [
+        "emergency management",
+        "ems",
+        "911",
+        "emergency communications"
+      ]
+    }
+  ],
+  "keywords": [
+    "county",
+    "health",
+    "housing",
+    "emergency"
+  ],
+  "source_url": "https://www.guilfordcountync.gov/guilford-county-livability-plan/open",
+  "plan_title": "Guilford County Advancing Our Livability Strategic Plan (Dec 2025)"
+}

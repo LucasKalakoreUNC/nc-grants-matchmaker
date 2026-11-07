@@ -1,0 +1,94 @@
+{
+  "opportunity_id": "363411",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:41:12",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal application form with authorized organizational representative endorsement.",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "name": "Project Abstract Summary",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Single-spaced concise summary of program purpose, population served, and core healthcare services.",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Comprehensive narrative addressing Needs Assessment, Methodology, Work Plan, and Evaluation Plan.",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "name": "SF-424A and Budget Justification Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Federal line-item budget form and narrative justifying personnel, equipment, travel, and healthcare contracts.",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "name": "Rural Partner Letters of Agreement / MOUs",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Signed partnership agreements with rural health providers, clinics, or community organizations.",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "name": "SAM.gov and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with valid UEI and Grants.gov AOR credentials.",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Estimated Application Response Deadline",
+      "when": "Jan 20, 2027 12:00:00 AM EST",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    }
+  ],
+  "eligibility": {
+    "summary": "Domestic* non-profit private institutions of higher education are eligible to apply. Individuals are not eligible applicants under this NOFO. *&quot;Domestic&quot; means the 50 states, the District of Columbia, the Commonwealth of Puerto Rico, the Northern Mariana Islands, American Samoa, Guam, the U.S. Virgin Islands, the Federated States of Micro In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "No cost sharing or non-federal matching funds are required.",
+    "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Need and Target Population Impact",
+      "weight": "Scored merit criterion",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "criterion": "Response and Implementation Methodology",
+      "weight": "Scored merit criterion",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "criterion": "Evaluative Measures and Program Sustainability",
+      "weight": "Scored merit criterion",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    },
+    {
+      "criterion": "Organizational Capability and Budget Justification",
+      "weight": "Scored merit criterion",
+      "source": "Grants.gov Forecast Notice (HRSA-27-036)"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "important_notes": [
+    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
+    "Application submission is administered via Grants.gov or the designated federal portal for opportunity HRSA-27-036.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ]
+}

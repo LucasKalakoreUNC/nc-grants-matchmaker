@@ -1,0 +1,279 @@
+{
+  "timestamp": "20261107_113915",
+  "run_date": "2026-11-06",
+  "status": "Succeeded",
+  "counts": {
+    "raw_pulled": 485,
+    "normalized_unique": 485,
+    "queries_pulled": 1,
+    "queries_skipped_cached": 33,
+    "records_new": 0,
+    "records_changed": 0,
+    "agencies_scored": 29,
+    "breakdown": {
+      "biz_agriculture": {
+        "name": "NC farms and agribusiness",
+        "category": "business",
+        "total": 485,
+        "high": 28,
+        "medium": 103,
+        "top_match": "Forecast to Publish a Notice of Funding Opportunity Announcement for Addressing Determinants of Health Disparities Among Rural Populations (R01 - Clinical Trial Optional)",
+        "top_score": 89.5
+      },
+      "biz_manufacturing": {
+        "name": "NC small manufacturers",
+        "category": "business",
+        "total": 485,
+        "high": 39,
+        "medium": 122,
+        "top_match": "NSF Small Business Innovation Research / Small Business Technology Transfer Phase I, Phase II, Fast-Track Programs: A Pilot Emphasis on Scientific Instrumentation",
+        "top_score": 91.2
+      },
+      "biz_tech_startups": {
+        "name": "NC tech startups",
+        "category": "business",
+        "total": 485,
+        "high": 64,
+        "medium": 137,
+        "top_match": "NSF Small Business Innovation Research / Small Business Technology Transfer Phase I, Phase II, Fast-Track Programs: A Pilot Emphasis on Scientific Instrumentation",
+        "top_score": 97.8
+      },
+      "buncombe_county": {
+        "name": "Buncombe & WNC Counties",
+        "category": "county",
+        "total": 485,
+        "high": 22,
+        "medium": 96,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 91.2
+      },
+      "city_asheville": {
+        "name": "City of Asheville",
+        "category": "municipal",
+        "total": 485,
+        "high": 16,
+        "medium": 76,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 88.4
+      },
+      "city_charlotte": {
+        "name": "City of Charlotte",
+        "category": "municipal",
+        "total": 485,
+        "high": 9,
+        "medium": 68,
+        "top_match": "SEEDING CRITICAL ADVANCES FOR LEADING ENERGY TECHNOLOGIES WITH UNTAPPED POTENTIAL (SCALEUP) READY",
+        "top_score": 88.7
+      },
+      "city_durham": {
+        "name": "City of Durham",
+        "category": "municipal",
+        "total": 485,
+        "high": 19,
+        "medium": 77,
+        "top_match": "Rapid Response Team (RRT) Cooperative Agreement",
+        "top_score": 84.9
+      },
+      "city_greensboro": {
+        "name": "City of Greensboro",
+        "category": "municipal",
+        "total": 485,
+        "high": 10,
+        "medium": 80,
+        "top_match": "Growing Research Access for Nationally Transformative Economic Development (GRANTED)",
+        "top_score": 85.7
+      },
+      "city_raleigh": {
+        "name": "City of Raleigh",
+        "category": "municipal",
+        "total": 485,
+        "high": 9,
+        "medium": 54,
+        "top_match": "Engineering (ENG): Chemical, Bioengineering, Energy, and Transport Systems (CBET)",
+        "top_score": 85.8
+      },
+      "commerce": {
+        "name": "NC Commerce",
+        "category": "state",
+        "total": 485,
+        "high": 54,
+        "medium": 144,
+        "top_match": "Grid Supply Chain Alternatives to Lead Energy Dominance (SCALED)",
+        "top_score": 89.9
+      },
+      "deq": {
+        "name": "NC DEQ",
+        "category": "state",
+        "total": 485,
+        "high": 50,
+        "medium": 180,
+        "top_match": "Notice of Intent to Publish a Funding Opportunity Announcement for NIEHS Worker Training Program\u2019s Hazardous Materials Worker Health and Safety Training (U45 \u2013 Clinical Trials Not Allowed)",
+        "top_score": 89.5
+      },
+      "dhhs": {
+        "name": "NCDHHS",
+        "category": "state",
+        "total": 485,
+        "high": 142,
+        "medium": 136,
+        "top_match": "Rapid Response Team (RRT) Cooperative Agreement",
+        "top_score": 93.5
+      },
+      "dncr": {
+        "name": "NC DNCR",
+        "category": "state",
+        "total": 485,
+        "high": 7,
+        "medium": 31,
+        "top_match": "Outdoor Recreation Legacy Partnership Program (ORLP) Recurring Notice 5 Year",
+        "top_score": 92.7
+      },
+      "dot": {
+        "name": "NCDOT",
+        "category": "state",
+        "total": 485,
+        "high": 10,
+        "medium": 74,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 88.4
+      },
+      "dpi": {
+        "name": "NC DPI",
+        "category": "state",
+        "total": 485,
+        "high": 49,
+        "medium": 142,
+        "top_match": "Improving Undergraduate STEM Education: Directorate for STEM Education (IUSE: EDU)",
+        "top_score": 93.5
+      },
+      "dps": {
+        "name": "NC DPS",
+        "category": "state",
+        "total": 485,
+        "high": 22,
+        "medium": 134,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 92.4
+      },
+      "durham_county": {
+        "name": "Durham County",
+        "category": "county",
+        "total": 485,
+        "high": 50,
+        "medium": 118,
+        "top_match": "Occupational Safety and Health Education and Research Centers (T42)",
+        "top_score": 86.5
+      },
+      "ecu": {
+        "name": "ECU",
+        "category": "education",
+        "total": 485,
+        "high": 175,
+        "medium": 110,
+        "top_match": "Notice of Intent to Publish a Funding Opportunity Announcement for NIEHS Worker Training Program\u2019s Hazardous Materials Worker Health and Safety Training (U45 \u2013 Clinical Trials Not Allowed)",
+        "top_score": 93.5
+      },
+      "guilford_county": {
+        "name": "Guilford County",
+        "category": "county",
+        "total": 485,
+        "high": 73,
+        "medium": 102,
+        "top_match": "Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge",
+        "top_score": 88.3
+      },
+      "mecklenburg_county": {
+        "name": "Mecklenburg County",
+        "category": "county",
+        "total": 485,
+        "high": 56,
+        "medium": 107,
+        "top_match": "Autism Centers of Excellence R01",
+        "top_score": 88.5
+      },
+      "nc_dit": {
+        "name": "NC DIT",
+        "category": "state",
+        "total": 485,
+        "high": 10,
+        "medium": 80,
+        "top_match": "Digital Health Technology and Reciprocal Innovation to Improve Clinical and Public Health Outcomes",
+        "top_score": 84.2
+      },
+      "nc_smallbiz": {
+        "name": "NC Small Business & SBTDC",
+        "category": "business",
+        "total": 485,
+        "high": 43,
+        "medium": 94,
+        "top_match": "NSF Small Business Innovation Research / Small Business Technology Transfer Phase I, Phase II, Fast-Track Programs: A Pilot Emphasis on Scientific Instrumentation",
+        "top_score": 97.8
+      },
+      "ncat": {
+        "name": "NC A&T",
+        "category": "education",
+        "total": 485,
+        "high": 86,
+        "medium": 140,
+        "top_match": "Engineering (ENG): Chemical, Bioengineering, Energy, and Transport Systems (CBET)",
+        "top_score": 95.4
+      },
+      "nccc_system": {
+        "name": "NC Community Colleges",
+        "category": "education",
+        "total": 485,
+        "high": 34,
+        "medium": 91,
+        "top_match": "U.S. National Science Foundation State and Regional Artificial Intelligence Infrastructure Hubs:",
+        "top_score": 88.6
+      },
+      "ncda": {
+        "name": "NCDA&CS",
+        "category": "state",
+        "total": 485,
+        "high": 19,
+        "medium": 80,
+        "top_match": "NIOSH Centers for Agriculture, Forestry, and Fishing Safety and Health (U54)",
+        "top_score": 88.0
+      },
+      "ncsu": {
+        "name": "NC State",
+        "category": "education",
+        "total": 485,
+        "high": 69,
+        "medium": 179,
+        "top_match": "Engineering (ENG): Chemical, Bioengineering, Energy, and Transport Systems (CBET)",
+        "top_score": 100.0
+      },
+      "robeson_county": {
+        "name": "Robeson County",
+        "category": "county",
+        "total": 485,
+        "high": 55,
+        "medium": 109,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 91.2
+      },
+      "unc_system": {
+        "name": "UNC & NC Higher Ed",
+        "category": "education",
+        "total": 485,
+        "high": 229,
+        "medium": 111,
+        "top_match": "Engineering (ENG): Chemical, Bioengineering, Energy, and Transport Systems (CBET)",
+        "top_score": 100.0
+      },
+      "wake_county": {
+        "name": "Wake County",
+        "category": "county",
+        "total": 485,
+        "high": 119,
+        "medium": 158,
+        "top_match": "Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge",
+        "top_score": 95.1
+      }
+    }
+  },
+  "duration_seconds": 115.13,
+  "errors": []
+}

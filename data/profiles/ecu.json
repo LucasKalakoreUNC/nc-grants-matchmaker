@@ -1,0 +1,74 @@
+{
+  "agency_id": "ecu",
+  "category": "education",
+  "name": "East Carolina University",
+  "short_name": "ECU",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "A public university in eastern North Carolina focused on health sciences, education and rural prosperity.",
+  "eligible_applicant_types": [
+    "Public and State controlled institutions of higher education"
+  ],
+  "funder_affinities": [
+    "National Institutes of Health",
+    "Health Resources and Services Administration",
+    "Department of Education"
+  ],
+  "goals": [
+    {
+      "id": "ECU-G1",
+      "number": 1,
+      "title": "Rural health and medical education",
+      "citation": "ECU draft profile, goal 1",
+      "description": "Train health professionals for rural NC.",
+      "objectives": [
+        "Expand rural residency and nursing programs"
+      ],
+      "keywords": [
+        "rural health",
+        "medical education",
+        "nursing",
+        "health workforce"
+      ]
+    },
+    {
+      "id": "ECU-G2",
+      "number": 2,
+      "title": "Health research",
+      "citation": "ECU draft profile, goal 2",
+      "description": "Grow biomedical research.",
+      "objectives": [
+        "Expand clinical research"
+      ],
+      "keywords": [
+        "biomedical research",
+        "clinical research",
+        "public health"
+      ]
+    },
+    {
+      "id": "ECU-G3",
+      "number": 3,
+      "title": "Teacher preparation",
+      "citation": "ECU draft profile, goal 3",
+      "description": "Prepare teachers for rural schools.",
+      "objectives": [
+        "Expand rural teacher pipeline"
+      ],
+      "keywords": [
+        "teacher preparation",
+        "teacher education",
+        "rural schools"
+      ]
+    }
+  ],
+  "keywords": [
+    "university",
+    "health",
+    "rural",
+    "nursing",
+    "education"
+  ],
+  "source_url": "https://strategicplan.ecu.edu/",
+  "plan_title": "East Carolina University Strategic Plan 2023-2028"
+}

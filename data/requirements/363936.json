@@ -1,0 +1,81 @@
+{
+  "opportunity_id": "363936",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:21",
+  "required_documents": [
+    {
+      "name": "SF-424 (R&R) Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard research cover form with applicant organizational details, cage code, and UEI.",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section IV"
+    },
+    {
+      "name": "Technical Proposal & Statement of Work (SOW)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Detailed technical narrative outlining scientific approach, military relevance, project milestones, and clear Statement of Work.",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section IV"
+    },
+    {
+      "name": "Cost Proposal & Budget Narrative",
+      "category": "Budget",
+      "required": true,
+      "details": "Complete itemized cost breakdown including direct labor rates, equipment, materials, subcontracts, and negotiated indirect cost rate agreement.",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section IV"
+    },
+    {
+      "name": "Senior Personnel Biosketches and Current/Pending Support",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for principal investigators and key contributors, along with complete federal funding disclosures.",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section IV"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with active UEI and submission via Grants.gov.",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section IV"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application Due Date",
+      "when": "2027-01-22",
+      "source": "EPA-OAR-OTAQ-26-01.pdf"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "EPA-OAR-OTAQ-26-01.pdf p. 2"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Cost sharing requirements not explicitly mandated in notice.",
+    "source": "EPA-OAR-OTAQ-26-01.pdf p. 2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Scientific and Technical Merit",
+      "weight": "Primary criterion",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section V"
+    },
+    {
+      "criterion": "Relevance to Department of Defense and National Security Mission",
+      "weight": "Important criterion",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section V"
+    },
+    {
+      "criterion": "Qualifications of Principal Investigator and Research Team",
+      "weight": "Significant criterion",
+      "source": "EPA-OAR-OTAQ-26-01.pdf Section V"
+    }
+  ],
+  "submission_limits": "Only one application per institution is permitted; internal institutional screening required.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: 2027-01-22.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "agency_id": "city_greensboro",
+  "category": "municipal",
+  "name": "City of Greensboro",
+  "short_name": "City of Greensboro",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides city services for Greensboro, including economic development, housing and transportation.",
+  "eligible_applicant_types": [
+    "City or township governments",
+    "Special district governments",
+    "Public housing authorities/Indian housing authorities"
+  ],
+  "funder_affinities": [
+    "Department of Transportation",
+    "Department of Housing and Urban Development",
+    "Economic Development Administration"
+  ],
+  "goals": [
+    {
+      "id": "CITY_GREENSBORO-G1",
+      "number": 1,
+      "title": "Economic development and jobs",
+      "citation": "City of Greensboro draft profile, goal 1",
+      "description": "Attract employers and grow jobs.",
+      "objectives": [
+        "Prepare industrial sites",
+        "Support workforce training"
+      ],
+      "keywords": [
+        "economic development",
+        "workforce",
+        "site readiness",
+        "manufacturing"
+      ]
+    },
+    {
+      "id": "CITY_GREENSBORO-G2",
+      "number": 2,
+      "title": "Neighborhood housing",
+      "citation": "City of Greensboro draft profile, goal 2",
+      "description": "Improve housing quality.",
+      "objectives": [
+        "Repair aging homes",
+        "Remove lead hazards"
+      ],
+      "keywords": [
+        "housing",
+        "lead hazard",
+        "home repair",
+        "cdbg"
+      ]
+    },
+    {
+      "id": "CITY_GREENSBORO-G3",
+      "number": 3,
+      "title": "Transportation",
+      "citation": "City of Greensboro draft profile, goal 3",
+      "description": "Improve roads and transit.",
+      "objectives": [
+        "Improve transit service"
+      ],
+      "keywords": [
+        "transit",
+        "safe streets",
+        "transportation"
+      ]
+    }
+  ],
+  "keywords": [
+    "city",
+    "municipal",
+    "economic development",
+    "housing",
+    "transit"
+  ]
+}

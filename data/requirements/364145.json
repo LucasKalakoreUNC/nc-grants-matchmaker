@@ -1,0 +1,88 @@
+{
+  "opportunity_id": "364145",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:34:25",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Official application cover sheet signed by authorized organizational representative.",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section IV"
+    },
+    {
+      "name": "Project Narrative / Technical Proposal",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Technical proposal addressing project background, work scope, technical methodology, milestones, and deliverables.",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section IV"
+    },
+    {
+      "name": "Budget Justification and Line-Item Spreadsheet",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed breakdown of proposed federal and non-federal cost share expenditures across personnel, equipment, supplies, and subcontracts.",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section IV"
+    },
+    {
+      "name": "Summary for Public Release / Project Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One-page self-contained summary suitable for public release containing no confidential or proprietary information.",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section IV"
+    },
+    {
+      "name": "Resumes of Key Personnel & Current/Pending Support",
+      "category": "Attachments",
+      "required": true,
+      "details": "Curriculum vitae or resumes of project director and key team members, along with federal current and pending support disclosures.",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section IV"
+    },
+    {
+      "name": "SAM.gov UEI and Portal Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with UEI and authorized access to DOE submission portal (e.g. NEUP or EERE Exchange).",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section IV"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Application / Submission Deadline",
+      "when": "Application Due Date: 11:59 p.m. Eastern on Tuesday, January 26, 2027",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx p. 4"
+    }
+  ],
+  "eligibility": {
+    "summary": "Eligible entities include higher education institutions, nonprofits, for-profit entities, or state/local government bodies as specified in the notice.",
+    "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx p. 4"
+  },
+  "cost_share": {
+    "required": "not stated",
+    "details": "Cost sharing requirements not explicitly mandated in notice.",
+    "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx p. 5"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Scientific and Technical Merit",
+      "weight": "Primary scored criterion",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section V"
+    },
+    {
+      "criterion": "Technical Approach and Work Plan Feasibility",
+      "weight": "Primary scored criterion",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section V"
+    },
+    {
+      "criterion": "Team Qualifications and Resource Capabilities",
+      "weight": "Scored criterion",
+      "source": "FS-1500-34 Grant Equipment Justification and Certification Statement.docx Section V"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically and programmatically distinct.",
+  "important_notes": [
+    "Applications must be submitted electronically through the designated portal prior to the deadline: 2027-01-26.",
+    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
+    "Ensure all project narrative and attachment page limits are strictly respected to avoid administrative rejection without review."
+  ]
+}
