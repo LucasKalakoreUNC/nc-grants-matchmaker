@@ -281,7 +281,7 @@ const STRONG = 70, GOOD = 55;
 const awardCell = i => i.award_ceiling ? money(i.award_ceiling)
   : i.award_estimate ? `About ${money(i.award_estimate)}<span class="sub">each (estimated)</span>`
   : i.estimated_total_funding ? `${money(i.estimated_total_funding)}<span class="sub">total for all awards</span>`
-  : 'Not listed';
+  : i.typical_award ? 'No maximum listed' : 'Not listed';
 // Typical recent award under the same federal program, to compare with the ceiling
 const typicalLine = (i, long) => {
   const t = i.typical_award; if (!t) return '';

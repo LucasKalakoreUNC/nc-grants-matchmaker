@@ -1,0 +1,7 @@
+.git
+.venv
+__pycache__
+data/notices/
+data/plans/*.pdf
+data/matchmaker.db-wal
+data/matchmaker.db-shm

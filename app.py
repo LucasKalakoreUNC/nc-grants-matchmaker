@@ -1121,7 +1121,30 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
         self.send_error(404, "Not Found")
 
+def start_refresh_timer():
+    """If REFRESH_HOURS is set, run the pipeline in the background on that interval.
+
+    Lets one container both serve the site and keep the database fresh, so the
+    SQLite file never has to be shared between containers."""
+    hours = float(os.environ.get("REFRESH_HOURS", "0") or 0)
+    if hours <= 0:
+        return
+    import threading, time
+
+    def loop():
+        while True:
+            time.sleep(hours * 3600)
+            try:
+                pipeline.run_pipeline()
+            except Exception as e:
+                print(f"[WARN] Scheduled refresh failed: {e}")
+
+    threading.Thread(target=loop, daemon=True).start()
+    print(f"Automatic refresh every {hours:g} hours")
+
+
 def run_server():
+    start_refresh_timer()
     try:
         print(f"Requirement files loaded: {notices.load_requirements_dir(notices.connect())}")
     except Exception as e:

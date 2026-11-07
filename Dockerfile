@@ -12,7 +12,16 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Copy application files and pre-seeded data contracts
+# curl: fallback for USAspending when Python's certificate bundle rejects it
+RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+
+# pypdf (+ cryptography for encrypted PDFs) reads funding notices;
+# anthropic is only used by `notices.py extract`
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application files and data (the local database is rebuilt from public
+# sources if it is missing; see .dockerignore for what is left out)
 COPY pipeline.py app.py db.py notices.py /app/
 COPY data/ /app/data/
 COPY public/ /app/public/
