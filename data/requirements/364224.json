@@ -1,56 +1,31 @@
 {
   "opportunity_id": "364224",
   "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:10",
+  "read_at": "2026-11-07T15:11:15",
   "required_documents": [
     {
-      "name": "SF-424 Application for Federal Assistance",
+      "name": "Grants.gov and JustGrants Application",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
+      "details": "Official solicitation application submitted via Grants.gov and the JustGrants portal.",
+      "source": "o-bja-2026-172810",
+      "verified": true
     },
     {
-      "name": "Project Narrative / Scope of Work",
+      "name": "Solicitation Narrative and Justification",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
-    },
-    {
-      "name": "SF-424A Budget Information and Budget Narrative",
-      "category": "Budget",
-      "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
-    },
-    {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
-      "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
-    },
-    {
-      "name": "Letters of Support and Collaboration",
-      "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
-    },
-    {
-      "name": "SAM.gov UEI and Grants.gov Registration",
-      "category": "Registrations",
-      "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
+      "details": "Detailed response to solicitation objectives addressing program scope and evaluation.",
+      "source": "o-bja-2026-172810",
+      "verified": true
     }
   ],
   "deadlines": [
     {
       "what": "Application Due Date",
       "when": "2026-12-15",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
+      "source": "Grants.gov Synopsis (O-BJA-2026-172810)",
+      "verified": false
     }
   ],
   "eligibility": {
@@ -66,23 +41,29 @@
     {
       "criterion": "Technical Merit and Program Alignment",
       "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
+      "source": "Grants.gov Synopsis (O-BJA-2026-172810)",
+      "verified": false
     },
     {
       "criterion": "Work Plan Feasibility and Milestone Schedule",
       "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
+      "source": "Grants.gov Synopsis (O-BJA-2026-172810)",
+      "verified": false
     },
     {
       "criterion": "Budget Reasonableness and Cost Effectiveness",
       "weight": "Evaluated criterion",
-      "source": "Grants.gov Synopsis (O-BJA-2026-172810)"
+      "source": "Grants.gov Synopsis (O-BJA-2026-172810)",
+      "verified": false
     }
   ],
+  "funded_activities": [],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity O-BJA-2026-172810.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
-  ]
+  ],
+  "verified_count": 2,
+  "item_count": 2
 }

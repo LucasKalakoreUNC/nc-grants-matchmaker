@@ -18,7 +18,7 @@ from datetime import datetime
 import db
 
 # "Today" for deadline math. Defaults to the real date; set PIPELINE_DATE=YYYY-MM-DD to replay a past run.
-CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or datetime.now().strftime("%Y-%m-%d")
+CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or db.nc_today().isoformat()
 CURRENT_DATE = datetime.strptime(CURRENT_DATE_STR, "%Y-%m-%d")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -927,6 +927,9 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
 
 def run_pipeline():
     """Main pipeline execution for MODE=job or interactive sync."""
+    global CURRENT_DATE_STR, CURRENT_DATE
+    CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or db.nc_today().isoformat()
+    CURRENT_DATE = datetime.strptime(CURRENT_DATE_STR, "%Y-%m-%d")
     start_time = time.time()
     today_str = CURRENT_DATE_STR
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")

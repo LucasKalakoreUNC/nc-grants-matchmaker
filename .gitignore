@@ -57,3 +57,4 @@ data/plans/*.pdf
 .capture/
 .playwright-cli/
 output/playwright/
+data/subscribers.json

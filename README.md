@@ -10,12 +10,19 @@ Built for the UNC Solveathon Final Challenge.
 ## What staff see
 
 - **Opportunities**: grants ranked for their organization, with the award
-  size, the typical past award, estimated staff hours, and deadline.
+  size, the typical past award, estimated staff hours, and deadline. Only open
+  or upcoming applications appear, with every match strength included and
+  the highest scores first. Totals follow the selected type or organization.
 - **Grant page**: why it fits (quoting the grant and the matched strategic-plan
   goal), what the application requires (read from the funding notice, with
   page numbers), key dates, who can apply, past North Carolina recipients, and
   links to every source.
 - **Decisions**: Pursue, Watch or Pass, with notes, shared across the office.
+- **Weekly briefing**: pursued applications, due dates and new matches for
+  the selected organization. Staff can preview or copy the briefing. Email
+  delivery requires a configured mail service and an authenticated admin
+  request (`X-Admin-Token`). Saving an address does not start automatic
+  weekly delivery. Subscriber addresses are visible only to admins.
 - **How this works**: plain-language guide to the ranking and the data.
 
 ## Run it locally
@@ -29,6 +36,12 @@ python3 app.py                    # http://localhost:8000
 
 `pipeline.py` only downloads what is new or changed, so later runs take
 seconds to a few minutes. Set `FORCE_REFRESH=1` to re-pull every search.
+
+Run the regression checks with `.venv/bin/python -m unittest discover -s tests -v`.
+GitHub runs these checks on pull requests and before Azure deployment.
+Closed and expired grant records and their caches are removed at startup,
+on the next database connection each day, and during refresh. Staff decisions
+remain stored separately.
 
 ## Where the data comes from
 
@@ -45,8 +58,9 @@ seconds to a few minutes. Set `FORCE_REFRESH=1` to re-pull every search.
 | Organization goals | Agency strategic plans posted by NC OSBM (`data/plans/`) | When plans are updated |
 | Application requirements per grant | Read from the funding notice (`data/requirements/`) | When a notice is read |
 
-Everything is public. The database (`data/matchmaker.db`, SQLite) is not
-committed because it is large; it is rebuilt from these sources.
+Grant sources and strategic plans are public. The database
+(`data/matchmaker.db`, SQLite) also stores staff decisions and email
+preferences, so it is not committed. Grant records are rebuilt from these sources.
 
 ## How grants are ranked
 
