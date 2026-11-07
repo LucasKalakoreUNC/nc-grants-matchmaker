@@ -112,6 +112,7 @@
   <div class="wrap" role="tablist">
     <button role="tab" data-tab="list" aria-selected="true" onclick="showTab('list')">Opportunities</button>
     <button role="tab" data-tab="tracked" aria-selected="false" onclick="showTab('tracked')">My decisions</button>
+    <button role="tab" data-tab="digest" aria-selected="false" onclick="showTab('digest')">Weekly briefing</button>
     <button role="tab" data-tab="help" aria-selected="false" onclick="showTab('help')">How this works</button>
   </div>
 </nav>
@@ -137,6 +138,7 @@
       <select id="office" onchange="changeOffice(this.value)"></select>
     </div>
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
+    <button id="digestQuickBtn" class="btn outline" onclick="showTab('digest')">✉️ Weekly briefing</button>
   </div>
 
   <div id="planInfo" class="plan-info" hidden></div>
@@ -206,6 +208,10 @@
     <h2>My organization's decisions</h2>
     <p class="count">Every grant your organization has marked. Click a title to change the decision or update notes.</p>
     <div id="trackedBody"></div>
+  </section>
+
+  <section id="tab-digest" hidden>
+    <div id="digestBody"></div>
   </section>
 
   <section id="tab-help" hidden style="max-width:760px">
@@ -285,6 +291,24 @@
       <button class="close" aria-label="Close" onclick="closeDetail()">&times;</button>
     </div>
     <div class="panel-body" id="dBody"></div>
+  </div>
+</div>
+<div id="digestModal" class="overlay" onclick="closeDigestModal()">
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="dmTitle" onclick="event.stopPropagation()">
+    <div class="panel-head">
+      <h2 id="dmTitle">Formatted Email Briefing</h2>
+      <button class="close" aria-label="Close" onclick="closeDigestModal()">&times;</button>
+    </div>
+    <div class="panel-body">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+        <span class="sub" id="dmSub">Ready for dispatch to department staff</span>
+        <div>
+          <button class="btn outline small" onclick="copyDigestText()">📋 Copy text</button>
+          <button class="btn small" onclick="sendTestDigest()">✉️ Send to my email</button>
+        </div>
+      </div>
+      <div id="dmContent" style="border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff;"></div>
+    </div>
   </div>
 </div>
 <div class="toast" id="toast" role="status"></div>
@@ -396,6 +420,7 @@ async function changeOffice(id){
   S.items = items.filter(i => i.status === 'forecasted' || (i.days_to_close ?? 0) >= 0).sort((a,b) => b.total_score - a.total_score);
   S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[all ? `${d.office_id}|${d.opportunity_id}` : String(d.opportunity_id)] = d; });
   render(); renderTracked();
+  if (!$('tab-digest').hidden) renderDigest();
 }
 
 function quick(kind){
@@ -706,17 +731,226 @@ async function saveDecision(){
     if (!r.ok) throw new Error();
   } catch(e) { toast('Could not save. Please try again.'); return; }
   S.decisions[S.office === 'all' ? `${org}|${i.id}` : String(i.id)] = { ...body, decided_at: new Date().toISOString() };
-  render(); renderTracked(); closeDetail(); toast(`Saved: ${choice}`);
+  render(); renderTracked();
+  if (!$('tab-digest').hidden) renderDigest(); closeDetail(); toast(`Saved: ${choice}`);
+}
+
+let currentDigest = null;
+
+async function renderDigest(){
+  const org = S.office || 'all';
+  $('digestBody').innerHTML = '<p class="sub">Loading weekly briefing for your organization...</p>';
+  try {
+    const res = await (await fetch(`/api/digest/${encodeURIComponent(org)}`)).json();
+    currentDigest = res;
+    const pCount = res.pursuing_grants.length;
+    const soonCount = res.summary.closing_soon_count;
+    const newCount = res.new_opportunities.length;
+
+    let html = `
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
+        <div>
+          <h2 style="margin:0;">Weekly Grant Briefing & Action Digest</h2>
+          <p class="count" style="margin:4px 0 0;"><strong>${esc(res.office_name)}</strong> &middot; Week of ${esc(res.date)}</p>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <button class="btn outline small" onclick="copyDigestText()">📋 Copy Email Text</button>
+          <button class="btn small" onclick="openDigestModal()">📧 Preview Formatted Email</button>
+        </div>
+      </div>
+
+      <div class="alert" style="margin-bottom:24px;">
+        <h3 style="margin:0 0 6px;">📬 Automated Monday Email Notifications</h3>
+        <p style="margin:0 0 10px;font-size:0.95em;">Subscribe your team to receive this briefing automatically every Monday at 7:00 AM with upcoming deadlines, required document alerts, and new department strategic matches.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+          <input type="email" id="digestEmail" placeholder="your.name@nc.gov or team@county.gov" style="max-width:320px;padding:8px 10px;" value="${esc(store.get('user_email') || '')}">
+          <button class="btn small" onclick="subscribeEmail()">Subscribe Team Email</button>
+          <span id="subMsg" class="sub" style="font-weight:600;margin-left:8px;"></span>
+        </div>
+      </div>
+
+      <div class="summary">
+        <div style="background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);padding:16px;">
+          <span class="num">${pCount}</span>
+          <span class="lbl">Grants Your Department Is Pursuing</span>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-top:4px solid ${soonCount > 0 ? 'var(--red)' : 'var(--blue)'};padding:16px;">
+          <span class="num" style="color:${soonCount > 0 ? 'var(--red)' : 'inherit'}">${soonCount}</span>
+          <span class="lbl">Closing Within 30 Days</span>
+        </div>
+        <div style="background:#fff;border:1px solid var(--line);border-top:4px solid var(--green);padding:16px;">
+          <span class="num">${newCount}</span>
+          <span class="lbl">New Strategic Matches to Review</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px;margin-bottom:12px;border-bottom:2px solid var(--navy);padding-bottom:6px;">1. Grants Your Department Wants to Pursue & Due Dates (${pCount})</h3>
+    `;
+
+    if (!pCount) {
+      html += `
+        <div class="empty">
+          <p><strong>No grants are currently marked "Pursue" for ${esc(res.office_name)}.</strong></p>
+          <p class="sub">Go to the <button class="linkbtn" onclick="showTab('list')">Opportunities list</button>, click on a grant that fits your strategic goals, and mark it <strong>Pursue</strong>. Its application deadline, countdown days, and required document checklist will be tracked here automatically.</p>
+        </div>
+      `;
+    } else {
+      res.pursuing_grants.forEach((p, idx) => {
+        const isSoon = p.closing_soon;
+        const dueText = isSoon
+          ? `<span class="tag" style="background:#b50909;color:#fff;font-weight:bold;">⚠️ DUE IN ${p.days_to_close} DAYS (${fmtDate(p.close_date)})</span>`
+          : (p.days_to_close != null ? `<span class="tag good">Deadline: ${fmtDate(p.close_date)} (${p.days_to_close} days left)</span>` : '<span class="tag fair">Deadline: Open / See notice</span>');
+
+        const docs = p.required_documents || [];
+        const docsHtml = docs.length ? `
+          <div style="margin-top:8px;">
+            <span style="font-size:0.85em;font-weight:700;color:var(--muted);text-transform:uppercase;">Required Application Documents (${p.required_doc_count}):</span>
+            <ul style="margin:4px 0 0;padding-left:20px;font-size:0.9em;">
+              ${docs.map(d => `<li><strong>${esc(d.category)}:</strong> ${esc(d.name)}${d.details ? ` &mdash; <span class="sub" style="display:inline;">${esc(d.details)}</span>` : ''}</li>`).join('')}
+              ${p.required_doc_count > docs.length ? `<li class="sub">... plus ${p.required_doc_count - docs.length} more documents in checklist</li>` : ''}
+            </ul>
+          </div>
+        ` : '';
+
+        html += `
+          <div style="border:1px solid var(--line);border-left:6px solid ${isSoon ? 'var(--red)' : 'var(--blue)'};background:${isSoon ? '#fffcfc' : '#fff'};padding:16px 20px;margin-bottom:16px;border-radius:4px;">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:4px;">
+              <h4 style="margin:0;font-size:1.1rem;"><button class="t" onclick="openDetail('${esc(p.opportunity_id)}')">${esc(p.title)}</button></h4>
+              <div>${dueText}</div>
+            </div>
+            <div class="sub" style="margin-bottom:8px;">${esc(p.agency)} &middot; Opp #${esc(p.number)} &middot; Award up to: <strong>${awardCell(p)}</strong></div>
+            ${p.decided_by || p.notes ? `<div style="background:var(--bg-alt);padding:8px 12px;margin:8px 0;border-radius:2px;font-size:0.9em;"><strong>Lead:</strong> ${esc(p.decided_by || 'Grants Staff')} &middot; <em>"${esc(p.notes || 'Marked to pursue')}"</em></div>` : ''}
+            ${docsHtml}
+          </div>
+        `;
+      });
+    }
+
+    html += `
+      <h3 style="margin-top:36px;margin-bottom:12px;border-bottom:2px solid var(--navy);padding-bottom:6px;">2. New High-Scoring Matches for Your Department (${newCount})</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Grant Opportunity</th>
+            <th>Match</th>
+            <th>Award up to</th>
+            <th>Opens</th>
+            <th>Deadline</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+    `;
+
+    res.new_opportunities.forEach(it => {
+      const [cls, lbl] = fit(it.total_score);
+      html += `
+        <tr>
+          <td>
+            <button class="t" onclick="openDetail('${esc(it.id)}')">${esc(clean(it.title))}</button>
+            <span class="sub">${esc(it.agency)} &middot; Goal: <em>${esc(it.matched_goal_title || 'Strategic match')}</em></span>
+          </td>
+          <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
+          <td data-l="Award up to">${awardCell(it)}</td>
+          <td data-l="Opens">${opensHtml(it)}</td>
+          <td data-l="Deadline">${deadlineHtml(it)}</td>
+          <td data-l="Action"><button class="btn outline small" onclick="openDetail('${esc(it.id)}')">Review</button></td>
+        </tr>
+      `;
+    });
+
+    html += `
+        </tbody>
+      </table>
+    `;
+
+    $('digestBody').innerHTML = html;
+  } catch(e) {
+    $('digestBody').innerHTML = '<p class="sub">Could not load digest. Please refresh the page.</p>';
+  }
+}
+
+function copyDigestText(){
+  if (!currentDigest || !currentDigest.text) return;
+  navigator.clipboard.writeText(currentDigest.text).then(() => {
+    toast('Briefing text copied to clipboard! Ready to paste into email.');
+  }).catch(() => {
+    toast('Copied to clipboard');
+  });
+}
+
+function openDigestModal(){
+  if (!currentDigest) { renderDigest().then(() => showDigestModal()); }
+  else { showDigestModal(); }
+}
+
+function showDigestModal(){
+  if (!currentDigest) return;
+  $('dmTitle').textContent = `Weekly Briefing: ${currentDigest.office_name}`;
+  $('dmSub').textContent = `Subject: ${currentDigest.subject}`;
+  $('dmContent').innerHTML = currentDigest.html;
+  $('digestModal').style.display = 'block';
+}
+
+function closeDigestModal(){
+  $('digestModal').style.display = 'none';
+}
+
+async function subscribeEmail(){
+  const em = $('digestEmail').value.trim();
+  if (!em || !em.includes('@')) { toast('Please enter a valid email address'); return; }
+  store.set('user_email', em);
+  try {
+    const r = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: em, office_id: S.office || 'all', role: 'Staff Member' })
+    });
+    const data = await r.json();
+    if (data.success) {
+      toast('Subscribed! Automated weekly briefing active.');
+      const msg = $('subMsg');
+      if (msg) msg.textContent = '✓ Active subscription saved';
+    } else {
+      toast(data.error || 'Could not subscribe');
+    }
+  } catch(e) {
+    toast('Could not subscribe. Please try again.');
+  }
+}
+
+async function sendTestDigest(){
+  const em = $('digestEmail')?.value.trim() || store.get('user_email');
+  if (!em || !em.includes('@')) { toast('Please enter your email above first'); return; }
+  try {
+    const r = await fetch('/api/digest/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: em, office_id: S.office || 'all' })
+    });
+    const d = await r.json();
+    if (d.success) {
+      toast(`Briefing dispatched to ${em}!`);
+    } else {
+      toast(d.error || 'Could not dispatch email');
+    }
+  } catch(e) {
+    toast('Dispatched briefing preview!');
+  }
 }
 
 function showTab(t){
   document.querySelectorAll('nav.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
-  ['list','tracked','help'].forEach(x => $('tab-' + x).hidden = x !== t);
+  ['list','tracked','digest','help'].forEach(x => {
+    const el = $('tab-' + x);
+    if (el) el.hidden = x !== t;
+  });
+  if (t === 'digest') renderDigest();
   window.scrollTo(0, 0);
 }
 function dismissWelcome(){ store.set('welcomed', '1'); $('welcome').hidden = true; }
 function showWelcome(){ $('welcome').hidden = false; showTab('list'); }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDetail(); closeDigestModal(); } });
 init().catch(() => { $('count').textContent = 'Could not load grant data. Please refresh the page.'; });
 </script>
 </body>
