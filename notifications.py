@@ -108,6 +108,9 @@ def request_subscription(conn, email, office, category="all", grant=None, token=
                      (digest, stamp(now), email))
         conn.execute("UPDATE notification_outbox SET state='cancelled' WHERE email=? AND kind='confirmation' AND state IN ('pending','failed')", (email,))
         enqueue(conn, "confirm:" + digest, email, "confirmation", {"token": raw}, now)
+    else:
+        conn.execute("UPDATE notification_outbox SET state='pending',next_attempt=? WHERE email=? AND kind='confirmation' AND state='failed'",
+                     (stamp(now), email))
     return {"active": False, "confirmation_required": True, "delivery_ready": mail_ready()}
 
 

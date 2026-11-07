@@ -464,8 +464,14 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         path = parsed.path
 
         if path == '/api/notifications/status':
+            conn = db.connect()
+            try:
+                counts = {r['state']: r['n'] for r in conn.execute("SELECT state, COUNT(*) AS n FROM notification_outbox GROUP BY state")}
+            finally:
+                conn.close()
             self._send_json({'configured': notifications.mail_ready(), 'reminder_days': list(notifications.REMINDER_DAYS),
-                             'weekly_schedule': 'Monday mornings, America/New_York', 'minimum_field_fit': notifications.MIN_FIELD_FIT})
+                             'weekly_schedule': 'Monday mornings, America/New_York', 'minimum_field_fit': notifications.MIN_FIELD_FIT,
+                             'outbox': {'pending': counts.get('pending', 0), 'sent': counts.get('sent', 0), 'failed': counts.get('failed', 0)}})
             return
 
         if path == '/notifications/confirm':
@@ -857,14 +863,16 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 result = notifications.request_subscription(conn, payload.get('email'), str(payload.get('office_id') or 'all'),
                     str(payload.get('category') or 'all'))
                 conn.commit()
+                if result.get("delivery_ready"):
+                    delivery = notifications.run_once(conn)
+                    result["sent"] = delivery.get("sent", 0)
+                    result["failed"] = delivery.get("failed", 0)
             except ValueError as error:
                 conn.rollback()
                 self._send_json({'error':str(error)}, 400)
                 return
             finally:
                 conn.close()
-            if result.get("delivery_ready"):
-                flush_notifications_async()
             self._send_json({'success':True, **result})
             return
 

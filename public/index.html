@@ -1012,7 +1012,7 @@ async function subscribeEmail(){
     });
     const data = await r.json();
     if (data.success) {
-      const message = data.active ? 'Weekly field updates enabled.' : data.delivery_ready ? 'Check your email to confirm weekly updates.' : 'Request saved. Email delivery needs sender setup before confirmation can be sent.';
+      const message = data.active ? 'Weekly field updates enabled.' : data.failed ? 'Could not send confirmation email — verify Gmail App Password in Azure.' : data.delivery_ready ? 'Check your email to confirm weekly updates.' : 'Request saved. Email delivery needs sender setup before confirmation can be sent.';
       toast(message);
       const msg = $('subMsg');
       if (msg) msg.textContent = message;
