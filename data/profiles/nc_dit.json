@@ -1,0 +1,75 @@
+{
+  "agency_id": "nc_dit",
+  "category": "state",
+  "name": "North Carolina Department of Information Technology",
+  "short_name": "NC DIT",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides state IT services, cybersecurity and leads statewide broadband expansion.",
+  "eligible_applicant_types": [
+    "State governments"
+  ],
+  "funder_affinities": [
+    "National Telecommunications and Information Administration",
+    "Department of Homeland Security",
+    "Department of Commerce"
+  ],
+  "goals": [
+    {
+      "id": "NC_DIT-G1",
+      "number": 1,
+      "title": "Broadband access and digital equity",
+      "citation": "NC DIT draft profile, goal 1",
+      "description": "Connect every North Carolinian to affordable high-speed internet.",
+      "objectives": [
+        "Expand broadband in unserved areas",
+        "Support digital literacy and device access"
+      ],
+      "keywords": [
+        "broadband",
+        "digital equity",
+        "internet access",
+        "digital literacy",
+        "bead"
+      ]
+    },
+    {
+      "id": "NC_DIT-G2",
+      "number": 2,
+      "title": "State and local cybersecurity",
+      "citation": "NC DIT draft profile, goal 2",
+      "description": "Protect state and local government systems.",
+      "objectives": [
+        "Strengthen local government cybersecurity"
+      ],
+      "keywords": [
+        "cybersecurity",
+        "cyber",
+        "information security",
+        "state and local cybersecurity"
+      ]
+    },
+    {
+      "id": "NC_DIT-G3",
+      "number": 3,
+      "title": "Modern state technology",
+      "citation": "NC DIT draft profile, goal 3",
+      "description": "Modernize state systems and data.",
+      "objectives": [
+        "Improve data sharing and digital services"
+      ],
+      "keywords": [
+        "data modernization",
+        "information technology",
+        "digital services"
+      ]
+    }
+  ],
+  "keywords": [
+    "broadband",
+    "cybersecurity",
+    "technology",
+    "digital",
+    "internet"
+  ]
+}

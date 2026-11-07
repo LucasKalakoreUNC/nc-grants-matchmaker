@@ -13,7 +13,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Copy application files and pre-seeded data contracts
-COPY pipeline.py app.py /app/
+COPY pipeline.py app.py db.py notices.py /app/
 COPY data/ /app/data/
 COPY public/ /app/public/
 

@@ -1,0 +1,83 @@
+{
+  "agency_id": "city_raleigh",
+  "category": "municipal",
+  "name": "City of Raleigh",
+  "short_name": "City of Raleigh",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides city services for North Carolina's capital city, including transit, housing, parks and utilities.",
+  "eligible_applicant_types": [
+    "City or township governments",
+    "Special district governments",
+    "Public housing authorities/Indian housing authorities"
+  ],
+  "funder_affinities": [
+    "Department of Transportation",
+    "Department of Housing and Urban Development",
+    "Environmental Protection Agency",
+    "Department of Energy"
+  ],
+  "goals": [
+    {
+      "id": "CITY_RALEIGH-G1",
+      "number": 1,
+      "title": "Transportation and safe streets",
+      "citation": "City of Raleigh draft profile, goal 1",
+      "description": "Make streets safer and expand transit.",
+      "objectives": [
+        "Reduce traffic deaths",
+        "Expand bus rapid transit"
+      ],
+      "keywords": [
+        "safe streets",
+        "pedestrian",
+        "bicycle",
+        "transit",
+        "bus rapid transit",
+        "vision zero"
+      ]
+    },
+    {
+      "id": "CITY_RALEIGH-G2",
+      "number": 2,
+      "title": "Housing affordability",
+      "citation": "City of Raleigh draft profile, goal 2",
+      "description": "Expand affordable housing.",
+      "objectives": [
+        "Build and preserve affordable units"
+      ],
+      "keywords": [
+        "affordable housing",
+        "cdbg",
+        "home investment partnerships",
+        "housing"
+      ]
+    },
+    {
+      "id": "CITY_RALEIGH-G3",
+      "number": 3,
+      "title": "Climate and water",
+      "citation": "City of Raleigh draft profile, goal 3",
+      "description": "Cut emissions and protect water.",
+      "objectives": [
+        "Improve energy efficiency in city buildings",
+        "Upgrade water infrastructure"
+      ],
+      "keywords": [
+        "energy efficiency",
+        "clean energy",
+        "stormwater",
+        "drinking water",
+        "climate"
+      ]
+    }
+  ],
+  "keywords": [
+    "city",
+    "municipal",
+    "transit",
+    "housing",
+    "parks",
+    "water"
+  ]
+}

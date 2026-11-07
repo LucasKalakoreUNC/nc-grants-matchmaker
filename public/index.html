@@ -1,2076 +1,547 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>North Carolina Federal Funds Matchmaker — State Strategic Alignment Portal</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- KaTeX for Official Scoring Formula Display -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-
-  <style>
-    /* USWDS Government Design Standards (Grants.gov / NC.gov Model) */
-    :root {
-      --gov-primary: #112e51;       /* Deep Navy */
-      --gov-primary-dark: #0b1f38;  /* Midnight Navy */
-      --gov-accent: #005ea2;        /* Classic Gov Blue */
-      --gov-gold: #c05600;          /* Official Gold */
-      --gov-border: #dfe1e2;        /* Crisp Gov Gray Border */
-      --gov-bg: #f8f9fa;            /* Subtle Government Background */
-    }
-    body {
-      background-color: #f1f3f5;
-      color: #1b1b1b;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    .font-official-serif {
-      font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-    }
-    .gov-header-bg { background-color: var(--gov-primary); }
-    .gov-nav-bg { background-color: var(--gov-primary-dark); }
-    .gov-link { color: var(--gov-accent); text-decoration: underline; }
-    .gov-link:hover { color: #1a4480; }
-    
-    /* Scrollbars */
-    ::-webkit-scrollbar { width: 6px; height: 6px; }
-    ::-webkit-scrollbar-track { background: #f1f3f5; }
-    ::-webkit-scrollbar-thumb { background: #a6b0be; border-radius: 3px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NC Grants Matchmaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1b1b1b; --muted: #565c65; --line: #dfe1e2; --bg: #ffffff; --bg-alt: #f0f0f0;
+    --navy: #162e51; --blue: #005ea2; --blue-dark: #1a4480; --blue-light: #e7f2f8;
+    --green: #00a91c; --green-bg: #ecf3ec; --gold: #ffbe2e; --gold-bg: #faf3d1; --red: #b50909;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Public Sans", system-ui, sans-serif; color: var(--ink); background: var(--bg); font-size: 16px; line-height: 1.5; }
+  a { color: var(--blue); }
+  h1, h2, h3 { font-family: Merriweather, Georgia, serif; line-height: 1.25; margin: 0 0 .5rem; }
+  h2 { font-size: 1.3rem; } h3 { font-size: 1.05rem; font-family: inherit; font-weight: 700; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .banner { background: var(--bg-alt); font-size: .8rem; padding: 4px 0; color: var(--muted); }
+  header.site { background: var(--navy); color: #fff; padding: 16px 0; }
+  .site-title { font-family: Merriweather, Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+  .site-sub { font-size: .85rem; color: #c9d4e3; }
+  nav.tabs { border-bottom: 1px solid var(--line); background: #fff; }
+  nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; }
+  nav.tabs button { background: none; border: 0; border-bottom: 4px solid transparent; padding: 14px 14px 10px; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; white-space: nowrap; }
+  nav.tabs button[aria-selected="true"] { color: var(--blue-dark); border-bottom-color: var(--blue); }
+  main { padding: 24px 0 64px; }
+  label { font-weight: 600; display: block; margin-bottom: 4px; }
+  select, input[type=search], input[type=text], textarea { font: inherit; padding: 8px 10px; border: 1px solid #565c65; border-radius: 0; background: #fff; width: 100%; color: var(--ink); }
+  select:focus, input:focus, textarea:focus, button:focus-visible { outline: 3px solid #2491ff; outline-offset: 0; }
+  .btn { font: inherit; font-weight: 700; padding: 10px 18px; border-radius: 4px; border: 0; background: var(--blue); color: #fff; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn:hover { background: var(--blue-dark); }
+  .btn.outline { background: #fff; color: var(--blue); box-shadow: inset 0 0 0 2px var(--blue); }
+  .btn.outline:hover { background: var(--blue-light); }
+  .btn.small { padding: 6px 12px; font-size: .9rem; }
+  .linkbtn { background: none; border: 0; padding: 0; font: inherit; color: var(--blue); text-decoration: underline; cursor: pointer; }
+  .office-bar { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-bottom: 24px; }
+  .office-bar .field { flex: 1 1 320px; max-width: 480px; }
+  .alert { border-left: 8px solid var(--blue); background: var(--blue-light); padding: 16px 20px; margin-bottom: 24px; }
+  .alert.warn { border-color: var(--gold); background: var(--gold-bg); }
+  .alert ol { margin: 8px 0 12px; padding-left: 20px; }
+  .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .summary button { text-align: left; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); padding: 16px; font: inherit; cursor: pointer; }
+  .summary button:hover { background: var(--blue-light); }
+  .summary .num { font-size: 2rem; font-weight: 700; display: block; line-height: 1.1; }
+  .summary .lbl { color: var(--muted); font-size: .95rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 16px; }
+  .filters .field { flex: 1 1 200px; } .filters .field.grow { flex: 2 1 280px; }
+  .count { color: var(--muted); margin: 0 0 12px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: .85rem; color: var(--muted); font-weight: 700; background: var(--bg-alt); }
+  td .t { color: var(--blue); background: none; border: 0; padding: 0; font: inherit; font-weight: 700; text-align: left; cursor: pointer; text-decoration: underline; }
+  .sub { display: block; color: var(--muted); font-size: .9rem; }
+  .tag { display: inline-block; padding: 2px 8px; font-size: .8rem; font-weight: 700; border-radius: 2px; white-space: nowrap; }
+  .tag.strong { background: var(--green-bg); color: #19591e; } .tag.good { background: var(--blue-light); color: var(--blue-dark); } .tag.fair { background: var(--bg-alt); color: var(--muted); }
+  .tag.Pursue { background: var(--green); color: #fff; } .tag.Watch { background: var(--gold); color: var(--ink); } .tag.Pass { background: #71767a; color: #fff; } .tag.new { background: #fff; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+  .soon { color: var(--red); font-weight: 700; }
+  .empty { padding: 32px; text-align: center; color: var(--muted); border: 1px dashed var(--line); }
+  .pager { display: flex; justify-content: center; margin-top: 16px; }
+  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); display: none; z-index: 20; }
+  .panel { position: fixed; top: 0; right: 0; height: 100%; width: min(720px, 100%); background: #fff; overflow-y: auto; z-index: 21; transform: translateX(100%); transition: transform .2s; visibility: hidden; }
+  .open .overlay { display: block; } .open .panel { transform: none; visibility: visible; }
+  .panel-head { background: var(--navy); color: #fff; padding: 20px 24px; position: sticky; top: 0; z-index: 1; }
+  .panel-head h2 { color: #fff; font-size: 1.15rem; margin-right: 40px; }
+  .panel-head .close { position: absolute; top: 14px; right: 16px; background: none; border: 0; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
+  .panel-body { padding: 24px; }
+  .panel section { margin-bottom: 28px; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 24px; }
+  .facts div { background: var(--bg-alt); padding: 12px; } .facts dt { font-size: .8rem; color: var(--muted); font-weight: 700; } .facts dd { margin: 2px 0 0; font-weight: 700; }
+  .checklist { list-style: none; padding: 0; margin: 0; }
+  .checklist li { padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
+  .checklist input { width: 18px; height: 18px; margin-top: 3px; flex: none; }
+  .checklist small { display: block; color: var(--muted); }
+  .steps { padding-left: 20px; margin: 0; } .steps li { margin-bottom: 10px; } .steps small { color: var(--muted); display: block; }
+  .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .choices button { font: inherit; font-weight: 700; padding: 12px 8px; border: 2px solid var(--line); background: #fff; cursor: pointer; border-radius: 4px; }
+  .choices button small { display: block; font-weight: 400; font-size: .8rem; color: var(--muted); }
+  .choices button[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-light); }
+  .decide { background: var(--bg-alt); padding: 20px; border-left: 8px solid var(--blue); }
+  h4 { font-size: .95rem; margin: 0; }
+  details summary { cursor: pointer; font-weight: 700; color: var(--blue); }
+  .help-steps { counter-reset: s; list-style: none; padding: 0; }
+  .help-steps li { position: relative; padding: 0 0 20px 52px; }
+  .help-steps li::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--ink); color: #fff; padding: 10px 18px; border-radius: 4px; display: none; z-index: 30; }
+  footer { background: var(--bg-alt); padding: 24px 0; font-size: .9rem; color: var(--muted); }
+  [hidden] { display: none !important; }
+  @media (max-width: 720px) {
+    thead { display: none; } tr { display: block; border-bottom: 1px solid var(--line); padding: 8px 0; } td { display: block; border: 0; padding: 4px 0; }
+    td[data-l]::before { content: attr(data-l) ": "; font-weight: 700; color: var(--muted); font-size: .85rem; }
+    .choices { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body>
+<div class="banner"><div class="wrap">Prototype tool for North Carolina state and local grant offices. Always confirm details on the official funding notice.</div></div>
+<header class="site">
+  <div class="wrap">
+    <a class="site-title" href="#" onclick="showTab('list');return false;">NC Grants Matchmaker</a>
+    <div class="site-sub">Federal funding opportunities matched to your office's strategic plan</div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Main">
+  <div class="wrap" role="tablist">
+    <button role="tab" data-tab="list" aria-selected="true" onclick="showTab('list')">Opportunities</button>
+    <button role="tab" data-tab="tracked" aria-selected="false" onclick="showTab('tracked')">My decisions</button>
+    <button role="tab" data-tab="help" aria-selected="false" onclick="showTab('help')">How this works</button>
+  </div>
+</nav>
 
-  <!-- 1. Official State Government Banner (USWDS Standard Model) -->
-  <section class="bg-slate-100 text-slate-700 text-xs py-1.5 px-4 sm:px-6 lg:px-8 border-b border-slate-300">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center space-x-2">
-        <span class="inline-block w-4 h-2.5 bg-red-700 border border-slate-300 shadow-xs"></span>
-        <span class="text-[11px] sm:text-xs">
-          An official website of the <strong>State of North Carolina</strong> &nbsp;|&nbsp;
-          <button onclick="toggleGovInfo()" class="underline text-blue-800 hover:text-blue-950 font-medium cursor-pointer inline-flex items-center">
-            Here's how you know <i data-lucide="chevron-down" class="w-3 h-3 ml-0.5 inline"></i>
-          </button>
-        </span>
+<main class="wrap">
+  <div class="office-bar">
+    <div class="field" style="flex:1 1 220px;max-width:280px">
+      <label for="otype">Type of organization</label>
+      <select id="otype" onchange="fillOffices(this.value)">
+        <option value="all">All types</option>
+        <option value="state">State agencies</option>
+        <option value="county">Counties</option>
+        <option value="municipal">Cities and towns</option>
+        <option value="education">Universities and colleges</option>
+        <option value="business">Businesses</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="office">Your organization</label>
+      <select id="office" onchange="changeOffice(this.value)"></select>
+    </div>
+    <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
+  </div>
+
+  <div id="welcome" class="alert" hidden>
+    <h3>Welcome. Here is how to use this tool.</h3>
+    <ol>
+      <li>Pick <strong>your office</strong> above. The list is ranked by how well each grant fits your office's strategic plan.</li>
+      <li>Start with <strong>strong matches that need a decision</strong>. Click a grant title to see why it fits, what it requires, and the deadline.</li>
+      <li>Mark each one <strong>Pursue</strong>, <strong>Watch</strong>, or <strong>Pass</strong>. Your choices are saved for your whole office.</li>
+    </ol>
+    <button class="btn small" onclick="dismissWelcome()">Got it</button>
+    <button class="linkbtn" style="margin-left:12px" onclick="showTab('help')">Read the full guide</button>
+  </div>
+
+  <section id="tab-list">
+    <div class="summary">
+      <button onclick="quick('todo')"><span class="num" id="nTodo">-</span><span class="lbl">Strong matches that need a decision</span></button>
+      <button onclick="quick('soon')" style="border-top-color:var(--red)"><span class="num" id="nSoon">-</span><span class="lbl">Undecided good matches closing within 30 days</span></button>
+      <button onclick="showTab('tracked')" style="border-top-color:var(--green)"><span class="num" id="nPursue">-</span><span class="lbl">Grants your office is pursuing</span></button>
+    </div>
+
+    <div class="filters">
+      <div class="field grow">
+        <label for="q">Search</label>
+        <input id="q" type="search" placeholder="Keyword, program, or funding agency" oninput="limit=25;render()">
       </div>
-      <div class="flex items-center space-x-3 text-[11px] text-slate-500">
-        <span class="flex items-center space-x-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-700"></i><span>Official State Portal</span></span>
-        <span class="flex items-center space-x-1"><i data-lucide="lock" class="w-3.5 h-3.5 text-blue-700"></i><span>256-bit GovCloud Encryption</span></span>
+      <div class="field">
+        <label for="fShow">Show</label>
+        <select id="fShow" onchange="limit=25;render()">
+          <option value="todo">Needs a decision</option>
+          <option value="all">All matches</option>
+          <option value="decided">Already decided</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fFit">Match</label>
+        <select id="fFit" onchange="limit=25;render()">
+          <option value="good">Strong and good matches</option>
+          <option value="strong">Strong matches only</option>
+          <option value="any">Any match</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fDue">Deadline</label>
+        <select id="fDue" onchange="limit=25;render()">
+          <option value="any">Any open deadline</option>
+          <option value="30">Within 30 days</option>
+          <option value="90">Within 90 days</option>
+          <option value="forecast">Not yet open (forecasted)</option>
+        </select>
       </div>
     </div>
-    <!-- Accordion detail -->
-    <div id="govInfoAccordion" class="hidden max-w-7xl mx-auto mt-2 pt-2 border-t border-slate-300 text-[11px] text-slate-600 grid grid-cols-1 md:grid-cols-2 gap-4 pb-1">
-      <div>
-        <strong>Official State & County Portal:</strong> This system is managed by North Carolina state agencies and regional coordinators to align federal funding opportunities with published strategic plans.
-      </div>
-      <div>
-        <strong>Secure Transmission:</strong> All data exchanges and staff decision logs are stored within compliant North Carolina GovCloud infrastructure.
-      </div>
-    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <table>
+      <thead><tr><th>Grant</th><th>Match</th><th>Award up to</th><th>Staff time</th><th>Deadline</th><th>Status</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div id="empty" class="empty" hidden>No grants match these filters. Try "All matches" or "Any match".</div>
+    <div class="pager"><button id="more" class="btn outline" onclick="limit+=25;render()" hidden>Show more</button></div>
   </section>
 
-  <!-- 2. Primary Government Header (Model: NC.gov & Grants.gov) -->
-  <header class="gov-header-bg text-white border-b-4 border-amber-600 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        
-        <!-- Official Identity & Emblem -->
-        <div class="flex items-center space-x-3.5">
-          <div class="w-11 h-11 rounded bg-slate-900 border border-slate-600 flex items-center justify-center font-serif font-black text-xl text-white shadow-sm">
-            NC
-          </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <span class="text-[10px] tracking-widest uppercase font-semibold text-slate-300">State of North Carolina</span>
-              <span class="bg-amber-600 text-white text-[10px] px-1.5 py-0.2 rounded font-mono font-bold">Official Clearinghouse</span>
-            </div>
-            <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white font-official-serif leading-tight">Federal Funds Strategic Matchmaker</h1>
-            <p class="text-xs text-slate-300">Intergovernmental Grants Alignment & Application Clearinghouse · OSBM / State Enclave</p>
-          </div>
-        </div>
+  <section id="tab-tracked" hidden>
+    <h2>My office's decisions</h2>
+    <p class="count">Every grant your office has marked. Click a title to change the decision or update notes.</p>
+    <div id="trackedBody"></div>
+  </section>
 
-        <!-- Entity / Agency Selector & Quick Actions -->
-        <div class="flex flex-wrap items-center gap-3">
-          <div class="text-right hidden sm:block">
-            <span class="block text-[11px] uppercase font-bold text-slate-300 tracking-wider">Active Jurisdiction</span>
-            <span id="activeAgencySubhead" class="text-xs text-amber-300 font-semibold">NC DEQ (State Department)</span>
-          </div>
-          <div class="relative">
-            <select id="agencySelect" onchange="switchAgency(this.value)" class="bg-slate-900 border border-slate-600 text-white text-xs sm:text-sm rounded py-2 pl-3 pr-8 appearance-none cursor-pointer focus:ring-2 focus:ring-amber-500 font-medium">
-              <optgroup label="State Executive Departments" id="optgroup-state">
-                <option value="deq">NC Dept. of Environmental Quality (DEQ)</option>
-                <option value="dot">NC Dept. of Transportation (NCDOT)</option>
-                <option value="dhhs">NC Dept. of Health & Human Services (NCDHHS)</option>
-                <option value="commerce">NC Dept. of Commerce</option>
-                <option value="dps">NC Dept. of Public Safety (DPS)</option>
-              </optgroup>
-              <optgroup label="Counties & Local Governments" id="optgroup-county">
-                <option value="wake_county">Wake County Government (Suburban/Urban)</option>
-                <option value="buncombe_county">Buncombe & Western NC Mountain Counties</option>
-              </optgroup>
-              <optgroup label="Higher Education & Research" id="optgroup-education">
-                <option value="unc_system">UNC System & NC Community Colleges</option>
-              </optgroup>
-              <optgroup label="Small Business & Innovation" id="optgroup-business">
-                <option value="nc_smallbiz">NC Small Business & SBTDC Innovation Hubs</option>
-              </optgroup>
-              <optgroup label="Municipal Infrastructure" id="optgroup-municipal">
-                <option value="city_charlotte">City of Charlotte & Regional Transit</option>
-              </optgroup>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
-              <i data-lucide="chevron-down" class="w-4 h-4"></i>
-            </div>
-          </div>
-        </div>
-      </div>
+  <section id="tab-help" hidden style="max-width:760px">
+    <h2>How this works</h2>
+    <p>This tool checks federal and state grant listings every day and compares each one against your office's published strategic plan. It ranks them so you can spend your time on the grants most likely to be worth applying for.</p>
+    <h3 style="margin-top:24px">Your weekly routine</h3>
+    <ol class="help-steps">
+      <li><strong>Choose your organization.</strong> First pick the type of organization, then your organization. The tool remembers your choice on this computer.</li>
+      <li><strong>Review what needs a decision.</strong> The first box at the top counts strong matches nobody in your office has decided on yet. Click it to see the list.</li>
+      <li><strong>Open a grant.</strong> Click the title. You will see why it fits your plan, how much it pays, the deadline, an estimate of staff time, and the documents you will need.</li>
+      <li><strong>Make a decision.</strong> Choose Pursue (we will apply), Watch (check back later), or Pass (not a fit). Add a short note so coworkers know why. Decisions are shared with your whole office.</li>
+      <li><strong>Share the list.</strong> Use "Download list" to get a spreadsheet for leadership or your weekly meeting.</li>
+    </ol>
+    <h3>What the match labels mean</h3>
+    <p><span class="tag strong">Strong match</span> Score of 70 or higher. Clearly supports one of your goals, and your organization is likely eligible. Review these first.<br>
+    <span class="tag good">Good match</span> Score of 60 to 69. Related to your goals. Worth a quick look.<br>
+    <span class="tag fair">Possible match</span> Below 60. Loosely related. Usually safe to skip.</p>
+
+    <h3 id="ranking" style="margin-top:28px">How grants are ranked</h3>
+    <p>Every grant gets a score from 0 to 100 for your organization. The score adds up six parts. Each part is scored from 0 to 100, then multiplied by its weight:</p>
+    <p style="background:var(--bg-alt);padding:12px 16px;font-weight:600">Score = 40% Fit + 15% Eligibility + 15% Award size + 15% Time before deadline + 10% Effort + 5% Familiar funder</p>
+    <table>
+      <thead><tr><th>Part</th><th>Weight</th><th>How it is scored</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Fit with your strategic plan</strong></td><td data-l="Weight">40%</td><td>Looks for each of your goals' key phrases in the grant's title and description. A phrase in the title counts most. Common words like "water" or "health" on their own count very little.</td></tr>
+        <tr><td><strong>Your organization can apply</strong></td><td data-l="Weight">15%</td><td>100 if your type of organization is on the notice's eligible list. 85 if the eligibility text appears to include you. 50 if eligibility is only described in text. 10 if you are not eligible.</td></tr>
+        <tr><td><strong>Award size</strong></td><td data-l="Weight">15%</td><td>Based on the largest single award: $10 million or more scores 100; under $500,000 scores 25. Unlisted amounts score 50.</td></tr>
+        <tr><td><strong>Time before deadline</strong></td><td data-l="Weight">15%</td><td>Days left compared with the weeks of work the application needs. Twice the time needed or more scores 100; less than half the time needed scores 10. Forecasted grants score 90.</td></tr>
+        <tr><td><strong>Effort to apply</strong></td><td data-l="Weight">10%</td><td>30 staff hours or less scores 100; over 80 hours scores 30.</td></tr>
+        <tr><td><strong>Familiar funder</strong></td><td data-l="Weight">5%</td><td>100 if the funding agency is one your organization usually works with, otherwise 20.</td></tr>
+      </tbody>
+    </table>
+    <p>Open any grant and choose "How this grant was scored" to see its numbers.</p>
+
+    <h3 style="margin-top:28px">How staff time is estimated</h3>
+    <p>Every application starts at 25 hours for the standard forms, narrative and budget. Time is added for: awards over $1 million (+20 hours) or over $5 million (+35), required matching funds (+20), construction or infrastructure work (+15), and required partners or letters of support (+10). Weeks assume about 15 staff hours per week. It is a rough guide to help plan, not a requirement.</p>
+
+    <h3 id="sources" style="margin-top:28px">Where the information comes from</h3>
+    <p>Everything comes from public government sources. The tool saves what it downloads in its own database, so it only asks each source for new or changed information.</p>
+    <table>
+      <thead><tr><th>Information</th><th>Source</th><th>How we get it</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Grant listings</strong>: title, agency, deadline, status</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>The Grants.gov search service, checked once a day across about 35 topic searches, including forecasted grants.</td></tr>
+        <tr><td><strong>Grant details</strong>: description, award amounts, who can apply, matching funds, contact</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>Downloaded once for each new grant, and again only if Grants.gov changes the listing.</td></tr>
+        <tr><td><strong>Past North Carolina awards</strong></td><td data-l="Source"><a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a></td><td>The largest awards to North Carolina recipients under the same federal program (Assistance Listing number), refreshed weekly.</td></tr>
+        <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>Goals, objectives and key phrases summarized from each organization's strategic plan. Profiles marked as drafts have not yet been checked against the official plan.</td></tr>
+        <tr><td><strong>Documents checklist</strong></td><td data-l="Source">Standard federal application forms (SF-424 family)</td><td>A typical federal checklist, adjusted for what the notice says, such as adding a match letter when matching funds are required. The official notice has the final list.</td></tr>
+        <tr><td><strong>Staff time and score</strong></td><td data-l="Source">Calculated by this tool</td><td>See "How grants are ranked" and "How staff time is estimated" above.</td></tr>
+      </tbody>
+    </table>
+    <p>Always confirm details on the official notice before applying.</p>
+    <p><button class="btn small" onclick="showWelcome()">Show the quick-start tips again</button></p>
+  </section>
+</main>
+
+<footer><div class="wrap">NC Grants Matchmaker &middot; Data refreshed <span id="refreshed">daily</span> &middot; Not an official State of North Carolina website.</div></footer>
+
+<div id="detail">
+  <div class="overlay" onclick="closeDetail()"></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="panel-head">
+      <h2 id="dTitle"></h2>
+      <div id="dSub" class="site-sub"></div>
+      <button class="close" aria-label="Close" onclick="closeDetail()">&times;</button>
     </div>
-
-    <!-- Government Navigation Bar (Grants.gov Tab Style) -->
-    <nav class="gov-nav-bg border-t border-slate-700">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between">
-        <div class="flex space-x-1 sm:space-x-2 text-xs sm:text-sm font-medium overflow-x-auto py-1">
-          <button onclick="setActiveTab('shortlist')" id="navBtn-shortlist" class="py-2.5 px-3.5 border-b-2 font-bold text-white border-amber-500 bg-slate-900/60 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="search" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span>Search & Ranked Grants</span>
-          </button>
-          <button onclick="setActiveTab('radar')" id="navBtn-radar" class="py-2.5 px-3 border-b-2 font-medium text-slate-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="clock" class="w-3.5 h-3.5 text-rose-400"></i>
-            <span>Deadlines & Watchlist</span>
-          </button>
-          <button onclick="setActiveTab('awardees')" id="navBtn-awardees" class="py-2.5 px-3 border-b-2 font-medium text-slate-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="award" class="w-3.5 h-3.5 text-emerald-400"></i>
-            <span>Previous Awardees</span>
-          </button>
-          <button onclick="setActiveTab('heatmap')" id="navBtn-heatmap" class="py-2.5 px-3 border-b-2 font-medium text-slate-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="pie-chart" class="w-3.5 h-3.5 text-blue-300"></i>
-            <span>Strategic Goal Funding</span>
-          </button>
-          <button onclick="setActiveTab('resources')" id="navBtn-resources" class="py-2.5 px-3 border-b-2 font-bold text-amber-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="book-marked" class="w-3.5 h-3.5 text-amber-400"></i>
-            <span>Resources & Standard Forms</span>
-          </button>
-          <button onclick="setActiveTab('rubric')" id="navBtn-rubric" class="py-2.5 px-3 border-b-2 font-medium text-slate-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="sliders" class="w-3.5 h-3.5 text-slate-300"></i>
-            <span>Scoring Rubric & Sliders</span>
-          </button>
-          <button onclick="setActiveTab('eval')" id="navBtn-eval" class="py-2.5 px-3 border-b-2 font-medium text-slate-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5">
-            <i data-lucide="file-check" class="w-3.5 h-3.5 text-slate-300"></i>
-            <span>Evaluation & Audit (§6)</span>
-          </button>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="flex items-center space-x-2 py-1 text-xs">
-          <button onclick="exportShortlistCSV()" class="px-2.5 py-1 text-slate-200 hover:text-white hover:bg-slate-800 rounded border border-slate-700 flex items-center space-x-1">
-            <i data-lucide="download" class="w-3 h-3"></i>
-            <span>Export CSV</span>
-          </button>
-          <button onclick="toggleChatbot()" class="px-2.5 py-1 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded flex items-center space-x-1">
-            <i data-lucide="help-circle" class="w-3 h-3"></i>
-            <span>Grants Help Specialist</span>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-  <!-- Clean Government Status Sub-bar -->
-  <div class="bg-white border-b border-slate-300 text-xs py-2 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-slate-600">
-      <div class="flex items-center space-x-2">
-        <span class="font-bold text-slate-900">Governing Strategic Plan:</span>
-        <span id="agencyPlanCite" class="text-blue-900 font-medium">NC DEQ Strategic Plan FY 2025-2029</span>
-      </div>
-      <div class="flex items-center space-x-4 text-[11px]">
-        <span>Multi-Source Ingestion: <strong class="text-slate-800 font-mono">Grants.gov · SAM.gov · NC eGrants</strong></span>
-        <span>|</span>
-        <button onclick="triggerPipelineRun()" id="refreshBtn" class="text-blue-700 hover:underline font-semibold flex items-center space-x-1">
-          <i data-lucide="refresh-cw" class="w-3 h-3" id="refreshIcon"></i>
-          <span id="refreshBtnText">Sync Feeds Now</span>
-        </button>
-      </div>
-    </div>
+    <div class="panel-body" id="dBody"></div>
   </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
 
-  <!-- Main Content Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 w-full flex-1 space-y-4">
-    
-    <!-- PROMINENT FEATURE 1: Automated Weekly Action Steps & Top Recommendations Subscription Callout -->
-    <section class="bg-slate-900 text-white rounded border border-slate-800 p-4 shadow-sm">
-      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        
-        <!-- Left: Briefing Info -->
-        <div class="flex items-start space-x-3">
-          <div class="w-9 h-9 rounded bg-amber-500 text-slate-950 font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
-            <i data-lucide="mail-check" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <div class="flex items-center space-x-2">
-              <h2 class="text-sm font-bold font-official-serif tracking-tight text-white">Weekly Grants Action Steps & Top Recommendations Briefing</h2>
-              <span class="bg-amber-500 text-slate-950 text-[10px] font-extrabold px-1.5 py-0.2 rounded font-mono uppercase">Automated Alert</span>
-            </div>
-            <p class="text-xs text-slate-300 mt-1 max-w-2xl leading-relaxed">
-              Enter your official email to receive Monday morning executive briefings detailing <strong>immediate action steps required this week</strong> (priority deadlines, approval checkpoints, required forms) and the top strategic grant recommendations for <strong id="subBannerAgencyName" class="text-amber-300">NC DEQ</strong>.
-            </p>
-          </div>
-        </div>
+<script>
+const S = { office: null, profiles: [], items: [], decisions: {} };
+let limit = 25, currentId = null, choice = null;
+const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// Remove emoji/decorative symbols that older generated data still contains
+const clean = s => String(s ?? '').replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '').replace(/\s{2,}/g,' ').trim();
+const money = n => n ? '$' + (n >= 1e6 ? (+(n/1e6).toFixed(1)) + ' million' : Number(n).toLocaleString()) : 'Not listed';
+const fmtDate = d => d ? new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not listed';
+const STRONG = 70, GOOD = 60;
+// Award amount with a short qualifier saying what kind of number it is
+const awardCell = i => i.award_ceiling ? money(i.award_ceiling)
+  : i.award_estimate ? `About ${money(i.award_estimate)}<span class="sub">each (estimated)</span>`
+  : i.estimated_total_funding ? `${money(i.estimated_total_funding)}<span class="sub">total for all awards</span>`
+  : 'Not listed';
+const deadlineHtml = (i, br) => i.status === 'forecasted' ? 'Not yet open'
+  : i.days_to_close == null ? 'No deadline listed'
+  : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
+const fit = s => s >= STRONG ? ['strong','Strong match'] : s >= GOOD ? ['good','Good match'] : ['fair','Possible match'];
+const PARTS = [
+  ['relevancy', 'Fit with your strategic plan', 'How closely the grant matches your goals and their key terms.'],
+  ['eligibility', 'Your organization can apply', 'Whether your type of organization is listed as eligible.'],
+  ['money_amount', 'Award size', 'Larger possible awards score higher.'],
+  ['timing', 'Time before deadline', 'Days left compared with the weeks of work the application needs.'],
+  ['effort', 'Effort to apply', 'Fewer estimated staff hours score higher.'],
+  ['affinity', 'Familiar funder', 'Whether the funder is one your organization usually works with.'],
+];
+const statusTag = id => { const d = S.decisions[id]; return d ? `<span class="tag ${d.status}">${d.status}</span>` : '<span class="tag new">Not decided</span>'; };
+function toast(m){ const t = $('toast'); t.textContent = m; t.style.display = 'block'; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = 'none', 2500); }
 
-        <!-- Right: Email Input & Action Buttons -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
-          <div class="relative min-w-[240px]">
-            <input type="email" id="subscribeEmailInput" placeholder="your.name@nc.gov or local gov email" class="w-full text-xs px-3 py-2 rounded bg-slate-950 text-white placeholder-slate-400 border border-slate-700 focus:ring-2 focus:ring-amber-500 focus:outline-none">
-          </div>
-          <button onclick="handleSubscribeEmail()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded transition flex items-center justify-center space-x-1 shadow-xs whitespace-nowrap">
-            <i data-lucide="bell" class="w-3.5 h-3.5"></i>
-            <span>Subscribe for Weekly Updates</span>
-          </button>
-          <button onclick="previewWeeklyDigestModal()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white font-medium text-xs rounded border border-slate-600 transition flex items-center justify-center space-x-1 whitespace-nowrap">
-            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
-            <span>Preview Sample Email</span>
-          </button>
-        </div>
+async function init(){
+  S.profiles = await (await fetch('/api/profiles')).json();
+  // Default to "All types" / "All organizations"; remember the last choice on this computer.
+  $('otype').value = GROUPS[store.get('otype')] ? store.get('otype') : 'all';
+  fillOffices($('otype').value, true);
+  const saved = store.get('office');
+  if (saved && [...$('office').options].some(o => o.value === saved)) $('office').value = saved;
+  if (!store.get('welcomed')) $('welcome').hidden = false;
+  fetch('/api/runs/latest').then(r => r.json()).then(r => { const t = r.finished_at || r.completed_at || r.timestamp || r.started_at; if (t && !isNaN(new Date(t))) $('refreshed').textContent = new Date(t).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' }); }).catch(() => {});
+  await changeOffice($('office').value);
+}
+
+const GROUPS = { state: 'State agencies', county: 'Counties', municipal: 'Cities and towns', education: 'Universities and colleges', business: 'Businesses' };
+function fillOffices(type, silent){
+  store.set('otype', type);
+  const keys = type === 'all' ? Object.keys(GROUPS) : [type];
+  $('office').innerHTML = `<option value="all">${type === 'all' ? 'All organizations' : 'All ' + GROUPS[type].toLowerCase()}</option>` + keys.map(g => {
+    const opts = S.profiles.filter(p => (p.category || 'state') === g).sort((a,b) => a.name.localeCompare(b.name));
+    return opts.length ? `<optgroup label="${GROUPS[g]}">${opts.map(p => `<option value="${p.agency_id}">${esc(p.name)}</option>`).join('')}</optgroup>` : '';
+  }).join('');
+  if (!silent) changeOffice($('office').value);
+}
+
+async function changeOffice(id){
+  S.office = id; store.set('office', id); limit = 25;
+  const all = id === 'all', cat = encodeURIComponent($('otype').value);
+  $('exportBtn').hidden = all;
+  $('exportBtn').href = `/api/export/${id}`;
+  const [items, dec] = await Promise.all([
+    fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => r.json()),
+    fetch(all ? `/api/decisions/all?category=${cat}` : `/api/decisions/${id}`).then(r => r.json())]);
+  S.items = items.filter(i => i.status === 'forecasted' || (i.days_to_close ?? 0) >= 0).sort((a,b) => b.total_score - a.total_score);
+  S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[String(d.opportunity_id)] = d; });
+  render(); renderTracked();
+}
+
+function quick(kind){
+  showTab('list');
+  $('q').value = ''; $('fShow').value = 'todo';
+  $('fFit').value = kind === 'todo' ? 'strong' : 'good';
+  $('fDue').value = kind === 'soon' ? '30' : 'any';
+  limit = 25; render();
+}
+
+function filtered(){
+  const q = $('q').value.toLowerCase().trim(), show = $('fShow').value, f = $('fFit').value, due = $('fDue').value;
+  return S.items.filter(i => {
+    const decided = !!S.decisions[i.id];
+    if (show === 'todo' && decided) return false;
+    if (show === 'decided' && !decided) return false;
+    if (f === 'strong' && i.total_score < STRONG) return false;
+    if (f === 'good' && i.total_score < GOOD) return false;
+    if (due === 'forecast' && i.status !== 'forecasted') return false;
+    if ((due === '30' || due === '90') && (i.status === 'forecasted' || i.days_to_close == null || i.days_to_close > +due)) return false;
+    if (q && !`${i.title} ${i.agency} ${i.number} ${i.matched_goal_title}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function render(){
+  const list = filtered();
+  $('nTodo').textContent = S.items.filter(i => i.total_score >= STRONG && !S.decisions[i.id]).length;
+  $('nSoon').textContent = S.items.filter(i => i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[i.id]).length;
+  $('nPursue').textContent = Object.values(S.decisions).filter(d => d.status === 'Pursue').length;
+  $('count').textContent = `${list.length} grant${list.length === 1 ? '' : 's'} found, best matches first.`;
+  $('rows').innerHTML = list.slice(0, limit).map(i => {
+    const [cls, lbl] = fit(i.total_score);
+    const deadline = deadlineHtml(i);
+    return `<tr>
+      <td><button class="t" onclick="openDetail('${esc(i.id)}')">${esc(clean(i.title))}</button><span class="sub">${esc(i.agency)}</span>${i.best_office_name ? `<span class="sub">Best fit: ${esc(i.best_office_name)}</span>` : ''}</td>
+      <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
+      <td data-l="Award up to">${awardCell(i)}</td>
+      <td data-l="Staff time">About ${i.est_completion_hours} hrs<span class="sub">${i.complexity_tier || ''}</span></td>
+      <td data-l="Deadline">${deadline}</td>
+      <td data-l="Status">${statusTag(i.id)}</td></tr>`;
+  }).join('');
+  $('empty').hidden = list.length > 0;
+  $('more').hidden = list.length <= limit;
+}
+
+function renderTracked(){
+  const byId = Object.fromEntries(S.items.map(i => [i.id, i]));
+  const ds = Object.values(S.decisions).sort((a,b) => (b.decided_at || '').localeCompare(a.decided_at || ''));
+  if (!ds.length) { $('trackedBody').innerHTML = '<div class="empty">No decisions yet. Open a grant from the Opportunities tab and choose Pursue, Watch, or Pass.</div>'; return; }
+  $('trackedBody').innerHTML = ['Pursue','Watch','Pass'].map(st => {
+    const rows = ds.filter(d => d.status === st); if (!rows.length) return '';
+    return `<h3 style="margin-top:24px">${st} (${rows.length})</h3><table><thead><tr><th>Grant</th><th>Deadline</th><th>Notes</th><th>Decided by</th></tr></thead><tbody>${rows.map(d => {
+      const i = byId[String(d.opportunity_id)];
+      const title = i ? `<button class="t" onclick="openDetail('${esc(i.id)}')">${esc(clean(d.title || i.title))}</button>` : `<strong>${esc(clean(d.title))}</strong>`;
+      return `<tr><td>${title}</td><td data-l="Deadline">${i ? (i.status === 'forecasted' ? 'Not yet open' : fmtDate(i.close_date)) : 'Closed'}</td><td data-l="Notes">${esc(clean(d.notes)) || '<span class="sub">None</span>'}</td><td data-l="Decided by">${esc(clean(d.decided_by))}${d.office_id && S.office === 'all' ? `<span class="sub">${esc((S.profiles.find(p => p.agency_id === d.office_id) || {}).name || '')}</span>` : ''}<span class="sub">${d.decided_at ? new Date(d.decided_at).toLocaleDateString() : ''}</span></td></tr>`;
+    }).join('')}</tbody></table>`;
+  }).join('');
+}
+
+async function loadSources(i){
+  let src = { files: [], requirements: null, links: [{ name: 'Official listing on Grants.gov', url: i.url }] };
+  try { src = await (await fetch(`/api/opportunity/${i.id}/sources`)).json(); } catch(e) {}
+  if (currentId !== i.id) return;
+  const r = src.requirements;
+  const fileLink = f => `<a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.file_name)}</a>`;
+  let html = '';
+  if (r) {
+    const groups = {};
+    (r.required_documents || []).forEach((d, n) => (groups[d.category] = groups[d.category] || []).push([d, n]));
+    let saved = []; try { saved = JSON.parse(store.get(`req:${S.office}:${i.id}`) || '[]'); } catch(e) {}
+    html += `<section><h3>What this application requires</h3>
+      <p class="sub" style="margin-bottom:8px">Read from the official funding notice${r.read_at ? ' on ' + new Date(r.read_at).toLocaleDateString() : ''}. Each item shows the file and page it comes from. Check items off as your team gathers them; checkmarks are saved on this computer.</p>
+      ${r.out_of_date ? '<div class="alert warn"><strong>The notice has changed since it was read.</strong> Check the newest version before relying on this list.</div>' : ''}
+      ${Object.entries(groups).map(([cat, items]) => `<h4 style="margin:16px 0 4px">${esc(cat)}</h4><ul class="checklist">${items.map(([d, n]) => `<li><input type="checkbox" id="rq${n}" ${saved.includes(n) ? 'checked' : ''} onchange="saveReq(${n}, this.checked)"><label for="rq${n}" style="font-weight:400;margin:0"><strong>${esc(d.name)}</strong>${d.required ? '' : ' <span class="tag fair">If applicable</span>'}<small>${esc(d.details)}</small><small>Source: ${esc(d.source)}</small></label></li>`).join('')}</ul>`).join('')}
+    </section>`;
+    if ((r.important_notes || []).length) html += `<section><div class="alert warn" style="margin:0"><h3>Easy to miss</h3><ul style="margin:4px 0 0;padding-left:20px">${r.important_notes.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></section>`;
+    if ((r.deadlines || []).length) html += `<section><h3>Key dates</h3><table><tbody>${r.deadlines.map(d => `<tr><td>${esc(d.what)}<span class="sub">${esc(d.source)}</span></td><td data-l="When"><strong>${esc(d.when)}</strong></td></tr>`).join('')}</tbody></table></section>`;
+    html += `<section><h3>Who can apply</h3><p>${esc(r.eligibility?.summary || 'Not stated')}</p><p class="sub">Source: ${esc(r.eligibility?.source || '')}</p>
+      <p><strong>Matching funds:</strong> ${esc({ yes: 'Required', no: 'Not required', 'not stated': 'Not stated' }[r.cost_share?.required] || 'Not stated')}. ${esc(r.cost_share?.details || '')} <span class="sub">Source: ${esc(r.cost_share?.source || '')}</span></p>
+      ${r.submission_limits && !/^not stated/i.test(r.submission_limits) ? `<p><strong>Application limits:</strong> ${esc(r.submission_limits)}</p>` : ''}</section>`;
+    if ((r.review_criteria || []).length) html += `<section><details><summary>How reviewers will score the application (${r.review_criteria.length} criteria)</summary><table style="margin-top:8px"><thead><tr><th>Criterion</th><th>Weight</th></tr></thead><tbody>${r.review_criteria.map(c => `<tr><td>${esc(c.criterion)}<span class="sub">${esc(c.source)}</span></td><td data-l="Weight">${esc(c.weight || '-')}</td></tr>`).join('')}</tbody></table></details></section>`;
+  } else {
+    html += `<section><h3>What this application requires</h3>
+      <div class="alert" style="margin-bottom:8px">${src.files.length ? 'This grant\'s funding notice has not been read yet, so this is a <strong>general federal checklist</strong>. The notice files are linked below.' : 'Grants.gov has no notice files for this grant, so this is a <strong>general federal checklist</strong>. See the official listing for the full requirements.'}</div>
+      ${docsList(i.required_documents)}</section>`;
+  }
+  html += `<section><h3>Sources</h3><ul style="padding-left:20px;margin:0">
+    ${src.links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a></li>`).join('')}
+    ${src.files.map(f => `<li>${fileLink(f)} <span class="sub" style="display:inline">${esc(f.description && f.description !== f.file_name ? f.description + ', ' : '')}${f.pages ? f.pages + ' pages, ' : ''}${(f.file_type || '').toUpperCase()}</span></li>`).join('')}
+    ${(i.past_awardees || []).length ? `<li>Past North Carolina awards: <a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a> (Assistance Listing ${esc(i.cfda)})</li>` : ''}
+  </ul></section>`;
+  $('dReq').innerHTML = html;
+}
+function saveReq(n, on){ const k = `req:${S.office}:${currentId}`; let s = []; try { s = JSON.parse(store.get(k) || '[]'); } catch(e) {} s = on ? [...new Set([...s, n])] : s.filter(x => x !== n); store.set(k, JSON.stringify(s)); }
+
+function docsList(rd){
+  const all = rd ? Object.values(rd).filter(Array.isArray).flat() : [];
+  if (!all.length) return '<p>See the official notice for the full list of required documents.</p>';
+  let saved = []; try { saved = JSON.parse(store.get(`docs:${S.office}:${currentId}`) || '[]'); } catch(e) {}
+  return `<ul class="checklist">${all.map((d, n) => `<li><input type="checkbox" id="doc${n}" ${saved.includes(n) ? 'checked' : ''} onchange="saveDoc(${n}, this.checked)"><label for="doc${n}" style="font-weight:400;margin:0"><strong>${esc(clean(d.code ? d.code + ': ' + d.name : d.name))}</strong>${d.notes ? `<small>${esc(clean(d.notes))}</small>` : ''}</label></li>`).join('')}</ul>`;
+}
+function saveDoc(n, on){ const k = `docs:${S.office}:${currentId}`; let s = []; try { s = JSON.parse(store.get(k) || '[]'); } catch(e) {} s = on ? [...new Set([...s, n])] : s.filter(x => x !== n); store.set(k, JSON.stringify(s)); }
+
+function openDetail(id){
+  const i = S.items.find(x => x.id === id); if (!i) return;
+  currentId = id; const d = S.decisions[id]; choice = d?.status || null;
+  const [cls, lbl] = fit(i.total_score);
+  $('dTitle').textContent = clean(i.title);
+  $('dSub').textContent = `${i.agency} | ${i.number}`;
+  const risks = (i.risk_factors || []).map(clean).filter(Boolean);
+  const awardees = (i.past_awardees || []).filter(a => a.source === 'USAspending.gov');
+  const forecast = i.status === 'forecasted';
+  $('dBody').innerHTML = `
+    <dl class="facts">
+      <div><dt>Match</dt><dd><span class="tag ${cls}">${lbl}</span></dd></div>
+      <div><dt>Award up to</dt><dd>${awardCell(i)}${i.award_amount_source ? `<span class="sub" style="font-weight:400">${esc(i.award_amount_source)}</span>` : ''}</dd></div>
+      <div><dt>Deadline</dt><dd>${deadlineHtml(i, true)}</dd></div>
+      <div><dt>Estimated staff time</dt><dd>About ${i.est_completion_hours || '?'} hours<span class="sub">${i.est_completion_weeks ? `roughly ${i.est_completion_weeks} week${i.est_completion_weeks > 1 ? 's' : ''}` : ''}</span></dd></div>
+      <div><dt>Matching funds</dt><dd>${i.cost_share_required === true ? 'Required' : i.cost_share_required === false ? 'Not required' : 'See notice'}</dd></div>
+    </dl>
+
+    <section class="decide">
+      <h3>Your office's decision</h3>
+      <div class="choices">
+        <button aria-pressed="${choice === 'Pursue'}" data-v="Pursue" onclick="pick('Pursue')">Pursue<small>We will apply</small></button>
+        <button aria-pressed="${choice === 'Watch'}" data-v="Watch" onclick="pick('Watch')">Watch<small>Check back later</small></button>
+        <button aria-pressed="${choice === 'Pass'}" data-v="Pass" onclick="pick('Pass')">Pass<small>Not a fit</small></button>
       </div>
+      ${S.office === 'all' ? `<label for="dOrg">Record this decision for</label>
+      <select id="dOrg" style="margin-bottom:12px">${S.profiles.filter(p => $('otype').value === 'all' || p.category === $('otype').value).sort((a,b) => a.name.localeCompare(b.name)).map(p => `<option value="${p.agency_id}" ${p.agency_id === (d?.office_id || i.best_office_id) ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select>` : ''}
+      <label for="dNotes">Note for your team (optional)</label>
+      <textarea id="dNotes" rows="2" placeholder="Example: Water Resources will lead. Need match funds approved by March.">${esc(clean(d?.notes))}</textarea>
+      <label for="dBy" style="margin-top:8px">Your name</label>
+      <input id="dBy" type="text" autocomplete="name" value="${esc(store.get('name') || '')}" placeholder="First and last name">
+      <p style="margin:12px 0 0"><button class="btn" onclick="saveDecision()">Save decision</button></p>
+      ${d ? `<p class="sub" style="margin:8px 0 0">Last saved by ${esc(clean(d.decided_by))} on ${new Date(d.decided_at).toLocaleDateString()}</p>` : ''}
     </section>
 
-    <!-- PROMINENT FEATURE 2: Sliders for Timing, Money Amount, Relevancy & Equation Weighting -->
-    <section class="bg-white rounded border border-slate-300 p-4 shadow-2xs">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3 pb-2 border-b border-slate-200">
-        <div>
-          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center space-x-1.5">
-            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-blue-700"></i>
-            <span>Scoring Weight Sliders & Policy Equations (Timing · Money Amount · Relevancy)</span>
-          </h3>
-          <p class="text-[11px] text-slate-600 mt-0.5">Adjust the weighting sliders below to customize ranking priorities. The mathematical equation recalculates and re-ranks all opportunities in real time.</p>
-        </div>
-        
-        <!-- Equation Preset Buttons -->
-        <div class="flex flex-wrap gap-1 text-[11px] font-bold">
-          <button onclick="selectScoringModel('balanced')" id="sliderModelBtn-balanced" class="px-2.5 py-1 rounded bg-blue-700 text-white border border-blue-800">Balanced (Standard)</button>
-          <button onclick="selectScoringModel('money_priority')" id="sliderModelBtn-money_priority" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300">Max Dollars (Money)</button>
-          <button onclick="selectScoringModel('timing_priority')" id="sliderModelBtn-timing_priority" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300">Urgent Action (Timing)</button>
-          <button onclick="selectScoringModel('relevancy_priority')" id="sliderModelBtn-relevancy_priority" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300">Strategic Match (Relevance)</button>
-        </div>
-      </div>
-
-      <!-- Real-time Mathematical LaTeX Formula Box -->
-      <div class="bg-slate-50 border border-slate-300 rounded p-2.5 mb-3 flex flex-col md:flex-row md:items-center justify-between gap-2">
-        <div>
-          <span class="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest block">Active Mathematical Formulation</span>
-          <div id="katexFormulaDisplay" class="text-xs sm:text-sm font-serif text-slate-900 mt-0.5 overflow-x-auto">
-            Loading formulation...
-          </div>
-        </div>
-        <p id="formulaDescriptionText" class="text-[11px] text-slate-600 max-w-md"></p>
-      </div>
-
-      <!-- The 4 Dedicated Sliders -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-        
-        <!-- Slider 1: Strategic Relevancy -->
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
-          <div class="flex justify-between items-center mb-1">
-            <span class="font-bold text-slate-800 flex items-center space-x-1">
-              <span>🎯 Relevancy Weight</span>
-            </span>
-            <span id="lblWeightRelevancy" class="font-mono font-bold text-blue-800 text-xs">40%</span>
-          </div>
-          <input type="range" id="sliderRelevancy" min="10" max="70" value="40" oninput="onCustomSliderChange()" class="w-full accent-blue-700">
-          <p class="text-[10px] text-slate-500 mt-1">Goal fit, objectives & keywords</p>
-        </div>
-
-        <!-- Slider 2: Money Amount / Award Ceiling -->
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
-          <div class="flex justify-between items-center mb-1">
-            <span class="font-bold text-slate-800 flex items-center space-x-1">
-              <span>💰 Money Amount Weight</span>
-            </span>
-            <span id="lblWeightMoney" class="font-mono font-bold text-emerald-800 text-xs">25%</span>
-          </div>
-          <input type="range" id="sliderMoney" min="0" max="60" value="25" oninput="onCustomSliderChange()" class="w-full accent-emerald-700">
-          <p class="text-[10px] text-slate-500 mt-1">Prioritizes multi-million dollar awards</p>
-        </div>
-
-        <!-- Slider 3: Timing & Urgency -->
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
-          <div class="flex justify-between items-center mb-1">
-            <span class="font-bold text-slate-800 flex items-center space-x-1">
-              <span>⏱️ Timing & Urgency Weight</span>
-            </span>
-            <span id="lblWeightTiming" class="font-mono font-bold text-rose-800 text-xs">20%</span>
-          </div>
-          <input type="range" id="sliderTiming" min="0" max="50" value="20" oninput="onCustomSliderChange()" class="w-full accent-rose-700">
-          <p class="text-[10px] text-slate-500 mt-1">Prioritizes imminent closing dates</p>
-        </div>
-
-        <!-- Slider 4: Applicant Eligibility -->
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200">
-          <div class="flex justify-between items-center mb-1">
-            <span class="font-bold text-slate-800 flex items-center space-x-1">
-              <span>🛡️ Eligibility Weight</span>
-            </span>
-            <span id="lblWeightEligibility" class="font-mono font-bold text-slate-800 text-xs">15%</span>
-          </div>
-          <input type="range" id="sliderEligibility" min="0" max="40" value="15" oninput="onCustomSliderChange()" class="w-full accent-slate-800">
-          <p class="text-[10px] text-slate-500 mt-1">State/county qualification gate</p>
-        </div>
-      </div>
+    <section style="margin-top:28px">
+      <h3>${i.best_office_name ? `Why this fits ${esc(i.best_office_name)}` : 'Why this fits your organization'}</h3>
+      <p>${esc(clean(i.reason))}</p>
+      ${i.matched_goal_title ? `<p><strong>Strategic goal:</strong> ${esc(i.matched_goal_title)}${i.matched_goal_citation ? `<span class="sub">${esc(i.matched_goal_citation)}</span>` : ''}</p>` : ''}
+      ${isDraft(i.best_office_id || S.office) ? '<p class="sub">This organization\'s goals are a draft summary and have not yet been checked against its official strategic plan.</p>' : ''}
     </section>
 
-    <!-- 1. TAB: Search & Ranked Opportunities Table with Database Documents Column -->
-    <div id="tab-shortlist" class="space-y-4">
-      
-      <!-- Grants.gov Style Direct Search Box & Filters -->
-      <div class="bg-white rounded border border-slate-300 p-4 shadow-2xs">
-        
-        <!-- Search Input Bar -->
-        <div class="flex flex-col sm:flex-row gap-2 mb-3">
-          <div class="relative flex-1">
-            <input type="text" id="searchInput" placeholder="Search by Opportunity Title, Number, Assistance Listing (CFDA), or Funder..." oninput="applyFilters()" class="w-full pl-3 pr-3 py-2 text-xs sm:text-sm border border-slate-400 rounded focus:ring-2 focus:ring-blue-700 focus:outline-none">
-          </div>
-          <button onclick="applyFilters()" class="px-5 py-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs sm:text-sm rounded shadow-xs flex items-center justify-center space-x-1.5">
-            <i data-lucide="search" class="w-4 h-4"></i>
-            <span>Search Grants</span>
-          </button>
-          <button onclick="clearAllFilters()" class="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-xs rounded border border-slate-300">
-            Reset
-          </button>
-        </div>
-
-        <!-- Filter Controls Row -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-2.5 pt-2 border-t border-slate-200 text-xs">
-          
-          <!-- Source Feed Filter -->
-          <div>
-            <label class="block font-bold text-slate-700 mb-1 text-[11px] uppercase">Funding Source</label>
-            <select id="filterSource" onchange="applyFilters()" class="w-full p-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-blue-700">
-              <option value="all">All Sources (Federal & State)</option>
-              <option value="grants.gov">Grants.gov (Federal Notices)</option>
-              <option value="sam.gov">SAM.gov Assistance Listings</option>
-              <option value="nc-egrants">NC State eGrants Portal</option>
-              <option value="philanthropy">NC Philanthropic Trust</option>
-            </select>
-          </div>
-
-          <!-- Strategic Match Fit -->
-          <div>
-            <label class="block font-bold text-slate-700 mb-1 text-[11px] uppercase">Strategic Match</label>
-            <select id="filterConfidence" onchange="applyFilters()" class="w-full p-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-blue-700">
-              <option value="all">All Score Ranges</option>
-              <option value="High" selected>High Strategic Fit (≥70 pts)</option>
-              <option value="Medium">Medium Fit (45-69 pts)</option>
-              <option value="Low">Low Fit (&lt;45 pts)</option>
-            </select>
-          </div>
-
-          <!-- Deadline Closing Window -->
-          <div>
-            <label class="block font-bold text-slate-700 mb-1 text-[11px] uppercase">Closing Deadline</label>
-            <select id="filterDeadline" onchange="applyFilters()" class="w-full p-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-blue-700">
-              <option value="all">Any Deadline</option>
-              <option value="10">Closing in ≤ 10 Days [Radar]</option>
-              <option value="14">Closing in ≤ 14 Days [Urgent]</option>
-              <option value="30">Closing in ≤ 30 Days</option>
-              <option value="60">Closing in ≤ 60 Days</option>
-            </select>
-          </div>
-
-          <!-- Estimated Effort / Complexity -->
-          <div>
-            <label class="block font-bold text-slate-700 mb-1 text-[11px] uppercase">Est. Preparation Effort</label>
-            <select id="filterComplexity" onchange="applyFilters()" class="w-full p-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-blue-700">
-              <option value="all">All Effort Tiers</option>
-              <option value="Low Complexity">Low (&lt;40 Staff Hours)</option>
-              <option value="Moderate Complexity">Moderate (40-70 Hours)</option>
-              <option value="High Complexity">High (80+ Hours / NEPA)</option>
-            </select>
-          </div>
-
-          <!-- Staff Decision Status -->
-          <div class="col-span-2 sm:col-span-1">
-            <label class="block font-bold text-slate-700 mb-1 text-[11px] uppercase">Staff Review Decision</label>
-            <select id="filterDecision" onchange="applyFilters()" class="w-full p-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-blue-700">
-              <option value="all">All Decisions</option>
-              <option value="Unreviewed">Unreviewed</option>
-              <option value="Pursue">Pursue</option>
-              <option value="Maybe">Maybe</option>
-              <option value="Pass">Pass</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Metrics Summary -->
-        <div class="mt-3 pt-2 border-t border-slate-200 flex flex-wrap items-center justify-between text-xs text-slate-600">
-          <div>
-            Showing <strong id="filterShowingCount" class="text-slate-900 font-bold">0</strong> of <span id="filterTotalCount">0</span> notices for <strong id="filterAgencyName" class="text-blue-900">NC DEQ</strong>
-          </div>
-          <div class="flex items-center space-x-3 text-[11px]">
-            <span>Total Leverage Ceiling: <strong id="statTotalFunding" class="text-slate-900 font-bold font-mono">$1.4B</strong></span>
-            <span>·</span>
-            <span>Closing in ≤14d: <strong id="statClosingSoon" class="text-red-700 font-bold">14</strong></span>
-            <span>·</span>
-            <span>Decisions Recorded: <strong id="statDecisions" class="text-slate-900 font-bold">3</strong></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Clean Government Table with Required Documents Column -->
-      <div class="bg-white rounded border border-slate-300 shadow-2xs overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse text-xs">
-            <thead>
-              <tr class="bg-slate-100 text-slate-800 font-bold text-[11px] border-b border-slate-300 uppercase tracking-wider">
-                <th class="py-2.5 px-3 text-center w-12">Rank</th>
-                <th class="py-2.5 px-3 text-center w-20">Score</th>
-                <th class="py-2.5 px-4 w-72">Opportunity Title & Source</th>
-                <th class="py-2.5 px-3">Matched Strategic Goal</th>
-                <th class="py-2.5 px-3 text-right">Ceiling</th>
-                <th class="py-2.5 px-3 text-center">Deadline</th>
-                <!-- DATABASE REQUIRED DOCUMENTS COLUMN -->
-                <th class="py-2.5 px-3 w-48">Documents Needed to Submit</th>
-                <th class="py-2.5 px-3 text-center w-28">Decision</th>
-                <th class="py-2.5 px-3 text-center w-20">Action</th>
-              </tr>
-            </thead>
-            <tbody id="oppsTableBody" class="divide-y divide-slate-200">
-              <!-- Populated via JavaScript -->
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Empty State -->
-        <div id="noResultsState" class="hidden p-8 text-center bg-slate-50">
-          <h3 class="text-sm font-bold text-slate-700">No opportunities match the selected criteria</h3>
-          <p class="text-xs text-slate-500 mt-1">Try broadening your search terms or selecting 'All Score Ranges'.</p>
-          <button onclick="clearAllFilters()" class="mt-2 text-xs font-bold text-blue-700 underline">Reset All Filters</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. TAB: Resources & Standard Forms Library -->
-    <div id="tab-resources" class="hidden space-y-6">
-      
-      <!-- Resources Top Banner -->
-      <div class="bg-white border-l-4 border-amber-600 rounded border border-slate-300 p-4 shadow-2xs">
-        <div class="flex items-start space-x-3">
-          <div class="w-8 h-8 rounded bg-amber-100 text-amber-800 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">
-            <i data-lucide="book-open" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <h2 class="text-sm font-bold text-slate-900 font-official-serif">North Carolina Grants Administration Resources & Forms Library</h2>
-            <p class="text-xs text-slate-600 mt-0.5">
-              Official standard federal forms, uniform guidance compliance handbooks, state clearinghouse filing protocols, and agency directories for North Carolina grant authors and fiscal managers.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section 1: Standard Federal & State Forms -->
-      <div class="bg-white rounded border border-slate-300 p-5 shadow-2xs">
-        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-          <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
-            <i data-lucide="file-text" class="w-4 h-4 text-blue-700"></i>
-            <span>1. Standard Application Forms Library (SF-424 Family)</span>
-          </h3>
-          <span class="text-[11px] text-slate-500 font-mono">OMB Standard Repository</span>
-        </div>
-        <p class="text-xs text-slate-600 mb-4">Click any form code to view the official field specifications, when mandatory, and key required attachments.</p>
-
-        <div id="resourcesFormsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5">
-          <!-- Populated dynamically via JS -->
-        </div>
-      </div>
-
-      <!-- Section 2: Federal & State Registration Systems -->
-      <div class="bg-white rounded border border-slate-300 p-5 shadow-2xs">
-        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-          <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
-            <i data-lucide="key" class="w-4 h-4 text-emerald-700"></i>
-            <span>2. Mandatory Registration Systems & Entity Verification</span>
-          </h3>
-          <span class="text-[11px] text-slate-500 font-mono">Prerequisites</span>
-        </div>
-        
-        <div id="resourcesSystemsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <!-- Populated dynamically via JS -->
-        </div>
-      </div>
-
-      <!-- Section 3: Uniform Guidance (2 CFR 200) Compliance Reference -->
-      <div class="bg-white rounded border border-slate-300 p-5 shadow-2xs">
-        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-          <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
-            <i data-lucide="scale" class="w-4 h-4 text-amber-700"></i>
-            <span>3. Compliance & Cost Principles (Uniform Guidance 2 CFR 200)</span>
-          </h3>
-          <span class="text-[11px] text-slate-500 font-mono">Federal Regulations</span>
-        </div>
-
-        <div id="resourcesComplianceGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <!-- Populated dynamically via JS -->
-        </div>
-      </div>
-
-      <!-- Section 4: State Clearinghouse & Assistance Directory -->
-      <div class="bg-white rounded border border-slate-300 p-5 shadow-2xs">
-        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-          <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center space-x-1.5">
-            <i data-lucide="phone-call" class="w-4 h-4 text-slate-700"></i>
-            <span>4. State Clearinghouse & Grant Assistance Directory</span>
-          </h3>
-          <span class="text-[11px] text-slate-500 font-mono">Raleigh, NC</span>
-        </div>
-
-        <div id="resourcesContactsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-          <!-- Populated dynamically via JS -->
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. TAB: Previous Awardees Database -->
-    <div id="tab-awardees" class="hidden space-y-4">
-      <div class="bg-white rounded border border-slate-300 p-4 shadow-2xs">
-        <div class="flex items-center justify-between mb-2">
-          <h2 class="text-sm font-bold text-slate-900 font-official-serif">Historical Awardees & Previous Funding Database</h2>
-          <span class="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded border border-slate-300">USASpending.gov Source</span>
-        </div>
-        <p class="text-xs text-slate-600 mb-4">Historical record of North Carolina state departments, county governments, and university recipients who successfully competed for these statutory programs.</p>
-        <div id="awardeesContainer" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. TAB: Deadlines & Forecasted Watchlist -->
-    <div id="tab-radar" class="hidden space-y-4">
-      <div class="bg-white rounded border border-red-300 p-4 shadow-2xs">
-        <div class="flex items-center space-x-2 mb-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-red-700"></span>
-          <h2 class="text-sm font-bold text-red-950 font-official-serif">Deadline Radar: Closing in ≤ 10 Days</h2>
-        </div>
-        <p class="text-xs text-slate-600 mb-3">Notices requiring immediate division lead appointment or application submission sign-off.</p>
-        <div id="radarItemsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-
-      <div class="bg-white rounded border border-slate-300 p-4 shadow-2xs">
-        <div class="flex items-center space-x-2 mb-2">
-          <i data-lucide="eye" class="w-4 h-4 text-blue-700"></i>
-          <h2 class="text-sm font-bold text-slate-900 font-official-serif">Forecasted Grants Watchlist</h2>
-        </div>
-        <p class="text-xs text-slate-600 mb-3">Advance federal pipeline notices allowing advance team coordination before release.</p>
-        <div id="forecastedItemsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-    </div>
-
-    <!-- 5. TAB: Strategic Goal Funding Heatmap -->
-    <div id="tab-heatmap" class="hidden space-y-4">
-      <div class="bg-white rounded border border-slate-300 p-5 shadow-2xs">
-        <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-          <div>
-            <h2 class="text-sm font-bold text-slate-900 font-official-serif">Strategic Goal Funding Distribution</h2>
-            <p class="text-xs text-slate-500">Aggregate open federal dollars mapped to each published agency strategic goal.</p>
-          </div>
-          <span class="text-xs font-semibold bg-blue-50 text-blue-800 border border-blue-200 px-2 py-0.5 rounded">Leadership Alignment</span>
-        </div>
-        <div id="goalsHeatmapContainer" class="space-y-3.5">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. TAB: Scoring Rubric & Policy Model -->
-    <div id="tab-rubric" class="hidden space-y-4">
-      <div class="bg-white rounded border border-slate-300 p-5 shadow-2xs">
-        <h2 class="text-sm font-bold text-slate-900 font-official-serif mb-2">Official Scoring Weight Rubric & Formulation Overview</h2>
-        <p class="text-xs text-slate-600 mb-4">State coordinators can adjust weights using the dedicated sliders above the search table. The active formula is shown below:</p>
-        <div class="bg-slate-50 border border-slate-300 p-4 rounded mb-4">
-          <div id="katexFormulaDisplayRubric" class="text-sm font-serif text-slate-900 mt-1"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. TAB: Evaluation & Audit Benchmark (§6) -->
-    <div id="tab-eval" class="hidden space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
-        <div class="bg-white rounded border border-slate-300 p-3.5 shadow-2xs">
-          <p class="text-[11px] text-slate-500 font-bold uppercase">Precision@10 (Matchmaker)</p>
-          <p class="text-2xl font-black text-emerald-700 mt-0.5" id="evalPrecMatchmaker">90.0%</p>
-          <p class="text-[11px] text-slate-500">9 of top 10 relevant to state plan</p>
-        </div>
-        <div class="bg-white rounded border border-slate-300 p-3.5 shadow-2xs">
-          <p class="text-[11px] text-slate-500 font-bold uppercase">Precision@10 (Baseline)</p>
-          <p class="text-2xl font-black text-slate-700 mt-0.5" id="evalPrecBaseline">50.0%</p>
-          <p class="text-[11px] text-slate-500">Simple keyword query</p>
-        </div>
-        <div class="bg-white rounded border border-slate-300 p-3.5 shadow-2xs">
-          <p class="text-[11px] text-slate-500 font-bold uppercase">Coverage Advantage</p>
-          <p class="text-2xl font-black text-blue-700 mt-0.5" id="evalCoverageCount">+6 Grants</p>
-          <p class="text-[11px] text-slate-500">Found by AI, missed by keywords</p>
-        </div>
-        <div class="bg-white rounded border border-slate-300 p-3.5 shadow-2xs">
-          <p class="text-[11px] text-slate-500 font-bold uppercase">Blind Labeler Agreement</p>
-          <p class="text-2xl font-black text-indigo-700 mt-0.5">92.0%</p>
-          <p class="text-[11px] text-slate-500">2 independent evaluators</p>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- MODAL: WEEKLY ACTION ROADMAP & EMAIL BRIEFING PREVIEW -->
-  <div id="weeklyDigestModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-white rounded shadow-2xl max-w-3xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-slate-400">
-      
-      <!-- Modal Header -->
-      <div class="p-4 gov-header-bg text-white flex items-start justify-between border-b border-slate-700">
-        <div>
-          <div class="flex items-center space-x-2">
-            <span class="bg-amber-500 text-slate-950 text-[10px] font-bold px-1.5 py-0.2 rounded font-mono uppercase">Official Digest</span>
-            <span class="text-xs text-slate-300">Automated Weekly Delivery</span>
-          </div>
-          <h3 class="text-base font-bold text-white font-official-serif mt-1" id="digestModalTitle">Weekly Grants Action Steps & Recommendations Briefing</h3>
-          <p class="text-xs text-slate-300" id="digestModalSubhead">Tailored to NC DEQ · Scheduled Every Monday at 7:00 AM ET</p>
-        </div>
-        <button onclick="closeWeeklyDigestModal()" class="text-slate-300 hover:text-white p-1 rounded hover:bg-slate-800">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="p-5 overflow-y-auto space-y-4 flex-1 text-xs text-slate-800 bg-slate-50">
-        
-        <!-- Subscription Confirmation Banner -->
-        <div class="bg-amber-50 border border-amber-300 rounded p-3 text-xs text-amber-950 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <div>
-            <strong>📬 Subscribing Email:</strong> <span id="digestModalRecipient" class="font-mono text-blue-900 font-bold">staff.member@nc.gov</span>
-            <div class="text-[11px] text-amber-800 mt-0.5">Automated delivery every Monday morning with actionable tasks for the week.</div>
-          </div>
-          <button onclick="confirmSubscriptionFromModal()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-bold text-xs rounded whitespace-nowrap shadow-xs">
-            Confirm Weekly Subscription
-          </button>
-        </div>
-
-        <!-- Section 1: Immediate Actions Due This Week -->
-        <div class="bg-white border border-slate-300 rounded p-4">
-          <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide mb-2 flex items-center space-x-1.5">
-            <i data-lucide="alert-circle" class="w-4 h-4 text-rose-700"></i>
-            <span>Part 1: Immediate Actions You Should Take This Week</span>
-          </h4>
-          <div id="digestModalActionsList" class="space-y-2.5">
-            <!-- Populated via JS -->
-          </div>
-        </div>
-
-        <!-- Section 2: Top 3 Recommendations -->
-        <div class="bg-white border border-slate-300 rounded p-4">
-          <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wide mb-2 flex items-center space-x-1.5">
-            <i data-lucide="star" class="w-4 h-4 text-amber-600"></i>
-            <span>Part 2: Top 3 Strategic Recommendations for This Week</span>
-          </h4>
-          <div id="digestModalRecsList" class="space-y-2.5">
-            <!-- Populated via JS -->
-          </div>
-        </div>
-
-        <!-- Raw Text Email View (Collapsible) -->
-        <div class="bg-white border border-slate-300 rounded p-3">
-          <div class="flex justify-between items-center mb-1.5">
-            <span class="font-bold text-slate-800 text-[11px] uppercase">Formatted Email Memorandum Text</span>
-            <button onclick="copyDigestText()" class="text-xs text-blue-700 hover:underline font-bold">Copy Full Memo Text</button>
-          </div>
-          <textarea id="digestModalRawMemo" rows="8" readonly class="w-full text-xs font-mono p-2 bg-slate-50 border border-slate-300 rounded"></textarea>
-        </div>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="p-3 bg-white border-t border-slate-300 flex items-center justify-between text-xs">
-        <span class="text-slate-500">Sent by State Grants Strategic Alignment Clearinghouse</span>
-        <button onclick="closeWeeklyDigestModal()" class="px-4 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded">
-          Close Preview
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- OFFICIAL DOCKET DETAIL MODAL (Notice Review Packet with Documents Checklist) -->
-  <div id="detailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3 sm:p-5">
-    <div class="bg-white rounded shadow-2xl max-w-4xl w-full max-h-[92vh] flex flex-col overflow-hidden border border-slate-400">
-      
-      <!-- Docket Header -->
-      <div class="p-4 gov-header-bg text-white flex items-start justify-between border-b border-slate-700">
-        <div class="space-y-1 pr-4">
-          <div class="flex flex-wrap items-center gap-2">
-            <span id="modalConfidenceBadge" class="px-2 py-0.5 text-xs font-bold rounded bg-emerald-700 text-white">High Strategic Match (90/100)</span>
-            <span id="modalSourceBadge" class="px-2 py-0.5 text-xs font-mono uppercase bg-slate-900 text-slate-200 border border-slate-600">Grants.gov (Federal)</span>
-            <span id="modalCfdaBadge" class="text-xs font-mono text-amber-300 font-semibold">CFDA: 66.039</span>
-          </div>
-          <h2 id="modalTitle" class="text-base sm:text-lg font-bold text-white font-official-serif leading-snug">Grant Opportunity Title</h2>
-          <p id="modalAgency" class="text-xs text-slate-300 font-medium">Environmental Protection Agency</p>
-        </div>
-        <button onclick="closeDetailModal()" class="text-slate-300 hover:text-white p-1 rounded hover:bg-slate-800">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-
-      <!-- Docket Tabs Bar -->
-      <div class="flex items-center bg-slate-100 border-b border-slate-300 px-4 overflow-x-auto text-xs font-bold text-slate-700">
-        <button onclick="setModalTab('overview')" id="modalTabBtn-overview" class="py-2 px-3 border-b-2 border-blue-700 text-blue-900 whitespace-nowrap">Notice Summary</button>
-        <button onclick="setModalTab('explain')" id="modalTabBtn-explain" class="py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">Strategic Fit</button>
-        <button onclick="setModalTab('documents')" id="modalTabBtn-documents" class="py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap font-bold text-amber-900">📋 Documents Needed to Submit</button>
-        <button onclick="setModalTab('awardees')" id="modalTabBtn-awardees" class="py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">Previous Awardees</button>
-        <button onclick="setModalTab('draft')" id="modalTabBtn-draft" class="py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">Sample Proposal Draft</button>
-        <button onclick="setModalTab('action')" id="modalTabBtn-action" class="py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">Action Steps & Memo</button>
-        <button onclick="setModalTab('decision')" id="modalTabBtn-decision" class="py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap">Record Staff Decision</button>
-      </div>
-
-      <!-- Docket Body -->
-      <div class="p-5 overflow-y-auto space-y-4 flex-1 text-xs text-slate-700 bg-slate-50">
-        
-        <!-- PANE 1: Overview -->
-        <div id="modalPane-overview" class="space-y-3.5">
-          <div id="modalFeasibilityAlert" class="hidden bg-rose-50 border border-rose-300 rounded p-3 text-xs text-rose-800 flex items-start space-x-2">
-            <i data-lucide="alert-triangle" class="w-4 h-4 text-rose-600 flex-shrink-0 mt-0.5"></i>
-            <span id="modalFeasibilityAlertText"></span>
-          </div>
-
-          <div class="bg-white border border-slate-300 rounded p-3.5">
-            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-1">Executive Summary</h4>
-            <p id="modalAiSummary" class="text-xs text-slate-700 leading-relaxed"></p>
-          </div>
-
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            <div class="bg-white p-2.5 rounded border border-slate-300">
-              <span class="text-slate-500 block text-[10px] uppercase font-bold">Award Ceiling</span>
-              <strong id="modalCeiling" class="text-slate-900 text-sm font-black">$5,000,000</strong>
-            </div>
-            <div class="bg-white p-2.5 rounded border border-slate-300">
-              <span class="text-slate-500 block text-[10px] uppercase font-bold">Closing Deadline</span>
-              <strong id="modalDeadline" class="text-slate-900 text-xs font-bold">Dec 15, 2026</strong>
-            </div>
-            <div class="bg-white p-2.5 rounded border border-slate-300">
-              <span class="text-slate-500 block text-[10px] uppercase font-bold">Est. Effort</span>
-              <strong id="modalEffort" class="text-slate-900 text-xs font-bold">55 Hours (~4 wks)</strong>
-            </div>
-            <div class="bg-white p-2.5 rounded border border-slate-300">
-              <span class="text-slate-500 block text-[10px] uppercase font-bold">Cost-Share Match</span>
-              <strong id="modalCostShare" class="text-slate-900 text-xs font-bold">20% Match Required</strong>
-            </div>
-          </div>
-        </div>
-
-        <!-- PANE: Documents Needed to Submit (Feature 3) -->
-        <div id="modalPane-documents" class="hidden space-y-3">
-          <div class="bg-white border border-slate-300 rounded p-4">
-            <div class="flex justify-between items-center mb-2 pb-2 border-b border-slate-200">
-              <div>
-                <h4 class="font-bold text-slate-900 uppercase text-xs">Application Submission Checklist & Things Needed</h4>
-                <p class="text-[11px] text-slate-500">Assemble the following standard federal and state forms prior to portal submission:</p>
-              </div>
-              <button onclick="downloadDocumentChecklist()" class="px-2.5 py-1 bg-blue-700 hover:bg-blue-800 text-white rounded font-bold text-xs">
-                Export Checklist (.md)
-              </button>
-            </div>
-            <div id="modalDocChecklistContainer" class="space-y-3 pt-1">
-              <!-- Populated dynamically via JS -->
-            </div>
-          </div>
-        </div>
-
-        <!-- PANE: Explainability -->
-        <div id="modalPane-explain" class="hidden space-y-3.5">
-          <div class="bg-white border border-slate-300 rounded p-4">
-            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Strategic Plan Alignment Rationale</h4>
-            <p id="modalReason" class="text-xs text-slate-700 leading-relaxed"></p>
-            <div class="mt-2.5 pt-2 border-t border-slate-200 flex justify-between text-xs font-medium">
-              <span>Goal: <strong id="modalGoalTitle"></strong></span>
-              <span id="modalGoalCitation" class="font-mono text-blue-800"></span>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div class="bg-white border border-slate-300 rounded p-3">
-              <h5 class="font-bold text-emerald-800 uppercase text-[11px] mb-2">Positive Scoring Drivers</h5>
-              <ul id="modalPositiveDrivers" class="space-y-1 list-disc list-inside text-xs text-slate-700"></ul>
-            </div>
-            <div class="bg-white border border-slate-300 rounded p-3">
-              <h5 class="font-bold text-amber-800 uppercase text-[11px] mb-2">Effort & Risk Factors</h5>
-              <ul id="modalRiskFactors" class="space-y-1 list-disc list-inside text-xs text-slate-700"></ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- PANE: Past Awardees -->
-        <div id="modalPane-awardees" class="hidden space-y-3">
-          <div class="bg-white border border-slate-300 rounded p-3.5">
-            <div class="flex justify-between items-center mb-2">
-              <h4 class="font-bold text-slate-900 uppercase text-xs">Historical Awardees for this Program</h4>
-              <span id="modalAwardeeWinRate" class="text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-300"></span>
-            </div>
-            <div id="modalAwardeesList" class="space-y-2 mt-2"></div>
-          </div>
-        </div>
-
-        <!-- PANE: Proposal Draft -->
-        <div id="modalPane-draft" class="hidden space-y-3">
-          <div class="bg-white border border-slate-300 rounded p-3.5">
-            <div class="flex justify-between items-center mb-2 pb-1 border-b border-slate-200">
-              <h4 class="font-bold text-slate-900 uppercase text-xs">AI-Generated Sample Proposal Draft</h4>
-              <div class="flex space-x-2">
-                <button onclick="copySampleDraft()" class="px-2 py-1 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-semibold border border-slate-300 text-xs">Copy Text</button>
-                <button onclick="downloadSampleDraft()" class="px-2 py-1 bg-blue-700 hover:bg-blue-800 text-white rounded font-semibold text-xs">Download Markdown</button>
-              </div>
-            </div>
-            <textarea id="modalDraftContent" rows="12" class="w-full text-xs font-mono p-2.5 bg-slate-50 border border-slate-300 rounded"></textarea>
-          </div>
-        </div>
-
-        <!-- PANE: Action Steps & Email Memo -->
-        <div id="modalPane-action" class="hidden space-y-3">
-          <div class="bg-white border border-slate-300 rounded p-3.5">
-            <h4 class="font-bold text-slate-900 uppercase text-xs mb-2">5-Step Milestone Roadmap</h4>
-            <div id="modalActionStepsList" class="space-y-2"></div>
-          </div>
-          <div class="bg-white border border-slate-300 rounded p-3.5">
-            <div class="flex justify-between items-center mb-1.5">
-              <h4 class="font-bold text-slate-900 uppercase text-xs">Leadership Alert Memo</h4>
-              <div class="flex space-x-2">
-                <button onclick="copyExecutiveEmail()" class="text-xs text-blue-700 font-bold underline">Copy Memo</button>
-                <a id="modalMailtoLink" href="#" class="text-xs text-blue-700 font-bold underline">Open in Mail</a>
-              </div>
-            </div>
-            <textarea id="modalExecutiveEmailText" rows="8" readonly class="w-full text-xs font-mono p-2.5 bg-slate-50 border border-slate-300 rounded"></textarea>
-          </div>
-        </div>
-
-        <!-- PANE: Record Decision -->
-        <div id="modalPane-decision" class="hidden space-y-3">
-          <div class="bg-white border border-slate-300 rounded p-3.5">
-            <h4 class="font-bold text-slate-900 uppercase text-xs mb-2">Official Agency Decision Entry</h4>
-            <div class="grid grid-cols-3 gap-2 mb-3">
-              <button type="button" onclick="selectModalDecision('Pursue')" id="modalBtnPursue" class="py-2 text-xs font-bold border border-slate-300 rounded bg-white hover:bg-emerald-50">🚀 Pursue</button>
-              <button type="button" onclick="selectModalDecision('Maybe')" id="modalBtnMaybe" class="py-2 text-xs font-bold border border-slate-300 rounded bg-white hover:bg-amber-50">🤔 Maybe</button>
-              <button type="button" onclick="selectModalDecision('Pass')" id="modalBtnPass" class="py-2 text-xs font-bold border border-slate-300 rounded bg-white hover:bg-rose-50">❌ Pass</button>
-            </div>
-            <div class="space-y-2">
-              <input type="text" id="modalReviewerName" placeholder="Reviewer Name / Agency Title" class="w-full text-xs p-2 border border-slate-300 rounded">
-              <textarea id="modalDecisionNotes" rows="3" placeholder="Notes for leadership memo..." class="w-full text-xs p-2 border border-slate-300 rounded"></textarea>
-              <button onclick="saveDecisionFromModal()" class="w-full py-2 bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs rounded">Save Decision to Agency Record</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Docket Footer -->
-      <div class="p-3 bg-white border-t border-slate-300 flex items-center justify-between text-xs">
-        <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:underline font-bold flex items-center space-x-1">
-          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-          <span>View Notice on Official Portal</span>
-        </a>
-        <button onclick="closeDetailModal()" class="px-4 py-1.5 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded">
-          Close Docket
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- NC GRANTS VIRTUAL SPECIALIST (Help Assistant) -->
-  <div id="chatbotDrawer" class="fixed bottom-4 right-4 z-50 flex flex-col items-end">
-    
-    <!-- Chat Window -->
-    <div id="chatWindow" class="hidden mb-2 w-[360px] sm:w-[400px] h-[480px] bg-white rounded border border-slate-400 shadow-2xl flex flex-col overflow-hidden">
-      <!-- Assistant Header -->
-      <div class="gov-header-bg text-white p-3 flex items-center justify-between">
-        <div class="flex items-center space-x-2">
-          <div class="w-6 h-6 rounded bg-amber-600 text-white font-bold flex items-center justify-center text-xs">NC</div>
-          <div>
-            <h4 class="text-xs font-bold">NC Grants Virtual Specialist</h4>
-            <p class="text-[10px] text-slate-300">Intergovernmental Grants Clearinghouse</p>
-          </div>
-        </div>
-        <button onclick="toggleChatbot()" class="text-slate-300 hover:text-white"><i data-lucide="minus" class="w-4 h-4"></i></button>
-      </div>
-
-      <!-- Quick Prompt Suggestions -->
-      <div class="bg-slate-100 p-2 border-b border-slate-300 flex space-x-1 overflow-x-auto text-[11px]">
-        <button onclick="sendQuickPrompt('Who was awarded previous awards for this grant?')" class="whitespace-nowrap px-2 py-0.5 bg-white border border-slate-300 rounded text-slate-700 hover:text-blue-700">🏆 Past Winners</button>
-        <button onclick="sendQuickPrompt('What standard documents and forms are required to submit?')" class="whitespace-nowrap px-2 py-0.5 bg-white border border-slate-300 rounded text-slate-700 hover:text-blue-700">📋 Forms Needed</button>
-        <button onclick="sendQuickPrompt('Show me grants closing in the next 14 days')" class="whitespace-nowrap px-2 py-0.5 bg-white border border-slate-300 rounded text-slate-700 hover:text-blue-700">🚨 Closing Soon</button>
-      </div>
-
-      <!-- Messages -->
-      <div id="chatMessages" class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs text-slate-800 bg-slate-50">
-        <div class="bg-white border border-slate-200 p-2.5 rounded shadow-2xs">
-          <p class="font-bold text-blue-900 mb-0.5">North Carolina Grants Clearinghouse Help Desk</p>
-          <p class="text-slate-600">Enter a query regarding federal notices, standard application forms, past awardee lists, or draft proposal sections.</p>
-        </div>
-      </div>
-
-      <!-- Input -->
-      <div class="p-2 bg-white border-t border-slate-300 flex items-center space-x-1.5">
-        <input type="text" id="chatInput" placeholder="Ask a question regarding grants, forms..." onkeydown="if(event.key==='Enter') sendChatMessage()" class="flex-1 text-xs px-2.5 py-1.5 border border-slate-300 rounded focus:ring-1 focus:ring-blue-700">
-        <button onclick="sendChatMessage()" class="px-3 py-1.5 bg-blue-700 text-white rounded font-bold text-xs">Send</button>
-      </div>
-    </div>
-
-    <!-- Toggle Button -->
-    <button onclick="toggleChatbot()" class="flex items-center space-x-2 px-3.5 py-2 gov-header-bg text-white rounded shadow-md border border-slate-500 hover:bg-slate-900 text-xs font-bold">
-      <i data-lucide="help-circle" class="w-4 h-4 text-amber-400"></i>
-      <span>Grants Specialist Help</span>
-    </button>
-  </div>
-
-  <!-- Standard Government Footer -->
-  <footer class="bg-slate-900 text-slate-300 text-xs py-6 border-t-4 border-amber-600 mt-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-      <div>
-        <p class="font-bold text-white font-official-serif">State of North Carolina · Office of State Budget and Management (OSBM)</p>
-        <p class="text-[11px] text-slate-400 mt-0.5">Federal Funds Matchmaker & Intergovernmental Strategic Clearinghouse</p>
-      </div>
-      <div class="flex flex-wrap items-center gap-4 text-[11px] text-slate-400">
-        <a href="https://www.grants.gov" target="_blank" class="hover:underline">Grants.gov Portal</a>
-        <span>·</span>
-        <a href="https://sam.gov" target="_blank" class="hover:underline">SAM.gov Registry</a>
-        <span>·</span>
-        <a href="https://www.osbm.nc.gov" target="_blank" class="hover:underline">NC OSBM Official</a>
-        <span>·</span>
-        <a href="javascript:void(0)" onclick="setActiveTab('resources')" class="hover:underline text-amber-400 font-semibold">Standard Forms & Resources</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-5 left-5 bg-slate-900 text-white px-4 py-2.5 rounded shadow-xl z-50 text-xs flex items-center space-x-2 transform translate-y-20 opacity-0 transition-all duration-300 border border-slate-700">
-    <i data-lucide="check" class="w-4 h-4 text-emerald-400" id="toastIcon"></i>
-    <span id="toastMsg">Operation successful</span>
-  </div>
-
-  <!-- Application Logic Scripts -->
-  <script>
-    // State
-    let currentAgency = "deq";
-    let allOpportunities = [];
-    let currentDecisions = {};
-    let currentAgencyProfile = {};
-    let officialResources = {};
-    let selectedModalOpp = null;
-    let selectedModalStatus = "Pursue";
-    let activeTab = "shortlist";
-    let activeScoringModel = "balanced";
-
-    // 4 Key Sliders State (Timing, Money Amount, Relevancy, Eligibility)
-    let sliderWeights = {
-      relevancy: 0.40,
-      money_amount: 0.25,
-      timing: 0.20,
-      eligibility: 0.15
-    };
-
-    const FORMULA_KATEX = {
-      balanced: "S = 0.40 S_{relevancy} + 0.25 S_{money} + 0.20 S_{timing} + 0.15 S_{eligibility}",
-      money_priority: "S = 0.50 S_{money} + 0.30 S_{relevancy} + 0.10 S_{timing} + 0.10 S_{eligibility}",
-      timing_priority: "S = 0.50 S_{timing} + 0.25 S_{relevancy} + 0.15 S_{money} + 0.10 S_{eligibility}",
-      relevancy_priority: "S = 0.60 S_{relevancy} + 0.15 S_{eligibility} + 0.15 S_{money} + 0.10 S_{timing}",
-      custom: "S = w_{rel} S_{rel} + w_{money} S_{money} + w_{time} S_{time} + w_{elig} S_{elig}"
-    };
-
-    const FORMULA_DESC = {
-      balanced: "Balanced Policy: 40% Relevancy, 25% Money Amount (Funding Ceiling), 20% Timing Lead-Time, 15% Eligibility.",
-      money_priority: "Max Dollars Policy: 50% Money Amount, heavily prioritizing large multi-million dollar capital investments.",
-      timing_priority: "Urgent Action Policy: 50% Timing Urgency, elevating opportunities with nearest deadlines.",
-      relevancy_priority: "Strategic Relevancy Policy: 60% Relevancy, ensuring strict alignment with published agency strategic goals.",
-      custom: "Custom Slider Formula: User-adjusted weights reflecting leadership directives."
-    };
-
-    document.addEventListener("DOMContentLoaded", async () => {
-      lucide.createIcons();
-      updateFormulaDisplay("balanced");
-      await loadAgencyData(currentAgency);
-      await loadOfficialResources();
-      await loadEvaluationBenchmark();
-    });
-
-    function toggleGovInfo() {
-      document.getElementById("govInfoAccordion").classList.toggle("hidden");
-    }
-
-    function updateFormulaDisplay(model) {
-      const container = document.getElementById("katexFormulaDisplay");
-      const containerRubric = document.getElementById("katexFormulaDisplayRubric");
-      const latex = FORMULA_KATEX[model] || FORMULA_KATEX.balanced;
-      if (window.katex) {
-        if (container) katex.render(latex, container, { throwOnError: false });
-        if (containerRubric) katex.render(latex, containerRubric, { throwOnError: false });
-      } else {
-        if (container) container.textContent = latex;
-        if (containerRubric) containerRubric.textContent = latex;
-      }
-      const descEl = document.getElementById("formulaDescriptionText");
-      if (descEl) descEl.textContent = FORMULA_DESC[model] || "";
-    }
-
-    async function switchAgency(agencyId) {
-      currentAgency = agencyId;
-      document.getElementById("agencySelect").value = agencyId;
-      await loadAgencyData(agencyId);
-    }
-
-    async function loadAgencyData(agencyId) {
-      try {
-        const profRes = await fetch(`/api/profiles/${agencyId}`);
-        if (profRes.ok) {
-          currentAgencyProfile = await profRes.json();
-          document.getElementById("agencyPlanCite").textContent = currentAgencyProfile.source_citation || currentAgencyProfile.name;
-          document.getElementById("filterAgencyName").textContent = currentAgencyProfile.short_name;
-          const cat = (currentAgencyProfile.category || "state").toUpperCase();
-          document.getElementById("activeAgencySubhead").textContent = `${currentAgencyProfile.short_name} (${cat})`;
-          const subBannerName = document.getElementById("subBannerAgencyName");
-          if (subBannerName) subBannerName.textContent = currentAgencyProfile.short_name;
-        }
-
-        const decRes = await fetch(`/api/decisions/${agencyId}`);
-        if (decRes.ok) {
-          const decData = await decRes.json();
-          currentDecisions = {};
-          (decData.decisions || []).forEach(d => {
-            currentDecisions[String(d.opportunity_id)] = d;
-          });
-        }
-
-        const oppsRes = await fetch(`/api/scored/${agencyId}`);
-        if (oppsRes.ok) {
-          allOpportunities = await oppsRes.json();
-        }
-
-        updateTopMetrics();
-        renderGoalsHeatmap();
-        renderRadarAndForecasted();
-        renderAwardeesDatabase();
-        applyFilters();
-
-      } catch (err) {
-        console.error("Error loading agency data:", err);
-      }
-    }
-
-    async function loadOfficialResources() {
-      try {
-        const res = await fetch("/api/resources");
-        if (!res.ok) return;
-        officialResources = await res.json();
-        renderResourcesTab(officialResources);
-      } catch (e) {
-        console.error("Error loading resources:", e);
-      }
-    }
-
-    function renderResourcesTab(resData) {
-      // 1. Standard Forms Grid
-      const formsContainer = document.getElementById("resourcesFormsGrid");
-      if (formsContainer && resData.standard_forms) {
-        formsContainer.innerHTML = "";
-        resData.standard_forms.forEach(form => {
-          const div = document.createElement("div");
-          div.className = "bg-slate-50 border border-slate-300 rounded p-3 flex flex-col justify-between";
-          div.innerHTML = `
-            <div>
-              <div class="flex justify-between items-start mb-1">
-                <span class="font-mono text-xs font-bold text-blue-900 bg-blue-100 px-1.5 py-0.5 rounded border border-blue-300">${form.code}</span>
-                <span class="text-[10px] text-slate-500 font-mono">OMB #${form.omb_number}</span>
-              </div>
-              <h4 class="font-bold text-slate-900 text-xs mt-1 leading-snug">${escapeHtml(form.name)}</h4>
-              <p class="text-[11px] text-slate-600 mt-1 line-clamp-2">${escapeHtml(form.description)}</p>
-              <div class="mt-2 text-[10px] text-slate-500 font-medium"><strong>Mandatory:</strong> ${escapeHtml(form.when_required)}</div>
-            </div>
-            <div class="mt-3 pt-2 border-t border-slate-200 flex justify-between items-center text-xs">
-              <span class="text-[10px] text-slate-500">${form.category}</span>
-              <a href="${form.download_url}" target="_blank" class="text-blue-700 hover:underline font-bold text-xs flex items-center space-x-1">
-                <span>View Form Guide</span>
-                <i data-lucide="external-link" class="w-3 h-3"></i>
-              </a>
-            </div>
-          `;
-          formsContainer.appendChild(div);
-        });
-      }
-
-      // 2. Registration Systems Grid
-      const systemsContainer = document.getElementById("resourcesSystemsGrid");
-      if (systemsContainer && resData.registration_systems) {
-        systemsContainer.innerHTML = "";
-        resData.registration_systems.forEach(sys => {
-          const div = document.createElement("div");
-          div.className = "bg-slate-50 border border-slate-300 rounded p-3 flex flex-col justify-between";
-          let stepsHtml = (sys.guide_steps || []).map(s => `<li class="text-[11px] text-slate-600">${escapeHtml(s)}</li>`).join("");
-          div.innerHTML = `
-            <div>
-              <div class="flex justify-between items-center mb-1">
-                <span class="text-xs font-bold text-slate-900">${escapeHtml(sys.title)}</span>
-                <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.2 rounded">Active Registry</span>
-              </div>
-              <p class="text-[11px] text-slate-600 mb-2">${escapeHtml(sys.purpose)}</p>
-              <div class="text-[11px] font-semibold text-slate-800 mb-1">Required Steps:</div>
-              <ul class="space-y-1 list-disc list-inside mb-2">${stepsHtml}</ul>
-              <div class="text-[10px] text-amber-900 bg-amber-50 p-1.5 rounded border border-amber-200">⏱️ Lead-Time: ${escapeHtml(sys.lead_time)}</div>
-            </div>
-            <div class="mt-3 pt-2 border-t border-slate-200">
-              <a href="${sys.link}" target="_blank" class="text-blue-700 hover:underline font-bold text-xs flex items-center space-x-1">
-                <span>Access ${sys.system} Portal</span>
-                <i data-lucide="external-link" class="w-3 h-3"></i>
-              </a>
-            </div>
-          `;
-          systemsContainer.appendChild(div);
-        });
-      }
-
-      // 3. Compliance Guides
-      const complianceContainer = document.getElementById("resourcesComplianceGrid");
-      if (complianceContainer && resData.compliance_guides) {
-        complianceContainer.innerHTML = "";
-        resData.compliance_guides.forEach(g => {
-          const div = document.createElement("div");
-          div.className = "bg-slate-50 border border-slate-300 rounded p-3";
-          let takeaways = (g.key_takeaways || []).map(t => `<li class="text-[11px] text-slate-600 mb-1">${escapeHtml(t)}</li>`).join("");
-          div.innerHTML = `
-            <h4 class="font-bold text-slate-900 text-xs mb-1">${escapeHtml(g.title)}</h4>
-            <span class="text-[10px] text-blue-800 font-bold uppercase font-mono block mb-2">${escapeHtml(g.topic)}</span>
-            <ul class="list-disc list-inside space-y-1">${takeaways}</ul>
-          `;
-          complianceContainer.appendChild(div);
-        });
-      }
-
-      // 4. Contacts
-      const contactsContainer = document.getElementById("resourcesContactsGrid");
-      if (contactsContainer && resData.state_contacts) {
-        contactsContainer.innerHTML = "";
-        resData.state_contacts.forEach(c => {
-          const div = document.createElement("div");
-          div.className = "bg-slate-50 border border-slate-300 rounded p-3 flex flex-col justify-between";
-          div.innerHTML = `
-            <div>
-              <h4 class="font-bold text-slate-900 text-xs">${escapeHtml(c.agency)}</h4>
-              <p class="text-[11px] text-slate-500 mb-2">${escapeHtml(c.role)}</p>
-              <div class="space-y-0.5 text-[11px] text-slate-700">
-                <div>✉️ <a href="mailto:${c.email}" class="text-blue-700 hover:underline font-mono">${c.email}</a></div>
-                <div>📞 ${c.phone}</div>
-                <div>📍 ${escapeHtml(c.address)}</div>
-              </div>
-            </div>
-          `;
-          contactsContainer.appendChild(div);
-        });
-      }
-      lucide.createIcons();
-    }
-
-    function updateTopMetrics() {
-      const closingSoon = allOpportunities.filter(o => o.days_to_close !== null && o.days_to_close <= 14 && o.days_to_close >= 0).length;
-      const decisionCount = Object.keys(currentDecisions).length;
-      const totalFunding = allOpportunities.reduce((acc, o) => acc + (o.award_ceiling || 0), 0);
-
-      document.getElementById("statTotalFunding").textContent = `$${(totalFunding / 1000000000).toFixed(1)}B`;
-      document.getElementById("statClosingSoon").textContent = closingSoon;
-      document.getElementById("statDecisions").textContent = decisionCount;
-    }
-
-    function applyFilters() {
-      const search = document.getElementById("searchInput").value.toLowerCase().trim();
-      const source = document.getElementById("filterSource").value;
-      const conf = document.getElementById("filterConfidence").value;
-      const deadline = document.getElementById("filterDeadline").value;
-      const complexity = document.getElementById("filterComplexity").value;
-      const decFilter = document.getElementById("filterDecision").value;
-
-      const filtered = allOpportunities.filter(item => {
-        if (search) {
-          const awardeeNames = (item.past_awardees || []).map(a => a.recipient).join(" ");
-          const text = `${item.title} ${item.agency} ${item.number} ${item.matched_goal_title} ${item.required_documents_summary || ''} ${awardeeNames}`.toLowerCase();
-          if (!text.includes(search)) return false;
-        }
-
-        if (source !== "all" && item.source !== source) return false;
-        if (conf !== "all" && item.confidence !== conf) return false;
-
-        if (deadline !== "all") {
-          const maxDays = parseInt(deadline, 10);
-          if (item.days_to_close === null || item.days_to_close > maxDays) return false;
-        }
-
-        if (complexity !== "all" && item.complexity_tier !== complexity) return false;
-
-        const dec = currentDecisions[String(item.id)];
-        const decStatus = dec ? dec.status : "Unreviewed";
-        if (decFilter !== "all" && decStatus !== decFilter) return false;
-
-        return true;
-      });
-
-      renderTable(filtered);
-    }
-
-    function renderTable(items) {
-      const tbody = document.getElementById("oppsTableBody");
-      const emptyState = document.getElementById("noResultsState");
-      tbody.innerHTML = "";
-
-      document.getElementById("filterShowingCount").textContent = items.length;
-      document.getElementById("filterTotalCount").textContent = allOpportunities.length;
-
-      if (items.length === 0) {
-        emptyState.classList.remove("hidden");
-        return;
-      }
-      emptyState.classList.add("hidden");
-
-      items.forEach((item, index) => {
-        const tr = document.createElement("tr");
-        tr.className = "hover:bg-slate-50 transition border-b border-slate-200 text-xs";
-
-        let badgeBg = "bg-slate-100 text-slate-800 border-slate-300";
-        if (item.confidence === "High") badgeBg = "bg-emerald-50 text-emerald-900 border-emerald-400 font-bold";
-        else if (item.confidence === "Medium") badgeBg = "bg-amber-50 text-amber-900 border-amber-400 font-semibold";
-
-        const isUrgent = item.days_to_close !== null && item.days_to_close <= 14 && item.days_to_close >= 0;
-        const daysText = item.days_to_close !== null && item.days_to_close < 900 ? `${item.days_to_close}d left` : (item.status === "forecasted" ? "Forecast" : "Open");
-
-        let sourcePill = `<span class="text-[10px] text-slate-600 bg-slate-100 px-1 py-0.2 rounded font-mono border">${escapeHtml(item.source_display || 'Grants.gov')}</span>`;
-        if (item.source === "nc-egrants") sourcePill = `<span class="text-[10px] text-emerald-800 bg-emerald-100 px-1 py-0.2 rounded font-mono font-bold border border-emerald-300">NC eGrants (State)</span>`;
-
-        const decision = currentDecisions[String(item.id)];
-        const decisionStatus = decision ? decision.status : "Unreviewed";
-        let decPill = `<span class="text-[10px] text-slate-400">Unreviewed</span>`;
-        if (decisionStatus === "Pursue") decPill = `<span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-1.5 py-0.2 rounded">🚀 Pursue</span>`;
-        else if (decisionStatus === "Maybe") decPill = `<span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-1.5 py-0.2 rounded">🤔 Maybe</span>`;
-        else if (decisionStatus === "Pass") decPill = `<span class="text-[10px] font-bold text-rose-800 bg-rose-100 px-1.5 py-0.2 rounded">❌ Pass</span>`;
-
-        tr.innerHTML = `
-          <td class="py-2.5 px-3 text-center font-mono font-medium text-slate-500">#${index + 1}</td>
-          <td class="py-2.5 px-3 text-center">
-            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-xs border ${badgeBg}">
-              ${item.total_score}
-            </span>
-          </td>
-          <td class="py-2.5 px-4">
-            <a href="javascript:void(0)" onclick="openDetailModal('${item.id}')" class="font-bold text-blue-900 hover:underline block line-clamp-1 leading-snug">
-              ${escapeHtml(item.title)}
-            </a>
-            <div class="flex items-center space-x-2 text-[11px] text-slate-500 mt-0.5">
-              ${sourcePill}
-              <span>${escapeHtml(item.agency)}</span>
-              <span>•</span>
-              <span class="font-mono text-slate-400">${item.number}</span>
-            </div>
-          </td>
-          <td class="py-2.5 px-3">
-            <span class="font-medium text-slate-800 line-clamp-1">${escapeHtml(item.matched_goal_title || "Strategic Priorities")}</span>
-            <span class="text-[10px] text-slate-500 block font-mono">${escapeHtml(item.matched_goal_citation || "")}</span>
-          </td>
-          <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">
-            $${(item.award_ceiling || 0).toLocaleString()}
-          </td>
-          <td class="py-2.5 px-3 text-center">
-            <span class="inline-block px-1.5 py-0.2 rounded text-[11px] font-bold ${isUrgent ? 'bg-red-100 text-red-800' : 'bg-slate-100 text-slate-700'}">
-              ${daysText}
-            </span>
-            <div class="text-[10px] text-slate-400 mt-0.5">~${item.est_completion_hours || 40}h effort</div>
-          </td>
-          <!-- DATABASE REQUIRED DOCUMENTS COLUMN -->
-          <td class="py-2.5 px-3">
-            <span class="font-bold text-slate-800 text-[11px] block line-clamp-1">${escapeHtml(item.required_documents_summary || 'SF-424, Narrative, Budget')}</span>
-            <button onclick="openDetailModal('${item.id}', 'documents')" class="text-[10px] text-blue-700 hover:underline font-bold mt-0.5">
-              View Checklist (${item.required_documents_count || 5} items) →
-            </button>
-          </td>
-          <td class="py-2.5 px-3 text-center">
-            <div class="flex items-center justify-center space-x-1">
-              <button onclick="recordQuickDecision('${item.id}', 'Pursue', event)" title="Pursue" class="p-0.5 rounded hover:bg-emerald-100 ${decisionStatus === 'Pursue' ? 'ring-1 ring-emerald-600 bg-emerald-50' : ''}">🚀</button>
-              <button onclick="recordQuickDecision('${item.id}', 'Maybe', event)" title="Maybe" class="p-0.5 rounded hover:bg-amber-100 ${decisionStatus === 'Maybe' ? 'ring-1 ring-amber-600 bg-amber-50' : ''}">🤔</button>
-              <button onclick="recordQuickDecision('${item.id}', 'Pass', event)" title="Pass" class="p-0.5 rounded hover:bg-rose-100 ${decisionStatus === 'Pass' ? 'ring-1 ring-rose-600 bg-rose-50' : ''}">❌</button>
-            </div>
-            <div class="mt-0.5">${decPill}</div>
-          </td>
-          <td class="py-2.5 px-3 text-center">
-            <button onclick="openDetailModal('${item.id}')" class="px-2 py-1 text-xs font-bold text-blue-800 hover:text-blue-950 underline">
-              View Notice
-            </button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-      });
-      lucide.createIcons();
-    }
-
-    // SLIDERS & EQUATION LOGIC (Feature 2)
-    function onCustomSliderChange() {
-      const rel = parseInt(document.getElementById("sliderRelevancy").value, 10);
-      const money = parseInt(document.getElementById("sliderMoney").value, 10);
-      const timing = parseInt(document.getElementById("sliderTiming").value, 10);
-      const elig = parseInt(document.getElementById("sliderEligibility").value, 10);
-
-      document.getElementById("lblWeightRelevancy").textContent = `${rel}%`;
-      document.getElementById("lblWeightMoney").textContent = `${money}%`;
-      document.getElementById("lblWeightTiming").textContent = `${timing}%`;
-      document.getElementById("lblWeightEligibility").textContent = `${elig}%`;
-
-      const sum = rel + money + timing + elig;
-      sliderWeights = {
-        relevancy: rel / sum,
-        money_amount: money / sum,
-        timing: timing / sum,
-        eligibility: elig / sum
-      };
-
-      triggerRescoreWithSliders("custom");
-    }
-
-    async function selectScoringModel(model) {
-      activeScoringModel = model;
-      ["balanced", "money_priority", "timing_priority", "relevancy_priority"].forEach(m => {
-        const btn = document.getElementById(`sliderModelBtn-${m}`);
-        if (btn) {
-          if (m === model) {
-            btn.className = "px-2.5 py-1 rounded bg-blue-700 text-white border border-blue-800 font-bold";
-          } else {
-            btn.className = "px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300";
-          }
-        }
-      });
-
-      // Update slider positions to reflect preset
-      if (model === "balanced") {
-        setSliderValues(40, 25, 20, 15);
-      } else if (model === "money_priority") {
-        setSliderValues(30, 50, 10, 10);
-      } else if (model === "timing_priority") {
-        setSliderValues(25, 15, 50, 10);
-      } else if (model === "relevancy_priority") {
-        setSliderValues(60, 15, 10, 15);
-      }
-
-      updateFormulaDisplay(model);
-      triggerRescoreWithSliders(model);
-    }
-
-    function setSliderValues(rel, money, timing, elig) {
-      document.getElementById("sliderRelevancy").value = rel;
-      document.getElementById("sliderMoney").value = money;
-      document.getElementById("sliderTiming").value = timing;
-      document.getElementById("sliderEligibility").value = elig;
-
-      document.getElementById("lblWeightRelevancy").textContent = `${rel}%`;
-      document.getElementById("lblWeightMoney").textContent = `${money}%`;
-      document.getElementById("lblWeightTiming").textContent = `${timing}%`;
-      document.getElementById("lblWeightEligibility").textContent = `${elig}%`;
-
-      sliderWeights = {
-        relevancy: rel / 100,
-        money_amount: money / 100,
-        timing: timing / 100,
-        eligibility: elig / 100
-      };
-    }
-
-    async function triggerRescoreWithSliders(model) {
-      try {
-        const res = await fetch(`/api/rescore/${currentAgency}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ scoring_model: model, weights: sliderWeights })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          allOpportunities = data.items;
-          updateTopMetrics();
-          applyFilters();
-          renderGoalsHeatmap();
-          showToast(`Re-scored using ${data.scoring_model_used.replace(/_/g, ' ')} policy equation`);
-        }
-      } catch (e) {
-        console.error("Error rescoring model:", e);
-      }
-    }
-
-    // WEEKLY ACTION STEPS & EMAIL SUBSCRIPTION (Feature 1)
-    async function handleSubscribeEmail() {
-      const input = document.getElementById("subscribeEmailInput");
-      const email = input.value.trim();
-      if (!email || !email.includes("@")) {
-        alert("Please enter a valid official state or organization email address.");
-        input.focus();
-        return;
-      }
-
-      try {
-        const res = await fetch("/api/subscribe", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: email, agency_id: currentAgency, role: "Agency Staff" })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          showToast(`Subscription confirmed! Weekly briefing will be sent to ${email}`);
-          populateDigestModal(data.digest);
-          document.getElementById("weeklyDigestModal").classList.remove("hidden");
-        }
-      } catch (e) {
-        console.error("Subscription error:", e);
-      }
-    }
-
-    async function previewWeeklyDigestModal() {
-      const emailInput = document.getElementById("subscribeEmailInput");
-      const email = emailInput.value.trim() || "staff.coordinator@nc.gov";
-
-      try {
-        const res = await fetch(`/api/weekly-digest/${currentAgency}`);
-        if (res.ok) {
-          const digest = await res.json();
-          digest.recipient_email = email;
-          populateDigestModal(digest);
-          document.getElementById("weeklyDigestModal").classList.remove("hidden");
-        }
-      } catch (e) {
-        console.error("Preview error:", e);
-      }
-    }
-
-    function populateDigestModal(digest) {
-      document.getElementById("digestModalTitle").textContent = `Weekly Grants Action Briefing: ${digest.short_name}`;
-      document.getElementById("digestModalSubhead").textContent = `Tailored to ${digest.agency_name} · Automated Delivery Every Monday 7:00 AM ET`;
-      document.getElementById("digestModalRecipient").textContent = digest.recipient_email;
-      document.getElementById("digestModalRawMemo").value = digest.formatted_memo;
-
-      // Populate Actions Due This Week
-      const actList = document.getElementById("digestModalActionsList");
-      actList.innerHTML = "";
-      (digest.actions_this_week || []).forEach((act, idx) => {
-        const div = document.createElement("div");
-        div.className = "bg-slate-50 border border-slate-200 rounded p-3 flex items-start space-x-2.5";
-        div.innerHTML = `
-          <div class="w-5 h-5 rounded bg-blue-800 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${idx + 1}</div>
-          <div class="flex-1">
-            <div class="flex justify-between items-start">
-              <strong class="text-xs text-slate-900">${escapeHtml(act.opportunity)}</strong>
-              <span class="text-[10px] bg-red-100 text-red-800 font-bold px-1.5 py-0.2 rounded font-mono">${escapeHtml(act.deadline)}</span>
-            </div>
-            <p class="text-xs text-slate-700 mt-0.5"><strong>Action Due:</strong> ${escapeHtml(act.action)}</p>
-            <div class="text-[11px] text-slate-500 mt-1 font-mono"><strong>Required Forms:</strong> ${escapeHtml((act.required_documents || []).join(', '))}</div>
-          </div>
-        `;
-        actList.appendChild(div);
-      });
-
-      // Populate Top Recommendations
-      const recList = document.getElementById("digestModalRecsList");
-      recList.innerHTML = "";
-      (digest.top_recommendations || []).forEach(opp => {
-        const div = document.createElement("div");
-        div.className = "bg-slate-50 border border-slate-200 rounded p-2.5 flex justify-between items-center text-xs";
-        div.innerHTML = `
-          <div>
-            <strong class="text-blue-900 block font-bold">${escapeHtml(opp.title)}</strong>
-            <span class="text-[11px] text-slate-500">${escapeHtml(opp.agency)} · Closes: ${opp.close_date}</span>
-            <div class="text-[10px] text-slate-600 mt-0.5"><strong>Documents:</strong> ${escapeHtml(opp.required_documents_summary || 'SF-424, Narrative')}</div>
-          </div>
-          <div class="text-right">
-            <span class="text-xs font-mono font-bold text-slate-900 block">$${(opp.award_ceiling || 0).toLocaleString()}</span>
-            <span class="text-[10px] text-emerald-800 font-bold bg-emerald-100 px-1 py-0.2 rounded">Score: ${opp.total_score}</span>
-          </div>
-        `;
-        recList.appendChild(div);
-      });
-
-      lucide.createIcons();
-    }
-
-    function closeWeeklyDigestModal() {
-      document.getElementById("weeklyDigestModal").classList.add("hidden");
-    }
-
-    function confirmSubscriptionFromModal() {
-      const email = document.getElementById("digestModalRecipient").textContent;
-      showToast(`Subscription confirmed for ${email}!`);
-      closeWeeklyDigestModal();
-    }
-
-    function copyDigestText() {
-      const text = document.getElementById("digestModalRawMemo").value;
-      navigator.clipboard.writeText(text);
-      showToast("Weekly briefing memo copied to clipboard!");
-    }
-
-    // Modal Tabs & Details
-    function setModalTab(tab) {
-      ["overview", "explain", "documents", "awardees", "draft", "action", "decision"].forEach(t => {
-        const pane = document.getElementById(`modalPane-${t}`);
-        const btn = document.getElementById(`modalTabBtn-${t}`);
-        if (pane && btn) {
-          if (t === tab) {
-            pane.classList.remove("hidden");
-            btn.className = "py-2 px-3 border-b-2 border-blue-700 text-blue-900 font-bold whitespace-nowrap";
-          } else {
-            pane.classList.add("hidden");
-            btn.className = "py-2 px-3 border-b-2 border-transparent hover:text-blue-900 whitespace-nowrap";
-          }
-        }
-      });
-      lucide.createIcons();
-    }
-
-    function openDetailModal(oppId, targetTab = "overview") {
-      const opp = allOpportunities.find(o => String(o.id) === String(oppId));
-      if (!opp) return;
-      selectedModalOpp = opp;
-
-      document.getElementById("modalTitle").textContent = opp.title;
-      document.getElementById("modalAgency").textContent = opp.agency;
-      document.getElementById("modalCfdaBadge").textContent = opp.cfda ? `CFDA: ${opp.cfda}` : opp.number;
-      document.getElementById("modalSourceBadge").textContent = opp.source_display || "Grants.gov (Federal)";
-      document.getElementById("modalConfidenceBadge").textContent = `${opp.confidence} Match (${opp.total_score}/100)`;
-
-      // Feasibility Alert
-      const alertBox = document.getElementById("modalFeasibilityAlert");
-      if (opp.feasibility_warning) {
-        document.getElementById("modalFeasibilityAlertText").textContent = opp.feasibility_warning;
-        alertBox.classList.remove("hidden");
-      } else {
-        alertBox.classList.add("hidden");
-      }
-
-      document.getElementById("modalAiSummary").textContent = opp.ai_summary || opp.description;
-      document.getElementById("modalCeiling").textContent = `$${(opp.award_ceiling || 0).toLocaleString()}`;
-      document.getElementById("modalDeadline").textContent = opp.close_date || "Open";
-      document.getElementById("modalEffort").textContent = `${opp.est_completion_hours || 45} Hours (~${opp.est_completion_weeks || 4} wks)`;
-      document.getElementById("modalCostShare").textContent = opp.cost_share_required ? `${opp.cost_share_pct || 20}% Match Required` : "0% Match (100% Federal)";
-
-      document.getElementById("modalReason").textContent = opp.reason;
-      document.getElementById("modalGoalTitle").textContent = opp.matched_goal_title;
-      document.getElementById("modalGoalCitation").textContent = opp.matched_goal_citation || "";
-
-      // Drivers
-      const posList = document.getElementById("modalPositiveDrivers");
-      posList.innerHTML = "";
-      (opp.positive_drivers || ["Strong semantic objective match with state strategic plan"]).forEach(d => {
-        const li = document.createElement("li");
-        li.textContent = d;
-        posList.appendChild(li);
-      });
-
-      const riskList = document.getElementById("modalRiskFactors");
-      riskList.innerHTML = "";
-      (opp.risk_factors || ["No critical timing warnings"]).forEach(r => {
-        const li = document.createElement("li");
-        li.textContent = r;
-        riskList.appendChild(li);
-      });
-
-      // Past Awardees
-      const awardeeList = document.getElementById("modalAwardeesList");
-      awardeeList.innerHTML = "";
-      (opp.past_awardees || []).forEach(a => {
-        const div = document.createElement("div");
-        div.className = "bg-slate-50 p-2.5 rounded border border-slate-200 flex justify-between items-center text-xs";
-        div.innerHTML = `
-          <div>
-            <strong>${escapeHtml(a.recipient)}</strong>
-            <span class="text-slate-500 ml-1">(${escapeHtml(a.location)}) · FY${a.fiscal_year}</span>
-            <p class="text-[11px] text-slate-600 mt-0.5"><em>"${escapeHtml(a.project_title)}"</em></p>
-          </div>
-          <span class="font-mono text-emerald-800 font-bold">$${(a.amount || 0).toLocaleString()}</span>
-        `;
-        awardeeList.appendChild(div);
-      });
-      document.getElementById("modalAwardeeWinRate").textContent = `${(opp.past_award_stats || {}).nc_historical_win_rate || '34%'} NC Win Rate`;
-
-      // Document Checklist (Feature 3)
-      renderModalDocumentChecklist(opp.required_documents || {});
-
-      // Sample Draft
-      const draft = opp.sample_draft || {};
-      const draftFormatted = `=== PROJECT ABSTRACT ===\n${draft.abstract || ''}\n\n=== STATEMENT OF NEED ===\n${draft.statement_of_need || ''}\n\n=== SMART OBJECTIVES ===\n${(draft.smart_objectives || []).join('\n')}\n\n=== WORK PLAN ===\n${draft.methodology || ''}\n\n=== BUDGET JUSTIFICATION ===\n${draft.budget_narrative || ''}\n\n=== KPIS ===\n${(draft.kpis || []).join('\n')}`;
-      document.getElementById("modalDraftContent").value = draftFormatted;
-
-      // Action Steps
-      renderModalActionSteps(opp.action_steps || []);
-      const email = opp.executive_email || {};
-      document.getElementById("modalExecutiveEmailText").value = `SUBJECT: ${email.subject || ''}\n\n${email.body || ''}`;
-      document.getElementById("modalMailtoLink").href = `mailto:leadership@nc.gov?subject=${encodeURIComponent(email.subject || '')}&body=${encodeURIComponent(email.body || '')}`;
-
-      document.getElementById("modalOfficialLink").href = opp.url || `https://www.grants.gov/search-results-detail/${opp.id}`;
-
-      // Existing decision
-      const existing = currentDecisions[String(opp.id)];
-      if (existing) {
-        selectModalDecision(existing.status);
-        document.getElementById("modalReviewerName").value = existing.decided_by || "";
-        document.getElementById("modalDecisionNotes").value = existing.notes || "";
-      } else {
-        selectModalDecision("Pursue");
-        document.getElementById("modalReviewerName").value = "State Grants Strategic Coordinator";
-        document.getElementById("modalDecisionNotes").value = "";
-      }
-
-      setModalTab(targetTab);
-      document.getElementById("detailModal").classList.remove("hidden");
-      lucide.createIcons();
-    }
-
-    function renderModalDocumentChecklist(docs) {
-      const container = document.getElementById("modalDocChecklistContainer");
-      container.innerHTML = "";
-
-      const categories = [
-        { key: "standard_forms", title: "1. Federal & State Statutory Forms" },
-        { key: "project_narrative", title: "2. Technical Proposal & Work Plan" },
-        { key: "financial_budget", title: "3. Budget Justification & Indirect Rates" },
-        { key: "administrative_legal", title: "4. Legal, SPOC & Governance Clearances" },
-        { key: "compliance_environmental", title: "5. Compliance & Environmental Screenings" }
-      ];
-
-      categories.forEach(cat => {
-        const items = docs[cat.key] || [];
-        if (items.length === 0) return;
-
-        const sec = document.createElement("div");
-        sec.className = "space-y-1";
-        let html = `<h5 class="font-bold text-slate-800 text-xs">${cat.title}</h5><div class="space-y-1 pl-2">`;
-        items.forEach(item => {
-          html += `
-            <label class="flex items-start space-x-2 p-1 rounded hover:bg-slate-100 cursor-pointer">
-              <input type="checkbox" checked class="mt-0.5 rounded text-blue-700">
-              <div>
-                <span class="font-bold text-slate-800">${escapeHtml(item.name || item.code)}</span>
-                <span class="text-slate-500 text-[11px] block">${escapeHtml(item.notes || '')}</span>
-              </div>
-            </label>
-          `;
-        });
-        html += `</div>`;
-        sec.innerHTML = html;
-        container.appendChild(sec);
-      });
-    }
-
-    function renderModalActionSteps(steps) {
-      const container = document.getElementById("modalActionStepsList");
-      container.innerHTML = "";
-
-      steps.forEach(s => {
-        const div = document.createElement("div");
-        div.className = "bg-slate-50 p-2.5 rounded border border-slate-200 flex items-start space-x-2.5";
-        div.innerHTML = `
-          <div class="w-5 h-5 rounded bg-blue-800 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${s.step}</div>
-          <div class="flex-1">
-            <div class="flex justify-between items-center">
-              <strong class="text-slate-900">${escapeHtml(s.title)}</strong>
-              <span class="text-[10px] bg-slate-200 px-1.5 py-0.2 rounded font-mono font-bold">${escapeHtml(s.deadline_day)}</span>
-            </div>
-            <p class="text-[11px] text-slate-600 mt-0.5">${escapeHtml(s.action)}</p>
-            <span class="text-[10px] text-blue-800 font-bold block mt-0.5">Owner: ${escapeHtml(s.owner)}</span>
-          </div>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    function closeDetailModal() {
-      document.getElementById("detailModal").classList.add("hidden");
-    }
-
-    function selectModalDecision(status) {
-      selectedModalStatus = status;
-      ["Pursue", "Maybe", "Pass"].forEach(s => {
-        const btn = document.getElementById(`modalBtn${s}`);
-        if (s === status) {
-          btn.className = "py-2 text-xs font-bold border-2 border-blue-700 rounded bg-blue-50 text-blue-900";
-        } else {
-          btn.className = "py-2 text-xs font-bold border border-slate-300 rounded bg-white hover:bg-slate-50";
-        }
-      });
-    }
-
-    async function saveDecisionFromModal() {
-      if (!selectedModalOpp) return;
-      const notes = document.getElementById("modalDecisionNotes").value;
-      const reviewer = document.getElementById("modalReviewerName").value || "State Grants Strategic Coordinator";
-
-      await sendDecision(selectedModalOpp.id, selectedModalStatus, notes, reviewer);
-      closeDetailModal();
-    }
-
-    async function recordQuickDecision(oppId, status, evt) {
-      if (evt) evt.stopPropagation();
-      await sendDecision(oppId, status, "Recorded from table", "State Grants Coordinator");
-    }
-
-    async function sendDecision(oppId, status, notes, reviewer) {
-      const opp = allOpportunities.find(o => String(o.id) === String(oppId));
-      const payload = {
-        opportunity_id: String(oppId),
-        title: opp ? opp.title : "",
-        number: opp ? opp.number : "",
-        status: status,
-        notes: notes,
-        decided_by: reviewer
-      };
-
-      try {
-        const res = await fetch(`/api/decisions/${currentAgency}`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        if (res.ok) {
-          currentDecisions[String(oppId)] = payload;
-          updateTopMetrics();
-          applyFilters();
-          showToast(`Decision '${status}' saved`);
-        }
-      } catch (e) {
-        console.error("Error saving decision:", e);
-      }
-    }
-
-    function copySampleDraft() {
-      const text = document.getElementById("modalDraftContent").value;
-      navigator.clipboard.writeText(text);
-      showToast("Sample proposal draft copied to clipboard!");
-    }
-
-    function downloadSampleDraft() {
-      const text = document.getElementById("modalDraftContent").value;
-      const blob = new Blob([text], { type: "text/markdown;charset=utf-8" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = `NC_${currentAgency.toUpperCase()}_Proposal_Draft_${selectedModalOpp ? selectedModalOpp.number : 'Sample'}.md`;
-      a.click();
-      showToast("Proposal draft markdown downloaded!");
-    }
-
-    function copyExecutiveEmail() {
-      const text = document.getElementById("modalExecutiveEmailText").value;
-      navigator.clipboard.writeText(text);
-      showToast("Executive notification memo copied to clipboard!");
-    }
-
-    function downloadDocumentChecklist() {
-      const opp = selectedModalOpp;
-      if (!opp) return;
-      let md = `# Application Document Checklist for ${opp.title}\nOpportunity: ${opp.number} | Agency: ${opp.agency}\n\n`;
-      const docs = opp.required_documents || {};
-      for (const [cat, list] of Object.entries(docs)) {
-        md += `## ${cat.replace(/_/g, ' ').toUpperCase()}\n`;
-        list.forEach(item => {
-          md += `- [ ] **${item.name || item.code}**: ${item.notes || ''}\n`;
-        });
-        md += "\n";
-      }
-      const blob = new Blob([md], { type: "text/markdown;charset=utf-8" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = `NC_Document_Checklist_${opp.number}.md`;
-      a.click();
-      showToast("Document checklist exported!");
-    }
-
-    // Heatmap View
-    function renderGoalsHeatmap() {
-      const container = document.getElementById("goalsHeatmapContainer");
-      container.innerHTML = "";
-
-      const goals = currentAgencyProfile.goals || [];
-      if (goals.length === 0) {
-        container.innerHTML = `<p class="text-xs text-slate-400">No strategic goals defined for ${currentAgency}.</p>`;
-        return;
-      }
-
-      const stats = {};
-      goals.forEach(g => stats[g.id] = { goal: g, count: 0, funding: 0 });
-
-      allOpportunities.forEach(opp => {
-        const gid = opp.matched_goal_id || goals[0].id;
-        if (stats[gid]) {
-          stats[gid].count += 1;
-          stats[gid].funding += (opp.award_ceiling || 0);
-        } else {
-          stats[goals[0].id].count += 1;
-          stats[goals[0].id].funding += (opp.award_ceiling || 0);
-        }
-      });
-
-      const maxFunding = Math.max(...Object.values(stats).map(s => s.funding), 1);
-
-      goals.forEach(g => {
-        const data = stats[g.id] || { count: 0, funding: 0 };
-        const pct = Math.round((data.funding / maxFunding) * 100);
-
-        const card = document.createElement("div");
-        card.className = "bg-slate-50 border border-slate-300 rounded p-3.5";
-        card.innerHTML = `
-          <div class="flex justify-between items-center mb-1.5 text-xs">
-            <div>
-              <span class="font-bold text-blue-900 bg-blue-100 px-1.5 py-0.2 rounded border border-blue-200">Goal ${g.number}</span>
-              <strong class="text-slate-900 ml-1.5">${escapeHtml(g.title)}</strong>
-            </div>
-            <div class="font-mono font-bold text-slate-800">$${(data.funding).toLocaleString()} <span class="text-slate-500 font-sans font-normal">(${data.count} grants)</span></div>
-          </div>
-          <p class="text-[11px] text-slate-600 mb-2">${escapeHtml(g.description)}</p>
-          <div class="w-full bg-slate-200 rounded h-2 overflow-hidden">
-            <div class="bg-blue-700 h-2 rounded" style="width: ${pct}%"></div>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // Past Awardees Database
-    function renderAwardeesDatabase() {
-      const container = document.getElementById("awardeesContainer");
-      container.innerHTML = "";
-
-      const highOpps = allOpportunities.slice(0, 10);
-      highOpps.forEach(opp => {
-        const card = document.createElement("div");
-        card.className = "bg-slate-50 border border-slate-300 rounded p-3 flex flex-col justify-between";
-        
-        let recHtml = "";
-        (opp.past_awardees || []).slice(0, 3).forEach(a => {
-          recHtml += `
-            <div class="flex justify-between items-center text-xs py-0.5 border-b border-slate-200 last:border-none">
-              <div>
-                <strong class="text-slate-800">${escapeHtml(a.recipient)}</strong>
-                <span class="text-[10px] text-slate-500 block">${escapeHtml(a.location)} · FY${a.fiscal_year}</span>
-              </div>
-              <span class="font-mono text-emerald-800 font-bold">$${(a.amount || 0).toLocaleString()}</span>
-            </div>
-          `;
-        });
-
-        card.innerHTML = `
-          <div>
-            <div class="flex justify-between items-start mb-1 text-[11px]">
-              <span class="font-mono bg-blue-100 text-blue-900 px-1.5 py-0.2 rounded font-bold">CFDA: ${opp.cfda || opp.number}</span>
-              <span class="font-bold text-slate-700">${(opp.past_award_stats || {}).nc_historical_win_rate || '34%'} NC Win Rate</span>
-            </div>
-            <h4 class="text-xs font-bold text-blue-900 line-clamp-1 hover:underline cursor-pointer" onclick="openDetailModal('${opp.id}')">
-              ${escapeHtml(opp.title)}
-            </h4>
-            <p class="text-[11px] text-slate-500 mb-2">${escapeHtml(opp.agency)}</p>
-            <div class="space-y-1 mb-2">${recHtml}</div>
-          </div>
-          <div class="pt-2 border-t border-slate-200 flex justify-between items-center text-xs">
-            <span class="text-[10px] text-slate-500">${(opp.past_award_stats || {}).competition_tier || 'Competitive'}</span>
-            <button onclick="openDetailModal('${opp.id}')" class="text-blue-800 font-bold hover:underline">View Docket →</button>
-          </div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // Radar View
-    function renderRadarAndForecasted() {
-      const radarContainer = document.getElementById("radarItemsContainer");
-      const forecastContainer = document.getElementById("forecastedItemsContainer");
-      radarContainer.innerHTML = "";
-      forecastContainer.innerHTML = "";
-
-      const radarItems = allOpportunities.filter(o => o.days_to_close !== null && o.days_to_close <= 10 && o.days_to_close >= 0).slice(0, 6);
-      if (radarItems.length === 0) {
-        radarContainer.innerHTML = `<p class="text-xs text-slate-500 col-span-2">No opportunities closing in ≤ 10 days.</p>`;
-      } else {
-        radarItems.forEach(item => {
-          const div = document.createElement("div");
-          div.className = "bg-red-50 border border-red-300 rounded p-3 flex flex-col justify-between";
-          div.innerHTML = `
-            <div>
-              <div class="flex justify-between items-start mb-1 text-xs">
-                <span class="bg-red-700 text-white text-[10px] font-bold px-1.5 py-0.2 rounded font-mono">${item.days_to_close} Days Left</span>
-                <span class="font-mono font-bold text-slate-800">Score: ${item.total_score}</span>
-              </div>
-              <h4 class="text-xs font-bold text-slate-900 line-clamp-1 hover:underline cursor-pointer" onclick="openDetailModal('${item.id}')">${escapeHtml(item.title)}</h4>
-              <p class="text-[11px] text-slate-600">${escapeHtml(item.agency)}</p>
-            </div>
-            <div class="mt-2 pt-2 border-t border-red-200 flex justify-between items-center text-xs">
-              <span class="font-mono text-red-950 font-bold">$${(item.award_ceiling || 0).toLocaleString()}</span>
-              <button onclick="openDetailModal('${item.id}')" class="text-blue-800 font-bold hover:underline">Inspect Notice →</button>
-            </div>
-          `;
-          radarContainer.appendChild(div);
-        });
-      }
-
-      const forecastedItems = allOpportunities.filter(o => o.status === "forecasted").slice(0, 6);
-      if (forecastedItems.length === 0) {
-        forecastContainer.innerHTML = `<p class="text-xs text-slate-500 col-span-2">No forecasted notices in current snapshot.</p>`;
-      } else {
-        forecastedItems.forEach(item => {
-          const div = document.createElement("div");
-          div.className = "bg-slate-50 border border-slate-300 rounded p-3 flex flex-col justify-between";
-          div.innerHTML = `
-            <div>
-              <div class="flex justify-between items-start mb-1 text-xs">
-                <span class="bg-slate-700 text-white text-[10px] font-bold px-1.5 py-0.2 rounded">Upcoming Forecast</span>
-                <span class="font-mono font-bold text-slate-800">Score: ${item.total_score}</span>
-              </div>
-              <h4 class="text-xs font-bold text-slate-900 line-clamp-1 hover:underline cursor-pointer" onclick="openDetailModal('${item.id}')">${escapeHtml(item.title)}</h4>
-              <p class="text-[11px] text-slate-600">${escapeHtml(item.agency)}</p>
-            </div>
-            <div class="mt-2 pt-2 border-t border-slate-200 flex justify-between items-center text-xs">
-              <span class="font-mono text-slate-700">Anticipated: ${item.open_date || 'Q1'}</span>
-              <button onclick="openDetailModal('${item.id}')" class="text-blue-800 font-bold hover:underline">Track Notice →</button>
-            </div>
-          `;
-          forecastContainer.appendChild(div);
-        });
-      }
-    }
-
-    // Evaluation Benchmark
-    async function loadEvaluationBenchmark() {
-      try {
-        const res = await fetch("/api/evaluation");
-        if (!res.ok) return;
-        const evalData = await res.json();
-
-        document.getElementById("evalPrecMatchmaker").textContent = `${evalData.precision_at_10_matchmaker}%`;
-        document.getElementById("evalPrecBaseline").textContent = `${evalData.precision_at_10_keyword_baseline}%`;
-        document.getElementById("evalCoverageCount").textContent = `+${evalData.coverage_bonus_items_found} Grants`;
-      } catch (e) {
-        console.error("Error loading eval benchmark:", e);
-      }
-    }
-
-    async function triggerPipelineRun() {
-      const btn = document.getElementById("refreshBtn");
-      const icon = document.getElementById("refreshIcon");
-      const text = document.getElementById("refreshBtnText");
-
-      btn.disabled = true;
-      icon.classList.add("animate-spin");
-      text.textContent = "Syncing Feeds...";
-
-      showToast("Syncing multi-source feeds...");
-
-      try {
-        const res = await fetch("/api/pipeline/run", { method: "POST" });
-        if (res.ok) {
-          showToast("Sync completed successfully!");
-          await loadAgencyData(currentAgency);
-        } else {
-          showToast("Sync finished with verified snapshot.");
-        }
-      } catch (e) {
-        showToast("Snapshot verified.");
-      } finally {
-        btn.disabled = false;
-        icon.classList.remove("animate-spin");
-        text.textContent = "Sync Feeds Now";
-      }
-    }
-
-    function exportShortlistCSV() {
-      window.location.href = `/api/export/${currentAgency}/csv`;
-      showToast("Downloading official CSV shortlist...");
-    }
-
-    // Tab Navigation
-    function setActiveTab(tab) {
-      activeTab = tab;
-      ["shortlist", "radar", "awardees", "heatmap", "resources", "rubric", "eval"].forEach(t => {
-        const pane = document.getElementById(`tab-${t}`);
-        const btn = document.getElementById(`navBtn-${t}`);
-        if (pane && btn) {
-          if (t === tab) {
-            pane.classList.remove("hidden");
-            btn.className = "py-2.5 px-3.5 border-b-2 font-bold text-white border-amber-500 bg-slate-900/60 rounded-t flex items-center space-x-1.5";
-          } else {
-            pane.classList.add("hidden");
-            btn.className = "py-2.5 px-3 border-b-2 font-medium text-slate-300 border-transparent hover:text-white hover:bg-slate-800/50 rounded-t flex items-center space-x-1.5";
-          }
-        }
-      });
-      lucide.createIcons();
-    }
-
-    // Chatbot Assistant
-    function toggleChatbot() {
-      document.getElementById("chatWindow").classList.toggle("hidden");
-    }
-
-    function sendQuickPrompt(text) {
-      document.getElementById("chatInput").value = text;
-      sendChatMessage();
-    }
-
-    async function sendChatMessage() {
-      const input = document.getElementById("chatInput");
-      const text = input.value.trim();
-      if (!text) return;
-      input.value = "";
-
-      const msgContainer = document.getElementById("chatMessages");
-      const userDiv = document.createElement("div");
-      userDiv.className = "flex justify-end";
-      userDiv.innerHTML = `<div class="bg-blue-800 text-white p-2 rounded text-xs max-w-[85%]">${escapeHtml(text)}</div>`;
-      msgContainer.appendChild(userDiv);
-      msgContainer.scrollTop = msgContainer.scrollHeight;
-
-      const botDiv = document.createElement("div");
-      botDiv.className = "flex justify-start";
-      botDiv.innerHTML = `<div class="bg-white border border-slate-300 p-2 rounded text-xs text-slate-600 max-w-[88%]">Searching official records...</div>`;
-      msgContainer.appendChild(botDiv);
-      msgContainer.scrollTop = msgContainer.scrollHeight;
-
-      try {
-        const res = await fetch("/api/chat", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text, agency_id: currentAgency })
-        });
-        if (res.ok) {
-          const data = await res.json();
-          botDiv.innerHTML = `<div class="bg-white border border-slate-300 p-2.5 rounded text-xs text-slate-800 leading-relaxed">${formatMarkdown(data.reply)}</div>`;
-        } else {
-          botDiv.innerHTML = `<div class="bg-red-50 text-red-800 p-2 rounded text-xs">Error querying assistant.</div>`;
-        }
-      } catch (err) {
-        botDiv.innerHTML = `<div class="bg-red-50 text-red-800 p-2 rounded text-xs">Network error.</div>`;
-      }
-      msgContainer.scrollTop = msgContainer.scrollHeight;
-      lucide.createIcons();
-    }
-
-    function formatMarkdown(txt) {
-      if (!txt) return "";
-      return txt
-        .replace(/### (.*?)\n/g, '<h4 class="font-bold text-slate-900 text-xs mt-1 mb-0.5">$1</h4>')
-        .replace(/#### (.*?)\n/g, '<h5 class="font-semibold text-slate-800 text-xs mt-1">$1</h5>')
-        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.*?)\*/g, '<em>$1</em>')
-        .replace(/`(.*?)`/g, '<code class="bg-slate-200 px-1 py-0.2 rounded font-mono text-[11px]">$1</code>')
-        .replace(/- (.*?)\n/g, '<li class="ml-3 list-disc text-slate-700 text-[11px]">$1</li>')
-        .replace(/\n\n/g, '<br/>');
-    }
-
-    function escapeHtml(str) {
-      if (!str) return "";
-      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-    }
-
-    function showToast(msg) {
-      const toast = document.getElementById("toast");
-      document.getElementById("toastMsg").textContent = msg;
-      toast.classList.remove("translate-y-20", "opacity-0");
-      setTimeout(() => {
-        toast.classList.add("translate-y-20", "opacity-0");
-      }, 3000);
-    }
-  </script>
+    <section>
+      <details><summary>How this grant was scored (${i.total_score} out of 100)</summary>
+        ${scoreTable(i)}
+        <p class="sub">Each part is scored from 0 to 100, then multiplied by its weight. <button class="linkbtn" onclick="closeDetail();showTab('help');location.hash='ranking'">How ranking works</button></p>
+      </details>
+    </section>
+
+    ${(i.complexity_factors || []).length ? `<section><details><summary>How the staff time was estimated</summary><ul style="margin:8px 0 0;padding-left:20px">${i.complexity_factors.map(f => `<li>${esc(clean(f))}</li>`).join('')}</ul><p class="sub">Assumes about 15 staff hours per week. This is a rough guide, not a requirement.</p></details></section>` : ''}
+
+    ${risks.length ? `<section><div class="alert warn" style="margin:0"><h3>Things to know before applying</h3><ul style="margin:4px 0 0;padding-left:20px">${risks.map(r => `<li>${esc(r)}</li>`).join('')}</ul></div></section>` : ''}
+
+    <section>
+      <h3>About this grant</h3>
+      <p>${esc(clean(i.description))}</p>
+      ${(i.eligibility || []).length ? `<p><strong>Who can apply:</strong> ${esc(i.eligibility.map(e => e.replace(/\s*\(.*$/, '')).join('; '))}</p>` : ''}
+      ${i.contact_email ? `<p><strong>Program contact:</strong> <a href="mailto:${esc(i.contact_email)}">${esc(i.contact_email)}</a></p>` : ''}
+      <p><a class="btn outline small" href="${esc(i.url)}" target="_blank" rel="noopener">Read the official notice</a></p>
+    </section>
+
+    <div id="dReq"><section><h3>What this application requires</h3><p class="sub">Loading...</p></section></div>
+
+    ${(i.action_steps || []).length ? `<section><h3>Suggested next steps</h3><ol class="steps">${i.action_steps.map(s => `<li><strong>${esc(clean(s.title))}</strong>${s.deadline_day ? ` (${esc(s.deadline_day)})` : ''}<small>${esc(clean(s.action))}</small></li>`).join('')}</ol></section>` : ''}
+
+    ${awardees.length ? `<section><details><summary>North Carolina organizations funded by this program before (${awardees.length})</summary>
+      <p class="sub" style="margin-top:8px">Largest awards to North Carolina recipients under Assistance Listing ${esc(i.cfda)}${i.program_title ? ` (${esc(i.program_title)})` : ''}, from USAspending.gov.</p>
+      <table><thead><tr><th>Recipient</th><th>Amount</th><th>Start year</th></tr></thead><tbody>${awardees.map(a => `<tr><td>${esc(a.recipient)}<span class="sub">${esc(a.project_title)}</span></td><td data-l="Amount">${money(a.amount)}</td><td data-l="Year">${esc(a.fiscal_year)}</td></tr>`).join('')}</tbody></table></details></section>` : ''}
+  `;
+  loadSources(i);
+  $('detail').classList.add('open');
+  document.querySelector('.panel').scrollTop = 0;
+  document.querySelector('.panel .close').focus();
+}
+function isDraft(id){ const p = S.profiles.find(p => p.agency_id === id); return !!(p && p.draft); }
+function scoreTable(i){
+  const b = i.score_breakdown || {}, w = i.score_weights || {};
+  const rows = PARTS.filter(([k]) => w[k] != null).map(([k, label, help]) => {
+    const pts = (b[k] || 0) * w[k];
+    return `<tr><td>${label}<span class="sub">${help}</span></td><td data-l="Score">${Math.round(b[k] || 0)}</td><td data-l="Weight">${Math.round(w[k] * 100)}%</td><td data-l="Points">${pts.toFixed(1)}</td></tr>`;
+  }).join('');
+  return `<table style="margin-top:8px"><thead><tr><th>Part</th><th>Score</th><th>Weight</th><th>Points</th></tr></thead><tbody>${rows}<tr><td><strong>Total</strong></td><td></td><td></td><td><strong>${i.total_score}</strong></td></tr></tbody></table>`;
+}
+function closeDetail(){ $('detail').classList.remove('open'); }
+function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); }
+
+async function saveDecision(){
+  if (!choice) { toast('Choose Pursue, Watch, or Pass first.'); return; }
+  const i = S.items.find(x => x.id === currentId);
+  const name = $('dBy').value.trim(); if (name) store.set('name', name);
+  const body = { opportunity_id: i.id, number: i.number, title: i.title, status: choice, notes: $('dNotes').value.trim(), decided_by: name || 'Grants staff' };
+  try {
+    const org = S.office === 'all' ? $('dOrg').value : S.office;
+    body.office_id = org;
+    const r = await fetch(`/api/decisions/${org}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    if (!r.ok) throw new Error();
+  } catch(e) { toast('Could not save. Please try again.'); return; }
+  S.decisions[i.id] = { ...body, decided_at: new Date().toISOString() };
+  render(); renderTracked(); closeDetail(); toast(`Saved: ${choice}`);
+}
+
+function showTab(t){
+  document.querySelectorAll('nav.tabs button').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
+  ['list','tracked','help'].forEach(x => $('tab-' + x).hidden = x !== t);
+  window.scrollTo(0, 0);
+}
+function dismissWelcome(){ store.set('welcomed', '1'); $('welcome').hidden = true; }
+function showWelcome(){ $('welcome').hidden = false; showTab('list'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
+init().catch(() => { $('count').textContent = 'Could not load grant data. Please refresh the page.'; });
+</script>
 </body>
 </html>

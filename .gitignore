@@ -42,3 +42,10 @@ venv.bak/
 
 # Logs
 *.log
+
+# Local grants database (rebuilt from data/*.json on first run)
+data/matchmaker.db*
+.venv/
+
+# Downloaded funding notice files (re-downloadable)
+data/notices/

@@ -1,0 +1,80 @@
+{
+  "agency_id": "city_asheville",
+  "category": "municipal",
+  "name": "City of Asheville",
+  "short_name": "City of Asheville",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides city services for Asheville and leads recovery after Hurricane Helene.",
+  "eligible_applicant_types": [
+    "City or township governments",
+    "Special district governments",
+    "Public housing authorities/Indian housing authorities"
+  ],
+  "funder_affinities": [
+    "Federal Emergency Management Agency",
+    "Department of Housing and Urban Development",
+    "Department of Transportation",
+    "Environmental Protection Agency"
+  ],
+  "goals": [
+    {
+      "id": "CITY_ASHEVILLE-G1",
+      "number": 1,
+      "title": "Hurricane Helene recovery and resilience",
+      "citation": "City of Asheville draft profile, goal 1",
+      "description": "Rebuild damaged infrastructure and reduce future risk.",
+      "objectives": [
+        "Restore water system reliability",
+        "Reduce flood and landslide risk"
+      ],
+      "keywords": [
+        "disaster recovery",
+        "hurricane",
+        "resilience",
+        "hazard mitigation",
+        "flood",
+        "water system"
+      ]
+    },
+    {
+      "id": "CITY_ASHEVILLE-G2",
+      "number": 2,
+      "title": "Housing recovery",
+      "citation": "City of Asheville draft profile, goal 2",
+      "description": "Restore and expand housing after the storm.",
+      "objectives": [
+        "Rebuild damaged housing"
+      ],
+      "keywords": [
+        "housing",
+        "disaster recovery",
+        "cdbg-dr",
+        "affordable housing"
+      ]
+    },
+    {
+      "id": "CITY_ASHEVILLE-G3",
+      "number": 3,
+      "title": "Tourism economy and small business",
+      "citation": "City of Asheville draft profile, goal 3",
+      "description": "Help local businesses recover.",
+      "objectives": [
+        "Support small business recovery"
+      ],
+      "keywords": [
+        "small business",
+        "economic recovery",
+        "tourism"
+      ]
+    }
+  ],
+  "keywords": [
+    "city",
+    "municipal",
+    "disaster",
+    "resilience",
+    "housing",
+    "water"
+  ]
+}

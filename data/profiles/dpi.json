@@ -1,0 +1,84 @@
+{
+  "agency_id": "dpi",
+  "category": "state",
+  "name": "North Carolina Department of Public Instruction",
+  "short_name": "NC DPI",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Supports K-12 public schools so every student graduates ready for work, further education and citizenship.",
+  "eligible_applicant_types": [
+    "State governments",
+    "Independent school districts"
+  ],
+  "funder_affinities": [
+    "Department of Education",
+    "Department of Agriculture",
+    "National Science Foundation"
+  ],
+  "goals": [
+    {
+      "id": "DPI-G1",
+      "number": 1,
+      "title": "Student achievement and literacy",
+      "citation": "NC DPI draft profile, goal 1",
+      "description": "Raise reading and math achievement, especially in early grades.",
+      "objectives": [
+        "Expand early literacy programs",
+        "Support struggling and English-learner students"
+      ],
+      "keywords": [
+        "literacy",
+        "reading",
+        "k-12",
+        "elementary",
+        "english learners",
+        "title i",
+        "student achievement"
+      ]
+    },
+    {
+      "id": "DPI-G2",
+      "number": 2,
+      "title": "Career and technical education",
+      "citation": "NC DPI draft profile, goal 2",
+      "description": "Prepare students for jobs in growing NC industries.",
+      "objectives": [
+        "Expand CTE pathways and credentials"
+      ],
+      "keywords": [
+        "career and technical education",
+        "cte",
+        "workforce",
+        "stem",
+        "computer science"
+      ]
+    },
+    {
+      "id": "DPI-G3",
+      "number": 3,
+      "title": "School health, safety and nutrition",
+      "citation": "NC DPI draft profile, goal 3",
+      "description": "Keep students safe, healthy and fed.",
+      "objectives": [
+        "Improve school safety and mental health supports",
+        "Expand school meal programs"
+      ],
+      "keywords": [
+        "school safety",
+        "school mental health",
+        "school nutrition",
+        "school meals",
+        "student wellness"
+      ]
+    }
+  ],
+  "keywords": [
+    "education",
+    "schools",
+    "k-12",
+    "students",
+    "teachers",
+    "literacy",
+    "stem"
+  ]
+}

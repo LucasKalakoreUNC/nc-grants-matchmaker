@@ -1,0 +1,77 @@
+{
+  "agency_id": "nccc_system",
+  "category": "education",
+  "name": "North Carolina Community College System",
+  "short_name": "NC Community Colleges",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Fifty-eight community colleges providing job training, college transfer and adult education.",
+  "eligible_applicant_types": [
+    "Public and State controlled institutions of higher education"
+  ],
+  "funder_affinities": [
+    "Department of Labor",
+    "Department of Education",
+    "National Science Foundation",
+    "Economic Development Administration"
+  ],
+  "goals": [
+    {
+      "id": "NCCC_SYSTEM-G1",
+      "number": 1,
+      "title": "Workforce training and credentials",
+      "citation": "NC Community Colleges draft profile, goal 1",
+      "description": "Train workers for in-demand jobs.",
+      "objectives": [
+        "Expand short-term credential programs",
+        "Partner with employers on apprenticeships"
+      ],
+      "keywords": [
+        "workforce",
+        "job training",
+        "apprenticeship",
+        "credentials",
+        "community college"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G2",
+      "number": 2,
+      "title": "Student success and completion",
+      "citation": "NC Community Colleges draft profile, goal 2",
+      "description": "Help students finish programs.",
+      "objectives": [
+        "Expand advising and student supports"
+      ],
+      "keywords": [
+        "student success",
+        "completion",
+        "adult education",
+        "basic skills"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G3",
+      "number": 3,
+      "title": "Advanced technical education",
+      "citation": "NC Community Colleges draft profile, goal 3",
+      "description": "Build technician programs in high-tech fields.",
+      "objectives": [
+        "Expand technician programs"
+      ],
+      "keywords": [
+        "advanced technological education",
+        "technician",
+        "manufacturing",
+        "healthcare workforce"
+      ]
+    }
+  ],
+  "keywords": [
+    "community college",
+    "workforce",
+    "training",
+    "education",
+    "apprenticeship"
+  ]
+}

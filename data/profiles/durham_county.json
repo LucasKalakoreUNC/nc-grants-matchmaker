@@ -1,0 +1,75 @@
+{
+  "agency_id": "durham_county",
+  "category": "county",
+  "name": "Durham County Government",
+  "short_name": "Durham County",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Provides county services that support health, safety, education and economic opportunity for Durham residents.",
+  "eligible_applicant_types": [
+    "County governments",
+    "Special district governments"
+  ],
+  "funder_affinities": [
+    "Department of Health and Human Services",
+    "Department of Justice",
+    "Department of Housing and Urban Development"
+  ],
+  "goals": [
+    {
+      "id": "DURHAM_COUNTY-G1",
+      "number": 1,
+      "title": "Community health and safety",
+      "citation": "Durham County draft profile, goal 1",
+      "description": "Reduce violence and improve health.",
+      "objectives": [
+        "Expand violence interruption programs",
+        "Improve access to care"
+      ],
+      "keywords": [
+        "community violence",
+        "public safety",
+        "public health",
+        "reentry"
+      ]
+    },
+    {
+      "id": "DURHAM_COUNTY-G2",
+      "number": 2,
+      "title": "Early childhood and education",
+      "citation": "Durham County draft profile, goal 2",
+      "description": "Expand early childhood education.",
+      "objectives": [
+        "Expand pre-K access"
+      ],
+      "keywords": [
+        "early childhood",
+        "pre-k",
+        "child care",
+        "early learning"
+      ]
+    },
+    {
+      "id": "DURHAM_COUNTY-G3",
+      "number": 3,
+      "title": "Economic opportunity",
+      "citation": "Durham County draft profile, goal 3",
+      "description": "Connect residents to jobs.",
+      "objectives": [
+        "Expand workforce training"
+      ],
+      "keywords": [
+        "workforce",
+        "job training",
+        "economic mobility"
+      ]
+    }
+  ],
+  "keywords": [
+    "county",
+    "public health",
+    "early childhood",
+    "workforce",
+    "justice"
+  ]
+}

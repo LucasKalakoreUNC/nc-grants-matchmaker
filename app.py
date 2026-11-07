@@ -16,6 +16,17 @@ import io
 import re
 
 import pipeline
+import db
+import notices
+
+
+def load_scored(agency_id):
+    """Scored grants for one office, best first, read from the database."""
+    conn = db.connect()
+    try:
+        return db.scored_for_office(conn, agency_id)
+    finally:
+        conn.close()
 
 PORT = int(os.environ.get("PORT", 8000))
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -46,7 +57,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         awardees = top_item.get("past_awardees", [])
         stats = top_item.get("past_award_stats", {})
         res = [
-            f"### 🏆 Historical Awardees for: **{top_item.get('title')}**",
+            f"### Historical Awardees for: **{top_item.get('title')}**",
             f"- **Federal Funder**: {top_item.get('agency')}",
             f"- **Assistance Listing / CFDA**: `{top_item.get('cfda', 'N/A')}`",
             f"- **Historical NC Win Rate**: **{stats.get('nc_historical_win_rate', '32%')}** ({stats.get('competition_tier', 'Competitive')})",
@@ -56,7 +67,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         ]
         for a in awardees:
             res.append(f"- **{a.get('recipient')}** ({a.get('location')}): **${a.get('amount', 0):,}** (FY{a.get('fiscal_year')}) — *\"{a.get('project_title')}\"*")
-        res.append("\n💡 *Strategic Takeaway: NC entities have successfully won past cycles under this statutory program. Proposals emphasize measurable statewide outcomes and verified matching commitments.*")
+        res.append("\n*Strategic Takeaway: NC entities have successfully won past cycles under this statutory program. Proposals emphasize measurable statewide outcomes and verified matching commitments.*")
         return "\n".join(res)
 
     # 2. Document Checklist / What You Need
@@ -64,7 +75,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         top_item = scored_items[0] if scored_items else {}
         docs = top_item.get("required_documents", {})
         res = [
-            f"### 📋 Required Documents & Submission Checklist for {short_name}",
+            f"### Required Documents & Submission Checklist for {short_name}",
             "To submit an actionable, compliant proposal on Grants.gov Workspace, assemble the following package:",
             "",
             "#### 1. Standard Federal / State Application Forms",
@@ -97,7 +108,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         factors = top_item.get("complexity_factors", [])
 
         res = [
-            f"### ⏱️ Estimated Application Effort: **{top_item.get('title')}**",
+            f"### ⏱Estimated Application Effort: **{top_item.get('title')}**",
             f"- **Estimated Staff Hours**: **{hours} Hours** (Across lead author, budget officer, and executive reviewer)",
             f"- **Recommended Lead-Time**: **{weeks} Weeks** prior to deadline",
             f"- **Complexity Tier**: **{tier}**",
@@ -107,7 +118,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         for f in factors:
             res.append(f"- • {f}")
         if top_item.get("days_to_close", 999) < (weeks * 7):
-            res.append(f"\n⚠️ **Feasibility Alert**: Deadline is in **{top_item.get('days_to_close')} days**, which is less than the recommended {weeks}-week preparation window. Fast-track routing recommended!")
+            res.append(f"\n**Feasibility Alert**: Deadline is in **{top_item.get('days_to_close')} days**, which is less than the recommended {weeks}-week preparation window. Fast-track routing recommended!")
         return "\n".join(res)
 
     # 4. Action Steps & Executive Email
@@ -115,14 +126,14 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         top_item = scored_items[0] if scored_items else {}
         steps = top_item.get("action_steps", [])
         res = [
-            f"### 🚀 Action Plan & Execution Roadmap: **{top_item.get('title')}**",
+            f"### Action Plan & Execution Roadmap: **{top_item.get('title')}**",
             f"Targeting submission for **{short_name}** ({category} Level):\n"
         ]
         for s in steps:
             res.append(f"**Step {s.get('step')}: {s.get('title')}** ({s.get('deadline_day')})")
             res.append(f"- *Owner*: {s.get('owner')}")
             res.append(f"- *Action*: {s.get('action')}\n")
-        res.append("📧 *Tip: You can use the 'Draft Executive Email' button in the grant modal to copy a ready-to-send memo for leadership.*")
+        res.append("*Tip: You can use the 'Draft Executive Email' button in the grant modal to copy a ready-to-send memo for leadership.*")
         return "\n".join(res)
 
     # 5. Urgent Grants / Closing Soon
@@ -131,7 +142,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         if not urgent:
             return f"Good news! None of the top opportunities for **{short_name}** are closing within the 14-day critical window."
         res = [
-            f"### 🚨 Urgent Radar: Grants Closing in ≤ 14 Days for {short_name}",
+            f"### Urgent Radar: Grants Closing in ≤ 14 Days for {short_name}",
             "The following high-priority opportunities require immediate review or sign-off:\n"
         ]
         for it in urgent:
@@ -146,7 +157,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
         if not high_dollar:
             high_dollar = [o for o in scored_items if o.get("award_ceiling", 0) >= 2000000][:5]
         res = [
-            f"### 💰 Major Multi-Million Dollar Grants for {short_name}",
+            f"### Major Multi-Million Dollar Grants for {short_name}",
             "High-impact federal programs providing substantial funding leverage:\n"
         ]
         for it in high_dollar:
@@ -167,7 +178,7 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
 
     if matches:
         res = [
-            f"### 🔍 Found {len(matches)} Relevant Opportunities for \"{user_msg}\":",
+            f"### Found {len(matches)} Relevant Opportunities for \"{user_msg}\":",
             f"Evaluated against **{short_name}** strategic goals:\n"
         ]
         for it in matches:
@@ -175,13 +186,13 @@ def build_chatbot_response(user_msg, agency_id, profile, scored_items):
             res.append(f"   - **Score**: `{it.get('total_score')}/100` ({it.get('confidence')} Fit) | **Ceiling**: ${it.get('award_ceiling', 0):,}")
             res.append(f"   - **Strategic Goal**: {it.get('matched_goal_title')} ({it.get('matched_goal_citation', '')})")
             res.append(f"   - **Source**: {it.get('source_display', 'Grants.gov')} | Effort: ~{it.get('est_completion_hours', 40)} hrs")
-        res.append("\n👉 *Click on any grant in the table to view the full Explanation, Document Checklist, Sample Draft, and Past Awardees!*")
+        res.append("\n*Click on any grant in the table to view the full Explanation, Document Checklist, Sample Draft, and Past Awardees!*")
         return "\n".join(res)
 
     # Default fallback greeting & orientation
     top = scored_items[0] if scored_items else {}
     return (
-        f"### 🤖 NC Grants Strategic AI Assistant\n"
+        f"### NC Grants Strategic AI Assistant\n"
         f"I am actively monitoring **{len(scored_items)} federal and state opportunities** for **{short_name}** ({category} Level).\n\n"
         f"**Top Ranked Opportunity Right Now:**\n"
         f"- **Title**: *{top.get('title', 'N/A')}*\n"
@@ -366,14 +377,7 @@ def generate_weekly_digest(agency_id, email="staff.member@nc.gov"):
     name = profile.get("name", "State of North Carolina")
     citation = profile.get("source_citation", "NC State Strategic Plan")
 
-    scored_file = os.path.join(DATA_DIR, "scored", agency_id, "latest.json")
-    items = []
-    if os.path.exists(scored_file):
-        try:
-            with open(scored_file, "r", encoding="utf-8") as f:
-                items = json.load(f)
-        except Exception:
-            items = []
+    items = load_scored(agency_id)
 
     top_3 = items[:3]
     urgent_items = [it for it in items if it.get("days_to_close") is not None and 0 <= it.get("days_to_close") <= 14][:2]
@@ -634,14 +638,7 @@ def generate_weekly_digest(agency_id, email="staff.member@nc.gov"):
     name = profile.get("name", "State of North Carolina")
     citation = profile.get("source_citation", "NC State Strategic Plan")
 
-    scored_file = os.path.join(DATA_DIR, "scored", agency_id, "latest.json")
-    items = []
-    if os.path.exists(scored_file):
-        try:
-            with open(scored_file, "r", encoding="utf-8") as f:
-                items = json.load(f)
-        except Exception:
-            items = []
+    items = load_scored(agency_id)
 
     top_3 = items[:3]
     urgent_items = [it for it in items if it.get("days_to_close") is not None and 0 <= it.get("days_to_close") <= 14][:2]
@@ -784,7 +781,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     "name": v.get("name"),
                     "short_name": v.get("short_name"),
                     "category": v.get("category", "state"),
-                    "citation": v.get("source_citation")
+                    "citation": v.get("source_citation"),
+                    "draft": v.get("profile_status") == "draft"
                 }
                 for k, v in profiles.items()
             ]
@@ -836,25 +834,57 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         # 4. API: Get scored opportunities for agency
+        if path.startswith("/api/opportunity/") and path.endswith("/sources"):
+            opp_id = path.split("/")[3]
+            conn = notices.connect()
+            try:
+                row = conn.execute("SELECT cfda, url FROM opportunities WHERE id=?", (opp_id,)).fetchone()
+                if not row:
+                    self._send_json({"error": "Not found"}, 404)
+                    return
+                links = [{"name": "Official listing on Grants.gov", "url": row["url"]}]
+                if row["cfda"]:
+                    links.append({"name": f"Program details on SAM.gov (Assistance Listing {row['cfda']})",
+                                  "url": f"https://sam.gov/search/?index=cfda&keywords={urllib.parse.quote(row['cfda'])}"})
+                self._send_json({
+                    "files": notices.files_for(conn, opp_id),
+                    "requirements": notices.requirements_for(conn, opp_id),
+                    "links": links,
+                })
+            finally:
+                conn.close()
+            return
+
+        if path in ("/api/scored/all", "/api/decisions/all"):
+            category = urllib.parse.parse_qs(parsed.query).get("category", ["all"])[0]
+            profiles = pipeline.load_agency_profiles()
+            ids = [k for k, v in profiles.items() if category in ("all", "") or v.get("category", "state") == category]
+            conn = db.connect()
+            try:
+                if path == "/api/scored/all":
+                    items = db.scored_best(conn, ids)
+                    for it in items:
+                        it["best_office_name"] = profiles.get(it["best_office_id"], {}).get("name", "")
+                    self._send_json(items)
+                else:
+                    self._send_json(db.get_decisions_for(conn, ids))
+            finally:
+                conn.close()
+            return
+
         if path.startswith("/api/scored/"):
             agency_id = path.replace("/api/scored/", "").strip()
-            scored_file = os.path.join(DATA_DIR, "scored", agency_id, "latest.json")
-            if os.path.exists(scored_file):
-                with open(scored_file, "r", encoding="utf-8") as f:
-                    self._send_json(json.load(f))
-            else:
-                self._send_json([], 200)
+            self._send_json(load_scored(agency_id))
             return
 
         # 5. API: Get decisions for agency
         if path.startswith("/api/decisions/"):
             agency_id = path.replace("/api/decisions/", "").strip()
-            dec_file = os.path.join(DATA_DIR, "decisions", f"{agency_id}.json")
-            if os.path.exists(dec_file):
-                with open(dec_file, "r", encoding="utf-8") as f:
-                    self._send_json(json.load(f))
-            else:
-                self._send_json({"agency_id": agency_id, "decisions": []}, 200)
+            conn = db.connect()
+            try:
+                self._send_json(db.get_decisions(conn, agency_id))
+            finally:
+                conn.close()
             return
 
         # 6. API: Get evaluation metrics (§6)
@@ -868,6 +898,14 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         # 7. API: Get run status / latest pipeline log
+        if path == "/api/db/stats":
+            conn = db.connect()
+            try:
+                self._send_json(db.stats(conn))
+            finally:
+                conn.close()
+            return
+
         if path == "/api/runs/latest":
             latest_run_file = os.path.join(DATA_DIR, "runs", "latest.json")
             if os.path.exists(latest_run_file):
@@ -881,13 +919,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         if path.startswith("/api/export/"):
             parts = path.replace("/api/export/", "").split("/")
             agency_id = parts[0]
-            scored_file = os.path.join(DATA_DIR, "scored", agency_id, "latest.json")
-            if not os.path.exists(scored_file):
+            items = load_scored(agency_id)
+            if not items:
                 self._send_json({"error": "No scored data found for agency"}, 404)
                 return
-
-            with open(scored_file, "r", encoding="utf-8") as f:
-                items = json.load(f)
 
             output = io.StringIO()
             writer = csv.writer(output)
@@ -962,11 +997,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             profiles = pipeline.load_agency_profiles()
             profile = profiles.get(agency_id, profiles.get("deq", {}))
 
-            scored_file = os.path.join(DATA_DIR, "scored", agency_id, "latest.json")
-            scored_items = []
-            if os.path.exists(scored_file):
-                with open(scored_file, "r", encoding="utf-8") as f:
-                    scored_items = json.load(f)
+            scored_items = load_scored(agency_id)
 
             reply = build_chatbot_response(msg, agency_id, profile, scored_items)
             self._send_json({"reply": reply, "agency_id": agency_id})
@@ -1012,44 +1043,24 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         # 2. Save Staff Decision (§5.6 & §5.0)
         if path.startswith("/api/decisions/"):
             agency_id = path.replace("/api/decisions/", "").strip()
-            dec_file = os.path.join(DATA_DIR, "decisions", f"{agency_id}.json")
-            existing = {"agency_id": agency_id, "decisions": []}
-            if os.path.exists(dec_file):
-                try:
-                    with open(dec_file, "r", encoding="utf-8") as f:
-                        existing = json.load(f)
-                except Exception:
-                    pass
-
             opp_id = str(payload.get("opportunity_id", ""))
-            status = payload.get("status", "Pursue")
-            notes = payload.get("notes", "")
-            decided_by = payload.get("decided_by", "State Grants Coordinator")
-            decided_at = datetime.now().isoformat()
-
-            found = False
-            for d in existing.get("decisions", []):
-                if str(d.get("opportunity_id")) == opp_id:
-                    d["status"] = status
-                    d["notes"] = notes
-                    d["decided_by"] = decided_by
-                    d["decided_at"] = decided_at
-                    found = True
-                    break
-            if not found:
-                existing.setdefault("decisions", []).append({
+            if not opp_id:
+                self._send_json({"error": "opportunity_id is required"}, 400)
+                return
+            conn = db.connect()
+            try:
+                db.save_decision(conn, agency_id, {
                     "opportunity_id": opp_id,
                     "number": payload.get("number", ""),
                     "title": payload.get("title", ""),
-                    "status": status,
-                    "notes": notes,
-                    "decided_by": decided_by,
-                    "decided_at": decided_at
+                    "status": payload.get("status", "Pursue"),
+                    "notes": payload.get("notes", ""),
+                    "decided_by": payload.get("decided_by", "Grants staff"),
+                    "decided_at": datetime.now().isoformat(timespec="seconds"),
                 })
-
-            os.makedirs(os.path.join(DATA_DIR, "decisions"), exist_ok=True)
-            with open(dec_file, "w", encoding="utf-8") as f:
-                json.dump(existing, f, indent=2)
+                conn.commit()
+            finally:
+                conn.close()
 
             self._send_json({"success": True, "agency_id": agency_id, "saved_decision": payload})
             return
@@ -1081,13 +1092,14 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 self._send_json({"error": "Profile not found"}, 404)
                 return
 
-            opps_file = os.path.join(DATA_DIR, "opportunities", "latest.json")
-            if not os.path.exists(opps_file):
+            conn = db.connect()
+            try:
+                normalized = db.opportunities(conn)
+            finally:
+                conn.close()
+            if not normalized:
                 self._send_json({"error": "No opportunities found"}, 404)
                 return
-
-            with open(opps_file, "r", encoding="utf-8") as f:
-                normalized = json.load(f)
 
             rescored = []
             for opp in normalized:
@@ -1109,6 +1121,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         self.send_error(404, "Not Found")
 
 def run_server():
+    try:
+        print(f"Requirement files loaded: {notices.load_requirements_dir(notices.connect())}")
+    except Exception as e:
+        print(f"[WARN] Could not load requirement files: {e}")
     os.makedirs(os.path.join(BASE_DIR, "public"), exist_ok=True)
     server_address = ("", PORT)
     httpd = HTTPServer(server_address, MatchmakerHandler)

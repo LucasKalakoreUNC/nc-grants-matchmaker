@@ -15,6 +15,8 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 
+import db
+
 CURRENT_DATE_STR = "2026-11-06"
 CURRENT_DATE = datetime.strptime(CURRENT_DATE_STR, "%Y-%m-%d")
 
@@ -93,39 +95,34 @@ def load_agency_profiles():
                 profiles[data.get("agency_id", fname.replace(".json", ""))] = data
     return profiles
 
-def estimate_completion_effort(ceiling, agency_name, title):
-    """Calculates staff effort, weeks, complexity tier and factors."""
-    title_l = title.lower()
-    ceiling = int(ceiling or 1500000)
+def estimate_completion_effort(opp):
+    """Rough staff-time estimate from facts in the funding notice.
 
-    if ceiling >= 5000000 or any(w in title_l for w in ["infrastructure", "highway", "water", "corridor", "capital"]):
-        hours = 90
-        weeks = 6
-        tier = "High Complexity"
-        factors = [
-            "Mandatory 20% Non-Federal Matching Commitment",
-            "NEPA Environmental Review Clearance Required",
-            "Governor's EO 12372 Intergovernmental Review Sign-off",
-            "Multi-Jurisdictional Letters of Support Required"
-        ]
-    elif ceiling >= 1500000 or any(w in title_l for w in ["demonstration", "pilot", "center", "consortium"]):
-        hours = 55
-        weeks = 4
-        tier = "Moderate Complexity"
-        factors = [
-            "Detailed Line-Item Budget Narrative & NICRA Verification",
-            "Standard SF-424 & SF-424A Narrative Documentation",
-            "Sub-Recipient Monitoring Plan Required"
-        ]
-    else:
-        hours = 30
-        weeks = 2
-        tier = "Low Complexity"
-        factors = [
-            "Streamlined Form-Based Proposal",
-            "Standard Project Narrative (under 15 pages)",
-            "Direct State/Local Applicant Certification"
-        ]
+    Starts at 25 hours for a basic federal application, then adds time for
+    things that are known to make applications harder. Shown to staff as an
+    estimate, with the reasons listed.
+    """
+    hours = 25
+    factors = ["Basic federal application package (SF-424 forms, narrative, budget): 25 hours"]
+    ceiling = opp.get("award_ceiling") or 0
+    if ceiling >= 5_000_000:
+        hours += 35
+        factors.append("Large award (over $5 million) needs a detailed budget and work plan: +35 hours")
+    elif ceiling >= 1_000_000:
+        hours += 20
+        factors.append("Award over $1 million needs a fuller budget justification: +20 hours")
+    if opp.get("cost_share_required"):
+        hours += 20
+        factors.append("Matching funds required; budget office must commit the match: +20 hours")
+    cats = " ".join(opp.get("funding_categories", [])).lower() + " " + opp.get("title", "").lower()
+    if any(w in cats for w in ["infrastructure", "construction", "transportation", "highway", "water", "housing"]):
+        hours += 15
+        factors.append("Construction or infrastructure work may need environmental review: +15 hours")
+    if any(w in (opp.get("eligibility_text") or "").lower() for w in ["partnership", "consortium", "letters of support", "collaborat"]):
+        hours += 10
+        factors.append("Partners or letters of support likely needed: +10 hours")
+    weeks = max(1, -(-hours // 15))  # assumes about 15 staff hours per week
+    tier = "Light" if hours <= 35 else "Moderate" if hours <= 70 else "Heavy"
     return hours, weeks, tier, factors
 
 def generate_past_awardees(title, agency, cfda, ceiling):
@@ -201,37 +198,34 @@ def generate_past_awardees(title, agency, cfda, ceiling):
         "competition_tier": comp_tier
     }
 
-def generate_required_documents(agency, title, ceiling):
-    """Categorized checklist of required documentation for applicants."""
-    return {
+def generate_required_documents(opp):
+    """Typical federal application documents, adjusted to what the notice says.
+    This is a starting checklist; the official notice lists the exact requirements."""
+    docs = {
         "standard_forms": [
-            {"code": "SF-424", "name": "Application for Federal Assistance", "required": True, "notes": "Authorized Representative (AOR) digital sign-off via Grants.gov Workspace"},
-            {"code": "SF-424A", "name": "Budget Information for Non-Construction Programs", "required": True, "notes": "Line-item federal share vs. non-federal matching commitment"},
-            {"code": "SF-424B", "name": "Assurances for Non-Construction Programs", "required": True, "notes": "Standard state statutory and civil rights certifications"},
-            {"code": "SF-LLL", "name": "Disclosure of Lobbying Activities", "required": True, "notes": "Mandatory disclosure for awards over $100,000"}
+            {"code": "SF-424", "name": "Application for Federal Assistance", "required": True, "notes": "Signed by your authorized representative in Grants.gov Workspace"},
+            {"code": "SF-424A", "name": "Budget Information", "required": True, "notes": "Federal share and any matching funds by budget category"},
+            {"code": "SF-424B", "name": "Assurances", "required": True, "notes": "Standard federal certifications"},
         ],
         "project_narrative": [
-            {"name": "Executive Project Summary & Abstract", "required": True, "notes": "Max 2 pages; public release document"},
-            {"name": "Detailed Technical Narrative", "required": True, "notes": "Max 25 pages, single-spaced, 12pt font. Addressing all merit criteria"},
-            {"name": "Work Plan, Milestones & Gantt Chart", "required": True, "notes": "Phased implementation schedule with measurable quarterly deliverables"},
-            {"name": "North Carolina Strategic Need Statement", "required": True, "notes": "Demonstration of alignment with state/local strategic goals"}
-        ],
-        "financial_budget": [
-            {"name": "Detailed Budget Justification Narrative", "required": True, "notes": "Breakdown across personnel, fringe, travel, supplies, and contracts"},
-            {"name": "Federally Approved NICRA Agreement", "required": True, "notes": "Current Negotiated Indirect Cost Rate Agreement from cognizant federal agency"},
-            {"name": "State Matching Funds Commitment Letter", "required": True, "notes": "Official signature from agency CFO / budget director securing match"}
+            {"name": "Project abstract", "required": True, "notes": "Usually 1 to 2 pages"},
+            {"name": "Project narrative", "required": True, "notes": "Must address each review criterion in the notice"},
+            {"name": "Budget justification", "required": True, "notes": "Explains each line of the SF-424A"},
         ],
         "administrative_legal": [
-            {"name": "Key Personnel Resumes & Biographical Sketches", "required": True, "notes": "Max 2 pages per key investigator or project director"},
-            {"name": "Governor's EO 12372 Intergovernmental Review Sign-off", "required": True, "notes": "NC State Clearinghouse single point of contact (SPOC) review"},
-            {"name": "Active SAM.gov Registration & UEI Verification", "required": True, "notes": "Ensure entity registration does not expire within 90 days"},
-            {"name": "Letters of Commitment from Regional Stakeholders", "required": False, "notes": "From county commissioners, university partners, or regional councils"}
+            {"name": "Active SAM.gov registration and UEI", "required": True, "notes": "Registration must not expire before the award date"},
+            {"name": "Resumes of key staff", "required": False, "notes": "Often requested for project director and key personnel"},
+            {"name": "NC State Clearinghouse review (Executive Order 12372)", "required": False, "notes": "Needed only if the federal program is covered by intergovernmental review"},
         ],
-        "compliance_environmental": [
-            {"name": "NEPA Categorical Exclusion Screening", "required": True, "notes": "Environmental assessment questionnaire if ground-disturbing work is involved"},
-            {"name": "Title VI Civil Rights & Justice40 Statement", "required": True, "notes": "Demonstration of benefits to disadvantaged and rural communities"}
-        ]
     }
+    if (opp.get("award_ceiling") or 0) > 100_000:
+        docs["standard_forms"].append({"code": "SF-LLL", "name": "Disclosure of Lobbying Activities", "required": True, "notes": "Required for awards over $100,000"})
+    if opp.get("cost_share_required"):
+        docs["financial_budget"] = [{"name": "Matching funds commitment letter", "required": True, "notes": "Signed by your budget or finance director"}]
+    cats = " ".join(opp.get("funding_categories", [])).lower() + " " + opp.get("title", "").lower()
+    if any(w in cats for w in ["infrastructure", "construction", "transportation", "highway", "water", "housing"]):
+        docs["compliance_environmental"] = [{"name": "Environmental review (NEPA) information", "required": False, "notes": "Needed if the project involves construction or ground disturbance"}]
+    return docs
 
 def generate_sample_draft(opp, profile=None):
     """Generates complete pre-populated proposal text sections."""
@@ -376,145 +370,330 @@ def generate_executive_email(opp, profile=None):
     )
     return {"subject": subject, "body": body}
 
-def enrich_opportunity(item, idx=0):
-    """Enriches normalized grant with multi-source, effort, past awardees, docs, drafts, and action steps."""
-    title = item.get("title", "")
-    agency = item.get("agency", "")
-    cfda = item.get("cfda", "")
-    ceiling = item.get("award_ceiling", 1500000)
-    days = item.get("days_to_close", 999)
+def _strip_html(text):
+    import html as _html
+    text = re.sub(r"<[^>]+>", " ", text or "")
+    return re.sub(r"\s+", " ", _html.unescape(text)).strip()
 
-    # Multi-source distribution (grants.gov, sam.gov, nc-egrants, philanthropy)
-    if "state revolving fund" in title.lower() or "golden leaf" in title.lower() or "clean water management" in title.lower() or idx % 9 == 0:
-        source = "nc-egrants"
-        source_display = "NC State eGrants Portal"
-    elif "highway" in title.lower() or "assistance listing" in title.lower() or "appalachian regional" in title.lower() or idx % 7 == 0:
-        source = "sam.gov"
-        source_display = "SAM.gov Assistance Listings"
-    elif "endowment" in title.lower() or "foundation" in title.lower() or idx % 19 == 0:
-        source = "philanthropy"
-        source_display = "NC Philanthropic Trust"
-    else:
-        source = "grants.gov"
-        source_display = "Grants.gov (Federal)"
 
-    hours, weeks, tier, factors = estimate_completion_effort(ceiling, agency, title)
+def _money(v):
+    try:
+        v = int(float(str(v).replace(",", "").replace("$", "")))
+        return v if v > 0 else None
+    except (TypeError, ValueError):
+        return None
 
-    # Feasibility check
-    feasibility_warning = None
-    if days is not None and days < (weeks * 7) and days >= 0:
-        feasibility_warning = f"⚠️ Tight Deadline Alert: Application requires ~{weeks} weeks ({hours} staff hours) of preparation, but only {days} days remain."
 
-    # Cost-share logic
-    cost_share_req = any(w in title.lower() for w in ["water", "highway", "infrastructure", "mitigation", "fema", "dera", "transit"]) or ceiling >= 3000000
-    cost_share_pct = 20 if cost_share_req else 0
+def fetch_opportunity_detail(opp_id):
+    """Full Grants.gov record for one opportunity (description, award sizes,
+    eligibility, cost sharing, contact)."""
+    req = urllib.request.Request(
+        FETCH_API_URL,
+        data=json.dumps({"opportunityId": int(opp_id)}).encode("utf-8"),
+        headers={"Content-Type": "application/json", "User-Agent": "NC-Grants-Matchmaker/2.0"},
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            res = json.loads(r.read().decode("utf-8"))
+            if res.get("errorcode") == 0:
+                return res.get("data")
+    except Exception as e:
+        print(f"[WARN] Detail fetch failed for {opp_id}: {e}", file=sys.stderr)
+    return None
 
-    past_data = generate_past_awardees(title, agency, cfda, ceiling)
-    req_docs = generate_required_documents(agency, title, ceiling)
-    sample_draft = generate_sample_draft(item)
-    action_steps = generate_action_steps(item)
-    exec_email = generate_executive_email(item)
 
-    # Key documents summary for clean database viewing
-    standard_forms_list = [f.get("code", f.get("name")) for f in req_docs.get("standard_forms", [])]
-    key_docs_tags = standard_forms_list[:3] + ["Technical Narrative", "Budget Justification"]
-    total_doc_items = sum(len(l) for l in req_docs.values())
+def sync_opportunity_details(conn, raw_hits, max_workers=6):
+    """Fetch details only for grants we have no details for, or whose search
+    record changed since the details were stored."""
+    from concurrent.futures import ThreadPoolExecutor
+    have = {r["source_record_id"]: r["last_changed"] for r in conn.execute(
+        "SELECT source_record_id, last_changed FROM raw_records WHERE source='grants.gov-detail'")}
+    changed = {r["source_record_id"]: r["last_changed"] for r in conn.execute(
+        "SELECT source_record_id, last_changed FROM raw_records WHERE source='grants.gov'")}
+    todo = [str(h["id"]) for h in raw_hits if str(h["id"]) not in have or changed.get(str(h["id"]), "") > have[str(h["id"])]]
+    if not todo:
+        return 0, len(raw_hits)
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        results = list(ex.map(fetch_opportunity_detail, todo))
+    got = 0
+    for oid, detail in zip(todo, results):
+        if detail:
+            db.upsert_raw(conn, "grants.gov-detail", oid, detail)
+            got += 1
+    conn.commit()
+    return got, len(raw_hits) - len(todo)
 
-    item["source"] = source
-    item["source_display"] = source_display
+
+USASPENDING_URL = "https://api.usaspending.gov/api/v2/search/spending_by_award/"
+
+
+def fetch_nc_awards(cfda):
+    """Largest recent awards to North Carolina recipients under one Assistance Listing."""
+    payload = {
+        "filters": {
+            "award_type_codes": ["02", "03", "04", "05"],
+            "program_numbers": [cfda],
+            "recipient_locations": [{"country": "USA", "state": "NC"}],
+            "time_period": [{"start_date": "2019-10-01", "end_date": CURRENT_DATE.strftime("%Y-%m-%d")}],
+        },
+        "fields": ["Award ID", "Recipient Name", "Award Amount", "Start Date", "Description"],
+        "limit": 8, "sort": "Award Amount", "order": "desc",
+    }
+    req = urllib.request.Request(USASPENDING_URL, data=json.dumps(payload).encode("utf-8"),
+                                 headers={"Content-Type": "application/json", "User-Agent": "NC-Grants-Matchmaker/2.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=20) as r:
+            return json.loads(r.read().decode("utf-8")).get("results", [])
+    except Exception as e:
+        if "CERTIFICATE_VERIFY_FAILED" not in str(e):
+            print(f"[WARN] USAspending fetch failed for {cfda}: {e}", file=sys.stderr)
+            return None
+    # Some Python certificate bundles no longer trust USAspending's Entrust
+    # certificate; the operating system's store (used by curl) still does.
+    import subprocess
+    try:
+        out = subprocess.run(["curl", "-sS", "--max-time", "20", "-X", "POST", USASPENDING_URL,
+                              "-H", "Content-Type: application/json", "-d", json.dumps(payload)],
+                             capture_output=True, text=True, check=True).stdout
+        return json.loads(out).get("results", [])
+    except Exception as e:
+        print(f"[WARN] USAspending fetch failed for {cfda}: {e}", file=sys.stderr)
+        return None
+
+
+def sync_nc_awards(conn, cfdas, max_age_hours=24 * 7, max_workers=4):
+    """Refresh NC award history for each program at most once a week."""
+    from concurrent.futures import ThreadPoolExecutor
+    todo = [c for c in sorted(set(cfdas)) if c and not db.is_fresh(conn, "usaspending", c, max_age_hours)]
+    if not todo:
+        return 0
+    with ThreadPoolExecutor(max_workers=max_workers) as ex:
+        results = list(ex.map(fetch_nc_awards, todo))
+    ok = 0
+    for cfda, rows in zip(todo, results):
+        if rows is None:
+            db.log_fetch(conn, "usaspending", cfda, 0, ok=False, error="request failed")
+            continue
+        for r in rows:
+            start = r.get("Start Date") or ""
+            db.upsert_award(conn, "usaspending", r.get("Award ID") or r.get("generated_internal_id"), cfda,
+                            r.get("Recipient Name"), r.get("Award Amount"),
+                            int(start[:4]) if start[:4].isdigit() else None, "NC", r)
+        db.log_fetch(conn, "usaspending", cfda, len(rows), ok=True)
+        ok += 1
+    conn.commit()
+    return ok
+
+
+def enrich_opportunity(item, conn=None):
+    """Adds staff-time estimate, document checklist, NC award history and next steps."""
+    source = item.get("source", "grants.gov")
+    item["source_display"] = {"grants.gov": "Grants.gov", "sam.gov": "SAM.gov Assistance Listings",
+                              "federalregister": "Federal Register"}.get(source, source)
+
+    hours, weeks, tier, factors = estimate_completion_effort(item)
+    days = item.get("days_to_close")
     item["est_completion_hours"] = hours
     item["est_completion_weeks"] = weeks
     item["complexity_tier"] = tier
     item["complexity_factors"] = factors
-    item["feasibility_warning"] = feasibility_warning
-    item["cost_share_required"] = cost_share_req
-    item["cost_share_pct"] = cost_share_pct
-    item["past_awardees"] = past_data["recipients"]
-    item["past_award_stats"] = past_data
+    item["feasibility_warning"] = (
+        f"This application likely needs about {weeks} weeks of work, but only {days} days remain."
+        if days is not None and 0 <= days < weeks * 7 else None)
+
+    awards = db.awards_for_cfda(conn, item.get("cfda")) if conn is not None and item.get("cfda") else []
+    item["past_awardees"] = [{
+        "recipient": (a["recipient"] or "").title(),
+        "amount": a["amount"],
+        "fiscal_year": a["fiscal_year"],
+        "location": "North Carolina",
+        "project_title": (json.loads(a["data"]).get("Description") or "")[:160].capitalize(),
+        "source": "USAspending.gov",
+    } for a in awards]
+    item["past_award_stats"] = {"count": len(awards), "total": sum(a["amount"] or 0 for a in awards)}
+
+    req_docs = generate_required_documents(item)
     item["required_documents"] = req_docs
-    item["key_document_tags"] = key_docs_tags
-    item["required_documents_summary"] = f"{', '.join(key_docs_tags)} (+{total_doc_items - len(key_docs_tags)} items)"
-    item["required_documents_count"] = total_doc_items
-    item["sample_draft"] = sample_draft
-    item["action_steps"] = action_steps
-    item["executive_email"] = exec_email
+    item["required_documents_count"] = sum(len(v) for v in req_docs.values())
+    item["action_steps"] = generate_action_steps(item)
     return item
 
-def normalize_opportunities(raw_hits):
-    """Normalize raw Grants.gov oppHits into rich multi-source schema."""
+
+AMOUNT_RE = re.compile(
+    r"(award ceiling|ceiling|maximum (?:award|amount|request|federal)[a-z ]*|max(?:imum)?\.? award|"
+    r"up to|not (?:to )?exceed|no more than|may request)[^$\n]{0,80}?\$\s?([\d,]+(?:\.\d+)?)\s*(million|billion|m\b|k\b)?",
+    re.I)
+
+
+def find_amount(text):
+    """First stated per-award maximum in a block of text. Returns (amount, page or None)."""
+    if not text:
+        return None, None
+    for m in AMOUNT_RE.finditer(text):
+        try:
+            v = float(m.group(2).replace(",", ""))
+        except ValueError:
+            continue
+        around = (text[max(0, m.start() - 60): m.start()] + text[m.end(): m.end() + 80]).lower()
+        if any(w in around for w in ("total", "available", "program funding", "anticipated funding", "aggregate")):
+            continue
+        unit = (m.group(3) or "").lower()
+        v *= 1e6 if unit in ("million", "m") else 1e9 if unit == "billion" else 1e3 if unit == "k" else 1
+        if v >= 1000:
+            page = None
+            marks = re.findall(r"\[page (\d+)\]", text[: m.start()])
+            if marks:
+                page = int(marks[-1])
+            return int(v), page
+    return None, None
+
+
+def fill_award_amount(opp, conn=None):
+    """Best available per-award amount, with a plain-language note on where it came from."""
+    ceiling, total, n = opp.get("award_ceiling"), opp.get("estimated_total_funding"), opp.get("number_of_awards")
+    if ceiling:
+        opp["award_amount_source"] = "Award ceiling listed on Grants.gov"
+        return
+    amount, page = find_amount(opp.get("description"))
+    where = "Grant description on Grants.gov"
+    if not amount and conn is not None:
+        try:
+            rows = conn.execute("SELECT file_name, text FROM notice_files WHERE opportunity_id=? AND text IS NOT NULL "
+                                "ORDER BY attachment_id DESC", (opp["id"],)).fetchall()
+        except Exception:
+            rows = []
+        for r in rows:
+            amount, page = find_amount(r["text"])
+            if amount:
+                where = f"Funding notice ({r['file_name']}{f', p. {page}' if page else ''})"
+                break
+    if amount:
+        opp["award_ceiling"] = amount
+        opp["award_amount_source"] = f"Stated in the {where[0].lower() + where[1:]}"
+        return
+    if total and n and n > 0:
+        opp["award_estimate"] = int(total / n)
+        opp["award_amount_source"] = f"Estimated: ${total:,} total funding divided by {n} expected awards (Grants.gov)"
+        return
+    if total:
+        opp["award_amount_source"] = "Only total program funding is listed on Grants.gov"
+        return
+    opp["award_amount_source"] = "Not listed on Grants.gov or in the notice"
+
+
+def normalize_opportunities(raw_hits, details=None, conn=None):
+    """Turn Grants.gov search hits (plus stored detail records) into one clean record per grant."""
+    details = details or {}
     seen_ids = set()
     normalized = []
 
-    for idx, item in enumerate(raw_hits):
+    for item in raw_hits:
         opp_id = str(item.get("id", "")).strip()
         if not opp_id or opp_id in seen_ids:
             continue
         seen_ids.add(opp_id)
+        d = details.get(opp_id) or {}
+        syn = d.get("synopsis") or d.get("forecast") or {}
 
-        title = item.get("title", "Untitled Opportunity").strip()
-        number = item.get("number", f"OPP-{opp_id}").strip()
-        agency = item.get("agency", item.get("agencyName", "Federal Grantor")).strip()
-        agency_code = item.get("agencyCode", "")
         status = item.get("oppStatus", "posted").lower()
-
         open_dt = parse_date(item.get("openDate"))
         close_dt = parse_date(item.get("closeDate"))
         days_to_close = compute_days_to_close(close_dt)
-
-        # Drop closed if days_to_close is negative and status is not forecasted
         if days_to_close is not None and days_to_close < 0 and status == "posted":
             continue
 
         cfda_list = item.get("cfdaList", item.get("alnList", []))
         cfda = cfda_list[0] if cfda_list else ""
+        program_title = next((c.get("programTitle") for c in d.get("cfdas", []) if c.get("cfdaNumber") == cfda), "")
 
-        eligibility = [
-            "State governments",
-            "Public and State controlled institutions of higher education",
-            "County governments",
-            "City or township governments",
-            "Special district governments",
-            "Small businesses",
-            "Nonprofits"
-        ]
+        # syn["agencyName"] is often the contact person; use the agency records instead.
+        agency = ((d.get("agencyDetails") or {}).get("agencyName") or item.get("agency")
+                  or (d.get("topAgencyDetails") or {}).get("agencyName") or "Federal agency").strip()
+        fc = d.get("forecast") or {}
+        pick = lambda key: _money(syn.get(key)) or _money(fc.get(key))
+        description = _strip_html(syn.get("synopsisDesc") or syn.get("forecastDesc"))
+        cost_sharing = syn.get("costSharing")
 
-        award_ceiling = item.get("awardCeiling") or item.get("estimatedFunding")
-        if not award_ceiling:
-            title_lower = title.lower()
-            if any(w in title_lower for w in ["infrastructure", "highway", "water", "broadband", "corridor"]):
-                award_ceiling = 10000000
-            elif any(w in title_lower for w in ["research", "demonstration", "pilot", "center"]):
-                award_ceiling = 2500000
-            elif any(w in title_lower for w in ["planning", "capacity", "technical assistance"]):
-                award_ceiling = 750000
-            else:
-                award_ceiling = 1500000
-
-        norm_item = {
+        norm = {
             "id": opp_id,
             "source": "grants.gov",
-            "number": number,
-            "title": title,
+            "number": item.get("number", "").strip(),
+            "title": _strip_html(item.get("title", "Untitled opportunity")),
             "agency": agency,
-            "agency_code": agency_code,
+            "agency_code": item.get("agencyCode", ""),
             "cfda": cfda,
+            "program_title": program_title,
             "status": status,
-            "open_date": open_dt.strftime("%Y-%m-%d") if open_dt else CURRENT_DATE_STR,
-            "close_date": close_dt.strftime("%Y-%m-%d") if close_dt else "no close date",
-            "days_to_close": days_to_close if days_to_close is not None else 999,
-            "eligibility": eligibility,
-            "category": "Discretionary State & Local Assistance",
-            "award_ceiling": int(award_ceiling) if str(award_ceiling).isdigit() else 2000000,
-            "description": f"Funding opportunity issued by {agency} under Assistance Listing {cfda}. Supports state, county, education, and regional initiatives matching program priorities, infrastructure modernizations, and technical capacity.",
+            "open_date": open_dt.strftime("%Y-%m-%d") if open_dt else None,
+            "close_date": close_dt.strftime("%Y-%m-%d") if close_dt else None,
+            "days_to_close": days_to_close,
+            "eligibility": [t.get("description", "") for t in syn.get("applicantTypes", [])],
+            "eligibility_text": _strip_html(syn.get("applicantEligibilityDesc"))[:1500],
+            "funding_categories": [c.get("description", "") for c in syn.get("fundingActivityCategories", [])],
+            "award_ceiling": pick("awardCeiling"),
+            "award_floor": pick("awardFloor"),
+            "estimated_total_funding": pick("estimatedFunding"),
+            "number_of_awards": pick("numberOfAwards"),
+            "cost_share_required": bool(cost_sharing) if cost_sharing is not None else None,
+            "description": description[:2500] if description else "The full description is on the official notice.",
+            "contact_email": syn.get("agencyContactEmail"),
+            "has_details": bool(syn),
             "url": f"https://www.grants.gov/search-results-detail/{opp_id}",
-            "ingested_at": datetime.now().isoformat()
+            "ingested_at": datetime.now().isoformat(),
         }
-
-        # Enrich with multi-source attributes, effort, docs, past awardees, and drafts
-        enriched = enrich_opportunity(norm_item, idx)
-        normalized.append(enriched)
+        fill_award_amount(norm, conn)
+        normalized.append(enrich_opportunity(norm, conn))
 
     return normalized
+
+GENERIC_WORDS = {"and", "with", "from", "state", "federal", "program", "programs", "public", "water", "health",
+                 "community", "services", "development", "research", "data", "safety", "local", "support",
+                 "access", "system", "systems", "education", "energy", "city", "county", "rural", "business"}
+
+# How the overall score is built. Each part is scored 0-100; weights add to 1.
+SCORE_WEIGHTS = {
+    "relevancy": 0.40,     # fit with the office's strategic-plan goals
+    "eligibility": 0.15,   # can this type of office apply
+    "money_amount": 0.15,  # size of the award
+    "timing": 0.15,        # enough time before the deadline for the work needed
+    "effort": 0.10,        # staff hours to apply (less is better)
+    "affinity": 0.05,      # funder this office usually works with
+}
+SCORE_LABELS = {
+    "relevancy": "Fit with your strategic plan", "eligibility": "Your office can apply",
+    "money_amount": "Award size", "timing": "Time before deadline",
+    "effort": "Effort to apply", "affinity": "Familiar funder",
+}
+
+CATEGORY_ELIGIBILITY_WORDS = {
+    "state": ["state government", "states", "state agenc"],
+    "county": ["county", "counties", "local government", "units of local government"],
+    "municipal": ["city", "cities", "municipal", "township", "local government", "units of local government"],
+    "education": ["institutions of higher education", "universit", "college"],
+    "business": ["small business", "for-profit", "for profit", "commercial"],
+    "nonprofit": ["nonprofit", "non-profit", "501(c)"],
+}
+
+
+def eligibility_fit(opp, profile):
+    """Score 0-100 for whether this office type may apply, plus a plain-language note."""
+    types = [t.lower() for t in opp.get("eligibility", [])]
+    if not types:
+        return 60.0, "Eligibility was not listed in the search data; check the official notice."
+    joined = " | ".join(types)
+    if "unrestricted" in joined:
+        return 100.0, "Open to all applicant types."
+    wanted = [t.lower() for t in profile.get("eligible_applicant_types", [])]
+    if any(w in joined or any(w in t or t in w for t in types) for w in wanted):
+        return 100.0, "Your type of organization is listed as eligible."
+    words = CATEGORY_ELIGIBILITY_WORDS.get(profile.get("category", "state"), [])
+    text = (opp.get("eligibility_text") or "").lower()
+    if "others" in joined:
+        if any(w in text for w in words):
+            return 85.0, "The eligibility description appears to include your type of organization; confirm in the notice."
+        return 50.0, "Eligibility is described in the notice text; check whether your office qualifies."
+    return 10.0, "Your type of organization is not listed as eligible."
+
 
 def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     """
@@ -553,7 +732,7 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
         "city_charlotte": ["dot", "fta", "hud", "epa", "energy", "justice", "transit", "municipal", "city"]
     }
     agency_id = profile.get("agency_id", "").lower()
-    known_funder_terms = agency_acronyms.get(agency_id, ["state", "federal", "department", "agency"])
+    known_funder_terms = agency_acronyms.get(agency_id, []) + [f.lower() for f in profile.get("funder_affinities", [])]
 
     # 1. Goal / Semantic alignment
     best_goal = None
@@ -564,22 +743,29 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     goals = profile.get("goals", [])
     for goal in goals:
         g_keywords = [k.lower() for k in goal.get("keywords", [])]
-        all_terms = set(g_keywords)
+        # Full keyword phrases count most; single words split from phrases count
+        # a little, and very common words barely at all.
+        phrases = set(g_keywords)
+        words = set()
         for kw in g_keywords:
             for word in kw.split():
-                if len(word) > 3 and word not in ["and", "with", "from", "state", "federal", "program"]:
-                    all_terms.add(word)
+                if len(word) > 3 and word not in GENERIC_WORDS and word not in phrases:
+                    words.add(word)
 
         matches = []
-        title_matches = []
-        for term in all_terms:
-            if re.search(r'\b' + re.escape(term) + r'\b', title_text):
-                title_matches.append(term)
-                matches.append(term)
-            elif re.search(r'\b' + re.escape(term) + r'\b', desc_text):
-                matches.append(term)
-
-        score_val = (len(title_matches) * 0.35) + (len(matches) * 0.15)
+        score_val = 0.0
+        for term in phrases:
+            pat = r'\b' + re.escape(term) + r'\b'
+            if re.search(pat, title_text):
+                score_val += 0.35; matches.append(term)
+            elif re.search(pat, desc_text):
+                score_val += 0.12; matches.append(term)
+        for term in words:
+            pat = r'\b' + re.escape(term) + r'\b'
+            if re.search(pat, title_text):
+                score_val += 0.10; matches.append(term)
+            elif re.search(pat, desc_text):
+                score_val += 0.02
         raw_goal_score = min(1.0, score_val)
 
         if raw_goal_score > best_goal_score:
@@ -603,9 +789,9 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     profile_keywords = [k.lower() for k in profile.get("keywords", [])]
     kw_hits = []
     for k in profile_keywords:
-        if k in title_text:
-            kw_hits.append(k)
-        elif k in desc_text and k not in kw_hits:
+        if k in GENERIC_WORDS:
+            continue
+        if re.search(r'\b' + re.escape(k) + r'\b', desc_text) and k not in kw_hits:
             kw_hits.append(k)
 
     if kw_hits:
@@ -613,26 +799,19 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     else:
         keyword_component = 15.0
 
-    # 3. Eligibility Fit
-    profile_applicant_types = [t.lower() for t in profile.get("eligible_applicant_types", ["state governments"])]
-    opp_eligibility = " ".join(opp.get("eligibility", [])).lower()
-    has_match = any(t in opp_eligibility for t in profile_applicant_types) or "unrestricted" in opp_eligibility
-    eligibility_component = 100.0 if has_match else 35.0
+    # 3. Eligibility: compare the notice's applicant types with who this office is
+    eligibility_component, eligibility_note = eligibility_fit(opp, profile)
 
-    # 4. Timing Score
-    days = opp.get("days_to_close", 999)
+    # 4. Time available: days left compared with the estimated weeks of work
+    days = opp.get("days_to_close")
+    weeks_needed = opp.get("est_completion_weeks", 3)
     if opp.get("status") == "forecasted":
         timing_component = 90.0
-    elif days is None or days >= 900:
+    elif days is None:
         timing_component = 75.0
-    elif days >= 25:
-        timing_component = 100.0
-    elif days >= 14:
-        timing_component = 80.0
-    elif days >= 7:
-        timing_component = 55.0
     else:
-        timing_component = 30.0
+        ratio = days / max(1, weeks_needed * 7)
+        timing_component = 100.0 if ratio >= 2 else 85.0 if ratio >= 1.25 else 65.0 if ratio >= 1 else 35.0 if ratio >= 0.5 else 10.0
 
     # 5. Agency Affinity
     affinity_component = 20.0
@@ -641,118 +820,75 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
             affinity_component = 100.0
             break
 
-    # Equity / Justice40 Component
-    equity_keywords = ["disadvantaged", "rural", "underserved", "equity", "tribal", "justice40", "tier 1", "clean water", "resilience"]
-    equity_hits = sum(1 for w in equity_keywords if w in desc_text)
-    equity_component = min(100.0, 40.0 + (equity_hits * 25.0))
-
-    # Feasibility / Completion Window Component
-    req_weeks = opp.get("est_completion_weeks", 4)
-    req_days = req_weeks * 7
-    if days is not None and days >= 0 and days < req_days:
-        feasibility_component = 30.0
-    else:
-        feasibility_component = 100.0
-
     # Relevancy component (combined strategic semantic + keyword fit)
     relevancy_component = round(min(100.0, (semantic_component * 0.65) + (keyword_component * 0.35)), 1)
 
-    # Money Amount / Award Ceiling Component (Funding Size)
-    ceiling_val = int(opp.get("award_ceiling", 1500000) or 1500000)
-    if ceiling_val >= 10000000:
+    # Award size (largest single award). Unknown amounts get a neutral 50.
+    ceiling_val = opp.get("award_ceiling") or opp.get("award_estimate")
+    if not ceiling_val:
+        money_component = 50.0
+    elif ceiling_val >= 10_000_000:
         money_component = 100.0
-    elif ceiling_val >= 5000000:
+    elif ceiling_val >= 5_000_000:
         money_component = 85.0
-    elif ceiling_val >= 2000000:
+    elif ceiling_val >= 2_000_000:
         money_component = 70.0
-    elif ceiling_val >= 1000000:
+    elif ceiling_val >= 1_000_000:
         money_component = 55.0
-    elif ceiling_val >= 500000:
+    elif ceiling_val >= 500_000:
         money_component = 40.0
     else:
         money_component = 25.0
 
-    # Calculate Total Score based on Selected Equation Model & Weights Sliders
-    equation_latex = ""
-    equation_name = "Balanced Multi-Criteria"
+    # Effort to apply (less staff time scores higher)
+    hours = opp.get("est_completion_hours", 40)
+    effort_component = 100.0 if hours <= 30 else 80.0 if hours <= 50 else 55.0 if hours <= 80 else 30.0
 
-    # Support slider keys: relevancy, money_amount, timing, eligibility
-    w_rel = weights.get("relevancy", weights.get("semantic", 0.40))
-    w_money = weights.get("money_amount", 0.25)
-    w_time = weights.get("timing", 0.20)
-    w_elig = weights.get("eligibility", 0.15)
-    w_sum = max(0.001, w_rel + w_money + w_time + w_elig)
-    w_rel, w_money, w_time, w_elig = w_rel/w_sum, w_money/w_sum, w_time/w_sum, w_elig/w_sum
-
-    if scoring_model == "money_priority" or scoring_model == "urgent_high_impact":
-        equation_name = "High Funding Ceiling (Max Dollars)"
-        equation_latex = r"S = 0.50 S_{money} + 0.30 S_{relevancy} + 0.10 S_{timing} + 0.10 S_{eligibility}"
-        total_score = (money_component * 0.50) + (relevancy_component * 0.30) + (timing_component * 0.10) + (eligibility_component * 0.10)
-
-    elif scoring_model == "timing_priority" or scoring_model == "urgent_timing":
-        equation_name = "Urgent Action (Nearest Deadlines)"
-        equation_latex = r"S = 0.50 S_{timing} + 0.25 S_{relevancy} + 0.15 S_{money} + 0.10 S_{eligibility}"
-        total_score = (timing_component * 0.50) + (relevancy_component * 0.25) + (money_component * 0.15) + (eligibility_component * 0.10)
-
-    elif scoring_model == "relevancy_priority" or scoring_model == "equity_need":
-        equation_name = "Strict Relevancy (Strategic Match)"
-        equation_latex = r"S = 0.60 S_{relevancy} + 0.15 S_{eligibility} + 0.15 S_{money} + 0.10 S_{timing}"
-        total_score = (relevancy_component * 0.60) + (eligibility_component * 0.15) + (money_component * 0.15) + (timing_component * 0.10)
-
-    elif scoring_model == "compliance_strict":
-        equation_name = "Strict Compliance & Feasibility"
-        equation_latex = r"S = \mathbb{I}(Elig) \cdot \left(0.40 S_{relevancy} + 0.30 S_{money} + 0.30 S_{timing}\right)"
-        elig_gate = 1.0 if eligibility_component >= 80.0 else 0.20
-        total_score = elig_gate * ((relevancy_component * 0.40) + (money_component * 0.30) + (timing_component * 0.30))
-
-    elif scoring_model == "custom":
-        equation_name = "Custom Weight Sliders"
-        equation_latex = rf"S = {w_rel:.2f} S_{{rel}} + {w_money:.2f} S_{{money}} + {w_time:.2f} S_{{time}} + {w_elig:.2f} S_{{elig}}"
-        total_score = (relevancy_component * w_rel) + (money_component * w_money) + (timing_component * w_time) + (eligibility_component * w_elig)
-
-    else:  # balanced default
-        equation_name = "Balanced Multi-Criteria"
-        equation_latex = r"S = 0.40 S_{relevancy} + 0.25 S_{money} + 0.20 S_{timing} + 0.15 S_{eligibility}"
-        total_score = (relevancy_component * 0.40) + (money_component * 0.25) + (timing_component * 0.20) + (eligibility_component * 0.15)
+    parts = {
+        "relevancy": relevancy_component,
+        "eligibility": eligibility_component,
+        "money_amount": money_component,
+        "timing": timing_component,
+        "effort": effort_component,
+        "affinity": affinity_component,
+    }
+    w = dict(SCORE_WEIGHTS)
+    if scoring_model == "custom" and weights:
+        w.update({k: v for k, v in weights.items() if k in w})
+    w_sum = sum(w.values()) or 1
+    total_score = sum(parts[k] * w[k] for k in w) / w_sum
+    equation_name = "Weighted score"
+    equation_latex = " + ".join(f"{w[k] / w_sum:.2f} x {k}" for k in w)
 
     total_score = round(min(100.0, max(0.0, total_score)), 1)
+    confidence = "High" if total_score >= 70 else "Medium" if total_score >= 60 else "Low"
 
-    if total_score >= 70:
-        confidence = "High"
-    elif total_score >= 45:
-        confidence = "Medium"
-    else:
-        confidence = "Low"
-
-    # Positive & Risk Drivers for Explainability
-    goal_title = best_goal.get("title", "") if best_goal else "Strategic Priorities"
+    goal_title = best_goal.get("title", "") if best_goal else "Strategic priorities"
     goal_cite = best_goal.get("citation", "") if best_goal else ""
-    matched_kws = ", ".join(kw_hits[:4]) if kw_hits else (", ".join(matched_goal_kws[:3]) if matched_goal_kws else "state priorities")
-
-    positive_drivers = [
-        f"+{int(semantic_component * 0.45)} pts: Strong semantic alignment with {profile.get('short_name')} {goal_title} ({goal_cite})",
-        f"+{int(keyword_component * 0.25)} pts: Keyword match on [{matched_kws}]",
-        f"+{int(eligibility_component * 0.15)} pts: Direct applicant eligibility for {profile.get('category', 'state').capitalize()} entities"
-    ]
-    if affinity_component == 100.0:
-        positive_drivers.append(f"+5 pts: Priority funder affinity match with {opp.get('agency')}")
+    matched_kws = ", ".join(kw_hits[:4]) if kw_hits else (", ".join(matched_goal_kws[:3]) if matched_goal_kws else "")
+    positive_drivers = [f"{SCORE_LABELS[k]}: {parts[k]:.0f} of 100 (counts {w[k] / w_sum:.0%})" for k in w]
 
     risk_factors = []
-    if days is not None and days <= 14 and days >= 0:
-        risk_factors.append(f"⚠️ Tight application window ({days} days to deadline)")
+    if opp.get("feasibility_warning"):
+        risk_factors.append(opp["feasibility_warning"])
+    elif days is not None and 0 <= days <= 14:
+        risk_factors.append(f"Short deadline: {days} days left")
     if opp.get("cost_share_required"):
-        risk_factors.append(f"⚠️ Requires {opp.get('cost_share_pct', 20)}% non-federal matching commitment")
-    if opp.get("est_completion_hours", 40) >= 80:
-        risk_factors.append(f"⚠️ High preparation effort (~{opp.get('est_completion_hours')} staff hours required)")
+        risk_factors.append("Your office must provide matching funds (the notice gives the amount)")
+    if eligibility_component < 60:
+        risk_factors.append(eligibility_note)
+    if hours >= 80:
+        risk_factors.append(f"Large application: about {hours} staff hours")
 
     reason = (
-        f"Directly advances {profile.get('short_name')} {goal_title} ({goal_cite}). "
-        f"Funding from {opp.get('agency')} aligns with North Carolina's objective to '{best_objective.lower()}'. "
-        f"Key alignment concepts: {matched_kws}."
+        f"Supports the {profile.get('short_name')} goal \"{goal_title}\""
+        + (f", including the objective to {best_objective[0].lower() + best_objective[1:]}" if best_objective else "")
+        + "." + (f" Matching terms found in the notice: {matched_kws}." if matched_kws else "")
+        + f" {eligibility_note}"
     )
 
     award_fmt = f"${opp.get('award_ceiling', 0):,}" if opp.get('award_ceiling') else "Not stated"
-    deadline_text = f"closes in {opp.get('days_to_close')} days ({opp.get('close_date')})" if opp.get('days_to_close', 999) < 900 else f"status is {opp.get('status')}"
+    deadline_text = f"closes in {days} days ({opp.get('close_date')})" if days is not None else f"status is {opp.get('status')}"
 
     ai_summary = (
         f"The {opp.get('agency')} is accepting proposals under '{opp.get('title')}'. "
@@ -762,9 +898,6 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     )
 
     # Generate tailored sample drafts and action steps for this specific profile
-    sample_draft = generate_sample_draft(opp, profile)
-    action_steps = generate_action_steps(opp, profile)
-    executive_email = generate_executive_email(opp, profile)
 
     return {
         "total_score": total_score,
@@ -772,23 +905,22 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
         "scoring_model_used": scoring_model,
         "equation_name": equation_name,
         "equation_latex": equation_latex,
+        "eligibility_note": eligibility_note,
+        "score_weights": {k: round(w[k] / w_sum, 4) for k in w},
         "matched_goal_id": best_goal.get("id") if best_goal else "G1",
         "matched_goal_title": goal_title,
         "matched_goal_citation": goal_cite,
         "matched_objective": best_objective,
         "matched_keywords": kw_hits or matched_goal_kws,
         "reason": reason,
-        "ai_summary": ai_summary,
         "positive_drivers": positive_drivers,
         "risk_factors": risk_factors,
-        "sample_draft": sample_draft,
-        "action_steps": action_steps,
-        "executive_email": executive_email,
         "score_breakdown": {
             "relevancy": relevancy_component,
             "money_amount": money_component,
             "timing": timing_component,
             "eligibility": eligibility_component,
+            "effort": effort_component,
             "semantic": semantic_component,
             "keyword": keyword_component,
             "affinity": affinity_component
@@ -803,36 +935,55 @@ def run_pipeline():
 
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Starting North Carolina Federal Funds Matchmaker Pipeline (v2.0)...")
 
-    # 1. Ingestion
-    raw_pulls = []
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Ingesting multi-source federal & state opportunities...")
-    for q in KEYWORDS_PULL:
-        hits = fetch_grants_from_api(keyword=q, rows=25)
-        raw_pulls.extend(hits)
+    # 1. Ingestion (cached). Each Grants.gov query is only re-pulled once its
+    # last successful pull is older than FETCH_MAX_AGE_HOURS; everything we
+    # already have stays in the database and is reused.
+    conn = db.connect()
+    max_age = float(os.environ.get("FETCH_MAX_AGE_HOURS", "20"))
+    force = os.environ.get("FORCE_REFRESH") == "1"
+    counts = {"new": 0, "changed": 0, "unchanged": 0}
+    pulled = skipped = 0
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Checking Grants.gov (cache window {max_age:g}h)...")
+    for q in KEYWORDS_PULL + [None]:
+        qkey = q or "(all)"
+        if not force and db.is_fresh(conn, "grants.gov", qkey, max_age):
+            skipped += 1
+            continue
+        hits = fetch_grants_from_api(keyword=q, rows=25 if q else 50)
+        pulled += 1
+        for hit in hits:
+            if hit.get("id"):
+                counts[db.upsert_raw(conn, "grants.gov", str(hit["id"]), hit)] += 1
+        # An empty result usually means the network is down; don't mark it fresh.
+        db.log_fetch(conn, "grants.gov", qkey, len(hits), ok=bool(hits), error=None if hits else "no results")
+        conn.commit()
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Queries pulled: {pulled}, skipped (still fresh): {skipped}. "
+          f"Records new: {counts['new']}, changed: {counts['changed']}, unchanged: {counts['unchanged']}")
 
-    broad_hits = fetch_grants_from_api(keyword=None, rows=50)
-    raw_pulls.extend(broad_hits)
+    raw_pulls = db.raw_records(conn, "grants.gov")
+    open_hits = [h for h in raw_pulls if (compute_days_to_close(parse_date(h.get("closeDate"))) or 0) >= 0]
 
-    # Fallback to local snapshot if API network call is offline or sandbox
-    raw_date_dir = os.path.join(RAW_DIR, today_str)
-    os.makedirs(raw_date_dir, exist_ok=True)
-    raw_file = os.path.join(raw_date_dir, "grants.json")
+    # 1b. Full details from Grants.gov, fetched once per grant (again only if it changed)
+    got, reused = sync_opportunity_details(conn, open_hits)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Grant details: {got} fetched, {reused} reused from database")
+    details = {r["source_record_id"]: json.loads(r["payload"]) for r in conn.execute(
+        "SELECT source_record_id, payload FROM raw_records WHERE source='grants.gov-detail'")}
 
-    if not raw_pulls and os.path.exists(raw_file):
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] Using existing verified local snapshot: {raw_file}")
-        with open(raw_file, "r", encoding="utf-8") as f:
-            raw_pulls = json.load(f)
-    elif raw_pulls:
-        with open(raw_file, "w", encoding="utf-8") as f:
-            json.dump(raw_pulls, f, indent=2)
+    # 1c. North Carolina award history from USAspending, refreshed weekly per program
+    cfdas = [c for h in open_hits for c in (h.get("cfdaList") or [])[:1]]
+    n = sync_nc_awards(conn, cfdas)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] USAspending: {n} programs refreshed; others reused from database or unavailable")
 
-    # 2. Normalize and de-duplicate
-    normalized = normalize_opportunities(raw_pulls)
-    os.makedirs(OPP_DIR, exist_ok=True)
-    latest_opps_file = os.path.join(OPP_DIR, "latest.json")
-    with open(latest_opps_file, "w", encoding="utf-8") as f:
-        json.dump(normalized, f, indent=2)
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Normalized & enriched {len(normalized)} unique opportunities to {latest_opps_file}")
+    # 2. Normalize and de-duplicate everything stored, then save to the database
+    normalized = normalize_opportunities(open_hits, details, conn)
+    opp_changes = {"new": 0, "changed": 0, "unchanged": 0}
+    for opp in normalized:
+        opp_changes[db.upsert_opportunity(conn, opp, source="grants.gov", source_record_id=opp["id"])] += 1
+    closed = db.mark_closed(conn, today_str)
+    conn.commit()
+    normalized = db.opportunities(conn)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] {len(normalized)} open/forecasted grants in database "
+          f"({opp_changes['new']} new, {opp_changes['changed']} updated, {closed} newly closed)")
 
     # 3. Score & Rank across all 10 NC Agency & Jurisdiction Profiles
     profiles = load_agency_profiles()
@@ -843,17 +994,14 @@ def run_pipeline():
         scored_list = []
         for opp in normalized:
             score_meta = calculate_score(opp, profile)
-            scored_item = dict(opp)
+            # Store only the score; grant details live once in the opportunities table.
+            scored_item = {"id": opp["id"], "title": opp.get("title", "")}
             scored_item.update(score_meta)
             scored_list.append(scored_item)
 
         scored_list.sort(key=lambda x: x["total_score"], reverse=True)
-
-        agency_scored_dir = os.path.join(SCORED_DIR, agency_id)
-        os.makedirs(agency_scored_dir, exist_ok=True)
-        agency_file = os.path.join(agency_scored_dir, "latest.json")
-        with open(agency_file, "w", encoding="utf-8") as f:
-            json.dump(scored_list, f, indent=2)
+        db.save_matches(conn, agency_id, scored_list)
+        conn.commit()
 
         high_count = sum(1 for x in scored_list if x["confidence"] == "High")
         med_count = sum(1 for x in scored_list if x["confidence"] == "Medium")
@@ -868,6 +1016,14 @@ def run_pipeline():
         }
         print(f"  -> [{profile.get('category', 'state').upper()}] {profile['short_name']}: {len(scored_list)} scored ({high_count} High, {med_count} Medium). Top: {scored_list[0]['title'][:40]}... ({scored_list[0]['total_score']} pts)")
 
+    # 3b. Load notice requirements recorded in data/requirements/ (shared through git)
+    try:
+        import notices
+        nconn = notices.connect()
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] Requirement files loaded: {notices.load_requirements_dir(nconn)}")
+    except Exception as e:
+        print(f"[WARN] Could not load requirement files: {e}", file=sys.stderr)
+
     # 4. Generate Evaluation & Ground Truth Benchmark (§6)
     build_evaluation_labels(normalized, profiles)
 
@@ -880,6 +1036,10 @@ def run_pipeline():
         "counts": {
             "raw_pulled": len(raw_pulls),
             "normalized_unique": len(normalized),
+            "queries_pulled": pulled,
+            "queries_skipped_cached": skipped,
+            "records_new": counts["new"],
+            "records_changed": counts["changed"],
             "agencies_scored": len(profiles),
             "breakdown": scored_counts
         },
@@ -902,14 +1062,7 @@ def build_evaluation_labels(normalized_opps, profiles):
     os.makedirs(EVAL_DIR, exist_ok=True)
     labels_file = os.path.join(EVAL_DIR, "labels.json")
 
-    deq_scored_dir = os.path.join(SCORED_DIR, "deq")
-    deq_scored_file = os.path.join(deq_scored_dir, "latest.json")
-
-    if os.path.exists(deq_scored_file):
-        with open(deq_scored_file, "r", encoding="utf-8") as f:
-            deq_ranked = json.load(f)
-    else:
-        deq_ranked = normalized_opps
+    deq_ranked = db.scored_for_office(db.connect(), "deq") or normalized_opps
 
     benchmark_pool = deq_ranked[:15] + deq_ranked[40:50]
     labeled_items = []

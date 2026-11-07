@@ -1,0 +1,83 @@
+{
+  "agency_id": "ncda",
+  "category": "state",
+  "name": "North Carolina Department of Agriculture and Consumer Services",
+  "short_name": "NCDA&CS",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Promotes agriculture and agribusiness and protects consumers through food safety and plant and animal health.",
+  "eligible_applicant_types": [
+    "State governments"
+  ],
+  "funder_affinities": [
+    "Department of Agriculture",
+    "Food and Drug Administration",
+    "Environmental Protection Agency"
+  ],
+  "goals": [
+    {
+      "id": "NCDA-G1",
+      "number": 1,
+      "title": "Farm markets and agribusiness growth",
+      "citation": "NCDA&CS draft profile, goal 1",
+      "description": "Grow markets for NC farm products.",
+      "objectives": [
+        "Expand specialty crop marketing",
+        "Support local food systems"
+      ],
+      "keywords": [
+        "specialty crop",
+        "agricultural marketing",
+        "local food",
+        "farmers market",
+        "agribusiness"
+      ]
+    },
+    {
+      "id": "NCDA-G2",
+      "number": 2,
+      "title": "Food safety and animal and plant health",
+      "citation": "NCDA&CS draft profile, goal 2",
+      "description": "Protect the food supply and livestock and crops.",
+      "objectives": [
+        "Strengthen food safety inspections",
+        "Control plant pests and animal disease"
+      ],
+      "keywords": [
+        "food safety",
+        "animal health",
+        "plant health",
+        "pest",
+        "livestock",
+        "avian influenza"
+      ]
+    },
+    {
+      "id": "NCDA-G3",
+      "number": 3,
+      "title": "Forestry and soil and water conservation",
+      "citation": "NCDA&CS draft profile, goal 3",
+      "description": "Protect working lands and forests.",
+      "objectives": [
+        "Reduce wildfire risk",
+        "Expand conservation practices on farms"
+      ],
+      "keywords": [
+        "forestry",
+        "wildfire",
+        "soil conservation",
+        "water conservation",
+        "farmland preservation"
+      ]
+    }
+  ],
+  "keywords": [
+    "agriculture",
+    "farm",
+    "farmers",
+    "crop",
+    "food",
+    "rural",
+    "forestry"
+  ]
+}

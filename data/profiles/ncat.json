@@ -1,0 +1,75 @@
+{
+  "agency_id": "ncat",
+  "category": "education",
+  "name": "North Carolina A&T State University",
+  "short_name": "NC A&T",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "A public historically Black land-grant university focused on engineering, agriculture and research.",
+  "eligible_applicant_types": [
+    "Public and State controlled institutions of higher education"
+  ],
+  "funder_affinities": [
+    "National Science Foundation",
+    "Department of Agriculture",
+    "Department of Defense",
+    "Department of Energy"
+  ],
+  "goals": [
+    {
+      "id": "NCAT-G1",
+      "number": 1,
+      "title": "Engineering and technology research",
+      "citation": "NC A&T draft profile, goal 1",
+      "description": "Grow research in engineering and computing.",
+      "objectives": [
+        "Expand research capacity"
+      ],
+      "keywords": [
+        "engineering",
+        "cybersecurity",
+        "computing",
+        "research capacity"
+      ]
+    },
+    {
+      "id": "NCAT-G2",
+      "number": 2,
+      "title": "Land-grant agriculture and extension",
+      "citation": "NC A&T draft profile, goal 2",
+      "description": "Serve farmers and communities.",
+      "objectives": [
+        "Support small and limited-resource farmers"
+      ],
+      "keywords": [
+        "agriculture",
+        "extension",
+        "small farmers",
+        "food"
+      ]
+    },
+    {
+      "id": "NCAT-G3",
+      "number": 3,
+      "title": "HBCU STEM pipeline",
+      "citation": "NC A&T draft profile, goal 3",
+      "description": "Increase STEM degrees.",
+      "objectives": [
+        "Expand STEM scholarships and research experiences"
+      ],
+      "keywords": [
+        "hbcu",
+        "stem",
+        "undergraduate research",
+        "minority serving"
+      ]
+    }
+  ],
+  "keywords": [
+    "research",
+    "hbcu",
+    "engineering",
+    "agriculture",
+    "stem"
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "agency_id": "dncr",
+  "category": "state",
+  "name": "North Carolina Department of Natural and Cultural Resources",
+  "short_name": "NC DNCR",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Manages state parks, museums, libraries, historic sites and the arts.",
+  "eligible_applicant_types": [
+    "State governments"
+  ],
+  "funder_affinities": [
+    "Institute of Museum and Library Services",
+    "National Endowment for the Arts",
+    "National Endowment for the Humanities",
+    "National Park Service",
+    "Fish and Wildlife Service"
+  ],
+  "goals": [
+    {
+      "id": "DNCR-G1",
+      "number": 1,
+      "title": "Parks, trails and natural areas",
+      "citation": "NC DNCR draft profile, goal 1",
+      "description": "Protect natural areas and expand outdoor recreation.",
+      "objectives": [
+        "Expand trails and park access",
+        "Protect habitat and natural heritage areas"
+      ],
+      "keywords": [
+        "state parks",
+        "trails",
+        "outdoor recreation",
+        "land conservation",
+        "habitat"
+      ]
+    },
+    {
+      "id": "DNCR-G2",
+      "number": 2,
+      "title": "Libraries, museums and archives",
+      "citation": "NC DNCR draft profile, goal 2",
+      "description": "Keep libraries and museums strong and accessible.",
+      "objectives": [
+        "Expand library services and digital access",
+        "Preserve historical records"
+      ],
+      "keywords": [
+        "library",
+        "libraries",
+        "museum",
+        "archives",
+        "digitization"
+      ]
+    },
+    {
+      "id": "DNCR-G3",
+      "number": 3,
+      "title": "Arts and historic preservation",
+      "citation": "NC DNCR draft profile, goal 3",
+      "description": "Support the arts and protect historic places.",
+      "objectives": [
+        "Fund community arts",
+        "Preserve historic sites"
+      ],
+      "keywords": [
+        "arts",
+        "historic preservation",
+        "humanities",
+        "cultural heritage"
+      ]
+    }
+  ],
+  "keywords": [
+    "parks",
+    "museum",
+    "library",
+    "arts",
+    "history",
+    "culture",
+    "conservation"
+  ]
+}

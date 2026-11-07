@@ -1,0 +1,80 @@
+{
+  "agency_id": "robeson_county",
+  "category": "county",
+  "name": "Robeson County Government",
+  "short_name": "Robeson County",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Serves a large rural county in southeastern North Carolina, including the Lumbee Tribe community.",
+  "eligible_applicant_types": [
+    "County governments",
+    "Special district governments"
+  ],
+  "funder_affinities": [
+    "Department of Agriculture",
+    "Federal Emergency Management Agency",
+    "Department of Health and Human Services",
+    "Economic Development Administration"
+  ],
+  "goals": [
+    {
+      "id": "ROBESON_COUNTY-G1",
+      "number": 1,
+      "title": "Disaster recovery and flood resilience",
+      "citation": "Robeson County draft profile, goal 1",
+      "description": "Recover from hurricanes and reduce future flood damage.",
+      "objectives": [
+        "Elevate or buy out flood-prone properties",
+        "Harden critical facilities"
+      ],
+      "keywords": [
+        "flood",
+        "hurricane",
+        "disaster recovery",
+        "hazard mitigation",
+        "resilience"
+      ]
+    },
+    {
+      "id": "ROBESON_COUNTY-G2",
+      "number": 2,
+      "title": "Rural health access",
+      "citation": "Robeson County draft profile, goal 2",
+      "description": "Improve access to care in a rural county.",
+      "objectives": [
+        "Expand rural clinics and telehealth"
+      ],
+      "keywords": [
+        "rural health",
+        "telehealth",
+        "health access",
+        "maternal health"
+      ]
+    },
+    {
+      "id": "ROBESON_COUNTY-G3",
+      "number": 3,
+      "title": "Rural economic development",
+      "citation": "Robeson County draft profile, goal 3",
+      "description": "Create jobs and improve infrastructure.",
+      "objectives": [
+        "Upgrade water and sewer",
+        "Support small business growth"
+      ],
+      "keywords": [
+        "rural development",
+        "water and sewer",
+        "economic development",
+        "broadband"
+      ]
+    }
+  ],
+  "keywords": [
+    "rural",
+    "county",
+    "flood",
+    "disaster",
+    "health",
+    "economic development"
+  ]
+}

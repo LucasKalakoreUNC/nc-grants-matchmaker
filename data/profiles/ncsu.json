@@ -1,0 +1,79 @@
+{
+  "agency_id": "ncsu",
+  "category": "education",
+  "name": "North Carolina State University",
+  "short_name": "NC State",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "A public land-grant research university focused on science, engineering, agriculture and technology.",
+  "eligible_applicant_types": [
+    "Public and State controlled institutions of higher education"
+  ],
+  "funder_affinities": [
+    "National Science Foundation",
+    "Department of Agriculture",
+    "Department of Energy",
+    "Department of Defense",
+    "National Institutes of Health"
+  ],
+  "goals": [
+    {
+      "id": "NCSU-G1",
+      "number": 1,
+      "title": "Research in engineering, energy and advanced manufacturing",
+      "citation": "NC State draft profile, goal 1",
+      "description": "Grow research in engineering and energy.",
+      "objectives": [
+        "Expand clean energy research",
+        "Advance manufacturing research"
+      ],
+      "keywords": [
+        "engineering",
+        "clean energy",
+        "advanced manufacturing",
+        "materials",
+        "semiconductor"
+      ]
+    },
+    {
+      "id": "NCSU-G2",
+      "number": 2,
+      "title": "Agriculture and life sciences",
+      "citation": "NC State draft profile, goal 2",
+      "description": "Lead research in agriculture and food systems.",
+      "objectives": [
+        "Advance crop and food science"
+      ],
+      "keywords": [
+        "agriculture",
+        "food systems",
+        "plant science",
+        "animal science",
+        "extension"
+      ]
+    },
+    {
+      "id": "NCSU-G3",
+      "number": 3,
+      "title": "STEM education and workforce",
+      "citation": "NC State draft profile, goal 3",
+      "description": "Train the STEM workforce.",
+      "objectives": [
+        "Expand STEM pathways"
+      ],
+      "keywords": [
+        "stem education",
+        "workforce",
+        "graduate training"
+      ]
+    }
+  ],
+  "keywords": [
+    "research",
+    "university",
+    "science",
+    "engineering",
+    "agriculture",
+    "stem"
+  ]
+}

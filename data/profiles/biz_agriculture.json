@@ -1,0 +1,71 @@
+{
+  "agency_id": "biz_agriculture",
+  "category": "business",
+  "name": "Farms and agribusinesses in North Carolina",
+  "short_name": "NC farms and agribusiness",
+  "profile_status": "draft",
+  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "mission": "Farms, food processors and agricultural businesses looking for USDA and related funding.",
+  "eligible_applicant_types": [
+    "Small businesses"
+  ],
+  "funder_affinities": [
+    "Department of Agriculture"
+  ],
+  "goals": [
+    {
+      "id": "BIZ_AGRICULTURE-G1",
+      "number": 1,
+      "title": "Value-added products and markets",
+      "citation": "NC farms and agribusiness draft profile, goal 1",
+      "description": "Grow income from new products and markets.",
+      "objectives": [
+        "Develop value-added products"
+      ],
+      "keywords": [
+        "value-added",
+        "specialty crop",
+        "agricultural marketing",
+        "local food"
+      ]
+    },
+    {
+      "id": "BIZ_AGRICULTURE-G2",
+      "number": 2,
+      "title": "Farm energy and conservation",
+      "citation": "NC farms and agribusiness draft profile, goal 2",
+      "description": "Lower costs and protect land.",
+      "objectives": [
+        "Install renewable energy on farms"
+      ],
+      "keywords": [
+        "rural energy",
+        "renewable energy",
+        "conservation",
+        "soil health"
+      ]
+    },
+    {
+      "id": "BIZ_AGRICULTURE-G3",
+      "number": 3,
+      "title": "Rural business growth",
+      "citation": "NC farms and agribusiness draft profile, goal 3",
+      "description": "Grow rural businesses.",
+      "objectives": [
+        "Access rural business loans and grants"
+      ],
+      "keywords": [
+        "rural business",
+        "rural development",
+        "cooperative"
+      ]
+    }
+  ],
+  "keywords": [
+    "agriculture",
+    "farm",
+    "rural",
+    "food",
+    "small business"
+  ]
+}
