@@ -306,8 +306,11 @@ const opensHtml = i => i.status !== 'forecasted' ? '<strong>Open now</strong>'
   : !i.expected_open_date ? 'Not yet open<span class="sub">no date announced</span>'
   : i.expected_open_date < todayStr ? `Not yet open<span class="sub">was expected ${fmtDate(i.expected_open_date)}</span>`
   : `Expected<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_open_date)}</span>`;
+// A forecast's due date on or before its open date is a placeholder in Grants.gov, not a real deadline
+const realDue = i => i.expected_due_date && !(i.expected_open_date && i.expected_due_date <= i.expected_open_date);
 const deadlineHtml = (i, br) => i.status === 'forecasted'
-  ? (i.expected_due_date ? `Expected${br ? '<br>' : ' '}<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_due_date)}</span>` : 'Not announced')
+  ? (realDue(i) ? `Expected${br ? '<br>' : ' '}<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_due_date)}</span>`
+     : i.expected_due_date ? 'Not announced yet<span class="sub">Grants.gov lists the same date as the opening</span>' : 'Not announced yet')
   : i.days_to_close == null ? 'No deadline listed'
   : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
 const fit = s => s >= STRONG ? ['strong','Strong match'] : s >= GOOD ? ['good','Good match'] : ['fair','Possible match'];

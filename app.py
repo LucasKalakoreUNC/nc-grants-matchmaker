@@ -228,7 +228,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     round((it.get("score_breakdown") or {}).get("relevancy", 0)),
                     it.get("title", ""), it.get("number", ""), it.get("agency", ""), it.get("status", ""),
                     "Open now" if it.get("status") != "forecasted" else (it.get("expected_open_date") or "Not announced"),
-                    it.get("close_date") or it.get("expected_due_date") or "",
+                    it.get("close_date") or (it.get("expected_due_date")
+                                             if (it.get("expected_due_date") or "") > (it.get("expected_open_date") or "") else ""),
                     "" if it.get("days_to_close") is None else it.get("days_to_close"),
                     dollars(it.get("award_ceiling") or it.get("award_estimate")), dollars(typical),
                     it.get("est_completion_hours", ""),
