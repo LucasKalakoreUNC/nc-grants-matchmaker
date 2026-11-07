@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NC Grants Matchmaker</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22%3E%3Crect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%23162e51%22/%3E%3Ctext x=%228%22 y=%2212%22 font-size=%2210%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22Georgia%22%3EG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -425,12 +426,13 @@ async function loadSources(i){
       <div class="alert" style="margin-bottom:8px">${src.files.length ? 'This grant\'s funding notice has not been read yet, so this is a <strong>general federal checklist</strong>. The notice files are linked below.' : 'Grants.gov has no notice files for this grant, so this is a <strong>general federal checklist</strong>. See the official listing for the full requirements.'}</div>
       ${docsList(i.required_documents)}</section>`;
   }
-  html += `<section><h3>Sources</h3><ul style="padding-left:20px;margin:0">
+  $('dReq').innerHTML = html;
+  html = `<section><h3>Sources</h3><ul style="padding-left:20px;margin:0">
     ${src.links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.name)}</a></li>`).join('')}
     ${src.files.map(f => `<li>${fileLink(f)} <span class="sub" style="display:inline">${esc(f.description && f.description !== f.file_name ? f.description + ', ' : '')}${f.pages ? f.pages + ' pages, ' : ''}${(f.file_type || '').toUpperCase()}</span></li>`).join('')}
     ${(i.past_awardees || []).length ? `<li>Past North Carolina awards: <a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a> (Assistance Listing ${esc(i.cfda)})</li>` : ''}
   </ul></section>`;
-  $('dReq').innerHTML = html;
+  $('dSrc').innerHTML = html;
 }
 function saveReq(n, on){ const k = `req:${S.office}:${currentId}`; let s = []; try { s = JSON.parse(store.get(k) || '[]'); } catch(e) {} s = on ? [...new Set([...s, n])] : s.filter(x => x !== n); store.set(k, JSON.stringify(s)); }
 
@@ -504,6 +506,7 @@ function openDetail(id){
       <p><a class="btn outline small" href="${esc(i.url)}" target="_blank" rel="noopener">Read the official notice</a></p>
     </section>
 
+
     <div id="dReq"><section><h3>What this application requires</h3><p class="sub">Loading...</p></section></div>
 
     ${(i.action_steps || []).length ? `<section><h3>Suggested next steps</h3><ol class="steps">${i.action_steps.map(s => `<li><strong>${esc(clean(s.title))}</strong>${s.deadline_day ? ` (${esc(s.deadline_day)})` : ''}<small>${esc(clean(s.action))}</small></li>`).join('')}</ol></section>` : ''}
@@ -511,6 +514,7 @@ function openDetail(id){
     ${awardees.length ? `<section><details><summary>North Carolina organizations funded by this program before (${awardees.length})</summary>
       <p class="sub" style="margin-top:8px">Largest awards to North Carolina recipients under Assistance Listing ${esc(i.cfda)}${i.program_title ? ` (${esc(i.program_title)})` : ''}, from USAspending.gov.</p>
       <table><thead><tr><th>Recipient</th><th>Amount</th><th>Start year</th></tr></thead><tbody>${awardees.map(a => `<tr><td>${esc(a.recipient)}<span class="sub">${esc(a.project_title)}</span></td><td data-l="Amount">${money(a.amount)}</td><td data-l="Year">${esc(a.fiscal_year)}</td></tr>`).join('')}</tbody></table></details></section>` : ''}
+    <div id="dSrc"></div>
   `;
   loadSources(i);
   $('detail').classList.add('open');
