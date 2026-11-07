@@ -32,8 +32,16 @@
         "Support digital literacy and workforce digital upskilling in public libraries and community centers"
       ],
       "keywords": [
-        "broadband", "BEAD", "digital equity", "high-speed internet", "fiber optic",
-        "last-mile", "telecommunications", "NTIA", "digital literacy", "rural connectivity"
+        "broadband",
+        "BEAD",
+        "digital equity",
+        "high-speed internet",
+        "fiber optic",
+        "last-mile",
+        "telecommunications",
+        "NTIA",
+        "digital literacy",
+        "rural connectivity"
       ]
     },
     {
@@ -48,8 +56,15 @@
         "Retrain displaced agricultural and legacy manufacturing workers for high-wage clean energy careers"
       ],
       "keywords": [
-        "workforce development", "apprenticeship", "advanced manufacturing", "clean energy jobs",
-        "semiconductor", "community college", "job training", "STEM workforce", "EDA Tech Hub"
+        "workforce development",
+        "apprenticeship",
+        "advanced manufacturing",
+        "clean energy jobs",
+        "semiconductor",
+        "community college",
+        "job training",
+        "STEM workforce",
+        "EDA Tech Hub"
       ]
     },
     {
@@ -64,8 +79,15 @@
         "Support certified industrial shovel-ready sites in Tier 1 economically distressed counties"
       ],
       "keywords": [
-        "economic development", "rural revitalization", "Main Street", "small business",
-        "entrepreneurship", "EDA", "revolving loan fund", "distressed counties", "commercial corridor"
+        "economic development",
+        "rural revitalization",
+        "Main Street",
+        "small business",
+        "entrepreneurship",
+        "EDA",
+        "revolving loan fund",
+        "distressed counties",
+        "commercial corridor"
       ]
     },
     {
@@ -80,15 +102,36 @@
         "Modernize agricultural value-added processing and cold storage facilities"
       ],
       "keywords": [
-        "supply chain", "export promotion", "trade", "manufacturing", "logistics",
-        "STEP grant", "value-added agriculture", "international trade"
+        "supply chain",
+        "export promotion",
+        "trade",
+        "manufacturing",
+        "logistics",
+        "STEP grant",
+        "value-added agriculture",
+        "international trade"
       ]
     }
   ],
   "keywords": [
-    "broadband", "BEAD", "digital equity", "high-speed internet", "fiber optic",
-    "workforce development", "apprenticeship", "advanced manufacturing", "clean energy jobs",
-    "economic development", "rural revitalization", "Main Street", "small business",
-    "supply chain", "EDA", "NTIA", "distressed counties", "job creation"
-  ]
+    "broadband",
+    "BEAD",
+    "digital equity",
+    "high-speed internet",
+    "fiber optic",
+    "workforce development",
+    "apprenticeship",
+    "advanced manufacturing",
+    "clean energy jobs",
+    "economic development",
+    "rural revitalization",
+    "Main Street",
+    "small business",
+    "supply chain",
+    "EDA",
+    "NTIA",
+    "distressed counties",
+    "job creation"
+  ],
+  "category": "state"
 }

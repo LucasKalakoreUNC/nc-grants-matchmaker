@@ -1,0 +1,77 @@
+{
+  "agency_id": "unc_system",
+  "category": "education",
+  "name": "University of North Carolina System & Community Colleges",
+  "short_name": "UNC & NC Higher Ed",
+  "source_citation": "UNC System Strategic Plan (Higher Expectations) & NC Community Colleges Vision 2030",
+  "mission": "To discover, create, transmit, and apply knowledge to address the grand challenges of North Carolina and the world, and train a high-skilled, resilient workforce for the state's emerging industries.",
+  "eligible_applicant_types": [
+    "Public and State controlled institutions of higher education",
+    "Private institutions of higher education",
+    "State educational agencies",
+    "Local educational agencies"
+  ],
+  "funder_affinities": [
+    "National Science Foundation",
+    "National Institutes of Health",
+    "Department of Energy",
+    "Department of Education",
+    "National Aeronautics and Space Administration",
+    "Department of Defense",
+    "Department of Agriculture"
+  ],
+  "goals": [
+    {
+      "id": "UNC-G1",
+      "number": 1,
+      "title": "STEM Research, Advanced Materials, and Energy Innovation",
+      "citation": "UNC System Research Roadmap, Pillars 1 & 2 (Materials & Energy)",
+      "description": "Lead breakthrough scientific discoveries in clean semiconductors, battery chemistries, quantum computing, and agricultural biotechnology across state research hubs.",
+      "objectives": [
+        "Secure federal university-industry cooperative research centers (IUCRC / EPSCoR)",
+        "Advance solid-state battery and wide-bandgap semiconductor R&D with federal labs",
+        "Modernize shared university supercomputing and nanotechnology cleanrooms"
+      ],
+      "keywords": [
+        "research", "STEM", "NSF", "DOE", "semiconductor", "clean energy", "materials science",
+        "biotechnology", "supercomputing", "nanotechnology", "university", "faculty research"
+      ]
+    },
+    {
+      "id": "UNC-G2",
+      "number": 2,
+      "title": "Biomedical Discovery, Cancer Research, and Rural Healthcare Workforce",
+      "citation": "UNC Health Sciences Consortium Plan & Rural Residency Initiative",
+      "description": "Drive translational clinical research in oncology, genomics, neurodegenerative disease, and train rural physicians, nurse practitioners, and allied health professionals.",
+      "objectives": [
+        "Expand NIH clinical and translational science awards (CTSA)",
+        "Establish community-based clinical trial networks in eastern and western NC",
+        "Fund rural medical residency and nurse practitioner clinical training pipelines"
+      ],
+      "keywords": [
+        "NIH", "biomedical", "clinical trial", "health workforce", "medical school", "nursing",
+        "translational science", "oncology", "genomics", "rural health", "HRSA"
+      ]
+    },
+    {
+      "id": "UNC-G3",
+      "number": 3,
+      "title": "Advanced Manufacturing Workforce, Apprenticeships, and Dual Enrollment",
+      "citation": "NC Community Colleges Fast Track to Jobs & Career & College Promise",
+      "description": "Align 58 community college technical degrees with aerospace, electric vehicle, pharmaceutical, and clean tech manufacturing investments arriving in North Carolina.",
+      "objectives": [
+        "Equip mechatronics and clean energy training labs across regional community colleges",
+        "Expand registered apprenticeships and employer-recognized industry credentials",
+        "Scale K-12 dual-enrollment STEM pathways for first-generation college students"
+      ],
+      "keywords": [
+        "workforce development", "community college", "apprenticeships", "advanced manufacturing",
+        "Department of Labor", "Department of Education", "dual enrollment", "credentials", "trade skills"
+      ]
+    }
+  ],
+  "keywords": [
+    "education", "university", "community college", "NSF", "NIH", "higher education",
+    "STEM", "research", "workforce development", "biomedical", "advanced manufacturing", "apprenticeship"
+  ]
+}

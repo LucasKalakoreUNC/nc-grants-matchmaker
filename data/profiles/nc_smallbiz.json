@@ -1,0 +1,76 @@
+{
+  "agency_id": "nc_smallbiz",
+  "category": "business",
+  "name": "NC Small Business & Technology Development Center (SBTDC) & Innovation Hubs",
+  "short_name": "NC Small Business & SBTDC",
+  "source_citation": "North Carolina Innovation & Small Business Strategy (SBTDC & NC Biotech)",
+  "mission": "To foster competitive small businesses, high-growth tech commercialization, and clean technology startups across North Carolina through SBIR/STTR support, export assistance, and capital access.",
+  "eligible_applicant_types": [
+    "Small businesses",
+    "For-profit organizations other than small businesses",
+    "Nonprofits having a 501(c)(3) status",
+    "Private institutions of higher education"
+  ],
+  "funder_affinities": [
+    "Small Business Administration",
+    "National Science Foundation",
+    "Department of Energy",
+    "Economic Development Administration",
+    "National Institute of Standards and Technology",
+    "Department of Defense"
+  ],
+  "goals": [
+    {
+      "id": "BIZ-G1",
+      "number": 1,
+      "title": "SBIR/STTR Commercialization & Early-Stage Technology Startups",
+      "citation": "NC SBTDC Technology Commercialization Initiative & One NC Small Business Fund",
+      "description": "Catalyze federal Phase I and Phase II Small Business Innovation Research (SBIR/STTR) awards for North Carolina spin-offs in biotechnology, agtech, clean energy, and cybersecurity.",
+      "objectives": [
+        "Provide grant proposal acceleration for university spinoffs targeting NSF and NIH SBIR",
+        "Deploy state matching grants under the One NC Small Business Program",
+        "Establish regional hardware prototyping incubators in Tier 1 and 2 rural communities"
+      ],
+      "keywords": [
+        "SBIR", "STTR", "small business", "commercialization", "startups", "technology transfer",
+        "SBA", "seed funding", "patent", "prototyping", "accelerator", "angel investor"
+      ]
+    },
+    {
+      "id": "BIZ-G2",
+      "number": 2,
+      "title": "CleanTech, Renewable Energy Manufacturing, and Rural AgTech",
+      "citation": "NC CleanTech Innovation Playbook & Rural Bioeconomy Plan",
+      "description": "Support small and medium-sized clean technology manufacturers, smart grid developers, and precision agriculture technology companies accessing federal industrial decarbonization grants.",
+      "objectives": [
+        "Support small manufacturers applying for DOE Section 48C clean energy manufacturing credits",
+        "Assist small rural farms in adopting smart irrigation, precision sensors, and anaerobic digestion",
+        "Provide supply chain matchmaking for tier-2 suppliers in the electric vehicle cluster"
+      ],
+      "keywords": [
+        "cleantech", "clean energy manufacturing", "small manufacturer", "Department of Energy",
+        "precision agriculture", "supply chain", "rural business", "industrial decarbonization"
+      ]
+    },
+    {
+      "id": "BIZ-G3",
+      "number": 3,
+      "title": "Small Business Export Expansion, Defense Contracting, and Cyber Readiness",
+      "citation": "NC Defense Technology Transition Office (DEFTECH) & SBA STEP Program",
+      "description": "Expand small business participation in defense supply chains (CMMC cyber compliance), federal contracting sub-awards, and global international export markets.",
+      "objectives": [
+        "Subsidize trade mission attendance and foreign market entry for NC small exporters",
+        "Assist defense-oriented small businesses with DoD cybersecurity compliance (CMMC)",
+        "Expand small disadvantaged business (SDB) and HUBZone procurement readiness"
+      ],
+      "keywords": [
+        "SBA", "export", "STEP grant", "defense contracting", "CMMC", "cybersecurity",
+        "HUBZone", "procurement", "small business administration", "minority business"
+      ]
+    }
+  ],
+  "keywords": [
+    "small business", "business", "SBTDC", "SBIR", "STTR", "commercialization",
+    "startups", "SBA", "clean energy manufacturing", "export", "HUBZone", "procurement"
+  ]
+}

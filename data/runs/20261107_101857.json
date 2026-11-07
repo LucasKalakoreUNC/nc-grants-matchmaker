@@ -1,0 +1,104 @@
+{
+  "timestamp": "20261107_101857",
+  "run_date": "2026-11-06",
+  "status": "Succeeded",
+  "counts": {
+    "raw_pulled": 535,
+    "normalized_unique": 382,
+    "agencies_scored": 10,
+    "breakdown": {
+      "buncombe_county": {
+        "name": "Buncombe & WNC Counties",
+        "category": "county",
+        "total": 382,
+        "high": 24,
+        "medium": 59,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 95.0
+      },
+      "city_charlotte": {
+        "name": "City of Charlotte",
+        "category": "municipal",
+        "total": 382,
+        "high": 32,
+        "medium": 348,
+        "top_match": "Renewable Energy Systems and Energy Efficiency Improvements Program",
+        "top_score": 93.5
+      },
+      "commerce": {
+        "name": "NC Commerce",
+        "category": "state",
+        "total": 382,
+        "high": 25,
+        "medium": 83,
+        "top_match": "FY 2025 EDA Public Works and Economic Adjustment Assistance Programs",
+        "top_score": 92.5
+      },
+      "deq": {
+        "name": "NC DEQ",
+        "category": "state",
+        "total": 382,
+        "high": 38,
+        "medium": 118,
+        "top_match": "2026 Diesel Emissions Reduction Act (DERA) National Program",
+        "top_score": 90.0
+      },
+      "dhhs": {
+        "name": "NCDHHS",
+        "category": "state",
+        "total": 382,
+        "high": 114,
+        "medium": 91,
+        "top_match": "Emergency Department Alternatives to Opioids Program",
+        "top_score": 96.8
+      },
+      "dot": {
+        "name": "NCDOT",
+        "category": "state",
+        "total": 382,
+        "high": 16,
+        "medium": 58,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 86.0
+      },
+      "dps": {
+        "name": "NC DPS",
+        "category": "state",
+        "total": 382,
+        "high": 21,
+        "medium": 94,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 90.0
+      },
+      "nc_smallbiz": {
+        "name": "NC Small Business & SBTDC",
+        "category": "business",
+        "total": 382,
+        "high": 17,
+        "medium": 64,
+        "top_match": "Unlocking New Levels of Output and Capacity for Key Subsurface Resources SBIR/STTR (UNLOCK SBIR/STTR)",
+        "top_score": 93.0
+      },
+      "unc_system": {
+        "name": "UNC & NC Higher Ed",
+        "category": "education",
+        "total": 382,
+        "high": 212,
+        "medium": 143,
+        "top_match": "Fiscal Year (FY) 2027 Department of War (DoW) Multidisciplinary Research Program of the University Research Initiative (MURI)",
+        "top_score": 100.0
+      },
+      "wake_county": {
+        "name": "Wake County",
+        "category": "county",
+        "total": 382,
+        "high": 184,
+        "medium": 153,
+        "top_match": "Strengthening Public Health Systems and Services in Indian Country",
+        "top_score": 99.0
+      }
+    }
+  },
+  "duration_seconds": 4.53,
+  "errors": []
+}

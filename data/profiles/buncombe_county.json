@@ -1,0 +1,76 @@
+{
+  "agency_id": "buncombe_county",
+  "category": "county",
+  "name": "Buncombe County & Western NC Regional Consortium",
+  "short_name": "Buncombe & WNC Counties",
+  "source_citation": "Buncombe County 2025 Strategic Plan & WNC Mountain Disaster Resilience Framework",
+  "mission": "To promote a healthy, safe, well-educated, and economically vibrant mountain community through sustainable stewardship and resilient rural infrastructure.",
+  "eligible_applicant_types": [
+    "County governments",
+    "Rural local governments",
+    "Regional planning councils",
+    "Soil and water conservation districts"
+  ],
+  "funder_affinities": [
+    "Federal Emergency Management Agency",
+    "Department of Agriculture",
+    "Economic Development Administration",
+    "Department of Transportation",
+    "Environmental Protection Agency",
+    "Appalachian Regional Commission"
+  ],
+  "goals": [
+    {
+      "id": "WNC-G1",
+      "number": 1,
+      "title": "Disaster Recovery, Slope Stabilization, and Mountain Flood Resilience",
+      "citation": "WNC Post-Helene Recovery Plan, Section 1: Infrastructure Hardening",
+      "description": "Rebuild bridge, culvert, and steep-slope road infrastructure damaged by catastrophic mountain flooding, and install advanced flash-flood telemetry across mountain river basins.",
+      "objectives": [
+        "Replace undersized mountain bridges with high-flow hydraulic spans",
+        "Stabilize debris-flow zones along rural secondary road corridors",
+        "Deploy streamflow gauges and early-warning warning sirens in French Broad and Swannanoa valleys"
+      ],
+      "keywords": [
+        "disaster recovery", "flood mitigation", "FEMA BRIC", "hazard mitigation", "slope stabilization",
+        "debris flow", "culverts", "bridges", "French Broad River", "mountain resilience", "Helene"
+      ]
+    },
+    {
+      "id": "WNC-G2",
+      "number": 2,
+      "title": "Rural Water Systems, Mountain Wells, and Decentralized Wastewater",
+      "citation": "Buncombe Comprehensive Land Use Plan, Water & Utilities Element",
+      "description": "Extend treated drinking water to rural mountain communities, remediate private well contaminants, and upgrade package wastewater plants to prevent mountain river degradation.",
+      "objectives": [
+        "Interconnect rural mountain public water districts for emergency redundancy",
+        "Subsidize septic system repairs and decentralized wastewater treatment in karst/steep terrains",
+        "Protect high-elevation headwater streams from nonpoint runoff"
+      ],
+      "keywords": [
+        "rural water", "drinking water", "wastewater", "septic systems", "clean water state revolving fund",
+        "mountain aquifers", "headwaters", "USDA rural development", "Appalachian Regional Commission"
+      ]
+    },
+    {
+      "id": "WNC-G3",
+      "number": 3,
+      "title": "Rural Broadband, Telehealth, and Economic Diversification",
+      "citation": "Appalachian Regional Commission WNC Strategy, Goals 2 & 4",
+      "description": "Close last-mile fiber gaps in remote hollows and mountain passes, expand telehealth connectivity for rural clinics, and support agricultural entrepreneurship and clean tourism.",
+      "objectives": [
+        "Deploy last-mile aerial and underground fiber across unserved mountain ridges",
+        "Equip rural fire stations and community hubs with satellite backup connectivity",
+        "Support small mountain agricultural producers and value-added timber processing"
+      ],
+      "keywords": [
+        "broadband", "BEAD", "rural development", "telehealth", "Appalachian Regional Commission",
+        "ARC", "fiber optic", "economic development", "small farm", "value-added agriculture"
+      ]
+    }
+  ],
+  "keywords": [
+    "rural county", "mountain", "disaster recovery", "flood", "FEMA", "culverts", "bridges",
+    "rural water", "broadband", "USDA", "Appalachian Regional Commission", "resilience"
+  ]
+}

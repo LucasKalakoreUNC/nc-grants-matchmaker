@@ -32,9 +32,22 @@
         "Strengthen stormwater resilience against severe storm and hurricane flooding"
       ],
       "keywords": [
-        "water quality", "drinking water", "wastewater", "stormwater", "PFAS", "PFOA",
-        "emerging contaminants", "clean water state revolving fund", "watershed", "estuary",
-        "groundwater", "aquifer", "lead pipe", "sewer", "nonpoint source", "hydrology"
+        "water quality",
+        "drinking water",
+        "wastewater",
+        "stormwater",
+        "PFAS",
+        "PFOA",
+        "emerging contaminants",
+        "clean water state revolving fund",
+        "watershed",
+        "estuary",
+        "groundwater",
+        "aquifer",
+        "lead pipe",
+        "sewer",
+        "nonpoint source",
+        "hydrology"
       ]
     },
     {
@@ -50,9 +63,21 @@
         "Enhance community climate risk assessments and extreme weather adaptation"
       ],
       "keywords": [
-        "clean air", "air quality", "emissions", "greenhouse gas", "climate resilience",
-        "renewable energy", "solar", "wind", "battery storage", "carbon reduction",
-        "energy efficiency", "air toxics", "ozone", "particulate matter", "clean tech"
+        "clean air",
+        "air quality",
+        "emissions",
+        "greenhouse gas",
+        "climate resilience",
+        "renewable energy",
+        "solar",
+        "wind",
+        "battery storage",
+        "carbon reduction",
+        "energy efficiency",
+        "air toxics",
+        "ozone",
+        "particulate matter",
+        "clean tech"
       ]
     },
     {
@@ -68,9 +93,18 @@
         "Protect critical soil resources and agricultural buffer zones"
       ],
       "keywords": [
-        "brownfields", "superfund", "hazardous waste", "land reuse", "soil contamination",
-        "recycling", "solid waste", "circular economy", "landfill", "toxic substances",
-        "site remediation", "environmental cleanup"
+        "brownfields",
+        "superfund",
+        "hazardous waste",
+        "land reuse",
+        "soil contamination",
+        "recycling",
+        "solid waste",
+        "circular economy",
+        "landfill",
+        "toxic substances",
+        "site remediation",
+        "environmental cleanup"
       ]
     },
     {
@@ -86,9 +120,19 @@
         "Support coastal county waterfront access and resilience infrastructure"
       ],
       "keywords": [
-        "coastal resilience", "marine fisheries", "oyster restoration", "living shorelines",
-        "estuary", "salt marsh", "barrier islands", "submerged aquatic vegetation", "sea level rise",
-        "shoreline erosion", "coastal zone management", "NOAA", "marine ecosystem"
+        "coastal resilience",
+        "marine fisheries",
+        "oyster restoration",
+        "living shorelines",
+        "estuary",
+        "salt marsh",
+        "barrier islands",
+        "submerged aquatic vegetation",
+        "sea level rise",
+        "shoreline erosion",
+        "coastal zone management",
+        "NOAA",
+        "marine ecosystem"
       ]
     },
     {
@@ -104,17 +148,48 @@
         "Eliminate disparities in safe drinking water access in rural mobile home parks"
       ],
       "keywords": [
-        "environmental justice", "underserved communities", "disadvantaged communities",
-        "tribal", "equity", "rural water", "public health", "community monitoring",
-        "Justice40", "inclusive outreach", "Title VI"
+        "environmental justice",
+        "underserved communities",
+        "disadvantaged communities",
+        "tribal",
+        "equity",
+        "rural water",
+        "public health",
+        "community monitoring",
+        "Justice40",
+        "inclusive outreach",
+        "Title VI"
       ]
     }
   ],
   "keywords": [
-    "water quality", "drinking water", "wastewater", "stormwater", "PFAS", "PFOA",
-    "clean air", "emissions", "climate resilience", "clean energy", "solar", "wind",
-    "brownfields", "superfund", "hazardous waste", "recycling", "coastal resilience",
-    "marine fisheries", "oyster restoration", "living shorelines", "environmental justice",
-    "Justice40", "watershed", "estuary", "flood mitigation", "nonpoint source", "toxic substances"
-  ]
+    "water quality",
+    "drinking water",
+    "wastewater",
+    "stormwater",
+    "PFAS",
+    "PFOA",
+    "clean air",
+    "emissions",
+    "climate resilience",
+    "clean energy",
+    "solar",
+    "wind",
+    "brownfields",
+    "superfund",
+    "hazardous waste",
+    "recycling",
+    "coastal resilience",
+    "marine fisheries",
+    "oyster restoration",
+    "living shorelines",
+    "environmental justice",
+    "Justice40",
+    "watershed",
+    "estuary",
+    "flood mitigation",
+    "nonpoint source",
+    "toxic substances"
+  ],
+  "category": "state"
 }

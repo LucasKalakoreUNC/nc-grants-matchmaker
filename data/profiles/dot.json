@@ -31,8 +31,15 @@
         "Modernize highway work zone intrusion prevention technologies"
       ],
       "keywords": [
-        "highway safety", "Vision Zero", "pedestrian safety", "bicycle infrastructure",
-        "crash reduction", "roadway safety", "traffic signals", "work zone", "Safe Streets"
+        "highway safety",
+        "Vision Zero",
+        "pedestrian safety",
+        "bicycle infrastructure",
+        "crash reduction",
+        "roadway safety",
+        "traffic signals",
+        "work zone",
+        "Safe Streets"
       ]
     },
     {
@@ -47,8 +54,15 @@
         "Implement nature-based roadside stormwater drainage solutions"
       ],
       "keywords": [
-        "resilient infrastructure", "flood mitigation", "evacuation routes", "bridge retrofit",
-        "culverts", "coastal highway", "extreme weather", "PROTECT formula", "storm hardening"
+        "resilient infrastructure",
+        "flood mitigation",
+        "evacuation routes",
+        "bridge retrofit",
+        "culverts",
+        "coastal highway",
+        "extreme weather",
+        "PROTECT formula",
+        "storm hardening"
       ]
     },
     {
@@ -63,8 +77,15 @@
         "Establish commercial vehicle clean charging hubs near major logistic corridors"
       ],
       "keywords": [
-        "electric vehicles", "EV charging", "NEVI", "clean transit", "zero-emission buses",
-        "hydrogen", "alternative fuels", "carbon reduction program", "fleet conversion"
+        "electric vehicles",
+        "EV charging",
+        "NEVI",
+        "clean transit",
+        "zero-emission buses",
+        "hydrogen",
+        "alternative fuels",
+        "carbon reduction program",
+        "fleet conversion"
       ]
     },
     {
@@ -79,8 +100,14 @@
         "Eliminate at-grade rail crossings to reduce freight bottlenecks and emissions"
       ],
       "keywords": [
-        "freight logistics", "rail modernization", "port infrastructure", "intermodal",
-        "supply chain", "CRISI grant", "grade crossing", "container terminal"
+        "freight logistics",
+        "rail modernization",
+        "port infrastructure",
+        "intermodal",
+        "supply chain",
+        "CRISI grant",
+        "grade crossing",
+        "container terminal"
       ]
     },
     {
@@ -95,16 +122,40 @@
         "Integrate regional transit payment cards and coordinated schedules"
       ],
       "keywords": [
-        "rural transit", "microtransit", "mobility on demand", "transit equity",
-        "underserved mobility", "paratransit", "FTA Section 5311", "public transportation"
+        "rural transit",
+        "microtransit",
+        "mobility on demand",
+        "transit equity",
+        "underserved mobility",
+        "paratransit",
+        "FTA Section 5311",
+        "public transportation"
       ]
     }
   ],
   "keywords": [
-    "highway safety", "Vision Zero", "pedestrian safety", "bicycle infrastructure",
-    "resilient infrastructure", "bridge retrofit", "culverts", "flood mitigation",
-    "electric vehicles", "EV charging", "NEVI", "clean transit", "zero-emission buses",
-    "freight logistics", "rail modernization", "port infrastructure", "intermodal",
-    "rural transit", "microtransit", "paratransit", "public transportation", "corridors"
-  ]
+    "highway safety",
+    "Vision Zero",
+    "pedestrian safety",
+    "bicycle infrastructure",
+    "resilient infrastructure",
+    "bridge retrofit",
+    "culverts",
+    "flood mitigation",
+    "electric vehicles",
+    "EV charging",
+    "NEVI",
+    "clean transit",
+    "zero-emission buses",
+    "freight logistics",
+    "rail modernization",
+    "port infrastructure",
+    "intermodal",
+    "rural transit",
+    "microtransit",
+    "paratransit",
+    "public transportation",
+    "corridors"
+  ],
+  "category": "state"
 }

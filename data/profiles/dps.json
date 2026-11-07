@@ -30,9 +30,18 @@
         "Modernize North Carolina Emergency Management regional staging warehouses and mobile command posts"
       ],
       "keywords": [
-        "disaster mitigation", "FEMA", "flood resilience", "hazard mitigation", "BRIC",
-        "emergency management", "hurricane response", "floodplain", "buyout", "evacuation",
-        "severe storms", "resilience"
+        "disaster mitigation",
+        "FEMA",
+        "flood resilience",
+        "hazard mitigation",
+        "BRIC",
+        "emergency management",
+        "hurricane response",
+        "floodplain",
+        "buyout",
+        "evacuation",
+        "severe storms",
+        "resilience"
       ]
     },
     {
@@ -47,8 +56,15 @@
         "Standardize mutual aid encrypted radio channels for state troopers, county sheriffs, and local police"
       ],
       "keywords": [
-        "NG911", "emergency communications", "first responders", "public safety answering points",
-        "radio interoperability", "VIPER network", "dispatch", "telecommunications", "FirstNet"
+        "NG911",
+        "emergency communications",
+        "first responders",
+        "public safety answering points",
+        "radio interoperability",
+        "VIPER network",
+        "dispatch",
+        "telecommunications",
+        "FirstNet"
       ]
     },
     {
@@ -63,8 +79,15 @@
         "Provide incident response strike teams for local governments experiencing ransomware attacks"
       ],
       "keywords": [
-        "cybersecurity", "CISA", "SLCGP", "ransomware", "critical infrastructure",
-        "SCADA defense", "network security", "information security", "threat intelligence"
+        "cybersecurity",
+        "CISA",
+        "SLCGP",
+        "ransomware",
+        "critical infrastructure",
+        "SCADA defense",
+        "network security",
+        "information security",
+        "threat intelligence"
       ]
     },
     {
@@ -79,15 +102,38 @@
         "Fund vocational apprenticeships and high school completion programs for youthful offenders"
       ],
       "keywords": [
-        "juvenile justice", "violence intervention", "community safety", "crime prevention",
-        "DOJ", "OJP", "recidivism reduction", "youth mentorship", "trauma-informed care"
+        "juvenile justice",
+        "violence intervention",
+        "community safety",
+        "crime prevention",
+        "DOJ",
+        "OJP",
+        "recidivism reduction",
+        "youth mentorship",
+        "trauma-informed care"
       ]
     }
   ],
   "keywords": [
-    "disaster mitigation", "FEMA", "flood resilience", "hazard mitigation", "BRIC",
-    "emergency management", "hurricane response", "NG911", "first responders",
-    "cybersecurity", "CISA", "SLCGP", "ransomware", "critical infrastructure",
-    "juvenile justice", "violence intervention", "community safety", "crime prevention", "DOJ"
-  ]
+    "disaster mitigation",
+    "FEMA",
+    "flood resilience",
+    "hazard mitigation",
+    "BRIC",
+    "emergency management",
+    "hurricane response",
+    "NG911",
+    "first responders",
+    "cybersecurity",
+    "CISA",
+    "SLCGP",
+    "ransomware",
+    "critical infrastructure",
+    "juvenile justice",
+    "violence intervention",
+    "community safety",
+    "crime prevention",
+    "DOJ"
+  ],
+  "category": "state"
 }

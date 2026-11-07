@@ -33,9 +33,18 @@
         "Deploy evidence-based youth resilience and suicide prevention curricula in public schools"
       ],
       "keywords": [
-        "behavioral health", "mental health", "opioid", "substance abuse", "overdose prevention",
-        "crisis intervention", "harm reduction", "SAMHSA", "naloxone", "peer support",
-        "suicide prevention", "addiction treatment"
+        "behavioral health",
+        "mental health",
+        "opioid",
+        "substance abuse",
+        "overdose prevention",
+        "crisis intervention",
+        "harm reduction",
+        "SAMHSA",
+        "naloxone",
+        "peer support",
+        "suicide prevention",
+        "addiction treatment"
       ]
     },
     {
@@ -50,8 +59,16 @@
         "Implement postpartum telehealth monitoring for gestational hypertension and diabetes"
       ],
       "keywords": [
-        "maternal health", "infant mortality", "perinatal care", "doula", "early childhood",
-        "developmental screening", "pediatric health", "telehealth", "HRSA", "maternal mortality"
+        "maternal health",
+        "infant mortality",
+        "perinatal care",
+        "doula",
+        "early childhood",
+        "developmental screening",
+        "pediatric health",
+        "telehealth",
+        "HRSA",
+        "maternal mortality"
       ]
     },
     {
@@ -66,8 +83,15 @@
         "Support federally qualified health centers (FQHC) capital facility expansions"
       ],
       "keywords": [
-        "rural healthcare", "healthcare workforce", "primary care", "FQHC", "clinical training",
-        "loan repayment", "health professional shortage area", "critical access hospitals", "telemedicine"
+        "rural healthcare",
+        "healthcare workforce",
+        "primary care",
+        "FQHC",
+        "clinical training",
+        "loan repayment",
+        "health professional shortage area",
+        "critical access hospitals",
+        "telemedicine"
       ]
     },
     {
@@ -82,8 +106,15 @@
         "Strengthen local health department communicable disease investigation teams"
       ],
       "keywords": [
-        "public health preparedness", "epidemiology", "infectious disease", "CDC", "disease surveillance",
-        "wastewater surveillance", "laboratory capacity", "pandemic readiness", "outbreak response"
+        "public health preparedness",
+        "epidemiology",
+        "infectious disease",
+        "CDC",
+        "disease surveillance",
+        "wastewater surveillance",
+        "laboratory capacity",
+        "pandemic readiness",
+        "outbreak response"
       ]
     },
     {
@@ -98,16 +129,42 @@
         "Integrate SNAP and WIC enrollment kiosks into community health hubs"
       ],
       "keywords": [
-        "social determinants of health", "food security", "nutrition", "housing stability",
-        "supportive housing", "NCCARE360", "anti-poverty", "food prescription", "WIC", "SNAP"
+        "social determinants of health",
+        "food security",
+        "nutrition",
+        "housing stability",
+        "supportive housing",
+        "NCCARE360",
+        "anti-poverty",
+        "food prescription",
+        "WIC",
+        "SNAP"
       ]
     }
   ],
   "keywords": [
-    "behavioral health", "mental health", "opioid", "substance abuse", "overdose prevention",
-    "maternal health", "infant mortality", "perinatal care", "early childhood",
-    "rural healthcare", "healthcare workforce", "primary care", "FQHC", "telehealth",
-    "public health preparedness", "epidemiology", "disease surveillance", "wastewater surveillance",
-    "social determinants of health", "food security", "housing stability", "harm reduction"
-  ]
+    "behavioral health",
+    "mental health",
+    "opioid",
+    "substance abuse",
+    "overdose prevention",
+    "maternal health",
+    "infant mortality",
+    "perinatal care",
+    "early childhood",
+    "rural healthcare",
+    "healthcare workforce",
+    "primary care",
+    "FQHC",
+    "telehealth",
+    "public health preparedness",
+    "epidemiology",
+    "disease surveillance",
+    "wastewater surveillance",
+    "social determinants of health",
+    "food security",
+    "housing stability",
+    "harm reduction"
+  ],
+  "category": "state"
 }
