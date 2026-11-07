@@ -53,6 +53,10 @@
   .filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 16px; }
   .filters .field { flex: 1 1 200px; } .filters .field.grow { flex: 2 1 280px; }
   .count { color: var(--muted); margin: 0 0 12px; }
+  .coverage { background: var(--bg-alt); padding: 12px 16px; margin-bottom: 24px; }
+  .coverage p { margin: 0 0 4px; }
+  .coverage details { font-size: .9rem; }
+  .coverage details p { margin-top: 8px; }
   table { width: 100%; border-collapse: collapse; }
   th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
   th { font-size: .85rem; color: var(--muted); font-weight: 700; background: var(--bg-alt); }
@@ -139,6 +143,15 @@
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
   </div>
 
+  <div class="coverage">
+    <p id="catalogTotal">Loading database totals…</p>
+    <details>
+      <summary>Database coverage and limits</summary>
+      <p id="catalogPrograms"></p>
+      <p>Totals follow your selected organization type or organization, before search and deadline filters. Each grant is counted once, even when it matches several organizations. Notices that exclude your applicant type are omitted; check uncertain eligibility in the official notice. Closed and expired grant records are removed from the database. Federal searches cover selected topics and limited results, so coverage is incomplete.</p>
+    </details>
+  </div>
+
   <div id="planInfo" class="plan-info" hidden></div>
 
   <div id="welcome" class="alert" hidden>
@@ -156,7 +169,7 @@
     <div class="summary">
       <button onclick="quick('todo')"><span class="num" id="nTodo">-</span><span class="lbl">Strong matches that need a decision</span></button>
       <button onclick="quick('soon')" style="border-top-color:var(--red)"><span class="num" id="nSoon">-</span><span class="lbl">Undecided good matches closing within 30 days</span></button>
-      <button onclick="showTab('tracked')" style="border-top-color:var(--green)"><span class="num" id="nPursue">-</span><span class="lbl">Grants your organization is pursuing</span></button>
+      <button onclick="showTab('tracked')" style="border-top-color:var(--green)"><span class="num" id="nPursue">-</span><span class="lbl">Opportunities your organization is pursuing</span></button>
     </div>
 
     <div class="filters">
@@ -165,25 +178,9 @@
         <input id="q" type="search" placeholder="Keyword, program, or funding agency" oninput="limit=25;render()">
       </div>
       <div class="field">
-        <label for="fShow">Show</label>
-        <select id="fShow" onchange="limit=25;render()">
-          <option value="todo">Needs a decision</option>
-          <option value="all">All matches</option>
-          <option value="decided">Already decided</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="fFit">Match</label>
-        <select id="fFit" onchange="limit=25;render()">
-          <option value="good">Strong and good matches</option>
-          <option value="strong">Strong matches only</option>
-          <option value="any">Any match</option>
-        </select>
-      </div>
-      <div class="field">
         <label for="fDue">Deadline</label>
         <select id="fDue" onchange="limit=25;render()">
-          <option value="any">Any open deadline</option>
+          <option value="any">Open and upcoming</option>
           <option value="30">Within 30 days</option>
           <option value="90">Within 90 days</option>
           <option value="forecast">Not yet open (forecasted)</option>
@@ -196,7 +193,10 @@
       <thead><tr><th>Grant</th><th>Match</th><th>Award up to</th><th>Staff time</th><th>Opens</th><th>Deadline</th><th>Status</th></tr></thead>
       <tbody id="rows"></tbody>
     </table>
-    <div id="empty" class="empty" hidden>No grants match these filters. Try "All matches" or "Any match".</div>
+    <div id="empty" class="empty" hidden>
+      <p id="emptyReason"></p>
+      <button id="resetFilters" class="btn outline" onclick="reviewAllMatches()">Clear filters and review all scores</button>
+    </div>
     <div class="pager"><button id="more" class="btn outline" onclick="limit+=25;render()" hidden>Show more</button></div>
 
 
@@ -225,7 +225,7 @@
     <span class="tag fair">Possible match</span> Below 55. Loosely related. Usually safe to skip.</p>
 
     <h3 id="ranking" style="margin-top:28px">How grants are ranked</h3>
-    <p><strong>What the list includes:</strong> federal grants you can apply for (Grants.gov), North Carolina state grant programs and NC foundations (for counties, cities, universities and businesses), and federal programs that fund your type of organization but have no open competition right now (SAM.gov). Each row is labeled with its type. Programs your type of organization cannot apply to are left out. State programs, foundations and standing federal programs are ranked slightly below open grants with the same fit, since open grants have a deadline.</p>
+    <p><strong>What the list includes:</strong> open and upcoming federal grant notices (Grants.gov), plus NC state and foundation applications with a sourced deadline that has not passed. Closed, archived and expired notices are excluded. Undated program descriptions are excluded because they do not confirm an open or upcoming application. Confirm eligibility and application dates in the official notice.</p>
         <p>Every grant gets a score from 0 to 100 for your organization. The most important question is whether the grant actually fits your goals, so fit works as a gate: a grant with no real connection cannot score well, no matter how large or convenient it is.</p>
     <p style="background:var(--bg-alt);padding:12px 16px;font-weight:600">Score = Fit x (0.6 + 0.4 x Practical / 100)</p>
     <p><strong>Fit with your strategic plan (0 to 100)</strong> combines two measures:</p>
@@ -245,6 +245,7 @@
       </tbody>
     </table>
     <p><strong>Not eligible:</strong> if the notice's list of eligible applicants leaves out your type of organization, the score is cut by another 40%, so the grant stays visible but is not shown as a good match.</p>
+    <p><strong>All match scores are included.</strong> Open and upcoming applications are sorted from highest to lowest score. Use Search and Deadline to narrow the list. Recording a decision does not remove an open application from the list. Check fit and eligibility before pursuing an opportunity. Database coverage is limited to the sources and searches described above the list.</p>
     <p><strong>Example:</strong> a grant with fit 80 and practical factors of 90 scores 80 x 0.96 = 77 (Strong). A $10 million grant your organization is eligible for, but with fit 15, scores at most 15.</p>
     <p><strong>Typical award:</strong> next to "Award up to", the page shows the median of recent awards nationwide under the same federal program (from USAspending.gov). If most awards are far below the maximum, it is marked in red.</p>
     <p>Open any grant and choose "How this grant was scored" to see its numbers.</p>
@@ -257,10 +258,10 @@
     <table>
       <thead><tr><th>Information</th><th>Source</th><th>How we get it</th></tr></thead>
       <tbody>
-        <tr><td><strong>Grant listings</strong>: title, agency, deadline, status</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>The Grants.gov search service, checked once a day across about 35 topic searches, including forecasted grants.</td></tr>
+        <tr><td><strong>Grant listings</strong>: title, agency, deadline, status</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>The Grants.gov search service, checked once a day across selected topic searches, including forecasted grants. Each search returns a limited number of listings.</td></tr>
         <tr><td><strong>Grant details</strong>: description, award amounts, who can apply, matching funds, contact</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>Downloaded once for each new grant, and again only if Grants.gov changes the listing.</td></tr>
         <tr><td><strong>Past North Carolina awards</strong></td><td data-l="Source"><a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a></td><td>The largest awards to North Carolina recipients under the same federal program (Assistance Listing number), refreshed weekly.</td></tr>
-        <tr><td><strong>Federal programs</strong>: purpose, restrictions, past award ranges, yearly spending</td><td data-l="Source"><a href="https://sam.gov/assistance-listings" target="_blank" rel="noopener">SAM.gov Assistance Listings</a></td><td>All active federal programs, refreshed weekly; full details for programs behind current grants and those that fit each organization, refreshed monthly. Shown on each grant page and, for programs with no open application, under "Other federal funding" on the Opportunities page.</td></tr>
+        <tr><td><strong>Federal programs</strong>: purpose, restrictions, past award ranges, yearly spending</td><td data-l="Source"><a href="https://sam.gov/assistance-listings" target="_blank" rel="noopener">SAM.gov Assistance Listings</a></td><td>Active federal program listings, refreshed weekly; full details for programs behind current grants and those that fit each organization, refreshed monthly. These records supply background on a grant. They appear in the application list only through an open or upcoming funding notice.</td></tr>
         <tr><td><strong>North Carolina state grant programs</strong></td><td data-l="Source"><a href="https://www.nc.gov/your-government/all-nc-state-services/grant-opportunities" target="_blank" rel="noopener">NC.gov Grant Opportunities directory</a></td><td>Only programs the state's official directory links to. Each program page is read weekly; a deadline is shown only when the page states one, with the sentence it came from. Shown for counties, cities, universities and businesses (state agencies run these programs).</td></tr>
         <tr><td><strong>NC foundations</strong>: Golden LEAF, Dogwood Health Trust, Kate B. Reynolds, Z. Smith Reynolds, The Duke Endowment</td><td data-l="Source">Each foundation's own website</td><td>Listed with the funder's own description of what it funds. Most of these sites block automated reading, so no deadlines or amounts are shown; check the funder's site. Dogwood Health Trust is shown only for western North Carolina organizations.</td></tr>
         <tr><td><strong>State budget grants</strong> already directed to an organization or county</td><td data-l="Source"><a href="https://www.osbm.nc.gov/legislative-grants-database" target="_blank" rel="noopener">OSBM Legislative Grants Database</a></td><td>Grants written into the current state budget, with amount, administering agency and session law. Information only; there is no application. Refreshed weekly.</td></tr>
@@ -290,8 +291,8 @@
 <div class="toast" id="toast" role="status"></div>
 
 <script>
-const S = { office: null, profiles: [], items: [], decisions: {} };
-let limit = 25, currentId = null, choice = null;
+const S = { office: null, profiles: [], items: [], decisions: {}, loading: false };
+let limit = 25, currentId = null, choice = null, officeRequest = 0;
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -313,7 +314,7 @@ const typicalLine = (i, long) => {
   if (!long) return `<span class="sub${t.well_below_ceiling ? ' soon' : ''}">Typical: ${money(Math.round(t.median))}</span>`;
   return `<span class="sub" style="font-weight:400">Typical recent award: <strong>${money(Math.round(t.median))}</strong> (median of ${t.sample_size} awards nationwide under this federal program since ${new Date(t.since + 'T12:00:00').getFullYear()}; average ${money(Math.round(t.average))}). Source: USAspending.gov.${t.well_below_ceiling ? ' <strong class="soon">Most awards are far below the maximum.</strong>' : ''}</span>`;
 };
-const todayStr = new Date().toISOString().slice(0, 10);
+const todayStr = new Intl.DateTimeFormat('en-CA', { timeZone:'America/New_York', year:'numeric', month:'2-digit', day:'2-digit' }).format(new Date());
 // When applications open: now for posted grants, the expected date for forecasts
 const opensHtml = i => i.status !== 'forecasted' ? '<strong>Open now</strong>'
   : !i.expected_open_date ? 'Not yet open<span class="sub">no date announced</span>'
@@ -321,6 +322,13 @@ const opensHtml = i => i.status !== 'forecasted' ? '<strong>Open now</strong>'
   : `Expected<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_open_date)}</span>`;
 // A forecast's due date on or before its open date is a placeholder in Grants.gov, not a real deadline
 const realDue = i => i.expected_due_date && !(i.expected_open_date && i.expected_due_date <= i.expected_open_date);
+const applicationIsCurrent = i => {
+  if (!['posted', 'forecasted'].includes(i.status)) return false;
+  const useExpected = realDue(i) && (i.status === 'forecasted' || !i.open_date || i.open_date <= i.expected_due_date);
+  const due = i.status === 'forecasted' && useExpected ? i.expected_due_date : i.close_date || (useExpected ? i.expected_due_date : null);
+  if (due) return due >= todayStr;
+  return !(i.status === 'forecasted' && i.expected_open_date && i.expected_open_date < todayStr);
+};
 const deadlineHtml = (i, br) => i.status === 'forecasted'
   ? (realDue(i) ? `Expected${br ? '<br>' : ' '}<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_due_date)}</span>`
      : 'Not posted yet')
@@ -351,6 +359,23 @@ async function init(){
   if (!store.get('welcomed')) $('welcome').hidden = false;
   fetch('/api/runs/latest').then(r => r.json()).then(r => { const t = r.finished_at || r.completed_at || r.timestamp || r.started_at; if (t && !isNaN(new Date(t))) $('refreshed').textContent = new Date(t).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' }); }).catch(() => {});
   await changeOffice($('office').value);
+}
+
+async function loadCatalogCounts(id, category, request){
+  try {
+    const response = await fetch('/api/db/stats?' + new URLSearchParams({ office:id, category }));
+    if (!response.ok) throw new Error('Database totals unavailable');
+    const s = await response.json();
+    if (request !== officeRequest) return;
+    const counts = s.selection;
+    const label = id === 'all' ? (GROUPS[category] || 'All organizations') : S.profiles.find(p => p.agency_id === id)?.name;
+    const n = value => Number(value).toLocaleString('en-US');
+    if (!counts || ![counts.available, counts.open, counts.upcoming].every(Number.isInteger)) throw new Error('Current totals unavailable');
+    $('catalogTotal').innerHTML = `<strong>${n(counts.available)} open or upcoming federal grants for ${esc(label)}</strong> &middot; ${n(counts.open)} open &middot; ${n(counts.upcoming)} upcoming`;
+    $('catalogPrograms').textContent = `Also available for this selection: ${n(counts.state_programs)} NC state applications and ${n(counts.foundations)} foundation applications with current or upcoming deadlines.`;
+  } catch(e) {
+    if (request === officeRequest) $('catalogTotal').textContent = 'Totals for this selection are temporarily unavailable.';
+  }
 }
 
 const GROUPS = { state: 'State agencies', county: 'Counties', municipal: 'Cities and towns', k12: 'School districts', education: 'Universities and colleges', nonprofit: 'Nonprofits', tribal: 'Tribes', business: 'Businesses' };
@@ -385,35 +410,57 @@ async function showPlanInfo(id){
 }
 
 async function changeOffice(id){
+  const request = ++officeRequest;
   S.office = id; store.set('office', id); limit = 25;
+  S.loading = true; S.items = []; S.decisions = {};
+  $('rows').replaceChildren();
+  $('count').textContent = 'Loading open and upcoming applications for this selection…';
+  $('trackedBody').textContent = 'Loading decisions for this selection…';
+  $('empty').hidden = true; $('more').hidden = true;
+  ['nTodo','nSoon','nPursue'].forEach(key => $(key).textContent = '–');
   const all = id === 'all', cat = encodeURIComponent($('otype').value);
+  $('catalogTotal').textContent = 'Loading totals for this selection…';
+  $('catalogPrograms').textContent = '';
+  loadCatalogCounts(id, $('otype').value, request);
   $('exportBtn').hidden = all;
   showPlanInfo(id);
   $('exportBtn').href = `/api/export/${id}`;
-  const [items, dec] = await Promise.all([
-    fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => r.json()),
-    fetch(all ? `/api/decisions/all?category=${cat}` : `/api/decisions/${id}`).then(r => r.json())]);
-  S.items = items.filter(i => i.status === 'forecasted' || (i.days_to_close ?? 0) >= 0).sort((a,b) => b.total_score - a.total_score);
+  let items, dec;
+  try {
+    [items, dec] = await Promise.all([
+      fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => { if (!r.ok) throw new Error(); return r.json(); }),
+      fetch(all ? `/api/decisions/all?category=${cat}` : `/api/decisions/${id}`).then(r => { if (!r.ok) throw new Error(); return r.json(); })]);
+  } catch(e) {
+    if (request === officeRequest) {
+      S.loading = false;
+      $('count').textContent = 'Could not load applications for this selection. Please try again.';
+      $('trackedBody').textContent = 'Could not load decisions for this selection.';
+    }
+    return;
+  }
+  if (request !== officeRequest) return;
+  S.loading = false;
+  S.items = items.filter(applicationIsCurrent).sort((a,b) => b.total_score - a.total_score);
   S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[all ? `${d.office_id}|${d.opportunity_id}` : String(d.opportunity_id)] = d; });
   render(); renderTracked();
 }
 
 function quick(kind){
   showTab('list');
-  $('q').value = ''; $('fShow').value = 'todo';
-  $('fFit').value = kind === 'todo' ? 'strong' : 'good';
+  $('q').value = '';
   $('fDue').value = kind === 'soon' ? '30' : 'any';
   limit = 25; render();
 }
 
+function reviewAllMatches(){
+  $('q').value = ''; $('fDue').value = 'any';
+  limit = 25; render();
+  $('q').focus();
+}
+
 function filtered(){
-  const q = $('q').value.toLowerCase().trim(), show = $('fShow').value, f = $('fFit').value, due = $('fDue').value;
+  const q = $('q').value.toLowerCase().trim(), due = $('fDue').value;
   return S.items.filter(i => {
-    const decided = !!S.decisions[keyOf(i)];
-    if (show === 'todo' && decided) return false;
-    if (show === 'decided' && !decided) return false;
-    if (f === 'strong' && i.total_score < STRONG) return false;
-    if (f === 'good' && i.total_score < GOOD) return false;
     if (due === 'forecast' && i.status !== 'forecasted') return false;
     if (due === 'opening90') {
       const limit90 = new Date(Date.now() + 90 * 864e5).toISOString().slice(0, 10);
@@ -426,22 +473,28 @@ function filtered(){
 }
 
 function render(){
+  if (S.loading) return;
   const list = filtered();
-  $('nTodo').textContent = uniq(S.items.filter(i => !i.kind && i.total_score >= STRONG && !S.decisions[keyOf(i)])).length;
-  $('nSoon').textContent = uniq(S.items.filter(i => !i.kind && i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[keyOf(i)])).length;
+  $('nTodo').textContent = uniq(S.items.filter(i => i.total_score >= STRONG && !S.decisions[keyOf(i)])).length;
+  $('nSoon').textContent = uniq(S.items.filter(i => i.status !== 'forecasted' && i.total_score >= GOOD && i.days_to_close != null && i.days_to_close <= 30 && !S.decisions[keyOf(i)])).length;
   $('nPursue').textContent = Object.values(S.decisions).filter(d => d.status === 'Pursue').length;
-  $('count').textContent = `${list.length} ${list.length === 1 ? 'opportunity' : 'opportunities'} found, best matches first.`;
+  $('count').textContent = `${list.length} of ${S.items.length} grants and programs match these filters, best matches first.`;
+  $('resetFilters').hidden = !S.items.length;
+  if (!S.items.length) {
+    $('emptyReason').textContent = 'No current grant or program matches are available for this organization. Database coverage is incomplete; check the official funding sources.';
+  } else {
+    $('emptyReason').textContent = 'No open or upcoming applications match the current search and deadline filters. Clear the filters to review the available applications.';
+  }
   const row = i => {
     const [cls, lbl] = fit(i.total_score);
     if (i.kind) {
       const r = i.award_range || {};
-      const fed = i.kind.startsWith('Federal');
       return `<tr>
       <td><button class="t" onclick="openProgram('${esc(keyOf(i))}')">${esc(i.title)}</button><span class="sub"><span class="tag ${i.kind === 'Private foundation' ? 'good' : 'fair'}">${esc(i.kind)}</span> ${esc(i.parent || i.agency || '')}</span>${i.matched_goal_title ? `<span class="sub">Fits: ${esc(i.matched_goal_title)}</span>` : ''}</td>
       <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
       <td data-l="Award up to">${r.low ? `${money(r.low)} to ${money(r.high)}<span class="sub">past awards (agency)</span>` : r.average ? `Average ${money(r.average)}` : '<span class="sub">See program page</span>'}</td>
       <td data-l="Staff time"><span class="sub">Not estimated</span></td>
-      <td data-l="Opens">${fed ? 'No open competition<span class="sub">ask the program office or state partner</span>' : i.close_date ? '<strong>Open now</strong>' : 'See program page'}</td>
+      <td data-l="Opens">See application dates<span class="sub">on the official program page</span></td>
       <td data-l="Deadline">${i.close_date ? `${fmtDate(i.close_date)}<span class="sub">"${esc(i.deadline_quote || '')}"</span>` : '<span class="sub">See program page</span>'}</td>
       <td data-l="Status">${statusTag(i)}</td></tr>`;
     }
@@ -475,6 +528,7 @@ function render(){
 }
 
 function renderTracked(){
+  if (S.loading) return;
   const byId = Object.fromEntries(S.items.map(i => [i.id, i]));
   const ds = Object.values(S.decisions).sort((a,b) => (b.decided_at || '').localeCompare(a.decided_at || ''));
   if (!ds.length) { $('trackedBody').innerHTML = '<div class="empty">No decisions yet. Open a grant from the Opportunities tab and choose Pursue, Watch, or Pass.</div>'; return; }
@@ -699,8 +753,8 @@ async function saveDecision(){
   const i = S.items.find(x => keyOf(x) === currentId) || S.items.find(x => x.id === currentId);
   const name = $('dBy').value.trim(); if (name) store.set('name', name);
   const body = { opportunity_id: i.id, number: i.number, title: i.title, status: choice, notes: $('dNotes').value.trim(), decided_by: name || 'Grants staff' };
+  const org = S.office === 'all' ? $('dOrg').value : S.office;
   try {
-    const org = S.office === 'all' ? $('dOrg').value : S.office;
     body.office_id = org;
     const r = await fetch(`/api/decisions/${org}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
     if (!r.ok) throw new Error();

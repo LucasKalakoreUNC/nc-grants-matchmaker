@@ -26,7 +26,9 @@ import os
 import json
 import sqlite3
 import hashlib
-from datetime import datetime, timedelta
+import threading
+from datetime import date, datetime, timedelta
+from zoneinfo import ZoneInfo
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
@@ -164,23 +166,31 @@ def content_hash(obj):
 
 
 _initialized = False
+_last_pruned = None
+_maintenance_lock = threading.RLock()
 
 
 def connect():
     """Open the database, creating and seeding it on first use."""
-    global _initialized
+    global _initialized, _last_pruned
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA journal_mode=WAL")
-    if not _initialized:
-        conn.executescript(SCHEMA)
-        conn.executemany("INSERT OR IGNORE INTO sources (id, name, base_url) VALUES (?, ?, ?)", KNOWN_SOURCES)
-        conn.commit()
-        empty = conn.execute("SELECT COUNT(*) FROM opportunities").fetchone()[0] == 0
-        _initialized = True
-        if empty:
-            bootstrap_from_json(conn)
+    with _maintenance_lock:
+        if not _initialized:
+            conn.executescript(SCHEMA)
+            conn.executemany("INSERT OR IGNORE INTO sources (id, name, base_url) VALUES (?, ?, ?)", KNOWN_SOURCES)
+            conn.commit()
+            empty = conn.execute("SELECT COUNT(*) FROM opportunities").fetchone()[0] == 0
+            if empty:
+                bootstrap_from_json(conn)
+            _initialized = True
+        today = nc_today()
+        if _last_pruned != today:
+            prune_unavailable(conn, today)
+            conn.commit()
+            _last_pruned = today
     return conn
 
 
@@ -210,7 +220,10 @@ def log_fetch(conn, source, query, record_count, ok=True, error=None):
 # ---------------------------------------------------------------- raw records
 
 def upsert_raw(conn, source, source_record_id, payload):
-    """Store a raw record. Returns 'new', 'changed' or 'unchanged'."""
+    """Store a raw record; unavailable grant hits return 'excluded'."""
+    if source == "grants.gov" and not raw_application_available(payload):
+        delete_opportunities(conn, [str(source_record_id)])
+        return "excluded"
     h = content_hash(payload)
     ts = now()
     row = conn.execute(
@@ -239,7 +252,10 @@ def raw_records(conn, source):
 # ---------------------------------------------------------------- opportunities
 
 def upsert_opportunity(conn, opp, source=None, source_record_id=None, source_url=None):
-    """Insert or update a normalized grant. Returns 'new', 'changed' or 'unchanged'."""
+    """Insert/update a current grant; unavailable notices return 'excluded'."""
+    if not application_available(opp):
+        delete_opportunities(conn, [str(opp["id"])])
+        return "excluded"
     ts = now()
     h = content_hash({k: v for k, v in opp.items() if k not in ("ingested_at", "days_to_close")})
     row = conn.execute("SELECT content_hash FROM opportunities WHERE id=?", (opp["id"],)).fetchone()
@@ -265,11 +281,8 @@ def upsert_opportunity(conn, opp, source=None, source_record_id=None, source_url
 
 
 def mark_closed(conn, today_str):
-    """Grants past their close date become 'closed' (kept for history, never deleted)."""
-    cur = conn.execute(
-        "UPDATE opportunities SET status='closed' WHERE status='posted' AND close_date GLOB '[0-9]*' AND close_date < ?",
-        (today_str,))
-    return cur.rowcount
+    """Compatibility entrypoint: remove expired inventory rather than retaining it."""
+    return prune_unavailable(conn, date.fromisoformat(today_str))
 
 
 def opportunities(conn, include_closed=False):
@@ -284,6 +297,99 @@ def opportunities(conn, include_closed=False):
 
 # ---------------------------------------------------------------- matches
 
+def nc_today():
+    return datetime.now(ZoneInfo("America/New_York")).date()
+
+
+def _date(value):
+    try:
+        return date.fromisoformat((value or "")[:10])
+    except (TypeError, ValueError):
+        return None
+
+
+def raw_application_available(hit, today=None):
+    close = hit.get("closeDate")
+    if close and not _date(close):
+        try:
+            close = datetime.strptime(close, "%m/%d/%Y").date().isoformat()
+        except (TypeError, ValueError):
+            close = None
+    return application_available({"status": str(hit.get("oppStatus") or "posted").lower(),
+                                  "close_date": close}, today)
+
+
+def delete_opportunities(conn, ids):
+    """Remove grant inventory/cache rows, preserving independent staff decisions."""
+    ids = [(str(oid),) for oid in set(ids)]
+    if not ids:
+        return 0
+    tables = {r[0] for r in conn.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+    for table in ("matches", "opportunity_sources", "notice_files", "notice_requirements"):
+        if table in tables:
+            conn.executemany(f"DELETE FROM {table} WHERE opportunity_id=?", ids)
+    conn.executemany("DELETE FROM raw_records WHERE source IN ('grants.gov', 'grants.gov-detail') AND source_record_id=?", ids)
+    conn.executemany("DELETE FROM fetch_log WHERE source='grants.gov-detail' AND query=?", ids)
+    return conn.executemany("DELETE FROM opportunities WHERE id=?", ids).rowcount
+
+
+def prune_unavailable(conn, today=None):
+    today = today or nc_today()
+    ids = set()
+    for row in conn.execute("SELECT id, status, close_date, data FROM opportunities"):
+        item = json.loads(row["data"])
+        item.update(status=row["status"], close_date=row["close_date"])
+        if not application_available(item, today):
+            ids.add(row["id"])
+    for row in conn.execute("SELECT source_record_id, payload FROM raw_records WHERE source='grants.gov'"):
+        if not raw_application_available(json.loads(row["payload"]), today):
+            ids.add(row["source_record_id"])
+    return delete_opportunities(conn, ids)
+
+
+def application_deadline(item):
+    close = _date(item.get("close_date"))
+    if item.get("status") == "forecasted" or not close:
+        due = _date(item.get("expected_due_date"))
+        opening = _date(item.get("expected_open_date"))
+        # Grants.gov sometimes repeats the opening date as a placeholder deadline.
+        if due and (not opening or due > opening):
+            posted = _date(item.get("open_date"))
+            if item.get("status") == "forecasted" or not posted or posted <= due:
+                return due
+    return close
+
+
+def application_available(item, today=None):
+    """Only notices marked open/upcoming whose application window has not passed."""
+    today = today or nc_today()
+    if item.get("status") not in ("posted", "forecasted"):
+        return False
+    deadline = application_deadline(item)
+    if deadline:
+        return deadline >= today
+    if item.get("status") == "forecasted":
+        opening = _date(item.get("expected_open_date"))
+        if opening and opening < today:
+            return False  # stale forecast; no current or future application window
+    return True  # official open/forecast status, with no announced deadline
+
+
+def _current_match(row, today):
+    source = json.loads(row["opp"])
+    item = {**source, **json.loads(row["match"])}
+    # Use current source dates and status rather than old values in a saved score.
+    item.update(status=row["status"], close_date=row["close_date"],
+                open_date=source.get("open_date"),
+                expected_open_date=source.get("expected_open_date"),
+                expected_due_date=source.get("expected_due_date"))
+    if not application_available(item, today):
+        return None
+    close = _date(item.get("close_date"))
+    item["days_to_close"] = (close - today).days if close else None
+    return item
+
+
 def save_matches(conn, office_id, scored_items):
     ts = now()
     conn.executemany(
@@ -294,12 +400,18 @@ def save_matches(conn, office_id, scored_items):
 
 def scored_for_office(conn, office_id, include_closed=False):
     """Full scored records for one office, best first (same shape as the old latest.json)."""
-    sql = ("SELECT o.data AS opp, o.status AS status, m.data AS match FROM matches m "
+    sql = ("SELECT o.data AS opp, o.status AS status, o.close_date, m.data AS match FROM matches m "
            "JOIN opportunities o ON o.id = m.opportunity_id WHERE m.office_id=?"
            + ("" if include_closed else " AND o.status != 'closed'")
            + " ORDER BY m.total_score DESC")
     out = []
+    today = nc_today()
     for r in conn.execute(sql, (office_id,)):
+        if not include_closed:
+            item = _current_match(r, today)
+            if item is not None:
+                out.append(item)
+            continue
         item = json.loads(r["opp"])
         item.update(json.loads(r["match"]))
         item["status"] = r["status"]
@@ -313,7 +425,7 @@ def scored_best(conn, office_ids):
         return []
     marks = ",".join("?" * len(office_ids))
     sql = f"""
-        SELECT o.data AS opp, o.status AS status, m.data AS match, m.office_id AS office_id FROM (
+        SELECT o.data AS opp, o.status AS status, o.close_date, m.data AS match, m.office_id AS office_id FROM (
             SELECT opportunity_id, office_id, data, total_score,
                    ROW_NUMBER() OVER (PARTITION BY opportunity_id ORDER BY total_score DESC) AS rn
             FROM matches WHERE office_id IN ({marks})
@@ -321,10 +433,11 @@ def scored_best(conn, office_ids):
         WHERE m.rn = 1 AND o.status != 'closed'
         ORDER BY m.total_score DESC"""
     out = []
+    today = nc_today()
     for r in conn.execute(sql, list(office_ids)):
-        item = json.loads(r["opp"])
-        item.update(json.loads(r["match"]))
-        item["status"] = r["status"]
+        item = _current_match(r, today)
+        if item is None:
+            continue
         item["best_office_id"] = r["office_id"]
         out.append(item)
     return out
@@ -345,18 +458,20 @@ def top_per_office(conn, office_ids, per=5, min_score=0):
         return []
     marks = ",".join("?" * len(office_ids))
     sql = f"""
-        SELECT o.data AS opp, o.status AS status, m.data AS match, m.office_id AS office_id FROM (
-            SELECT mm.opportunity_id, mm.office_id, mm.data, mm.total_score,
-                   ROW_NUMBER() OVER (PARTITION BY mm.office_id ORDER BY mm.total_score DESC) AS rn
-            FROM matches mm JOIN opportunities oo ON oo.id = mm.opportunity_id
-            WHERE mm.office_id IN ({marks}) AND oo.status != 'closed' AND mm.total_score >= ?
-        ) m JOIN opportunities o ON o.id = m.opportunity_id
-        WHERE m.rn <= ? ORDER BY m.office_id, m.total_score DESC"""
+        SELECT o.data AS opp, o.status AS status, o.close_date, m.data AS match, m.office_id
+        FROM matches m JOIN opportunities o ON o.id = m.opportunity_id
+        WHERE m.office_id IN ({marks}) AND o.status IN ('posted', 'forecasted') AND m.total_score >= ?
+        ORDER BY m.office_id, m.total_score DESC"""
     out = []
-    for r in conn.execute(sql, list(office_ids) + [min_score, per]):
-        item = json.loads(r["opp"])
-        item.update(json.loads(r["match"]))
-        item["status"] = r["status"]
+    today, counts = nc_today(), {}
+    for r in conn.execute(sql, list(office_ids) + [min_score]):
+        office = r["office_id"]
+        if counts.get(office, 0) >= per:
+            continue
+        item = _current_match(r, today)
+        if item is None:
+            continue
+        counts[office] = counts.get(office, 0) + 1
         item["best_office_id"] = r["office_id"]
         out.append(item)
     return out
@@ -399,6 +514,12 @@ def awards_for_cfda(conn, cfda, limit=10):
 
 def stats(conn):
     q = lambda sql: conn.execute(sql).fetchone()[0]
+    state_records = [json.loads(r["payload"]) for r in conn.execute(
+        "SELECT payload FROM raw_records WHERE source='nc-state-program'")]
+    foundations = sum((r.get("kind") or "").startswith("Private") for r in state_records)
+    today = nc_today()
+    available = [item for item in opportunities(conn, include_closed=True)
+                 if application_available(item, today)]
     return {
         "opportunities": q("SELECT COUNT(*) FROM opportunities"),
         "open": q("SELECT COUNT(*) FROM opportunities WHERE status='posted'"),
@@ -406,6 +527,11 @@ def stats(conn):
         "closed": q("SELECT COUNT(*) FROM opportunities WHERE status='closed'"),
         "raw_records": q("SELECT COUNT(*) FROM raw_records"),
         "programs": q("SELECT COUNT(*) FROM programs"),
+        "state_programs": len(state_records) - foundations,
+        "foundations": foundations,
+        "available": len(available),
+        "available_open": sum(item["status"] == "posted" for item in available),
+        "available_forecasted": sum(item["status"] == "forecasted" for item in available),
         "past_awards": q("SELECT COUNT(*) FROM past_awards"),
         "decisions": q("SELECT COUNT(*) FROM decisions"),
         "sources": [dict(r) for r in conn.execute("SELECT * FROM sources")],

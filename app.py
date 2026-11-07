@@ -35,10 +35,12 @@ def slim(items):
 
 
 def other_items(conn, office_id, profile):
-    """State programs, foundations and federal programs this organization can apply for,
-    shaped like grant rows so the page can show one combined list."""
+    """State/foundation applications with a sourced deadline that has not passed.
+
+    Undated program descriptions do not establish an open or upcoming application.
+    """
     cat = profile.get("category", "state")
-    words = pipeline.CATEGORY_ELIGIBILITY_WORDS.get(cat, [])
+    today = db.nc_today()
     out = []
     if cat != "state":  # state agencies run state programs rather than apply to them
         for m in state_programs.for_office(conn, office_id):
@@ -48,27 +50,20 @@ def other_items(conn, office_id, profile):
                 text = (json.loads(rec["payload"]).get("text") or "").lower() if rec else ""
                 if "nonprofit" in text[:400] and "government" not in text[:600]:
                     continue  # funds nonprofits only
-            d = (m.get("deadlines") or [None])[0]
+            deadlines = [(db.application_deadline({"close_date": d.get("date")}), d)
+                         for d in m.get("deadlines", [])]
+            deadlines = [(day, d) for day, d in deadlines if day and day >= today]
+            if not deadlines:
+                continue
+            close, d = min(deadlines, key=lambda pair: pair[0])
             out.append({"id": f"st-{m['id']}", "kind": "Private foundation" if foundation else "NC state program",
                         "title": m["name"], "agency": "Private foundation" if foundation else "State of North Carolina",
-                        "url": m["url"], "total_score": round(m["fit"] * 0.8, 1), "status": "posted" if d else "program",
-                        "close_date": d["date"] if d else None, "deadline_quote": d["quote"] if d else None,
-                        "days_to_close": (datetime.fromisoformat(d["date"]) - datetime.now()).days if d else None,
+                        "url": m["url"], "total_score": round(m["fit"] * 0.8, 1), "status": "posted",
+                        "close_date": close.isoformat(), "deadline_quote": d.get("quote"),
+                        "days_to_close": (close - today).days,
                         "matched_goal_title": m.get("matched_goal_title"), "page_read": m.get("page_read", True),
                         "overview": m.get("overview") or {}, "parent": m.get("parent"), "shared_words": m.get("shared_words"),
                         "best_office_id": office_id})
-    for m in programs.programs_for_office(conn, office_id):
-        p = m.get("program") or {}
-        who = (p.get("who_can_apply") or "").lower()
-        if m.get("open_grants") or not who or not any(w in who for w in words):
-            continue  # open grants are already in the list; skip programs this type can't apply to
-        r = p.get("award_range") or {}
-        out.append({"id": f"fp-{m['cfda']}", "kind": "Federal program (no open competition)", "title": m["title"],
-                    "agency": f"Assistance Listing {m['cfda']}", "url": p.get("sam_url"), "total_score": round(m["fit"] * 0.7, 1),
-                    "status": "program", "award_range": r, "matched_goal_title": m.get("matched_goal_title"),
-                    "overview": {"description": p.get("objective", "")[:700], "who_can_apply": p.get("who_can_apply", "")[:500],
-                                 "funding": p.get("financial_note", "")[:400], "restrictions": p.get("uses_restrictions", "")[:400]},
-                    "best_office_id": office_id})
     return out
 
 
@@ -76,9 +71,34 @@ def load_scored(agency_id):
     """Scored grants for one office, best first, read from the database."""
     conn = db.connect()
     try:
-        return db.scored_for_office(conn, agency_id)
+        profile = pipeline.load_agency_profiles().get(agency_id)
+        return scored_for_profile(conn, agency_id, profile) if profile else []
     finally:
         conn.close()
+
+
+def scored_for_profile(conn, office_id, profile):
+    """Keep all scores, excluding notices that rule out this applicant type."""
+    return [item for item in db.scored_for_office(conn, office_id)
+            if pipeline.eligibility_fit(item, profile)[0] > 10]
+
+
+def selection_counts(conn, profiles, office="all", category="all"):
+    ids = [office] if office != "all" else [oid for oid, profile in profiles.items()
+            if category == "all" or profile.get("category", "state") == category]
+    selected = [profiles[oid] for oid in ids if oid in profiles]
+    today = db.nc_today()
+    grants = [item for item in db.opportunities(conn)
+              if db.application_available(item, today)
+              and any(pipeline.eligibility_fit(item, profile)[0] > 10 for profile in selected)]
+    extras = {item["id"]: item for oid in ids if oid in profiles
+              for item in other_items(conn, oid, profiles[oid])}
+    foundations = sum(item["kind"] == "Private foundation" for item in extras.values())
+    return {"available": len(grants),
+            "open": sum(item["status"] == "posted" for item in grants),
+            "upcoming": sum(item["status"] == "forecasted" for item in grants),
+            "state_programs": len(extras) - foundations, "foundations": foundations,
+            "total": len(grants) + len(extras)}
 
 PORT = int(os.environ.get("PORT", 8000))
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -220,8 +240,11 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 if path == "/api/scored/all":
                     # Each organization's own top matches, grouped by organization in the page
                     per = int(urllib.parse.parse_qs(parsed.query).get("per", ["25"])[0])
-                    items = db.top_per_office(conn, ids, per=per)
+                    items = []
                     for oid in ids:
+                        for item in scored_for_profile(conn, oid, profiles[oid])[:per]:
+                            item["best_office_id"] = oid
+                            items.append(item)
                         items += other_items(conn, oid, profiles[oid])
                     for it in items:
                         it["best_office_name"] = profiles.get(it["best_office_id"], {}).get("name", "")
@@ -238,9 +261,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             try:
                 profile = pipeline.load_agency_profiles().get(agency_id, {})
                 extra = other_items(conn, agency_id, profile) if profile else []
+                items = scored_for_profile(conn, agency_id, profile) if profile else []
             finally:
                 conn.close()
-            self._send_json(slim(load_scored(agency_id)) + extra)
+            self._send_json(slim(items) + extra)
             return
 
         # 5. API: Get decisions for agency
@@ -256,7 +280,16 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         if path == "/api/db/stats":
             conn = db.connect()
             try:
-                self._send_json(db.stats(conn))
+                query = urllib.parse.parse_qs(parsed.query)
+                office = query.get("office", ["all"])[0]
+                category = query.get("category", ["all"])[0]
+                profiles = pipeline.load_agency_profiles()
+                if office != "all" and office not in profiles:
+                    self._send_json({"error": "Profile not found"}, 404)
+                    return
+                result = db.stats(conn)
+                result["selection"] = selection_counts(conn, profiles, office, category)
+                self._send_json(result)
             finally:
                 conn.close()
             return
@@ -298,13 +331,13 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 typical = (it.get("typical_award") or {}).get("median")
                 dec = decisions.get(str(it.get("id")), {})
                 cs = it.get("cost_share_required")
+                due = db.application_deadline(it)
                 writer.writerow([
                     i + 1, it.get("total_score", 0), label(it.get("total_score", 0)),
                     round((it.get("score_breakdown") or {}).get("relevancy", 0)), "Federal grant",
                     it.get("title", ""), it.get("number", ""), it.get("agency", ""), it.get("status", ""),
                     "Open now" if it.get("status") != "forecasted" else (it.get("expected_open_date") or "Not announced"),
-                    it.get("close_date") or (it.get("expected_due_date")
-                                             if (it.get("expected_due_date") or "") > (it.get("expected_open_date") or "") else ""),
+                    (due.isoformat() if due else "") if it.get("status") == "forecasted" else (it.get("close_date") or ""),
                     "" if it.get("days_to_close") is None else it.get("days_to_close"),
                     dollars(it.get("award_ceiling") or it.get("award_estimate")), dollars(typical),
                     it.get("est_completion_hours", ""),

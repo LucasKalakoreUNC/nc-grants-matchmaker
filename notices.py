@@ -434,6 +434,8 @@ def load_requirements_dir(conn):
         with open(os.path.join(REQUIREMENTS_DIR, name), encoding="utf-8") as f:
             data = json.load(f)
         oid = str(data.pop("opportunity_id", name[:-5]))
+        if not conn.execute("SELECT 1 FROM opportunities WHERE id=?", (oid,)).fetchone():
+            continue
         reader = data.pop("read_by", "unknown")
         read_at = data.pop("read_at", None)
         save_requirements(conn, oid, data, reader)

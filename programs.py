@@ -159,6 +159,31 @@ def program_record(conn, cfda):
     return json.loads(r["data"]) if r else None
 
 
+def applicant_type_matches(text, profile):
+    """Recognize applicant types in SAM descriptions, not geographic mentions.
+
+    This is a type check only; the notice may impose agency-specific limits.
+    In particular, "United States" does not mean state agencies can apply.
+    """
+    import pipeline
+    text = re.sub(r"\s+", " ", (text or "").lower())
+    category = profile.get("category", "state")
+    if category == "state":
+        general = (r"\bstate(?:s)?(?:\s*[/,]\s*(?:(?:and|or)\s+)?local|\s+(?:and|or)\s+local)?\s+government",
+                   r"\bstate agenc(?:y|ies)\b",
+                   r"\bstates?\s*,\s*(?:count(?:y|ies)|cit(?:y|ies))\b",
+                   r"^states?\s+and\s+partnerships\b")
+        if any(re.search(pattern, text) for pattern in general):
+            return True
+        # Use the profile's specific state-agency role, e.g. DPI is a SEA.
+        types = [t.lower() for t in profile.get("eligible_applicant_types", [])
+                 if t.lower().startswith("state ") and t.lower() != "state governments"]
+        patterns = [re.escape(t[:-3]) + r"(?:y|ies)" if t.endswith("agencies") else re.escape(t) for t in types]
+        return any(re.search(r"\b" + pattern + r"\b", text) for pattern in patterns)
+    return any(re.search(r"\b" + re.escape(word), text)
+               for word in pipeline.CATEGORY_ELIGIBILITY_WORDS.get(category, []))
+
+
 def score_programs(conn, profiles, per_office=15):
     """Fit of every active, funded program's purpose to every organization's goals.
     Returns the program numbers worth fetching details for."""

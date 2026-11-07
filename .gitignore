@@ -52,3 +52,8 @@ data/notices/
 
 # Strategic plan PDFs (re-downloadable from OSBM); extracted .txt files are committed
 data/plans/*.pdf
+
+# Local agent notes and browser verification artifacts
+.capture/
+.playwright-cli/
+output/playwright/
