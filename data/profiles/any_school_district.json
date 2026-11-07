@@ -1,0 +1,102 @@
+{
+  "agency_id": "any_school_district",
+  "category": "k12",
+  "name": "Any North Carolina public school district",
+  "short_name": "NC school district",
+  "profile_status": "general",
+  "source_citation": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "mission": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "eligible_applicant_types": [
+    "Independent school districts",
+    "State governments"
+  ],
+  "funder_affinities": [
+    "Department of Education",
+    "Department of Agriculture",
+    "Department of Justice",
+    "National Science Foundation"
+  ],
+  "goals": [
+    {
+      "id": "ANY_SCHOOL_DISTRICT-G1",
+      "number": 1,
+      "title": "Student achievement",
+      "citation": "NC school district, general goal 1",
+      "description": "Improve reading, math and student outcomes.",
+      "objectives": [
+        "Improve reading, math and student outcomes."
+      ],
+      "keywords": [
+        "literacy",
+        "mathematics",
+        "student achievement",
+        "k-12",
+        "english learners",
+        "students with disabilities"
+      ]
+    },
+    {
+      "id": "ANY_SCHOOL_DISTRICT-G2",
+      "number": 2,
+      "title": "School safety and health",
+      "citation": "NC school district, general goal 2",
+      "description": "Keep students safe and healthy.",
+      "objectives": [
+        "Keep students safe and healthy."
+      ],
+      "keywords": [
+        "school safety",
+        "school mental health",
+        "school nutrition",
+        "school meals",
+        "violence prevention"
+      ]
+    },
+    {
+      "id": "ANY_SCHOOL_DISTRICT-G3",
+      "number": 3,
+      "title": "Career and college readiness",
+      "citation": "NC school district, general goal 3",
+      "description": "Expand career and technical education and STEM.",
+      "objectives": [
+        "Expand career and technical education and STEM."
+      ],
+      "keywords": [
+        "career and technical education",
+        "stem education",
+        "computer science",
+        "dual enrollment"
+      ]
+    },
+    {
+      "id": "ANY_SCHOOL_DISTRICT-G4",
+      "number": 4,
+      "title": "Teachers and leaders",
+      "citation": "NC school district, general goal 4",
+      "description": "Recruit, train and keep teachers and principals.",
+      "objectives": [
+        "Recruit, train and keep teachers and principals."
+      ],
+      "keywords": [
+        "teacher recruitment",
+        "teacher retention",
+        "professional development",
+        "principal"
+      ]
+    }
+  ],
+  "keywords": [
+    "career and technical education",
+    "computer science",
+    "literacy",
+    "mathematics",
+    "professional development",
+    "school mental health",
+    "school nutrition",
+    "school safety",
+    "stem education",
+    "student achievement",
+    "teacher recruitment",
+    "teacher retention"
+  ]
+}

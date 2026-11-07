@@ -1,0 +1,120 @@
+{
+  "agency_id": "any_tribe",
+  "category": "tribal",
+  "name": "Any North Carolina tribal government",
+  "short_name": "NC tribe",
+  "profile_status": "general",
+  "source_citation": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "mission": "General profile: common needs for this kind of organization, not a specific organization's plan.",
+  "eligible_applicant_types": [
+    "Native American tribal governments (Federally recognized)",
+    "Native American tribal organizations (other than Federally recognized tribal governments)"
+  ],
+  "funder_affinities": [
+    "Indian Health Service",
+    "Department of the Interior",
+    "Department of Housing and Urban Development",
+    "Department of Justice",
+    "Administration for Native Americans"
+  ],
+  "goals": [
+    {
+      "id": "ANY_TRIBE-G1",
+      "number": 1,
+      "title": "Tribal health",
+      "citation": "NC tribe, general goal 1",
+      "description": "Improve health, behavioral health and substance use services for tribal members.",
+      "objectives": [
+        "Improve health, behavioral health and substance use services for tribal members."
+      ],
+      "keywords": [
+        "tribal health",
+        "indian health",
+        "behavioral health",
+        "substance use",
+        "diabetes"
+      ]
+    },
+    {
+      "id": "ANY_TRIBE-G2",
+      "number": 2,
+      "title": "Housing and infrastructure",
+      "citation": "NC tribe, general goal 2",
+      "description": "Build housing, broadband and community infrastructure.",
+      "objectives": [
+        "Build housing, broadband and community infrastructure."
+      ],
+      "keywords": [
+        "indian housing",
+        "tribal housing",
+        "broadband",
+        "infrastructure",
+        "transportation"
+      ]
+    },
+    {
+      "id": "ANY_TRIBE-G3",
+      "number": 3,
+      "title": "Culture, language and education",
+      "citation": "NC tribe, general goal 3",
+      "description": "Preserve language and culture and support education.",
+      "objectives": [
+        "Preserve language and culture and support education."
+      ],
+      "keywords": [
+        "native language",
+        "cultural preservation",
+        "tribal education",
+        "tribal colleges"
+      ]
+    },
+    {
+      "id": "ANY_TRIBE-G4",
+      "number": 4,
+      "title": "Justice and safety",
+      "citation": "NC tribe, general goal 4",
+      "description": "Strengthen tribal justice systems and community safety.",
+      "objectives": [
+        "Strengthen tribal justice systems and community safety."
+      ],
+      "keywords": [
+        "tribal justice",
+        "victim services",
+        "violence against women",
+        "law enforcement"
+      ]
+    },
+    {
+      "id": "ANY_TRIBE-G5",
+      "number": 5,
+      "title": "Economic development",
+      "citation": "NC tribe, general goal 5",
+      "description": "Grow tribal enterprises and jobs.",
+      "objectives": [
+        "Grow tribal enterprises and jobs."
+      ],
+      "keywords": [
+        "tribal economic development",
+        "native business",
+        "workforce development"
+      ]
+    }
+  ],
+  "keywords": [
+    "behavioral health",
+    "broadband",
+    "cultural preservation",
+    "indian health",
+    "indian housing",
+    "native business",
+    "native language",
+    "tribal economic development",
+    "tribal education",
+    "tribal health",
+    "tribal housing",
+    "tribal justice",
+    "victim services",
+    "violence against women",
+    "workforce development"
+  ]
+}

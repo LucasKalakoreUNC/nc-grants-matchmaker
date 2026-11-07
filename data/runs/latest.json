@@ -1,5 +1,5 @@
 {
-  "timestamp": "20261107_134206",
+  "timestamp": "20261107_145122",
   "run_date": "2026-11-07",
   "status": "Succeeded",
   "counts": {
@@ -9,8 +9,53 @@
     "queries_skipped_cached": 33,
     "records_new": 0,
     "records_changed": 0,
-    "agencies_scored": 29,
+    "agencies_scored": 34,
     "breakdown": {
+      "any_county": {
+        "name": "NC county",
+        "category": "county",
+        "total": 484,
+        "high": 3,
+        "medium": 9,
+        "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
+        "top_score": 87.6
+      },
+      "any_nonprofit": {
+        "name": "NC nonprofit",
+        "category": "nonprofit",
+        "total": 484,
+        "high": 2,
+        "medium": 8,
+        "top_match": "Domestic Violence Prevention",
+        "top_score": 83.9
+      },
+      "any_school_district": {
+        "name": "NC school district",
+        "category": "k12",
+        "total": 484,
+        "high": 0,
+        "medium": 3,
+        "top_match": "NIJ FY 2026 Research and Evaluation on School Safety",
+        "top_score": 67.4
+      },
+      "any_town": {
+        "name": "NC city or town",
+        "category": "municipal",
+        "total": 484,
+        "high": 0,
+        "medium": 1,
+        "top_match": "Outdoor Recreation Legacy Partnership Program (ORLP) Recurring Notice 5 Year",
+        "top_score": 67.6
+      },
+      "any_tribe": {
+        "name": "NC tribe",
+        "category": "tribal",
+        "total": 484,
+        "high": 3,
+        "medium": 6,
+        "top_match": "Behavioral Health Integration Initiative",
+        "top_score": 76.0
+      },
       "biz_agriculture": {
         "name": "NC farms and agribusiness",
         "category": "business",
@@ -274,6 +319,6 @@
       }
     }
   },
-  "duration_seconds": 16.82,
+  "duration_seconds": 53.22,
   "errors": []
 }

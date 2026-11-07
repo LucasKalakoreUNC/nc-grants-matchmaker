@@ -628,6 +628,8 @@ CATEGORY_ELIGIBILITY_WORDS = {
     "education": ["institutions of higher education", "universit", "college"],
     "business": ["small business", "for-profit", "for profit", "commercial"],
     "nonprofit": ["nonprofit", "non-profit", "501(c)"],
+    "k12": ["school district", "local educational agenc", "public school"],
+    "tribal": ["tribal", "tribe", "indian", "native american"],
 }
 
 
@@ -635,7 +637,7 @@ def eligibility_fit(opp, profile):
     """Score 0-100 for whether this office type may apply, plus a plain-language note."""
     types = [t.lower() for t in opp.get("eligibility", [])]
     title = (opp.get("title") or "").lower()
-    is_tribal_org = any("tribal" in t.lower() for t in profile.get("eligible_applicant_types", []))
+    is_tribal_org = profile.get("category") == "tribal" or any("tribal" in t.lower() for t in profile.get("eligible_applicant_types", []))
     if not is_tribal_org and re.search(r"\b(tribal|indian housing|urban indian|native american|native hawaiian)\b", title):
         return 10.0, "This program appears to be limited to tribes or Native organizations; check the notice."
     if not types:

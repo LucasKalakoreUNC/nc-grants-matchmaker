@@ -84,7 +84,10 @@ app's "How this works" page and in `pipeline.py` (`calculate_score`).
 plans (state agencies from the
 [OSBM site](https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans),
 plus Wake County, Raleigh, Asheville, NC State and NC A&T), cited by page and
-linked from the app. The rest are labeled drafts. To add a town or county from
+linked from the app. The rest are labeled drafts. General profiles ("Any NC nonprofit", "Any NC
+county government", "Any NC city or town", "Any NC public school district",
+"Any NC tribal government") let any organization without its own profile see
+what its type of organization can apply for. To add a town or county from
 its published plan:
 
 ```bash

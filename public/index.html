@@ -126,6 +126,9 @@
         <option value="county">Counties</option>
         <option value="municipal">Cities and towns</option>
         <option value="education">Universities and colleges</option>
+        <option value="k12">School districts</option>
+        <option value="nonprofit">Nonprofits</option>
+        <option value="tribal">Tribes</option>
         <option value="business">Businesses</option>
       </select>
     </div>
@@ -350,7 +353,7 @@ async function init(){
   await changeOffice($('office').value);
 }
 
-const GROUPS = { state: 'State agencies', county: 'Counties', municipal: 'Cities and towns', education: 'Universities and colleges', business: 'Businesses' };
+const GROUPS = { state: 'State agencies', county: 'Counties', municipal: 'Cities and towns', k12: 'School districts', education: 'Universities and colleges', nonprofit: 'Nonprofits', tribal: 'Tribes', business: 'Businesses' };
 function fillOffices(type, silent){
   store.set('otype', type);
   const keys = type === 'all' ? Object.keys(GROUPS) : [type];
@@ -366,6 +369,10 @@ async function showPlanInfo(id){
   if (id === 'all') { box.hidden = true; return; }
   let p; try { p = await (await fetch(`/api/profiles/${id}`)).json(); } catch(e) { box.hidden = true; return; }
   if (S.office !== id) return;
+  if (p.profile_status === 'general') {
+    box.innerHTML = `<p><strong>General profile.</strong> ${esc(p.source_citation)} Use it if your organization doesn't have its own profile yet.</p><details><summary>${(p.goals || []).length} goals used for matching</summary><ol>${(p.goals || []).map(g => `<li>${esc(g.title)}</li>`).join('')}</ol></details>`;
+    box.hidden = false; return;
+  }
   const official = p.profile_status !== 'draft';
   const link = p.source_url ? `<a href="${esc(p.source_url)}" target="_blank" rel="noopener">${official ? 'Open the strategic plan' : esc(p.plan_title || 'Their published plan')}</a>` : '';
   box.innerHTML = official

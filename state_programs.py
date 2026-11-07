@@ -227,9 +227,9 @@ NEWS_RE = re.compile(r"^\d|^(view|learn|see|click|apply|read|find|browse|visit)\
 
 def norm_name(name):
     """Comparable program name: drop acronyms in parentheses, prefixes like 'State Trails:', and filler words."""
-    n = re.sub(r"\([^)]*\)", "", name.lower())
+    n = re.sub(r"\([^)]*\)", "", name.lower().replace("&", " and "))
     n = n.split(":")[-1]
-    n = re.sub(r"\b(the|nc|north carolina|grants?|programs?|funds?|opportunit(y|ies))\b", " ", n)
+    n = re.sub(r"\b(the|and|nc|north carolina|grants?|programs?|funds?|opportunit(y|ies))\b", " ", n)
     return re.sub(r"[^a-z0-9]+", " ", n).strip()
 
 
