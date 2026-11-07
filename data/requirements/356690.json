@@ -1,56 +1,55 @@
 {
   "opportunity_id": "356690",
   "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:10",
+  "read_at": "2026-11-07T15:10:57",
   "required_documents": [
     {
-      "name": "SF-424 Application for Federal Assistance",
-      "category": "Standard forms",
-      "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
-    },
-    {
-      "name": "Project Narrative / Scope of Work",
+      "name": "Research Strategy",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "details": "Project narrative detailing scientific background, specific aims, significance, innovation, and experimental approach.",
+      "source": "PAR-25-098.html",
+      "verified": true
     },
     {
-      "name": "SF-424A Budget Information and Budget Narrative",
+      "name": "Research Plan and Specific Aims",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One-page statement describing broad long-term objectives and goals.",
+      "source": "PAR-25-098.html",
+      "verified": true
+    },
+    {
+      "name": "Budget Justification",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "details": "Itemized budget justification reflecting the actual personnel and operational needs of the proposed project.",
+      "source": "PAR-25-098.html",
+      "verified": true
     },
     {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
+      "name": "Biographical Sketches",
+      "category": "Attachments",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "details": "Senior/key personnel biographical sketches with personal statements.",
+      "source": "PAR-25-098.html",
+      "verified": false
     },
     {
-      "name": "Letters of Support and Collaboration",
-      "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
-    },
-    {
-      "name": "SAM.gov UEI and Grants.gov Registration",
-      "category": "Registrations",
+      "name": "Data Management and Sharing Plan",
+      "category": "Attachments",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "details": "Plan outlining data sharing procedures and genomic data sharing if applicable.",
+      "source": "PAR-25-098.html",
+      "verified": true
     }
   ],
   "deadlines": [
     {
       "what": "Application Due Date",
       "when": "2027-01-07",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "source": "Grants.gov Synopsis (PAR-25-098)",
+      "verified": true
     }
   ],
   "eligibility": {
@@ -66,23 +65,29 @@
     {
       "criterion": "Technical Merit and Program Alignment",
       "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "source": "Grants.gov Synopsis (PAR-25-098)",
+      "verified": true
     },
     {
       "criterion": "Work Plan Feasibility and Milestone Schedule",
       "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "source": "Grants.gov Synopsis (PAR-25-098)",
+      "verified": true
     },
     {
       "criterion": "Budget Reasonableness and Cost Effectiveness",
       "weight": "Evaluated criterion",
-      "source": "Grants.gov Synopsis (PAR-25-098)"
+      "source": "Grants.gov Synopsis (PAR-25-098)",
+      "verified": true
     }
   ],
+  "funded_activities": [],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity PAR-25-098.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
-  ]
+  ],
+  "verified_count": 4,
+  "item_count": 5
 }
