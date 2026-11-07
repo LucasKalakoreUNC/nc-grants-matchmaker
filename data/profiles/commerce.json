@@ -2,7 +2,7 @@
   "agency_id": "commerce",
   "name": "North Carolina Department of Commerce",
   "short_name": "NC Commerce",
-  "source_citation": "NC Department of Commerce Strategic Economic Framework 2025-2029 (NC OSBM)",
+  "source_citation": "NC Department of Commerce Strategic Plan 2021-2023 (most recent posted on OSBM)",
   "mission": "To enhance the economic well-being and quality of life for all North Carolinians through high-impact job creation, rural community investment, and workforce innovation.",
   "eligible_applicant_types": [
     "State governments",
@@ -21,117 +21,68 @@
   ],
   "goals": [
     {
-      "id": "COMM-G1",
+      "id": "COMMERCE-G1",
       "number": 1,
-      "title": "Universal High-Speed Broadband & Digital Inclusion",
-      "citation": "NC Commerce Framework, Section 4.1, pp. 9-15",
-      "description": "Deploy BEAD and state broadband funds to connect 100% of unserved and underserved rural households, farms, and businesses to high-speed fiber infrastructure.",
+      "title": "Grow North Carolina's economy",
+      "citation": "NC Department of Commerce Strategic Plan 2021-2023 (most recent posted on OSBM)",
+      "description": "To support the growth of North Carolina's economy.",
       "objectives": [
-        "Deploy last-mile fiber to 250,000 unserved rural households and agricultural operations",
-        "Provide affordable digital devices and subsidized connectivity for low-income families",
-        "Support digital literacy and workforce digital upskilling in public libraries and community centers"
-      ],
-      "keywords": [
-        "broadband",
-        "BEAD",
-        "digital equity",
-        "high-speed internet",
-        "fiber optic",
-        "last-mile",
-        "telecommunications",
-        "NTIA",
-        "digital literacy",
-        "rural connectivity"
-      ]
-    },
-    {
-      "id": "COMM-G2",
-      "number": 2,
-      "title": "Advanced Manufacturing & Clean Energy Workforce Reskilling",
-      "citation": "NC Commerce Framework, Section 4.2, pp. 16-22",
-      "description": "Align NC community college workforce training with emerging mega-site employers in EV batteries, semiconductors, clean tech, and aerospace.",
-      "objectives": [
-        "Create customized registered apprenticeship pipelines for advanced manufacturing clusters",
-        "Fund modern high-tech laboratory equipment at rural community colleges",
-        "Retrain displaced agricultural and legacy manufacturing workers for high-wage clean energy careers"
-      ],
-      "keywords": [
-        "workforce development",
-        "apprenticeship",
-        "advanced manufacturing",
-        "clean energy jobs",
-        "semiconductor",
-        "community college",
-        "job training",
-        "STEM workforce",
-        "EDA Tech Hub"
-      ]
-    },
-    {
-      "id": "COMM-G3",
-      "number": 3,
-      "title": "Distressed Rural Main Street & Small Business Revitalization",
-      "citation": "NC Commerce Framework, Section 4.3, pp. 23-29",
-      "description": "Catalyze commercial revitalization in historic downtowns, provide micro-lending and technical assistance to minority and women entrepreneurs, and develop regional industrial megasites.",
-      "objectives": [
-        "Distribute downtown facade improvement and commercial building rehabilitation grants",
-        "Expand revolving loan funds for underserved Main Street merchants and tech startups",
-        "Support certified industrial shovel-ready sites in Tier 1 economically distressed counties"
+        "To support the growth of North Carolina's economy."
       ],
       "keywords": [
         "economic development",
-        "rural revitalization",
-        "Main Street",
+        "job creation",
+        "business recruitment",
+        "site readiness",
+        "rural economic development",
         "small business",
-        "entrepreneurship",
-        "EDA",
-        "revolving loan fund",
-        "distressed counties",
-        "commercial corridor"
+        "export",
+        "manufacturing",
+        "tourism"
       ]
     },
     {
-      "id": "COMM-G4",
-      "number": 4,
-      "title": "Global Supply Chain Localization & Export Promotion",
-      "citation": "NC Commerce Framework, Section 4.4, pp. 30-36",
-      "description": "Support small and medium-sized NC manufacturers entering international trade and localize critical supply chains within North Carolina.",
+      "id": "COMMERCE-G2",
+      "number": 2,
+      "title": "Efficient programs and service delivery",
+      "citation": "NC Department of Commerce Strategic Plan 2021-2023 (most recent posted on OSBM)",
+      "description": "To increase the efficiency of the Department of Commerce's programs and service delivery.",
       "objectives": [
-        "Provide STEP export vouchers for rural manufacturers to attend international trade expos",
-        "Establish regional supply chain supplier-matching databases for major state industrial anchors",
-        "Modernize agricultural value-added processing and cold storage facilities"
+        "To increase the efficiency of the Department of Commerce's programs and service delivery."
       ],
       "keywords": [
-        "supply chain",
-        "export promotion",
-        "trade",
-        "manufacturing",
-        "logistics",
-        "STEP grant",
-        "value-added agriculture",
-        "international trade"
+        "unemployment insurance modernization"
+      ]
+    },
+    {
+      "id": "COMMERCE-G3",
+      "number": 3,
+      "title": "High quality services to businesses, individuals and communities",
+      "citation": "NC Department of Commerce Strategic Plan 2021-2023 (most recent posted on OSBM)",
+      "description": "Provide high quality services to businesses, individuals and communities.",
+      "objectives": [
+        "Provide high quality services to businesses, individuals and communities."
+      ],
+      "keywords": [
+        "workforce development",
+        "workforce innovation",
+        "apprenticeship",
+        "dislocated workers",
+        "job training",
+        "community development block grant",
+        "broadband"
       ]
     }
   ],
   "keywords": [
-    "broadband",
-    "BEAD",
-    "digital equity",
-    "high-speed internet",
-    "fiber optic",
-    "workforce development",
     "apprenticeship",
-    "advanced manufacturing",
-    "clean energy jobs",
+    "business recruitment",
     "economic development",
-    "rural revitalization",
-    "Main Street",
-    "small business",
-    "supply chain",
-    "EDA",
-    "NTIA",
-    "distressed counties",
-    "job creation"
+    "job creation",
+    "unemployment insurance modernization",
+    "workforce development",
+    "workforce innovation"
   ],
-  "category": "state"
+  "category": "state",
+  "source_url": "https://www.osbm.nc.gov/documents/files/strategic-plan-doc/download?attachment"
 }

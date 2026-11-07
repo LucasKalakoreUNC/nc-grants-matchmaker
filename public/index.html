@@ -241,7 +241,7 @@
         <tr><td><strong>Grant listings</strong>: title, agency, deadline, status</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>The Grants.gov search service, checked once a day across about 35 topic searches, including forecasted grants.</td></tr>
         <tr><td><strong>Grant details</strong>: description, award amounts, who can apply, matching funds, contact</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>Downloaded once for each new grant, and again only if Grants.gov changes the listing.</td></tr>
         <tr><td><strong>Past North Carolina awards</strong></td><td data-l="Source"><a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a></td><td>The largest awards to North Carolina recipients under the same federal program (Assistance Listing number), refreshed weekly.</td></tr>
-        <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>Goals, objectives and key phrases summarized from each organization's strategic plan. Profiles marked as drafts have not yet been checked against the official plan.</td></tr>
+        <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>Eleven state agencies (Commerce, DEQ, DHHS, DIT, DNCR, DOT, DPI, DPS, Agriculture, the UNC System and the Community College System) use the goals and objectives in their official plans posted by OSBM, with page numbers. Each goal also has search phrases added by this tool to connect it to grant wording. Counties, cities, businesses and some universities use draft profiles that have not yet been checked against an official plan, and are labeled as drafts.</td></tr>
         <tr><td><strong>Documents checklist</strong></td><td data-l="Source">Standard federal application forms (SF-424 family)</td><td>A typical federal checklist, adjusted for what the notice says, such as adding a match letter when matching funds are required. The official notice has the final list.</td></tr>
         <tr><td><strong>Staff time and score</strong></td><td data-l="Source">Calculated by this tool</td><td>See "How grants are ranked" and "How staff time is estimated" above.</td></tr>
       </tbody>
@@ -481,7 +481,7 @@ function openDetail(id){
       <h3>${i.best_office_name ? `Why this fits ${esc(i.best_office_name)}` : 'Why this fits your organization'}</h3>
       <p>${esc(clean(i.reason))}</p>
       ${(i.fit_evidence || []).length ? `<p style="margin-bottom:4px"><strong>Where the grant matches your goal:</strong></p><ul style="margin:0 0 12px;padding-left:20px">${i.fit_evidence.map(e => `<li>"${esc(e.text).replace(new RegExp('(' + e.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>')}"</li>`).join('')}</ul>` : ''}
-      ${i.matched_goal_title ? `<p><strong>Strategic goal:</strong> ${esc(i.matched_goal_title)}${i.matched_goal_citation ? `<span class="sub">${esc(i.matched_goal_citation)}</span>` : ''}</p>` : ''}
+      ${i.matched_goal_title ? `<p><strong>Strategic goal:</strong> ${esc(i.matched_goal_title)}${i.matched_goal_citation ? `<span class="sub">${esc(i.matched_goal_citation)}${planUrl(i.best_office_id || S.office) ? ` &middot; <a href="${esc(planUrl(i.best_office_id || S.office))}" target="_blank" rel="noopener">Open the plan</a>` : ''}</span>` : ''}</p>` : ''}
       ${isDraft(i.best_office_id || S.office) ? '<p class="sub">This organization\'s goals are a draft summary and have not yet been checked against its official strategic plan.</p>' : ''}
     </section>
 
@@ -517,6 +517,7 @@ function openDetail(id){
   document.querySelector('.panel').scrollTop = 0;
   document.querySelector('.panel .close').focus();
 }
+function planUrl(id){ const p = S.profiles.find(p => p.agency_id === id); return p && p.source_url; }
 function isDraft(id){ const p = S.profiles.find(p => p.agency_id === id); return !!(p && p.draft); }
 function scoreTable(i){
   const b = i.score_breakdown || {}, w = i.score_weights || {};

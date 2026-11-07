@@ -1,0 +1,782 @@
+[page 1]
+             
+ 
+ 
+N.C. Department of Information T echnology 
+Strategic Plan 
+2025 – 2029 
+ 
+ 
+ 
+ 
+August 28, 2025 
+N.C. Department of Information Technology 
+ 
+ 
+ 
+ 
+ 
+  
+[page 2]
+             
+ 
+ 
+Table of Contents 
+A. Introduction 1 
+B. Mission, Vision, & Values 2 
+Mission  2 
+Vision  2 
+Guiding Principles/ Values 2 
+C. Goals, Objectives, & Performance Measures 4 
+Goal 1 – Ensure that the state’s services are supported by reliable and accessible technology and data 
+services  4 
+Goal 2 – Build a future-ready state with smarter, faster, trusted, and more responsive government 
+operations through the strategic deployment of AI and emerging technologies. 5 
+Goal 3 – Foster a statewide IT ecosystem where agencies, counties, boards, and community institutions 
+operate as interconnected partners – advancing cybersecurity and operational efficiency through 
+coordinated strategy. 7 
+Goal 4 – Protect North Carolina’s information assets and empower government to operate with trust, 
+agility, and confidence. 11 
+Goal 5 – Use innovative methods to build an agile and forward-thinking public-sector IT workforce in 
+North Carolina. 14 
+D. Priority Questions 15 
+ 
+[page 3]
+             
+1 
+ 
+A. Introduction 
+The N.C. Department of Information Technology (NCDIT) operates under the leadership of 
+the Secretary and State Chief Information Officer (SCIO), Teena Piccione. NCDIT is North 
+Carolina’s central IT agency, driving innovation, security, and efficiency across state 
+government. Established by N.C. General Statute 143B Article 15, NCDIT delivers secure, 
+reliable, and cost-effective technology solutions that power public services statewide. 
+NCDIT provides: 
+• Enterprise infrastructure & support: providing statewide network services, 
+data centers, hosting, and identity management 
+• Statewide cybersecurity & privacy: defending state systems through 
+proactive risk management, threat monitoring, and incident response 
+• Strategic IT Governance: establishing policies, standards, and oversight to 
+ensure alignment with statewide IT priorities 
+• Project management & procurement optimization: oversight of IT projects 
+and maximizing taxpayer value through shared services and enterprise 
+procurement 
+• Data & analytics: advancing analytics and data-driven decision-making 
+• Innovation & continuous improvement: adoption and advancement of AI, 
+process automation, digital transformation for a better constituent 
+experience 
+• Broadband connectivity: expanding access to high-speed internet, high 
+quality large-screen computers, and the digital skills training necessary to 
+safely navigate the internet 
+NCDIT empowers agencies to deliver modern, efficient, and secure services to North 
+Carolina’s residents. We unify IT strategy across government, ensuring statewide 
+collaboration, fiscal responsibility, and technology that works for all. Through mature 
+operations, collaborative partnerships, a future-ready workforce, and strategic adoption of 
+emerging technologies, we strive to create a more connected, efficient, and secure digital 
+environment for the people of North Carolina. We will earn and uphold public trust, ensure 
+access for all residents, and drive continuous improvement across every corner of the 
+state.  
+[page 4]
+             
+2 
+ 
+B. Mission, Vision, & Values 
+Mission  
+Enable business-driven services and solutions that provide a secure and frictionless 
+digital government experience for North Carolinians.  
+Vision  
+A government that delivers secure, resilient, and innovative public technology 
+services.  
+Guiding Principles/ Values 
+• Reliability 
+We uphold public confidence by ensuring consistent performance, security, and 
+resilience of the systems that power essential services. Stability is our baseline, not 
+our aspiration. 
+• Collaboration 
+We break down barriers between agencies, departments, and partners to share 
+knowledge, reduce duplication, and deliver unified experiences to the public. Shared 
+challenges require shared solutions. 
+• Human-Centered Design 
+We put people first, designing systems, services, and policies that are responsive to 
+the needs of citizens, employees, and communities. Technology is a tool for inclusion, 
+not a barrier. 
+• Security as a Strategic Imperative 
+We embed cybersecurity into every level of planning, development, and execution. 
+Protecting data, systems, and identities is essential to operational continuity and 
+public trust. 
+• Responsible Innovation 
+We embrace emerging technologies with discipline, ensuring they are implemented 
+ethically, and transparently for all. Innovation must serve the public good and be 
+governed with accountability. 
+• Data-Driven Decision-Making 
+We use metrics not to punish, but to learn. Insightful data guides our investments, 
+illuminates risk, and aligns our operations with state priorities and resident impact. 
+[page 5]
+             
+3 
+ 
+• Fiscal Responsibility 
+We manage resources with transparency and efficiency, eliminating redundancy and 
+maximizing the value of every tax dollar. Technology decisions must be sustainable 
+and accountable. 
+• Continuous Improvement 
+We believe excellence is iterative. We challenge the status quo, encourage 
+experimentation, and use failure as fuel for progress. 
+• Access for All 
+We strive to ensure all North Carolinians, regardless of geography, ability, or 
+background benefit from modern and accessible government technology services. 
+  
+[page 6]
+             
+4 
+ 
+C. Goals, Objectives, & Performance Measures 
+Below are our goals and objectives. Many of these are ambitious and will require additional 
+resources to achieve. Those that require additional resources are flagged with an asterisk 
+(*).  
+Goal 1 – Ensure that the state’s services are supported by reliable and 
+accessible technology and data services  
+Establishing a healthy production environment will be the primary focus of our 
+operations in this biennium. DIT holds statutory responsibility for enterprise service 
+delivery but lacks the direct budget authority to match. Without this alignment, the 
+state’s ability to modernize and protect core systems will remain constrained.  
+As we mature our production environment, DIT will focus on transparency, and 
+accuracy, providing timely insights into service and system performance. Fiscal 
+responsibility, standardized system protection, and data protection will be embedded 
+in every decision. Operations will be disciplined, minimizing failures and outages. A 
+healthy production environment, with proper alignment, ensures that the systems 
+that North Carolinians rely on have been user-tested, are continuously updated, and 
+are consistently available, accurate, secure, and compliant with policy. 
+ 
+Ensure that the state’s services are supported by reliable and accessible 
+technology and data services.  
+Objectives Performance Measures 
+1.1 Normalize metrics as tools for learning, not 
+punishment 
+• 1.1.1 All divisions have identified 
+key metrics by the end of 
+calendar year 2025 
+• 1.1.2 All divisions participate in a 
+monthly operations meeting  
+ 
+1.2 Create transparency for IT funding and 
+expenditure 
+ 
+• 1.2.1 Billing dashboard created 
+for DIT customers by Q3 FY 2026 
+• 1.2.2 Rate model 
+updated/redesigned to directly 
+align staff to services by FY 2027 
+• 1.2.3 Improve the accuracy of our 
+forecasting model for services 
+and rates prior to the 2027 long 
+session budgeting cycle 
+1.3 Implement tiered system for performance 
+and reliability ratings for NCDIT services by 
+June 30, 2026. 
+• 1.3.1Perfoamce and reliability  
+rating metrics established for 
+each service documented by 
+December 2025 
+[page 7]
+             
+5 
+ 
+• 1.3.2 90% of services evaluated 
+based on established 
+performance and reliability  
+ratings on a quarterly basis 
+starting no later than June 30, 
+2026 
+1.4 Optimize IT funding by reducing duplication  
+ 
+ 
+• 1.4.1 Align 5 common vendor 
+contract cycles to allow the state 
+to leverage its buying power. 
+• 1.4.2 Provide each agency with a 
+calendar of contract expiration 
+dates by 11/1/25 
+1.5 Address misalignment between funding 
+and accountability 
+• 1.5.1 IT-specific fund codes and 
+cost centers established in time 
+for the 2027 long session. 
+• 1.5.2 Enterprise cybersecurity 
+budget established to provide 
+predictable, recurring, 
+programmatic funding by the 
+2027 long session 
+1.6 Mature the state’s governance posture 
+(Risk, AI, Data, EA, Service Excellence) 
+ 
+• 1.6.1 6 EA standards identified 
+and defined annually 
+• 1.6.2 Exception Process 
+streamlining complete by the end 
+of FY 2026 
+• 1.6.3 Systems evaluated against 
+production standards and 
+classified as ready or not by Q4 
+2027 
+• 1.6.4 15 state-wide policies 
+published by FY 2027  
+• 1.6.5 Policies accessible on 
+website by FY 2027 
+https://it.nc.gov/resources/state-
+it-policies 
+ 
+Goal 2 – Build a future-ready state with smarter, faster, trusted, and more 
+responsive government operations through the strategic deployment of AI and 
+emerging technologies. 
+North Carolina will leverage AI, quantum computing, and intelligent automation to 
+enhance government services and improve the lives of its citizens. NCDIT will support 
+the use of emerging technology by developing a well-trained workforce, secure 
+infrastructure and high-quality data, enforcing transparent and accountable 
+[page 8]
+             
+6 
+ 
+governance practices, and engaging government and community partners to 
+collaboratively implement change. 
+ 
+Build a future-ready state with smarter, faster, trusted, and more responsive 
+government operations through the strategic deployment of AI and 
+emerging technologies. 
+Objectives Performance Measures 
+2.1 Ensure infrastructure can scale with 
+growing technology demands over the next 5 
+years.  
+• 2.1.1 Complete a statewide 
+inventory of current compute 
+capacity needs across agencies 
+by the end of FY 2026 
+• 2.1.2 Develop a 5-year compute 
+capacity demand forecast based 
+on emerging tech, digital services 
+growth, and workload shifts 
+• 2.1.3 Engage with 100% of key 
+infrastructure, data center, and 
+energy stakeholders during 
+planning process 
+2.2 By the end of FY 2026, set up statewide 
+governance infrastructure to advance data 
+quality, accessibility, analytics, and data 
+literacy across state agencies.  
+• 2.2.1 Create and convene 
+Enterprise Data and AI 
+Coordinating Council by Q2 FY 
+2026 
+• 2.2.2 Develop data governance 
+frameworks in coordination with 
+the Council by Q4 FY 2026 
+• 2.2.3 Build a data maturity 
+assessment program and engage 
+25% cabinet and council of state 
+agencies to complete an 
+assessment by FY 2027* 
+• 2.2.4 Curate and launch a data 
+literacy program to build fluency 
+for state employees by the 
+beginning of FY 2027* 
+• 2.2.5 Migrate three data 
+warehouses to cloud-native AI 
+and data analytics platform within 
+the Government Data Analytics 
+Center* 
+ 
+2.3 Ensure that agencies are AI-ready over the 
+next biennium.  
+• 2.3.1 Draft and adopt core 
+guidelines for the ethical, secure, 
+and inclusive use of AI and 
+automation by the end of 2025  
+[page 9]
+             
+7 
+ 
+• 2.3.2 Conduct baseline 
+evaluations of AI and emerging 
+tech readiness within 
+departments by end of FY 2026 
+• 2.3.3 3 Categories of AI trainings 
+stood up by 1/1/2026: 1) AI 
+Awareness trainings for all 
+employees, 2) AI Builders 
+Training, 3) AI Leaders Training 
+• 2.3.4 Create other internal 
+programs supporting AI 
+certification and fluency by 
+7/1/2026 
+2.4 Stand up and implement the AI accelerator 
+by January 1, 2026 
+• 2.4.1 80% of cabinet agencies 
+submit at least three projects to 
+AI accelerator by 5/31/2026 
+• 2.4.2 100% of cabinet agencies 
+have a successful AI project 
+completed by end of FY 2026 
+• 2.4.3 10 stories of AI success 
+projects published each FY 
+• 2.4.4 At least 4 engagements to 
+promote AI projects and 
+resources to local governments 
+by end of FY 2026 
+2.5 Establish an environment that fosters 
+collaboration and trust regarding AI and 
+emerging technologies by the end of FY 2026. 
+• 2.5.1 Stand up and head the AI 
+Leadership Council by October 
+2025 
+• 2.5.2 Deploy a net promoter score 
+for all AI projects by end of FY26 
+• 2.5.3 Standardize on AI tools by 
+end of FY 2026  
+• 2.5.4 Adopt standards around 
+data use with emerging 
+technologies, including artificial 
+intelligence (AI) and quantum 
+computing by end of FY 2026 
+ 
+Goal 3 – Foster a statewide IT ecosystem where agencies, counties, boards, 
+and community institutions operate as interconnected partners – advancing 
+cybersecurity and operational efficiency through coordinated strategy. 
+North Carolina’s citizens, businesses, and communities expect the state to offer 
+consistent, streamlined, and user-friendly experiences. A seamless user experience 
+depends on collaboration. State agencies that operate in isolation produce 
+[page 10]
+             
+8 
+ 
+duplicative systems, fragmented services, and inefficiencies that cost both time and 
+taxpayer dollars. 
+By operating as one state, and providing secure, scalable platforms that allow every 
+government partner to focus on delivering high-value, mission-specific outcomes, we 
+can deliver a more secure, responsive, and human-centered experience. 
+Foster a statewide IT ecosystem where agencies, counties, boards, and 
+community institutions operate as interconnected partners – advancing 
+cybersecurity and operational efficiency through coordinated strategy.  
+Objectives Performance Measures 
+3.1 Identify opportunities to reduce 
+application redundancy over the next 
+biennium. 
+ 
+• 3.1.1 90% of applications 
+mapped to business capabilities 
+by the end of FY 2026 
+• 3.1.2 First round of application 
+rationalization business and 
+technical fit complete by the end 
+of FY 2026 
+3.2 Establish lifecycle-based product and 
+portfolio management, improving our ability to 
+prioritize expenses and provide transparency 
+to our customers by Q1 2027. 
+• 3.2.1 Establish management 
+system/procedures for product 
+life cycle by Q1 2027 
+• 3.2.2 Establish roadmaps for 
+each DIT service by Q1 2027 
+3.3 Develop frameworks to streamline 
+processes, enhance collaboration, and reduce 
+risk by the end of FY 2026. 
+• 3.3.1 Develop CIO council service 
+governance subcommittee by end 
+of FY 2026 
+• 3.3.2 Continue to engage and 
+solicit feedback quarterly from 
+stakeholders that have a vested 
+interest in providing access to 
+high-speed internet, computers 
+and digital safety skills for the 
+North Carolinians they serve to 
+further economic and workforce 
+development by end of FY 2026 
+[page 11]
+             
+9 
+ 
+3.4 Scale statewide engagement to position 
+DIT as the trusted technology partner for 
+public sector entities. 
+• 3.4.1 Service catalog updated to 
+reflect a broader audience by end 
+of FY 2026 
+• 3.4.2 Analyze the opportunity to 
+Implement self-service in 4 
+service areas by end of FY 2027 
+• 3.4.3 Develop and publish an 
+engagement model with defined 
+roles and responsibilities and 
+participation pathways during FY 
+2026 
+• 3.4.4 Determine the services that 
+are best suited for local 
+government adoption and 
+develop a strategy for engaging 
+local governments by the end of 
+2027 
+• 3.4.5 Increase satisfaction rate in 
+annual partner survey regarding 
+responsiveness and value by 10% 
+annually 
+• 3.4.6 Increase the number of 
+shared or enterprise services and 
+contracts used by local partners 
+by 20% within 2 years 
+• 3.4.7 Continue to host quarterly 
+collaborative forums or regional 
+summits with growing 
+participation over time 
+3.5 Build an environment that promotes 
+innovative thinking, collaboration, and access 
+to data and emerging technologies that 
+facilitate improved services to residents and 
+informed decision-making by state agencies. 
+• 3.5.1 Stand up a Data and AI 
+Center of Excellence by Q2 of FY 
+2026 
+• 3.5.2 Develop, pilot, and scale a 
+statewide data resource hub by 
+end of FY 2026 
+• 3.5.3 Procure and implement an 
+enterprise data catalog by 
+calendar year 2027* 
+• 3.5.4 The EDO will engage with 
+every cabinet and council of state 
+agency on at least one project by 
+FY 2029 
+• 3.5.5 The Longitudinal Data 
+Service (LDS) will develop a User 
+Interface that will provide a suite 
+of services enabling 
+comprehensive, secure, and 
+standardized management of 
+[page 12]
+             
+10 
+ 
+requests for sensitive data by Q2 
+calendar year 2026 
+• 3.5.6 The LDS will complete a 
+pilot for the creation of a secure, 
+state-managed cloud-hosted 
+space, (eCollaboration Room) 
+where approved data requesters 
+come to the data to do their work 
+ensuring strengthened privacy 
+and security of sensitive data; 
+CYQ3 2026 
+• 3.5.7 The NC HIEA and State 
+Health Plan will develop a 
+structural data analytic 
+partnership that provides SHP 
+with greater insight into the health 
+of its population and 
+opportunities to strengthen its 
+provider networks and care 
+delivery model to improve the 
+health of its members by 2030 
+ 
+3.6 Ensure that households and businesses 
+across the state have access to high-speed 
+internet access, computers and digital skills 
+so residents and businesses can engage with 
+their local and state governments, participate 
+in online work, learning, telehealth and other 
+digital opportunities by the end of 2030. 
+• 3.6.1 Maintain compliance 
+through Dec. 31, 2029, on more 
+than $1 billion of state and 
+federally funded (American 
+Rescue Plan Act) awards to 
+internet service providers to 
+provide access to North 
+Carolinians 
+• 3.6.2 Maintain compliance on $44 
+million in Digital Opportunity 
+grants that provide digital devices 
+and digital literacy skills to North 
+Carolinians through grantees’ 
+projects through Dec. 31, 2026 
+• 3.6.3 Award $1.5 billion in 
+federally funded BEAD program 
+projects to expand high-speed 
+internet infrastructure across the 
+state by 2030 
+• 3.6.4 Execute broadband 
+expansion programs and award 
+remaining American Rescue Plan 
+Act funding by Dec. 31, 2026 
+• 3.6.5 Launch digital skills 
+standards to provide guidance to 
+grantees, digital navigators and 
+partner organizations that provide 
+[page 13]
+             
+11 
+ 
+digital literacy resources by Dec. 
+31, 2025 
+• 3.6.6 Updates to the online 
+support resources linked from the 
+Tech Resource Finder website 
+provided quarterly. 
+ 
+Goal 4 – Protect North Carolina’s information assets and empower government 
+to operate with trust, agility, and confidence. 
+The state will form a secure and resilient cybersecurity environment by using 
+resources efficiently, collaboratively, and effectively. This environment will support a 
+risk-aware culture that prioritizes the protection of online government services, 
+critical infrastructure, and personal information.  
+ 
+Protect North Carolina’s information assets and empower government to 
+operate with trust, agility, and confidence. 
+Objectives Performance Measures 
+4.1 Expand the formal, two-way partnership 
+framework with federal, state and local 
+agencies by the end of FY 2027.   
+• 4.1.1 Signed MOUs or partnership 
+agreements with federal, state, 
+and local agencies focused on 
+cybersecurity collaboration by 
+September 2026. 
+• 4.1.2 Integrate or establish 
+secure, bi-directional data-
+sharing mechanisms (e.g., 
+STIX/TAXII, secure threat 
+intelligence platform) with federal 
+and local partners by June 2026. 
+Include a recurring intelligence-
+sharing and coordination forum 
+(e.g., monthly or quarterly) with 
+actionable threat briefings and 
+defined escalation protocols. 
+• 4.1.3 Reduce average time to 
+detect and validate shared cyber 
+threats by 15% over 12 months 
+through early warnings and real-
+time information exchange 
+• 4.1.4 Increase online safety by 
+expanding awareness of digital 
+skills training for the public 
+through Digital Opportunity 
+grantees through FY 2026 
+[page 14]
+             
+12 
+ 
+• 4.1.5 Increase the state’s 
+websites’ accessibility and 
+options for multiple languages to 
+expand safety and understanding, 
+driving trust, through FY 2026 
+4.2 Assess current state of our cyber posture 
+and continuously monitor the state’s privacy 
+risk exposure. 
+ 
+• 4.2.1 Comprehensive 
+assessment to identify and 
+evaluate privacy risks associated 
+with initiatives, systems, etc. 
+involving sensitive data by March 
+2026  
+• 4.2.2 Identify, classify, and map 
+the flow of PII and other sensitive 
+data held by the state by 
+September 2026 
+4.3 Reduce North Carolina’ cyber threat 
+surface through comprehensive risk 
+management.  
+ 
+• 4.3.1 Risk-based vulnerability 
+management approach adopted 
+by June 2026 
+• 4.3.2 Timely, accurate, and 
+thorough risks reports provided to 
+the General Assembly annually 
+• 4.3.3 Real-time threat intelligence 
+integrated to understand 
+organization’s unique risk profile 
+by December 2026 
+• 4.3.4 Advanced analytics 
+leveraged to make proactive, 
+informed decisions about 
+patching, mitigation, and 
+remediation  
+4.4 Establish an accountability model for 
+Statewide CISO practices by the end of 2026. 
+• 4.4.1 Create accountability 
+mechanisms including 
+funding/incentives for 
+compliance and improvement by 
+September 2026. 
+• 4.4.2 Develop escalation and 
+remediation processes for 
+agencies that fall behind by 
+December 2025. 
+4.5 Enhance the state’s Error! Reference 
+source not found.capabilities by end of FY 
+2027. 
+• 4.5.1 Comprehensive 
+cybersecurity policies that outline 
+the acceptable use of technology, 
+password management, data 
+handling, and reporting 
+procedures published and 
+adopted by December 2025 
+• 4.5.2 Pilot use of AI for 
+cybersecurity by end of FY 2026 
+[page 15]
+             
+13 
+ 
+• 4.5.3 Quantified and qualified risk 
+profiles established for public 
+sector functions by June 2027 
+4.6 Foster an ongoing culture of cybersecurity 
+awareness and education. 
+• 4.6.1 4 role-based cybersecurity 
+trainings made available to 
+employees by January 2026 
+• 4.6.2 Risks/threats generated by 
+employee actions decreased by 
+20% by December 2026 
+• 4.6.3 25% local governments that 
+adopt NCDIT cybersecurity 
+guidance by July 2027 
+• 4.6.4 Data owners educated on 
+risk, governance, and effective 
+security control implementation 
+and monitoring by July 2026 
+• 4.6.5 Cybersecurity, Privacy, and 
+Data Management Center of 
+Excellence established by March 
+2026 
+4.7 Improve resilient, uninterrupted business 
+critical operations during and after 
+cyberattacks. 
+• 4.7.1 Critical functions identified 
+by March 2026 
+• 4.7.2 Continuity plans created for 
+critical functions by September 
+2026 
+• 4.7.3 2 exercises completed to 
+test critical functions by March 
+2027 
+• 4.7.4 25% Reduction in downtime 
+during cyber incidents by July 
+2026  
+4.8 Institute workforce programs dedicated to 
+nurturing and advancing cybersecurity 
+professionals by the end of FY 2027. 
+• 4.8.1 80% of open cybersecurity 
+positions filled per year 
+• 4.8.2 5 active partnerships with k-
+12 institutions by 2027 
+• 4.8.3 10 active partnerships with 
+community colleges and 4-year 
+universities by 2027 
+• 4.8.4 10 cybersecurity internships 
+available to college students by 
+March 2026 
+• 4.8.5 100% of cybersecurity 
+internships filled per year 
+• 4.8.6 5 cybersecurity 
+apprenticeships available to 
+veterans by September 2025 
+[page 16]
+             
+14 
+ 
+ 
+Goal 5 – Use innovative methods to build an agile and forward-thinking public-
+sector IT workforce in North Carolina.  
+North Carolina’s ability to deliver secure, innovative, and constituent-focused digital 
+services is at risk without a bold investment in IT workforce development. Over one-
+third of NCDIT employees will be eligible for retirement in the next three to five years, 
+placing institutional knowledge and service continuity in jeopardy. NCDIT must 
+establish succession planning and a culture that addresses the changing demands of 
+new generations as they enter the workforce. North Carolina will build a pipeline of IT 
+talent through strategic partnerships with community colleges and universities. 
+Emphasizing mission-driven work, transparent leadership, and opportunities for 
+career growth will allow NCDIT to provide a collaborative and enriching work 
+environment.  
+ 
+Use innovative methods to build an agile and forward-thinking public-sector 
+IT workforce in North Carolina. 
+Objectives Performance Measures 
+5.1 Establish talent pipeline and entry 
+programs based on career pathways for both 
+technical and managerial tracks over the next 
+four years. 
+ 
+• 5.1.1 15 participants in progress 
+or successfully completed the 
+apprentice programs by the end 
+of calendar year 2029.  
+• 5.1.2 200 participants in progress 
+or having completed the 
+internship programs by the end of 
+2027 
+• 5.1.3 30 community colleges with 
+IT programs partnered with DIT by 
+the end of calendar year 2027 
+• 5.1.4 5% of interns converted to 
+permanent hires by the end of 
+calendar year 2029 
+5.2 Modernize IT facilities and workspaces to 
+improve employee experience, support 
+collaboration, and strengthen engagement, 
+and retention over the next four years. 
+• 5.2.1 Redesign or upgrade priority 
+workspaces at the main DIT 
+location by end of FY 2026 
+• 5.2.2 Ensure 100% of shared 
+spaces are equipped for hybrid 
+meetings and remote 
+collaboration 
+• 5.2.3 Implement our co-location 
+data center strategy by end of FY 
+2029  
+[page 17]
+             
+15 
+ 
+• 5.2.4 Reduce IT fulfillment 
+onboarding time for new hires by 
+30% by 2028 
+5.3 Build the culture of continuous learning for 
+our workforce by the end of FY 2026. 
+• 5.3.1 At least 75% of employees 
+meet annual 36-hour training 
+requirement in FY 2026 
+• 5.3.2 Launch and sustain monthly 
+peer-led learning sessions for 
+agency employees by FY 2026 
+D. Priority Questions   
+1. Where is there duplication of capabilities within and across agencies, particularly IT 
+services and solutions. 
+a. Services 
+b. IT Talent 
+c. Solutions/Systems 
+d. Contracts 
+2. How many of the state’s applications/solutions collect or use personally identifiable 
+information (PII)? 
+3. What has worked best for other states that have shifted to a broker model for IT 
+services? 
+4. What aspects of government employment are most attractive for recruitment of IT 
+professionals? 
+a. How can we use these to overcome the aspects of the classification and 
+compensation systems that are believed to be a hinderance to recruitment 
+and retention? 
+b. What other information or resources do we have that could help with 
+recruitment efforts? 
+c. How do we make the compensation structure for IT-classified employees 
+reflect the realities of the transient nature of the IT industry? 
+5. As the state continues to expand its use of AI technologies, how much funding 
+should be budgeted to ensure that use is responsible and effective?  
+6. Have other states successfully demonstrated AI use cases with positive ROI that are 
+not already under consideration in NC?  
+7. How are other states empowering their workforces to use AI tools, such as CoPilot? 
+ 

@@ -3,8 +3,7 @@
   "category": "state",
   "name": "North Carolina Department of Agriculture and Consumer Services",
   "short_name": "NCDA&CS",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "NC Department of Agriculture and Consumer Services Strategic Plan 2025-2029",
   "mission": "Promotes agriculture and agribusiness and protects consumers through food safety and plant and animal health.",
   "eligible_applicant_types": [
     "State governments"
@@ -18,66 +17,103 @@
     {
       "id": "NCDA-G1",
       "number": 1,
-      "title": "Farm markets and agribusiness growth",
-      "citation": "NCDA&CS draft profile, goal 1",
-      "description": "Grow markets for NC farm products.",
+      "title": "Agricultural services",
+      "citation": "NC Department of Agriculture and Consumer Services Strategic Plan 2025-2029, p. 5",
+      "description": "Provide services to promote and enhance the production, marketing, and distribution of safe and healthy agricultural products.",
       "objectives": [
-        "Expand specialty crop marketing",
-        "Support local food systems"
+        "1.1 Increase the number of acres of land protected with long-term conservation easements and agreements",
+        "1.2 Increase and enhance the production and marketing of North Carolina agricultural products"
       ],
       "keywords": [
         "specialty crop",
         "agricultural marketing",
+        "farmland preservation",
+        "conservation easement",
         "local food",
         "farmers market",
-        "agribusiness"
+        "agribusiness",
+        "food supply chain"
       ]
     },
     {
       "id": "NCDA-G2",
       "number": 2,
-      "title": "Food safety and animal and plant health",
-      "citation": "NCDA&CS draft profile, goal 2",
-      "description": "Protect the food supply and livestock and crops.",
+      "title": "NC Forest Service",
+      "citation": "NC Department of Agriculture and Consumer Services Strategic Plan 2025-2029, p. 9",
+      "description": "Protect, manage and promote forest resources for the citizens of North Carolina.",
       "objectives": [
-        "Strengthen food safety inspections",
-        "Control plant pests and animal disease"
+        "2.1 Increase the protection of the state's forests from the threat of wildfire",
+        "2.2 Increase the management of forest resources",
+        "2.3 Increase the promotion of forest resources"
+      ],
+      "keywords": [
+        "wildfire",
+        "forest health",
+        "forestry",
+        "forest management",
+        "urban forestry",
+        "community forest",
+        "fire assistance"
+      ]
+    },
+    {
+      "id": "NCDA-G3",
+      "number": 3,
+      "title": "Regulatory programs",
+      "citation": "NC Department of Agriculture and Consumer Services Strategic Plan 2025-2029, p. 14",
+      "description": "Protect public health, safety and welfare through food safety initiatives and by monitoring, protecting and maintaining animal and plant health.",
+      "objectives": [
+        "3.1 Improve complaint investigation and response time"
       ],
       "keywords": [
         "food safety",
         "animal health",
         "plant health",
         "pest",
-        "livestock",
-        "avian influenza"
+        "avian influenza",
+        "livestock disease",
+        "pesticide",
+        "meat and poultry inspection"
       ]
     },
     {
-      "id": "NCDA-G3",
-      "number": 3,
-      "title": "Forestry and soil and water conservation",
-      "citation": "NCDA&CS draft profile, goal 3",
-      "description": "Protect working lands and forests.",
+      "id": "NCDA-G4",
+      "number": 4,
+      "title": "Enterprise centers",
+      "citation": "NC Department of Agriculture and Consumer Services Strategic Plan 2025-2029, p. 16",
+      "description": "Promote NC agriculture and agribusiness by creating positive entertainment and educational experiences and fostering economic opportunities.",
       "objectives": [
-        "Reduce wildfire risk",
-        "Expand conservation practices on farms"
+        "Promote NC agriculture and agribusiness by creating positive entertainment and educational experiences and fostering economic opportunities."
       ],
       "keywords": [
-        "forestry",
-        "wildfire",
-        "soil conservation",
-        "water conservation",
-        "farmland preservation"
+        "agricultural education",
+        "agritourism"
       ]
+    },
+    {
+      "id": "NCDA-G5",
+      "number": 5,
+      "title": "Administrative services",
+      "citation": "NC Department of Agriculture and Consumer Services Strategic Plan 2025-2029, p. 19",
+      "description": "Provide services and support that help the Department achieve its mission.",
+      "objectives": [
+        "5.1 Increase the percentage of capital improvement projects completed on time, on budget, and meeting the needs of the end user"
+      ],
+      "keywords": []
     }
   ],
   "keywords": [
-    "agriculture",
-    "farm",
-    "farmers",
-    "crop",
-    "food",
-    "rural",
-    "forestry"
-  ]
+    "agricultural education",
+    "agricultural marketing",
+    "agritourism",
+    "animal health",
+    "farmland preservation",
+    "food safety",
+    "forest health",
+    "forestry",
+    "plant health",
+    "specialty crop",
+    "wildfire"
+  ],
+  "source_url": "https://www.osbm.nc.gov/documents/files/strategic-plan-dacs/open"
 }

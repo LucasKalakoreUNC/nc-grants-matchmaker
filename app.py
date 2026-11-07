@@ -782,7 +782,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     "short_name": v.get("short_name"),
                     "category": v.get("category", "state"),
                     "citation": v.get("source_citation"),
-                    "draft": v.get("profile_status") == "draft"
+                    "draft": v.get("profile_status") == "draft",
+                    "source_url": v.get("source_url")
                 }
                 for k, v in profiles.items()
             ]

@@ -3,9 +3,8 @@
   "category": "state",
   "name": "North Carolina Department of Information Technology",
   "short_name": "NC DIT",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
-  "mission": "Provides state IT services, cybersecurity and leads statewide broadband expansion.",
+  "source_citation": "N.C. Department of Information Technology Strategic Plan 2025-2029",
+  "mission": "Enable business-driven services and solutions that provide a secure and frictionless digital government experience for North Carolinians.",
   "eligible_applicant_types": [
     "State governments"
   ],
@@ -18,58 +17,123 @@
     {
       "id": "NC_DIT-G1",
       "number": 1,
-      "title": "Broadband access and digital equity",
-      "citation": "NC DIT draft profile, goal 1",
-      "description": "Connect every North Carolinian to affordable high-speed internet.",
+      "title": "Reliable and accessible technology and data services",
+      "citation": "N.C. Department of Information Technology Strategic Plan 2025-2029, p. 6",
+      "description": "Ensure that the state's services are supported by reliable and accessible technology and data services.",
       "objectives": [
-        "Expand broadband in unserved areas",
-        "Support digital literacy and device access"
+        "1.2 Create transparency for IT funding and expenditure",
+        "1.6 Mature the state's governance posture (Risk, AI, Data, EA, Service Excellence)"
       ],
       "keywords": [
-        "broadband",
-        "digital equity",
-        "internet access",
-        "digital literacy",
-        "bead"
+        "it modernization",
+        "legacy systems",
+        "data governance",
+        "data infrastructure",
+        "cloud",
+        "enterprise architecture"
       ]
     },
     {
       "id": "NC_DIT-G2",
       "number": 2,
-      "title": "State and local cybersecurity",
-      "citation": "NC DIT draft profile, goal 2",
-      "description": "Protect state and local government systems.",
+      "title": "AI and emerging technology in government",
+      "citation": "N.C. Department of Information Technology Strategic Plan 2025-2029, p. 7",
+      "description": "Build a future-ready state with smarter, faster, trusted, and more responsive government operations through the strategic deployment of AI and emerging technologies.",
       "objectives": [
-        "Strengthen local government cybersecurity"
+        "2.2 Set up statewide governance infrastructure to advance data quality, accessibility, analytics, and data literacy",
+        "2.3 Ensure that agencies are AI-ready over the next biennium",
+        "2.4 Stand up and implement the AI accelerator"
       ],
       "keywords": [
-        "cybersecurity",
-        "cyber",
-        "information security",
-        "state and local cybersecurity"
+        "artificial intelligence",
+        "machine learning",
+        "emerging technologies",
+        "data analytics",
+        "data literacy",
+        "digital government",
+        "digital services"
       ]
     },
     {
       "id": "NC_DIT-G3",
       "number": 3,
-      "title": "Modern state technology",
-      "citation": "NC DIT draft profile, goal 3",
-      "description": "Modernize state systems and data.",
+      "title": "Statewide IT partnerships and digital opportunity",
+      "citation": "N.C. Department of Information Technology Strategic Plan 2025-2029, p. 9",
+      "description": "Foster a statewide IT ecosystem where agencies, counties, boards, and community institutions operate as interconnected partners, advancing cybersecurity and operational efficiency through coordinated strategy.",
       "objectives": [
-        "Improve data sharing and digital services"
+        "3.4 Scale statewide engagement to position DIT as the trusted technology partner for public sector entities",
+        "3.6 Ensure that households and businesses across the state have access to high-speed internet access, computers and digital skills (p. 12)"
       ],
       "keywords": [
-        "data modernization",
-        "information technology",
-        "digital services"
+        "broadband",
+        "high-speed internet",
+        "digital equity",
+        "digital literacy",
+        "digital skills",
+        "digital opportunity",
+        "internet access",
+        "digital navigators",
+        "affordable connectivity"
+      ]
+    },
+    {
+      "id": "NC_DIT-G4",
+      "number": 4,
+      "title": "Cybersecurity and resilience",
+      "citation": "N.C. Department of Information Technology Strategic Plan 2025-2029, p. 13",
+      "description": "Protect North Carolina's information assets and empower government to operate with trust, agility, and confidence.",
+      "objectives": [
+        "4.1 Expand the formal, two-way partnership framework with federal, state and local agencies",
+        "4.3 Reduce North Carolina's cyber threat surface through comprehensive risk management",
+        "4.6 Foster an ongoing culture of cybersecurity awareness and education",
+        "4.8 Institute workforce programs dedicated to nurturing and advancing cybersecurity professionals"
+      ],
+      "keywords": [
+        "cybersecurity",
+        "cyber",
+        "information security",
+        "state and local cybersecurity",
+        "cyber threat",
+        "privacy",
+        "critical infrastructure security",
+        "cyber workforce",
+        "zero trust"
+      ]
+    },
+    {
+      "id": "NC_DIT-G5",
+      "number": 5,
+      "title": "Public-sector IT workforce",
+      "citation": "N.C. Department of Information Technology Strategic Plan 2025-2029, p. 16",
+      "description": "Use innovative methods to build an agile and forward-thinking public-sector IT workforce in North Carolina.",
+      "objectives": [
+        "5.1 Establish talent pipeline and entry programs based on career pathways for both technical and managerial tracks",
+        "5.3 Build the culture of continuous learning for our workforce"
+      ],
+      "keywords": [
+        "it workforce",
+        "technology workforce",
+        "registered apprenticeship in information technology",
+        "cyber workforce development"
       ]
     }
   ],
   "keywords": [
+    "artificial intelligence",
     "broadband",
+    "cyber",
     "cybersecurity",
-    "technology",
-    "digital",
-    "internet"
-  ]
+    "data governance",
+    "digital equity",
+    "emerging technologies",
+    "high-speed internet",
+    "information security",
+    "it modernization",
+    "it workforce",
+    "legacy systems",
+    "machine learning",
+    "registered apprenticeship in information technology",
+    "technology workforce"
+  ],
+  "source_url": "https://www.osbm.nc.gov/strategic-plan-ncdit/download?attachment"
 }

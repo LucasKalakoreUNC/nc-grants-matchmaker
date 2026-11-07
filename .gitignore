@@ -49,3 +49,6 @@ data/matchmaker.db*
 
 # Downloaded funding notice files (re-downloadable)
 data/notices/
+
+# Strategic plan PDFs (re-downloadable from OSBM); extracted .txt files are committed
+data/plans/*.pdf

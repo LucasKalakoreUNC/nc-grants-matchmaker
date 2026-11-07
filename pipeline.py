@@ -1098,10 +1098,19 @@ def run_pipeline():
         }
         print(f"  -> [{profile.get('category', 'state').upper()}] {profile['short_name']}: {len(scored_list)} scored ({high_count} High, {med_count} Medium). Top: {scored_list[0]['title'][:40]}... ({scored_list[0]['total_score']} pts)")
 
-    # 3b. Load notice requirements recorded in data/requirements/ (shared through git)
+    # 3b. Download notice files for new grants (needs pypdf, installed in .venv), then
+    # load notice requirements recorded in data/requirements/ (shared through git)
     try:
         import notices
         nconn = notices.connect()
+        try:
+            import pypdf  # noqa: F401
+            got, had, failed = notices.sync_notice_files(nconn)
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] Notice files: {got} new, {had} already stored, {failed} failed")
+            waiting = len(notices.priority_ids(nconn))
+            print(f"[{datetime.now().strftime('%H:%M:%S')}] Grants with notices not yet read: {waiting} (see NOTICE_READING_GUIDE.md)")
+        except ImportError:
+            print("[INFO] Skipping notice downloads: run with .venv/bin/python to include them")
         print(f"[{datetime.now().strftime('%H:%M:%S')}] Requirement files loaded: {notices.load_requirements_dir(nconn)}")
     except Exception as e:
         print(f"[WARN] Could not load requirement files: {e}", file=sys.stderr)

@@ -3,7 +3,7 @@
   "category": "county",
   "name": "Wake County Government",
   "short_name": "Wake County",
-  "source_citation": "Wake County Strategic Plan & FY 2025-2029 Capital Improvement Program",
+  "source_citation": "Draft profile: goals summarized from public priorities. Page citations have not been verified against the official plan.",
   "mission": "Wake County will be a thriving community of opportunity where all residents enjoy healthy lives, economic prosperity, excellent public education, and safe, vibrant neighborhoods.",
   "eligible_applicant_types": [
     "County governments",
@@ -24,7 +24,7 @@
       "id": "WAKE-G1",
       "number": 1,
       "title": "Affordable Housing, Homelessness Prevention, and Community Development",
-      "citation": "Wake County Affordable Housing Plan, Priority 1, pp. 8-14",
+      "citation": "Wake County draft profile, goal 1",
       "description": "Expand permanently affordable housing units, support rapid re-housing for vulnerable families, and upgrade neighborhood infrastructure across growing suburban and urban corridors.",
       "objectives": [
         "Construct and preserve multi-family affordable rental units near transit corridors",
@@ -32,15 +32,22 @@
         "Implement neighborhood revitalization and community revitalization block grants"
       ],
       "keywords": [
-        "affordable housing", "housing vouchers", "homelessness", "community development block grant",
-        "CDBG", "HUD", "neighborhood revitalization", "rental assistance", "transit-oriented housing"
+        "affordable housing",
+        "housing vouchers",
+        "homelessness",
+        "community development block grant",
+        "CDBG",
+        "HUD",
+        "neighborhood revitalization",
+        "rental assistance",
+        "transit-oriented housing"
       ]
     },
     {
       "id": "WAKE-G2",
       "number": 2,
       "title": "Public Health, Behavioral Health, and Emergency Medical Services",
-      "citation": "Wake County Community Health Needs Assessment, Chapter 3",
+      "citation": "Wake County draft profile, goal 2",
       "description": "Strengthen community-based mental health crisis response, reduce substance use overdose fatalities, and modernize county public health clinics and EMS response times.",
       "objectives": [
         "Deploy mobile crisis intervention units and diversion from hospital emergency rooms",
@@ -48,15 +55,24 @@
         "Modernize EMS fleet, pediatric paramedic equipment, and 911 dispatch interoperability"
       ],
       "keywords": [
-        "public health", "behavioral health", "mental health", "opioid", "EMS", "emergency medical",
-        "crisis response", "substance abuse", "harm reduction", "maternal health", "community health"
+        "public health",
+        "behavioral health",
+        "mental health",
+        "opioid",
+        "EMS",
+        "emergency medical",
+        "crisis response",
+        "substance abuse",
+        "harm reduction",
+        "maternal health",
+        "community health"
       ]
     },
     {
       "id": "WAKE-G3",
       "number": 3,
       "title": "County Water Quality, Parks, Greenways, and Open Space Preservation",
-      "citation": "Wake County Open Space Master Plan & Watershed Protection Guidelines",
+      "citation": "Wake County draft profile, goal 3",
       "description": "Protect Falls Lake and Jordan Lake watershed quality, expand regional multi-use greenways, and preserve open agricultural and forest conservation land against rapid suburban sprawl.",
       "objectives": [
         "Acquire conservation easements along Neuse River and Swift Creek watersheds",
@@ -64,15 +80,23 @@
         "Mitigate stormwater runoff in rapidly developing unincorporated county jurisdictions"
       ],
       "keywords": [
-        "open space", "greenways", "parks", "watershed", "stormwater", "conservation easements",
-        "water quality", "recreation", "land preservation", "Neuse River"
+        "open space",
+        "greenways",
+        "parks",
+        "watershed",
+        "stormwater",
+        "conservation easements",
+        "water quality",
+        "recreation",
+        "land preservation",
+        "Neuse River"
       ]
     },
     {
       "id": "WAKE-G4",
       "number": 4,
       "title": "Public Safety, Criminal Justice Diversion, and Emergency Preparedness",
-      "citation": "Wake County Public Safety Master Plan & Hazard Mitigation Plan",
+      "citation": "Wake County draft profile, goal 4",
       "description": "Strengthen county sheriff and detention services, advance pre-trial diversion, and harden emergency operations centers against severe weather and cyber incidents.",
       "objectives": [
         "Expand juvenile justice diversion and adult re-entry supportive services",
@@ -80,13 +104,32 @@
         "Upgrade public safety radio networks (VIPER) and first responder communications"
       ],
       "keywords": [
-        "public safety", "criminal justice", "emergency management", "hazard mitigation",
-        "FEMA", "BJA", "reentry", "juvenile justice", "interoperability", "first responder"
+        "public safety",
+        "criminal justice",
+        "emergency management",
+        "hazard mitigation",
+        "FEMA",
+        "BJA",
+        "reentry",
+        "juvenile justice",
+        "interoperability",
+        "first responder"
       ]
     }
   ],
   "keywords": [
-    "county", "local government", "affordable housing", "public health", "behavioral health",
-    "EMS", "parks", "greenways", "watershed", "emergency management", "stormwater", "community development"
-  ]
+    "county",
+    "local government",
+    "affordable housing",
+    "public health",
+    "behavioral health",
+    "EMS",
+    "parks",
+    "greenways",
+    "watershed",
+    "emergency management",
+    "stormwater",
+    "community development"
+  ],
+  "profile_status": "draft"
 }

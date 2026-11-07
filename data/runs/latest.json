@@ -1,5 +1,5 @@
 {
-  "timestamp": "20261107_123408",
+  "timestamp": "20261107_124924",
   "run_date": "2026-11-06",
   "status": "Succeeded",
   "counts": {
@@ -16,7 +16,7 @@
         "category": "business",
         "total": 485,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "top_match": "Affordable Rural Cooperative (ARC) Energy Program",
         "top_score": 55.5
       },
@@ -43,7 +43,7 @@
         "category": "county",
         "total": 485,
         "high": 1,
-        "medium": 2,
+        "medium": 4,
         "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
         "top_score": 76.4
       },
@@ -52,7 +52,7 @@
         "category": "municipal",
         "total": 485,
         "high": 0,
-        "medium": 2,
+        "medium": 4,
         "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
         "top_score": 64.8
       },
@@ -61,7 +61,7 @@
         "category": "municipal",
         "total": 485,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "top_match": "Renewable Energy Systems and Energy Efficiency Improvements Program",
         "top_score": 56.3
       },
@@ -70,7 +70,7 @@
         "category": "municipal",
         "total": 485,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "top_match": "Indian Housing Block Grant Competitive Program (IHBG-COMP) for FY 2026",
         "top_score": 58.3
       },
@@ -79,7 +79,7 @@
         "category": "municipal",
         "total": 485,
         "high": 0,
-        "medium": 1,
+        "medium": 2,
         "top_match": "Growing Research Access for Nationally Transformative Economic Development (GRANTED)",
         "top_score": 67.2
       },
@@ -88,7 +88,7 @@
         "category": "municipal",
         "total": 485,
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "top_match": "Indian Housing Block Grant Competitive Program (IHBG-COMP) for FY 2026",
         "top_score": 58.3
       },
@@ -96,55 +96,55 @@
         "name": "NC Commerce",
         "category": "state",
         "total": 485,
-        "high": 8,
-        "medium": 8,
-        "top_match": "FY 2025 EDA Public Works and Economic Adjustment Assistance Programs",
-        "top_score": 74.4
+        "high": 0,
+        "medium": 5,
+        "top_match": "FY 2021 - 2023 Economic Development RNTA",
+        "top_score": 67.2
       },
       "deq": {
         "name": "NC DEQ",
         "category": "state",
         "total": 485,
-        "high": 2,
-        "medium": 4,
+        "high": 0,
+        "medium": 2,
         "top_match": "Solid Waste Management Grant Program",
-        "top_score": 75.9
+        "top_score": 65.3
       },
       "dhhs": {
         "name": "NCDHHS",
         "category": "state",
         "total": 485,
-        "high": 9,
-        "medium": 7,
+        "high": 4,
+        "medium": 12,
         "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
-        "top_score": 92.1
+        "top_score": 93.3
       },
       "dncr": {
         "name": "NC DNCR",
         "category": "state",
         "total": 485,
-        "high": 1,
-        "medium": 2,
-        "top_match": "Outdoor Recreation Legacy Partnership Program (ORLP) Recurring Notice 5 Year",
-        "top_score": 78.1
+        "high": 0,
+        "medium": 0,
+        "top_match": "National Leadership Grants for Libraries (2027)",
+        "top_score": 53.5
       },
       "dot": {
         "name": "NCDOT",
         "category": "state",
         "total": 485,
         "high": 0,
-        "medium": 3,
-        "top_match": "Fiscal Year 2026 Flood Mitigation Assistance Swift Current",
-        "top_score": 68.3
+        "medium": 1,
+        "top_match": "Innovative Traffic Safety Enforcement (ITSE) Grant Program",
+        "top_score": 66.3
       },
       "dpi": {
         "name": "NC DPI",
         "category": "state",
         "total": 485,
-        "high": 1,
-        "medium": 5,
-        "top_match": "Improving Undergraduate STEM Education: Directorate for STEM Education (IUSE: EDU)",
-        "top_score": 73.2
+        "high": 0,
+        "medium": 4,
+        "top_match": "Artificial Intelligence and Cybersecurity Education Innovation and Scholarship for Service (CyberAI SFS)",
+        "top_score": 61.2
       },
       "dps": {
         "name": "NC DPS",
@@ -152,15 +152,15 @@
         "total": 485,
         "high": 0,
         "medium": 3,
-        "top_match": "First Responders-Comprehensive Addiction and Recovery Act",
-        "top_score": 63.1
+        "top_match": "Domestic Violence Prevention",
+        "top_score": 65.8
       },
       "durham_county": {
         "name": "Durham County",
         "category": "county",
         "total": 485,
         "high": 0,
-        "medium": 2,
+        "medium": 3,
         "top_match": "Maternal, Infant, and Early Childhood Home Visiting Program (MIECHV)",
         "top_score": 63.9
       },
@@ -195,10 +195,10 @@
         "name": "NC DIT",
         "category": "state",
         "total": 485,
-        "high": 0,
-        "medium": 1,
+        "high": 1,
+        "medium": 5,
         "top_match": "Department of War Cyber Service Academy (DoW CSA)",
-        "top_score": 61.7
+        "top_score": 72.0
       },
       "nc_smallbiz": {
         "name": "NC Small Business & SBTDC",
@@ -214,7 +214,7 @@
         "category": "education",
         "total": 485,
         "high": 4,
-        "medium": 1,
+        "medium": 2,
         "top_match": "Fiscal Year (FY) 2027 Department of the Navy (DoN) Historically Black Colleges and Universities/Minority Institutions (HBCU/MI) Program",
         "top_score": 77.9
       },
@@ -223,18 +223,18 @@
         "category": "education",
         "total": 485,
         "high": 1,
-        "medium": 1,
+        "medium": 3,
         "top_match": "Advanced Technological Education (ATE)",
-        "top_score": 75.0
+        "top_score": 76.2
       },
       "ncda": {
         "name": "NCDA&CS",
         "category": "state",
         "total": 485,
-        "high": 0,
-        "medium": 3,
+        "high": 1,
+        "medium": 4,
         "top_match": "Agriculture and Food Research Initiative Competitive Grants Program Foundational and Applied Science Program",
-        "top_score": 67.7
+        "top_score": 73.9
       },
       "ncsu": {
         "name": "NC State",
@@ -250,7 +250,7 @@
         "category": "county",
         "total": 485,
         "high": 2,
-        "medium": 2,
+        "medium": 3,
         "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
         "top_score": 71.4
       },
@@ -258,22 +258,22 @@
         "name": "UNC & NC Higher Ed",
         "category": "education",
         "total": 485,
-        "high": 60,
-        "medium": 25,
-        "top_match": "NSF Scholarships in Science, Technology, Engineering, and Mathematics (S-STEM)",
-        "top_score": 94.0
+        "high": 13,
+        "medium": 33,
+        "top_match": "Department of Defense HIV/AIDS Prevention Program",
+        "top_score": 85.9
       },
       "wake_county": {
         "name": "Wake County",
         "category": "county",
         "total": 485,
         "high": 2,
-        "medium": 9,
+        "medium": 11,
         "top_match": "Public Health Crisis Response Cooperative Agreement",
         "top_score": 86.6
       }
     }
   },
-  "duration_seconds": 134.55,
+  "duration_seconds": 24.84,
   "errors": []
 }

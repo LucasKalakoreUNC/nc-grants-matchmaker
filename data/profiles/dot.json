@@ -2,7 +2,7 @@
   "agency_id": "dot",
   "name": "North Carolina Department of Transportation",
   "short_name": "NCDOT",
-  "source_citation": "NCDOT 2025-2030 Strategic Transportation Plan (NC OSBM)",
+  "source_citation": "NC Department of Transportation Strategic Plan 2025-2029",
   "mission": "Connecting people, products, and places safely and efficiently with customer-focused mobility solutions that spur economic growth.",
   "eligible_applicant_types": [
     "State governments",
@@ -22,140 +22,83 @@
     {
       "id": "DOT-G1",
       "number": 1,
-      "title": "Safety & Vision Zero: Eliminate Roadway Fatalities and Severe Injuries",
-      "citation": "NCDOT Strategic Plan, Section 1.1, pp. 8-14",
-      "description": "Deploy proven safety countermeasures across high-risk rural two-lane highways, modernize intersection signalization, and protect vulnerable road users.",
+      "title": "Recover the transportation network after emergencies",
+      "citation": "NC Department of Transportation Strategic Plan 2025-2029, p. 5",
+      "description": "Recover the transportation network after emergencies. Objective: restore transportation infrastructure (Hurricane Helene recovery).",
       "objectives": [
-        "Eliminate fatal crashes on rural secondary routes through rumble strips and high-friction surfacing",
-        "Implement safe bicycle and pedestrian crossings along urban arterial corridors",
-        "Modernize highway work zone intrusion prevention technologies"
+        "Restore transportation infrastructure"
       ],
       "keywords": [
-        "highway safety",
-        "Vision Zero",
-        "pedestrian safety",
-        "bicycle infrastructure",
-        "crash reduction",
-        "roadway safety",
-        "traffic signals",
-        "work zone",
-        "Safe Streets"
+        "emergency relief",
+        "disaster recovery",
+        "hurricane helene",
+        "resilience",
+        "bridge repair",
+        "road reconstruction",
+        "protect program",
+        "flood-damaged roads"
       ]
     },
     {
       "id": "DOT-G2",
       "number": 2,
-      "title": "Resilient Transportation Infrastructure & Extreme Weather Adaptation",
-      "citation": "NCDOT Strategic Plan, Section 1.2, pp. 15-21",
-      "description": "Harden evacuation routes, seismic and scour-retrofit critical bridges, and upgrade coastal highway culverts to withstand severe hurricanes and riverine flooding.",
+      "title": "Safe and efficient transportation system",
+      "citation": "NC Department of Transportation Strategic Plan 2025-2029, p. 5",
+      "description": "Provide a safe and efficient transportation system in North Carolina.",
       "objectives": [
-        "Elevate and reinforce coastal evacuation corridors (e.g., NC 12, US 70)",
-        "Replace structurally deficient or scour-critical bridges across mountain and piedmont basins",
-        "Implement nature-based roadside stormwater drainage solutions"
+        "Improve safety for all modes",
+        "Increase reliability and access",
+        "Increase customer satisfaction performance"
       ],
       "keywords": [
-        "resilient infrastructure",
-        "flood mitigation",
-        "evacuation routes",
-        "bridge retrofit",
-        "culverts",
-        "coastal highway",
-        "extreme weather",
-        "PROTECT formula",
-        "storm hardening"
+        "highway safety",
+        "traffic safety",
+        "safe streets",
+        "vision zero",
+        "pedestrian",
+        "bicycle",
+        "transit",
+        "rail",
+        "aviation",
+        "ferry",
+        "freight",
+        "congestion",
+        "intelligent transportation",
+        "rural transit"
       ]
     },
     {
       "id": "DOT-G3",
       "number": 3,
-      "title": "Clean Transportation, Fleet Electrification, and Alternative Fuels",
-      "citation": "NCDOT Strategic Plan, Section 1.3, pp. 22-28",
-      "description": "Build out North Carolina's NEVI corridor EV charging backbone, transition public transit fleets to low/zero emissions, and invest in multimodal freight efficiency.",
+      "title": "Efficient programs, projects, and services",
+      "citation": "NC Department of Transportation Strategic Plan 2025-2029, p. 9",
+      "description": "Improve efficiency and effectiveness of programs, projects, and services.",
       "objectives": [
-        "Deploy DC fast charging stations every 50 miles along designated alternative fuel corridors",
-        "Support municipal and rural transit agency purchases of electric and hydrogen buses",
-        "Establish commercial vehicle clean charging hubs near major logistic corridors"
+        "Improve resource stewardship",
+        "Deliver our program",
+        "Operate and maintain our system"
       ],
       "keywords": [
-        "electric vehicles",
-        "EV charging",
-        "NEVI",
-        "clean transit",
-        "zero-emission buses",
-        "hydrogen",
-        "alternative fuels",
-        "carbon reduction program",
-        "fleet conversion"
-      ]
-    },
-    {
-      "id": "DOT-G4",
-      "number": 4,
-      "title": "Multimodal Freight, Intermodal Rail, and Maritime Logistics Corridors",
-      "citation": "NCDOT Strategic Plan, Section 1.4, pp. 29-34",
-      "description": "Improve freight movement across rail, highway, and port facilities at Wilmington and Morehead City to relieve highway freight congestion.",
-      "objectives": [
-        "Expand Class I and short-line rail intermodal capacity along the Southeast Corridor",
-        "Upgrade port rail connector tracks and heavy container barge berths",
-        "Eliminate at-grade rail crossings to reduce freight bottlenecks and emissions"
-      ],
-      "keywords": [
-        "freight logistics",
-        "rail modernization",
-        "port infrastructure",
-        "intermodal",
-        "supply chain",
-        "CRISI grant",
-        "grade crossing",
-        "container terminal"
-      ]
-    },
-    {
-      "id": "DOT-G5",
-      "number": 5,
-      "title": "Rural Transit Equity and Micro-Mobility Connectivity",
-      "citation": "NCDOT Strategic Plan, Section 1.5, pp. 35-40",
-      "description": "Expand on-demand microtransit and dial-a-ride options in underserved rural counties, connect workers to employment hubs, and enhance accessibility for seniors and disabled citizens.",
-      "objectives": [
-        "Fund app-based on-demand microtransit pilots across Tier 1 economically distressed counties",
-        "Provide direct non-emergency medical transportation in rural healthcare deserts",
-        "Integrate regional transit payment cards and coordinated schedules"
-      ],
-      "keywords": [
-        "rural transit",
-        "microtransit",
-        "mobility on demand",
-        "transit equity",
-        "underserved mobility",
-        "paratransit",
-        "FTA Section 5311",
-        "public transportation"
+        "bridge",
+        "pavement",
+        "infrastructure investment",
+        "asset management",
+        "highway maintenance",
+        "transportation planning"
       ]
     }
   ],
   "keywords": [
+    "bridge",
+    "disaster recovery",
+    "emergency relief",
     "highway safety",
-    "Vision Zero",
-    "pedestrian safety",
-    "bicycle infrastructure",
-    "resilient infrastructure",
-    "bridge retrofit",
-    "culverts",
-    "flood mitigation",
-    "electric vehicles",
-    "EV charging",
-    "NEVI",
-    "clean transit",
-    "zero-emission buses",
-    "freight logistics",
-    "rail modernization",
-    "port infrastructure",
-    "intermodal",
-    "rural transit",
-    "microtransit",
-    "paratransit",
-    "public transportation",
-    "corridors"
+    "hurricane helene",
+    "infrastructure investment",
+    "pavement",
+    "safe streets",
+    "traffic safety"
   ],
-  "category": "state"
+  "category": "state",
+  "source_url": "https://www.osbm.nc.gov/strategic-plan-dot/download?attachment"
 }

@@ -2,7 +2,7 @@
   "agency_id": "dps",
   "name": "North Carolina Department of Public Safety",
   "short_name": "NC DPS",
-  "source_citation": "NC DPS & Emergency Management Strategic Plan 2025-2029 (NC OSBM)",
+  "source_citation": "North Carolina Department of Public Safety Strategic Plan (revised July 15, 2026)",
   "mission": "Safeguarding and preserving the lives and property of North Carolinians through state-of-the-art disaster prevention, emergency management, law enforcement, and juvenile justice.",
   "eligible_applicant_types": [
     "State governments",
@@ -21,119 +21,76 @@
     {
       "id": "DPS-G1",
       "number": 1,
-      "title": "Disaster Mitigation, Flood Resilience, and Emergency Preparedness",
-      "citation": "NC DPS Strategic Plan, Section 5.1, pp. 11-17",
-      "description": "Strengthen North Carolina's resilience to major hurricanes, severe flooding, and tornadoes through FEMA Building Resilient Infrastructure and Communities (BRIC) projects and repetitive flood loss property acquisitions.",
+      "title": "Make DPS a career destination",
+      "citation": "North Carolina Department of Public Safety Strategic Plan (revised July 15, 2026), p. 6",
+      "description": "Make DPS a career destination.",
       "objectives": [
-        "Elevate and floodproof critical public facilities in 100-year and 500-year floodplains",
-        "Implement voluntary property buyouts for repetitive flood-loss homes in coastal and riverine counties",
-        "Modernize North Carolina Emergency Management regional staging warehouses and mobile command posts"
+        "1.1 Enhance the recruitment and retention of a highly qualified workforce",
+        "1.2 Ensure the Department has a well-trained and professional workforce"
       ],
       "keywords": [
-        "disaster mitigation",
-        "FEMA",
-        "flood resilience",
-        "hazard mitigation",
-        "BRIC",
-        "emergency management",
-        "hurricane response",
-        "floodplain",
-        "buyout",
-        "evacuation",
-        "severe storms",
-        "resilience"
+        "law enforcement recruitment",
+        "officer retention",
+        "public safety workforce"
       ]
     },
     {
       "id": "DPS-G2",
       "number": 2,
-      "title": "Next Generation 911 & FirstNet Tactical Interoperability",
-      "citation": "NC DPS Strategic Plan, Section 5.2, pp. 18-24",
-      "description": "Complete statewide NG911 geospatial call routing, upgrade emergency dispatch centers with real-time video/data ingestion, and harden first responder radio communications towers.",
+      "title": "Excellent service, safety, and innovation",
+      "citation": "North Carolina Department of Public Safety Strategic Plan (revised July 15, 2026), p. 9",
+      "description": "Foster a culture of excellent service, safety, and innovation.",
       "objectives": [
-        "Ensure 100% of North Carolina public safety answering points (PSAPs) are connected to NG911",
-        "Deploy redundant satellite backup links for mountain emergency dispatch centers",
-        "Standardize mutual aid encrypted radio channels for state troopers, county sheriffs, and local police"
+        "2.1 Provide each Division with safe, appropriate facilities and infrastructure",
+        "2.3 Use data to inform operational decision making",
+        "2.4 Streamline business processes"
       ],
       "keywords": [
-        "NG911",
-        "emergency communications",
-        "first responders",
-        "public safety answering points",
-        "radio interoperability",
-        "VIPER network",
-        "dispatch",
-        "telecommunications",
-        "FirstNet"
+        "public safety technology",
+        "criminal justice data",
+        "victim services",
+        "case management system"
       ]
     },
     {
       "id": "DPS-G3",
       "number": 3,
-      "title": "Statewide Cybersecurity & Critical Infrastructure Protection",
-      "citation": "NC DPS Strategic Plan, Section 5.3, pp. 25-31",
-      "description": "Defend state agencies, county water utilities, electrical substations, and local court networks against foreign state and ransomware cyber threats through the State and Local Cybersecurity Grant Program (SLCGP).",
+      "title": "Comprehensive approach to public safety",
+      "citation": "North Carolina Department of Public Safety Strategic Plan (revised July 15, 2026), p. 12",
+      "description": "Strengthen our comprehensive approach to public safety.",
       "objectives": [
-        "Deploy continuous 24/7 security operations center (SOC) monitoring across all 100 county governments",
-        "Conduct red-team vulnerability assessments for municipal drinking water SCADA systems",
-        "Provide incident response strike teams for local governments experiencing ransomware attacks"
+        "3.2 Enhance community safety through prevention and intervention",
+        "3.3 Strengthen emergency preparedness and response through continuity of operations",
+        "3.4 Augment community-based programs that reduce juvenile crime through early prevention, enhanced re-entry services, and increased service capacity"
       ],
       "keywords": [
-        "cybersecurity",
-        "CISA",
-        "SLCGP",
-        "ransomware",
-        "critical infrastructure",
-        "SCADA defense",
-        "network security",
-        "information security",
-        "threat intelligence"
-      ]
-    },
-    {
-      "id": "DPS-G4",
-      "number": 4,
-      "title": "Juvenile Justice Reform & Community Violence Intervention",
-      "citation": "NC DPS Strategic Plan, Section 5.4, pp. 32-38",
-      "description": "Invest in hospital-based violence intervention programs, evidence-based youth delinquency diversion, and trauma-informed behavioral support for justice-involved teens.",
-      "objectives": [
-        "Expand community-based violence interruption and credible messenger programs in high-crime neighborhoods",
-        "Establish regional juvenile crisis stabilization centers to divert youths from detention facilities",
-        "Fund vocational apprenticeships and high school completion programs for youthful offenders"
-      ],
-      "keywords": [
+        "violence prevention",
+        "community violence",
         "juvenile justice",
-        "violence intervention",
-        "community safety",
-        "crime prevention",
-        "DOJ",
-        "OJP",
-        "recidivism reduction",
-        "youth mentorship",
-        "trauma-informed care"
+        "delinquency prevention",
+        "reentry",
+        "emergency management",
+        "emergency preparedness",
+        "hazard mitigation",
+        "homeland security",
+        "victims of crime",
+        "firearm",
+        "byrne",
+        "national guard"
       ]
     }
   ],
   "keywords": [
-    "disaster mitigation",
-    "FEMA",
-    "flood resilience",
-    "hazard mitigation",
-    "BRIC",
-    "emergency management",
-    "hurricane response",
-    "NG911",
-    "first responders",
-    "cybersecurity",
-    "CISA",
-    "SLCGP",
-    "ransomware",
-    "critical infrastructure",
+    "community violence",
+    "criminal justice data",
     "juvenile justice",
-    "violence intervention",
-    "community safety",
-    "crime prevention",
-    "DOJ"
+    "law enforcement recruitment",
+    "officer retention",
+    "public safety technology",
+    "public safety workforce",
+    "victim services",
+    "violence prevention"
   ],
-  "category": "state"
+  "category": "state",
+  "source_url": "https://www.osbm.nc.gov/documents/files/strategic-plan-dps/download?attachment"
 }

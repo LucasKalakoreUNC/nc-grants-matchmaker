@@ -3,8 +3,7 @@
   "category": "education",
   "name": "North Carolina Community College System",
   "short_name": "NC Community Colleges",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026",
   "mission": "Fifty-eight community colleges providing job training, college transfer and adult education.",
   "eligible_applicant_types": [
     "Public and State controlled institutions of higher education"
@@ -19,33 +18,30 @@
     {
       "id": "NCCC_SYSTEM-G1",
       "number": 1,
-      "title": "Workforce training and credentials",
-      "citation": "NC Community Colleges draft profile, goal 1",
-      "description": "Train workers for in-demand jobs.",
+      "title": "Recruit and retain top talent",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 12",
+      "description": "Recruit and retain top talent to enable the North Carolina Community College System to educate and prepare the State's workforce.",
       "objectives": [
-        "Expand short-term credential programs",
-        "Partner with employers on apprenticeships"
+        "Recruit and retain top talent to enable the North Carolina Community College System to educate and prepare the State's workforce."
       ],
       "keywords": [
-        "workforce",
-        "job training",
-        "apprenticeship",
-        "credentials",
-        "community college"
+        "faculty development",
+        "instructor recruitment"
       ]
     },
     {
       "id": "NCCC_SYSTEM-G2",
       "number": 2,
-      "title": "Student success and completion",
-      "citation": "NC Community Colleges draft profile, goal 2",
-      "description": "Help students finish programs.",
+      "title": "Access and enrollment",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 15",
+      "description": "Increase access and enrollment at North Carolina community colleges to meet the state's educational attainment goal and expand postsecondary opportunities.",
       "objectives": [
-        "Expand advising and student supports"
+        "Increase access and enrollment at North Carolina community colleges to meet the state's educational attainment goal and expand postsecondary opportunities."
       ],
       "keywords": [
-        "student success",
-        "completion",
+        "adult learners",
+        "dual enrollment",
+        "college access",
         "adult education",
         "basic skills"
       ]
@@ -53,25 +49,70 @@
     {
       "id": "NCCC_SYSTEM-G3",
       "number": 3,
-      "title": "Advanced technical education",
-      "citation": "NC Community Colleges draft profile, goal 3",
-      "description": "Build technician programs in high-tech fields.",
+      "title": "Student success",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 20",
+      "description": "Provide resources inside and outside the classroom for all students to successfully enroll, persist, and complete a career program of study.",
       "objectives": [
-        "Expand technician programs"
+        "Provide resources inside and outside the classroom for all students to successfully enroll, persist, and complete a career program of study."
       ],
       "keywords": [
+        "student success",
+        "student support services",
+        "student mental health",
+        "completion",
+        "basic needs"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G4",
+      "number": 4,
+      "title": "Economic and workforce development",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 24",
+      "description": "Provide education, training, and credentials to develop the most competitive workforce in the nation.",
+      "objectives": [
+        "Provide education, training, and credentials to develop the most competitive workforce in the nation."
+      ],
+      "keywords": [
+        "workforce development",
+        "job training",
+        "apprenticeship",
+        "credentials",
         "advanced technological education",
         "technician",
-        "manufacturing",
-        "healthcare workforce"
+        "short-term training",
+        "career pathways",
+        "community college"
+      ]
+    },
+    {
+      "id": "NCCC_SYSTEM-G5",
+      "number": 5,
+      "title": "Funding and system effectiveness",
+      "citation": "Leading Through Change: NC Community College System Strategic Plan 2022-2026, p. 29",
+      "description": "Increase state funding, streamline the allocation formula, and implement practices to improve system effectiveness, including IT infrastructure and linked education data systems.",
+      "objectives": [
+        "Increase state funding, streamline the allocation formula, and implement practices to improve system effectiveness, including IT infrastructure and linked education data systems."
+      ],
+      "keywords": [
+        "education data systems",
+        "statewide longitudinal data"
       ]
     }
   ],
   "keywords": [
-    "community college",
-    "workforce",
-    "training",
-    "education",
-    "apprenticeship"
-  ]
+    "adult learners",
+    "apprenticeship",
+    "college access",
+    "dual enrollment",
+    "education data systems",
+    "faculty development",
+    "instructor recruitment",
+    "job training",
+    "statewide longitudinal data",
+    "student mental health",
+    "student success",
+    "student support services",
+    "workforce development"
+  ],
+  "source_url": "https://www.osbm.nc.gov/documents/files/strategic-plan-ncccs/download?attachment"
 }

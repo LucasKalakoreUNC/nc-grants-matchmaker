@@ -3,8 +3,7 @@
   "category": "state",
   "name": "North Carolina Department of Natural and Cultural Resources",
   "short_name": "NC DNCR",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "NC Department of Natural and Cultural Resources Strategic Plan",
   "mission": "Manages state parks, museums, libraries, historic sites and the arts.",
   "eligible_applicant_types": [
     "State governments"
@@ -20,64 +19,106 @@
     {
       "id": "DNCR-G1",
       "number": 1,
-      "title": "Parks, trails and natural areas",
-      "citation": "NC DNCR draft profile, goal 1",
-      "description": "Protect natural areas and expand outdoor recreation.",
+      "title": "Educational excellence and innovation",
+      "citation": "NC Department of Natural and Cultural Resources Strategic Plan, p. 7",
+      "description": "Expand and advance educational excellence and innovation throughout DNCR's sites and programs and support workforce pathways for our fields of work.",
       "objectives": [
-        "Expand trails and park access",
-        "Protect habitat and natural heritage areas"
+        "Expand and advance educational excellence and innovation throughout DNCR's sites and programs and support workforce pathways for our fields of work."
       ],
       "keywords": [
-        "state parks",
-        "trails",
-        "outdoor recreation",
-        "land conservation",
-        "habitat"
+        "museum education",
+        "library services",
+        "informal education",
+        "humanities education",
+        "stem learning"
       ]
     },
     {
       "id": "DNCR-G2",
       "number": 2,
-      "title": "Libraries, museums and archives",
-      "citation": "NC DNCR draft profile, goal 2",
-      "description": "Keep libraries and museums strong and accessible.",
+      "title": "Strengthen local economies",
+      "citation": "NC Department of Natural and Cultural Resources Strategic Plan, p. 8",
+      "description": "Strengthen local economies by uplifting DNCR sites and services as community anchors.",
       "objectives": [
-        "Expand library services and digital access",
-        "Preserve historical records"
+        "Strengthen local economies by uplifting DNCR sites and services as community anchors."
       ],
       "keywords": [
-        "library",
-        "libraries",
-        "museum",
-        "archives",
-        "digitization"
+        "heritage tourism",
+        "outdoor recreation economy",
+        "main street",
+        "community anchors"
       ]
     },
     {
       "id": "DNCR-G3",
       "number": 3,
-      "title": "Arts and historic preservation",
-      "citation": "NC DNCR draft profile, goal 3",
-      "description": "Support the arts and protect historic places.",
+      "title": "Access to natural and cultural resources",
+      "citation": "NC Department of Natural and Cultural Resources Strategic Plan, p. 9",
+      "description": "Preserve, enhance, and expand access to North Carolina's natural and cultural resources.",
       "objectives": [
-        "Fund community arts",
-        "Preserve historic sites"
+        "Preserve, enhance, and expand access to North Carolina's natural and cultural resources."
       ],
       "keywords": [
-        "arts",
         "historic preservation",
-        "humanities",
-        "cultural heritage"
+        "land conservation",
+        "state parks",
+        "trails",
+        "habitat",
+        "archives",
+        "museum",
+        "libraries",
+        "arts",
+        "cultural heritage",
+        "natural heritage"
+      ]
+    },
+    {
+      "id": "DNCR-G4",
+      "number": 4,
+      "title": "Operational efficiency and customer service",
+      "citation": "NC Department of Natural and Cultural Resources Strategic Plan, p. 11",
+      "description": "Improve operational efficiencies, collaboration, and customer service across DNCR.",
+      "objectives": [
+        "Improve operational efficiencies, collaboration, and customer service across DNCR."
+      ],
+      "keywords": [
+        "digitization",
+        "collections management"
+      ]
+    },
+    {
+      "id": "DNCR-G5",
+      "number": 5,
+      "title": "Western NC recovery and climate resilience",
+      "citation": "NC Department of Natural and Cultural Resources Strategic Plan, p. 12",
+      "description": "Support Western North Carolina's recovery from Hurricane Helene and integrate climate resilience into DNCR's work.",
+      "objectives": [
+        "Support Western North Carolina's recovery from Hurricane Helene and integrate climate resilience into DNCR's work."
+      ],
+      "keywords": [
+        "hurricane helene",
+        "disaster recovery",
+        "climate resilience",
+        "flood",
+        "cultural resources recovery"
       ]
     }
   ],
   "keywords": [
-    "parks",
-    "museum",
-    "library",
-    "arts",
-    "history",
-    "culture",
-    "conservation"
-  ]
+    "climate resilience",
+    "collections management",
+    "digitization",
+    "disaster recovery",
+    "heritage tourism",
+    "historic preservation",
+    "hurricane helene",
+    "informal education",
+    "land conservation",
+    "library services",
+    "main street",
+    "museum education",
+    "outdoor recreation economy",
+    "state parks"
+  ],
+  "source_url": "https://www.osbm.nc.gov/documents/files/strategic-plan-dncr/open"
 }

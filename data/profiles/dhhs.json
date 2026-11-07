@@ -2,8 +2,8 @@
   "agency_id": "dhhs",
   "name": "North Carolina Department of Health and Human Services",
   "short_name": "NCDHHS",
-  "source_citation": "NCDHHS Strategic Vision & Priority Roadmap 2025-2028 (NC OSBM)",
-  "mission": "In collaboration with our partners, to protect the health and safety of all North Carolinians and provide essential human services.",
+  "source_citation": "NC Department of Health and Human Services 2026-2030 Strategic Plan",
+  "mission": "In collaboration with our partners, DHHS provides essential services to improve the health, safety and well-being of all North Carolinians.",
   "eligible_applicant_types": [
     "State governments",
     "State health agencies",
@@ -23,148 +23,120 @@
     {
       "id": "DHHS-G1",
       "number": 1,
-      "title": "Behavioral Health Transformation & Opioid Overdose Prevention",
-      "citation": "NCDHHS Strategic Roadmap, Section 3.1, pp. 10-16",
-      "description": "Expand community-based behavioral health crisis facilities, strengthen medication-assisted treatment for opioid use disorder, and implement school-based youth mental health programs.",
+      "title": "Access to care",
+      "citation": "NC Department of Health and Human Services 2026-2030 Strategic Plan, p. 4",
+      "description": "Support North Carolinians' ability to safely, easily and fully access the services, programs and systems of care of NCDHHS and our partners.",
       "objectives": [
-        "Open 24/7 behavioral health urgent care centers in high-overdose counties",
-        "Distribute naloxone and fentanyl test strips through community harm reduction programs",
-        "Expand peer support specialist workforce and mobile crisis response teams",
-        "Deploy evidence-based youth resilience and suicide prevention curricula in public schools"
+        "1.1 Maintain access to health and human services in traditional and non-traditional settings",
+        "1.2 Mitigate the social, cultural and literacy barriers that prevent North Carolinians from accessing health and human services",
+        "1.3 Support affordable care options"
       ],
       "keywords": [
-        "behavioral health",
-        "mental health",
-        "opioid",
-        "substance abuse",
-        "overdose prevention",
-        "crisis intervention",
-        "harm reduction",
-        "SAMHSA",
-        "naloxone",
-        "peer support",
-        "suicide prevention",
-        "addiction treatment"
+        "access to care",
+        "medicaid",
+        "telehealth",
+        "health literacy",
+        "community health workers",
+        "child care",
+        "snap",
+        "child welfare"
       ]
     },
     {
       "id": "DHHS-G2",
       "number": 2,
-      "title": "Maternal, Infant, and Early Childhood Health Equity",
-      "citation": "NCDHHS Strategic Roadmap, Section 3.2, pp. 17-24",
-      "description": "Dramatically reduce maternal mortality and severe morbidity disparities, expand perinatal nurse home visiting, and promote universal early childhood developmental screenings.",
+      "title": "Whole person well-being",
+      "citation": "NC Department of Health and Human Services 2026-2030 Strategic Plan, p. 5",
+      "description": "Improve the well-being of North Carolinians by delivering comprehensive, high-quality services that address complex factors shaping outcomes for individuals and families.",
       "objectives": [
-        "Close maternal mortality gap for rural and minority mothers through specialized community doulas",
-        "Expand evidence-based home visiting programs (Nurse-Family Partnership) to all 100 counties",
-        "Implement postpartum telehealth monitoring for gestational hypertension and diabetes"
+        "2.2 Simplify the processes for families and individuals to navigate mental health, substance use disorder, I/DD and TBI systems and services",
+        "2.3 Improve systems that address non-medical drivers of health such as access to healthy food"
       ],
       "keywords": [
+        "behavioral health",
+        "mental health",
+        "substance use",
+        "opioid",
+        "crisis",
+        "988",
+        "intellectual and developmental disabilities",
+        "traumatic brain injury",
+        "food insecurity",
         "maternal health",
-        "infant mortality",
-        "perinatal care",
-        "doula",
-        "early childhood",
-        "developmental screening",
-        "pediatric health",
-        "telehealth",
-        "HRSA",
-        "maternal mortality"
+        "public health"
       ]
     },
     {
       "id": "DHHS-G3",
       "number": 3,
-      "title": "Rural Healthcare Infrastructure & Clinical Workforce Retention",
-      "citation": "NCDHHS Strategic Roadmap, Section 3.3, pp. 25-31",
-      "description": "Stabilize rural critical access hospitals, expand loan repayment programs for rural primary care doctors and nurses, and modernize community health center clinical facilities.",
+      "title": "Transform and modernize health care",
+      "citation": "NC Department of Health and Human Services 2026-2030 Strategic Plan, p. 6",
+      "description": "Transform North Carolina's health care ecosystem by modernizing delivery, strengthening community and rural care, and optimizing strategic partnerships to expand access, improve outcomes and manage costs.",
       "objectives": [
-        "Fund broadband-enabled telehealth kiosks in rural county health departments",
-        "Provide educational debt relief for bilingual clinicians practicing in designated shortage areas",
-        "Support federally qualified health centers (FQHC) capital facility expansions"
+        "3.3 Leverage the expertise of state-operated health care facilities to support individuals with complex needs",
+        "3.4 Promote a sustainable rural health delivery system"
       ],
       "keywords": [
-        "rural healthcare",
-        "healthcare workforce",
-        "primary care",
-        "FQHC",
-        "clinical training",
-        "loan repayment",
-        "health professional shortage area",
-        "critical access hospitals",
-        "telemedicine"
+        "rural health",
+        "rural health transformation",
+        "health care delivery",
+        "value-based care",
+        "health information technology",
+        "hospital"
       ]
     },
     {
       "id": "DHHS-G4",
       "number": 4,
-      "title": "Public Health Preparedness, Epidemiology & Infectious Disease Surveillance",
-      "citation": "NCDHHS Strategic Roadmap, Section 3.4, pp. 32-38",
-      "description": "Enhance state laboratory genomics, accelerate vector-borne disease tracking (mosquito and tick-borne pathogens), and fortify public health surge capacity.",
+      "title": "Sustainable workforce",
+      "citation": "NC Department of Health and Human Services 2026-2030 Strategic Plan, p. 7",
+      "description": "Develop a skilled workforce that supports North Carolinians' health and well-being through training, career pathways and innovative strategies to attract and retain talent.",
       "objectives": [
-        "Modernize North Carolina State Laboratory of Public Health genetic sequencing platforms",
-        "Expand statewide wastewater viral monitoring network across municipal treatment plants",
-        "Strengthen local health department communicable disease investigation teams"
+        "4.1 Develop and strengthen career pathways that address critical service gaps in health and human services workforces",
+        "4.3 Support individuals with employment barriers to obtain work"
       ],
       "keywords": [
-        "public health preparedness",
-        "epidemiology",
-        "infectious disease",
-        "CDC",
-        "disease surveillance",
-        "wastewater surveillance",
-        "laboratory capacity",
-        "pandemic readiness",
-        "outbreak response"
+        "health workforce",
+        "behavioral health workforce",
+        "direct care workforce",
+        "nursing workforce",
+        "vocational rehabilitation"
       ]
     },
     {
       "id": "DHHS-G5",
       "number": 5,
-      "title": "Social Determinants of Health: Food Security & Housing Stabilization",
-      "citation": "NCDHHS Strategic Roadmap, Section 3.5, pp. 39-44",
-      "description": "Integrate NCCARE360 statewide coordinated care network with federal anti-hunger and supportive housing programs to address root drivers of poor health.",
+      "title": "Organizational excellence",
+      "citation": "NC Department of Health and Human Services 2026-2030 Strategic Plan, p. 8",
+      "description": "Promote efficient and effective operations through continuous improvement, leveraging data, modernizing systems, using resources wisely and strengthening accountability and transparency.",
       "objectives": [
-        "Expand medically tailored meals and produce prescription programs for chronic illness patients",
-        "Support rapid re-housing and permanent supportive housing for medically vulnerable homeless adults",
-        "Integrate SNAP and WIC enrollment kiosks into community health hubs"
+        "5.1 Modernize technology systems to enhance efficiency and collaboration",
+        "5.2 Foster a culture of data-driven decision-making"
       ],
       "keywords": [
-        "social determinants of health",
-        "food security",
-        "nutrition",
-        "housing stability",
-        "supportive housing",
-        "NCCARE360",
-        "anti-poverty",
-        "food prescription",
-        "WIC",
-        "SNAP"
+        "data modernization",
+        "public health data",
+        "health data systems"
       ]
     }
   ],
   "keywords": [
+    "access to care",
     "behavioral health",
+    "behavioral health workforce",
+    "data modernization",
+    "direct care workforce",
+    "health care delivery",
+    "health data systems",
+    "health workforce",
+    "medicaid",
     "mental health",
-    "opioid",
-    "substance abuse",
-    "overdose prevention",
-    "maternal health",
-    "infant mortality",
-    "perinatal care",
-    "early childhood",
-    "rural healthcare",
-    "healthcare workforce",
-    "primary care",
-    "FQHC",
-    "telehealth",
-    "public health preparedness",
-    "epidemiology",
-    "disease surveillance",
-    "wastewater surveillance",
-    "social determinants of health",
-    "food security",
-    "housing stability",
-    "harm reduction"
+    "public health data",
+    "rural health",
+    "rural health transformation",
+    "substance use",
+    "telehealth"
   ],
-  "category": "state"
+  "category": "state",
+  "source_url": "https://www.osbm.nc.gov/dhhs-2026-2030-strategic-plan/download?attachment"
 }
