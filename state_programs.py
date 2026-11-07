@@ -222,7 +222,7 @@ def table_programs(raw, base_url):
     return out
 
 
-NEWS_RE = re.compile(r"^\d|^(view|learn|see|click|apply|read|find|browse|visit)\b|\b(receive[sd]?|awarded|announce[sd]?|awards? (\$|grants to)|press release|news)\b", re.I)
+NEWS_RE = re.compile(r"^\d|^(view|learn|see|click|apply|read|find|browse|visit)\b|\b(receive[sd]?|awarded|announce[sd]?|awards? (\$|grants to)|press release|news)\b|\bresources$", re.I)
 
 
 def norm_name(name):
