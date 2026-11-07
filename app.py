@@ -844,6 +844,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 conn.commit()
             finally:
                 conn.close()
+            if notification_result and notification_result.get("delivery_ready"):
+                flush_notifications_async()
 
             self._send_json({"success": True, "agency_id": agency_id, 'notification': notification_result})
             return
@@ -853,7 +855,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             conn = db.connect()
             try:
                 result = notifications.request_subscription(conn, payload.get('email'), str(payload.get('office_id') or 'all'),
-                    str(payload.get('category') or 'all'), token=str(payload.get('notification_token') or ''))
+                    str(payload.get('category') or 'all'))
                 conn.commit()
             except ValueError as error:
                 conn.rollback()
@@ -861,6 +863,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 return
             finally:
                 conn.close()
+            if result.get("delivery_ready"):
+                flush_notifications_async()
             self._send_json({'success':True, **result})
             return
 
@@ -975,6 +979,26 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         self.send_error(404, "Not Found")
+
+def flush_notifications_async():
+    """Send newly queued confirmation emails immediately without waiting for the 60s timer."""
+    if not notifications.mail_ready():
+        return
+    import threading
+
+    def send_now():
+        conn = None
+        try:
+            conn = db.connect()
+            notifications.run_once(conn)
+        except Exception:
+            print('[WARN] Immediate grant email check failed; it will be retried.')
+        finally:
+            if conn is not None:
+                conn.close()
+
+    threading.Thread(target=send_now, daemon=True).start()
+
 
 def start_notification_timer():
     """Hourly external wake-ups provide a fallback when App Service is idle."""
