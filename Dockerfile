@@ -1,37 +1,35 @@
-# Federal Funds Matchmaker Dockerfile
-# Compliant with Solveathon Reference Architecture (§4 Step 6 & 7)
-# Single Docker image supporting two roles via MODE environment variable:
-#   MODE=app -> starts interactive staff-facing web UI on port 8000
-#   MODE=job -> runs the daily refresh ingestion/scoring pipeline and exits 0 on success
+# NC Grants Matchmaker
+# One image, two roles (MODE environment variable):
+#   MODE=app (default) -> serves the site on $PORT (8000) and refreshes data
+#                          every $REFRESH_HOURS hours (default 24)
+#   MODE=job           -> runs the data refresh once and exits
 
-FROM python:3.11-slim
+FROM python:3.13-slim
 
-# Prevent Python from writing .pyc files and enable unbuffered logging
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
 # curl: fallback for USAspending when Python's certificate bundle rejects it
-RUN apt-get update && apt-get install -y --no-install-recommends curl && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
 
-# pypdf (+ cryptography for encrypted PDFs) reads funding notices;
-# anthropic is only used by `notices.py extract`
+# pypdf + cryptography read funding notices and plans; anthropic is used by ai.py / notices.py extract
 COPY requirements.txt /app/
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application files and data (the local database is rebuilt from public
-# sources if it is missing; see .dockerignore for what is left out)
-COPY pipeline.py app.py db.py notices.py ai.py /app/
-COPY data/ /app/data/
+# Every Python module (app, pipeline, db, notices, ai, programs, state_programs) and the start script
+COPY *.py start.sh /app/
 COPY public/ /app/public/
+# Profiles, requirement files, plan text, raw Grants.gov data and the database
+# snapshot (data/seed/matchmaker.db.gz, unpacked on first start by start.sh)
+COPY data/ /app/data/
 
-# Default environment variables
-ENV MODE=app
-ENV PORT=8000
+ENV MODE=app \
+    PORT=8000 \
+    REFRESH_HOURS=24
 
-# Expose standard target port
 EXPOSE 8000
 
-# Single entrypoint supporting MODE=app and MODE=job
-CMD ["sh", "-c", "if [ \"$MODE\" = \"job\" ]; then python3 pipeline.py; else python3 app.py; fi"]
+CMD ["sh", "/app/start.sh"]

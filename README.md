@@ -96,19 +96,49 @@ its published plan:
 
 or edit `data/profiles/<id>.json` (copy an existing file) and run `pipeline.py`.
 
-## Deploying
+## Deploying (Azure)
 
-The Docker image runs either the site (`MODE=app`) or a one-time refresh
-(`MODE=job`). Because the database is a single SQLite file, the simplest
-deployment is one container that serves the site and refreshes itself:
+The repository has everything needed to build and run the service:
+`Dockerfile`, `start.sh`, `requirements.txt`, and a compressed database
+snapshot (`data/seed/matchmaker.db.gz`, ~21 MB) that is unpacked on first
+start so the site has data immediately. The container then refreshes the data
+every `REFRESH_HOURS` hours (default 24).
+
+**Azure Container Apps (recommended)**
+
+```bash
+# from the repository root
+az acr build --registry <your-acr> --image nc-grants:latest .
+az containerapp create -n nc-grants -g <resource-group> --environment <env> \
+  --image <your-acr>.azurecr.io/nc-grants:latest \
+  --ingress external --target-port 8000 \
+  --min-replicas 1 --max-replicas 1 --cpu 1.0 --memory 2.0Gi \
+  --env-vars REFRESH_HOURS=24
+```
+
+Settings that matter:
+
+| Setting | Value | Why |
+|---|---|---|
+| Target port | 8000 | The app listens on `$PORT` (default 8000) |
+| Replicas | exactly 1 | The database is one SQLite file; two copies would disagree |
+| Memory | 2 GiB | The refresh reads PDFs and scores ~500 grants x 34 organizations |
+| `REFRESH_HOURS` | 24 | How often to pull new data (0 turns it off) |
+| `ANTHROPIC_API_KEY` | optional secret | Only for `ai.py` and `notices.py extract` |
+
+Storage: without a mounted volume, staff decisions are lost when the container
+restarts (the snapshot is unpacked again). To keep them, mount an Azure Files
+share at `/app/data` and copy the repository's `data/` folder into it once.
+
+**Azure App Service (Web App for Containers)** also works: point it at the
+same image and set `WEBSITES_PORT=8000`.
+
+**Locally with Docker**
 
 ```bash
 docker build -t nc-grants .
-docker run -p 8000:8000 -e REFRESH_HOURS=24 -v grants-data:/app/data nc-grants
+docker run -p 8000:8000 nc-grants
 ```
-
-`REFRESH_HOURS` runs the pipeline in the background on that interval. Keep
-`/app/data` on persistent storage so decisions and downloads survive restarts.
 
 ## Known limits
 
