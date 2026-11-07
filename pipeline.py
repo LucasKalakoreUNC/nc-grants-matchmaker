@@ -17,7 +17,8 @@ from datetime import datetime
 
 import db
 
-CURRENT_DATE_STR = "2026-11-06"
+# "Today" for deadline math. Defaults to the real date; set PIPELINE_DATE=YYYY-MM-DD to replay a past run.
+CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or datetime.now().strftime("%Y-%m-%d")
 CURRENT_DATE = datetime.strptime(CURRENT_DATE_STR, "%Y-%m-%d")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -291,53 +292,41 @@ def generate_sample_draft(opp, profile=None):
     }
 
 def generate_action_steps(opp, profile=None):
-    """Generates 5 sequential execution steps with target deadlines."""
-    days = opp.get("days_to_close", 45)
-    d = days if days is not None and days > 0 else 45
+    """Plain next steps built from facts about this grant, with real dates
+    counted back from the deadline. Details come from the notice itself."""
+    from datetime import timedelta
+    days = opp.get("days_to_close")
+    close = None
+    if opp.get("close_date") and days is not None:
+        try:
+            close = datetime.strptime(opp["close_date"], "%Y-%m-%d")
+        except ValueError:
+            close = None
+    when = lambda before: (close - timedelta(days=before)).strftime("%b %d, %Y") if close and days and days > before else "As soon as possible"
 
-    step1_day = min(3, max(1, int(d * 0.1)))
-    step2_day = min(7, max(3, int(d * 0.25)))
-    step3_day = min(18, max(7, int(d * 0.55)))
-    step4_day = min(28, max(12, int(d * 0.80)))
-    step5_day = max(step4_day + 1, d - 2)
-
-    return [
-        {
-            "step": 1,
-            "title": "Designate Lead Author & Division PM",
-            "deadline_day": f"Day {step1_day}",
-            "owner": "Agency Leadership / Division Director",
-            "action": "Appoint principal author, verify SAM.gov active UEI, and initiate Grants.gov Workspace package."
-        },
-        {
-            "step": 2,
-            "title": "Secure Matching Funds & NICRA Clearance",
-            "deadline_day": f"Day {step2_day}",
-            "owner": "Budget Director / Fiscal Officer",
-            "action": "Convene budget review to lock in required 20% non-federal matching commitments and calculate approved indirect rates."
-        },
-        {
-            "step": 3,
-            "title": "Draft Technical Narrative & Solicit Partner Letters",
-            "deadline_day": f"Day {step3_day}",
-            "owner": "Lead Project Author",
-            "action": "Complete first full draft of 25-page project narrative, collect letters of support, and assemble work plan."
-        },
-        {
-            "step": 4,
-            "title": "Internal Legal, SPOC & Executive Review",
-            "deadline_day": f"Day {step4_day}",
-            "owner": "General Counsel & State Clearinghouse",
-            "action": "Execute Governor's EO 12372 intergovernmental review, legal compliance check, and executive briefing sign-off."
-        },
-        {
-            "step": 5,
-            "title": "Final AOR Submission on Grants.gov",
-            "deadline_day": f"Day {step5_day} (48h prior to deadline)",
-            "owner": "Authorized Organization Representative (AOR)",
-            "action": "Perform final validation check, submit complete application package on Grants.gov, and archive confirmation receipt."
-        }
-    ]
+    steps = [{"title": "Decide whether to apply and name a lead",
+              "deadline_day": when(int(days * 0.8)) if days and days > 10 else "As soon as possible",
+              "action": "Read the requirements below and the official notice, confirm your organization is eligible, and assign one person to lead the application."},
+             {"title": "Check registrations",
+              "deadline_day": when(30) if days and days > 30 else "As soon as possible",
+              "action": "Make sure your SAM.gov registration is active (renewal can take 10 business days or more) and that someone has the Authorized Organization Representative role on Grants.gov."}]
+    if opp.get("cost_share_required"):
+        steps.append({"title": "Confirm matching funds",
+                      "deadline_day": when(21) if days and days > 21 else "As soon as possible",
+                      "action": "This grant requires matching funds. Ask your budget office to confirm the source and amount; the notice gives the required percentage."})
+    steps.append({"title": "Write the application",
+                  "deadline_day": when(10) if days and days > 10 else "As soon as possible",
+                  "action": "Prepare each document on the requirements list, following the notice's page limits and section headings."})
+    steps.append({"title": "Submit early",
+                  "deadline_day": when(3) if days and days > 3 else "Before the deadline",
+                  "action": "Submit on Grants.gov a few days before the deadline. Validation can take up to two business days, and late applications are usually rejected."})
+    if opp.get("status") == "forecasted":
+        steps = [{"title": "Watch for the official notice",
+                  "deadline_day": "When posted",
+                  "action": "This grant is forecasted. Mark it Watch, check registrations now, and start planning; requirements and dates are final only when the notice is posted."}] + steps[1:2]
+    for n, st in enumerate(steps, 1):
+        st["step"] = n
+    return steps
 
 def generate_executive_email(opp, profile=None):
     """Generates an executive alert email memo ready to send."""
