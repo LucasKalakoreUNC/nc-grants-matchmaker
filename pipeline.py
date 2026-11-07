@@ -18,7 +18,7 @@ from datetime import datetime
 import db
 
 # "Today" for deadline math. Defaults to the real date; set PIPELINE_DATE=YYYY-MM-DD to replay a past run.
-CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or datetime.now().strftime("%Y-%m-%d")
+CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or db.nc_today().isoformat()
 CURRENT_DATE = datetime.strptime(CURRENT_DATE_STR, "%Y-%m-%d")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -38,7 +38,10 @@ KEYWORDS_PULL = [
     "disaster mitigation", "flood", "cybersecurity", "emergency",
     "affordable housing", "community development block grant", "FEMA BRIC",
     "SBIR", "STTR", "small business", "commercialization", "cleantech",
-    "STEM", "higher education", "apprenticeship", "safe streets", "urban forestry"
+    "STEM", "higher education", "apprenticeship", "safe streets", "urban forestry",
+    "literacy", "state educational agencies", "career and technical education",
+    "teacher recruitment", "school safety", "school mental health",
+    "public works", "economic adjustment assistance"
 ]
 
 def fetch_grants_from_api(keyword=None, rows=25, opp_statuses="forecasted|posted"):
@@ -924,6 +927,9 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
 
 def run_pipeline():
     """Main pipeline execution for MODE=job or interactive sync."""
+    global CURRENT_DATE_STR, CURRENT_DATE
+    CURRENT_DATE_STR = os.environ.get("PIPELINE_DATE") or db.nc_today().isoformat()
+    CURRENT_DATE = datetime.strptime(CURRENT_DATE_STR, "%Y-%m-%d")
     start_time = time.time()
     today_str = CURRENT_DATE_STR
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -936,7 +942,7 @@ def run_pipeline():
     conn = db.connect()
     max_age = float(os.environ.get("FETCH_MAX_AGE_HOURS", "20"))
     force = os.environ.get("FORCE_REFRESH") == "1"
-    counts = {"new": 0, "changed": 0, "unchanged": 0}
+    counts = {"new": 0, "changed": 0, "unchanged": 0, "excluded": 0}
     pulled = skipped = 0
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Checking Grants.gov (cache window {max_age:g}h)...")
     for q in KEYWORDS_PULL + [None]:
@@ -973,14 +979,14 @@ def run_pipeline():
 
     # 2. Normalize and de-duplicate everything stored, then save to the database
     normalized = normalize_opportunities(open_hits, details, conn)
-    opp_changes = {"new": 0, "changed": 0, "unchanged": 0}
+    opp_changes = {"new": 0, "changed": 0, "unchanged": 0, "excluded": 0}
     for opp in normalized:
         opp_changes[db.upsert_opportunity(conn, opp, source="grants.gov", source_record_id=opp["id"])] += 1
-    closed = db.mark_closed(conn, today_str)
+    closed = db.prune_unavailable(conn)
     conn.commit()
     normalized = db.opportunities(conn)
     print(f"[{datetime.now().strftime('%H:%M:%S')}] {len(normalized)} open/forecasted grants in database "
-          f"({opp_changes['new']} new, {opp_changes['changed']} updated, {closed} newly closed)")
+          f"({opp_changes['new']} new, {opp_changes['changed']} updated, {closed} expired records removed)")
 
     # 3. Score & Rank across all NC organization profiles
     build_similarity_index(normalized)

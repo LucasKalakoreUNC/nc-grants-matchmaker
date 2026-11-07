@@ -15,6 +15,7 @@ from datetime import datetime
 import csv
 import io
 import re
+from html import escape as html_escape
 
 import pipeline
 import db
@@ -35,10 +36,12 @@ def slim(items):
 
 
 def other_items(conn, office_id, profile):
-    """State programs, foundations and federal programs this organization can apply for,
-    shaped like grant rows so the page can show one combined list."""
+    """State/foundation applications with a sourced deadline that has not passed.
+
+    Undated program descriptions do not establish an open or upcoming application.
+    """
     cat = profile.get("category", "state")
-    words = pipeline.CATEGORY_ELIGIBILITY_WORDS.get(cat, [])
+    today = db.nc_today()
     out = []
     if cat != "state":  # state agencies run state programs rather than apply to them
         for m in state_programs.for_office(conn, office_id):
@@ -48,27 +51,20 @@ def other_items(conn, office_id, profile):
                 text = (json.loads(rec["payload"]).get("text") or "").lower() if rec else ""
                 if "nonprofit" in text[:400] and "government" not in text[:600]:
                     continue  # funds nonprofits only
-            d = (m.get("deadlines") or [None])[0]
+            deadlines = [(db.application_deadline({"close_date": d.get("date")}), d)
+                         for d in m.get("deadlines", [])]
+            deadlines = [(day, d) for day, d in deadlines if day and day >= today]
+            if not deadlines:
+                continue
+            close, d = min(deadlines, key=lambda pair: pair[0])
             out.append({"id": f"st-{m['id']}", "kind": "Private foundation" if foundation else "NC state program",
                         "title": m["name"], "agency": "Private foundation" if foundation else "State of North Carolina",
-                        "url": m["url"], "total_score": round(m["fit"] * 0.8, 1), "status": "posted" if d else "program",
-                        "close_date": d["date"] if d else None, "deadline_quote": d["quote"] if d else None,
-                        "days_to_close": (datetime.fromisoformat(d["date"]) - datetime.now()).days if d else None,
+                        "url": m["url"], "total_score": round(m["fit"] * 0.8, 1), "status": "posted",
+                        "close_date": close.isoformat(), "deadline_quote": d.get("quote"),
+                        "days_to_close": (close - today).days,
                         "matched_goal_title": m.get("matched_goal_title"), "page_read": m.get("page_read", True),
                         "overview": m.get("overview") or {}, "parent": m.get("parent"), "shared_words": m.get("shared_words"),
                         "best_office_id": office_id})
-    for m in programs.programs_for_office(conn, office_id):
-        p = m.get("program") or {}
-        who = (p.get("who_can_apply") or "").lower()
-        if m.get("open_grants") or not who or not any(w in who for w in words):
-            continue  # open grants are already in the list; skip programs this type can't apply to
-        r = p.get("award_range") or {}
-        out.append({"id": f"fp-{m['cfda']}", "kind": "Federal program (no open competition)", "title": m["title"],
-                    "agency": f"Assistance Listing {m['cfda']}", "url": p.get("sam_url"), "total_score": round(m["fit"] * 0.7, 1),
-                    "status": "program", "award_range": r, "matched_goal_title": m.get("matched_goal_title"),
-                    "overview": {"description": p.get("objective", "")[:700], "who_can_apply": p.get("who_can_apply", "")[:500],
-                                 "funding": p.get("financial_note", "")[:400], "restrictions": p.get("uses_restrictions", "")[:400]},
-                    "best_office_id": office_id})
     return out
 
 
@@ -76,29 +72,59 @@ def load_scored(agency_id):
     """Scored grants for one office, best first, read from the database."""
     conn = db.connect()
     try:
-        return db.scored_for_office(conn, agency_id)
+        profile = pipeline.load_agency_profiles().get(agency_id)
+        return scored_for_profile(conn, agency_id, profile) if profile else []
     finally:
         conn.close()
 
 
-def build_weekly_digest(conn, office_id):
+def scored_for_profile(conn, office_id, profile):
+    """Keep all scores, excluding notices that rule out this applicant type."""
+    return [item for item in db.scored_for_office(conn, office_id)
+            if pipeline.eligibility_fit(item, profile)[0] > 10]
+
+
+def selection_counts(conn, profiles, office="all", category="all"):
+    ids = [office] if office != "all" else [oid for oid, profile in profiles.items()
+            if category == "all" or profile.get("category", "state") == category]
+    selected = [profiles[oid] for oid in ids if oid in profiles]
+    today = db.nc_today()
+    grants = [item for item in db.opportunities(conn)
+              if db.application_available(item, today)
+              and any(pipeline.eligibility_fit(item, profile)[0] > 10 for profile in selected)]
+    extras = {item["id"]: item for oid in ids if oid in profiles
+              for item in other_items(conn, oid, profiles[oid])}
+    foundations = sum(item["kind"] == "Private foundation" for item in extras.values())
+    return {"available": len(grants),
+            "open": sum(item["status"] == "posted" for item in grants),
+            "upcoming": sum(item["status"] == "forecasted" for item in grants),
+            "state_programs": len(extras) - foundations, "foundations": foundations,
+            "total": len(grants) + len(extras)}
+
+
+def build_weekly_digest(conn, office_id, category="all"):
     """Generate weekly email briefing covering pursuing grants, upcoming due dates, and new matches."""
     profiles = pipeline.load_agency_profiles()
     profile = profiles.get(office_id, {})
     org_name = profile.get("name", office_id.replace("_", " ").title() if office_id != "all" else "All North Carolina Organizations")
-    today_str = datetime.now().strftime("%B %d, %Y")
+    today = db.nc_today()
+    today_str = today.strftime("%B %d, %Y")
+    selected_ids = [office_id] if office_id != "all" else [oid for oid, p in profiles.items()
+                    if category == "all" or p.get("category", "state") == category]
+    if office_id == "all" and category != "all":
+        org_name = {"state": "State agencies", "county": "Counties", "municipal": "Cities and towns",
+                    "education": "Universities and colleges", "k12": "School districts", "nonprofit": "Nonprofits",
+                    "tribal": "Tribes", "business": "Businesses"}.get(category, category)
 
     # 1. Grants the department is pursuing
-    if office_id == "all":
-        dec_rows = conn.execute("""
+    if selected_ids:
+        marks = ",".join("?" for _ in selected_ids)
+        dec_rows = conn.execute(f"""
             SELECT office_id, opportunity_id, number, title, notes, decided_by, decided_at
-            FROM decisions WHERE status='Pursue' ORDER BY decided_at DESC
-        """).fetchall()
+            FROM decisions WHERE office_id IN ({marks}) AND status='Pursue' ORDER BY decided_at DESC
+        """, selected_ids).fetchall()
     else:
-        dec_rows = conn.execute("""
-            SELECT office_id, opportunity_id, number, title, notes, decided_by, decided_at
-            FROM decisions WHERE office_id=? AND status='Pursue' ORDER BY decided_at DESC
-        """, (office_id,)).fetchall()
+        dec_rows = []
 
     pursuing = []
     total_funding = 0
@@ -118,15 +144,20 @@ def build_weekly_digest(conn, office_id):
         number = d["number"] or ""
 
         if opp:
+            record = json.loads(opp["data"])
+            record.update(status=opp["status"], close_date=opp["close_date"])
+            if not db.application_available(record, today):
+                continue
             title = opp["title"]
             number = opp["number"] or number
-            close_date = opp["close_date"]
+            deadline = db.application_deadline(record)
+            close_date = deadline.isoformat() if deadline else None
             award_ceiling = opp["award_ceiling"]
             agency = opp["agency"]
             url = opp["url"]
             if close_date:
                 try:
-                    days_to_close = (datetime.fromisoformat(close_date[:10]) - datetime.now()).days
+                    days_to_close = (datetime.fromisoformat(close_date[:10]).date() - today).days
                 except Exception:
                     days_to_close = None
         elif str(oid).startswith(("st-", "fp-")):
@@ -137,6 +168,10 @@ def build_weekly_digest(conn, office_id):
                 url = it.get("url")
                 close_date = it.get("close_date")
                 days_to_close = it.get("days_to_close")
+            else:
+                continue
+        else:
+            continue  # retained historical decisions are not active applications
 
         if award_ceiling:
             total_funding += award_ceiling
@@ -146,8 +181,9 @@ def build_weekly_digest(conn, office_id):
             closing_soon_count += 1
 
         docs_list = []
-        if req and req.get("required_documents"):
-            for doc in req["required_documents"][:8]:
+        verified_docs = [doc for doc in (req or {}).get("required_documents", []) if doc.get("verified") is not False]
+        if verified_docs:
+            for doc in verified_docs[:8]:
                 docs_list.append({
                     "name": doc.get("name"),
                     "category": doc.get("category", "Standard"),
@@ -168,20 +204,23 @@ def build_weekly_digest(conn, office_id):
             "decided_by": d["decided_by"],
             "decided_at": d["decided_at"],
             "required_documents": docs_list,
-            "required_doc_count": len(req.get("required_documents", [])) if req else 0,
+            "required_doc_count": len(verified_docs),
             "url": url
         })
 
     pursuing.sort(key=lambda x: (x["days_to_close"] is None or x["days_to_close"] < 0, x["days_to_close"] if x["days_to_close"] is not None else 9999))
 
     # 2. New & Top Strategic Opportunities for this department
-    decided_ids = {str(d["opportunity_id"]) for d in dec_rows}
-    scored = db.scored_for_office(conn, office_id) if office_id != "all" else []
-    new_candidates = [
-        it for it in scored
-        if str(it.get("id")) not in decided_ids and (it.get("days_to_close") is None or it.get("days_to_close") >= 0)
-    ]
-    top_new = new_candidates[:6]
+    new_candidates = {}
+    for oid in selected_ids:
+        decided = {str(d[0]) for d in conn.execute("SELECT opportunity_id FROM decisions WHERE office_id=?", (oid,))}
+        for it in scored_for_profile(conn, oid, profiles.get(oid, {})):
+            if str(it["id"]) in decided:
+                continue
+            previous = new_candidates.get(it["id"])
+            if previous is None or it["total_score"] > previous["total_score"]:
+                new_candidates[it["id"]] = {**it, "best_office_id": oid}
+    top_new = sorted(new_candidates.values(), key=lambda it: -it["total_score"])[:6]
 
     money_str = lambda n: f"${int(n/1e6 * 10)/10:.1f}M" if n and n >= 1e6 else (f"${int(n):,}" if n else "See notice")
 
@@ -233,8 +272,8 @@ def build_weekly_digest(conn, office_id):
     ])
 
     for idx, it in enumerate(top_new, 1):
-        fit_lbl = "Strong match" if it.get("total_score", 0) >= 70 else "Good match"
-        due = f"{it.get('days_to_close')} days left (Due {it.get('close_date')})" if it.get('days_to_close') is not None else "Open"
+        fit_lbl = "Strong match" if it.get("total_score", 0) >= 70 else "Good match" if it.get("total_score", 0) >= 55 else "Possible match"
+        due = "Upcoming (forecasted)" if it.get("status") == "forecasted" else f"{it.get('days_to_close')} days left (Due {it.get('close_date')})" if it.get('days_to_close') is not None else "Open; no deadline listed"
         lines.append(f"\n* {it.get('title')}")
         lines.append(f"  Match: {fit_lbl} ({it.get('total_score')}/100) | Funder: {it.get('agency')}")
         if it.get("matched_goal_title"):
@@ -259,28 +298,32 @@ def build_weekly_digest(conn, office_id):
         html_pursuing = "<p style='color:#565c65;font-style:italic;'>No grants currently marked 'Pursue'. Click 'Pursue' on any opportunity in the Matchmaker to track its due dates and checklist here.</p>"
     else:
         for idx, p in enumerate(pursuing, 1):
+            p = {k: html_escape(v, quote=True) if isinstance(v, str) else v for k, v in p.items()}
             urgency_bg = "#fef0f0" if p['closing_soon'] else "#f0f4f8"
             urgency_border = "#d9381e" if p['closing_soon'] else "#005ea2"
             urgency_text = f"<strong style='color:#d9381e'>[URGENT] {p['days_to_close']} days left (Due {p['close_date']})</strong>" if p['closing_soon'] else f"<strong>Due: {p['close_date']} ({p['days_to_close']} days left)</strong>" if p['days_to_close'] is not None else "Deadline: Open / See Notice"
 
-            docs_html = "".join([f"<li style='margin-bottom:3px;'><strong>{d['category']}:</strong> {d['name']}</li>" for d in p['required_documents'][:5]])
+            docs_html = "".join([f"<li style='margin-bottom:3px;'><strong>{html_escape(d['category'])}:</strong> {html_escape(d['name'])}</li>" for d in p['required_documents'][:5]])
             if p['required_doc_count'] > 5:
                 docs_html += f"<li style='color:#565c65;'><em>+ {p['required_doc_count'] - 5} more documents in checklist</em></li>"
+            team_html = ("<div style='font-size:0.9em;margin-bottom:6px;'><strong>Team Lead:</strong> "
+                         + p['decided_by'] + ' &middot; <em>"' + p['notes'] + '"</em></div>') if p['notes'] or p['decided_by'] else ""
 
             html_pursuing += f"""
             <div style="background:{urgency_bg};border-left:5px solid {urgency_border};padding:14px 18px;margin-bottom:16px;border-radius:3px;">
               <div style="font-size:1.1em;font-weight:bold;margin-bottom:4px;">{idx}. <a href="{p['url']}" style="color:#005ea2;text-decoration:underline;">{p['title']}</a></div>
               <div style="font-size:0.9em;color:#565c65;margin-bottom:8px;">{p['agency']} &middot; Opp #{p['number']} &middot; Award: <strong>{money_str(p['award_ceiling'])}</strong></div>
               <div style="margin-bottom:8px;font-size:0.95em;">{urgency_text}</div>
-              {f"<div style='font-size:0.9em;margin-bottom:6px;'><strong>Team Lead:</strong> {p['decided_by']} &middot; <em>\"{p['notes']}\"</em></div>" if p['notes'] or p['decided_by'] else ""}
+              {team_html}
               {f"<div style='margin-top:8px;'><div style='font-size:0.85em;font-weight:bold;text-transform:uppercase;color:#565c65;'>Required Documents Checklist ({p['required_doc_count']}):</div><ul style='margin:4px 0 0;padding-left:20px;font-size:0.9em;'>{docs_html}</ul></div>" if docs_html else ""}
             </div>
             """
 
     html_new = ""
     for idx, it in enumerate(top_new, 1):
+        it = {k: html_escape(v, quote=True) if isinstance(v, str) else v for k, v in it.items()}
         fit_color = "#00a91c" if it.get("total_score", 0) >= 70 else "#005ea2"
-        due = f"{it.get('days_to_close')} days left" if it.get('days_to_close') is not None else "Open"
+        due = "Upcoming" if it.get("status") == "forecasted" else f"{it.get('days_to_close')} days left" if it.get('days_to_close') is not None else "No deadline listed"
         html_new += f"""
         <tr style="border-bottom:1px solid #dfe1e2;">
           <td style="padding:10px 8px;"><a href="{it.get('url')}" style="color:#005ea2;font-weight:bold;text-decoration:none;">{it.get('title')}</a><br><span style="font-size:0.85em;color:#565c65;">{it.get('agency')} &middot; Goal: {it.get('matched_goal_title', 'Strategic priority')}</span></td>
@@ -297,7 +340,7 @@ def build_weekly_digest(conn, office_id):
   <div style="max-width:680px;margin:0 auto;background:#ffffff;border:1px solid #dfe1e2;border-radius:4px;overflow:hidden;">
     <div style="background:#162e51;color:#ffffff;padding:20px 24px;">
       <div style="font-size:0.85em;letter-spacing:1px;text-transform:uppercase;color:#c9d4e3;">North Carolina Federal & State Grants Briefing</div>
-      <h1 style="font-family:Merriweather,Georgia,serif;font-size:1.4em;margin:6px 0 2px;color:#ffffff;">{org_name}</h1>
+      <h1 style="font-family:Merriweather,Georgia,serif;font-size:1.4em;margin:6px 0 2px;color:#ffffff;">{html_escape(org_name)}</h1>
       <div style="font-size:0.9em;color:#e7f2f8;">Briefing for week of {today_str}</div>
     </div>
     <div style="padding:20px 24px;">
@@ -348,7 +391,8 @@ def build_weekly_digest(conn, office_id):
             "total_funding": total_funding
         },
         "text": text_content,
-        "html": html_body
+        "html": html_body,
+        "email_delivery_available": bool(os.environ.get("SMTP_HOST")),
     }
 
 PORT = int(os.environ.get("PORT", 8000))
@@ -491,8 +535,11 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 if path == "/api/scored/all":
                     # Each organization's own top matches, grouped by organization in the page
                     per = int(urllib.parse.parse_qs(parsed.query).get("per", ["25"])[0])
-                    items = db.top_per_office(conn, ids, per=per)
+                    items = []
                     for oid in ids:
+                        for item in scored_for_profile(conn, oid, profiles[oid])[:per]:
+                            item["best_office_id"] = oid
+                            items.append(item)
                         items += other_items(conn, oid, profiles[oid])
                     for it in items:
                         it["best_office_name"] = profiles.get(it["best_office_id"], {}).get("name", "")
@@ -509,9 +556,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             try:
                 profile = pipeline.load_agency_profiles().get(agency_id, {})
                 extra = other_items(conn, agency_id, profile) if profile else []
+                items = scored_for_profile(conn, agency_id, profile) if profile else []
             finally:
                 conn.close()
-            self._send_json(slim(load_scored(agency_id)) + extra)
+            self._send_json(slim(items) + extra)
             return
 
         # 5. API: Get decisions for agency
@@ -529,13 +577,24 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             agency_id = path.replace("/api/digest/", "").strip()
             conn = db.connect()
             try:
-                digest = build_weekly_digest(conn, agency_id)
+                if agency_id != "all" and agency_id not in pipeline.load_agency_profiles():
+                    self._send_json({"error": "Profile not found"}, 404)
+                    return
+                category = urllib.parse.parse_qs(parsed.query).get("category", ["all"])[0]
+                digest = build_weekly_digest(conn, agency_id, category)
+                digest["email_delivery_available"] = bool(
+                    digest["email_delivery_available"] and os.environ.get("ADMIN_TOKEN")
+                    and self.headers.get("X-Admin-Token") == os.environ["ADMIN_TOKEN"])
                 self._send_json(digest)
             finally:
                 conn.close()
             return
 
         if path.startswith("/api/subscribers/"):
+            token = os.environ.get("ADMIN_TOKEN")
+            if not token or self.headers.get("X-Admin-Token") != token:
+                self._send_json({"error": "Not allowed"}, 403)
+                return
             agency_id = path.replace("/api/subscribers/", "").strip()
             conn = db.connect()
             try:
@@ -549,7 +608,16 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
         if path == "/api/db/stats":
             conn = db.connect()
             try:
-                self._send_json(db.stats(conn))
+                query = urllib.parse.parse_qs(parsed.query)
+                office = query.get("office", ["all"])[0]
+                category = query.get("category", ["all"])[0]
+                profiles = pipeline.load_agency_profiles()
+                if office != "all" and office not in profiles:
+                    self._send_json({"error": "Profile not found"}, 404)
+                    return
+                result = db.stats(conn)
+                result["selection"] = selection_counts(conn, profiles, office, category)
+                self._send_json(result)
             finally:
                 conn.close()
             return
@@ -591,13 +659,13 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 typical = (it.get("typical_award") or {}).get("median")
                 dec = decisions.get(str(it.get("id")), {})
                 cs = it.get("cost_share_required")
+                due = db.application_deadline(it)
                 writer.writerow([
                     i + 1, it.get("total_score", 0), label(it.get("total_score", 0)),
                     round((it.get("score_breakdown") or {}).get("relevancy", 0)), "Federal grant",
                     it.get("title", ""), it.get("number", ""), it.get("agency", ""), it.get("status", ""),
                     "Open now" if it.get("status") != "forecasted" else (it.get("expected_open_date") or "Not announced"),
-                    it.get("close_date") or (it.get("expected_due_date")
-                                             if (it.get("expected_due_date") or "") > (it.get("expected_open_date") or "") else ""),
+                    (due.isoformat() if due else "") if it.get("status") == "forecasted" else (it.get("close_date") or ""),
                     "" if it.get("days_to_close") is None else it.get("days_to_close"),
                     dollars(it.get("award_ceiling") or it.get("award_estimate")), dollars(typical),
                     it.get("est_completion_hours", ""),
@@ -633,8 +701,9 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
         # Static assets
         safe_rel_path = path.lstrip("/")
-        candidate = os.path.join(BASE_DIR, "public", safe_rel_path)
-        if os.path.exists(candidate) and os.path.isfile(candidate):
+        public_dir = os.path.realpath(os.path.join(BASE_DIR, "public"))
+        candidate = os.path.realpath(os.path.join(public_dir, safe_rel_path))
+        if os.path.commonpath([public_dir, candidate]) == public_dir and os.path.isfile(candidate):
             content_type = "text/plain"
             if candidate.endswith(".js"): content_type = "application/javascript"
             elif candidate.endswith(".css"): content_type = "text/css"
@@ -721,7 +790,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
             self._send_json({
                 "success": True,
-                "message": f"Successfully subscribed {email} for weekly {office_id.upper()} grant briefing updates!",
+                "message": "Email preferences saved. Automatic delivery is not started by saving an address.",
                 "email": email,
                 "office_id": office_id
             })
@@ -729,6 +798,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
         # 2c. Send / Dispatch Weekly Digest
         if path == "/api/digest/send":
+            token = os.environ.get("ADMIN_TOKEN")
+            if not token or self.headers.get("X-Admin-Token") != token:
+                self._send_json({"error": "Not allowed"}, 403)
+                return
             email = str(payload.get("email", "")).strip()
             office_id = str(payload.get("office_id", "deq")).strip()
             if not email or "@" not in email:
@@ -764,10 +837,10 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     print(f"[WARN] SMTP delivery failed: {e}")
 
             self._send_json({
-                "success": True,
-                "sent": True,
+                "success": sent_real,
+                "sent": sent_real,
                 "smtp_delivered": sent_real,
-                "message": f"Weekly briefing dispatched to {email}",
+                "message": f"Weekly briefing dispatched to {email}" if sent_real else "Email delivery is unavailable. Preview or copy the briefing instead.",
                 "subject": digest["subject"],
                 "summary": digest["summary"]
             })
