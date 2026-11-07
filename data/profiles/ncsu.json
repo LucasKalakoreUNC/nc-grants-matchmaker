@@ -3,8 +3,7 @@
   "category": "education",
   "name": "North Carolina State University",
   "short_name": "NC State",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030)",
   "mission": "A public land-grant research university focused on science, engineering, agriculture and technology.",
   "eligible_applicant_types": [
     "Public and State controlled institutions of higher education"
@@ -20,60 +19,141 @@
     {
       "id": "NCSU-G1",
       "number": 1,
-      "title": "Research in engineering, energy and advanced manufacturing",
-      "citation": "NC State draft profile, goal 1",
-      "description": "Grow research in engineering and energy.",
+      "title": "Student success",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 1",
+      "description": "Empower students for a lifetime of success and impact.",
       "objectives": [
-        "Expand clean energy research",
-        "Advance manufacturing research"
+        "Empower students for a lifetime of success and impact."
       ],
       "keywords": [
-        "engineering",
-        "clean energy",
-        "advanced manufacturing",
-        "materials",
-        "semiconductor"
+        "student success",
+        "undergraduate education",
+        "graduate training",
+        "stem education",
+        "scholarships"
       ]
     },
     {
       "id": "NCSU-G2",
       "number": 2,
-      "title": "Agriculture and life sciences",
-      "citation": "NC State draft profile, goal 2",
-      "description": "Lead research in agriculture and food systems.",
+      "title": "Research preeminence",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 2",
+      "description": "Ensure preeminence in research, scholarship, innovation and collaboration.",
       "objectives": [
-        "Advance crop and food science"
+        "Ensure preeminence in research, scholarship, innovation and collaboration."
       ],
       "keywords": [
-        "agriculture",
-        "food systems",
+        "research",
+        "engineering research",
+        "advanced manufacturing",
+        "clean energy",
+        "materials",
+        "semiconductor",
         "plant science",
         "animal science",
-        "extension"
+        "data science",
+        "artificial intelligence"
       ]
     },
     {
       "id": "NCSU-G3",
       "number": 3,
-      "title": "STEM education and workforce",
-      "citation": "NC State draft profile, goal 3",
-      "description": "Train the STEM workforce.",
+      "title": "Land-grant engagement and service",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 3",
+      "description": "Expand and advance our engagement with and service to North Carolina and beyond, defining the standard for a 21st-century land-grant university.",
       "objectives": [
-        "Expand STEM pathways"
+        "Expand and advance our engagement with and service to North Carolina and beyond, defining the standard for a 21st-century land-grant university."
       ],
       "keywords": [
-        "stem education",
-        "workforce",
-        "graduate training"
+        "extension",
+        "cooperative extension",
+        "agriculture",
+        "rural communities",
+        "community engagement",
+        "4-h"
+      ]
+    },
+    {
+      "id": "NCSU-G4",
+      "number": 4,
+      "title": "Equality, belonging and well-being",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 4",
+      "description": "Champion a culture of equality, belonging and well-being in all we do.",
+      "objectives": [
+        "Champion a culture of equality, belonging and well-being in all we do."
+      ],
+      "keywords": [
+        "student mental health",
+        "well-being",
+        "broadening participation"
+      ]
+    },
+    {
+      "id": "NCSU-G5",
+      "number": 5,
+      "title": "University effectiveness",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 5",
+      "description": "Improve university effectiveness through transformative technologies, cutting-edge processes and actionable data.",
+      "objectives": [
+        "Improve university effectiveness through transformative technologies, cutting-edge processes and actionable data."
+      ],
+      "keywords": [
+        "research infrastructure",
+        "cyberinfrastructure"
+      ]
+    },
+    {
+      "id": "NCSU-G6",
+      "number": 6,
+      "title": "Partnerships, entrepreneurship and applied problem-solving",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 6",
+      "description": "Lead in developing innovative partnerships, entrepreneurial thinking and applied problem-solving.",
+      "objectives": [
+        "Lead in developing innovative partnerships, entrepreneurial thinking and applied problem-solving."
+      ],
+      "keywords": [
+        "technology transfer",
+        "commercialization",
+        "industry partnerships",
+        "innovation",
+        "entrepreneurship"
+      ]
+    },
+    {
+      "id": "NCSU-G7",
+      "number": 7,
+      "title": "National and global reputation",
+      "citation": "NC State University, Wolfpack 2030: Powering the Extraordinary (2021-2030), Goal 7",
+      "description": "Elevate the national and global reputation and visibility of NC State.",
+      "objectives": [
+        "Elevate the national and global reputation and visibility of NC State."
+      ],
+      "keywords": [
+        "international research",
+        "global partnerships"
       ]
     }
   ],
   "keywords": [
-    "research",
-    "university",
-    "science",
-    "engineering",
+    "advanced manufacturing",
     "agriculture",
-    "stem"
-  ]
+    "broadening participation",
+    "commercialization",
+    "cooperative extension",
+    "cyberinfrastructure",
+    "engineering research",
+    "extension",
+    "global partnerships",
+    "graduate training",
+    "industry partnerships",
+    "international research",
+    "research",
+    "research infrastructure",
+    "student mental health",
+    "student success",
+    "technology transfer",
+    "undergraduate education",
+    "well-being"
+  ],
+  "source_url": "https://strategicplan.ncsu.edu/current-plan/wolfpack-2030-powering-the-extraordinary/"
 }

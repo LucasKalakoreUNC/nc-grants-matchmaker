@@ -19,6 +19,7 @@ import re
 import pipeline
 import db
 import notices
+import ai
 
 
 # Fields only the grant panel needs; left out of list responses to keep them
@@ -138,6 +139,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     "detail": {k: full.get(k) for k in DETAIL_FIELDS},
                     "files": notices.files_for(conn, opp_id),
                     "requirements": notices.requirements_for(conn, opp_id),
+                    "review": ai.review_for(urllib.parse.parse_qs(parsed.query).get("office", [""])[0], opp_id),
                     "links": links,
                 })
             finally:

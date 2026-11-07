@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta content="9ff32c399804d33a40dd0fcc4ced63a5" name="id"/>
+		<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+		
+
+
+<!-- OG metatags -->
+<meta content="https://www.ncat.edu/about/initiatives/preeminence-2030/goals.php" property="og:url"/>
+<meta content="GOALS, STRATEGIES &amp; METRICS" property="og:title"/>
+<meta content="${_EscapeTool.xml($currentPage.metadata.description)}" property="og:description"/>
+   <meta content="https://www.ncat.edu/about/initiatives/_files/impact-2030-5.jpg" property="og:image"/>
+<!--/ end of OG metatags -->  
+
+<!-- twitter card metatags -->
+<meta content="summary" name="twitter:card"/>
+<meta content="GOALS, STRATEGIES &amp; METRICS" name="twitter:title"/>
+<meta content="${_EscapeTool.xml($currentPage.metadata.description)}" name="twitter:description"/>
+<meta content="@ncatsuaggies" name="twitter:site"/>
+ 
+  <meta content="https://www.ncat.edu/about/initiatives/_files/impact-2030-5.jpg" name="twitter:image"/>
+<!--/ twitter card metatags -->
+
+		<title>
+			
+    GOALS, STRATEGIES &amp; METRICS  | North Carolina A&amp;T State University
+		
+		</title>
+		
+		
+		
+        
+	
+        
+		
+ 
+<!-- START /// new  CSS SLIDESHOW OPTIONS -->
+<link href="/_global/slides/css/style-main.css" rel="stylesheet" type="text/css"/>  
+<link href="/_global/slides/css/javascript-plugins-bundle.css" rel="stylesheet" type="text/css"/> 
+ <!-- END /// new CSS SLIDESHOW OPTIONS --> 
+ 
+<link href="/_favicon/favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="/_favicon/favicon_16x16.ico" rel="icon" type="image/x-icon"/>
+<link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" rel="stylesheet"/>
+<link href="/_global/css/styles.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900" rel="stylesheet"/>
+<link href="/_global/css/hh-custom.css" rel="stylesheet"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KLPBB4');</script>
+<!-- End Google Tag Manager -->
+
+		
+
+<script async="async" src="https://platform-api.sharethis.com/js/sharethis.js#property=634d603dc2af2800193d503d&amp;product=inline-share-buttons" type="text/javascript"></script>
+
+		<!-- START // Slideshow JS files -->
+<script src="/_global/slides/js/javascript-plugins-bundle.js"></script>
+
+<!-- REVOLUTION Slideshow STYLE SHEETS -->
+<link href="/_global/slides/js/revolution-slider/css/rs6.css" rel="stylesheet" type="text/css"/>
+<link href="/_global/slides/js/revolution-slider/extra-rev-slider1.css" rel="stylesheet" type="text/css"/>
+<!-- REVOLUTION LAYERS STYLES -->
+
+<!-- REVOLUTION Slideshow JS FILES -->
+<script src="/_global/slides/js/revolution-slider/js/revolution.tools.min.js"></script>
+<script src="/_global/slides/js/revolution-slider/js/rs6.min.js"></script>
+<script src="/_global/slides/js/revolution-slider/extra-rev-slider1.js"></script>
+
+<!-- END // Slideshow JS files -->
+
+		
+        
+	
+	</head>
+	
+
+
+        
+
+
+<body class="landing interior impact ">
+	<div id="top-area"></div>
+        
+        
+	
+ 
+
+	
+
+
+
+<!-- BEGIN:: SCREENREADER -->
+<div aria-label="Skip To Main Areas of Site" class="screenreader" role="navigation">
+    <a href="#skipToTopNav">Skip To Main Site Navigation</a>
+    <a href="#skipToContent">Skip to Content</a>
+            <a href="#skipToLeftNav">Skip To Left Navigation</a>
+        <a href="#skipToFooter">Skip To Footer</a>
+ </div>
+<!-- END:: SCREENREADER -->
+        
+        
+	
+ 
+
+
+
+
+
+        
+		
+	
+ 
+
+
+<!-- BEGIN:  MAIN MENU TOGGLE BUTTON -->
+<input aria-label="Open or Close Search Menu" class="searchToggle" id="searchtoggle" type="checkbox"/>
+<div aria-label="Search Menu" class="menu" id="searchHeader" role="navigation">
+    <label for="searchtoggle" title="search menu">
+      <span class="toggleBtn open" id="searchmenuOpen"><span class="text">search</span><span class="img"></span></span>
+      <span class="toggleBtn close" id="searchmenuClose"><span class="text">close</span><span class="img"></span></span>
+    </label>
+</div>
+<input aria-label="Open or Close Main Menu" class="toggle" id="offcanvasMenu" type="checkbox"/>
+<div aria-label="Main Menu" class="menu" id="mobileHeader" role="navigation">
+    <label for="offcanvasMenu" title="main menu">
+      <span class="toggleBtn open" id="topmenuOpen"><span class="text">menu</span><span class="img"></span></span>
+      <span class="toggleBtn close" id="topmenuClose"><span class="text">close</span><span class="img"></span></span>
+    </label>
+</div>
+<!-- END:  MAIN MENU TOGGLE BUTTON -->
+
+<!-- BEGIN:  HEADER UTILITY -->
+<header class="header">
+    <div class="headerContent wrapper">
+        <!-- Logo -->
+        <div class="logo">
+            <a href="/index.php">
+                <img alt="North Carolina A&amp;T University Main Logo" class="logoWhite" src="/_global/images/logo-main-white.png"/>
+                <img alt="North Carolina A&amp;T University Main Logo Mobile" class="logoBlue" src="/_global/images/logo-main-blue.png"/>
+            </a>
+        </div>
+        <div aria-label="Utility Menu" class="utilityWrapper" role="region">
+            <!-- Utility -->
+            <div class="desktopOnly">
+                                                                                                          <div class="utilityLink text">
+                      <a href="/visit/index.php" target="_self">Visit</a>
+                  </div>
+                                                                                                            <div class="utilityLink text">
+                      <a href="/admissions/apply/index.php" target="_self">Apply</a>
+                  </div>
+                                                                                                            <div class="utilityLink text">
+                      <a href="/give/index.php" target="_self">Give</a>
+                  </div>
+                                              </div>
+        </div>
+    </div>
+</header>
+<!-- END:  HEADER UTILITY -->
+
+<!-- BEGIN:  HEADER FULL MENU NAVIGATION -->
+<div aria-label="Global Search Form" class="searchContainer" role="region">
+  <div class="searchBoxWrap">
+    <form action="https://search.ncat.edu/s/search.html" id="searchBox" method="get" name="search-form">
+        <input name="ie" type="hidden" value="UTF-8"/>
+        <label class="hiddenLabel" for="searchBoxLabel"><span>search</span></label>
+        <input class="searchBox" id="searchBoxLabel" name="query" placeholder="Search" title="Search Term" type="text"/>
+        <input name="collection" type="hidden" value="ncat~sp-search"/>
+        <button name="sa" onclick="this.form.submit();" title="submit" type="submit">
+            <span class="hidden">Search</span>
+            <em aria-hidden="true" class="search-icon"> </em>
+        </button>
+    </form>
+  </div>  
+</div>
+<nav aria-label="Top Navigation Menu" class="topNav" id="skipToTopNav"> 
+    <div class="container">
+        <aside class="menuContainer">
+            <div class="mobileWrapper scrollable-element">
+                <div class="topNavWrapper">
+                  <div id="mainMenu">
+                        <!-- BEGIN: HIGH CONTRAST MOBILE BUTTON -->
+                        <ul class="tabletOnly highContrast">
+                            <li>
+                                <fieldset>
+                                    <legend class="hiddenLabel">High Contrast:</legend>
+                                    <span>HIGH CONTRAST</span>
+                                    <label class="switch" for="togBtn"><input id="togBtn" type="checkbox"/><span class="slider round"><span class="on">ON</span><span class="off">OFF</span></span></label>
+                                </fieldset>
+                            </li>
+                        </ul>
+                        <!-- END: HIGH CONTRAST MOBILE BUTTON -->
+                        
+                        <ul class="parentMenu">
+                                                                                                                                                                                                                                                                                                    <li class="menuItem">
+                                                                <a href="/academics/index.php" target="_self">Academics</a> 
+                                                                                              <input aria-label="Academics" id="Academics-parent" title="Academics" type="checkbox"/>
+                                  <span class="menuExpand tabletOnly"></span>
+                                  <ul class="menuItemContent menuItemDefault">
+                                      <!-- BEGIN: Section Links -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/majors-minors-and-programs/index.php" target="_self">Majors, Minors &amp; Programs
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/colleges-departments/index.php" target="_self">Colleges &amp; Departments
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/academic-resources/index.php" target="_self">Academic Resources
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="http://online.ncat.edu/index.html" target="_self">A&amp;T Online
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/transfer-students/index.php" target="_self">Transfer Students
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li><a href="https://profiles.ncat.edu/" target="_blank">Profiles / Scholars Portal
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/continuing-education/index.php" target="_self">Continuing Education
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/summer-sessions/index.php" target="_self">Summer Sessions
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/graduate-programs/index.php" target="_self">Graduate Programs
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/international-affairs/index.php" target="_self">International Affairs and Programs
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/provost/index.php" target="_self">Office of the Provost
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/accreditation.php" target="_self">Accreditation
+                                          </a></li>
+                                                                                                                                                              <!-- END: Section Links -->
+                                  </ul>
+                                                                </li>
+                                                                                                                                                                                                                                              <li class="menuItem">
+                                                                <a href="/admissions/index.php" target="_self">Admissions</a> 
+                                                                                              <input aria-label="Admissions" id="Admissions-parent" title="Admissions" type="checkbox"/>
+                                  <span class="menuExpand tabletOnly"></span>
+                                  <ul class="menuItemContent ">
+                                      <!-- BEGIN: Section Links -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/admissions/undergraduate/index.php" target="_self">Undergraduate Admissions
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/admissions/graduate/index.php" target="_self">Graduate Admissions
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/registrar/index.php" target="_self">Readmission
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/academics/continuing-education/index.php" target="_self">Continuing Education
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/admissions/financial-aid/cost-of-attendance.php" target="_self">Cost to Attend
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/admissions/financial-aid/index.php" target="_self">Financial Aid
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/admissions/apply/index.php" target="_self">Apply Now
+                                          </a></li>
+                                                                                                                                                              <!-- END: Section Links -->
+                                  </ul>
+                                                                </li>
+                                                                                                                                                                                                                                              <li class="menuItem">
+                                                                <a href="/research/index.php" target="_self">Research</a> 
+                                                                                              <input aria-label="Research" id="Research-parent" title="Research" type="checkbox"/>
+                                  <span class="menuExpand tabletOnly"></span>
+                                  <ul class="menuItemContent ">
+                                      <!-- BEGIN: Section Links -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/research/undergraduate-research/index.php" target="_self">Undergraduate Research
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/research/technology-transfer/index.php" target="_self">Technology Transfer
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/research/centers/index.php" target="_self">Research Centers &amp; Institutes
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="https://hub.ncat.edu/administration/research/services/life-science/index.php" target="_self">Life Sciences
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/research/public-information/index.php" target="_self">Public Information
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/news/categories/research-news.php" target="_self">Research News
+                                          </a></li>
+                                                                                                                                                              <!-- END: Section Links -->
+                                  </ul>
+                                                                </li>
+                                                                                                                                                                                                                                              <li class="menuItem">
+                                                                <a href="/campus-life/index.php" target="_self">Campus Life</a> 
+                                                                                              <input aria-label="Campus Life" id="Campus-Life-parent" title="Campus Life" type="checkbox"/>
+                                  <span class="menuExpand tabletOnly"></span>
+                                  <ul class="menuItemContent ">
+                                      <!-- BEGIN: Section Links -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/explore-our-campus/index.php" target="_self">Explore Our Campus
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/student-affairs/departments/housing-and-residence-life/index.php" target="_self">Housing
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a href="/campus-life/sports-and-fitness/index.php" target="_self">Sports &amp; Fitness
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/arts-and-culture/index.php" target="_self">Arts &amp; Culture
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/student-affairs/departments/student-activities/index.php" target="_self">Student Activities
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/student-affairs/departments/health-services/wellness/aggie-student-wellness.php" target="_self">Aggie Student Wellness
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/public-safety/index.php" target="_self">Public Safety
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/campus-enterprises/index.php" target="_self">Campus Enterprises
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/student-affairs/index.php" target="_self">Student Affairs
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/student-affairs/departments/student-center/university-event-center/calendar.php" target="_self">University Events Calendar
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/student-affairs/departments/student-activities/1891connect-events.php" target="_self">1891Connect Events Calendar
+                                          </a></li>
+                                                                                                                                                              <!-- END: Section Links -->
+                                  </ul>
+                                                                </li>
+                                                                                                                                                                                                                                              <li class="menuItem">
+                                                                <a href="/athletics/index.php" target="_self">Athletics</a> 
+                                                                                              <input aria-label="Athletics" id="Athletics-parent" title="Athletics" type="checkbox"/>
+                                  <span class="menuExpand tabletOnly"></span>
+                                  <ul class="menuItemContent ">
+                                      <!-- BEGIN: Section Links -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <li><a href="https://ncataggies.com/" target="_blank">N.C. A&amp;T Athletics
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/sports-and-fitness/campus-recreation-center/index.php" target="_self">Campus Recreation Center
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/campus-life/sports-and-fitness/intramural-sports/index.php" target="_self">Intramural Sports and Clubs
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/athletics/all-aggies.php" target="_self">All Aggies All In
+                                          </a></li>
+                                                                                                                                                              <!-- END: Section Links -->
+                                  </ul>
+                                                                </li>
+                                                                                                                                                                                                                                              <li class="menuItem">
+                                                                <a href="/about/index.php" target="_self">About</a> 
+                                                                                              <input aria-label="About" id="About-parent" title="About" type="checkbox"/>
+                                  <span class="menuExpand tabletOnly"></span>
+                                  <ul class="menuItemContent ">
+                                      <!-- BEGIN: Section Links -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/initiatives/index.php" target="_self">Initiatives
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/accreditation.php" target="_self">Accreditation
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/facts/index.php" target="_self">Facts and Points of Pride
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/rankings-and-recognition/index.php" target="_self">Rankings &amp; Recognition
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/history-and-traditions/index.php" target="_self">A&amp;T History
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/leadership/index.php" target="_self">Leadership
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/jobs/index.php" target="_self">Jobs
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/hr/index.php" target="_self">Division of Human Resources
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/partnerships/index.php" target="_self">Strategic Partnerships and Economic Development
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/about/leadership/chancellor/university-relations/index.php" target="_self">University Relations
+                                          </a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="/news/index.php" target="_self">Aggie Newsroom
+                                          </a></li>
+                                                                                                                                                              <!-- END: Section Links -->
+                                  </ul>
+                                                                </li>
+                                                                                  </ul>
+                        <!-- BEGIN: Utility Navigation -->
+                    </div>
+                </div>
+                    
+                <div aria-label="More Information Menu" class="menuMoreInfo scrollable-element" role="navigation">
+                    <!-- BEGIN: UTILITY LINKS SAME FROM DESKTOP MAIN HEADER -->
+                    <ul class="tabletOnly">
+                                                                                                                                                          <li>
+                              <a href="/visit/index.php" target="_self">Visit</a>
+                          </li>
+                                                                                                                                                            <li>
+                              <a href="/admissions/apply/index.php" target="_self">Apply</a>
+                          </li>
+                                                                                                                                                            <li>
+                              <a href="/give/index.php" target="_self">Give</a>
+                          </li>
+                                                                      </ul>
+                    <!-- END: UTILITY LINKS SAME FROM DESKTOP MAIN HEADER -->
+                    <!-- BEGIN: HIGH CONTRAST BUTTON -->
+                    <ul class="desktopOnly highContrast">
+                        <li>
+                            <fieldset>
+                                <legend class="hiddenContrastLabel">High Contrast Mobile:</legend>
+                                <span>HIGH CONTRAST</span>
+                                <label class="switch" for="togBtnDestop"><input id="togBtnDestop" type="checkbox"/><span class="slider round"><span class="on">ON</span><span class="off">OFF</span></span></label>
+                            </fieldset>
+                        </li>
+                    </ul>
+                    <!-- END: HIGH CONTRAST BUTTON -->
+                    
+                    <!-- BEGIN: MORE MENU LINKS -->
+                    
+                    <!-- BEGIN: Audience Navigation -->
+                    <ul>
+                        <li>
+                            <div class="linkTitle yellow">Info For</div>
+                            <ul>
+                                                                                                                                                                                                          <li>
+                                      <a href="/current-students/index.php" target="_self">Current Students</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/faculty-and-staff/index.php" target="_self">Faculty &amp; Staff</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/give/advancement/alumni-relations/index.php" target="_self">Alumni</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/parents-and-families/index.php" target="_self">Parents &amp; Families</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/community/index.php" target="_self">Community</a>
+                                  </li>
+                                                                                              </ul>
+                        </li>
+                    </ul>
+                    <!-- END: Audience Navigation -->
+                    
+                    <!-- BEGIN: Quicklinks Navigation -->
+                                                                <ul>
+                            <li>
+                                                        <div class="linkTitle yellow">Quicklinks</div>
+                                                                                    <ul>
+                                                                                                                                                                                                          <li>
+                                      <a href="https://hub.ncat.edu/index.php" target="_self">
+                                          AGGIE HUB</a>
+                                  </li>
+                                                                                                                                                                                                                                                                                  <li>
+                                      <a href="http://aggieaccess.ncat.edu" target="_blank" title="Aggie Access Online opens in a new window">
+                                          Aggie Access Online</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="https://hub.ncat.edu/administration/its/blackboard/index.php" target="_self">
+                                          Blackboard</a>
+                                  </li>
+                                                                                                                                                                                                                                                                                  <li>
+                                      <a href="https://ncat.instructure.com" target="_blank" title="Canvas opens in a new window">
+                                          Canvas</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/employee-directory.php" target="_self">
+                                          Employee Directory</a>
+                                  </li>
+                                                                                                                                                                                                                                                                                  <li>
+                                      <a href="https://outlook.office365.com/mail/" target="_blank" title="Employee Email opens in a new window">
+                                          Employee Email</a>
+                                  </li>
+                                                                                                                                                                                                                                                                                  <li>
+                                      <a href="https://support.ncat.edu" target="_blank" title="IT Service Desk opens in a new window">
+                                          IT Service Desk</a>
+                                  </li>
+                                                                                                                                                                                                                                                                                  <li>
+                                      <a href="https://outlook.office.com/." target="_blank" title="Student Email opens in a new window">
+                                          Student Email</a>
+                                  </li>
+                                                                                              </ul>
+                        </li>
+                    </ul>
+                                            <ul>
+                            <li>
+                                                                                    <div class="linkTitle">Getting Information</div>
+                                                        <ul>
+                                                                                                                                                                                                          <li>
+                                      <a href="/about/administrative-offices.php" target="_self">
+                                          Administrative Offices</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/admissions/financial-aid/index.php" target="_self">
+                                          Financial Aid</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/visit/directions-and-parking.php" target="_self">
+                                          Directions &amp; Parking</a>
+                                  </li>
+                                                                                                                                                                                                                                                                                  <li>
+                                      <a href="https://www.ncat.edu/library/" target="_blank" title="Bluford Library opens in a new window">
+                                          Bluford Library</a>
+                                  </li>
+                                                                                                                                                                                                            <li>
+                                      <a href="/about/jobs/index.php" target="_self">
+                                          Employment Opportunities</a>
+                                  </li>
+                                                                                              </ul>
+                        </li>
+                    </ul>
+                                            
+                    <!-- END: Quicklinks Navigation -->
+                    
+                    <!-- END: MORE MENU LINKS -->
+                </div>
+            </div>
+        </aside>
+    </div> 
+</nav>
+<!-- END:  HEADER FULL MENU NAVIGATION -->
+	<main id="mainWrapper" role="main">
+		
+<div class="yellowStripes leftEdge"></div>
+<div class="verticalDots left"></div>
+		
+
+
+
+
+
+
+  
+    
+  
+    <section aria-label="Page Impact Area" class="impact wrap">
+        <div class="sliderLandingImpact" id="sliderLandingImpacts">
+            
+                                        
+                                
+			  <div class="heroBG" style="background-image: url('../_files/impact-2030-5.jpg'); background-size: cover; background-position: 50% top;">
+			      
+			            			                                            
+                    <div class="dots col12">
+                      <div class="verticalDots right"></div>
+                    </div>
+                    <img alt="lines and boxes artwork" aria-hidden="true" src="/_global/images/impact-clear.png"/>
+                                                                <div class="blueBg Medium"></div>
+                                                <div class="caption">
+                            <div class="wrapper">
+                                <div>
+                                    <div class="captionText">
+                                        <span class="white">PREEMINENCE 2030:  NORTH CAROLINA A&amp;T BLUEPRINT</span> </div>
+                                           
+                                              </div>
+                            </div>
+                        </div>
+                                    </div>
+                    </div>
+        
+            </section>
+
+
+		
+
+
+
+
+
+
+               
+
+
+
+    <div class="content col12" id="skipToContent">
+
+    <div class="verticalDots right"></div>
+    <div class="yellowBoxAccent "></div>
+    <div class="grayBgContent"></div>
+
+		
+
+
+
+
+   
+        		
+		
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                            
+                                                                                                                                                                                                                                                                             
+    <div class="leftnavWrap col3 stationary" id="skipToLeftNav">
+        <nav aria-label="Left Navigation Menu" class="leftnav">
+            <ul class="leftPanel">
+                <li class="row">
+                    <input aria-label="Open Left Navigation" checked="checked" title="Opens the Left Navigation" type="checkbox"/>
+                    <em class="icon">Menu Expander Icon</em>
+                                        <span class="title"><a href="#">Page Navigation</a></span>
+                    <div class="content">
+                                                    <ul>
+                                                                                                                                                                                                                                                                                                
+        
+        
+        
+            
+        
+            
+                                                                                         
+        
+    
+            
+        
+            <li><a href="index.php"><span class="navlink">PREEMINENCE 2030:  NORTH CAROLINA A&amp;T BLUEPRINT</span>
+                            <span class="grayCircleBtn"><span class="grayCircle"></span></span>
+                    </a></li>
+                                                    
+        
+    
+            
+        
+            <li><a href="letter-from-leadership.php"><span class="navlink">Letter from Leadership</span>
+                            <span class="grayCircleBtn"><span class="grayCircle"></span></span>
+                    </a></li>
+                                                    
+        
+    
+            
+        
+            <li><a href="about.php"><span class="navlink">About</span>
+                            <span class="grayCircleBtn"><span class="grayCircle"></span></span>
+                    </a></li>
+                                                    
+        
+    
+            
+        
+            <li><a href="mission-vision.php"><span class="navlink">MISSION, VISION, CORE VALUES &amp; THE AGGIE EXPERIENCE</span>
+                            <span class="grayCircleBtn"><span class="grayCircle"></span></span>
+                    </a></li>
+                                                    
+        
+    
+            
+            
+            <li class="active"><a href="goals.php"><span class="navlink">GOALS, STRATEGIES &amp; METRICS</span>
+                            <span class="yellowBar"></span>
+                    </a></li>
+                                                    
+        
+    
+            
+        
+            <li><a href="strategic-planning.php"><span class="navlink">Strategic Planning Process</span>
+                            <span class="grayCircleBtn"><span class="grayCircle"></span></span>
+                    </a></li>
+                                                    
+        
+    
+            
+        
+            <li><a href="key-contributors.php"><span class="navlink">KEY CONTRIBUTORS</span>
+                            <span class="grayCircleBtn"><span class="grayCircle"></span></span>
+                    </a></li>
+                                                                                                                                                                                            </ul>
+                                               
+                                               
+                                                
+                                                                        
+                                                
+                                                    <!-- BEGIN: CTA Button -->
+                            <div class="ctaCircleBtn left bottom desktopOnly">
+                                <a href="../_files/nc-at-strategic-plan-2030_lo-res_030123.pdf" target="_self">
+                                    <div class="ctaCircle">
+                                        <em class="fas fa-file-pdf"></em>
+                                    </div>
+                                    <div class="info">Download Preeminence 2030 Blueprint</div>
+                                </a>
+                            </div>
+                            <!-- END: CTA Button -->  
+                                            </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+		
+
+
+
+<div class="content col9">
+
+		
+
+<div class="breadcrumbs wrapper">
+    <ul>
+        <li><a href="../../../index.php">Home</a></li>
+                                    
+                            <li><a href="../../index.php">About</a></li>
+                                        
+                            <li><a href="../index.php">Initiatives</a></li>
+                                        
+                            <li><a href="index.php">PREEMINENCE 2030:  NORTH CAROLINA A&amp;T BLUEPRINT</a></li>
+                                    
+                    <li>GOALS, STRATEGIES &amp; METRICS</li>
+            </ul>
+</div>
+		
+
+
+
+
+
+    <h1 class="landingTitle">GOALS, STRATEGIES &amp; METRICS</h1>
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+    
+    
+                <div aria-label=" Content Section 1 " class="wysiwygContent wrapper" role="region">
+                                                                            <p>This strategic plan embraces North Carolina Agricultural and Technical State University&#8217;s vision of transforming lives through teaching and learning, civic outreach, interdisciplinary research and innovative solutions to global challenges. It is driven by the university&#8217;s five core values: Responsibility, Excellence, Integrity, Inclusiveness and Learning. &#8220;Preeminence 2030: North Carolina A&amp;T Blueprint&#8221; identifies five new goals to guide the university&#8217;s development through 2030. Anticipating an accelerating pace of technological, governmental, workplace and social change that persists into the future, we will assess and refresh the plan during the 2026-27 academic year.</p>
+                                </div>
+                            <section aria-label=" Accordions Section 2 " class="accordion">
+        <div class="wrapper">
+                        <!-- START: Accordion method -->
+                                                    <div class="accRow">
+                <input id="accordion-set-1-GOAL1:TRANSFORMATIVEENGAGEMENT-" type="checkbox"/>
+                                    <h3><label for="accordion-set-1-GOAL1:TRANSFORMATIVEENGAGEMENT-" title="GOAL 1:  TRANSFORMATIVE ENGAGEMENT">GOAL 1:  TRANSFORMATIVE ENGAGEMENT</label></h3>
+                                                    <div class="wysiwygContent"><p><em>Create partnerships and solutions that advance the human condition</em></p>
+<p>North Carolina A&amp;T will increase its impact through cross-disciplinary engagement that leads to life-changing advances, improving social, economic, health and educational conditions.<span class="blue">&#160;</span></p>
+<img alt="Nursing students at NC A&amp;T" height="334" src="../_files/nc-at-su_nursing-lab_tm76032-e-030-copy.jpg" style="float: right; border-width: 20px; margin: 20px;" width="500"/><span style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: bold; font-size: 15.36px; font-family: Montserrat, Helvetica, Arial, san-serif; letter-spacing: 0.768px;"></span>
+<p><strong><span class="blue">STRATEGIES</span></strong><br/><strong><br/>1.1: </strong>Prepare students, faculty and staff to lead in areas of critical need&#160;</p>
+<p><strong>1.2: </strong>Spur economic development through an entrepreneurial ecosystem driven by startup ventures, public-private partnerships and transformative technologies&#160;</p>
+<p><strong>1.3: </strong>Strengthen outreach, engagement and community- focused research capabilities across all disciplines</p>
+<p><strong>1.4:&#160;</strong>Diversify the university&#8217;s revenue and resource base to build financial strength and provide flexible funds for strategic investment</p>
+<p><strong>1.5: </strong>Grow relationships with significant business concerns locating or expanding in North Carolina to increase opportunities for students, support applied research and enhance communities in East Greensboro, the Piedmont Triad and statewide</p>
+<p class="blue"><br/><strong>METRICS</strong></p>
+<ul>
+<li>New alumni employment in high-impact careers in the region, state and nation&#160;</li>
+</ul>
+<ul>
+<li>Graduate and undergraduate degree, certificate and training programs in critical-need areas&#160;</li>
+</ul>
+<ul>
+<li>External partnerships resulting in joint ventures and technology transfer&#160;</li>
+</ul>
+<ul>
+<li>Economic impact in the region and state&#160;</li>
+</ul>
+<ul>
+<li>Alumni retention in the state after graduation&#160;</li>
+</ul>
+<ul>
+<li>Student, faculty and staff involvement in entrepreneurial ventures&#160;</li>
+</ul>
+<ul>
+<li>Multidisciplinary, community- focused research partnerships&#160;</li>
+</ul>
+<ul>
+<li>External funding, patents and licenses&#160;</li>
+</ul>
+<ul>
+<li>National recognition for community engagement in areas of distinction&#160;</li>
+</ul>
+<ul>
+<li>Active participation in community outreach and engagement</li>
+</ul></div>
+                            </div>   
+                                            <div class="accRow">
+                <input id="accordion-set-2-GOAL2:LEADERSHIPANDINNOVATION-" type="checkbox"/>
+                                    <h3><label for="accordion-set-2-GOAL2:LEADERSHIPANDINNOVATION-" title="GOAL 2:  LEADERSHIP AND INNOVATION">GOAL 2:  LEADERSHIP AND INNOVATION</label></h3>
+                                                    <div class="wysiwygContent"><p><em>Develop engaged global thought leaders and innovators</em></p>
+<p>North Carolina A&amp;T will expand efforts to prepare students and faculty/staff to be impactful solution-oriented thinkers and doers, fostering rich learning environments that stimulate intellectual and creative exchange with stakeholders.</p>
+<img alt="Graduate commencement ceremony" class="" height="334" src="../_files/tm76120922-grad-commencement-933-copy.jpg" style="margin: 20px; float: right;" width="500"/><span style="font-family: Montserrat, Helvetica, Arial, san-serif; font-size: 15.36px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: 0.768px;"></span>
+<p class="blue"><strong>STRATEGIES</strong></p>
+<p><strong>2.1: </strong>Design and deliver transformative curricula to elevate the next generation of global influencers and innovators</p>
+<p><strong>2.2:&#160;</strong>Prepare a community of faculty, staff and students to be cross-disciplinary thinkers by engaging in innovative scholarship marked by critical and creative thinking</p>
+<p><strong>2.3: </strong>Recruit, retain and develop highly skilled, visionary faculty and staff to prepare students for impact through experiential learning, solution-focused research, creative endeavors and community engagement</p>
+<p><strong>2.4: </strong>Design and implement living-and-learning environments that foster community and support student success and overall well-being</p>
+<p><strong>2.5:&#160;</strong>Foster rich learning and working environments that stimulate intellectual and creative exchange with all stakeholders</p>
+<p class="blue"><strong>METRICS&#160;</strong></p>
+<ul>
+<li>Globally relevant, cross-disciplinary degree and certificate programs&#160;</li>
+</ul>
+<ul>
+<li>Student placement rates&#160;</li>
+</ul>
+<ul>
+<li>Faculty recruitment and retention rates&#160;</li>
+</ul>
+<ul>
+<li>Graduate degrees awarded&#160;</li>
+</ul>
+<ul>
+<li>Cross-disciplinary research and outreach programs&#160;</li>
+</ul>
+<ul>
+<li>Engagement in experiential teaching and learning&#160;</li>
+</ul>
+<ul>
+<li>Living-learning campus communities&#160;</li>
+</ul>
+<ul>
+<li>Distinguished speaker series and visiting scholar exchanges&#160;</li>
+</ul>
+<ul>
+<li>Student, faculty and staff recognition via regional, state, national and international awards</li>
+</ul>
+<ul>
+<li>Student, faculty and staff satisfaction with the learning and working environment</li>
+</ul>
+<ul>
+<li>Performance on licensure and certification exams&#160;</li>
+</ul></div>
+                            </div>   
+                                            <div class="accRow">
+                <input id="accordion-set-3-GOAL3:PERFORMANCEEXCELLENCE-" type="checkbox"/>
+                                    <h3><label for="accordion-set-3-GOAL3:PERFORMANCEEXCELLENCE-" title="GOAL 3:  PERFORMANCE EXCELLENCE">GOAL 3:  PERFORMANCE EXCELLENCE</label></h3>
+                                                    <div class="wysiwygContent"><p><em>Optimize human and physical capital to drive elite performance and operational excellence</em></p>
+<p>North Carolina A&amp;T will emphasize a more complete, campus-wide embrace and embodiment of its core values to increase cohesion and effectiveness of the university&#8217;s workforce. This will facilitate sustainable improvements in infrastructure and core processes for the execution of daily operations, as well as learning and research activities.&#160;</p>
+<span style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: bold; font-size: 15.36px; font-family: Montserrat, Helvetica, Arial, san-serif; letter-spacing: 0.768px;"><img alt="A&amp;T Stadium overhead football game" height="334" src="../_files/tm76023-e-homecoming-game-141-copy.jpg" style="float: right; margin: 20px;" width="500"/></span>
+<p class="blue"><strong>STRATEGIES</strong></p>
+<p><strong>3.1: &#160; </strong>Enhance facilities related to IT connectivity and smart systems by continuously expanding the IT infrastructure for the campus&#160;</p>
+<p><strong>3.2: </strong>Optimize critical institutional practices, processes, policies and procedures for greater efficiency and effectiveness&#160;</p>
+<p><strong>3.3: </strong>Enhance campus infrastructure to support the execution of impactful daily operational functions</p>
+<p><strong>3.4: </strong>Attract, recruit, develop and retain an elite workforce through continuation of initiatives to facilitate excellence</p>
+<p><strong>3.5: </strong>Foster a climate that promotes a culture of well- being, to include mental, emotional and physical health</p>
+<p><strong>3.6: </strong>Institutionalize a culture of excellence through The Aggie Experience</p>
+<p><strong>3.7: </strong>Compete with distinction and honor among elite institutions</p>
+<p><strong>3.8: </strong>Create welcoming physical environments that attract, retain and inspire stakeholders</p>
+<p class="blue"><strong>METRICS</strong></p>
+<ul>
+<li>Progress on implementation of the new campus Master Plan&#160;</li>
+</ul>
+<ul>
+<li>Investments in systems, IT infrastructure and training that promote effective, efficient practices&#160;</li>
+</ul>
+<ul>
+<li>Investments in renovating, building new campus facilities with innovative learning spaces&#160;</li>
+</ul>
+<ul>
+<li>Investments in salaries and incentives for faculty and staff&#160;</li>
+</ul>
+<ul>
+<li>Investments in graduate student assistantship compensation and tuition support&#160;</li>
+</ul>
+<ul>
+<li>Ratings for the Student Satisfaction Survey and Faculty Engagement Survey<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Participation rates of faculty/ staff engagement in professional development activities<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Campus participation in wellness Activities<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Optimized faculty workload to facilitate transition to very high research activity<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Creative and innovative implementation of processes and procedure<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Academic and athletic achievements, rankings, awards and championships</li>
+</ul></div>
+                            </div>   
+                                            <div class="accRow">
+                <input id="accordion-set-4-GOAL4:COLLABORATIVEANDINCLUSIVECULTURE-" type="checkbox"/>
+                                    <h3><label for="accordion-set-4-GOAL4:COLLABORATIVEANDINCLUSIVECULTURE-" title="GOAL 4:  COLLABORATIVE AND INCLUSIVE CULTURE">GOAL 4:  COLLABORATIVE AND INCLUSIVE CULTURE</label></h3>
+                                                    <div class="wysiwygContent"><p><em>Foster an environment that values individualities and lived experiences so all are empowered to become their best selves</em></p>
+<p>North Carolina A&amp;T will create more inclusive living and working environments that unleash the potential of all to confidently pursue greater innovation and outcomes. In those environments, immutable and defining characteristics of each member of the community will be valued and appreciated, fostering a sense of belonging and engagement. Fertile learning and teaching environments will be developed through synergies created by collaboration among kindred and divergent perspectives, leading to the discovery and application of new knowledge.</p>
+<img alt="Jim Barnhill and student" height="336" src="../_files/tm76010-a1-jim-barnhill-019-copy.jpg" style="margin: 20px; float: right;" width="500"/><span style="font-family: Montserrat, Helvetica, Arial, san-serif; font-size: 15.36px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: 0.768px;"></span>
+<p><strong><span class="blue">STRATEGIES</span></strong></p>
+<p><strong>4.1: &#160; </strong>Stimulate the growth of cultural competencies for students, faculty, and staff through opportunities for collaboration, inclusion and engagement&#160;</p>
+<p><strong>4.2: </strong>Create diverse, inclusive and culturally centered, next-generation academic programs and campus initiatives that address human challenges&#160;</p>
+<p><strong>4.3: </strong>Build a workplace culture that advances and supports the development of students, faculty and staff through diversity, equity, inclusion and belonging (DEIB) initiatives&#160;</p>
+<p><strong>4.4: </strong>Promote and encourage diversity of perspectives through valuing experiential learning in inclusive, authentic and holistic learning environments&#160;</p>
+<p><strong>4.5: </strong>Create an environment in which innovation is valued and &#8220;failing forward&#8221; is seen as a potential step toward success&#160;</p>
+<p class="blue"><strong>METRICS</strong></p>
+<ul>
+<li>Institutional DEIB initiatives<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Students engaging in diverse experiential learning opportunities<strong style="letter-spacing: 0.05em;">&#160;</strong></li>
+</ul>
+<ul>
+<li>Faculty, staff and student positive perception of campus climate</li>
+</ul>
+<ul>
+<li>Integration of DEIB principles in academic and professional development programs</li>
+<li>Access to students from rural and underserved communities</li>
+<li>Student loan debt and expenses at graduation</li>
+</ul></div>
+                            </div>   
+                                            <div class="accRow">
+                <input id="accordion-set-5-GOAL5:RESPONSIVESCHOLARSHIPANDIMPACT-" type="checkbox"/>
+                                    <h3><label for="accordion-set-5-GOAL5:RESPONSIVESCHOLARSHIPANDIMPACT-" title="GOAL 5:  RESPONSIVE SCHOLARSHIP AND IMPACT">GOAL 5:  RESPONSIVE SCHOLARSHIP AND IMPACT</label></h3>
+                                                    <div class="wysiwygContent"><p><em>Emerge as a global model for research, teaching, learning, outreach and innovation responsive to universal needs</em>&#160;</p>
+<p>North Carolina A&amp;T will be a culturally responsive R1 institution that addresses technical, social, cultural, educational and economic challenges impacting all through transformation initiatives and globally relevant programs.&#160;</p>
+<span style="font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: bold; font-size: 15.36px; font-family: Montserrat, Helvetica, Arial, san-serif; letter-spacing: 0.768px;"><img alt="A&amp;T autonomous vehicle" height="334" src="../_files/aggie-auto-tm76110122-034-copy.jpg" style="margin: 20px; float: right;" width="500"/></span><span style="font-family: Montserrat, Helvetica, Arial, san-serif; font-size: 15.36px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: 0.768px;"></span>
+<p class="blue"><strong>STRATEGIES</strong></p>
+<p><strong>5.1:</strong> &#160; Lead intensive research in areas that address technical, social, cultural, environmental, educational and economic challenges</p>
+<p><strong>5.2: </strong>Foster innovative educational modalities that advance knowledge, teaching, training and workforce development&#160;</p>
+<p><strong>5.3: </strong>Promote collaborative, cross-disciplinary research and creative scholarship that are responsive and meaningful to the needs of the local, state, national and global communities</p>
+<p><strong>5.4: </strong>Disseminate innovative models to influence teaching, research, innovation and engagement practices</p>
+<p><strong>5.5: </strong>Expand research partnerships that align with strategic areas of expertise&#160;</p>
+<p><strong>5.6: </strong>Through execution of the new campus Master Plan, enhance and create facilities and capacities essential to support the university&#8217;s R1 &#8211; Very High Research Activity aspiration.</p>
+<p class="blue"><strong>METRICS&#160;</strong></p>
+<ul>
+<li>R1 status&#160;</li>
+</ul>
+<ul>
+<li>Research expenditures&#160;</li>
+</ul>
+<ul>
+<li>Industry sponsored research projects&#160;</li>
+</ul>
+<ul>
+<li>Faculty recognition for teaching, research and outreach excellence&#160;</li>
+</ul>
+<ul>
+<li>Number of cross-disciplinary and interdisciplinary initiatives&#160;</li>
+</ul>
+<ul>
+<li>Patents, newly filed and active, and licensed innovations&#160;</li>
+</ul>
+<ul>
+<li>Research-based startup ventures&#160;</li>
+</ul>
+<ul>
+<li>Faculty and student exchanges and collaborations&#160;</li>
+</ul>
+<ul>
+<li>Visiting scholars&#160;</li>
+</ul>
+<ul>
+<li>Peer reviewed publications and creative works&#160;</li>
+</ul>
+<ul>
+<li>Extension and outreach programming&#160;</li>
+</ul>
+<ul>
+<li>Innovation in administrative units&#160;</li>
+</ul>
+<ul>
+<li>Investments in graduate assistantships&#160;</li>
+</ul>
+<ul>
+<li>New buildings, inspired spaces and contemporary infrastructure</li>
+</ul></div>
+                            </div>   
+                </div>
+    </section>
+        
+
+
+
+		
+		
+		
+
+
+
+</div>
+
+		
+
+
+
+<div class="grayBg"></div>
+
+    </div>
+    
+    <div class="grayBgContent"></div>
+
+
+	</main>
+	
+        
+		
+	
+ 
+
+
+<!-- BEGIN: BACK TO TOP -->
+<div aria-label="Back to Top" class="backToTop" role="navigation">
+  <div class="ctaCircleBtn right">
+    <a href="#top-area" id="topLink" title="Back to Top">
+      <div class="ctaCircle">
+        <img alt="" class="playIcon" src="/_global/images/back-to-top.svg"/>
+      </div>
+      <div class="info tabletOnly">Back to Top</div>
+    </a>
+  </div>
+</div>
+<!-- END: BACK TO TOP -->
+
+
+<footer class="footer" id="skipToFooter">
+    <div class="dots col12">
+      <div class="verticalDots right"></div>
+    </div>
+    <div class="wrapper">
+       
+        <div class="col6 footerLeft">
+                        <div class="address">
+                <p>©
+                2026 N.C. A&amp;T</p>
+                <a href="https://goo.gl/maps/bHUMzUVA5gN2">1601 E. Market Street, Greensboro, NC 27411</a> <span class="yellow">|</span> <a aria-label="+13363347500" href="tel:+13363347500">336.334.7500</a>
+            </div>
+                    </div>
+        <div class="col6 footerRight">
+            <div class="col12 footerlinks">
+                <div class="oneRow">
+                    <nav aria-label="Column Heading 1 Links">
+                        <ul class="column1">
+                                                                                                
+            
+                <li><a href="/about/initiatives/mission-and-vision.php" target="_self">Mission</a></li>
+                                                                        
+            
+                <li><a href="/dlarc/index.php" target="_self">Legal / Title IX</a></li>
+                                                                        
+            
+                <li><a href="/about/jobs/index.php" target="_self">Employment</a></li>
+                                                                        
+            
+                <li><a href="/_files/pdfs/legal/privacy_policy.pdf" target="_self">Privacy Policy</a></li>
+                                                                        
+            
+                <li><a href="/contact-us/index.php" target="_self">Contact Us</a></li>
+                                                                        
+            
+                <li><a href="/sitemap/index.php" target="_self">Site Map</a></li>
+                                                        </ul>
+                     </nav>   
+                        <div class="socialbar">
+                                                        <a href="https://www.facebook.com/ncatsuaggies" target="_blank" title="Facebook opens in a new window."><span>Facebook</span><em aria-hidden="true" class="fab fa-facebook-f"> </em></a>
+                            <a href="https://twitter.com/ncatsuaggies" target="_blank" title="Twitter opens in a new window."><span>Twitter</span><em aria-hidden="true" class="fab fa-twitter"> </em></a>
+                            <a href="https://www.instagram.com/ncatsuaggies/?hl=en" target="_blank" title="Instagram opens in a new window."><span>Instagram</span><em aria-hidden="true" class="fab fa-instagram"> </em></a>
+                            <a href="https://www.youtube.com/user/ncatsuaggies" target="_blank" title="YouTube opens in a new window."><span>YouTube</span><em aria-hidden="true" class="fab fa-youtube"> </em></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+        
+        
+	
+ 
+<script src="/_global/js/jquery.magnific-popup.min.js"></script>
+<script src="/_global/js/slick.min.js"></script>
+<script src="/_global/js/code-box-copy.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script src="/_global/js/modernizr-2.6.2.min.js"></script>
+<script src="/_global/js/scripts.js"></script>
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics NEW VERSION TO KEEP-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CC39QMM3R1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+ 
+  gtag('config', 'G-CC39QMM3R1');
+</script>
+
+
+
+
+
+
+
+
+
+	
+
+	<!-- JS | Custom script : Slidershows -->
+<script src="/_global/slides/js/custom.js"></script>
+<!-- END///  JS | Custom script : Slidershows -->  
+
+	
+</body>
+</html>

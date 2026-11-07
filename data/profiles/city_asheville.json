@@ -3,8 +3,7 @@
   "category": "municipal",
   "name": "City of Asheville",
   "short_name": "City of Asheville",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "City of Asheville Annual Council Priorities (Hurricane Helene recovery)",
   "mission": "Provides city services for Asheville and leads recovery after Hurricane Helene.",
   "eligible_applicant_types": [
     "City or township governments",
@@ -19,62 +18,105 @@
   ],
   "goals": [
     {
-      "id": "CITY_ASHEVILLE-G1",
+      "id": "AVL-G1",
       "number": 1,
-      "title": "Hurricane Helene recovery and resilience",
-      "citation": "City of Asheville draft profile, goal 1",
-      "description": "Rebuild damaged infrastructure and reduce future risk.",
+      "title": "Economy",
+      "citation": "City of Asheville Annual Council Priorities (Hurricane Helene recovery): Economy",
+      "description": "Ensure businesses impacted by the disaster can recover and rebuild; strengthen support for underrepresented businesses; build a diversified, resilient economic base.",
       "objectives": [
-        "Restore water system reliability",
-        "Reduce flood and landslide risk"
-      ],
-      "keywords": [
-        "disaster recovery",
-        "hurricane",
-        "resilience",
-        "hazard mitigation",
-        "flood",
-        "water system"
-      ]
-    },
-    {
-      "id": "CITY_ASHEVILLE-G2",
-      "number": 2,
-      "title": "Housing recovery",
-      "citation": "City of Asheville draft profile, goal 2",
-      "description": "Restore and expand housing after the storm.",
-      "objectives": [
-        "Rebuild damaged housing"
-      ],
-      "keywords": [
-        "housing",
-        "disaster recovery",
-        "cdbg-dr",
-        "affordable housing"
-      ]
-    },
-    {
-      "id": "CITY_ASHEVILLE-G3",
-      "number": 3,
-      "title": "Tourism economy and small business",
-      "citation": "City of Asheville draft profile, goal 3",
-      "description": "Help local businesses recover.",
-      "objectives": [
-        "Support small business recovery"
+        "Ensure businesses impacted by the disaster have access to resources needed to recover and rebuild",
+        "Strengthen outreach and support for underrepresented businesses",
+        "Expand the contractor pool for recovery and resilience projects",
+        "Strengthen resilience through a diversified and sustainable economic base"
       ],
       "keywords": [
         "small business",
         "economic recovery",
+        "disaster recovery",
+        "business recovery",
+        "economic resilience",
         "tourism"
+      ]
+    },
+    {
+      "id": "AVL-G2",
+      "number": 2,
+      "title": "Housing",
+      "citation": "City of Asheville Annual Council Priorities (Hurricane Helene recovery): Housing",
+      "description": "Help residents with post-disaster housing; plan for future displacement; support temporary and permanent housing; expand housing options and home repair.",
+      "objectives": [
+        "Connect residents to post-disaster housing resources and funding",
+        "Develop a Disaster Housing Plan",
+        "Support temporary and permanent housing for displaced residents",
+        "Advance home repair programs and increase supply"
+      ],
+      "keywords": [
+        "disaster housing",
+        "affordable housing",
+        "home repair",
+        "homelessness",
+        "cdbg-dr",
+        "community development block grant",
+        "housing recovery"
+      ]
+    },
+    {
+      "id": "AVL-G3",
+      "number": 3,
+      "title": "Infrastructure and environment",
+      "citation": "City of Asheville Annual Council Priorities (Hurricane Helene recovery): Infrastructure and environment",
+      "description": "Rebuild infrastructure for long-term resilience; improve water system resilience, flood management and stormwater; prepare for climate-related disasters.",
+      "objectives": [
+        "Rebuild infrastructure with a focus on long-term resilience",
+        "Improve water system resilience, flood management, and stormwater infrastructure",
+        "Strengthen ability to prepare for and respond to climate-related disasters",
+        "Prioritize environmental sustainability in recovery"
+      ],
+      "keywords": [
+        "water system",
+        "drinking water",
+        "flood",
+        "stormwater",
+        "hazard mitigation",
+        "resilience",
+        "infrastructure",
+        "climate"
+      ]
+    },
+    {
+      "id": "AVL-G4",
+      "number": 4,
+      "title": "People",
+      "citation": "City of Asheville Annual Council Priorities (Hurricane Helene recovery): People",
+      "description": "Support residents recovering from disaster while strengthening community resilience and neighborhood-level preparedness.",
+      "objectives": [
+        "Support residents recovering from disaster impacts",
+        "Clear, consistent communication",
+        "Strengthen neighborhood-level preparedness (resilience hubs, neighborhood disaster planning)",
+        "Address pre-existing vulnerabilities amplified by disasters"
+      ],
+      "keywords": [
+        "resilience hubs",
+        "emergency preparedness",
+        "community resilience",
+        "disaster case management",
+        "mental health"
       ]
     }
   ],
   "keywords": [
-    "city",
-    "municipal",
-    "disaster",
-    "resilience",
-    "housing",
-    "water"
-  ]
+    "affordable housing",
+    "community resilience",
+    "disaster housing",
+    "disaster recovery",
+    "drinking water",
+    "economic recovery",
+    "emergency preparedness",
+    "flood",
+    "home repair",
+    "resilience hubs",
+    "small business",
+    "water system"
+  ],
+  "source_url": "https://ashevillenc.gov/government/council-priorities"
 }

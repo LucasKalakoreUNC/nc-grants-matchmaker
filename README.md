@@ -67,18 +67,25 @@ app's "How this works" page and in `pipeline.py` (`calculate_score`).
 | `pipeline.py` | Pull, normalize, enrich, and score grants |
 | `db.py` | SQLite database and download cache |
 | `notices.py` | Download funding notices; record requirements |
+| `ai.py` | Build a profile from a plan; write "how you could use it" reviews (needs an Anthropic API key) |
 | `data/profiles/` | One JSON file per organization (goals, keywords, eligibility) |
 | `data/requirements/` | One JSON file per grant: what the application requires |
 | `NOTICE_READING_GUIDE.md` | Instructions for people or agents reading notices |
 
 ## Organization profiles
 
-Eleven state agencies use the goals and objectives from their official
-strategic plans on the
+16 organizations use the goals and objectives from their published strategic
+plans (state agencies from the
 [OSBM site](https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans),
-cited by page. Counties, cities, business groups, and some universities use
-draft profiles, labeled as drafts in the app. To add or update one, edit
-`data/profiles/<id>.json` (copy an existing file) and run `pipeline.py`.
+plus Wake County, Raleigh, Asheville, NC State and NC A&T), cited by page and
+linked from the app. The rest are labeled drafts. To add a town or county from
+its published plan:
+
+```bash
+.venv/bin/python ai.py profile town_cary --name "Town of Cary" --category municipal --url <plan PDF or page>
+```
+
+or edit `data/profiles/<id>.json` (copy an existing file) and run `pipeline.py`.
 
 ## Deploying
 

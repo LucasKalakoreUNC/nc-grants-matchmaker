@@ -21,10 +21,11 @@ python3 pipeline.py                      # builds data/matchmaker.db from public
 
 ```bash
 .venv/bin/python notices.py queue --limit 10     # next grants to read, best matches first
-.venv/bin/python notices.py dump <grant id>      # print the notice text, with [page N] markers
+.venv/bin/python notices.py dump <grant id> --focus   # only the pages about requirements (about half the notice)
+.venv/bin/python notices.py dump <grant id>           # the full notice, if something is unclear
 ```
 
-Read the notice, write the result as JSON (format below) to a temporary file,
+Work on several grants at once if your tool allows it. Read the notice, write the result as JSON (format below) to a temporary file,
 then save it:
 
 ```bash

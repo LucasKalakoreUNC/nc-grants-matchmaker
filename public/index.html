@@ -42,6 +42,9 @@
   .alert { border-left: 8px solid var(--blue); background: var(--blue-light); padding: 16px 20px; margin-bottom: 24px; }
   .alert.warn { border-color: var(--gold); background: var(--gold-bg); }
   .alert ol { margin: 8px 0 12px; padding-left: 20px; }
+  .plan-info { border: 1px solid var(--line); border-left: 8px solid var(--navy); padding: 12px 16px; margin: -8px 0 24px; }
+  .plan-info p { margin: 0 0 4px; }
+  .plan-info ol { margin: 8px 0 0; padding-left: 20px; }
   .summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
   .summary button { text-align: left; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); padding: 16px; font: inherit; cursor: pointer; }
   .summary button:hover { background: var(--blue-light); }
@@ -131,6 +134,8 @@
     </div>
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
   </div>
+
+  <div id="planInfo" class="plan-info" hidden></div>
 
   <div id="welcome" class="alert" hidden>
     <h3>Welcome. Here is how to use this tool.</h3>
@@ -247,7 +252,7 @@
         <tr><td><strong>Grant listings</strong>: title, agency, deadline, status</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>The Grants.gov search service, checked once a day across about 35 topic searches, including forecasted grants.</td></tr>
         <tr><td><strong>Grant details</strong>: description, award amounts, who can apply, matching funds, contact</td><td data-l="Source"><a href="https://www.grants.gov" target="_blank" rel="noopener">Grants.gov</a></td><td>Downloaded once for each new grant, and again only if Grants.gov changes the listing.</td></tr>
         <tr><td><strong>Past North Carolina awards</strong></td><td data-l="Source"><a href="https://www.usaspending.gov" target="_blank" rel="noopener">USAspending.gov</a></td><td>The largest awards to North Carolina recipients under the same federal program (Assistance Listing number), refreshed weekly.</td></tr>
-        <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>Eleven state agencies (Commerce, DEQ, DHHS, DIT, DNCR, DOT, DPI, DPS, Agriculture, the UNC System and the Community College System) use the goals and objectives in their official plans posted by OSBM, with page numbers. Each goal also has search phrases added by this tool to connect it to grant wording. Counties, cities, businesses and some universities use draft profiles that have not yet been checked against an official plan, and are labeled as drafts.</td></tr>
+        <tr><td><strong>Organization goals</strong></td><td data-l="Source"><a href="https://www.osbm.nc.gov/operational-excellence/strategic-planning/agency-strategic-plans" target="_blank" rel="noopener">NC OSBM agency strategic plans</a> and local plans</td><td>16 organizations use the goals and objectives in their own published strategic plans (state agencies from the OSBM site, plus Wake County, Raleigh, Asheville, NC State and NC A&amp;T), with page numbers where the plan has them. Choosing an organization shows a link to its plan. Each goal also has search phrases added by this tool to connect it to grant wording. The others use draft profiles, labeled as drafts, until their plans are added.</td></tr>
         <tr><td><strong>Documents checklist</strong></td><td data-l="Source">Standard federal application forms (SF-424 family)</td><td>A typical federal checklist, adjusted for what the notice says, such as adding a match letter when matching funds are required. The official notice has the final list.</td></tr>
         <tr><td><strong>Staff time and score</strong></td><td data-l="Source">Calculated by this tool</td><td>See "How grants are ranked" and "How staff time is estimated" above.</td></tr>
       </tbody>
@@ -332,10 +337,27 @@ function fillOffices(type, silent){
   if (!silent) changeOffice($('office').value);
 }
 
+async function showPlanInfo(id){
+  const box = $('planInfo');
+  if (id === 'all') { box.hidden = true; return; }
+  let p; try { p = await (await fetch(`/api/profiles/${id}`)).json(); } catch(e) { box.hidden = true; return; }
+  if (S.office !== id) return;
+  const official = p.profile_status !== 'draft';
+  const link = p.source_url ? `<a href="${esc(p.source_url)}" target="_blank" rel="noopener">${official ? 'Open the strategic plan' : esc(p.plan_title || 'Their published plan')}</a>` : '';
+  box.innerHTML = official
+    ? `<p><strong>Goals from:</strong> ${esc(p.source_citation)} &middot; ${link}</p>`
+    : `<p><strong>Draft goals.</strong> These goals are a summary that has not yet been checked against an official plan, so matches are less reliable.</p>
+       <p>${link ? `Published plan to use next: ${link}` : 'No published strategic plan found yet.'}</p>`;
+  box.innerHTML += `
+<details><summary>${(p.goals || []).length} goals used for matching</summary><ol>${(p.goals || []).map(g => `<li>${esc(g.title)}</li>`).join('')}</ol></details>`;
+  box.hidden = false;
+}
+
 async function changeOffice(id){
   S.office = id; store.set('office', id); limit = 25;
   const all = id === 'all', cat = encodeURIComponent($('otype').value);
   $('exportBtn').hidden = all;
+  showPlanInfo(id);
   $('exportBtn').href = `/api/export/${id}`;
   const [items, dec] = await Promise.all([
     fetch(all ? `/api/scored/all?category=${cat}` : `/api/scored/${id}`).then(r => r.json()),
@@ -404,7 +426,7 @@ function renderTracked(){
 }
 
 async function fetchSources(i){
-  try { return await (await fetch(`/api/opportunity/${i.id}/sources`)).json(); }
+  try { return await (await fetch(`/api/opportunity/${i.id}/sources?office=${encodeURIComponent(i.best_office_id || S.office)}`)).json(); }
   catch(e) { return { files: [], requirements: null, links: [{ name: 'Official listing on Grants.gov', url: i.url }] }; }
 }
 function loadSources(i, src){
@@ -493,6 +515,7 @@ async function openDetail(id){
 
     <section style="margin-top:28px">
       <h3>${i.best_office_name ? `Why this fits ${esc(i.best_office_name)}` : 'Why this fits your organization'}</h3>
+      ${src.review ? `<div class="alert${src.review.real_fit ? '' : ' warn'}" style="margin-bottom:12px"><strong>${src.review.real_fit ? 'How you could use it' : 'Probably not a real fit'}:</strong> ${esc(src.review.how_to_use)}${src.review.concerns ? `<br><span class="sub">Check: ${esc(src.review.concerns)}</span>` : ''}<span class="sub">Reviewed by AI on ${new Date(src.review.reviewed_at).toLocaleDateString()} (${esc(src.review.confidence)} confidence). Read the notice to confirm.</span></div>` : ''}
       <p>${esc(clean(i.reason))}</p>
       ${(i.shared_words || []).length && (i.score_breakdown?.similarity || 0) >= 40 ? `<p class="sub" style="margin:0 0 8px">Words the grant shares with this goal: ${i.shared_words.map(esc).join(', ')}</p>` : ''}
       ${(i.fit_evidence || []).length ? `<p style="margin-bottom:4px"><strong>Where the grant matches your goal:</strong></p><ul style="margin:0 0 12px;padding-left:20px">${i.fit_evidence.map(e => `<li>"${esc(e.text).replace(new RegExp('(' + e.term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>')}"</li>`).join('')}</ul>` : ''}

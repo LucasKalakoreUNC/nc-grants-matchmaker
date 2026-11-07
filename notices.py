@@ -338,6 +338,31 @@ def notice_text(conn, opp_id):
     return "\n\n".join(parts)
 
 
+FOCUS_TERMS = ("eligib", "page limit", "must submit", "must include", "required", "attachment", "narrative",
+               "budget", "deadline", "due date", "cost shar", "matching", "review criteria", "points", "sf-424",
+               "letter of", "registration", "sam.gov", "funding restriction", "allowable", "unallowable",
+               "may be used", "may not be used", "eligible activities", "maximum", "font", "single-spaced")
+
+
+# Standard notice section headings; a page with one is always kept.
+FOCUS_HEADINGS = ("funding restriction", "eligibility information", "eligible applicants", "content and form",
+                  "review criteria", "cost sharing", "application and submission", "submission dates",
+                  "allowable costs", "unallowable costs", "required registrations")
+
+
+def focus_text(text, min_hits=5):
+    """Keep only pages about requirements (eligibility, contents, deadlines,
+    budget, review, allowable costs). Typically 40-70% of a notice."""
+    pages = re.split(r"(?=\[page \d+\])", text)
+    keep = []
+    for p in pages:
+        low = p.lower()
+        if p.startswith("=====") or "[page" not in p[:12] or any(h in low for h in FOCUS_HEADINGS) \
+                or sum(low.count(t) for t in FOCUS_TERMS) >= min_hits:
+            keep.append(p)
+    return "".join(keep)
+
+
 def text_hash(conn, opp_id):
     return hashlib.sha256(notice_text(conn, opp_id).encode("utf-8")).hexdigest()
 
@@ -451,6 +476,7 @@ def main():
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--ids", default="")
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--focus", action="store_true", help="dump: only pages about requirements")
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--reader", default="Claude (working session)")
     args = ap.parse_args()
@@ -466,7 +492,8 @@ def main():
         print(f"Loaded {load_requirements_dir(conn)} requirement files from data/requirements/")
 
     elif args.command == "dump":
-        print(notice_text(conn, args.arg))
+        text = notice_text(conn, args.arg)
+        print(focus_text(text) if args.focus else text)
 
     elif args.command == "queue":
         ids = priority_ids(conn)

@@ -3,8 +3,7 @@
   "category": "education",
   "name": "North Carolina A&T State University",
   "short_name": "NC A&T",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "North Carolina A&T, Preeminence 2030: North Carolina A&T Blueprint",
   "mission": "A public historically Black land-grant university focused on engineering, agriculture and research.",
   "eligible_applicant_types": [
     "Public and State controlled institutions of higher education"
@@ -19,57 +18,100 @@
     {
       "id": "NCAT-G1",
       "number": 1,
-      "title": "Engineering and technology research",
-      "citation": "NC A&T draft profile, goal 1",
-      "description": "Grow research in engineering and computing.",
+      "title": "Transformative engagement",
+      "citation": "North Carolina A&T, Preeminence 2030: North Carolina A&T Blueprint, Goal 1",
+      "description": "Create partnerships and solutions that advance the human condition, improving social, economic, health and educational conditions.",
       "objectives": [
-        "Expand research capacity"
+        "Create partnerships and solutions that advance the human condition, improving social, economic, health and educational conditions."
       ],
       "keywords": [
-        "engineering",
-        "cybersecurity",
-        "computing",
-        "research capacity"
+        "community engagement",
+        "extension",
+        "health disparities",
+        "small farmers",
+        "economic development"
       ]
     },
     {
       "id": "NCAT-G2",
       "number": 2,
-      "title": "Land-grant agriculture and extension",
-      "citation": "NC A&T draft profile, goal 2",
-      "description": "Serve farmers and communities.",
+      "title": "Leadership and innovation",
+      "citation": "North Carolina A&T, Preeminence 2030: North Carolina A&T Blueprint, Goal 2",
+      "description": "Develop engaged global thought leaders and innovators.",
       "objectives": [
-        "Support small and limited-resource farmers"
+        "Develop engaged global thought leaders and innovators."
       ],
       "keywords": [
-        "agriculture",
-        "extension",
-        "small farmers",
-        "food"
+        "stem education",
+        "undergraduate research",
+        "hbcu",
+        "minority serving",
+        "workforce development"
       ]
     },
     {
       "id": "NCAT-G3",
       "number": 3,
-      "title": "HBCU STEM pipeline",
-      "citation": "NC A&T draft profile, goal 3",
-      "description": "Increase STEM degrees.",
+      "title": "Performance excellence",
+      "citation": "North Carolina A&T, Preeminence 2030: North Carolina A&T Blueprint, Goal 3",
+      "description": "Optimize human and physical capital to drive elite performance and operational excellence.",
       "objectives": [
-        "Expand STEM scholarships and research experiences"
+        "Optimize human and physical capital to drive elite performance and operational excellence."
       ],
       "keywords": [
-        "hbcu",
-        "stem",
-        "undergraduate research",
-        "minority serving"
+        "research infrastructure",
+        "facilities"
+      ]
+    },
+    {
+      "id": "NCAT-G4",
+      "number": 4,
+      "title": "Collaborative and inclusive culture",
+      "citation": "North Carolina A&T, Preeminence 2030: North Carolina A&T Blueprint, Goal 4",
+      "description": "Foster an environment that values individualities and lived experiences so all are empowered to become their best selves.",
+      "objectives": [
+        "Foster an environment that values individualities and lived experiences so all are empowered to become their best selves."
+      ],
+      "keywords": [
+        "broadening participation",
+        "underrepresented"
+      ]
+    },
+    {
+      "id": "NCAT-G5",
+      "number": 5,
+      "title": "Responsive scholarship and impact",
+      "citation": "North Carolina A&T, Preeminence 2030: North Carolina A&T Blueprint, Goal 5",
+      "description": "Emerge as a global model for research, teaching, learning, outreach and innovation responsive to universal needs, as a culturally responsive R1 institution.",
+      "objectives": [
+        "Emerge as a global model for research, teaching, learning, outreach and innovation responsive to universal needs, as a culturally responsive R1 institution."
+      ],
+      "keywords": [
+        "research",
+        "engineering",
+        "cybersecurity",
+        "agriculture",
+        "transportation",
+        "housing",
+        "health",
+        "computing"
       ]
     }
   ],
   "keywords": [
-    "research",
-    "hbcu",
+    "broadening participation",
+    "community engagement",
+    "cybersecurity",
     "engineering",
-    "agriculture",
-    "stem"
-  ]
+    "extension",
+    "facilities",
+    "hbcu",
+    "health disparities",
+    "research",
+    "research infrastructure",
+    "stem education",
+    "undergraduate research",
+    "underrepresented"
+  ],
+  "source_url": "https://ncat.edu/about/initiatives/preeminence-2030/goals.php"
 }
