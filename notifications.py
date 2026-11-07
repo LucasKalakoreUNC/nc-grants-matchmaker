@@ -307,7 +307,7 @@ def send_email(email, subject, text, html, key, unsubscribe_url=None):
             raise RuntimeError('Recipient was rejected')
 
 
-def run_once(conn, now=None, sender=None):
+def run_once(conn, now=None, sender=None, max_items=100):
     now = now or utc_now()
     schedule(conn, now)
     conn.commit()
@@ -315,7 +315,7 @@ def run_once(conn, now=None, sender=None):
         return {"configured": False, "sent": 0, "failed": 0}
     sender = sender or send_email
     result = {"configured": True, "sent": 0, "failed": 0}
-    for _ in range(100):
+    for _ in range(max_items):
         conn.execute('BEGIN IMMEDIATE')
         row = conn.execute("""SELECT * FROM notification_outbox WHERE
             ((state IN ('pending','failed') AND next_attempt<=?)

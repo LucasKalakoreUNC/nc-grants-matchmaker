@@ -41,7 +41,9 @@ STARTTLS. Gmail is suitable for a small pilot; check Google's
 
 Without sender settings, requests stay queued and the app tells staff that
 email setup is needed. `/api/notifications/status` reports readiness without
-revealing credentials or subscriber addresses.
+revealing credentials or subscriber addresses. Its `outbox` counts show how
+many emails are pending, sent and failed: if `failed` keeps growing, the Gmail
+app password or account is usually the problem.
 
 ## Scheduling and verification
 

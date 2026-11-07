@@ -864,7 +864,9 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     str(payload.get('category') or 'all'))
                 conn.commit()
                 if result.get("delivery_ready"):
-                    delivery = notifications.run_once(conn)
+                    # Send this person's confirmation now (capped so a backlog can't stall the request);
+                    # anything else waits for the 60-second background loop.
+                    delivery = notifications.run_once(conn, max_items=3)
                     result["sent"] = delivery.get("sent", 0)
                     result["failed"] = delivery.get("failed", 0)
             except ValueError as error:

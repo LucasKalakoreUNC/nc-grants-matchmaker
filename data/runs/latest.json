@@ -1,20 +1,20 @@
 {
-  "timestamp": "20261107_145122",
+  "timestamp": "20261107_174832",
   "run_date": "2026-11-07",
   "status": "Succeeded",
   "counts": {
-    "raw_pulled": 485,
-    "normalized_unique": 484,
-    "queries_pulled": 1,
+    "raw_pulled": 484,
+    "normalized_unique": 450,
+    "queries_pulled": 9,
     "queries_skipped_cached": 33,
-    "records_new": 0,
+    "records_new": 84,
     "records_changed": 0,
-    "agencies_scored": 34,
+    "agencies_scored": 33,
     "breakdown": {
       "any_county": {
         "name": "NC county",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 3,
         "medium": 9,
         "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
@@ -23,43 +23,34 @@
       "any_nonprofit": {
         "name": "NC nonprofit",
         "category": "nonprofit",
-        "total": 484,
+        "total": 450,
         "high": 2,
-        "medium": 8,
+        "medium": 9,
         "top_match": "Domestic Violence Prevention",
         "top_score": 83.9
-      },
-      "any_school_district": {
-        "name": "NC school district",
-        "category": "k12",
-        "total": 484,
-        "high": 0,
-        "medium": 3,
-        "top_match": "NIJ FY 2026 Research and Evaluation on School Safety",
-        "top_score": 67.4
       },
       "any_town": {
         "name": "NC city or town",
         "category": "municipal",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 1,
         "top_match": "Outdoor Recreation Legacy Partnership Program (ORLP) Recurring Notice 5 Year",
-        "top_score": 67.6
+        "top_score": 66.9
       },
       "any_tribe": {
         "name": "NC tribe",
         "category": "tribal",
-        "total": 484,
-        "high": 3,
-        "medium": 6,
+        "total": 450,
+        "high": 4,
+        "medium": 5,
         "top_match": "Behavioral Health Integration Initiative",
         "top_score": 76.0
       },
       "biz_agriculture": {
         "name": "NC farms and agribusiness",
         "category": "business",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 2,
         "top_match": "Renewable Energy Systems and Energy Efficiency Improvements Program",
@@ -68,106 +59,106 @@
       "biz_manufacturing": {
         "name": "NC small manufacturers",
         "category": "business",
-        "total": 484,
-        "high": 7,
+        "total": 450,
+        "high": 6,
         "medium": 4,
         "top_match": "SBIR/STTR Commercialization Readiness Pilot (CRP) Program (Parent SB1 Clinical Trial Optional)",
-        "top_score": 87.5
+        "top_score": 88.7
       },
       "biz_tech_startups": {
         "name": "NC tech startups",
         "category": "business",
-        "total": 484,
-        "high": 11,
-        "medium": 3,
+        "total": 450,
+        "high": 10,
+        "medium": 1,
         "top_match": "NIH Small Business Innovation Research (SBIR) Phase IIB Strategic Breakthrough Award (Parent [R44] Clinical Trial Optional)",
         "top_score": 95.8
       },
       "buncombe_county": {
         "name": "Buncombe & WNC Counties",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 3,
         "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
-        "top_score": 69.6
+        "top_score": 69.3
       },
       "city_asheville": {
         "name": "City of Asheville",
         "category": "municipal",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 3,
         "top_match": "Fiscal Year 2026 Flood Mitigation Assistance",
-        "top_score": 65.1
+        "top_score": 63.8
       },
       "city_charlotte": {
         "name": "City of Charlotte",
         "category": "municipal",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 0,
         "top_match": "Renewable Energy Systems and Energy Efficiency Improvements Program",
-        "top_score": 43.4
+        "top_score": 43.3
       },
       "city_durham": {
         "name": "City of Durham",
         "category": "municipal",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 0,
         "top_match": "Comprehensive Housing Counseling (CHC) and the Housing Counseling Training (HCT) NOFO (FY2026)",
-        "top_score": 49.9
+        "top_score": 49.1
       },
       "city_greensboro": {
         "name": "City of Greensboro",
         "category": "municipal",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 1,
         "top_match": "Growing Research Access for Nationally Transformative Economic Development (GRANTED)",
-        "top_score": 55.5
+        "top_score": 55.6
       },
       "city_raleigh": {
         "name": "City of Raleigh",
         "category": "municipal",
-        "total": 484,
-        "high": 0,
-        "medium": 2,
-        "top_match": "Outdoor Recreation Legacy Partnership Program (ORLP) Recurring Notice 5 Year",
-        "top_score": 59.5
+        "total": 450,
+        "high": 1,
+        "medium": 3,
+        "top_match": "CDC National Centers of Excellence in Youth Violence Prevention (YVPCs): Rigorous Evaluation of Prevention Approaches to Prevent and Reduce Youth Violence",
+        "top_score": 81.0
       },
       "commerce": {
         "name": "NC Commerce",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 0,
-        "top_match": "FY27 Small Business Development Center State of Kansas Network Rebid",
-        "top_score": 51.2
+        "top_match": "FY 2021 - 2023 Economic Development RNTA",
+        "top_score": 51.3
       },
       "deq": {
         "name": "NC DEQ",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 0,
-        "medium": 2,
+        "medium": 3,
         "top_match": "2026 Diesel Emissions Reduction Act (DERA) National Program",
-        "top_score": 62.2
+        "top_score": 62.1
       },
       "dhhs": {
         "name": "NCDHHS",
         "category": "state",
-        "total": 484,
-        "high": 5,
-        "medium": 6,
+        "total": 450,
+        "high": 4,
+        "medium": 13,
         "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
-        "top_score": 90.0
+        "top_score": 90.9
       },
       "dncr": {
         "name": "NC DNCR",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 1,
         "top_match": "National Leadership Grants for Libraries (2027)",
@@ -176,34 +167,34 @@
       "dot": {
         "name": "NCDOT",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 1,
         "top_match": "Innovative Traffic Safety Enforcement (ITSE) Grant Program",
-        "top_score": 55.7
+        "top_score": 56.3
       },
       "dpi": {
         "name": "NC DPI",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 0,
         "top_match": "NIJ FY 2026 Research and Evaluation on School Safety",
-        "top_score": 54.7
+        "top_score": 52.3
       },
       "dps": {
         "name": "NC DPS",
         "category": "state",
-        "total": 484,
-        "high": 1,
-        "medium": 2,
+        "total": 450,
+        "high": 0,
+        "medium": 4,
         "top_match": "OJJDP FY 2026 Emergency Planning for Juvenile Justice Residential Facilities",
-        "top_score": 70.5
+        "top_score": 67.5
       },
       "durham_county": {
         "name": "Durham County",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 1,
         "medium": 0,
         "top_match": "Maternal, Infant, and Early Childhood Home Visiting Program (MIECHV)",
@@ -212,106 +203,106 @@
       "ecu": {
         "name": "ECU",
         "category": "education",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 0,
-        "top_match": "Interdisciplinary Research Networks to Advance Biomedical Research on Resilience and Health Optimization",
-        "top_score": 51.9
+        "top_match": "Limited Competition: Centers of Biomedical Research Excellence: Development Phase (COBRE-D) (P30 - Clinical Trial Not Allowed)",
+        "top_score": 50.9
       },
       "guilford_county": {
         "name": "Guilford County",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 2,
         "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
-        "top_score": 62.4
+        "top_score": 63.1
       },
       "mecklenburg_county": {
         "name": "Mecklenburg County",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 1,
-        "medium": 8,
+        "medium": 10,
         "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
         "top_score": 74.0
       },
       "nc_dit": {
         "name": "NC DIT",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 2,
         "medium": 3,
         "top_match": "Department of War Cyber Service Academy (DoW CSA)",
-        "top_score": 74.4
+        "top_score": 75.7
       },
       "nc_smallbiz": {
         "name": "NC Small Business & SBTDC",
         "category": "business",
-        "total": 484,
-        "high": 11,
-        "medium": 6,
+        "total": 450,
+        "high": 9,
+        "medium": 4,
         "top_match": "NIH Small Business Innovation Research (SBIR) Phase IIB Strategic Breakthrough Award (Parent [R44] Clinical Trial Optional)",
         "top_score": 94.2
       },
       "ncat": {
         "name": "NC A&T",
         "category": "education",
-        "total": 484,
-        "high": 2,
+        "total": 450,
+        "high": 1,
         "medium": 12,
         "top_match": "Fiscal Year (FY) 2027 Department of the Navy (DoN) Historically Black Colleges and Universities/Minority Institutions (HBCU/MI) Program",
-        "top_score": 71.4
+        "top_score": 72.8
       },
       "nccc_system": {
         "name": "NC Community Colleges",
         "category": "education",
-        "total": 484,
+        "total": 450,
         "high": 1,
-        "medium": 1,
+        "medium": 0,
         "top_match": "Advanced Technological Education (ATE)",
-        "top_score": 80.2
+        "top_score": 80.0
       },
       "ncda": {
         "name": "NCDA&CS",
         "category": "state",
-        "total": 484,
+        "total": 450,
         "high": 0,
         "medium": 4,
         "top_match": "Agriculture and Food Research Initiative Competitive Grants Program Foundational and Applied Science Program",
-        "top_score": 65.1
+        "top_score": 65.4
       },
       "ncsu": {
         "name": "NC State",
         "category": "education",
-        "total": 484,
+        "total": 450,
         "high": 1,
-        "medium": 10,
+        "medium": 9,
         "top_match": "Agriculture and Food Research Initiative Competitive Grants Program Foundational and Applied Science Program",
-        "top_score": 77.9
+        "top_score": 77.1
       },
       "robeson_county": {
         "name": "Robeson County",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 3,
         "medium": 0,
-        "top_match": "Fiscal Year 2026 Flood Mitigation Assistance",
-        "top_score": 75.9
+        "top_match": "Fiscal Year 2026 Flood Mitigation Assistance Swift Current",
+        "top_score": 75.2
       },
       "unc_system": {
         "name": "UNC & NC Higher Ed",
         "category": "education",
-        "total": 484,
-        "high": 4,
-        "medium": 17,
+        "total": 450,
+        "high": 5,
+        "medium": 12,
         "top_match": "Genesis Mission Graduate Fellowship Pilot",
         "top_score": 86.5
       },
       "wake_county": {
         "name": "Wake County",
         "category": "county",
-        "total": 484,
+        "total": 450,
         "high": 2,
         "medium": 1,
         "top_match": "GPD Grant Forecast",
@@ -319,6 +310,6 @@
       }
     }
   },
-  "duration_seconds": 53.22,
+  "duration_seconds": 124.25,
   "errors": []
 }
