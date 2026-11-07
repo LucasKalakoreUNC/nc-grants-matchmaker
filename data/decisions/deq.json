@@ -1,0 +1,32 @@
+{
+  "agency_id": "deq",
+  "decisions": [
+    {
+      "opportunity_id": "364136",
+      "number": "DE-FOA-0003630",
+      "title": "2026 Diesel Emissions Reduction Act (DERA) National Program",
+      "status": "Pursue",
+      "decided_by": "Jane Miller (Grants Coordinator, DEQ Clean Energy)",
+      "decided_at": "2026-11-06T09:30:00Z",
+      "notes": "High priority: Aligns with NC DEQ Goal 2 (Clean Air & Carbon Reduction). Mobile Sources team to draft state fleet conversion request."
+    },
+    {
+      "opportunity_id": "364078",
+      "number": "G27AS00052",
+      "title": "Superfund Hazardous Substance Research and Training Program",
+      "status": "Pass",
+      "decided_by": "Marcus Vance (DEQ Brownfields & Superfund Lead)",
+      "decided_at": "2026-11-06T10:15:00Z",
+      "notes": "Pass: Designed for university academic health systems with clinical trial facilities rather than state remediation work."
+    },
+    {
+      "opportunity_id": "364120",
+      "number": "EPA-OW-2026-319",
+      "title": "Nonpoint Source Management Grants Under Clean Water Act Section 319",
+      "status": "Maybe",
+      "decided_by": "Sarah Lin (DEQ Division of Water Resources)",
+      "decided_at": "2026-11-06T11:00:00Z",
+      "notes": "Maybe: Awaiting tribal co-sponsor confirmation from Lumbee and Coharie tribes for Cape Fear watershed partnership."
+    }
+  ]
+}

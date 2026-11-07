@@ -1,0 +1,49 @@
+{
+  "timestamp": "20261106_134750",
+  "run_date": "2026-11-06",
+  "status": "Succeeded",
+  "counts": {
+    "raw_pulled": 535,
+    "normalized_unique": 382,
+    "agencies_scored": 5,
+    "breakdown": {
+      "deq": {
+        "total": 382,
+        "high": 38,
+        "medium": 118,
+        "top_match": "2026 Diesel Emissions Reduction Act (DERA) National Program",
+        "top_score": 90.0
+      },
+      "dps": {
+        "total": 382,
+        "high": 21,
+        "medium": 94,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 90.0
+      },
+      "commerce": {
+        "total": 382,
+        "high": 25,
+        "medium": 83,
+        "top_match": "FY 2025 EDA Public Works and Economic Adjustment Assistance Programs",
+        "top_score": 92.5
+      },
+      "dhhs": {
+        "total": 382,
+        "high": 114,
+        "medium": 91,
+        "top_match": "Emergency Department Alternatives to Opioids Program",
+        "top_score": 96.8
+      },
+      "dot": {
+        "total": 382,
+        "high": 16,
+        "medium": 58,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 86.0
+      }
+    }
+  },
+  "duration_seconds": 20.7,
+  "errors": []
+}

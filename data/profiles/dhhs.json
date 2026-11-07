@@ -1,0 +1,113 @@
+{
+  "agency_id": "dhhs",
+  "name": "North Carolina Department of Health and Human Services",
+  "short_name": "NCDHHS",
+  "source_citation": "NCDHHS Strategic Vision & Priority Roadmap 2025-2028 (NC OSBM)",
+  "mission": "In collaboration with our partners, to protect the health and safety of all North Carolinians and provide essential human services.",
+  "eligible_applicant_types": [
+    "State governments",
+    "State health agencies",
+    "Public health authorities",
+    "State mental health authorities"
+  ],
+  "funder_affinities": [
+    "Department of Health and Human Services",
+    "Centers for Disease Control and Prevention",
+    "Substance Abuse and Mental Health Services Administration",
+    "Health Resources and Services Administration",
+    "Administration for Children and Families",
+    "National Institutes of Health",
+    "Department of Agriculture"
+  ],
+  "goals": [
+    {
+      "id": "DHHS-G1",
+      "number": 1,
+      "title": "Behavioral Health Transformation & Opioid Overdose Prevention",
+      "citation": "NCDHHS Strategic Roadmap, Section 3.1, pp. 10-16",
+      "description": "Expand community-based behavioral health crisis facilities, strengthen medication-assisted treatment for opioid use disorder, and implement school-based youth mental health programs.",
+      "objectives": [
+        "Open 24/7 behavioral health urgent care centers in high-overdose counties",
+        "Distribute naloxone and fentanyl test strips through community harm reduction programs",
+        "Expand peer support specialist workforce and mobile crisis response teams",
+        "Deploy evidence-based youth resilience and suicide prevention curricula in public schools"
+      ],
+      "keywords": [
+        "behavioral health", "mental health", "opioid", "substance abuse", "overdose prevention",
+        "crisis intervention", "harm reduction", "SAMHSA", "naloxone", "peer support",
+        "suicide prevention", "addiction treatment"
+      ]
+    },
+    {
+      "id": "DHHS-G2",
+      "number": 2,
+      "title": "Maternal, Infant, and Early Childhood Health Equity",
+      "citation": "NCDHHS Strategic Roadmap, Section 3.2, pp. 17-24",
+      "description": "Dramatically reduce maternal mortality and severe morbidity disparities, expand perinatal nurse home visiting, and promote universal early childhood developmental screenings.",
+      "objectives": [
+        "Close maternal mortality gap for rural and minority mothers through specialized community doulas",
+        "Expand evidence-based home visiting programs (Nurse-Family Partnership) to all 100 counties",
+        "Implement postpartum telehealth monitoring for gestational hypertension and diabetes"
+      ],
+      "keywords": [
+        "maternal health", "infant mortality", "perinatal care", "doula", "early childhood",
+        "developmental screening", "pediatric health", "telehealth", "HRSA", "maternal mortality"
+      ]
+    },
+    {
+      "id": "DHHS-G3",
+      "number": 3,
+      "title": "Rural Healthcare Infrastructure & Clinical Workforce Retention",
+      "citation": "NCDHHS Strategic Roadmap, Section 3.3, pp. 25-31",
+      "description": "Stabilize rural critical access hospitals, expand loan repayment programs for rural primary care doctors and nurses, and modernize community health center clinical facilities.",
+      "objectives": [
+        "Fund broadband-enabled telehealth kiosks in rural county health departments",
+        "Provide educational debt relief for bilingual clinicians practicing in designated shortage areas",
+        "Support federally qualified health centers (FQHC) capital facility expansions"
+      ],
+      "keywords": [
+        "rural healthcare", "healthcare workforce", "primary care", "FQHC", "clinical training",
+        "loan repayment", "health professional shortage area", "critical access hospitals", "telemedicine"
+      ]
+    },
+    {
+      "id": "DHHS-G4",
+      "number": 4,
+      "title": "Public Health Preparedness, Epidemiology & Infectious Disease Surveillance",
+      "citation": "NCDHHS Strategic Roadmap, Section 3.4, pp. 32-38",
+      "description": "Enhance state laboratory genomics, accelerate vector-borne disease tracking (mosquito and tick-borne pathogens), and fortify public health surge capacity.",
+      "objectives": [
+        "Modernize North Carolina State Laboratory of Public Health genetic sequencing platforms",
+        "Expand statewide wastewater viral monitoring network across municipal treatment plants",
+        "Strengthen local health department communicable disease investigation teams"
+      ],
+      "keywords": [
+        "public health preparedness", "epidemiology", "infectious disease", "CDC", "disease surveillance",
+        "wastewater surveillance", "laboratory capacity", "pandemic readiness", "outbreak response"
+      ]
+    },
+    {
+      "id": "DHHS-G5",
+      "number": 5,
+      "title": "Social Determinants of Health: Food Security & Housing Stabilization",
+      "citation": "NCDHHS Strategic Roadmap, Section 3.5, pp. 39-44",
+      "description": "Integrate NCCARE360 statewide coordinated care network with federal anti-hunger and supportive housing programs to address root drivers of poor health.",
+      "objectives": [
+        "Expand medically tailored meals and produce prescription programs for chronic illness patients",
+        "Support rapid re-housing and permanent supportive housing for medically vulnerable homeless adults",
+        "Integrate SNAP and WIC enrollment kiosks into community health hubs"
+      ],
+      "keywords": [
+        "social determinants of health", "food security", "nutrition", "housing stability",
+        "supportive housing", "NCCARE360", "anti-poverty", "food prescription", "WIC", "SNAP"
+      ]
+    }
+  ],
+  "keywords": [
+    "behavioral health", "mental health", "opioid", "substance abuse", "overdose prevention",
+    "maternal health", "infant mortality", "perinatal care", "early childhood",
+    "rural healthcare", "healthcare workforce", "primary care", "FQHC", "telehealth",
+    "public health preparedness", "epidemiology", "disease surveillance", "wastewater surveillance",
+    "social determinants of health", "food security", "housing stability", "harm reduction"
+  ]
+}

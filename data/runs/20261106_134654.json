@@ -1,0 +1,49 @@
+{
+  "timestamp": "20261106_134654",
+  "run_date": "2026-11-06",
+  "status": "Succeeded",
+  "counts": {
+    "raw_pulled": 535,
+    "normalized_unique": 382,
+    "agencies_scored": 5,
+    "breakdown": {
+      "deq": {
+        "total": 382,
+        "high": 0,
+        "medium": 6,
+        "top_match": "FY 2027 &ndash; 2029 Broad Agency Announcement (BAA), National Marine Fisheries Service",
+        "top_score": 61.1
+      },
+      "dps": {
+        "total": 382,
+        "high": 0,
+        "medium": 4,
+        "top_match": "Cybersecurity Innovation for Cyberinfrastructure (CICI)",
+        "top_score": 59.2
+      },
+      "commerce": {
+        "total": 382,
+        "high": 2,
+        "medium": 26,
+        "top_match": "FY 2025 EDA Public Works and Economic Adjustment Assistance Programs",
+        "top_score": 77.0
+      },
+      "dhhs": {
+        "total": 382,
+        "high": 2,
+        "medium": 26,
+        "top_match": "Emergency Department Alternatives to Opioids Program",
+        "top_score": 88.2
+      },
+      "dot": {
+        "total": 382,
+        "high": 0,
+        "medium": 6,
+        "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
+        "top_score": 59.2
+      }
+    }
+  },
+  "duration_seconds": 7.8,
+  "errors": []
+}

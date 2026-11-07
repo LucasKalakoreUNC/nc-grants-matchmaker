@@ -1,0 +1,94 @@
+{
+  "agency_id": "commerce",
+  "name": "North Carolina Department of Commerce",
+  "short_name": "NC Commerce",
+  "source_citation": "NC Department of Commerce Strategic Economic Framework 2025-2029 (NC OSBM)",
+  "mission": "To enhance the economic well-being and quality of life for all North Carolinians through high-impact job creation, rural community investment, and workforce innovation.",
+  "eligible_applicant_types": [
+    "State governments",
+    "State economic development agencies",
+    "Regional development councils",
+    "Institutions of higher education"
+  ],
+  "funder_affinities": [
+    "Department of Commerce",
+    "Economic Development Administration",
+    "National Telecommunications and Information Administration",
+    "Small Business Administration",
+    "Department of Labor",
+    "Department of Agriculture",
+    "Appalachian Regional Commission"
+  ],
+  "goals": [
+    {
+      "id": "COMM-G1",
+      "number": 1,
+      "title": "Universal High-Speed Broadband & Digital Inclusion",
+      "citation": "NC Commerce Framework, Section 4.1, pp. 9-15",
+      "description": "Deploy BEAD and state broadband funds to connect 100% of unserved and underserved rural households, farms, and businesses to high-speed fiber infrastructure.",
+      "objectives": [
+        "Deploy last-mile fiber to 250,000 unserved rural households and agricultural operations",
+        "Provide affordable digital devices and subsidized connectivity for low-income families",
+        "Support digital literacy and workforce digital upskilling in public libraries and community centers"
+      ],
+      "keywords": [
+        "broadband", "BEAD", "digital equity", "high-speed internet", "fiber optic",
+        "last-mile", "telecommunications", "NTIA", "digital literacy", "rural connectivity"
+      ]
+    },
+    {
+      "id": "COMM-G2",
+      "number": 2,
+      "title": "Advanced Manufacturing & Clean Energy Workforce Reskilling",
+      "citation": "NC Commerce Framework, Section 4.2, pp. 16-22",
+      "description": "Align NC community college workforce training with emerging mega-site employers in EV batteries, semiconductors, clean tech, and aerospace.",
+      "objectives": [
+        "Create customized registered apprenticeship pipelines for advanced manufacturing clusters",
+        "Fund modern high-tech laboratory equipment at rural community colleges",
+        "Retrain displaced agricultural and legacy manufacturing workers for high-wage clean energy careers"
+      ],
+      "keywords": [
+        "workforce development", "apprenticeship", "advanced manufacturing", "clean energy jobs",
+        "semiconductor", "community college", "job training", "STEM workforce", "EDA Tech Hub"
+      ]
+    },
+    {
+      "id": "COMM-G3",
+      "number": 3,
+      "title": "Distressed Rural Main Street & Small Business Revitalization",
+      "citation": "NC Commerce Framework, Section 4.3, pp. 23-29",
+      "description": "Catalyze commercial revitalization in historic downtowns, provide micro-lending and technical assistance to minority and women entrepreneurs, and develop regional industrial megasites.",
+      "objectives": [
+        "Distribute downtown facade improvement and commercial building rehabilitation grants",
+        "Expand revolving loan funds for underserved Main Street merchants and tech startups",
+        "Support certified industrial shovel-ready sites in Tier 1 economically distressed counties"
+      ],
+      "keywords": [
+        "economic development", "rural revitalization", "Main Street", "small business",
+        "entrepreneurship", "EDA", "revolving loan fund", "distressed counties", "commercial corridor"
+      ]
+    },
+    {
+      "id": "COMM-G4",
+      "number": 4,
+      "title": "Global Supply Chain Localization & Export Promotion",
+      "citation": "NC Commerce Framework, Section 4.4, pp. 30-36",
+      "description": "Support small and medium-sized NC manufacturers entering international trade and localize critical supply chains within North Carolina.",
+      "objectives": [
+        "Provide STEP export vouchers for rural manufacturers to attend international trade expos",
+        "Establish regional supply chain supplier-matching databases for major state industrial anchors",
+        "Modernize agricultural value-added processing and cold storage facilities"
+      ],
+      "keywords": [
+        "supply chain", "export promotion", "trade", "manufacturing", "logistics",
+        "STEP grant", "value-added agriculture", "international trade"
+      ]
+    }
+  ],
+  "keywords": [
+    "broadband", "BEAD", "digital equity", "high-speed internet", "fiber optic",
+    "workforce development", "apprenticeship", "advanced manufacturing", "clean energy jobs",
+    "economic development", "rural revitalization", "Main Street", "small business",
+    "supply chain", "EDA", "NTIA", "distressed counties", "job creation"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "agency_id": "dps",
+  "name": "North Carolina Department of Public Safety",
+  "short_name": "NC DPS",
+  "source_citation": "NC DPS & Emergency Management Strategic Plan 2025-2029 (NC OSBM)",
+  "mission": "Safeguarding and preserving the lives and property of North Carolinians through state-of-the-art disaster prevention, emergency management, law enforcement, and juvenile justice.",
+  "eligible_applicant_types": [
+    "State governments",
+    "State emergency management agencies",
+    "State law enforcement agencies",
+    "Local emergency management agencies"
+  ],
+  "funder_affinities": [
+    "Department of Homeland Security",
+    "Federal Emergency Management Agency",
+    "Department of Justice",
+    "Cybersecurity and Infrastructure Security Agency",
+    "National Highway Traffic Safety Administration"
+  ],
+  "goals": [
+    {
+      "id": "DPS-G1",
+      "number": 1,
+      "title": "Disaster Mitigation, Flood Resilience, and Emergency Preparedness",
+      "citation": "NC DPS Strategic Plan, Section 5.1, pp. 11-17",
+      "description": "Strengthen North Carolina's resilience to major hurricanes, severe flooding, and tornadoes through FEMA Building Resilient Infrastructure and Communities (BRIC) projects and repetitive flood loss property acquisitions.",
+      "objectives": [
+        "Elevate and floodproof critical public facilities in 100-year and 500-year floodplains",
+        "Implement voluntary property buyouts for repetitive flood-loss homes in coastal and riverine counties",
+        "Modernize North Carolina Emergency Management regional staging warehouses and mobile command posts"
+      ],
+      "keywords": [
+        "disaster mitigation", "FEMA", "flood resilience", "hazard mitigation", "BRIC",
+        "emergency management", "hurricane response", "floodplain", "buyout", "evacuation",
+        "severe storms", "resilience"
+      ]
+    },
+    {
+      "id": "DPS-G2",
+      "number": 2,
+      "title": "Next Generation 911 & FirstNet Tactical Interoperability",
+      "citation": "NC DPS Strategic Plan, Section 5.2, pp. 18-24",
+      "description": "Complete statewide NG911 geospatial call routing, upgrade emergency dispatch centers with real-time video/data ingestion, and harden first responder radio communications towers.",
+      "objectives": [
+        "Ensure 100% of North Carolina public safety answering points (PSAPs) are connected to NG911",
+        "Deploy redundant satellite backup links for mountain emergency dispatch centers",
+        "Standardize mutual aid encrypted radio channels for state troopers, county sheriffs, and local police"
+      ],
+      "keywords": [
+        "NG911", "emergency communications", "first responders", "public safety answering points",
+        "radio interoperability", "VIPER network", "dispatch", "telecommunications", "FirstNet"
+      ]
+    },
+    {
+      "id": "DPS-G3",
+      "number": 3,
+      "title": "Statewide Cybersecurity & Critical Infrastructure Protection",
+      "citation": "NC DPS Strategic Plan, Section 5.3, pp. 25-31",
+      "description": "Defend state agencies, county water utilities, electrical substations, and local court networks against foreign state and ransomware cyber threats through the State and Local Cybersecurity Grant Program (SLCGP).",
+      "objectives": [
+        "Deploy continuous 24/7 security operations center (SOC) monitoring across all 100 county governments",
+        "Conduct red-team vulnerability assessments for municipal drinking water SCADA systems",
+        "Provide incident response strike teams for local governments experiencing ransomware attacks"
+      ],
+      "keywords": [
+        "cybersecurity", "CISA", "SLCGP", "ransomware", "critical infrastructure",
+        "SCADA defense", "network security", "information security", "threat intelligence"
+      ]
+    },
+    {
+      "id": "DPS-G4",
+      "number": 4,
+      "title": "Juvenile Justice Reform & Community Violence Intervention",
+      "citation": "NC DPS Strategic Plan, Section 5.4, pp. 32-38",
+      "description": "Invest in hospital-based violence intervention programs, evidence-based youth delinquency diversion, and trauma-informed behavioral support for justice-involved teens.",
+      "objectives": [
+        "Expand community-based violence interruption and credible messenger programs in high-crime neighborhoods",
+        "Establish regional juvenile crisis stabilization centers to divert youths from detention facilities",
+        "Fund vocational apprenticeships and high school completion programs for youthful offenders"
+      ],
+      "keywords": [
+        "juvenile justice", "violence intervention", "community safety", "crime prevention",
+        "DOJ", "OJP", "recidivism reduction", "youth mentorship", "trauma-informed care"
+      ]
+    }
+  ],
+  "keywords": [
+    "disaster mitigation", "FEMA", "flood resilience", "hazard mitigation", "BRIC",
+    "emergency management", "hurricane response", "NG911", "first responders",
+    "cybersecurity", "CISA", "SLCGP", "ransomware", "critical infrastructure",
+    "juvenile justice", "violence intervention", "community safety", "crime prevention", "DOJ"
+  ]
+}

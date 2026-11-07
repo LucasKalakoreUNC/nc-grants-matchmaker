@@ -1,0 +1,120 @@
+{
+  "agency_id": "deq",
+  "name": "North Carolina Department of Environmental Quality",
+  "short_name": "NC DEQ",
+  "source_citation": "NC DEQ Strategic Plan FY 2025-2029 (NC OSBM Public Repository)",
+  "mission": "To protect and enhance North Carolina's environment and natural resources, and preserve them for the health, well-being and economic benefit of present and future generations.",
+  "eligible_applicant_types": [
+    "State governments",
+    "State agencies",
+    "Public and State controlled institutions of higher education",
+    "Intergovernmental bodies"
+  ],
+  "funder_affinities": [
+    "Environmental Protection Agency",
+    "Department of the Interior",
+    "National Oceanic and Atmospheric Administration",
+    "Department of Energy",
+    "Department of Agriculture",
+    "Army Corps of Engineers"
+  ],
+  "goals": [
+    {
+      "id": "DEQ-G1",
+      "number": 1,
+      "title": "Protect and Improve Water Quality and Drinking Water Infrastructure",
+      "citation": "NC DEQ Strategic Plan, Section 2.1, pp. 12-16",
+      "description": "Ensure clean, reliable drinking water for all North Carolinians, remediate emerging contaminants including PFAS/PFOA, upgrade aging wastewater and stormwater infrastructure, and protect river basins and watersheds.",
+      "objectives": [
+        "Upgrade aging municipal and rural wastewater systems to prevent discharges",
+        "Remediate PFAS/PFOA and perfluorinated chemicals in drinking water supplies",
+        "Implement nonpoint source watershed restoration in Cape Fear, Neuse, and Tar-Pamlico basins",
+        "Strengthen stormwater resilience against severe storm and hurricane flooding"
+      ],
+      "keywords": [
+        "water quality", "drinking water", "wastewater", "stormwater", "PFAS", "PFOA",
+        "emerging contaminants", "clean water state revolving fund", "watershed", "estuary",
+        "groundwater", "aquifer", "lead pipe", "sewer", "nonpoint source", "hydrology"
+      ]
+    },
+    {
+      "id": "DEQ-G2",
+      "number": 2,
+      "title": "Advance Clean Air, Climate Resilience, and Clean Energy Transition",
+      "citation": "NC DEQ Strategic Plan, Section 2.2, pp. 17-22",
+      "description": "Reduce greenhouse gas emissions, improve ambient air quality, deploy zero-emission technologies, and expand coastal storm and heat resilience across vulnerable communities.",
+      "objectives": [
+        "Reduce stationary and mobile source criteria air pollutants and toxics",
+        "Deploy distributed renewable energy and battery storage across state facilities",
+        "Implement the NC Clean Energy Plan to achieve power sector carbon neutrality",
+        "Enhance community climate risk assessments and extreme weather adaptation"
+      ],
+      "keywords": [
+        "clean air", "air quality", "emissions", "greenhouse gas", "climate resilience",
+        "renewable energy", "solar", "wind", "battery storage", "carbon reduction",
+        "energy efficiency", "air toxics", "ozone", "particulate matter", "clean tech"
+      ]
+    },
+    {
+      "id": "DEQ-G3",
+      "number": 3,
+      "title": "Sustainable Land Stewardship, Brownfields Redevelopment, and Waste Reduction",
+      "citation": "NC DEQ Strategic Plan, Section 2.3, pp. 23-28",
+      "description": "Remediate contaminated brownfield and Superfund sites, improve solid and hazardous waste reduction, and support sustainable soil and forest conservation.",
+      "objectives": [
+        "Accelerate assessment and cleanup of abandoned industrial and brownfield properties",
+        "Prevent chemical spills through rigorous hazardous waste permitting and inspections",
+        "Expand municipal waste diversion, composting, and advanced recycling infrastructure",
+        "Protect critical soil resources and agricultural buffer zones"
+      ],
+      "keywords": [
+        "brownfields", "superfund", "hazardous waste", "land reuse", "soil contamination",
+        "recycling", "solid waste", "circular economy", "landfill", "toxic substances",
+        "site remediation", "environmental cleanup"
+      ]
+    },
+    {
+      "id": "DEQ-G4",
+      "number": 4,
+      "title": "Coastal Protection, Estuarine Habitats, and Marine Fisheries Management",
+      "citation": "NC DEQ Strategic Plan, Section 2.4, pp. 29-34",
+      "description": "Safeguard North Carolina's 300+ miles of coastline, restore oyster reefs and submerged aquatic vegetation, strengthen living shorelines, and sustain commercial/recreational fisheries.",
+      "objectives": [
+        "Restore coastal marshlands, oyster sanctuaries, and seagrass nurseries",
+        "Permit nature-based living shorelines to combat coastal erosion and storm surges",
+        "Modernize fisheries stock assessments using acoustic and environmental DNA monitoring",
+        "Support coastal county waterfront access and resilience infrastructure"
+      ],
+      "keywords": [
+        "coastal resilience", "marine fisheries", "oyster restoration", "living shorelines",
+        "estuary", "salt marsh", "barrier islands", "submerged aquatic vegetation", "sea level rise",
+        "shoreline erosion", "coastal zone management", "NOAA", "marine ecosystem"
+      ]
+    },
+    {
+      "id": "DEQ-G5",
+      "number": 5,
+      "title": "Environmental Justice, Rural Community Support, and Tribal Partnerships",
+      "citation": "NC DEQ Strategic Plan, Section 2.5, pp. 35-40",
+      "description": "Ensure fair treatment and meaningful involvement of all communities, address historic environmental burdens in underserved rural and minority areas, and collaborate with NC tribal nations.",
+      "objectives": [
+        "Target state and federal infrastructure grants to historically distressed communities",
+        "Expand multilingual environmental monitoring and public notification systems",
+        "Strengthen co-stewardship initiatives with state-recognized North Carolina tribes",
+        "Eliminate disparities in safe drinking water access in rural mobile home parks"
+      ],
+      "keywords": [
+        "environmental justice", "underserved communities", "disadvantaged communities",
+        "tribal", "equity", "rural water", "public health", "community monitoring",
+        "Justice40", "inclusive outreach", "Title VI"
+      ]
+    }
+  ],
+  "keywords": [
+    "water quality", "drinking water", "wastewater", "stormwater", "PFAS", "PFOA",
+    "clean air", "emissions", "climate resilience", "clean energy", "solar", "wind",
+    "brownfields", "superfund", "hazardous waste", "recycling", "coastal resilience",
+    "marine fisheries", "oyster restoration", "living shorelines", "environmental justice",
+    "Justice40", "watershed", "estuary", "flood mitigation", "nonpoint source", "toxic substances"
+  ]
+}
