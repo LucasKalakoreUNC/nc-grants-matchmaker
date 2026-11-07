@@ -1,0 +1,155 @@
+{
+  "opportunity_id": "360883",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Cover Component",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard institutional cover form for multi-component career development award on ASSIST.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Summary of the BIRCWH institutional career development program, scientific disciplines, and scholar development goals (max 30 lines).",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Two or three sentences on how interdisciplinary training in women’s health and sex differences advances public health.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Overall Program Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing Program Rationale, Career Development Plan, Scholar Selection Process, Advisory Committee, and Program Evaluation.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Page Limitations"
+    },
+    {
+      "name": "Administrative Core Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing program leadership, scholar recruitment, fiscal management, and tracking scholar outcomes.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Professional Development Core Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 6 pages describing scholar curriculum, grant-writing workshops, leadership seminars, and career milestones.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Community Engagement and Outreach Core Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 6 pages detailing partnerships, patient advocacy, community-based research, and dissemination of women's health findings.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Institutional Environment & Commitment Letter",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Letter from the Dean/Chancellor guaranteeing 75% protected research time for scholars, laboratory space, equipment, and departmental support.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Institutional Commitment"
+    },
+    {
+      "name": "Senior/Key Person Profiles & Mentor Biosketches",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for Program Director, Research Mentors, and Advisory Committee members (max 5 pages each).",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "Detailed Budget and Justification (per Component)",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed budget covering scholar salary support (up to 75% effort), research development funds, and core administration costs (8% indirect rate).",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Plan for Instruction in Responsible Conduct of Research",
+      "category": "Attachments",
+      "required": true,
+      "details": "Maximum 3 pages describing formal training in scientific integrity, mentor-trainee responsibilities, and research ethics.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Registrations (SAM.gov, Grants.gov, eRA Commons)",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active institutional registrations in SAM.gov, Grants.gov, and eRA Commons for Program Directors.",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Letter of Intent Due Date",
+      "when": "30 days prior to application deadline",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Part 1. Overview Key Dates"
+    },
+    {
+      "what": "October Standard Due Date",
+      "when": "October 15, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Part 1. Overview Key Dates"
+    },
+    {
+      "what": "January Standard Due Date",
+      "when": "January 28, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Part 1. Overview Key Dates"
+    },
+    {
+      "what": "May Standard Due Date",
+      "when": "May 28, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Part 1. Overview Key Dates"
+    }
+  ],
+  "eligibility": {
+    "summary": "Institutions of higher education, non-profits, healthcare systems. Only one application per institution (UEI/IPF number) is allowed. In North Carolina, academic medical centers (UNC School of Medicine, Duke Health, Wake Forest Baptist, Brody School of Medicine at ECU) are eligible.",
+    "source": "PAR-27-056-Revised-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "This NOFO does not require cost sharing as defined in the NIH Grants Policy Statement.",
+    "source": "PAR-27-056-Revised-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance of Career Development Program",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Program Director(s) and Mentor Faculty",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Innovation in Interdisciplinary Training",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Program Approach (Scholar selection and mentoring model)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Environment and Institutional Commitment (75% protected time guarantee)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-056-Revised-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Only one application per institution (normally identified by having a unique entity identifier (UEI) or NIH IPF number) is allowed.",
+  "important_notes": [
+    "Institutional Limit: Exactly one application per institution is permitted; internal competition is required.",
+    "BIRCWH scholars must be guaranteed at least 75% protected research time (9 person-months) by the institution.",
+    "Multi-component application submitted via ASSIST or compatible system."
+  ]
+}

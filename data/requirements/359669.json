@@ -1,0 +1,129 @@
+{
+  "opportunity_id": "359669",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Cover Form",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard application cover sheet including applicant small business UEI and active award references.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Succinct summary of late-stage development and commercialization activities. Maximum 30 lines of text.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Two or three sentences describing public health impact and commercial application.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 SF424(R&R) Other Project Information"
+    },
+    {
+      "name": "R&R Senior/Key Person Profile",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches of key commercialization personnel, regulatory consultants, and investigators (max 5 pages each).",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "R&R Budget and Justification",
+      "category": "Budget",
+      "required": true,
+      "details": "Detailed line-item budget covering technical assistance, regulatory consulting, IP filing, and clinical trial preparation.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Specific Aims",
+      "category": "Project narrative",
+      "required": true,
+      "details": "One page outlining commercialization readiness goals and milestones.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "Commercialization Readiness Plan (Research Strategy)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages outlining commercialization strategy, regulatory pathway, intellectual property landscape, and market adoption.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 Page Limitations"
+    },
+    {
+      "name": "Letters of Support from Partners and Investors",
+      "category": "Letters and partnerships",
+      "required": false,
+      "details": "Letters from strategic corporate partners, regulatory advisors, or follow-on investors endorsing the commercialization path.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 PHS 398 Research Plan"
+    },
+    {
+      "name": "eRA Commons and SAM.gov Registrations",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with UEI and eRA Commons company and PD/PI credentials.",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "September Standard Due Date",
+      "when": "September 5, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "January Standard Due Date",
+      "when": "January 5, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.3"
+    },
+    {
+      "what": "April Standard Due Date",
+      "when": "April 5, 2027, 5:00 p.m. local time of applicant organization",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section IV.3"
+    }
+  ],
+  "eligibility": {
+    "summary": "Only United States small business concerns (SBCs) that have had an active NIH SBIR or STTR Phase II or Phase IIB award within the last 36 months are eligible. In North Carolina, small life science and health tech businesses that have completed NIH Phase II awards qualify.",
+    "source": "PAR-27-098-Revised-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "This NOFO does not require cost sharing as defined in the NIH Grants Policy Statement.",
+    "source": "PAR-27-098-Revised-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Significance",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Investigator(s)",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Innovation",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Approach",
+      "weight": "Scored 1-9 (core criterion focusing on commercial viability)",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Environment",
+      "weight": "Scored 1-9 (core criterion)",
+      "source": "PAR-27-098-Revised-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Only one CRP award is allowed per project.",
+  "important_notes": [
+    "Applicants must cite their qualifying prior or active NIH Phase II or Phase IIB grant or contract number.",
+    "Funding is restricted to late-stage R&D and commercialization readiness activities not supported by regular SBIR awards.",
+    "Applications without an active Phase II / IIB within 36 months will be withdrawn without review."
+  ]
+}

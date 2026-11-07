@@ -1,0 +1,153 @@
+{
+  "opportunity_id": "359650",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF424 (R&R) Cover Component",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard institutional cover component for multi-project Center application on ASSIST or Grants.gov.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2"
+    },
+    {
+      "name": "Project Summary / Abstract (Overall and per Core/Project)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Summary of the Superfund Research Program Center theme, core aims, and interdisciplinary scope (max 30 lines each).",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Project Narrative (Overall Public Health Relevance)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Two or three sentences on how hazardous waste research reduces toxic environmental exposures and protects public health.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Overall Center Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing Center Integration, Center Theme, Synergy between Biomedical and Non-Biomedical Projects, and Environmental Relevance.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Page Limitations"
+    },
+    {
+      "name": "Administrative Core Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing leadership, governance, scientific coordination, and fiscal management of the Center.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Translational Research and Engagement Core (TREC)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing how research findings will be translated to communities, regulators (EPA, state agencies), and stakeholders.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Research Projects Strategy (Min 3, Max 4 Projects)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Each individual research project requires a 12-page Research Strategy. Must include at least 2 biomedical and 1 non-biomedical (engineering/environmental science) project.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Page Limitations"
+    },
+    {
+      "name": "Data Management and Analysis Core (DMAC)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages describing data stewardship, FAIR principles, bioinformatics support, and data sharing infrastructure.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Community Engagement Core (CEC)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Maximum 12 pages detailing bidirectional engagement with affected communities near hazardous waste and Superfund sites.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Component Instructions"
+    },
+    {
+      "name": "Senior/Key Person Profiles and Biosketches",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Biographical sketches for Center Director, Core Leaders, Project Leaders, and Key Personnel (max 5 pages each).",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Senior/Key Person Profile"
+    },
+    {
+      "name": "Detailed Line-Item Budgets (per Component)",
+      "category": "Budget",
+      "required": true,
+      "details": "Itemized R&R Budget forms for Overall Center and each separate Core and Research Project. Direct costs capped at $1.75M annually.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 R&R Budget"
+    },
+    {
+      "name": "Letters of Support from EPA, State Regulators, and Community Partners",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Letters confirming scientific collaboration with federal/state environmental regulators (e.g. EPA Region 4, NC DEQ) and community groups.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Letters of Support"
+    },
+    {
+      "name": "SAM.gov and eRA Commons Registrations",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with UEI and eRA Commons affiliations for all Center leaders.",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section IV.2 Registrations"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Letter of Intent Due Date",
+      "when": "August 25, 2026, 5:00 p.m. local time",
+      "source": "RFA-ES-27-004-Full-Announcement.html Part 1. Overview Key Dates"
+    },
+    {
+      "what": "Application Due Date",
+      "when": "September 25, 2026, 5:00 p.m. local time of applicant organization",
+      "source": "RFA-ES-27-004-Full-Announcement.html Part 1. Overview Key Dates"
+    }
+  ],
+  "eligibility": {
+    "summary": "Public and private institutions of higher education only. In North Carolina, universities with top-tier environmental health and environmental sciences programs (such as UNC Chapel Hill, Duke University, and NC State University) are eligible.",
+    "source": "RFA-ES-27-004-Full-Announcement.html Section III.1"
+  },
+  "cost_share": {
+    "required": "no",
+    "details": "This NOFO does not require cost sharing as defined in the NIH Grants Policy Statement.",
+    "source": "RFA-ES-27-004-Full-Announcement.html Section III.2"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Overall Center Significance & Integration",
+      "weight": "Scored 1-9 (primary scored criterion)",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Leadership and Center Administration",
+      "weight": "Scored 1-9",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Translational Research & Engagement Core (TREC)",
+      "weight": "Scored 1-9",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Individual Research Projects (Significance, Investigators, Innovation, Approach, Environment)",
+      "weight": "Each project scored 1-9 separately",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section V.1"
+    },
+    {
+      "criterion": "Data Management & Community Cores",
+      "weight": "Scored 1-9",
+      "source": "RFA-ES-27-004-Full-Announcement.html Section V.1"
+    }
+  ],
+  "submission_limits": "Applicant organizations may submit more than one application, provided each application is scientifically distinct.",
+  "important_notes": [
+    "Must contain a minimum of 3 and maximum of 4 research projects, with both biomedical and non-biomedical (engineering/environmental) disciplines represented.",
+    "Direct costs are strictly capped at $1,750,000 per year; applications requesting more will be returned without review.",
+    "Mandatory cores: Administrative Core, TREC Core, DMAC Core, and Community Engagement Core.",
+    "Foreign organizations and foreign subcomponents are not allowed."
+  ]
+}

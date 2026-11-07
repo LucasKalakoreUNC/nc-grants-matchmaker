@@ -1,0 +1,123 @@
+{
+  "opportunity_id": "364124",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard application form submitted electronically via FEMA GO by the State applicant.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 20"
+    },
+    {
+      "name": "Grants.gov Lobbying Form (Certification Regarding Lobbying)",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Required federal certification regarding lobbying activities for applications over $100,000.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 20"
+    },
+    {
+      "name": "SF-424C Budget Information (Construction) or SF-424A (Non-Construction)",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Budget information form integrated in FEMA GO detailing federal and non-federal cost share allocations.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 20"
+    },
+    {
+      "name": "SF-424D Standard Assurances (Construction) or SF-424B (Non-Construction)",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Standard federal assurances submitted electronically through FEMA GO.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 20"
+    },
+    {
+      "name": "SF-LLL Disclosure of Lobbying Activities",
+      "category": "Standard forms",
+      "required": false,
+      "details": "Required if any funds have been paid or will be paid to any person for influencing federal officials.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 20"
+    },
+    {
+      "name": "FEMA GO Subapplication and Scopes of Work",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Complete subapplication in FEMA GO detailing mitigation scope of work, technical specifications, and project milestones.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 21"
+    },
+    {
+      "name": "Benefit-Cost Analysis (BCA) Toolkit Calculation",
+      "category": "Attachments",
+      "required": true,
+      "details": "Completed FEMA BCA toolkit export demonstrating a Benefit-Cost Ratio (BCR) of 1.0 or greater (or qualifying pre-calculated benefits).",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 24"
+    },
+    {
+      "name": "NFIP Policy Verification Documentation",
+      "category": "Attachments",
+      "required": true,
+      "details": "Documentation certifying active National Flood Insurance Program policy in effect for each assisted structure prior to application opening.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 24"
+    },
+    {
+      "name": "Non-Federal Cost Share Commitment Documentation",
+      "category": "Budget",
+      "required": true,
+      "details": "Official commitment letter or council resolution verifying source, availability, and amount of the 25% non-federal matching funds.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 8"
+    },
+    {
+      "name": "Environmental Planning and Historic Preservation (EHP) Documentation",
+      "category": "Attachments",
+      "required": true,
+      "details": "Site photos, floodplain maps, environmental review materials, and historic property clearances required under NEPA and NHPA.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 26"
+    },
+    {
+      "name": "FEMA GO and SAM.gov System Registrations",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active SAM.gov registration with UEI, active Grants.gov account, and authorized FEMA GO user access.",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 16"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "FEMA GO Final Application Due Date",
+      "when": "February 26, 2027, 3:00 p.m. Eastern Time",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 18"
+    }
+  ],
+  "eligibility": {
+    "summary": "State governments, territories, and federally recognized tribes are eligible applicants. In North Carolina, the primary applicant is the State of North Carolina (NC Emergency Management / NC DPS). Local governments, cities, and counties apply as subapplicants through NCEM and must participate in the NFIP in good standing.",
+    "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 5"
+  },
+  "cost_share": {
+    "required": "yes",
+    "details": "Standard 75% federal / 25% non-federal cost share. Up to 90% federal cost share for repetitive loss properties, and up to 100% federal cost share for severe repetitive loss properties.",
+    "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 6-7"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Threshold Review Criteria (NFIP policy, BCR >= 1.0, Hazard Mitigation Plan)",
+      "weight": "Pass / Fail mandatory threshold",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 24"
+    },
+    {
+      "criterion": "Reduction of Risk to NFIP (Severe Repetitive Loss and Repetitive Loss claims)",
+      "weight": "Scored priority criterion",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 25"
+    },
+    {
+      "criterion": "Cost-Effectiveness and Engineering Feasibility",
+      "weight": "Scored priority criterion",
+      "source": "FY26 FMA NOFO_10-16-2026_FINAL_508.pdf p. 25"
+    }
+  ],
+  "submission_limits": "Applicants may submit an unlimited number of subapplications. Each subapplication may not exceed $25 million in federal cost share.",
+  "important_notes": [
+    "All structures included in an acquisition or elevation project must have an active NFIP policy in effect before the opening of the application period.",
+    "Subapplications must have an approved local hazard mitigation plan and demonstrate cost-effectiveness via FEMA BCA toolkit (BCR >= 1.0).",
+    "Applications must be submitted through FEMA GO; Grants.gov is not used for submission."
+  ]
+}

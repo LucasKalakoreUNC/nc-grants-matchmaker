@@ -1,0 +1,146 @@
+{
+  "opportunity_id": "362715",
+  "read_by": "Antigravity (Gemini)",
+  "read_at": "2026-11-07T13:19:50",
+  "required_documents": [
+    {
+      "name": "SF-424 Application for Federal Domestic Assistance",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Official federal assistance application signed by the authorized organizational representative.",
+      "source": "ORLP_NOFO_071526.docx Application Documents table"
+    },
+    {
+      "name": "SF-424C Budget Information (Construction) and SF-424D Assurances",
+      "category": "Standard forms",
+      "required": true,
+      "details": "Required for development/construction and land acquisition park projects (SF-424A/B used for non-construction).",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 10"
+    },
+    {
+      "name": "Project Abstract Summary (OMB 4040-0019)",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Plain-language overview stating purpose, activities, deliverables, beneficiaries, and subrecipients.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 10"
+    },
+    {
+      "name": "Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Under 10 pages, font 11 or larger, 1-inch margins. Must include Project Data Page, Project Overview, and Responses to Merit Review Criteria.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 10"
+    },
+    {
+      "name": "Budget Narrative & Detailed Budget Spreadsheet",
+      "category": "Budget",
+      "required": true,
+      "details": "Itemized justification of all allowable costs, matching funds, and completion of the Detailed_Budget_LWCF_Grants.xlsx spreadsheet. Administrative costs capped at 7%.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 11"
+    },
+    {
+      "name": "Indirect Cost Rate Agreement (NICRA)",
+      "category": "Budget",
+      "required": false,
+      "details": "Required if claiming negotiated indirect rates; alternatively state use of 15% de minimis rate under 2 CFR 200.414(f).",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 11"
+    },
+    {
+      "name": "Project Timeline",
+      "category": "Attachments",
+      "required": true,
+      "details": "Maximum 1 page detailing milestone schedule, contract bidding dates, construction phases, and opening date.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 11"
+    },
+    {
+      "name": "Project Site Map(s) and Rendering(s)",
+      "category": "Attachments",
+      "required": true,
+      "details": "High-resolution maps showing exact site boundaries, surrounding community, access points, and architectural renderings of proposed improvements.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 11"
+    },
+    {
+      "name": "Letters of Commitment for Non-Federal Cost Share",
+      "category": "Budget",
+      "required": true,
+      "details": "Signed commitment letters confirming source and availability of 1:1 non-federal matching funds from local government, foundation, or donor.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 12"
+    },
+    {
+      "name": "Overlap or Duplication of Effort Statement",
+      "category": "Attachments",
+      "required": true,
+      "details": "Statement disclosing any overlapping federal applications or awards for the same project activities.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 12"
+    },
+    {
+      "name": "Uniform Audit Reporting Statement",
+      "category": "Attachments",
+      "required": true,
+      "details": "Confirmation of compliance with Single Audit Act requirements under 2 CFR 200 Subpart F.",
+      "source": "ORLP_NOFO_071526.docx Document Instructions p. 12"
+    },
+    {
+      "name": "SAM.gov UEI and Grants.gov Workspace Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active registration in SAM.gov with verified UEI and active Grants.gov account.",
+      "source": "ORLP_NOFO_071526.docx Required System Registrations p. 6"
+    }
+  ],
+  "deadlines": [
+    {
+      "what": "Annual Application Due Date",
+      "when": "November 1 each year (annually through 2030), 11:59 p.m. ET",
+      "source": "ORLP_NOFO_071526.docx Basic Information p. 2"
+    },
+    {
+      "what": "State Clearinghouse SPOC Review (NC EO 12372)",
+      "when": "Submit to NC SPOC prior to federal deadline if required",
+      "source": "ORLP_NOFO_071526.docx Basic Information p. 2"
+    }
+  ],
+  "eligibility": {
+    "summary": "State Lead Agencies are directly eligible. In North Carolina, NC Department of Natural and Cultural Resources (DNCR) / Division of Parks and Recreation submits applications on behalf of local government subrecipients. Projects must be located in an urban area with population of 25,000 or more (e.g. Charlotte, Raleigh, Greensboro, Durham, Asheville, Fayetteville, Wilmington).",
+    "source": "ORLP_NOFO_071526.docx Eligibility p. 4"
+  },
+  "cost_share": {
+    "required": "yes",
+    "details": "Mandatory dollar-for-dollar 50% non-federal matching requirement. Grant funds cover up to 50% of project costs; applicant must provide at least 50% from non-federal sources.",
+    "source": "ORLP_NOFO_071526.docx Cost Sharing Requirement p. 5"
+  },
+  "review_criteria": [
+    {
+      "criterion": "Criterion 1 – Increasing Access to Outdoor Recreation Opportunities",
+      "weight": "5 total points",
+      "source": "ORLP_NOFO_071526.docx Merit Review p. 18"
+    },
+    {
+      "criterion": "Criterion 2 – Alignment with Community Needs",
+      "weight": "5 total points",
+      "source": "ORLP_NOFO_071526.docx Merit Review p. 18"
+    },
+    {
+      "criterion": "Criterion 3 – Leveraging Resources in Support of Recreation",
+      "weight": "5 total points",
+      "source": "ORLP_NOFO_071526.docx Merit Review p. 19"
+    },
+    {
+      "criterion": "Criterion 4 – Promoting Conservation and Ecological Benefits",
+      "weight": "5 total points",
+      "source": "ORLP_NOFO_071526.docx Merit Review p. 19"
+    },
+    {
+      "criterion": "Criterion 5 – Demonstrating Feasibility",
+      "weight": "5 total points",
+      "source": "ORLP_NOFO_071526.docx Merit Review p. 19"
+    }
+  ],
+  "submission_limits": "States may nominate multiple qualifying local government projects per annual cycle.",
+  "important_notes": [
+    "Perpetuity Requirement: Assisted park sites must be dedicated and accessible for public outdoor recreation in perpetuity under Section 6(f)(3) of the Land and Water Conservation Fund Act.",
+    "Projects must be situated within a Census-defined urban area having a population of 25,000 or greater.",
+    "Project Narrative is strictly limited to 10 pages; excess pages will be excluded from review.",
+    "Administrative costs cannot exceed 7% of total award funds."
+  ]
+}
