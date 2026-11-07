@@ -32,6 +32,19 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 DB_PATH = os.environ.get("MATCHMAKER_DB", os.path.join(DATA_DIR, "matchmaker.db"))
 
+
+def _load_env_file(path=os.path.join(BASE_DIR, ".env")):
+    """Read KEY=value lines from .env (for ANTHROPIC_API_KEY); existing env vars win."""
+    if os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
+
+
+_load_env_file()
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS sources (
     id            TEXT PRIMARY KEY,

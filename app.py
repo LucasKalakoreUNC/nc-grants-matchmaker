@@ -20,6 +20,7 @@ import pipeline
 import db
 import notices
 import ai
+import programs
 
 
 # Fields only the grant panel needs; left out of list responses to keep them
@@ -127,6 +128,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             conn = notices.connect()
             try:
                 row = conn.execute("SELECT cfda, url, data FROM opportunities WHERE id=?", (opp_id,)).fetchone()
+                program = programs.program_record(conn, row["cfda"]) if row else None
                 if not row:
                     self._send_json({"error": "Not found"}, 404)
                     return
@@ -138,10 +140,19 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                 self._send_json({
                     "detail": {k: full.get(k) for k in DETAIL_FIELDS},
                     "files": notices.files_for(conn, opp_id),
+                    "program": program,
                     "requirements": notices.requirements_for(conn, opp_id),
                     "review": ai.review_for(urllib.parse.parse_qs(parsed.query).get("office", [""])[0], opp_id),
                     "links": links,
                 })
+            finally:
+                conn.close()
+            return
+
+        if path.startswith("/api/programs/"):
+            conn = db.connect()
+            try:
+                self._send_json(programs.programs_for_office(conn, path.rsplit("/", 1)[-1]))
             finally:
                 conn.close()
             return

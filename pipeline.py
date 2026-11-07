@@ -1012,6 +1012,14 @@ def run_pipeline():
         }
         print(f"  -> [{profile.get('category', 'state').upper()}] {profile['short_name']}: {len(scored_list)} scored ({high_count} High, {med_count} Medium). Top: {scored_list[0]['title'][:40]}... ({scored_list[0]['total_score']} pts)")
 
+    # 3a. Federal programs from SAM.gov Assistance Listings (weekly list, monthly details)
+    try:
+        import programs
+        pg, pm, pf = programs.run(conn)
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] SAM.gov programs: {pg} listings refreshed, {pm} matched to organizations, {pf} details fetched")
+    except Exception as e:
+        print(f"[WARN] SAM.gov program step failed: {e}", file=sys.stderr)
+
     # 3b. Download notice files for new grants (needs pypdf, installed in .venv), then
     # load notice requirements recorded in data/requirements/ (shared through git)
     try:
