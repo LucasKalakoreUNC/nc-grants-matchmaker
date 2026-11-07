@@ -231,6 +231,7 @@
         <tr><td><strong>Familiar funder</strong></td><td data-l="Weight">5%</td><td>100 if the funding agency is one your organization usually works with, otherwise 20.</td></tr>
       </tbody>
     </table>
+    <p><strong>Not eligible:</strong> if the notice's list of eligible applicants leaves out your type of organization, the score is cut by another 40%, so the grant stays visible but is not shown as a good match.</p>
     <p><strong>Example:</strong> a grant with fit 80 and practical factors of 90 scores 80 x 0.96 = 77 (Strong). A $10 million grant your organization is eligible for, but with fit 15, scores at most 15.</p>
     <p><strong>Typical award:</strong> next to "Award up to", the page shows the median of recent awards nationwide under the same federal program (from USAspending.gov). If most awards are far below the maximum, it is marked in red.</p>
     <p>Open any grant and choose "How this grant was scored" to see its numbers.</p>
@@ -544,7 +545,7 @@ function scoreTable(i){
   return `<p style="margin-top:8px"><strong>Fit with your strategic plan: ${fitV} of 100.</strong>${ph != null ? ` Key phrases: ${ph} (counts 65%). Word similarity: ${sim} (counts 35%).` : ''}</p>
     <p style="margin-bottom:4px"><strong>Practical factors: ${Math.round(prac)} of 100</strong></p>
     <table><thead><tr><th>Factor</th><th>Score</th><th>Weight</th></tr></thead><tbody>${rows}</tbody></table>
-    <p style="background:var(--bg-alt);padding:8px 12px;margin-top:8px">Score = Fit x (0.6 + 0.4 x Practical / 100) = ${fitV} x ${(0.6 + 0.4 * prac / 100).toFixed(2)} = <strong>${i.total_score}</strong></p>`;
+    <p style="background:var(--bg-alt);padding:8px 12px;margin-top:8px">Score = Fit x (0.6 + 0.4 x Practical / 100) = ${fitV} x ${(0.6 + 0.4 * prac / 100).toFixed(2)}${(b.eligibility || 0) <= 10 ? ' x 0.6 (not eligible)' : ''} = <strong>${i.total_score}</strong></p>`;
 }
 function closeDetail(){ $('detail').classList.remove('open'); }
 function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); }

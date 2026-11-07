@@ -630,6 +630,10 @@ CATEGORY_ELIGIBILITY_WORDS = {
 def eligibility_fit(opp, profile):
     """Score 0-100 for whether this office type may apply, plus a plain-language note."""
     types = [t.lower() for t in opp.get("eligibility", [])]
+    title = (opp.get("title") or "").lower()
+    is_tribal_org = any("tribal" in t.lower() for t in profile.get("eligible_applicant_types", []))
+    if not is_tribal_org and re.search(r"\b(tribal|indian housing|urban indian|native american|native hawaiian)\b", title):
+        return 10.0, "This program appears to be limited to tribes or Native organizations; check the notice."
     if not types:
         return 60.0, "Eligibility was not listed in the search data; check the official notice."
     joined = " | ".join(types)
@@ -816,6 +820,9 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     w_sum = sum(w.values()) or 1
     practical = sum(parts[k] * w[k] for k in w) / w_sum
     total_score = relevancy_component * (0.6 + 0.4 * practical / 100)
+    if eligibility_component <= 10:
+        # Listed applicant types exclude this organization: keep it visible, but not as a good match.
+        total_score *= 0.6
     equation_name = "Fit x practical factors"
     equation_latex = "Score = Fit x (0.6 + 0.4 x Practical / 100)"
 

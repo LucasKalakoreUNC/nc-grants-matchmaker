@@ -1,5 +1,5 @@
 {
-  "timestamp": "20261107_131821",
+  "timestamp": "20261107_132432",
   "run_date": "2026-11-07",
   "status": "Succeeded",
   "counts": {
@@ -43,7 +43,7 @@
         "category": "county",
         "total": 484,
         "high": 0,
-        "medium": 4,
+        "medium": 3,
         "top_match": "Fiscal Year 2024 Flood Mitigation Assistance Swift Current",
         "top_score": 69.6
       },
@@ -52,7 +52,7 @@
         "category": "municipal",
         "total": 484,
         "high": 0,
-        "medium": 4,
+        "medium": 3,
         "top_match": "Fiscal Year 2026 Flood Mitigation Assistance Swift Current",
         "top_score": 67.6
       },
@@ -70,9 +70,9 @@
         "category": "municipal",
         "total": 484,
         "high": 0,
-        "medium": 1,
-        "top_match": "Indian Housing Block Grant Competitive Program (IHBG-COMP) for FY 2026",
-        "top_score": 65.8
+        "medium": 0,
+        "top_match": "Comprehensive Housing Counseling (CHC) and the Housing Counseling Training (HCT) NOFO (FY2026)",
+        "top_score": 49.9
       },
       "city_greensboro": {
         "name": "City of Greensboro",
@@ -88,9 +88,9 @@
         "category": "municipal",
         "total": 484,
         "high": 0,
-        "medium": 1,
-        "top_match": "Indian Housing Block Grant Competitive Program (IHBG-COMP) for FY 2026",
-        "top_score": 61.1
+        "medium": 2,
+        "top_match": "Outdoor Recreation Legacy Partnership Program (ORLP) Recurring Notice 5 Year",
+        "top_score": 59.5
       },
       "commerce": {
         "name": "NC Commerce",
@@ -159,7 +159,7 @@
         "name": "Durham County",
         "category": "county",
         "total": 484,
-        "high": 2,
+        "high": 1,
         "medium": 0,
         "top_match": "Maternal, Infant, and Early Childhood Home Visiting Program (MIECHV)",
         "top_score": 72.6
@@ -186,7 +186,7 @@
         "name": "Mecklenburg County",
         "category": "county",
         "total": 484,
-        "high": 2,
+        "high": 1,
         "medium": 8,
         "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
         "top_score": 74.0
@@ -267,13 +267,13 @@
         "name": "Wake County",
         "category": "county",
         "total": 484,
-        "high": 1,
-        "medium": 10,
-        "top_match": "Rural Communities Opioid Response Program - Child and Adolescent Behavioral Health",
-        "top_score": 79.4
+        "high": 2,
+        "medium": 1,
+        "top_match": "GPD Grant Forecast",
+        "top_score": 72.1
       }
     }
   },
-  "duration_seconds": 14.77,
+  "duration_seconds": 15.98,
   "errors": []
 }

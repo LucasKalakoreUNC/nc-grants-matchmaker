@@ -3,8 +3,7 @@
   "category": "municipal",
   "name": "City of Raleigh",
   "short_name": "City of Raleigh",
-  "profile_status": "draft",
-  "source_citation": "Draft profile: goals summarized from the organization's publicly stated priorities. Verify against the official strategic plan before relying on it.",
+  "source_citation": "City of Raleigh Strategic Plan Overview Report FY26-29",
   "mission": "Provides city services for North Carolina's capital city, including transit, housing, parks and utilities.",
   "eligible_applicant_types": [
     "City or township governments",
@@ -19,65 +18,161 @@
   ],
   "goals": [
     {
-      "id": "CITY_RALEIGH-G1",
+      "id": "RAL-G1",
       "number": 1,
-      "title": "Transportation and safe streets",
-      "citation": "City of Raleigh draft profile, goal 1",
-      "description": "Make streets safer and expand transit.",
+      "title": "Community safety",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 4",
+      "description": "Community safety: Advance a holistic approach to community safety to foster security, trust, and a sense of connection among residents.",
       "objectives": [
-        "Reduce traffic deaths",
-        "Expand bus rapid transit"
+        "1. Advance a holistic approach to community safety to foster security, trust, and a sense of connection among residents"
       ],
       "keywords": [
-        "safe streets",
-        "pedestrian",
-        "bicycle",
-        "transit",
-        "bus rapid transit",
-        "vision zero"
+        "community violence",
+        "violence prevention",
+        "public safety",
+        "crisis response",
+        "police",
+        "community policing",
+        "youth violence"
       ]
     },
     {
-      "id": "CITY_RALEIGH-G2",
+      "id": "RAL-G2",
       "number": 2,
-      "title": "Housing affordability",
-      "citation": "City of Raleigh draft profile, goal 2",
-      "description": "Expand affordable housing.",
+      "title": "Economic development and innovation",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 6",
+      "description": "Economic development and innovation: Streamline and modernize business support processes for entrepreneurs and small businesses Enhance Raleigh's local arts and culture ecosystem to drive engagement and economic growth.",
       "objectives": [
-        "Build and preserve affordable units"
+        "1. Streamline and modernize business support processes for entrepreneurs and small businesses",
+        "2. Enhance Raleigh's local arts and culture ecosystem to drive engagement and economic growth"
+      ],
+      "keywords": [
+        "small business",
+        "entrepreneurs",
+        "economic development",
+        "arts",
+        "creative economy",
+        "cultural"
+      ]
+    },
+    {
+      "id": "RAL-G3",
+      "number": 3,
+      "title": "Environmental resilience",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 9",
+      "description": "Environmental resilience: Expand community and climate resilience programs, with a focus on protecting communities at highest risk from environmental hazards (extreme heat, flooding).",
+      "objectives": [
+        "Expand community and climate resilience programs, with a focus on protecting communities at highest risk from environmental hazards (extreme heat, flooding)"
+      ],
+      "keywords": [
+        "climate resilience",
+        "extreme heat",
+        "flood",
+        "stormwater",
+        "nitrogen",
+        "waste reduction",
+        "recycling",
+        "energy efficiency",
+        "clean energy",
+        "tree canopy"
+      ]
+    },
+    {
+      "id": "RAL-G4",
+      "number": 4,
+      "title": "Housing",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 11",
+      "description": "Housing: Advance proven solutions to mitigate housing insecurity Promote walkable, mixed-income communities that expand housing choices and integrate with transit.",
+      "objectives": [
+        "1. Advance proven solutions to mitigate housing insecurity",
+        "2. Promote walkable, mixed-income communities that expand housing choices and integrate with transit"
       ],
       "keywords": [
         "affordable housing",
-        "cdbg",
-        "home investment partnerships",
-        "housing"
+        "housing insecurity",
+        "homelessness",
+        "mixed-income",
+        "transit-oriented",
+        "community development block grant",
+        "home investment partnerships"
       ]
     },
     {
-      "id": "CITY_RALEIGH-G3",
-      "number": 3,
-      "title": "Climate and water",
-      "citation": "City of Raleigh draft profile, goal 3",
-      "description": "Cut emissions and protect water.",
+      "id": "RAL-G5",
+      "number": 5,
+      "title": "Organizational excellence",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 13",
+      "description": "Organizational excellence: Seamless service experience so all residents can easily access city services Consistent and responsive city services Strengthen workforce capacity.",
       "objectives": [
-        "Improve energy efficiency in city buildings",
-        "Upgrade water infrastructure"
+        "1. Seamless service experience so all residents can easily access city services",
+        "2. Consistent and responsive city services",
+        "3. Strengthen workforce capacity"
       ],
       "keywords": [
-        "energy efficiency",
-        "clean energy",
-        "stormwater",
-        "drinking water",
-        "climate"
+        "digital services",
+        "customer service"
+      ]
+    },
+    {
+      "id": "RAL-G6",
+      "number": 6,
+      "title": "Quality of life",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 16",
+      "description": "Quality of life: Ensure and expand access to Raleigh's arts, parks, cultural, and recreational assets.",
+      "objectives": [
+        "1. Ensure and expand access to Raleigh's arts, parks, cultural, and recreational assets"
+      ],
+      "keywords": [
+        "parks",
+        "recreation",
+        "greenways",
+        "trails",
+        "arts",
+        "cultural"
+      ]
+    },
+    {
+      "id": "RAL-G7",
+      "number": 7,
+      "title": "Transportation and transit",
+      "citation": "City of Raleigh Strategic Plan Overview Report FY26-29, p. 18",
+      "description": "Transportation and transit: Enhance mobility and accessibility by improving transit frequency, pedestrian safety, and connections between transportation options.",
+      "objectives": [
+        "1. Enhance mobility and accessibility by improving transit frequency, pedestrian safety, and connections between transportation options"
+      ],
+      "keywords": [
+        "transit",
+        "bus rapid transit",
+        "pedestrian safety",
+        "safe streets",
+        "bicycle",
+        "sidewalks",
+        "vision zero",
+        "mobility"
       ]
     }
   ],
   "keywords": [
-    "city",
-    "municipal",
-    "transit",
-    "housing",
+    "affordable housing",
+    "bus rapid transit",
+    "climate resilience",
+    "community violence",
+    "customer service",
+    "digital services",
+    "economic development",
+    "entrepreneurs",
+    "extreme heat",
+    "flood",
+    "greenways",
+    "homelessness",
+    "housing insecurity",
     "parks",
-    "water"
-  ]
+    "pedestrian safety",
+    "public safety",
+    "recreation",
+    "small business",
+    "transit",
+    "violence prevention"
+  ],
+  "source_url": "https://cityofraleigh0drupal.blob.core.usgovcloudapi.net/drupal-prod/COR13/SP-StrategicPlanOverview-Report.pdf"
 }
