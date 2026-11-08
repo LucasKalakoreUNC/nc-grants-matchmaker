@@ -185,11 +185,11 @@
     <div class="filters">
       <div class="field grow">
         <label for="q">Search</label>
-        <input id="q" type="search" placeholder="Keyword, program, or funding agency" oninput="limit=25;render()">
+        <input id="q" type="search" placeholder="Keyword, program, or funding agency" oninput="limit=PAGE;render()">
       </div>
       <div class="field">
         <label for="fDue">Deadline</label>
-        <select id="fDue" onchange="limit=25;render()">
+        <select id="fDue" onchange="limit=PAGE;render()">
           <option value="any">Open and upcoming</option>
           <option value="30">Within 30 days</option>
           <option value="90">Within 90 days</option>
@@ -207,7 +207,7 @@
       <p id="emptyReason"></p>
       <button id="resetFilters" class="btn outline" onclick="reviewAllMatches()">Clear filters and review all scores</button>
     </div>
-    <div class="pager"><button id="more" class="btn outline" onclick="limit+=25;render()" hidden>Show more</button></div>
+    <div class="pager"><button id="more" class="btn outline" onclick="limit+=PAGE;render()" hidden>Show 15 more</button> <button id="moreAll" class="linkbtn" onclick="limit=Infinity;render()" hidden>Show all</button></div>
 
 
   </section>
@@ -325,7 +325,8 @@
 
 <script>
 const S = { office: null, profiles: [], items: [], decisions: {}, loading: false };
-let limit = 25, currentId = null, choice = null, officeRequest = 0;
+const PAGE = 15;
+let limit = PAGE, currentId = null, choice = null, officeRequest = 0;
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k,v){ try { localStorage.setItem(k,v); } catch(e){} } };
 const $ = id => document.getElementById(id);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -450,7 +451,7 @@ async function showPlanInfo(id){
 
 async function changeOffice(id){
   const request = ++officeRequest;
-  S.office = id; store.set('office', id); limit = 25;
+  S.office = id; store.set('office', id); limit = PAGE;
   S.loading = true; S.items = []; S.decisions = {};
   $('rows').replaceChildren();
   $('count').textContent = 'Loading open and upcoming applications for this selection…';
@@ -491,12 +492,12 @@ function quick(kind){
   showTab('list');
   $('q').value = '';
   $('fDue').value = kind === 'soon' ? '30' : 'any';
-  limit = 25; render();
+  limit = PAGE; render();
 }
 
 function reviewAllMatches(){
   $('q').value = ''; $('fDue').value = 'any';
-  limit = 25; render();
+  limit = PAGE; render();
   $('q').focus();
 }
 
@@ -566,7 +567,10 @@ function render(){
   }
   $('rows').innerHTML = list.slice(0, limit).map(row).join('');
   $('empty').hidden = list.length > 0;
-  $('more').hidden = list.length <= limit;
+  const shown = Math.min(limit, list.length);
+  $('count').textContent = `Showing ${shown} of ${list.length} grants and programs${list.length < S.items.length ? ` (filtered from ${S.items.length})` : ''}, best matches first.`;
+  $('more').hidden = $('moreAll').hidden = list.length <= limit;
+  $('more').textContent = `Show ${Math.min(PAGE, list.length - shown)} more`;
 }
 
 function renderTracked(){
