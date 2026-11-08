@@ -946,7 +946,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             try:
                 hist = payload.get("history") if isinstance(payload.get("history"), list) else []
                 self._send_json(ai.chat(conn, str(payload.get("office_id") or "all")[:60], str(payload.get("question") or ""),
-                                        hist, str(payload.get("grant_id") or "")[:40] or None))
+                                        hist, str(payload.get("grant_id") or "")[:40] or None, str(payload.get("category") or "all")[:20]))
             except ValueError as e:
                 self._send_json({"error": str(e)}, 400)
             except Exception as e:

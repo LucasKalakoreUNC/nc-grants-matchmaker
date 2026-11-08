@@ -455,7 +455,8 @@ Rules:
 - Name grants by their exact title. Give deadlines as written in the data. Say "expected" for forecasted dates.
 - Keep answers short: a few sentences or a short list. Plain language, no emojis.
 - Staff make the decisions. You can compare and explain, not decide for them.
-- If no organization is selected, answer questions about how the site works and ask them to choose an organization.
+- If the data has "organizations" (several organizations at once), you may compare across them and pair grants with the
+  organizations they fit best, naming the organization for each grant.
 How the site works: grants are ranked by Score = Fit x (0.6 + 0.4 x Practical / 100). Fit measures match with the
 strategic plan's goals; Practical covers eligibility, award size, time before deadline, staff effort and familiar funder.
 Staff mark grants Pursue, Watch, Pass or Submitted; Pursue and Watch can send deadline reminder emails."""
@@ -479,7 +480,7 @@ def _grant_brief(g):
                                   "est_completion_hours", "url") if g.get(k) not in (None, "", [])}
 
 
-def chat(conn, office_id, question, history=None, grant_id=None):
+def chat(conn, office_id, question, history=None, grant_id=None, category="all"):
     """Answer one question about an organization's grants from stored data only."""
     import time
     import pipeline
@@ -524,9 +525,25 @@ def chat(conn, office_id, question, history=None, grant_id=None):
                 except Exception:
                     pass
                 data["open_grant"] = open_grant
+    elif office_id == "all":
+        today = data["today"]
+        orgs = []
+        for oid, p in profiles.items():
+            if category not in ("", "all", None) and p.get("category", "state") != category:
+                continue
+            top = [g for g in db.scored_for_office(conn, oid)
+                   if (not g.get("close_date") or g["close_date"] >= today)
+                   and (g.get("score_breakdown") or {}).get("eligibility", 100) > 10][:6]
+            orgs.append({"organization": p.get("name"), "type": p.get("category"),
+                         "goals": [g.get("title") for g in p.get("goals", [])],
+                         "top_grants": [{k: g.get(k) for k in ("id", "title", "agency", "close_date", "expected_due_date",
+                                                               "award_ceiling", "total_score", "matched_goal_title") if g.get(k)}
+                                        for g in top]})
+        data["organizations"] = orgs
+        data["ranked_grants"] = [g for o in orgs for g in o["top_grants"]]
     turns = [{"role": t.get("role"), "text": str(t.get("text", ""))[:1500]}
              for t in (history or [])[-6:] if t.get("role") in ("user", "assistant")]
-    user = ("Data (JSON):\n" + json.dumps(data, default=str)[:60000]
+    user = ("Data (JSON):\n" + json.dumps(data, default=str)[:100000]
             + "\n\nEarlier in this conversation:\n" + json.dumps(turns)
             + "\n\nQuestion: " + question)
     out = ask(CHAT_SYSTEM, user, CHAT_SCHEMA, max_tokens=6000)

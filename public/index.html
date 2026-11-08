@@ -1158,7 +1158,7 @@ function showTab(t){
 let chatHistory = [];
 function openChat(){
   $('chatBtn').hidden = true; $('chatBox').hidden = false;
-  if (!$('chatLog').children.length) chatMsg('a', `Ask about ${S.office && S.office !== 'all' ? 'grants for ' + ((S.profiles.find(p => p.agency_id === S.office) || {}).name || 'your organization') : 'grants (choose an organization above for answers about its list)'}. Answers use only this site's data; always confirm details in the official notice.`);
+  if (!$('chatLog').children.length) chatMsg('a', `Ask about ${S.office && S.office !== 'all' ? 'grants for ' + ((S.profiles.find(p => p.agency_id === S.office) || {}).name || 'your organization') : 'grants across ' + ($('otype').value === 'all' ? 'all organizations' : 'the selected type of organization') + ' (or choose one organization above)'}. Answers use only this site's data; always confirm details in the official notice.`);
   $('chatQ').focus();
 }
 function chatMsg(who, text, grants){
@@ -1174,7 +1174,7 @@ async function sendChat(e){
   const panelOpen = $('detail').classList.contains('open');
   try {
     const r = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ office_id: S.office || 'all', question: q, history: chatHistory, grant_id: panelOpen && currentId ? String(currentId).split('|').pop() : '' }) });
+      body: JSON.stringify({ office_id: S.office || 'all', category: $('otype').value, question: q, history: chatHistory, grant_id: panelOpen && currentId ? String(currentId).split('|').pop() : '' }) });
     const res = await r.json();
     wait.remove();
     if (!r.ok) { chatMsg('a', res.error || 'Could not answer right now.'); return; }
