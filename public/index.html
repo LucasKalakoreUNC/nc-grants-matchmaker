@@ -81,7 +81,11 @@
   .panel-head h2 { color: #fff; font-size: 1.15rem; margin-right: 40px; }
   .panel-head .close { position: absolute; top: 14px; right: 16px; background: none; border: 0; color: #fff; font-size: 1.6rem; cursor: pointer; line-height: 1; }
   .panel-body { padding: 24px; }
-  .panel section { margin-bottom: 28px; }
+  .panel section { margin-bottom: 40px; }
+  .panel-body > section + section, .panel-body > div > section + section, #dReq > section, #dSrc > section { padding-top: 32px; border-top: 1px solid var(--line); }
+  .panel section h3 { margin-bottom: 14px; }
+  .checklist li { padding: 12px 0; }
+  .steps li { margin-bottom: 16px; }
   .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 0 0 24px; }
   .facts div { background: var(--bg-alt); padding: 12px; } .facts dt { font-size: .8rem; color: var(--muted); font-weight: 700; } .facts dd { margin: 2px 0 0; font-weight: 700; }
   .checklist { list-style: none; padding: 0; margin: 0; }

@@ -170,7 +170,8 @@ def generate_action_steps(opp, profile=None):
     when = lambda before: (close - timedelta(days=before)).strftime("%b %d, %Y") if close and days and days > before else "As soon as possible"
 
     steps = [{"title": "Decide whether to apply and name a lead",
-              "deadline_day": when(int(days * 0.8)) if days and days > 10 else "As soon as possible",
+              # Always before the "write" (10 days out) and "submit" (3 days out) steps
+              "deadline_day": when(max(int(days * 0.8), 11)) if days and days > 11 else "As soon as possible",
               "action": "Read the requirements below and the official notice, confirm your organization is eligible, and assign one person to lead the application."},
              {"title": "Check registrations",
               "deadline_day": when(30) if days and days > 30 else "As soon as possible",
