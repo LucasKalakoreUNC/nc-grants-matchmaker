@@ -1,89 +1,101 @@
 {
   "opportunity_id": "364153",
-  "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:11",
+  "read_by": "Grant Analyst (Notice Review)",
+  "read_at": "2026-11-07T19:30:00",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Standard application cover sheet submitted through Grants.gov.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     },
     {
-      "name": "Project Narrative / Scope of Work",
+      "name": "Direct Care Workforce Technical Assistance Plan",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Three-year technical assistance work plan to operate the Direct Care Workforce Strategies Center, addressing direct care worker shortages, turnover, compensation, and career pathways.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     },
     {
-      "name": "SF-424A Budget Information and Budget Narrative",
+      "name": "Cross-Sector Stakeholder Engagement Strategy",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Plan for cross-sector national collaboration uniting state Medicaid, aging, disability, labor, and education agencies with consumers and workers.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
+    },
+    {
+      "name": "SF-424A Budget Information and 3-Year Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Budget breakdown requesting up to ,000,000 across the 3-year cooperative agreement.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     },
     {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
+      "name": "Key Personnel CVs and Project Leadership Qualifications",
+      "category": "Attachments",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Resumes and qualifications of project director and key technical assistance personnel in direct care workforce policy.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     },
     {
-      "name": "Letters of Support and Collaboration",
-      "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
-    },
-    {
-      "name": "SAM.gov UEI and Grants.gov Registration",
+      "name": "SAM.gov Active UEI Registration",
       "category": "Registrations",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "details": "Active Unique Entity Identifier (UEI) on SAM.gov.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     }
   ],
   "deadlines": [
     {
-      "what": "Estimated Application Response Deadline",
-      "when": "Mar 14, 2027 12:00:00 AM EST",
+      "what": "Anticipated 3-Year Cooperative Agreement Forecast",
+      "when": "Forecasted release for 3-year cooperative agreement",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     }
   ],
   "eligibility": {
-    "summary": "Foreign entities are not eligible to compete for, or receive, awards made under this announcement. Faith-based and community organizations that meet the eligibility requirements are eligible to receive awards under this funding opportunity announcement. In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "summary": "Open to nonprofit organizations, higher education institutions, state agencies, faith-based and community organizations with national technical assistance capacity. Foreign entities are ineligible.",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
   },
   "cost_share": {
     "required": "no",
-    "details": "No cost sharing or non-federal matching funds are required.",
+    "details": "Cost sharing is not required for this cooperative agreement.",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
   },
   "review_criteria": [
     {
-      "criterion": "Technical Merit and Program Alignment",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Demonstrated Expertise in Direct Care Workforce Systems and Policy",
+      "weight": "Primary review factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     },
     {
-      "criterion": "Work Plan Feasibility and Milestone Schedule",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Quality of Technical Assistance Strategy for State Agencies and Employers",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     },
     {
-      "criterion": "Budget Reasonableness and Cost Effectiveness",
-      "weight": "Evaluated criterion",
+      "criterion": "Capacity Building, Toolkit Dissemination, and Stakeholder Engagement",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
     }
   ],
-  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "funded_activities": [
+    {
+      "activity": "Operating the national Direct Care Workforce Strategies Center to support states in recruiting, retaining, and developing direct care workers.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
+    },
+    {
+      "activity": "Providing tailored technical assistance, policy toolkits, and wage/compensation modeling to state aging and disability agencies.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
+    },
+    {
+      "activity": "Promoting cross-sector state partnerships to ensure older adults and people with disabilities can safely live and fully participate in their communities.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DNDP-0016)"
+    }
+  ],
+  "submission_limits": "One (1) cooperative agreement award will be made nationally.",
   "important_notes": [
-    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
-    "Application submission is administered via Grants.gov or the designated federal portal for opportunity HHS-2027-ACL-AOD-DNDP-0016.",
-    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
-    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+    "Single national cooperative agreement award up to ,000,000 for 3 years.",
+    "Requires national technical assistance capacity across aging and disability sectors."
   ]
 }

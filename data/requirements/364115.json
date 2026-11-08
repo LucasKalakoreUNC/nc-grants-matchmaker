@@ -1,89 +1,101 @@
 {
   "opportunity_id": "364115",
-  "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:13",
+  "read_by": "Grant Analyst (Notice Review)",
+  "read_at": "2026-11-07T19:30:00",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Standard grant cover application submitted via Grants.gov.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     },
     {
-      "name": "Project Narrative / Scope of Work",
+      "name": "36-Month Tribal Dementia Capability Project Narrative",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Comprehensive project narrative detailing plan to implement dementia-capable HCBS systems in Indian Country under Option A (expansion of prior ADPI program) or Option B (new to ADPI program).",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     },
     {
-      "name": "SF-424A Budget Information and Budget Narrative",
+      "name": "Tribal Leadership Resolution or Authorized Official Documentation",
+      "category": "Attachments",
+      "required": true,
+      "details": "Formal resolution or authorization letter from tribal leadership demonstrating authority to conduct proposed activities.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
+    },
+    {
+      "name": "SF-424A Budget Information and 36-Month Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Budget requesting up to ,000 total federal share over 36 months for tribal elder dementia services.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     },
     {
-      "name": "Project Abstract Summary",
+      "name": "Tribal Elder and Community Caregiver Engagement Plan",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Culturally responsive plan for supporting tribal elders with dementia and their family caregivers.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     },
     {
-      "name": "Letters of Support and Collaboration",
-      "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
-    },
-    {
-      "name": "SAM.gov UEI and Grants.gov Registration",
+      "name": "SAM.gov Active UEI Registration",
       "category": "Registrations",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "details": "Active Unique Entity Identifier (UEI) on SAM.gov.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     }
   ],
   "deadlines": [
     {
-      "what": "Estimated Application Response Deadline",
-      "when": "May 03, 2027 12:00:00 AM EDT",
+      "what": "Projected Application Response Deadline",
+      "when": "July 30, 2034",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     }
   ],
   "eligibility": {
-    "summary": "Foreign entities are not eligible to compete for, or receive, awards made under this announcement. In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "summary": "Federally recognized Indian Tribes, tribal organizations, and consortiums representing federally recognized tribes actively providing home and community services in tribal communities. Foreign entities ineligible.",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
   },
   "cost_share": {
-    "required": "yes",
-    "details": "Non-federal cost sharing or matching is required under this program.",
+    "required": "no",
+    "details": "Non-federal cost match is not required or can be waived for tribal governments under ACL policy.",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
   },
   "review_criteria": [
     {
-      "criterion": "Technical Merit and Program Alignment",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Demonstrated Tribal Leadership Support and Community Need",
+      "weight": "Primary review factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     },
     {
-      "criterion": "Work Plan Feasibility and Milestone Schedule",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Cultural Appropriateness of Person-Centered Dementia HCBS Services",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     },
     {
-      "criterion": "Budget Reasonableness and Cost Effectiveness",
-      "weight": "Evaluated criterion",
+      "criterion": "Sustainability and Integration with Existing Tribal Health and Elder Programs",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
     }
   ],
-  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "funded_activities": [
+    {
+      "activity": "Implementing person-centered, strengths-based dementia home and community-based services (HCBS) in tribal communities.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
+    },
+    {
+      "activity": "Providing supportive services, respite, and culturally adapted educational resources for tribal elder caregivers.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
+    },
+    {
+      "activity": "Building tribal healthcare and community health worker capacity for early dementia identification.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0010)"
+    }
+  ],
+  "submission_limits": "Eligible entities may apply under Option A (expansion) or Option B (new), but not both.",
   "important_notes": [
-    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
-    "Application submission is administered via Grants.gov or the designated federal portal for opportunity HHS-2027-ACL-AOA-ADPI-0010.",
-    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
-    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+    "36-month cooperative agreements with award ceiling of ,000.",
+    "Applications must include tribal leadership resolution demonstrating authority."
   ]
 }

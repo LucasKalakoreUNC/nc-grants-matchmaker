@@ -1,89 +1,101 @@
 {
   "opportunity_id": "364150",
-  "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:11",
+  "read_by": "Grant Analyst (Notice Review)",
+  "read_at": "2026-11-07T19:30:00",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Standard federal application form submitted through Grants.gov workspace.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     },
     {
-      "name": "Project Narrative / Scope of Work",
+      "name": "5-Year UCEDD Core Strategic Plan and Narrative",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Five-year comprehensive work plan addressing all 4 statutory core functions: (1) interdisciplinary pre-service preparation, (2) community services/training, (3) research, and (4) information dissemination.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     },
     {
-      "name": "SF-424A Budget Information and Budget Narrative",
+      "name": "University Affiliation and Designated UCEDD Verification",
+      "category": "Attachments",
+      "required": true,
+      "details": "Documentation of university designation and core grant status under Section 151(a) of the Developmental Disabilities Act (awarded FY 2022 core funds).",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
+    },
+    {
+      "name": "Consumer Advisory Committee (CAC) Structure and Membership Roster",
+      "category": "Attachments",
+      "required": true,
+      "details": "Roster showing majority participation of individuals with developmental disabilities and family members pursuant to DD Act requirements.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
+    },
+    {
+      "name": "SF-424A Multi-Year Budget and Non-Federal Matching Commitment",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Detailed 5-year budget up to ,042 annual federal share and documentation of 25% non-federal match (10% in poverty areas).",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     },
     {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
-      "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
-      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
-    },
-    {
-      "name": "Letters of Support and Collaboration",
-      "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
-    },
-    {
-      "name": "SAM.gov UEI and Grants.gov Registration",
+      "name": "SAM.gov Active UEI and Grants.gov Registration",
       "category": "Registrations",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "details": "Active Unique Entity Identifier (UEI) on SAM.gov.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     }
   ],
   "deadlines": [
     {
-      "what": "Estimated Application Response Deadline",
-      "when": "Feb 01, 2027 12:00:00 AM EST",
+      "what": "Anticipated 5-Year Core Application Response Deadline",
+      "when": "August 30, 2027",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     }
   ],
   "eligibility": {
-    "summary": "Section 151(a) of the DD Act states that appropriations authorized under section 156(a)(1) of the DD Act shall be used to make five-year grants to entities in each state designated as UCEDDs. Only UCEDD grantees awarded five-year core funds in FY 2022 may apply. Foreign entities are not eligible to compete for, or receive, awards made under this an In North Carolina, eligible entities fitting the organizational requirements may apply.",
+    "summary": "Only designated University Centers for Excellence in Developmental Disabilities (UCEDD) awarded five-year core funds in FY 2022 under DD Act Section 151(a). In North Carolina, the designated UCEDD is the Carolina Institute for Developmental Disabilities (CIDD) at UNC Chapel Hill.",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
   },
   "cost_share": {
     "required": "yes",
-    "details": "Non-federal cost sharing or matching is required under this program.",
+    "details": "25% non-federal match required under DD Act Section 156 (10% non-federal match for projects in designated poverty areas).",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
   },
   "review_criteria": [
     {
-      "criterion": "Technical Merit and Program Alignment",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Implementation of Four Core Statutory Functions (Education, Community Services, Research, Dissemination)",
+      "weight": "Primary review factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     },
     {
-      "criterion": "Work Plan Feasibility and Milestone Schedule",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Consumer Advisory Committee Engagement and Self-Advocate Leadership",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     },
     {
-      "criterion": "Budget Reasonableness and Cost Effectiveness",
-      "weight": "Evaluated criterion",
+      "criterion": "Alignment with State Developmental Disabilities Council and Protection & Advocacy Agency",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
     }
   ],
-  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "funded_activities": [
+    {
+      "activity": "Interdisciplinary pre-service preparation and continuing education of students and professionals in developmental disabilities.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
+    },
+    {
+      "activity": "Community services, technical assistance, model demonstrations, and training across education, healthcare, housing, and employment.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
+    },
+    {
+      "activity": "Applied research and public dissemination of evidence-based practices enhancing independence of individuals with developmental disabilities.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOD-DDUC-0001)"
+    }
+  ],
+  "submission_limits": "Limited competition: only up to 42 entities designated as UCEDD core grantees nationwide.",
   "important_notes": [
-    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
-    "Application submission is administered via Grants.gov or the designated federal portal for opportunity HHS-2027-ACL-AOD-DDUC-0001.",
-    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
-    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+    "Five-year core grants with annual funding ceiling of ,042.",
+    "In North Carolina, the eligible applicant is CIDD at UNC Chapel Hill in partnership with state agencies."
   ]
 }

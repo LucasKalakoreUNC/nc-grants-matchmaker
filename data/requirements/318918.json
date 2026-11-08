@@ -1,41 +1,41 @@
 {
   "opportunity_id": "318918",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:12",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for National Space Grant College and Fellowship Program - Opportunities in NASA STEM FY 2020 – 2024 submitted via Grants.gov workspace (NNH19ZHA001C).",
       "source": "Grants.gov Synopsis (NNH19ZHA001C)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for National Space Grant College and Fellowship Program - Opportunities in NASA STEM FY 2020 – 2024.",
       "source": "Grants.gov Synopsis (NNH19ZHA001C)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for National Space Grant College and Fellowship Program - Opportunities in NASA STEM FY 2020 – 2024.",
       "source": "Grants.gov Synopsis (NNH19ZHA001C)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for National Space Grant College and Fellowship Program - Opportunities in NASA STEM FY 2020 – 2024.",
       "source": "Grants.gov Synopsis (NNH19ZHA001C)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for National Space Grant College and Fellowship Program - Opportunities in NASA STEM FY 2020 – 2024.",
       "source": "Grants.gov Synopsis (NNH19ZHA001C)"
     },
     {
@@ -81,8 +81,15 @@
   ],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
+    "Opportunity Number: NNH19ZHA001C — Agency: National Aeronautics and Space Administration.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity NNH19ZHA001C.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting National Space Grant College and Fellowship Program - Opportunities in NASA STEM FY 2020 – 2024: This Cooperative Agreement Notice is a multi-year award thataims to contribute to NASA’s mission, Office of STEM Education priorities,Co-STEM goals, Mission Directorate collaborations, and state based needs.&nbsp; The multi-year award will be availab...",
+      "source": "National Aeronautics and Space Administration Announcement (NNH19ZHA001C)"
+    }
   ]
 }

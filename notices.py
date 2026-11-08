@@ -335,6 +335,20 @@ def notice_text(conn, opp_id):
     newest = max(foa, key=lambda r: int(r["attachment_id"])) if foa else None
     rows = [r for r in rows if r not in foa or r is newest]
     parts = [f"===== FILE: {r['file_name']} ({r['description']}) =====\n{r['text']}" for r in rows if (r["text"] or "").strip()]
+
+    # Also include the official synopsis and eligibility announcement from raw_records
+    raw = conn.execute("SELECT payload FROM raw_records WHERE source='grants.gov-detail' AND source_record_id=?", (opp_id,)).fetchone()
+    if raw:
+        try:
+            d = json.loads(raw[0])
+            syn = d.get("synopsis") or d.get("forecast") or {}
+            desc = syn.get("synopsisDesc") or syn.get("forecastDesc") or ""
+            elig = syn.get("applicantEligibilityDesc") or ""
+            if desc.strip() or elig.strip():
+                parts.append(f"===== OFFICIAL GRANTS.GOV ANNOUNCEMENT & SYNOPSIS =====\n{desc}\n\n{elig}".strip())
+        except Exception:
+            pass
+
     return "\n\n".join(parts)
 
 

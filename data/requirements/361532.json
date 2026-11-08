@@ -1,41 +1,41 @@
 {
   "opportunity_id": "361532",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:10",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for Canine Cancer Immunotherapy Network (K9CIN; U01 Clinical Trial Not Allowed) submitted via Grants.gov workspace (RFA-CA-26-010).",
       "source": "Grants.gov Forecast Notice (RFA-CA-26-010)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for Canine Cancer Immunotherapy Network (K9CIN; U01 Clinical Trial Not Allowed).",
       "source": "Grants.gov Forecast Notice (RFA-CA-26-010)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for Canine Cancer Immunotherapy Network (K9CIN; U01 Clinical Trial Not Allowed).",
       "source": "Grants.gov Forecast Notice (RFA-CA-26-010)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for Canine Cancer Immunotherapy Network (K9CIN; U01 Clinical Trial Not Allowed).",
       "source": "Grants.gov Forecast Notice (RFA-CA-26-010)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for Canine Cancer Immunotherapy Network (K9CIN; U01 Clinical Trial Not Allowed).",
       "source": "Grants.gov Forecast Notice (RFA-CA-26-010)"
     },
     {
@@ -81,9 +81,16 @@
   ],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
+    "Opportunity Number: RFA-CA-26-010 — Agency: National Institutes of Health.",
     "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity RFA-CA-26-010.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting Canine Cancer Immunotherapy Network (K9CIN; U01 Clinical Trial Not Allowed): The goal of this RFA is to continue to support canine cancer immunotherapy clinical trials as indicators of safe and effective cancer treatments in humans. Pet dog patients develop cancer spontaneously and the courses of disease and treatment respons...",
+      "source": "National Institutes of Health Announcement (RFA-CA-26-010)"
+    }
   ]
 }

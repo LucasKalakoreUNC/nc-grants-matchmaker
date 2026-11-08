@@ -1,89 +1,101 @@
 {
   "opportunity_id": "364113",
-  "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:12",
+  "read_by": "Grant Analyst (Notice Review)",
+  "read_at": "2026-11-07T19:30:00",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Standard application cover sheet submitted through Grants.gov workspace.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     },
     {
-      "name": "Project Narrative / Scope of Work",
+      "name": "36-Month ADPI Project Narrative",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed narrative outlining 36-month cooperative agreement plan to expand dementia-capable home and community-based service (HCBS) systems under Option A (Grants to States) or Option B (Grants to Communities).",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     },
     {
-      "name": "SF-424A Budget Information and Budget Narrative",
+      "name": "Option A State Agency Designation or Option B Community Provider Certification",
+      "category": "Attachments",
+      "required": true,
+      "details": "For Option A: Documentation establishing applicant as governmental entity with lead responsibility for aging and Alzheimer services in the State (one per state). For Option B: Proof of community HCBS service delivery.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
+    },
+    {
+      "name": "SF-424A Budget Information and 36-Month Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Budget breakdown requesting up to ,000,000 total federal funding across the 36-month project period with required matching funds.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     },
     {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
-      "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
-      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
-    },
-    {
-      "name": "Letters of Support and Collaboration",
+      "name": "Dementia-Capable HCBS Partner Letters of Commitment",
       "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "required": true,
+      "details": "Letters of commitment from health systems, community agencies, caregiver support organizations, and aging service networks.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     },
     {
-      "name": "SAM.gov UEI and Grants.gov Registration",
+      "name": "SAM.gov Active UEI and Grants.gov Workspace Credentials",
       "category": "Registrations",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
+      "details": "Active registration on SAM.gov with Unique Entity Identifier (UEI) and authorized organizational representative on Grants.gov.",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     }
   ],
   "deadlines": [
     {
-      "what": "Estimated Application Response Deadline",
-      "when": "Mar 03, 2027 12:00:00 AM EST",
+      "what": "Projected Application Response Deadline",
+      "when": "July 30, 2034",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     }
   ],
   "eligibility": {
-    "summary": "Local government units, housing authorities, and non-profit community development organizations in North Carolina are eligible.",
+    "summary": "Option A: State governments (lead agency for aging/Alzheimer services; only one per state). Option B: 501(c)(3) nonprofits, county and city governments, public higher education institutions, and tribal organizations. Foreign entities are ineligible.",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
   },
   "cost_share": {
     "required": "yes",
-    "details": "Non-federal cost sharing or matching is required under this program.",
+    "details": "Non-federal matching funds required (minimum 25% non-federal match per Older Americans Act Title IV guidelines).",
     "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
   },
   "review_criteria": [
     {
-      "criterion": "Technical Merit and Program Alignment",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Quality of Dementia-Capable System Expansion & Strengths-Based Services",
+      "weight": "Primary review factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     },
     {
-      "criterion": "Work Plan Feasibility and Milestone Schedule",
-      "weight": "Scored evaluation criterion",
+      "criterion": "Community Needs Assessment and Engagement of Caregivers & Individuals with Dementia",
+      "weight": "Scored factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     },
     {
-      "criterion": "Budget Reasonableness and Cost Effectiveness",
-      "weight": "Evaluated criterion",
+      "criterion": "Priority consideration for providers not funded under ADI-SSS/ADPI since before 2014",
+      "weight": "Priority scoring factor",
       "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
     }
   ],
-  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "funded_activities": [
+    {
+      "activity": "Expanding dementia-capable home and community-based services (HCBS) to help people living with dementia remain safely at home.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
+    },
+    {
+      "activity": "Implementing evidence-based caregiver training, respite support, and behavioral symptom management interventions.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
+    },
+    {
+      "activity": "Dementia screening, early detection protocols, and specialized professional training for healthcare and social service providers.",
+      "source": "Grants.gov Forecast Notice (HHS-2027-ACL-AOA-ADPI-0008)"
+    }
+  ],
+  "submission_limits": "No entity is eligible to apply for both State and Community options, and no entity may hold more than one ADPI grant at a time.",
   "important_notes": [
-    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
-    "Application submission is administered via Grants.gov or the designated federal portal for opportunity HHS-2027-ACL-AOA-ADPI-0008.",
-    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
-    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+    "Cooperative agreements funded under 36-month awards up to ,000,000.",
+    "State applicants (Option A) must coordinate directly with the North Carolina Division of Aging and Adult Services."
   ]
 }

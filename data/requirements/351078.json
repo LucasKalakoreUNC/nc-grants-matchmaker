@@ -1,41 +1,41 @@
 {
   "opportunity_id": "351078",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:11",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for Developing PBPK Model-Based Mechanistic IVIVCs for Long Acting Injectable Suspensions and Implants (U01) Clinical Trial Optional submitted via Grants.gov workspace (FOR-FD-24-002).",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-002)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for Developing PBPK Model-Based Mechanistic IVIVCs for Long Acting Injectable Suspensions and Implants (U01) Clinical Trial Optional.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-002)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for Developing PBPK Model-Based Mechanistic IVIVCs for Long Acting Injectable Suspensions and Implants (U01) Clinical Trial Optional.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-002)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for Developing PBPK Model-Based Mechanistic IVIVCs for Long Acting Injectable Suspensions and Implants (U01) Clinical Trial Optional.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-002)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for Developing PBPK Model-Based Mechanistic IVIVCs for Long Acting Injectable Suspensions and Implants (U01) Clinical Trial Optional.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-002)"
     },
     {
@@ -81,9 +81,16 @@
   ],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
+    "Opportunity Number: FOR-FD-24-002 — Agency: Food and Drug Administration.",
     "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity FOR-FD-24-002.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting Developing PBPK Model-Based Mechanistic IVIVCs for Long Acting Injectable Suspensions and Implants (U01) Clinical Trial Optional: The objective of this research proposal is to develop physiologically based pharmacokinetic (PBPK) model-based mechanistic in vitro in vivo correlations (IVIVCs) for two major types of long acting injectables (LAIs) such as crystalline suspensions an...",
+      "source": "Food and Drug Administration Announcement (FOR-FD-24-002)"
+    }
   ]
 }

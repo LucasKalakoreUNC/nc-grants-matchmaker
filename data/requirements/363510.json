@@ -1,88 +1,101 @@
 {
   "opportunity_id": "363510",
-  "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:12",
+  "read_by": "Grant Analyst (Notice Review)",
+  "read_at": "2026-11-07T19:30:00",
   "required_documents": [
     {
-      "name": "SF-424 Application for Federal Assistance",
-      "category": "Standard forms",
-      "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
-    },
-    {
-      "name": "Project Narrative / Scope of Work",
-      "category": "Project narrative",
-      "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
-    },
-    {
-      "name": "SF-424A Budget Information and Budget Narrative",
-      "category": "Budget",
-      "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
-    },
-    {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
-      "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
-    },
-    {
-      "name": "Letters of Support and Collaboration",
-      "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
-    },
-    {
-      "name": "SAM.gov UEI and Grants.gov Registration",
+      "name": "DOE Consolidated eXCHANGE Account Setup",
       "category": "Registrations",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+      "details": "Register and maintain active login on the consolidated DOE eXCHANGE portal (exchange.energy.gov) prior to application.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "name": "PROSPECT Technical Project Narrative",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Technical narrative detailing collaborative educational pathways across the critical minerals and materials value chain (resource extraction, processing, manufacturing, recycling).",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "name": "Workforce Training and Curriculum Development Plan",
+      "category": "Project narrative",
+      "required": true,
+      "details": "Comprehensive strategy for developing a durable talent pipeline through higher education, apprenticeships, and specialized workforce development.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "name": "Multi-Sector Partnership Letters of Commitment",
+      "category": "Letters and partnerships",
+      "required": true,
+      "details": "Commitment agreements between academia, industry employers, national laboratories, and regional education partners.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "name": "DOE Detailed Budget Justification Workbook",
+      "category": "Budget",
+      "required": true,
+      "details": "Comprehensive project budget allocating direct personnel, equipment, student support, and sub-recipient funding across up to  million total program allocation.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "name": "SAM.gov Active UEI Registration",
+      "category": "Registrations",
+      "required": true,
+      "details": "Active Unique Entity Identifier (UEI) registration in SAM.gov for lead institution and key consortium members.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
     }
   ],
   "deadlines": [
     {
-      "what": "Application Due Date",
-      "when": "2027-01-15",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+      "what": "Anticipated NOFO Release / Application Target Date",
+      "when": "January 15, 2027",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
     }
   ],
   "eligibility": {
-    "summary": "Eligible applicants as specified under Grants.gov opportunity DE-FOA-0003662. Qualifying North Carolina jurisdictions and organizations may apply.",
-    "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+    "summary": "Unrestricted eligibility. Open to higher education institutions, industry partners, national laboratories, nonprofit training providers, and state/local government entities.",
+    "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
   },
   "cost_share": {
-    "required": "no",
-    "details": "No cost sharing or non-federal matching funds are required.",
-    "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+    "required": "not stated",
+    "details": "Cost sharing terms will be formally specified in the full Notice of Funding Opportunity (NOFO) upon release on DOE eXCHANGE.",
+    "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
   },
   "review_criteria": [
     {
-      "criterion": "Technical Merit and Program Alignment",
-      "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+      "criterion": "Impact on Domestic Critical Minerals Workforce & Talent Pipeline",
+      "weight": "Primary review criterion",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
     },
     {
-      "criterion": "Work Plan Feasibility and Milestone Schedule",
-      "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+      "criterion": "Strength and Cohesion of Multi-Sector Collaboration (Academia, Industry, National Labs)",
+      "weight": "Scored factor",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
     },
     {
-      "criterion": "Budget Reasonableness and Cost Effectiveness",
-      "weight": "Evaluated criterion",
-      "source": "Grants.gov Synopsis (DE-FOA-0003662)"
+      "criterion": "Curriculum Feasibility, Scalability, and Industry Value-Chain Alignment",
+      "weight": "Scored factor",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
     }
   ],
-  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "funded_activities": [
+    {
+      "activity": "Strengthening educational pathways across the entire critical minerals and materials supply chain (extraction, processing, manufacturing, recycling).",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "activity": "Developing specialized degree tracks, technical certifications, and university/community-college articulation agreements.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    },
+    {
+      "activity": "Hands-on student research, internships, and apprenticeships embedded with industry and national laboratory partners.",
+      "source": "DOE CMEI Notice of Intent (DE-FOA-0003662)"
+    }
+  ],
+  "submission_limits": "Entities may participate in multiple consortia; primary applicant restrictions will be detailed in the forthcoming full NOFO.",
   "important_notes": [
-    "Application submission is administered via Grants.gov or the designated federal portal for opportunity DE-FOA-0003662.",
-    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
-    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+    "This is a Notice of Intent (NOI). Formal application instructions and binding guidelines will be issued in the final NOFO on exchange.energy.gov.",
+    "DOE will not respond to questions regarding this NOI prior to NOFO publication."
   ]
 }
