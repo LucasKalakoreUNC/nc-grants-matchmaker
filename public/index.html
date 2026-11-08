@@ -766,7 +766,7 @@ function scoreTable(i){
   const b = i.score_breakdown || {}, w = i.score_weights || {};
   const fitV = Math.round(b.relevancy || 0), prac = i.practical_score ?? 0;
   const rows = PARTS.filter(([k]) => k !== 'relevancy' && w[k] != null).map(([k, label, help]) =>
-    `<tr><td>${label}<span class="sub">${help}</span></td><td data-l="Score">${Math.round(b[k] || 0)}</td><td data-l="Weight">${Math.round(w[k] * 100)}%</td></tr>`).join('');
+    `<tr><td>${label}<span class="sub">${esc((i.score_reasons || {})[k] || help)}</span></td><td data-l="Score">${Math.round(b[k] || 0)}</td><td data-l="Weight">${Math.round(w[k] * 100)}%</td></tr>`).join('');
   const ph = b.phrase_fit != null ? Math.round(b.phrase_fit) : null, sim = b.similarity != null ? Math.round(b.similarity) : null;
   return `<p style="margin-top:8px"><strong>Fit with your strategic plan: ${fitV} of 100.</strong>${ph != null ? ` Key phrases: ${ph} (counts 65%). Word similarity: ${sim} (counts 35%).` : ''}</p>
     <p style="margin-bottom:4px"><strong>Practical factors: ${Math.round(prac)} of 100</strong></p>

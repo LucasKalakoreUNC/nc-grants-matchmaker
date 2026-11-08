@@ -676,20 +676,20 @@ def eligibility_fit(opp, profile):
     if not is_tribal_org and re.search(r"\b(tribal|indian housing|urban indian|native american|native hawaiian)\b", title):
         return 10.0, "This program appears to be limited to tribes or Native organizations; check the notice."
     if not types:
-        return 60.0, "Eligibility was not listed in the search data; check the official notice."
+        return 60.0, "Grants.gov does not list who can apply, so this gets 60 until the notice is checked."
     joined = " | ".join(types)
     if "unrestricted" in joined:
-        return 100.0, "Open to all applicant types."
+        return 100.0, "Open to all applicant types, so this gets 100."
     wanted = [t.lower() for t in profile.get("eligible_applicant_types", [])]
     if any(w in joined or any(w in t or t in w for t in types) for w in wanted):
-        return 100.0, "Your type of organization is listed as eligible."
+        return 100.0, "Your type of organization is on the eligible list, so this gets 100."
     words = CATEGORY_ELIGIBILITY_WORDS.get(profile.get("category", "state"), [])
     text = (opp.get("eligibility_text") or "").lower()
     if "others" in joined:
         if any(w in text for w in words):
-            return 85.0, "The eligibility description appears to include your type of organization; confirm in the notice."
-        return 50.0, "Eligibility is described in the notice text; check whether your office qualifies."
-    return 10.0, "Your type of organization is not listed as eligible."
+            return 85.0, "Eligibility is described in the notice text, which mentions your type of organization, so this gets 85. Confirm in the notice."
+        return 50.0, "Eligibility is listed as \"other\" and the notice text does not clearly name your type of organization, so this gets 50. Check the notice."
+    return 10.0, "Your type of organization is not on the eligible list, so this gets 10."
 
 
 def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
@@ -848,6 +848,25 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
     hours = opp.get("est_completion_hours", 40)
     effort_component = 100.0 if hours <= 30 else 80.0 if hours <= 50 else 55.0 if hours <= 80 else 30.0
 
+    money = lambda v: f"${v/1e6:.1f} million" if v >= 1e6 else f"${v:,.0f}"
+    if not ceiling_val:
+        money_why = "The notice does not list an award amount, so this gets a neutral 50."
+    else:
+        money_why = (f"Largest award listed is {money(ceiling_val)}. Scale: $10 million+ = 100, $5 million = 85, "
+                     "$2 million = 70, $1 million = 55, $500,000 = 40, less = 25.")
+    if opp.get("status") == "forecasted":
+        timing_why = "Not open yet, so there is time to prepare."
+    elif days is None:
+        timing_why = "No deadline is listed, so this gets a middle score."
+    else:
+        timing_why = (f"{days} days left; this application needs about {weeks_needed} weeks "
+                      f"({days / max(1, weeks_needed * 7):.1f} times the time needed). Twice the time or more = 100.")
+    effort_why = f"Estimated {hours} staff hours. 30 or fewer = 100, up to 50 = 80, up to 80 = 55, more = 30."
+    affinity_why = ("This funding agency is one your organization usually works with, so this gets 100." if affinity_component == 100
+                    else "Not one of the funding agencies your organization usually works with, so this gets 20.")
+    score_reasons = {"eligibility": eligibility_note, "money_amount": money_why, "timing": timing_why,
+                     "effort": effort_why, "affinity": affinity_why}
+
     parts = {
         "eligibility": eligibility_component,
         "money_amount": money_component,
@@ -943,6 +962,7 @@ def calculate_score(opp, profile, weights=None, scoring_model="balanced"):
         "reason": reason,
         "positive_drivers": positive_drivers,
         "risk_factors": risk_factors,
+        "score_reasons": score_reasons,
         "score_breakdown": {
             "relevancy": relevancy_component,
             "money_amount": money_component,
