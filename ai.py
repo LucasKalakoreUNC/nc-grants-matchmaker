@@ -368,6 +368,70 @@ def get_or_create_draft(conn, office_id, item_id):
     return result
 
 
+# ---------------------------------------------------------------- one required document at a time
+
+DOC_SCHEMA = {
+    "type": "object", "additionalProperties": False,
+    "required": ["title", "guidance", "draft", "fill_in"],
+    "properties": {
+        "title": {"type": "string"},
+        "guidance": {"type": "string", "description": "Page limit, format and what reviewers look for, from the notice; else ''."},
+        "draft": {"type": "string", "description": "The document's first draft, with headings as the notice requires. Unknown facts as [bracketed blanks]."},
+        "fill_in": {"type": "array", "items": {"type": "string"}},
+    },
+}
+
+DOC_SYSTEM = DRAFT_SYSTEM.replace(
+    "Draft only the written sections (abstract or summary, statement of need, goals and objectives, project description or approach, evaluation plan, sustainability, budget justification outline). Never draft standard forms, registrations, audits, resumes, letters, or documents the organization must already have.",
+    "Draft exactly ONE required document: the one named in the request. Follow what the notice says about it (contents, headings, page limit, format). "
+    "For a budget justification, give the structure and reasoning with every amount as a [blank]. "
+    "For a letter of support or commitment, write a template the partner can adapt, with names and commitments as [blanks].")
+
+NOT_DRAFTABLE = ("Standard forms", "Registrations")
+NOT_DRAFTABLE_WORDS = ("sf-424", "sf424", "sf-lll", "sam.gov", "uei", "grants.gov registration", "login.gov", "era commons",
+                       "audit", "indirect cost rate agreement", "resume", "biosketch", "curriculum vitae", "certification", "assurances")
+
+
+def draftable(doc):
+    name = (doc.get("name") or "").lower()
+    return doc.get("category") not in NOT_DRAFTABLE and not any(w in name for w in NOT_DRAFTABLE_WORDS)
+
+
+def get_or_create_doc_draft(conn, office_id, item_id, doc_name):
+    """Draft one required document from the notice's checklist; saved and reused."""
+    conn.execute(DRAFTS_SQL)
+    inputs = draft_inputs(conn, office_id, item_id)
+    req = notices.requirements_for(conn, item_id) or {}
+    doc = next((d for d in req.get("required_documents", []) if d.get("name") == doc_name), None)
+    if not doc:
+        raise ValueError("That document is not on this grant's requirements list")
+    if not draftable(doc):
+        raise ValueError("This is a standard form or registration; complete it on Grants.gov or with your records")
+    inputs["document_to_draft"] = {"name": doc["name"], "category": doc.get("category"), "details": doc.get("details"),
+                                   "source": doc.get("source"), "required": doc.get("required")}
+    key = item_id + "#" + hashlib.sha1(doc_name.encode()).hexdigest()[:10]
+    h = hashlib.sha256(json.dumps(inputs, sort_keys=True, default=str).encode()).hexdigest()[:16]
+    row = conn.execute("SELECT * FROM app_drafts WHERE office_id=? AND item_id=?", (office_id, key)).fetchone()
+    if row and row["input_hash"] == h:
+        out = json.loads(row["data"]); out.update(cached=True, created_at=row["created_at"], model=row["model"])
+        return out
+    if not provider():
+        raise RuntimeError("AI drafting is not configured")
+    import time
+    now = time.time()
+    _RECENT[:] = [t for t in _RECENT if now - t < 3600]
+    if len(_RECENT) >= int(os.environ.get("AI_DRAFTS_PER_HOUR", "30")):
+        raise ValueError("The hourly limit for new drafts has been reached. Please try again later.")
+    _RECENT.append(now)
+    result = ask(DOC_SYSTEM, "Draft this one document from these facts (JSON):\n" + json.dumps(inputs, default=str, indent=1),
+                 DOC_SCHEMA, max_tokens=16000)
+    model = os.environ.get("AZURE_OPENAI_DEPLOYMENT") if provider() == "azure-openai" else MODEL
+    conn.execute("INSERT OR REPLACE INTO app_drafts VALUES (?, ?, ?, ?, ?, ?)", (office_id, key, h, json.dumps(result), model, db.now()))
+    conn.commit()
+    result.update(cached=False, created_at=db.now(), model=model)
+    return result
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)

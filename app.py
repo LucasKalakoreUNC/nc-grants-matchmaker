@@ -938,6 +938,24 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         # 3. Trigger Ingestion / Refresh Pipeline on Demand (§5.7)
+        if path.startswith("/api/draft-doc/"):
+            parts = path.split("/")
+            if len(parts) != 5 or not payload.get("document"):
+                self._send_json({"error": "Use /api/draft-doc/<organization>/<grant> with a document name"}, 400)
+                return
+            conn = db.connect()
+            try:
+                self._send_json(ai.get_or_create_doc_draft(conn, parts[3], parts[4][:40], str(payload["document"])[:300]))
+            except ValueError as e:
+                self._send_json({"error": str(e)}, 400)
+            except Exception as e:
+                detail = re.sub(r"[A-Za-z0-9]{32,}", "[hidden]", f"{type(e).__name__}: {e}")[:300]
+                print(f"[WARN] Document draft failed: {detail}")
+                self._send_json({"error": "The draft could not be written right now. Try again in a minute.", "detail": detail}, 503)
+            finally:
+                conn.close()
+            return
+
         if path.startswith("/api/draft/"):
             parts = path.split("/")
             if len(parts) != 5:
