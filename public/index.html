@@ -79,7 +79,7 @@
   .sub { display: block; color: var(--muted); font-size: .9rem; }
   .tag { display: inline-block; padding: 2px 8px; font-size: .8rem; font-weight: 700; border-radius: 2px; white-space: nowrap; }
   .tag.strong { background: var(--green-bg); color: #19591e; } .tag.good { background: var(--blue-light); color: var(--blue-dark); } .tag.fair { background: var(--bg-alt); color: var(--muted); }
-  .tag.Pursue { background: var(--green); color: #fff; } .tag.Watch { background: var(--gold); color: var(--ink); } .tag.Pass { background: #71767a; color: #fff; } .tag.new { background: #fff; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
+  .tag.Pursue { background: var(--green); color: #fff; } .tag.Watch { background: var(--gold); color: var(--ink); } .tag.Pass { background: #71767a; color: #fff; } .tag.Submitted { background: var(--blue-dark); color: #fff; } .tag.new { background: #fff; color: var(--muted); box-shadow: inset 0 0 0 1px var(--line); }
   .soon { color: var(--red); font-weight: 700; }
   tr.group td { background: var(--blue-light); padding: 10px; border-bottom: 2px solid var(--blue); }
   .empty { padding: 32px; text-align: center; color: var(--muted); border: 1px dashed var(--line); }
@@ -103,7 +103,7 @@
   .checklist input { width: 18px; height: 18px; margin-top: 3px; flex: none; }
   .checklist small { display: block; color: var(--muted); }
   .steps { padding-left: 20px; margin: 0; } .steps li { margin-bottom: 10px; } .steps small { color: var(--muted); display: block; }
-  .choices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .choices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 12px; }
   .choices button { font: inherit; font-weight: 700; padding: 12px 8px; border: 2px solid var(--line); background: #fff; cursor: pointer; border-radius: 4px; }
   .choices button small { display: block; font-weight: 400; font-size: .8rem; color: var(--muted); }
   .choices button[aria-pressed="true"] { border-color: var(--blue); background: var(--blue-light); }
@@ -173,7 +173,6 @@
     </details>
   </div>
 
-  <div id="planInfo" class="plan-info" hidden></div>
 
   <div id="welcome" class="alert" hidden>
     <h3>Welcome. Here is how to use this tool.</h3>
@@ -196,6 +195,7 @@
     <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
       </div>
     </div>
+    <div id="planInfo" class="plan-info" hidden></div>
 
     <div class="filters">
       <div class="field grow">
@@ -385,7 +385,7 @@ const deadlineHtml = (i, br) => i.status === 'forecasted'
   : i.days_to_close == null ? 'No deadline listed'
   : farOff(i.close_date) ? 'No fixed deadline'
   : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
-const passed = i => ((S.decisions || {})[keyOf(i)] || {}).status === 'Pass';
+const passed = i => ['Pass','Submitted'].includes(((S.decisions || {})[keyOf(i)] || {}).status);
 const byRank = (a, b) => (passed(a) - passed(b)) || (b.total_score - a.total_score);
 const fit = s => s >= STRONG ? ['strong','Strong match'] : s >= GOOD ? ['good','Good match'] : ['fair','Possible match'];
 const PARTS = [
@@ -450,7 +450,7 @@ async function showPlanInfo(id){
   let p; try { p = await (await fetch(`/api/profiles/${id}`)).json(); } catch(e) { return; }
   if (S.office !== id) return;
   if (p.profile_status === 'general') {
-    box.innerHTML = `<p><strong>General profile.</strong> ${esc(p.source_citation)} Use it if your organization doesn't have its own profile yet.</p><details><summary>${(p.goals || []).length} goals used for matching</summary><ol>${(p.goals || []).map(g => `<li>${esc(g.title)}</li>`).join('')}</ol></details>`;
+    box.innerHTML = `<p><strong>General profile.</strong> ${esc(p.source_citation)} Use it if your organization doesn't have its own profile yet.</p><h4 style="margin:12px 0 4px">${(p.goals || []).length} goals used for matching</h4><ol>${(p.goals || []).map(g => `<li><strong>${esc(g.title)}</strong>${g.description ? ` &mdash; ${esc(g.description)}` : ''}${g.citation ? `<span class="sub">Source: ${esc(g.citation)}</span>` : ''}</li>`).join('')}</ol>${p.source_url ? `<p class="sub">Where this comes from: <a href="${esc(p.source_url)}" target="_blank" rel="noopener">${esc(p.source_url)}</a></p>` : ''}`;
     $('planBtn').hidden = false; return;
   }
   const official = p.profile_status !== 'draft';
@@ -458,9 +458,9 @@ async function showPlanInfo(id){
   box.innerHTML = official
     ? `<p><strong>Goals from:</strong> ${esc(p.source_citation)} &middot; ${link}</p>`
     : `<p><strong>Draft goals.</strong> These goals are a summary that has not yet been checked against an official plan, so matches are less reliable.</p>
-       <p>${link ? `Published plan to use next: ${link}` : 'No published strategic plan found yet.'}</p>`;
+       <p>${link ? `Published plan to use next: ${link}` : 'We could not find a published strategic plan for this organization online yet.'}</p>`;
   box.innerHTML += `
-<details><summary>${(p.goals || []).length} goals used for matching</summary><ol>${(p.goals || []).map(g => `<li>${esc(g.title)}</li>`).join('')}</ol></details>`;
+<h4 style="margin:12px 0 4px">${(p.goals || []).length} goals used for matching</h4><ol>${(p.goals || []).map(g => `<li><strong>${esc(g.title)}</strong>${g.description ? ` &mdash; ${esc(g.description)}` : ''}${g.citation ? `<span class="sub">Source: ${esc(g.citation)}</span>` : ''}</li>`).join('')}</ol>${p.source_url ? `<p class="sub">Where this comes from: <a href="${esc(p.source_url)}" target="_blank" rel="noopener">${esc(p.source_url)}</a></p>` : ''}`;
   $('planBtn').hidden = false;
 }
 
@@ -482,6 +482,7 @@ async function changeOffice(id){
   $('exportBtn').hidden = all;
   showPlanInfo(id);
   $('exportBtn').href = `/api/export/${id}`;
+  $('exportBtn').download = `NC grants - ${((S.profiles.find(p => p.agency_id === id) || {}).name || id).replace(/[^\w\s-]/g, '')}.csv`;
   let items, dec;
   try {
     [items, dec] = await Promise.all([
@@ -498,7 +499,7 @@ async function changeOffice(id){
   if (request !== officeRequest) return;
   S.loading = false;
   S.items = items.filter(applicationIsCurrent).sort(byRank);
-  S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[all ? `${d.office_id}|${d.opportunity_id}` : String(d.opportunity_id)] = d; });
+  S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass','Submitted'].includes(d.status)) d.status = 'Watch'; S.decisions[all ? `${d.office_id}|${d.opportunity_id}` : String(d.opportunity_id)] = d; });
   render(); renderTracked();
   if (!$('tab-digest').hidden) renderDigest();
 }
@@ -592,8 +593,8 @@ function renderTracked(){
   if (S.loading) return;
   const byId = Object.fromEntries(S.items.map(i => [i.id, i]));
   const ds = Object.values(S.decisions).sort((a,b) => (b.decided_at || '').localeCompare(a.decided_at || ''));
-  if (!ds.length) { $('trackedBody').innerHTML = '<div class="empty">No decisions yet. Open a grant from the Opportunities tab and choose Pursue, Watch, or Pass.</div>'; return; }
-  $('trackedBody').innerHTML = ['Pursue','Watch','Pass'].map(st => {
+  if (!ds.length) { $('trackedBody').innerHTML = '<div class="empty">No decisions yet. Open a grant from the Opportunities tab and choose Pursue, Watch, Pass, or Submitted.</div>'; return; }
+  $('trackedBody').innerHTML = ['Pursue','Submitted','Watch','Pass'].map(st => {
     const rows = ds.filter(d => d.status === st); if (!rows.length) return '';
     return `<h3 style="margin-top:24px">${st} (${rows.length})</h3><table><thead><tr><th>Grant</th><th>Deadline</th><th>Notes</th><th>Decided by</th></tr></thead><tbody>${rows.map(d => {
       const i = byId[String(d.opportunity_id)];
@@ -701,6 +702,7 @@ async function openDetail(id){
         <button aria-pressed="${choice === 'Pursue'}" data-v="Pursue" onclick="pick('Pursue')">Pursue<small>We will apply</small></button>
         <button aria-pressed="${choice === 'Watch'}" data-v="Watch" onclick="pick('Watch')">Watch<small>Check back later</small></button>
         <button aria-pressed="${choice === 'Pass'}" data-v="Pass" onclick="pick('Pass')">Pass<small>Not a fit</small></button>
+        <button aria-pressed="${choice === 'Submitted'}" data-v="Submitted" onclick="pick('Submitted')">Submitted<small>Application sent</small></button>
       </div>
       ${S.office === 'all' ? `<label for="dOrg">Record this decision for</label>
       <select id="dOrg" style="margin-bottom:12px">${S.profiles.filter(p => $('otype').value === 'all' || p.category === $('otype').value).sort((a,b) => a.name.localeCompare(b.name)).map(p => `<option value="${p.agency_id}" ${p.agency_id === (d?.office_id || i.best_office_id) ? 'selected' : ''}>${esc(p.name)}</option>`).join('')}</select>` : ''}
@@ -801,6 +803,7 @@ function openProgram(key){
         <button aria-pressed="${choice === 'Pursue'}" data-v="Pursue" onclick="pick('Pursue')">Pursue<small>We will apply</small></button>
         <button aria-pressed="${choice === 'Watch'}" data-v="Watch" onclick="pick('Watch')">Watch<small>Check back later</small></button>
         <button aria-pressed="${choice === 'Pass'}" data-v="Pass" onclick="pick('Pass')">Pass<small>Not a fit</small></button>
+        <button aria-pressed="${choice === 'Submitted'}" data-v="Submitted" onclick="pick('Submitted')">Submitted<small>Application sent</small></button>
       </div>
       <label for="dNotes">Note for your team (optional)</label>
       <textarea id="dNotes" rows="2">${esc(clean(dec?.notes))}</textarea>
@@ -859,26 +862,26 @@ function downloadDraft(){
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Draft - ' + title.slice(0, 60).replace(/[^\w\s-]/g, '') + '.doc'; a.click();
 }
 function closeDetail(){ $('detail').classList.remove('open'); }
-function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); if ($('reminderOptions')) $('reminderOptions').hidden = st !== 'Pursue'; }
+function pick(st){ choice = st; document.querySelectorAll('.choices button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === st)); if ($('reminderOptions')) $('reminderOptions').hidden = !['Pursue','Watch'].includes(st); }
 
 function reminderFields(){
   const email = store.get('user_email') || '';
-  return `<div id="reminderOptions" ${choice === 'Pursue' ? '' : 'hidden'} style="margin-top:12px">
+  return `<div id="reminderOptions" ${['Pursue','Watch'].includes(choice) ? '' : 'hidden'} style="margin-top:12px">
     <label style="font-weight:400"><input id="dGrantAlerts" type="checkbox" ${email && store.get('grant_alerts') !== 'off' ? 'checked' : ''}> Email me deadline reminders for this grant</label>
     <label for="dAlertEmail">Your email for reminders</label>
     <input id="dAlertEmail" type="email" autocomplete="email" value="${esc(email)}" placeholder="you@example.org">
-    <p class="sub">Confirm your address once. Reminders arrive at 30, 14, 7, 3 and 1 day before the deadline. Changing this grant to Watch or Pass stops its reminders.</p>
+    <p class="sub">Confirm your address once. You will get an email at 30, 14, 10, 7, 3 and 1 day before the deadline, with the days left in the subject line (for example, "10 days left!"). Reminders work for grants you Pursue or Watch. Marking a grant Pass or Submitted stops them.</p>
   </div>`;
 }
 
 async function saveDecision(){
-  if (!choice) { toast('Choose Pursue, Watch, or Pass first.'); return; }
+  if (!choice) { toast('Choose Pursue, Watch, Pass, or Submitted first.'); return; }
   const i = S.items.find(x => keyOf(x) === currentId) || S.items.find(x => x.id === currentId);
   const name = $('dBy').value.trim(); if (name) store.set('name', name);
   const body = { opportunity_id: i.id, number: i.number, title: i.title, status: choice, notes: $('dNotes').value.trim(), decided_by: name || 'Grants staff' };
   const org = S.office === 'all' ? $('dOrg').value : S.office;
   const alertEmail = $('dAlertEmail')?.value.trim() || '';
-  const wantsAlerts = choice === 'Pursue' && !!$('dGrantAlerts')?.checked;
+  const wantsAlerts = ['Pursue','Watch'].includes(choice) && !!$('dGrantAlerts')?.checked;
   if (wantsAlerts && (!alertEmail || !$('dAlertEmail').checkValidity())) { toast('Enter a valid email for reminders, or untick the reminder option.'); return; }
   body.alert_email = wantsAlerts ? alertEmail : (store.get('user_email') || ''); body.alerts_enabled = wantsAlerts;
   body.notification_token = store.get('notification_token') || '';
@@ -892,7 +895,7 @@ async function saveDecision(){
   S.decisions[S.office === 'all' ? `${org}|${i.id}` : String(i.id)] = { ...body, decided_at: new Date().toISOString() };
   render(); renderTracked();
   if (wantsAlerts) { store.set('user_email', alertEmail); store.set('grant_alerts','on'); }
-  else if (choice === 'Pursue') store.set('grant_alerts','off');
+  else if (['Pursue','Watch'].includes(choice)) store.set('grant_alerts','off');
   if (!$('tab-digest').hidden) renderDigest(); closeDetail();
   toast(result.notification?.confirmation_required
     ? (result.notification.delivery_ready ? 'Decision saved. Check your email to confirm reminders.' : 'Decision saved. Reminder request saved; email setup is still needed.')

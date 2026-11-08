@@ -79,13 +79,14 @@ class NotificationTests(unittest.TestCase):
     def test_personal_pursuit_reminders_are_sent_once_per_threshold(self):
         self.grant('pursuit', days=30)
         self.confirm_request(grant='pursuit')
-        for delta, expected_days in [(0,30),(16,14),(7,7),(4,3),(2,1)]:
+        for delta, expected_days in [(0,30),(16,14),(4,10),(3,7),(4,3),(2,1)]:
             self.advance(days=delta)
             result = n.run_once(self.conn, self.now, sender=self.send)
             self.assertEqual(result['sent'], 1)
-            self.assertIn(f'{expected_days} days', self.messages[-1][1])
+            left = '1 day left!' if expected_days == 1 else f'{expected_days} days left!'
+            self.assertIn(left, self.messages[-1][1])
             self.assertEqual(n.run_once(self.conn, self.now, sender=self.send)['sent'], 0)
-        self.assertEqual(len(self.messages), 5)
+        self.assertEqual(len(self.messages), 6)
         self.advance(days=2)
         self.assertEqual(n.run_once(self.conn, self.now, sender=self.send)['sent'], 0)
 
@@ -96,13 +97,13 @@ class NotificationTests(unittest.TestCase):
         self.assertIn('5 days', self.messages[0][1])
         self.assertEqual(len(self.messages), 1)
 
-    def test_watch_stops_a_queued_deadline_reminder(self):
+    def test_pass_stops_a_queued_deadline_reminder(self):
         self.grant('watched')
         self.confirm_request(grant='watched')
         def fail(*args):
             raise OSError('Temporary failure')
         self.assertEqual(n.run_once(self.conn, self.now, sender=fail)['failed'], 1)
-        db.save_decision(self.conn, 'dept', {'opportunity_id':'watched','status':'Watch'})
+        db.save_decision(self.conn, 'dept', {'opportunity_id':'watched','status':'Pass'})
         self.conn.commit()
         self.advance(minutes=10)
         self.assertEqual(n.run_once(self.conn, self.now, sender=self.send)['sent'], 0)

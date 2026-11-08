@@ -821,7 +821,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             agency_id = path.replace("/api/decisions/", "").strip()
             opp_id = str(payload.get("opportunity_id", ""))[:40]
             status = payload.get("status")
-            if agency_id not in pipeline.load_agency_profiles() or status not in ("Pursue", "Watch", "Pass"):
+            if agency_id not in pipeline.load_agency_profiles() or status not in ("Pursue", "Watch", "Pass", "Submitted"):
                 self._send_json({"error": "Unknown organization or status"}, 400)
                 return
             try:
@@ -849,7 +849,7 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
                     "decided_by": str(payload.get("decided_by", "") or "Grants staff")[:100],
                     "decided_at": datetime.now().isoformat(timespec="seconds"),
                 })
-                if status != 'Pursue':
+                if status not in ('Pursue', 'Watch'):
                     conn.execute('UPDATE notification_pursuits SET active=0 WHERE office_id=? AND opportunity_id=?', (agency_id, opp_id))
                 elif alert_email and payload.get('alerts_enabled'):
                     notification_result = notifications.request_subscription(conn, alert_email, agency_id,

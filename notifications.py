@@ -16,7 +16,7 @@ import db
 import pipeline
 
 NC = ZoneInfo("America/New_York")
-REMINDER_DAYS = (30, 14, 7, 3, 1)
+REMINDER_DAYS = (30, 14, 10, 7, 3, 1)
 MIN_FIELD_FIT = 40
 DEFAULT_BASE_URL = "https://ncgrantfinder-bshjbjbgeahqhnck.westus3-01.azurewebsites.net"
 
@@ -73,7 +73,7 @@ def _apply_changes(conn, email, changes, now):
         else:
             row = conn.execute("SELECT status FROM decisions WHERE office_id=? AND opportunity_id=?",
                                (change["office"], change["grant"])).fetchone()
-            if row and row["status"] == "Pursue":
+            if row and row["status"] in ("Pursue", "Watch"):
                 conn.execute("INSERT INTO notification_pursuits VALUES (?,?,?,1) ON CONFLICT(email,office_id,opportunity_id) DO UPDATE SET active=1",
                              (email, change["office"], change["grant"]))
 
@@ -209,7 +209,7 @@ def schedule(conn, now):
     sync_catalog(conn, now)
     rows = conn.execute("""SELECT p.* FROM notification_pursuits p JOIN notification_accounts a ON a.email=p.email
         JOIN decisions d ON d.office_id=p.office_id AND d.opportunity_id=p.opportunity_id
-        WHERE a.verified=1 AND a.active=1 AND p.active=1 AND d.status='Pursue'""").fetchall()
+        WHERE a.verified=1 AND a.active=1 AND p.active=1 AND d.status IN ('Pursue','Watch')""").fetchall()
     for row in rows:
         item = _current_item(conn, row["opportunity_id"], today, row["office_id"])
         deadline = db.application_deadline(item) if item else None
@@ -247,16 +247,17 @@ def build_message(conn, row, now):
         return None
     today = now.astimezone(NC).date()
     if row["kind"] == "reminder":
-        pursuit = conn.execute("""SELECT 1 FROM notification_pursuits p JOIN decisions d ON d.office_id=p.office_id AND d.opportunity_id=p.opportunity_id
-            WHERE p.email=? AND p.office_id=? AND p.opportunity_id=? AND p.active=1 AND d.status='Pursue'""",
+        pursuit = conn.execute("""SELECT d.status FROM notification_pursuits p JOIN decisions d ON d.office_id=p.office_id AND d.opportunity_id=p.opportunity_id
+            WHERE p.email=? AND p.office_id=? AND p.opportunity_id=? AND p.active=1 AND d.status IN ('Pursue','Watch')""",
             (row["email"], payload["office"], payload["grant"])).fetchone()
         item = _current_item(conn, payload["grant"], today, payload["office"]) if pursuit else None
         deadline = db.application_deadline(item) if item else None
         if not deadline or deadline.isoformat() != payload["deadline"] or reminder_bucket((deadline - today).days) != payload["bucket"]:
             return None
         days = (deadline - today).days
-        subject = f"Grant deadline {'today' if days == 0 else 'in ' + str(days) + ' days'}: {item['title']}"
-        text = f"You marked this grant Pursue.\n\n{item['title']}\n{'Expected deadline' if item['status']=='forecasted' else 'Deadline'}: {deadline.isoformat()}\n{days} days remaining\nOfficial notice: {item.get('url') or ''}\n"
+        left = 'Due today!' if days == 0 else '1 day left!' if days == 1 else f'{days} days left!'
+        subject = f"{left} {item['title']}"
+        text = f"{left}\nYou marked this grant {pursuit['status']}.\n\n{item['title']}\n{'Expected deadline' if item['status']=='forecasted' else 'Deadline'}: {deadline.isoformat()}\n{days} days remaining\nOfficial notice: {item.get('url') or ''}\n"
     else:
         pref = conn.execute("SELECT * FROM notification_preferences WHERE email=? AND office_id=? AND category=? AND active=1",
                             (row["email"], payload["office"], payload["category"])).fetchone()
