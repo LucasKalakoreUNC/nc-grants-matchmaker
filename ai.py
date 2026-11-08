@@ -499,8 +499,10 @@ def chat(conn, office_id, question, history=None, grant_id=None):
     profile = profiles.get(office_id)
     if profile:
         today = data["today"]
+        # Leave out grants the organization's type cannot apply for (e.g. tribal-only grants for a county).
         grants = [g for g in db.scored_for_office(conn, office_id)
-                  if not g.get("close_date") or g["close_date"] >= today][:40]
+                  if (not g.get("close_date") or g["close_date"] >= today)
+                  and (g.get("score_breakdown") or {}).get("eligibility", 100) > 10][:40]
         data["organization"] = {"name": profile.get("name"), "plan": profile.get("source_citation"),
                                 "goals": [{"title": g.get("title"), "description": g.get("description")}
                                           for g in profile.get("goals", [])]}
