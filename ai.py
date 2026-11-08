@@ -444,6 +444,94 @@ def get_or_create_doc_draft(conn, office_id, item_id, doc_name):
     return result
 
 
+
+# ---------------------------------------------------------------- chat
+
+CHAT_SYSTEM = """You answer questions from North Carolina grant staff using ONLY the JSON data provided:
+the organization's goals, its ranked list of current grants, its saved decisions, and (if present) the grant it has open.
+Rules:
+- Never invent grants, amounts, dates, eligibility or requirements. If the data does not contain the answer, say so
+  plainly and point to the official notice link or the grant's page on this site.
+- Name grants by their exact title. Give deadlines as written in the data. Say "expected" for forecasted dates.
+- Keep answers short: a few sentences or a short list. Plain language, no emojis.
+- Staff make the decisions. You can compare and explain, not decide for them.
+- If no organization is selected, answer questions about how the site works and ask them to choose an organization.
+How the site works: grants are ranked by Score = Fit x (0.6 + 0.4 x Practical / 100). Fit measures match with the
+strategic plan's goals; Practical covers eligibility, award size, time before deadline, staff effort and familiar funder.
+Staff mark grants Pursue, Watch, Pass or Submitted; Pursue and Watch can send deadline reminder emails."""
+
+CHAT_SCHEMA = {
+    "type": "object", "additionalProperties": False,
+    "required": ["answer", "grant_ids"],
+    "properties": {
+        "answer": {"type": "string", "description": "Plain-text answer."},
+        "grant_ids": {"type": "array", "items": {"type": "string"},
+                      "description": "IDs of grants from the data that the answer mentions, best first."},
+    },
+}
+_CHAT_RECENT = []
+
+
+def _grant_brief(g):
+    return {k: g.get(k) for k in ("id", "title", "agency", "status", "open_date", "close_date", "expected_open_date",
+                                  "expected_due_date", "award_ceiling", "award_floor", "typical_award",
+                                  "cost_share_required", "total_score", "matched_goal_title", "eligibility_note",
+                                  "est_completion_hours", "url") if g.get(k) not in (None, "", [])}
+
+
+def chat(conn, office_id, question, history=None, grant_id=None):
+    """Answer one question about an organization's grants from stored data only."""
+    import time
+    import pipeline
+    if not provider():
+        raise RuntimeError("AI chat is not configured")
+    question = (question or "").strip()[:1000]
+    if not question:
+        raise ValueError("Type a question first.")
+    now = time.time()
+    _CHAT_RECENT[:] = [t for t in _CHAT_RECENT if now - t < 3600]
+    if len(_CHAT_RECENT) >= int(os.environ.get("AI_CHAT_PER_HOUR", "60")):
+        raise ValueError("The hourly limit for questions has been reached. Please try again later.")
+    _CHAT_RECENT.append(now)
+
+    profiles = pipeline.load_agency_profiles()
+    data = {"today": db.nc_today().isoformat()}
+    profile = profiles.get(office_id)
+    if profile:
+        today = data["today"]
+        grants = [g for g in db.scored_for_office(conn, office_id)
+                  if not g.get("close_date") or g["close_date"] >= today][:40]
+        data["organization"] = {"name": profile.get("name"), "plan": profile.get("source_citation"),
+                                "goals": [{"title": g.get("title"), "description": g.get("description")}
+                                          for g in profile.get("goals", [])]}
+        data["ranked_grants"] = [_grant_brief(g) for g in grants]
+        data["decisions"] = [{"grant_id": d["opportunity_id"], "title": d.get("title"), "status": d.get("status"),
+                              "notes": d.get("notes")} for d in db.get_decisions(conn, office_id)["decisions"]]
+        if grant_id:
+            g = next((x for x in db.scored_for_office(conn, office_id, include_closed=True) if str(x["id"]) == str(grant_id)), None)
+            if g:
+                open_grant = _grant_brief(g)
+                open_grant.update(description=(g.get("description") or "")[:4000],
+                                  eligibility_text=(g.get("eligibility_text") or "")[:2000],
+                                  why_it_fits=g.get("reason"), score_reasons=g.get("score_reasons"))
+                try:
+                    import notices
+                    req = notices.requirements_for(conn, str(grant_id))
+                    if req:
+                        open_grant["requirements"] = req
+                except Exception:
+                    pass
+                data["open_grant"] = open_grant
+    turns = [{"role": t.get("role"), "text": str(t.get("text", ""))[:1500]}
+             for t in (history or [])[-6:] if t.get("role") in ("user", "assistant")]
+    user = ("Data (JSON):\n" + json.dumps(data, default=str)[:60000]
+            + "\n\nEarlier in this conversation:\n" + json.dumps(turns)
+            + "\n\nQuestion: " + question)
+    out = ask(CHAT_SYSTEM, user, CHAT_SCHEMA, max_tokens=6000)
+    known = {str(g["id"]): g for g in data.get("ranked_grants", [])}
+    out["grants"] = [{"id": i, "title": known[i]["title"]} for i in map(str, out.get("grant_ids", [])) if i in known][:5]
+    return out
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)

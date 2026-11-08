@@ -941,6 +941,22 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
             return
 
         # 3. Trigger Ingestion / Refresh Pipeline on Demand (§5.7)
+        if path == "/api/chat":
+            conn = db.connect()
+            try:
+                hist = payload.get("history") if isinstance(payload.get("history"), list) else []
+                self._send_json(ai.chat(conn, str(payload.get("office_id") or "all")[:60], str(payload.get("question") or ""),
+                                        hist, str(payload.get("grant_id") or "")[:40] or None))
+            except ValueError as e:
+                self._send_json({"error": str(e)}, 400)
+            except Exception as e:
+                detail = re.sub(r"[A-Za-z0-9]{32,}", "[hidden]", f"{type(e).__name__}: {e}")[:300]
+                print(f"[WARN] Chat failed: {detail}")
+                self._send_json({"error": "The assistant could not answer right now. Try again in a minute."}, 503)
+            finally:
+                conn.close()
+            return
+
         if path.startswith("/api/draft-doc/"):
             parts = path.split("/")
             if len(parts) != 5 or not payload.get("document"):
