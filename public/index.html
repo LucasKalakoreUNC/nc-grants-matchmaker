@@ -125,8 +125,8 @@
   <div class="wrap" role="tablist">
     <button role="tab" data-tab="list" aria-selected="true" onclick="showTab('list')">Opportunities</button>
     <button role="tab" data-tab="tracked" aria-selected="false" onclick="showTab('tracked')">My decisions</button>
-    <button role="tab" data-tab="digest" aria-selected="false" onclick="showTab('digest')">Weekly briefing</button>
     <button role="tab" data-tab="help" aria-selected="false" onclick="showTab('help')">How this works</button>
+    <button role="tab" data-tab="digest" aria-selected="false" onclick="showTab('digest')">Email updates</button>
   </div>
 </nav>
 
@@ -151,7 +151,6 @@
     </div>
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
     <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
-    <button id="digestQuickBtn" class="btn outline" onclick="showTab('digest')">Weekly briefing</button>
   </div>
 
   <div class="coverage" hidden>
@@ -603,12 +602,12 @@ function loadSources(i, src){
       <p class="sub" style="margin-bottom:8px">Read from the official funding notice${r.read_at ? ' on ' + new Date(r.read_at).toLocaleDateString() : ''}. Each item shows the file and page it comes from. Check items off as your team gathers them; checkmarks are saved on this computer.</p>
       ${r.item_count ? `<p class="sub" style="margin-bottom:8px">${r.verified_count} of ${r.item_count} items were found in the notice text.${r.verified_count < r.item_count ? ' Items marked "Not found" may come from general agency guidance or may be wrong; check the notice.' : ''}</p>` : ''}
       ${r.out_of_date ? '<div class="alert warn"><strong>The notice has changed since it was read.</strong> Check the newest version before relying on this list.</div>' : ''}
-      ${Object.entries(groups).map(([cat, items]) => `<h4 style="margin:16px 0 4px">${esc(cat)}</h4><ul class="checklist">${items.map(([d, n]) => `<li><input type="checkbox" id="rq${n}" ${saved.includes(n) ? 'checked' : ''} onchange="saveReq(${n}, this.checked)"><label for="rq${n}" style="font-weight:400;margin:0"><strong>${esc(d.name)}</strong>${d.required ? '' : ' <span class="tag fair">If applicable</span>'}${d.verified === false ? ' <span class="tag Watch">Not found in the notice text</span>' : ''}<small>${esc(d.details)}</small><small>Source: ${esc(d.source)}</small></label>
+      ${Object.entries(groups).map(([cat, items]) => `<h4 style="margin:16px 0 4px">${esc(cat)}</h4><ul class="checklist">${items.map(([d, n]) => `<li><input type="checkbox" id="rq${n}" ${saved.includes(n) ? 'checked' : ''} onchange="saveReq(${n}, this.checked)"><label for="rq${n}" style="font-weight:400;margin:0"><strong>${esc(d.name)}</strong>${d.required ? '' : ' <span class="tag fair">If applicable</span>'}${d.verified === false && !/standard form|registration/i.test(cat) ? ' <span class="tag Watch" title="This item came from general guidance; we could not find it in the official notice text. Confirm it in the notice.">Confirm in the notice</span>' : ''}<small>${esc(d.details)}</small><small>Source: ${esc(d.source)}</small></label>
         ${S.ai ? (canDraft(d) ? `<div style="margin-top:6px"><button class="linkbtn" onclick="draftDoc(${n})">Draft this document</button><div id="dd${n}"></div></div>` : '<small>Standard form or registration: complete it on Grants.gov or from your records.</small>') : ''}</li>`).join('')}</ul>`).join('')}
     </section>`;
     if ((r.funded_activities || []).length) html += `<section><h3>What the money can pay for</h3><ul style="padding-left:20px;margin:0">${r.funded_activities.map(f => `<li>${esc(f.activity)} <span class="sub" style="display:inline">(${esc(f.source)})</span></li>`).join('')}</ul></section>`;
     if ((r.important_notes || []).length) html += `<section><div class="alert warn" style="margin:0"><h3>Easy to miss</h3><ul style="margin:4px 0 0;padding-left:20px">${r.important_notes.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></section>`;
-    if ((r.deadlines || []).length) html += `<section><h3>Key dates</h3><table><tbody>${r.deadlines.map(d => `<tr><td>${esc(d.what)}${d.verified === false ? ' <span class="tag Watch">Not found in the notice text</span>' : ''}<span class="sub">${esc(d.source)}</span></td><td data-l="When"><strong>${esc(d.when)}</strong></td></tr>`).join('')}</tbody></table></section>`;
+    if ((r.deadlines || []).length) html += `<section><h3>Key dates</h3><table><tbody>${r.deadlines.map(d => `<tr><td>${esc(d.what)}${d.verified === false ? ' <span class="tag Watch" title="We could not find this date in the official notice text. Confirm it in the notice.">Confirm in the notice</span>' : ''}<span class="sub">${esc(d.source)}</span></td><td data-l="When"><strong>${esc(d.when)}</strong></td></tr>`).join('')}</tbody></table></section>`;
     html += `<section><h3>Who can apply</h3><p>${esc(r.eligibility?.summary || 'Not stated')}</p><p class="sub">Source: ${esc(r.eligibility?.source || '')}</p>
       <p><strong>Matching funds:</strong> ${esc({ yes: 'Required', no: 'Not required', 'not stated': 'Not stated' }[r.cost_share?.required] || 'Not stated')}. ${esc(r.cost_share?.details || '')} <span class="sub">Source: ${esc(r.cost_share?.source || '')}</span></p>
       ${r.submission_limits && !/^not stated/i.test(r.submission_limits) ? `<p><strong>Application limits:</strong> ${esc(r.submission_limits)}</p>` : ''}</section>`;
@@ -906,8 +905,8 @@ async function renderDigest(){
           <p class="count" style="margin:4px 0 0;"><strong>${esc(res.office_name)}</strong> &middot; Week of ${esc(res.date)}</p>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button class="btn outline small" onclick="copyDigestText()">📋 Copy Email Text</button>
-          <button class="btn small" onclick="openDigestModal()">📧 Preview Formatted Email</button>
+          <button class="btn outline small" onclick="copyDigestText()">Copy email text</button>
+          <button class="btn small" onclick="openDigestModal()">Preview email</button>
         </div>
       </div>
 
