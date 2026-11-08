@@ -1028,8 +1028,9 @@ def run_pipeline():
     excluded = [o for o in normalized if outside_nc(o)]
     normalized = [o for o in normalized if not outside_nc(o)]
     print(f"  Left out {len(excluded)} grants North Carolina organizations cannot apply for.")
-    ids = list(profiles)
-    conn.execute(f"DELETE FROM matches WHERE office_id NOT IN ({','.join('?' * len(ids))})", ids)
+    # Every profile is rescored below, so start clean: grants that no longer qualify (e.g. out of
+    # state) and lists for removed profiles drop out.
+    conn.execute("DELETE FROM matches")
     scored_counts = {}
     for agency_id, profile in profiles.items():
         scored_list = []
