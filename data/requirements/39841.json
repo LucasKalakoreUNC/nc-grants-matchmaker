@@ -1,41 +1,41 @@
 {
   "opportunity_id": "39841",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:10",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for Joint Center of Excellence for Advanced Materials Research submitted via Grants.gov workspace (FAA-COE-JAMS).",
       "source": "Grants.gov Synopsis (FAA-COE-JAMS)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for Joint Center of Excellence for Advanced Materials Research.",
       "source": "Grants.gov Synopsis (FAA-COE-JAMS)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for Joint Center of Excellence for Advanced Materials Research.",
       "source": "Grants.gov Synopsis (FAA-COE-JAMS)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for Joint Center of Excellence for Advanced Materials Research.",
       "source": "Grants.gov Synopsis (FAA-COE-JAMS)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for Joint Center of Excellence for Advanced Materials Research.",
       "source": "Grants.gov Synopsis (FAA-COE-JAMS)"
     },
     {
@@ -81,8 +81,15 @@
   ],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
+    "Opportunity Number: FAA-COE-JAMS — Agency: FAA-COE-JAMS.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity FAA-COE-JAMS.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting Joint Center of Excellence for Advanced Materials Research: The Joint Center of Excellence (COE) for Advanced Materials (JAMS) was established in January 2004 to assist in ensuring the safe and reliable application of com­posites and advanced materials to commercial aircraft. The Center is a joint effort of t...",
+      "source": "FAA-COE-JAMS Announcement (FAA-COE-JAMS)"
+    }
   ]
 }

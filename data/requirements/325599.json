@@ -1,41 +1,41 @@
 {
   "opportunity_id": "325599",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:12",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for U.S. Embassy Praia Ambassador’s Special Self-Help (SSH) Program submitted via Grants.gov workspace (AFPRA-20-04).",
       "source": "Grants.gov Synopsis (AFPRA-20-04)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for U.S. Embassy Praia Ambassador’s Special Self-Help (SSH) Program.",
       "source": "Grants.gov Synopsis (AFPRA-20-04)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for U.S. Embassy Praia Ambassador’s Special Self-Help (SSH) Program.",
       "source": "Grants.gov Synopsis (AFPRA-20-04)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for U.S. Embassy Praia Ambassador’s Special Self-Help (SSH) Program.",
       "source": "Grants.gov Synopsis (AFPRA-20-04)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for U.S. Embassy Praia Ambassador’s Special Self-Help (SSH) Program.",
       "source": "Grants.gov Synopsis (AFPRA-20-04)"
     },
     {
@@ -81,8 +81,15 @@
   ],
   "submission_limits": "Institutional limits apply as detailed in the opportunity announcement; verify internal screening procedures.",
   "important_notes": [
+    "Opportunity Number: AFPRA-20-04 — Agency: U.S. Mission to Cape Verde.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity AFPRA-20-04.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting U.S. Embassy Praia Ambassador’s Special Self-Help (SSH) Program: U.S. Embassy Praia welcomes the submission of project applications for funding through the Ambassador’s Special Self-Help Program (SSH). If interested, please carefully review the instructions below. The SSH is a grass-roots grant assistance program ...",
+      "source": "U.S. Mission to Cape Verde Announcement (AFPRA-20-04)"
+    }
   ]
 }

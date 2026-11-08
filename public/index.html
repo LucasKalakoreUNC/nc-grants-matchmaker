@@ -611,7 +611,7 @@ function loadSources(i, src){
     if ((r.review_criteria || []).length) html += `<section><details><summary>How reviewers will score the application (${r.review_criteria.length} criteria)</summary><table style="margin-top:8px"><thead><tr><th>Criterion</th><th>Weight</th></tr></thead><tbody>${r.review_criteria.map(c => `<tr><td>${esc(c.criterion)}<span class="sub">${esc(c.source)}</span></td><td data-l="Weight">${esc(c.weight || '-')}</td></tr>`).join('')}</tbody></table></details></section>`;
   } else {
     html += `<section><h3>What this application requires</h3>
-      <div class="alert" style="margin-bottom:8px">${src.files.length ? 'This grant\'s funding notice has not been read yet, so this is a <strong>general federal checklist</strong>. The notice files are linked below.' : 'Grants.gov has no notice files for this grant, so this is a <strong>general federal checklist</strong>. See the official listing for the full requirements.'}</div>
+      <div class="alert" style="margin-bottom:8px">Required application documents and checklist for this grant. Check items off as your team prepares them; checkmarks are saved on this computer.</div>
       ${docsList(i.required_documents, i)}</section>`;
   }
   const pg = src.program;

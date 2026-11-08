@@ -1,41 +1,41 @@
 {
   "opportunity_id": "363341",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:12",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for Health Promotion and Disease Prevention Research Centers: 2027 Special Interest Project Supplements (SIPS) submitted via Grants.gov workspace (RFA-DP-27-030).",
       "source": "Grants.gov Forecast Notice (RFA-DP-27-030)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for Health Promotion and Disease Prevention Research Centers: 2027 Special Interest Project Supplements (SIPS).",
       "source": "Grants.gov Forecast Notice (RFA-DP-27-030)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for Health Promotion and Disease Prevention Research Centers: 2027 Special Interest Project Supplements (SIPS).",
       "source": "Grants.gov Forecast Notice (RFA-DP-27-030)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for Health Promotion and Disease Prevention Research Centers: 2027 Special Interest Project Supplements (SIPS).",
       "source": "Grants.gov Forecast Notice (RFA-DP-27-030)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for Health Promotion and Disease Prevention Research Centers: 2027 Special Interest Project Supplements (SIPS).",
       "source": "Grants.gov Forecast Notice (RFA-DP-27-030)"
     },
     {
@@ -81,9 +81,16 @@
   ],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
+    "Opportunity Number: RFA-DP-27-030 — Agency: Centers for Disease Control and Prevention - ERA.",
     "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity RFA-DP-27-030.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting Health Promotion and Disease Prevention Research Centers: 2027 Special Interest Project Supplements (SIPS): This NOFO will provide supplemental funding to the currently funding twenty (20) CDC Prevention Research Centers (PRCs) to conduct Special Interest Projects (SIPs). The purpose of the SIPs is to inform public health practice through high-quality appl...",
+      "source": "Centers for Disease Control and Prevention - ERA Announcement (RFA-DP-27-030)"
+    }
   ]
 }

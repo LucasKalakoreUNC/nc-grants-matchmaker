@@ -1,41 +1,41 @@
 {
   "opportunity_id": "351257",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:11",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for Development and Maintenance of Human and Animal Food Rapid Response Teams (U2F) Clinical Trials Not Allowed submitted via Grants.gov workspace (FOR-FD-24-015).",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-015)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for Development and Maintenance of Human and Animal Food Rapid Response Teams (U2F) Clinical Trials Not Allowed.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-015)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for Development and Maintenance of Human and Animal Food Rapid Response Teams (U2F) Clinical Trials Not Allowed.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-015)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for Development and Maintenance of Human and Animal Food Rapid Response Teams (U2F) Clinical Trials Not Allowed.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-015)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for Development and Maintenance of Human and Animal Food Rapid Response Teams (U2F) Clinical Trials Not Allowed.",
       "source": "Grants.gov Forecast Notice (FOR-FD-24-015)"
     },
     {
@@ -81,9 +81,16 @@
   ],
   "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
   "important_notes": [
+    "Opportunity Number: FOR-FD-24-015 — Agency: Food and Drug Administration.",
     "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity FOR-FD-24-015.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting Development and Maintenance of Human and Animal Food Rapid Response Teams (U2F) Clinical Trials Not Allowed: The purpose of this FOA is to develop and maintain Rapid Response Teams (RRTs) to facilitate long-term improvements and innovation to the national integrated food safety system by unifying and coordinating federal/state/local human and animal food (H...",
+      "source": "Food and Drug Administration Announcement (FOR-FD-24-015)"
+    }
   ]
 }

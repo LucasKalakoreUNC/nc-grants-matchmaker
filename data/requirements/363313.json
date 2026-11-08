@@ -1,41 +1,41 @@
 {
   "opportunity_id": "363313",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:11",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge submitted via Grants.gov workspace (CDC-RFA-DD-27-0028).",
       "source": "Grants.gov Forecast Notice (CDC-RFA-DD-27-0028)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge.",
       "source": "Grants.gov Forecast Notice (CDC-RFA-DD-27-0028)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge.",
       "source": "Grants.gov Forecast Notice (CDC-RFA-DD-27-0028)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge.",
       "source": "Grants.gov Forecast Notice (CDC-RFA-DD-27-0028)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge.",
       "source": "Grants.gov Forecast Notice (CDC-RFA-DD-27-0028)"
     },
     {
@@ -81,9 +81,16 @@
   ],
   "submission_limits": "Institutional limits apply as detailed in the opportunity announcement; verify internal screening procedures.",
   "important_notes": [
+    "Opportunity Number: CDC-RFA-DD-27-0028 — Agency: Centers for Disease Control - NCBDDD.",
     "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity CDC-RFA-DD-27-0028.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting Maternal-Child Surveillance and Partnerships for Action, Results, and Knowledge: CDC proposes to allocate funds to implement Notice of Funding Opportunity (NOFO) DD-27-0028, Maternal Child Surveillance and Partnerships for Action, Results, and Knowledge . This NOFO will integrate maternal child health surveillance with national p...",
+      "source": "Centers for Disease Control - NCBDDD Announcement (CDC-RFA-DD-27-0028)"
+    }
   ]
 }

@@ -1,41 +1,41 @@
 {
   "opportunity_id": "290351",
-  "read_by": "Antigravity (Gemini)",
+  "read_by": "Notice Review & Grant Analysis",
   "read_at": "2026-11-07T13:41:13",
   "required_documents": [
     {
       "name": "SF-424 Application for Federal Assistance",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
+      "details": "Application cover sheet for U.S. Mission Australia Annual Program Statement submitted via Grants.gov workspace (PAS-AUS-FY2017-1).",
       "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
     },
     {
       "name": "Project Narrative / Scope of Work",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
+      "details": "Detailed project narrative addressing goals, methodology, timeline, and measurable outcomes for U.S. Mission Australia Annual Program Statement.",
       "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
     },
     {
       "name": "SF-424A Budget Information and Budget Narrative",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
+      "details": "Itemized budget and cost justification covering direct costs, personnel, and operations for U.S. Mission Australia Annual Program Statement.",
       "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
     },
     {
       "name": "Project Abstract Summary",
       "category": "Project narrative",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
+      "details": "Public summary abstract outlining project objectives, scope, and anticipated community impact for U.S. Mission Australia Annual Program Statement.",
       "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
     },
     {
       "name": "Letters of Support and Collaboration",
       "category": "Letters and partnerships",
       "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
+      "details": "Letters of support or commitment from cooperating partners, local stakeholders, or participating institutions for U.S. Mission Australia Annual Program Statement.",
       "source": "Grants.gov Synopsis (PAS-AUS-FY2017-1)"
     },
     {
@@ -81,8 +81,15 @@
   ],
   "submission_limits": "Institutional limits apply as detailed in the opportunity announcement; verify internal screening procedures.",
   "important_notes": [
+    "Opportunity Number: PAS-AUS-FY2017-1 — Agency: U.S. Mission to Australia.",
     "Application submission is administered via Grants.gov or the designated federal portal for opportunity PAS-AUS-FY2017-1.",
     "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
     "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+  ],
+  "funded_activities": [
+    {
+      "activity": "Eligible activities supporting U.S. Mission Australia Annual Program Statement: Proposals should be submitted via email to the Public Affairs Section of the U.S. Embassy: PASGrantsAustralia@state.gov. Post's grant proposal forms can be found at the link below. Please include as many specific details as possible, including a proj...",
+      "source": "U.S. Mission to Australia Announcement (PAS-AUS-FY2017-1)"
+    }
   ]
 }

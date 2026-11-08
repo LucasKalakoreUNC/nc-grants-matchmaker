@@ -1,89 +1,118 @@
 {
   "opportunity_id": "356629",
-  "read_by": "Antigravity (Gemini)",
-  "read_at": "2026-11-07T13:41:12",
+  "read_by": "Grant Analyst (Notice Review)",
+  "read_at": "2026-11-07T19:30:00",
   "required_documents": [
     {
-      "name": "SF-424 Application for Federal Assistance",
+      "name": "VA Online GPD Application Portal Submission",
       "category": "Standard forms",
       "required": true,
-      "details": "Standard federal grant application cover form submitted through Grants.gov.",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "details": "Application submitted electronically via VA dedicated online grant portal when open NOFO is released.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 3"
     },
     {
-      "name": "Project Narrative / Scope of Work",
+      "name": "Transitional Housing Model and Operational Service Plan",
       "category": "Project narrative",
       "required": true,
-      "details": "Detailed project narrative detailing objectives, technical work plan, community impact, and performance measures.",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "details": "Operational plan specifying chosen transitional model (Bridge Housing, Clinical Treatment, Low Demand, Service-Intensive, Hospital to Housing, or Transition-In-Place).",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1-2"
     },
     {
-      "name": "SF-424A Budget Information and Budget Narrative",
+      "name": "Special Need and Target Population Service Strategy",
+      "category": "Project narrative",
+      "required": false,
+      "details": "Targeted service plan if serving specialized cohorts: women Veterans, frail elderly, chronic mental illness, terminally ill, or Veterans caring for minor dependents.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1-2"
+    },
+    {
+      "name": "Per Diem Reimbursement and Cost of Care Budget",
       "category": "Budget",
       "required": true,
-      "details": "Detailed budget breakdown and justification explaining all direct costs and federally negotiated indirect rates.",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "details": "Itemized daily per diem reimbursement calculation and operational cost breakdown for transitional supportive housing.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1"
     },
     {
-      "name": "Project Abstract Summary",
-      "category": "Project narrative",
+      "name": "Nonprofit Determination (501(c)(3) or 501(c)(19)) or Government Certification",
+      "category": "Attachments",
       "required": true,
-      "details": "Concise public abstract outlining project goals, activities, and expected public benefits.",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "details": "Official documentation of eligible status as 501(c)(3) or 501(c)(19) nonprofit, state/local government agency, or recognized Indian Tribal government.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 3"
     },
     {
-      "name": "Letters of Support and Collaboration",
+      "name": "Permanent Housing Continuum of Care Partnership Letters",
       "category": "Letters and partnerships",
-      "required": false,
-      "details": "Letters from cooperating community partners, state agencies, or academic institutions endorsing the project.",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "required": true,
+      "details": "Formal collaboration letters with local Continuum of Care, VA medical facilities, HUD-VASH, or SSVF programs for permanent housing placement.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 2"
     },
     {
-      "name": "SAM.gov UEI and Grants.gov Registration",
+      "name": "SAM.gov Active Registration and Unique Entity Identifier (UEI)",
       "category": "Registrations",
       "required": true,
-      "details": "Active SAM.gov registration with Unique Entity Identifier (UEI) and Grants.gov credentials.",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "details": "Active entity registration on SAM.gov under 2 CFR Part 200 prior to award execution.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 3"
     }
   ],
   "deadlines": [
     {
-      "what": "Estimated Application Response Deadline",
-      "when": "Refer to Grants.gov notice",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "what": "FY 2026 Case Management NOFO",
+      "when": "Forecasted release expected around FY 2025 for FY 2026 awards",
+      "source": "VA GPD Forecast Schedule"
+    },
+    {
+      "what": "FY 2027 Per Diem Only (PDO) & Transition-In-Place (TIP) NOFO",
+      "when": "Forecasted release expected around FY 2026 for FY 2027 awards",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1"
     }
   ],
   "eligibility": {
-    "summary": "THIS IS NOT A NOTICE OF FUNDING. THIS IS A GENERAL FORECAST ONLY. In North Carolina, eligible entities fitting the organizational requirements may apply.",
-    "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+    "summary": "Eligible entities include 501(c)(3) or 501(c)(19) nonprofit organizations, state and local government agencies, and federally recognized Indian Tribal governments. For-profit entities are ineligible.",
+    "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 3"
   },
   "cost_share": {
     "required": "no",
-    "details": "No cost sharing or non-federal matching funds are required.",
-    "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+    "details": "No cost sharing is required for Per Diem Only or Special Need operational grants. Intermittent Capital grants require matching funds pursuant to 38 CFR Part 61.",
+    "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1"
   },
   "review_criteria": [
     {
-      "criterion": "Technical Merit and Program Alignment",
-      "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "criterion": "Quality of Transitional Housing Program Design & Service Continuum",
+      "weight": "Primary review factor",
+      "source": "38 CFR Part 61 & GPD Program Guidelines"
     },
     {
-      "criterion": "Work Plan Feasibility and Milestone Schedule",
-      "weight": "Scored evaluation criterion",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "criterion": "Demonstrated Capacity to Move Homeless Veterans to Permanent Housing",
+      "weight": "Primary review factor",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1"
     },
     {
-      "criterion": "Budget Reasonableness and Cost Effectiveness",
-      "weight": "Evaluated criterion",
-      "source": "Grants.gov Forecast Notice (VA-GPD-FORECAST-FY2026-FY2028)"
+      "criterion": "Coordination with Local VA Medical Facilities & HUD-VASH/SSVF",
+      "weight": "Scored factor",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 2"
     }
   ],
-  "submission_limits": "Applicant organizations may submit more than one proposal, provided each proposal is scientifically distinct.",
+  "funded_activities": [
+    {
+      "activity": "Per diem reimbursement payments for the cost of transitional supportive housing bed-nights provided to Veterans experiencing homelessness.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1"
+    },
+    {
+      "activity": "Wraparound case management and clinical treatment for substance use disorders and mental health diagnoses.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 2"
+    },
+    {
+      "activity": "Low-demand harm reduction transitional housing and hospital-to-housing recuperative care services.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 2"
+    },
+    {
+      "activity": "Transition-in-place services where housing units transition into permanent leases for the Veteran resident.",
+      "source": "FactSheet-GPDGrantFundingTypes-July2022.pdf p. 1-2"
+    }
+  ],
+  "submission_limits": "Organizations may apply for multiple grant types or service models but must submit separate applications for each distinct housing site or project.",
   "important_notes": [
-    "Forecasted Opportunity: This is an advance forecast notice. Official application packages and final closing dates will be released upon posting.",
-    "Application submission is administered via Grants.gov or the designated federal portal for opportunity VA-GPD-FORECAST-FY2026-FY2028.",
-    "SAM.gov registration must be active with valid Unique Entity Identifier (UEI) prior to submission; allow 3-4 weeks for new registrations.",
-    "Review all instructions, eligibility requirements, and deadlines published on Grants.gov before preparing submission."
+    "THIS IS A GENERAL FORECAST ONLY. Formal applications are submitted through VA GPD online portal, not Grants.gov workspace alone.",
+    "Review 38 CFR Part 61 (VA GPD regulations) and 2 CFR Part 200 before applying.",
+    "Ensure current registration and active UEI on SAM.gov."
   ]
 }
