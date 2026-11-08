@@ -388,12 +388,12 @@ DOC_SYSTEM = DRAFT_SYSTEM.replace(
     "For a letter of support or commitment, write a template the partner can adapt, with names and commitments as [blanks].")
 
 NOT_DRAFTABLE = ("Standard forms", "Registrations")
-NOT_DRAFTABLE_WORDS = ("sf-424", "sf424", "sf-lll", "sam.gov", "uei", "grants.gov registration", "login.gov", "era commons",
+NOT_DRAFTABLE_WORDS = ("clearinghouse", "sf-424", "sf424", "sf-lll", "sam.gov", "uei", "grants.gov registration", "login.gov", "era commons",
                        "audit", "indirect cost rate agreement", "resume", "biosketch", "curriculum vitae", "certification", "assurances")
 
 
 def draftable(doc):
-    name = (doc.get("name") or "").lower()
+    name = ((doc.get("code") or "") + " " + (doc.get("name") or "")).lower()
     return doc.get("category") not in NOT_DRAFTABLE and not any(w in name for w in NOT_DRAFTABLE_WORDS)
 
 
@@ -403,12 +403,24 @@ def get_or_create_doc_draft(conn, office_id, item_id, doc_name):
     inputs = draft_inputs(conn, office_id, item_id)
     req = notices.requirements_for(conn, item_id) or {}
     doc = next((d for d in req.get("required_documents", []) if d.get("name") == doc_name), None)
+    general = False
+    if not doc:
+        # No checked notice for this grant: fall back to the general federal checklist shown on the page
+        row = conn.execute("SELECT data FROM opportunities WHERE id=?", (item_id,)).fetchone()
+        rd = (json.loads(row["data"]).get("required_documents") or {}) if row else {}
+        doc = next((d for group in rd.values() if isinstance(group, list) for d in group if d.get("name") == doc_name), None)
+        general = doc is not None
     if not doc:
         raise ValueError("That document is not on this grant's requirements list")
     if not draftable(doc):
         raise ValueError("This is a standard form or registration; complete it on Grants.gov or with your records")
-    inputs["document_to_draft"] = {"name": doc["name"], "category": doc.get("category"), "details": doc.get("details"),
-                                   "source": doc.get("source"), "required": doc.get("required")}
+    inputs["document_to_draft"] = {"name": doc["name"], "category": doc.get("category"),
+                                   "details": doc.get("details") or doc.get("notes"), "source": doc.get("source"),
+                                   "required": doc.get("required")}
+    if general:
+        inputs["document_to_draft"]["note"] = ("No funding notice is available for this grant. Follow general federal practice for this "
+                                               "document, say in guidance that the notice's own instructions take priority, and leave "
+                                               "grant-specific requirements as [blanks].")
     key = item_id + "#" + hashlib.sha1(doc_name.encode()).hexdigest()[:10]
     h = hashlib.sha256(json.dumps(inputs, sort_keys=True, default=str).encode()).hexdigest()[:16]
     row = conn.execute("SELECT * FROM app_drafts WHERE office_id=? AND item_id=?", (office_id, key)).fetchone()
