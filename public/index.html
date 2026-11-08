@@ -934,6 +934,7 @@ async function renderDigest(){
       <div class="alert" style="margin-bottom:24px;">
         <h3 style="margin:0 0 6px;">Weekly field updates</h3>
         <p style="margin:0 0 10px;font-size:0.95em;">Get a Monday morning email for <strong>${esc(res.office_name)}</strong> with newly added grants matching its goals and matching grants due within 30 days. Confirm your address to start. You can unsubscribe from any email.</p>
+        <p style="margin:0 0 10px;font-size:0.95em;">You will also get deadline reminders for grants you mark <strong>Pursue</strong> or <strong>Watch</strong>: an email at 30, 14, 10, 7, 3 and 1 day before each deadline, with the days left in the subject line (for example, "10 days left!") and a link to the official notice. To turn them on, open a grant, choose Pursue or Watch, and tick "Email me deadline reminders for this grant."</p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
           <label for="digestEmail">Team email</label>
           <input type="email" id="digestEmail" autocomplete="email" placeholder="your.name@nc.gov or team@county.gov" style="max-width:320px;padding:8px 10px;" value="${esc(store.get('user_email') || '')}">
