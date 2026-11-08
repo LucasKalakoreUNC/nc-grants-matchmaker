@@ -333,7 +333,8 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 // Remove emoji/decorative symbols that older generated data still contains
 const clean = s => String(s ?? '').replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu, '').replace(/\s{2,}/g,' ').trim();
 const money = n => n ? '$' + (n >= 1e6 ? (+(n/1e6).toFixed(1)) + ' million' : Number(n).toLocaleString()) : 'Not listed';
-const fmtDate = d => d ? new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not listed';
+const farOff = d => d && +d.slice(0, 4) >= 2050;
+const fmtDate = d => farOff(d) ? 'No fixed deadline' : d ? new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Not listed';
 const STRONG = 70, GOOD = 55, PER_ORG = 3;
 const uniq = items => [...new Map(items.map(i => [i.id, i])).values()];
 function pickOffice(id){ const p = S.profiles.find(x => x.agency_id === id); if (!p) return; $('otype').value = p.category || 'state'; fillOffices($('otype').value, true); $('office').value = id; changeOffice(id); window.scrollTo(0, 0); }
@@ -367,7 +368,10 @@ const deadlineHtml = (i, br) => i.status === 'forecasted'
   ? (realDue(i) ? `Expected${br ? '<br>' : ' '}<span class="sub" style="color:var(--ink)">${fmtDate(i.expected_due_date)}</span>`
      : 'Not posted yet')
   : i.days_to_close == null ? 'No deadline listed'
+  : farOff(i.close_date) ? 'No fixed deadline'
   : `${fmtDate(i.close_date)}${br ? '<br>' : ''}<span class="sub ${i.days_to_close <= 14 ? 'soon' : ''}">${i.days_to_close} days left</span>`;
+const passed = i => ((S.decisions || {})[keyOf(i)] || {}).status === 'Pass';
+const byRank = (a, b) => (passed(a) - passed(b)) || (b.total_score - a.total_score);
 const fit = s => s >= STRONG ? ['strong','Strong match'] : s >= GOOD ? ['good','Good match'] : ['fair','Possible match'];
 const PARTS = [
   ['relevancy', 'Fit with your strategic plan', 'How closely the grant matches your goals and their key terms.'],
@@ -478,7 +482,7 @@ async function changeOffice(id){
   }
   if (request !== officeRequest) return;
   S.loading = false;
-  S.items = items.filter(applicationIsCurrent).sort((a,b) => b.total_score - a.total_score);
+  S.items = items.filter(applicationIsCurrent).sort(byRank);
   S.decisions = {}; (dec.decisions || []).forEach(d => { if (!['Pursue','Watch','Pass'].includes(d.status)) d.status = 'Watch'; S.decisions[all ? `${d.office_id}|${d.opportunity_id}` : String(d.opportunity_id)] = d; });
   render(); renderTracked();
   if (!$('tab-digest').hidden) renderDigest();
@@ -508,7 +512,7 @@ function filtered(){
     if ((due === '30' || due === '90') && (i.status === 'forecasted' || i.days_to_close == null || i.days_to_close > +due)) return false;
     if (q && !`${i.title} ${i.agency} ${i.number} ${i.matched_goal_title}`.toLowerCase().includes(q)) return false;
     return true;
-  });
+  }).sort(byRank);
 }
 
 function render(){
@@ -947,7 +951,7 @@ async function renderDigest(){
       res.pursuing_grants.forEach((p, idx) => {
         const isSoon = p.closing_soon;
         const dueText = isSoon
-          ? `<span class="tag" style="background:#b50909;color:#fff;font-weight:bold;">⚠️ DUE IN ${p.days_to_close} DAYS (${fmtDate(p.close_date)})</span>`
+          ? `<span class="tag" style="background:#b50909;color:#fff;font-weight:bold;">DUE IN ${p.days_to_close} DAYS (${fmtDate(p.close_date)})</span>`
           : (p.days_to_close != null ? `<span class="tag good">Deadline: ${fmtDate(p.close_date)} (${p.days_to_close} days left)</span>` : '<span class="tag fair">Deadline: Open / See notice</span>');
 
         const docs = p.required_documents || [];

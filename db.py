@@ -436,6 +436,8 @@ def _current_match(row, today):
 
 def save_matches(conn, office_id, scored_items):
     ts = now()
+    # Replace this office's whole list so grants that no longer qualify (e.g. out of state) drop out.
+    conn.execute("DELETE FROM matches WHERE office_id=?", (office_id,))
     conn.executemany(
         "INSERT OR REPLACE INTO matches VALUES (?, ?, ?, ?, ?)",
         [(office_id, s["id"], s.get("total_score", 0), json.dumps(s), ts) for s in scored_items],

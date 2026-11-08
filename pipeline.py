@@ -639,6 +639,35 @@ CATEGORY_ELIGIBILITY_WORDS = {
 }
 
 
+OTHER_STATES = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware",
+    "Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine",
+    "Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada",
+    "New Hampshire","New Jersey","New Mexico","New York","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania",
+    "Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington State",
+    "West Virginia","Wisconsin","Wyoming","Puerto Rico","Guam","Colorado Plateau","Colorado River"]
+_STATE_RE = re.compile(r"\b(" + "|".join(OTHER_STATES) + r")\b")
+
+
+def outside_nc(opp):
+    """Reason string if a North Carolina organization cannot apply, else None.
+    Catches: U.S. embassy/mission programs abroad, Bureau of Reclamation programs (by law limited
+    to the 17 western states, Alaska, Hawaii and territories), and grants whose title names another
+    state or region (e.g. "State of Kansas"). "Alaska Native" / "Native Hawaiian" do not count."""
+    agency = opp.get("agency") or ""
+    title = opp.get("title") or ""
+    if re.search(r"U\.?S\.? Mission|Embassy|Consulate", agency + " " + title, re.I) or re.search(r"Public Diplomacy|Annual Program Statement", title, re.I) and "Department of State" in agency:
+        return "This program is run by a U.S. embassy or mission abroad and is not for North Carolina organizations."
+    if re.search(r"Bureau of (Near Eastern|African|European and Eurasian|East Asian and Pacific|South and Central Asian|Western Hemisphere) Affairs", agency):
+        return "This program is run by a State Department regional bureau for work overseas, not for North Carolina organizations."
+    if "Bureau of Reclamation" in agency:
+        return "Bureau of Reclamation programs are limited to the western states, Alaska, Hawaii and the territories."
+    t = re.sub(r"Alaska Natives?|Native Hawaiians?|American Indian/Alaska", "", title)
+    m = _STATE_RE.search(t)
+    if m and "North Carolina" not in title:
+        return f"The title limits this program to {m.group(0)}."
+    return None
+
+
 def eligibility_fit(opp, profile):
     """Score 0-100 for whether this office type may apply, plus a plain-language note."""
     types = [t.lower() for t in opp.get("eligibility", [])]
@@ -996,6 +1025,11 @@ def run_pipeline():
     profiles = load_agency_profiles()
     print(f"[{datetime.now().strftime('%H:%M:%S')}] Scoring opportunities against {len(profiles)} NC Profiles (State, County, Education, Business, Municipal)...")
 
+    excluded = [o for o in normalized if outside_nc(o)]
+    normalized = [o for o in normalized if not outside_nc(o)]
+    print(f"  Left out {len(excluded)} grants North Carolina organizations cannot apply for.")
+    ids = list(profiles)
+    conn.execute(f"DELETE FROM matches WHERE office_id NOT IN ({','.join('?' * len(ids))})", ids)
     scored_counts = {}
     for agency_id, profile in profiles.items():
         scored_list = []

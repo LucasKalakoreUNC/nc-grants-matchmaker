@@ -1019,6 +1019,8 @@ class MatchmakerHandler(BaseHTTPRequestHandler):
 
             rescored = []
             for opp in normalized:
+                if pipeline.outside_nc(opp):
+                    continue
                 score_meta = pipeline.calculate_score(opp, profile, weights, scoring_model=scoring_model)
                 item = dict(opp)
                 item.update(score_meta)
