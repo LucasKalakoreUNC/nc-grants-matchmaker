@@ -151,10 +151,10 @@
     </div>
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
     <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
-    <button id="digestQuickBtn" class="btn outline" onclick="showTab('digest')">✉️ Weekly briefing</button>
+    <button id="digestQuickBtn" class="btn outline" onclick="showTab('digest')">Weekly briefing</button>
   </div>
 
-  <div class="coverage">
+  <div class="coverage" hidden>
     <p id="catalogTotal">Loading database totals…</p>
     <details>
       <summary>Database coverage and limits</summary>
