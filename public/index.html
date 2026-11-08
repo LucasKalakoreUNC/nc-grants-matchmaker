@@ -60,6 +60,10 @@
   .summary button { text-align: left; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--blue); padding: 16px; font: inherit; cursor: pointer; }
   .summary button:hover { background: var(--blue-light); }
   .summary .num { font-size: 2rem; font-weight: 700; display: block; line-height: 1.1; }
+  main.wrap { padding-top: 24px; }
+  .summary-actions { display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+  .summary .summary-actions .btn { text-align: center; font-weight: 700; border: 0; padding: 10px 18px; border-radius: 4px; }
+  .summary .summary-actions .btn[hidden] { display: none; }
   .summary .lbl { color: var(--muted); font-size: .95rem; }
   .filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 16px; }
   .filters .field { flex: 1 1 200px; } .filters .field.grow { flex: 2 1 280px; }
@@ -159,10 +163,6 @@
 </nav>
 
 <main class="wrap">
-  <div class="office-bar">
-    <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
-    <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
-  </div>
 
   <div class="coverage" hidden>
     <p id="catalogTotal">Loading database totals…</p>
@@ -191,6 +191,10 @@
       <button onclick="quick('todo')"><span class="num" id="nTodo">-</span><span class="lbl">Strong matches that need a decision</span></button>
       <button onclick="quick('soon')" style="border-top-color:var(--red)"><span class="num" id="nSoon">-</span><span class="lbl">Undecided good matches closing within 30 days</span></button>
       <button onclick="showTab('tracked')" style="border-top-color:var(--green)"><span class="num" id="nPursue">-</span><span class="lbl">Opportunities your organization is pursuing</span></button>
+      <div class="summary-actions">
+    <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
+    <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
+      </div>
     </div>
 
     <div class="filters">
