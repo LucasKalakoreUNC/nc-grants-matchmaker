@@ -70,7 +70,9 @@ def azure_settings():
     deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT", "").strip() or (m.group(1) if m else "")
     if m and not os.environ.get("AZURE_OPENAI_DEPLOYMENT_OVERRIDE"):
         deployment = m.group(1)  # the deployment in the pasted URI is the one that exists
-    version = os.environ.get("AZURE_OPENAI_API_VERSION") or (parse_qs(u.query).get("api-version") or ["2024-10-21"])[0]
+    # Reasoning models (gpt-5 family, o-series) need a newer API version than older GPT models.
+    default = "2025-04-01-preview" if re.match(r"(gpt-5|o\d)", deployment or "") else "2024-10-21"
+    version = os.environ.get("AZURE_OPENAI_API_VERSION") or (parse_qs(u.query).get("api-version") or [default])[0]
     return base, deployment, version
 
 
@@ -353,7 +355,7 @@ def get_or_create_draft(conn, office_id, item_id):
         raise ValueError("The hourly limit for new drafts has been reached. Please try again later.")
     _RECENT.append(now)
     result = ask(DRAFT_SYSTEM, "Write the draft from these facts (JSON):\n" + json.dumps(inputs, default=str, indent=1),
-                 DRAFT_SCHEMA, max_tokens=8000)
+                 DRAFT_SCHEMA, max_tokens=16000)  # room for a reasoning model's hidden thinking plus the draft
     model = os.environ.get("AZURE_OPENAI_DEPLOYMENT") if provider() == "azure-openai" else MODEL
     conn.execute("INSERT OR REPLACE INTO app_drafts VALUES (?, ?, ?, ?, ?, ?)",
                  (office_id, item_id, h, json.dumps(result), model, db.now()))
