@@ -525,7 +525,8 @@ def chat(conn, office_id, question, history=None, grant_id=None, category="all")
                 except Exception:
                     pass
                 data["open_grant"] = open_grant
-    elif office_id == "all":
+    cross_org = []
+    if not profile and office_id == "all":
         today = data["today"]
         orgs = []
         for oid, p in profiles.items():
@@ -540,14 +541,18 @@ def chat(conn, office_id, question, history=None, grant_id=None, category="all")
                                                                "award_ceiling", "total_score", "matched_goal_title") if g.get(k)}
                                         for g in top]})
         data["organizations"] = orgs
-        data["ranked_grants"] = [g for o in orgs for g in o["top_grants"]]
+        cross_org = [g for o in orgs for g in o["top_grants"]]
+    if office_id == "all":
+        known_list = cross_org
+    else:
+        known_list = data.get("ranked_grants", [])
     turns = [{"role": t.get("role"), "text": str(t.get("text", ""))[:1500]}
              for t in (history or [])[-6:] if t.get("role") in ("user", "assistant")]
     user = ("Data (JSON):\n" + json.dumps(data, default=str)[:100000]
             + "\n\nEarlier in this conversation:\n" + json.dumps(turns)
             + "\n\nQuestion: " + question)
     out = ask(CHAT_SYSTEM, user, CHAT_SCHEMA, max_tokens=6000)
-    known = {str(g["id"]): g for g in data.get("ranked_grants", [])}
+    known = {str(g["id"]): g for g in known_list}
     out["grants"] = [{"id": i, "title": known[i]["title"]} for i in map(str, out.get("grant_ids", [])) if i in known][:5]
     return out
 
