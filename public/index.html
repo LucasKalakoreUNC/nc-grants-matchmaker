@@ -111,6 +111,7 @@
     td[data-l]::before { content: attr(data-l) ": "; font-weight: 700; color: var(--muted); font-size: .85rem; }
     .choices { grid-template-columns: 1fr; }
   }
+  body.on-help .office-bar, body.on-help .coverage, body.on-help #planInfo, body.on-help #welcome { display: none !important; }
 </style>
 </head>
 <body>
@@ -1114,6 +1115,7 @@ function showTab(t){
     const el = $('tab-' + x);
     if (el) el.hidden = x !== t;
   });
+  document.body.classList.toggle('on-help', t === 'help');
   if (t === 'digest') renderDigest();
   window.scrollTo(0, 0);
 }
