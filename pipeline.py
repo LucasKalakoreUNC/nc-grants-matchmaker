@@ -673,7 +673,7 @@ def eligibility_fit(opp, profile):
     types = [t.lower() for t in opp.get("eligibility", [])]
     title = (opp.get("title") or "").lower()
     is_tribal_org = profile.get("category") == "tribal" or any("tribal" in t.lower() for t in profile.get("eligible_applicant_types", []))
-    if not is_tribal_org and re.search(r"\b(tribal|indian housing|urban indian|native american|native hawaiian)\b", title):
+    if not is_tribal_org and re.search(r"\b(tribal|indian tribes?|indian housing|urban indian|native american|native hawaiian|alaska native villages)\b", title):
         return 10.0, "This program appears to be limited to tribes or Native organizations; check the notice."
     if not types:
         return 60.0, "Grants.gov does not list who can apply, so this gets 60 until the notice is checked."
