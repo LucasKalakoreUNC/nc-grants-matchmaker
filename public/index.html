@@ -24,7 +24,13 @@
   .site-title { font-family: Merriweather, Georgia, serif; font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
   .site-sub { font-size: .85rem; color: #c9d4e3; }
   nav.tabs { border-bottom: 1px solid var(--line); background: #fff; }
-  nav.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; }
+  nav.tabs .navrow { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+  nav.tabs .tablist { display: flex; gap: 4px; overflow-x: auto; max-width: 100%; }
+  nav.tabs .nav-pick { display: flex; gap: 10px; align-items: center; padding: 8px 0; flex-wrap: wrap; }
+  nav.tabs .nav-pick .field { display: flex; flex-direction: column; margin: 0; }
+  nav.tabs .nav-pick label { font-size: 0.8rem; font-weight: 600; color: var(--muted); margin: 0 0 2px; }
+  nav.tabs .nav-pick select { padding: 5px 8px; font-size: 0.95rem; width: auto; max-width: 300px; }
+  body.on-help nav.tabs .nav-pick { display: none; }
   nav.tabs button { background: none; border: 0; border-bottom: 4px solid transparent; padding: 14px 14px 10px; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; white-space: nowrap; }
   nav.tabs button[aria-selected="true"] { color: var(--blue-dark); border-bottom-color: var(--blue); }
   main { padding: 24px 0 64px; }
@@ -123,17 +129,15 @@
   </div>
 </header>
 <nav class="tabs" aria-label="Main">
-  <div class="wrap" role="tablist">
+  <div class="wrap navrow">
+  <div class="tablist" role="tablist">
     <button role="tab" data-tab="list" aria-selected="true" onclick="showTab('list')">Opportunities</button>
     <button role="tab" data-tab="tracked" aria-selected="false" onclick="showTab('tracked')">My decisions</button>
     <button role="tab" data-tab="help" aria-selected="false" onclick="showTab('help')">How this works</button>
     <button role="tab" data-tab="digest" aria-selected="false" onclick="showTab('digest')">Email updates</button>
   </div>
-</nav>
-
-<main class="wrap">
-  <div class="office-bar">
-    <div class="field" style="flex:1 1 220px;max-width:280px">
+  <div class="nav-pick">
+    <div class="field">
       <label for="otype">Type of organization</label>
       <select id="otype" onchange="fillOffices(this.value)">
         <option value="all">All types</option>
@@ -150,6 +154,12 @@
       <label for="office">Your organization</label>
       <select id="office" onchange="changeOffice(this.value)"></select>
     </div>
+  </div>
+  </div>
+</nav>
+
+<main class="wrap">
+  <div class="office-bar">
     <a id="exportBtn" class="btn outline" href="#">Download list (spreadsheet)</a>
     <button id="planBtn" class="btn outline" hidden onclick="$('planInfo').hidden = !$('planInfo').hidden; this.setAttribute('aria-expanded', !$('planInfo').hidden)" aria-expanded="false" aria-controls="planInfo">Strategic plan</button>
   </div>
@@ -906,8 +916,8 @@ async function renderDigest(){
     let html = `
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px;">
         <div>
-          <h2 style="margin:0;">Weekly Grant Briefing & Action Digest</h2>
-          <p class="count" style="margin:4px 0 0;"><strong>${esc(res.office_name)}</strong> &middot; Week of ${esc(res.date)}</p>
+          <h2 style="margin:0;">Weekly briefing for ${esc(res.office_name)}</h2>
+          <p class="count" style="margin:4px 0 0;">Week of ${esc(res.date)} &middot; ${org === 'all' ? 'This combines every organization of this type. Choose one organization above to see a single department.' : 'To see another department, change "Your organization" above.'}</p>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button class="btn outline small" onclick="copyDigestText()">Copy email text</button>
@@ -929,7 +939,7 @@ async function renderDigest(){
       <div class="summary">
         <div style="background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);padding:16px;">
           <span class="num">${pCount}</span>
-          <span class="lbl">Grants Your Department Is Pursuing</span>
+          <span class="lbl">Grants being pursued</span>
         </div>
         <div style="background:#fff;border:1px solid var(--line);border-top:4px solid ${soonCount > 0 ? 'var(--red)' : 'var(--blue)'};padding:16px;">
           <span class="num" style="color:${soonCount > 0 ? 'var(--red)' : 'inherit'}">${soonCount}</span>
@@ -941,7 +951,7 @@ async function renderDigest(){
         </div>
       </div>
 
-      <h3 style="margin-top:28px;margin-bottom:12px;border-bottom:2px solid var(--navy);padding-bottom:6px;">1. Grants Your Department Wants to Pursue & Due Dates (${pCount})</h3>
+      <h3 style="margin-top:28px;margin-bottom:12px;border-bottom:2px solid var(--navy);padding-bottom:6px;">1. Grants being pursued and due dates (${pCount})</h3>
     `;
 
     if (!pCount) {
@@ -975,7 +985,7 @@ async function renderDigest(){
               <h4 style="margin:0;font-size:1.1rem;"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></h4>
               <div>${dueText}</div>
             </div>
-            <div class="sub" style="margin-bottom:8px;">${esc(p.agency)} &middot; Opp #${esc(p.number)} &middot; Award up to: <strong>${awardCell(p)}</strong></div>
+            <div class="sub" style="margin-bottom:8px;"><strong>For: ${esc(p.office_name || res.office_name)}</strong> &middot; ${esc(p.agency)} &middot; Opp #${esc(p.number)} &middot; Award up to: <strong>${awardCell(p)}</strong></div>
             ${p.decided_by || p.notes ? `<div style="background:var(--bg-alt);padding:8px 12px;margin:8px 0;border-radius:2px;font-size:0.9em;"><strong>Lead:</strong> ${esc(p.decided_by || 'Grants Staff')} &middot; <em>"${esc(p.notes || 'Marked to pursue')}"</em></div>` : ''}
             ${docsHtml}
           </div>
@@ -984,7 +994,7 @@ async function renderDigest(){
     }
 
     html += `
-      <h3 style="margin-top:36px;margin-bottom:12px;border-bottom:2px solid var(--navy);padding-bottom:6px;">2. New High-Scoring Matches for Your Department (${newCount})</h3>
+      <h3 style="margin-top:36px;margin-bottom:12px;border-bottom:2px solid var(--navy);padding-bottom:6px;">2. New strong matches to review (${newCount})</h3>
       <table>
         <thead>
           <tr>
@@ -1005,7 +1015,7 @@ async function renderDigest(){
         <tr>
           <td>
             <button class="t" onclick="reviewBriefingGrant('${esc(it.id)}','${esc(it.best_office_id || org)}')">${esc(clean(it.title))}</button>
-            <span class="sub">${esc(it.agency)} &middot; Goal: <em>${esc(it.matched_goal_title || 'Strategic match')}</em></span>
+            <span class="sub"><strong>For: ${esc(it.best_office_name || res.office_name)}</strong> &middot; ${esc(it.agency)} &middot; Goal: <em>${esc(it.matched_goal_title || 'Strategic match')}</em></span>
           </td>
           <td data-l="Match"><span class="tag ${cls}">${lbl}</span></td>
           <td data-l="Award up to">${awardCell(it)}</td>

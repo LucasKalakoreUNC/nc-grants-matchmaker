@@ -195,6 +195,8 @@ def build_weekly_digest(conn, office_id, category="all"):
 
         pursuing.append({
             "opportunity_id": oid,
+            "office_id": d["office_id"],
+            "office_name": profiles.get(d["office_id"], {}).get("name", d["office_id"]),
             "title": title,
             "number": number,
             "agency": agency,
@@ -221,7 +223,8 @@ def build_weekly_digest(conn, office_id, category="all"):
                 continue
             previous = new_candidates.get(it["id"])
             if previous is None or it["total_score"] > previous["total_score"]:
-                new_candidates[it["id"]] = {**it, "best_office_id": oid}
+                new_candidates[it["id"]] = {**it, "best_office_id": oid,
+                                            "best_office_name": profiles.get(oid, {}).get("name", oid)}
     top_new = sorted(new_candidates.values(), key=lambda it: -it["total_score"])[:6]
 
     money_str = lambda n: f"${int(n/1e6 * 10)/10:.1f}M" if n and n >= 1e6 else (f"${int(n):,}" if n else "See notice")
