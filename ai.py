@@ -329,6 +329,10 @@ def draft_inputs(conn, office_id, item_id):
             "review_criteria": [{"criterion": c["criterion"], "weight": c.get("weight"), "source": c.get("source")}
                                 for c in req.get("review_criteria", []) if c.get("verified") is not False],
             "funded_activities": [a.get("activity") for a in req.get("funded_activities", [])],
+            "cost_share": req.get("cost_share"),
+            "eligibility": req.get("eligibility"),
+            "key_dates": [{"what": x.get("what"), "when": x.get("when"), "source": x.get("source")}
+                          for x in req.get("deadlines", []) if x.get("verified") is not False],
         },
     }
 
